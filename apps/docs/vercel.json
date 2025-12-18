@@ -1,0 +1,5 @@
+{
+	"$schema": "https://openapi.vercel.sh/vercel.json",
+	"buildCommand": "cd ../open-source-library && npm install && npm run build && cd ../docs-site && npm install && npm run build",
+	"framework": "sveltekit"
+}

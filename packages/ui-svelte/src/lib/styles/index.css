@@ -1,0 +1,116 @@
+/**
+ * UI Library Core Styles
+ *
+ * Main entry point for all library styles.
+ * Import this file to get default styling.
+ *
+ * To customize, override CSS variables after importing:
+ *
+ * @example
+ * :root {
+ *   --cui-color-primary: #1a365d;
+ *   --cui-font-family-sans: 'Inter', sans-serif;
+ * }
+ */
+
+@import './reset.css';
+@import './tokens.css';
+@import './semantic.css';
+@import './components.css';
+@import './dark.css';
+@import './utilities.css';
+
+/* ============================================
+ * BASE STYLES
+ * ============================================ */
+
+:root {
+	background-color: var(--cui-bg-page);
+	color: var(--cui-text-primary);
+	font-family: var(--cui-font-family-sans);
+	font-size: var(--cui-font-size-md);
+	line-height: var(--cui-line-height-normal);
+}
+
+body {
+	margin: 0;
+	min-height: 100vh;
+}
+
+/* ============================================
+ * LINK STYLES
+ * ============================================ */
+
+a {
+	color: var(--cui-link-color);
+	text-decoration: none;
+	transition: color var(--cui-transition-base) var(--cui-ease-in-out);
+}
+
+a:hover {
+	color: var(--cui-link-hover-color);
+}
+
+header a {
+	color: var(--cui-color-primary);
+	text-decoration: none;
+	transition: color var(--cui-transition-base) var(--cui-ease-in-out);
+}
+
+.dark header a {
+	color: var(--cui-color-white);
+}
+
+.dark header a:hover {
+	color: var(--cui-color-secondary);
+}
+
+/* ============================================
+ * SCROLLBAR STYLES
+ * ============================================ */
+
+*::-webkit-scrollbar {
+	width: var(--cui-scrollbar-width);
+	height: var(--cui-scrollbar-width);
+}
+
+*::-webkit-scrollbar-track {
+	background: var(--cui-scrollbar-track);
+}
+
+*::-webkit-scrollbar-thumb {
+	background-color: var(--cui-scrollbar-thumb);
+	border-radius: 10px;
+	border: 5px solid var(--cui-scrollbar-thumb-border);
+}
+
+* {
+	scrollbar-width: thin;
+	scrollbar-color: var(--cui-scrollbar-thumb) var(--cui-scrollbar-track);
+}
+
+/* ============================================
+ * FOCUS STYLES
+ * ============================================ */
+
+:focus-visible {
+	outline: var(--cui-focus-ring-width) solid var(--cui-focus-ring-color);
+	outline-offset: var(--cui-focus-ring-offset);
+}
+
+:focus:not(:focus-visible) {
+	outline: none;
+}
+
+/* ============================================
+ * SELECTION STYLES
+ * ============================================ */
+
+::selection {
+	background-color: rgba(var(--cui-color-accent-rgb), 0.3);
+	color: inherit;
+}
+
+.dark ::selection {
+	background-color: rgba(var(--cui-color-secondary-rgb), 0.3);
+}

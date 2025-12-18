@@ -1,0 +1,73 @@
+/**
+ * Semantic Variables
+ * Contextual variables derived from primitive tokens.
+ */
+
+:root {
+	/* ============================================
+	 * SURFACE COLORS
+	 * ============================================ */
+	--cui-bg-page: var(--cui-color-gray-100);
+	--cui-bg-surface: var(--cui-color-white);
+	--cui-bg-surface-raised: var(--cui-color-gray-50);
+	--cui-bg-surface-sunken: var(--cui-color-gray-200);
+	--cui-bg-overlay: rgba(0, 0, 0, 0.5);
+	--cui-bg-overlay-dark: rgba(0, 0, 0, 0.65);
+
+	/* ============================================
+	 * TEXT COLORS
+	 * ============================================ */
+	--cui-text-primary: var(--cui-color-black);
+	--cui-text-secondary: var(--cui-color-gray-700);
+	--cui-text-muted: var(--cui-color-gray-600);
+	--cui-text-disabled: var(--cui-color-gray-400);
+	--cui-text-placeholder: rgb(161, 161, 170);
+
+	--cui-text-on-primary: var(--cui-color-white);
+	--cui-text-on-secondary: var(--cui-color-primary);
+	--cui-text-on-accent: var(--cui-color-primary);
+	--cui-text-on-danger: var(--cui-color-white);
+
+	--cui-text-danger: var(--cui-color-danger-light);
+	--cui-text-warning: var(--cui-color-warning);
+	--cui-text-success: var(--cui-color-success);
+	--cui-text-info: var(--cui-color-info);
+
+	/* ============================================
+	 * BORDER COLORS
+	 * ============================================ */
+	--cui-border-default: rgb(226, 232, 240);
+	--cui-border-subtle: var(--cui-color-gray-200);
+	--cui-border-strong: var(--cui-color-gray-400);
+	--cui-border-focus: var(--cui-color-accent);
+	--cui-border-error: var(--cui-color-danger);
+	--cui-border-success: var(--cui-color-success);
+
+	/* ============================================
+	 * ACCENT COLORS
+	 * ============================================ */
+	--cui-accent-color-rgb: var(--cui-color-primary-rgb);
+	--cui-accent-color: var(--cui-color-primary);
+	--cui-accent-text-color: var(--cui-color-off-white);
+
+	/* ============================================
+	 * LINK COLORS
+	 * ============================================ */
+	--cui-link-color: var(--cui-color-accent-dark);
+	--cui-link-hover-color: var(--cui-color-secondary-dark);
+
+	/* ============================================
+	 * FOCUS RING
+	 * ============================================ */
+	--cui-focus-ring-color: var(--cui-color-accent);
+	--cui-focus-ring-width: 2px;
+	--cui-focus-ring-offset: 2px;
+
+	/* ============================================
+	 * SCROLLBAR
+	 * ============================================ */
+	--cui-scrollbar-width: 19px;
+	--cui-scrollbar-track: var(--cui-color-white);
+	--cui-scrollbar-thumb: var(--cui-color-primary);
+	--cui-scrollbar-thumb-border: var(--cui-color-white);
+}

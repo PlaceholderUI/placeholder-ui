@@ -1,0 +1,134 @@
+/* Import UI library styles */
+@import '@anthropic-public/ui-svelte/styles';
+
+/* Documentation site specific styles */
+:root {
+	--docs-sidebar-width: 260px;
+	--docs-header-height: 60px;
+	--docs-content-max-width: 900px;
+}
+
+* {
+	box-sizing: border-box;
+}
+
+html {
+	scroll-behavior: smooth;
+}
+
+body {
+	margin: 0;
+	font-family: var(--cui-font-family-sans);
+	background-color: var(--cui-color-white);
+	color: var(--cui-color-gray-900);
+	line-height: var(--cui-line-height-normal);
+}
+
+.dark body {
+	background-color: var(--cui-color-dark-400);
+	color: var(--cui-color-gray-100);
+}
+
+a {
+	color: var(--cui-color-primary);
+	text-decoration: none;
+}
+
+a:hover {
+	text-decoration: underline;
+}
+
+.dark a {
+	color: var(--cui-color-secondary);
+}
+
+code {
+	font-family: var(--cui-font-family-mono);
+	font-size: 0.875em;
+	background-color: var(--cui-color-gray-100);
+	padding: 0.125rem 0.375rem;
+	border-radius: var(--cui-radius-sm);
+}
+
+.dark code {
+	background-color: var(--cui-color-dark-200);
+}
+
+pre {
+	font-family: var(--cui-font-family-mono);
+	font-size: 0.875rem;
+	background-color: var(--cui-color-gray-900);
+	color: var(--cui-color-gray-100);
+	padding: var(--cui-spacing-4);
+	border-radius: var(--cui-radius-md);
+	overflow-x: auto;
+	margin: var(--cui-spacing-4) 0;
+}
+
+pre code {
+	background: none;
+	padding: 0;
+	color: inherit;
+}
+
+h1, h2, h3, h4, h5, h6 {
+	margin: 0 0 var(--cui-spacing-4);
+	font-weight: var(--cui-font-weight-semibold);
+	line-height: var(--cui-line-height-tight);
+}
+
+h1 { font-size: var(--cui-font-size-3xl); }
+h2 { font-size: var(--cui-font-size-2xl); }
+h3 { font-size: var(--cui-font-size-xl); }
+h4 { font-size: var(--cui-font-size-lg); }
+
+p {
+	margin: 0 0 var(--cui-spacing-4);
+}
+
+/* Component preview boxes */
+.preview-box {
+	border: 1px solid var(--cui-color-gray-200);
+	border-radius: var(--cui-radius-lg);
+	padding: var(--cui-spacing-6);
+	margin: var(--cui-spacing-4) 0;
+	background: var(--cui-color-white);
+}
+
+.dark .preview-box {
+	border-color: var(--cui-color-dark-border);
+	background: var(--cui-color-dark-300);
+}
+
+/* Props table */
+.props-table {
+	width: 100%;
+	border-collapse: collapse;
+	margin: var(--cui-spacing-4) 0;
+	font-size: var(--cui-font-size-sm);
+}
+
+.props-table th,
+.props-table td {
+	padding: var(--cui-spacing-3);
+	text-align: left;
+	border-bottom: 1px solid var(--cui-color-gray-200);
+}
+
+.dark .props-table th,
+.dark .props-table td {
+	border-bottom-color: var(--cui-color-dark-border);
+}
+
+.props-table th {
+	font-weight: var(--cui-font-weight-semibold);
+	background: var(--cui-color-gray-50);
+}
+
+.dark .props-table th {
+	background: var(--cui-color-dark-200);
+}
+
+.props-table code {
+	font-size: 0.8125rem;
+}

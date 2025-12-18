@@ -1,0 +1,30 @@
+{
+  "name": "ui-svelte-monorepo",
+  "version": "1.0.0",
+  "private": true,
+  "description": "A modern Svelte 5 UI component library",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/anthropics/ui-svelte.git"
+  },
+  "engines": {
+    "node": ">=20.0.0"
+  },
+  "scripts": {
+    "dev": "pnpm --filter @anthropic-public/ui-svelte dev",
+    "dev:docs": "pnpm --filter docs dev",
+    "build": "pnpm --filter @anthropic-public/ui-svelte build",
+    "build:docs": "pnpm --filter @anthropic-public/ui-svelte build && pnpm --filter docs build",
+    "check": "pnpm -r check",
+    "test": "pnpm --filter @anthropic-public/ui-svelte test",
+    "format": "prettier --write .",
+    "clean": "rimraf packages/*/dist packages/*/.svelte-kit apps/*/.svelte-kit",
+    "publish:package": "pnpm --filter @anthropic-public/ui-svelte publish --access public"
+  },
+  "devDependencies": {
+    "prettier": "^3.4.2",
+    "prettier-plugin-svelte": "^3.3.3",
+    "rimraf": "^6.0.1"
+  }
+}

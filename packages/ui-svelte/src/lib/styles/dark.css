@@ -1,0 +1,129 @@
+/**
+ * Dark Theme Overrides
+ * Override variables when .dark class is applied to the document.
+ */
+
+.dark {
+	/* ============================================
+	 * SURFACE COLORS
+	 * ============================================ */
+	--cui-bg-page: var(--cui-color-dark-100);
+	--cui-bg-surface: var(--cui-color-dark-300);
+	--cui-bg-surface-raised: var(--cui-color-dark-200);
+	--cui-bg-surface-sunken: var(--cui-color-dark-400);
+
+	/* ============================================
+	 * TEXT COLORS
+	 * ============================================ */
+	--cui-text-primary: var(--cui-color-off-white);
+	--cui-text-secondary: rgb(180, 180, 180);
+	--cui-text-muted: rgb(140, 140, 140);
+	--cui-text-disabled: rgb(100, 100, 100);
+	--cui-text-placeholder: rgb(115, 115, 115);
+	--cui-text-danger: var(--cui-color-danger-lighter);
+
+	/* ============================================
+	 * BORDER COLORS
+	 * ============================================ */
+	--cui-border-default: var(--cui-color-dark-border);
+	--cui-border-subtle: var(--cui-color-dark-border-subtle);
+	--cui-border-strong: rgb(75, 80, 90);
+
+	/* ============================================
+	 * ACCENT COLORS
+	 * ============================================ */
+	--cui-accent-color-rgb: var(--cui-color-secondary-rgb);
+	--cui-accent-color: var(--cui-color-secondary);
+	--cui-accent-text-color: var(--cui-color-black);
+
+	/* ============================================
+	 * SCROLLBAR
+	 * ============================================ */
+	--cui-scrollbar-track: var(--cui-color-dark-500);
+	--cui-scrollbar-thumb-border: var(--cui-color-black);
+
+	/* ============================================
+	 * FORM INPUTS
+	 * ============================================ */
+	--cui-input-bg: var(--cui-color-dark-200);
+	--cui-input-bg-disabled: var(--cui-color-dark-border);
+
+	/* ============================================
+	 * PAPER
+	 * ============================================ */
+	--cui-paper-title-bg: var(--cui-color-dark-400);
+	--cui-paper-title-border: var(--cui-color-dark-border-subtle);
+	--cui-paper-body-bg: var(--cui-color-dark-300);
+
+	/* ============================================
+	 * DIALOG
+	 * ============================================ */
+	--cui-dialog-backdrop: rgba(0, 0, 0, 0.75);
+
+	/* ============================================
+	 * SIDENAV
+	 * ============================================ */
+	--cui-sidenav-item-hover-bg: rgba(var(--cui-color-primary-rgb), 0.2);
+	--cui-sidenav-item-active-bg: rgba(var(--cui-color-primary-rgb), 0.3);
+	--cui-sidenav-item-active-border: var(--cui-color-primary);
+
+	/* ============================================
+	 * DROPDOWN
+	 * ============================================ */
+	--cui-dropdown-item-hover-bg: var(--cui-color-dark-200);
+	--cui-dropdown-item-active-bg: rgba(var(--cui-color-secondary-rgb), 0.2);
+
+	/* ============================================
+	 * TOOLTIP
+	 * ============================================ */
+	--cui-tooltip-bg: var(--cui-color-gray-100);
+	--cui-tooltip-text: var(--cui-color-gray-900);
+
+	/* ============================================
+	 * TABLE
+	 * ============================================ */
+	--cui-table-header-bg: var(--cui-color-dark-400);
+	--cui-table-row-hover-bg: var(--cui-color-dark-200);
+
+	/* ============================================
+	 * TABS
+	 * ============================================ */
+	--cui-tab-hover-bg: var(--cui-color-dark-200);
+
+	/* ============================================
+	 * ALERT
+	 * ============================================ */
+	--cui-alert-info-bg: rgba(28, 126, 214, 0.15);
+	--cui-alert-success-bg: rgba(55, 178, 77, 0.15);
+	--cui-alert-warning-bg: rgba(252, 196, 25, 0.15);
+	--cui-alert-danger-bg: var(--cui-color-danger-subtle-dark);
+
+	/* ============================================
+	 * AVATAR
+	 * ============================================ */
+	--cui-avatar-bg: var(--cui-color-gray-700);
+	--cui-avatar-text: var(--cui-color-gray-200);
+
+	/* ============================================
+	 * LOADER
+	 * ============================================ */
+	--cui-loader-color: var(--cui-color-secondary);
+
+	/* ============================================
+	 * SELECT
+	 * ============================================ */
+	--cui-select-option-hover-bg: var(--cui-color-dark-200);
+	--cui-select-option-selected-bg: rgba(var(--cui-color-secondary-rgb), 0.2);
+
+	/* ============================================
+	 * DATEPICKER
+	 * ============================================ */
+	--cui-datepicker-day-hover-bg: var(--cui-color-dark-200);
+
+	/* ============================================
+	 * PAGINATION
+	 * ============================================ */
+	--cui-pagination-item-hover-bg: var(--cui-color-dark-200);
+	--cui-pagination-item-active-bg: var(--cui-color-secondary);
+	--cui-pagination-item-active-text: var(--cui-color-black);
+}

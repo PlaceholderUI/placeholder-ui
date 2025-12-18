@@ -1,0 +1,90 @@
+{
+	"name": "@anthropic-public/ui-svelte",
+	"version": "1.0.0",
+	"description": "A modern, customizable Svelte 5 UI component library with comprehensive theming support",
+	"license": "MIT",
+	"repository": {
+		"type": "git",
+		"url": "git+https://github.com/anthropic-public/ui-svelte.git"
+	},
+	"homepage": "https://github.com/anthropic-public/ui-svelte#readme",
+	"bugs": {
+		"url": "https://github.com/anthropic-public/ui-svelte/issues"
+	},
+	"keywords": [
+		"svelte",
+		"svelte5",
+		"ui",
+		"components",
+		"design-system",
+		"css-variables",
+		"theming",
+		"dark-mode"
+	],
+	"author": "Anthropic",
+	"scripts": {
+		"dev": "vite dev",
+		"build": "vite build && npm run prepack",
+		"preview": "vite preview",
+		"prepare": "svelte-kit sync || echo ''",
+		"prepack": "svelte-kit sync && svelte-package && publint",
+		"check": "svelte-kit sync && svelte-check --tsconfig ./tsconfig.json",
+		"check:watch": "svelte-kit sync && svelte-check --tsconfig ./tsconfig.json --watch",
+		"format": "prettier --write .",
+		"test": "vitest run"
+	},
+	"files": [
+		"dist",
+		"!dist/**/*.test.*",
+		"!dist/**/*.spec.*"
+	],
+	"sideEffects": [
+		"**/*.css"
+	],
+	"svelte": "./dist/index.js",
+	"types": "./dist/index.d.ts",
+	"type": "module",
+	"exports": {
+		".": {
+			"types": "./dist/index.d.ts",
+			"svelte": "./dist/index.js"
+		},
+		"./styles": {
+			"import": "./dist/styles/index.css"
+		}
+	},
+	"peerDependencies": {
+		"svelte": "^5.0.0"
+	},
+	"devDependencies": {
+		"@sveltejs/adapter-auto": "^7.0.0",
+		"@sveltejs/kit": "^2.49.1",
+		"@sveltejs/package": "^2.5.7",
+		"@sveltejs/vite-plugin-svelte": "^6.2.1",
+		"@testing-library/jest-dom": "^6.9.1",
+		"@testing-library/svelte": "^5.2.9",
+		"jsdom": "^27.3.0",
+		"prettier": "^3.4.2",
+		"prettier-plugin-svelte": "^3.3.3",
+		"publint": "^0.3.15",
+		"svelte": "^5.45.6",
+		"svelte-check": "^4.3.4",
+		"typescript": "^5.9.3",
+		"vite": "^7.2.6",
+		"vitest": "^4.0.15"
+	},
+	"dependencies": {
+		"@codemirror/lang-css": "^6.3.1",
+		"@codemirror/lang-html": "^6.4.9",
+		"@codemirror/lang-javascript": "^6.2.2",
+		"@codemirror/lang-json": "^6.0.1",
+		"@codemirror/state": "^6.5.2",
+		"@codemirror/theme-one-dark": "^6.1.2",
+		"codemirror": "^6.0.1",
+		"dayjs": "^1.11.18",
+		"svelte-sonner": "^1.0.4"
+	},
+	"publishConfig": {
+		"access": "public"
+	}
+}

@@ -1,0 +1,199 @@
+/**
+ * Component Variables
+ * Component-specific CSS variables for fine-grained customization.
+ */
+
+:root {
+	/* ============================================
+	 * FORM INPUTS
+	 * ============================================ */
+	--cui-input-bg: var(--cui-color-white);
+	--cui-input-bg-disabled: var(--cui-color-gray-200);
+	--cui-input-border: var(--cui-border-default);
+	--cui-input-border-focus: var(--cui-color-accent);
+	--cui-input-border-error: var(--cui-color-danger);
+	--cui-input-placeholder: var(--cui-text-placeholder);
+	--cui-input-text: var(--cui-text-primary);
+	--cui-input-padding-y: var(--cui-spacing-1);
+	--cui-input-padding-x: var(--cui-spacing-2);
+	--cui-input-font-size: var(--cui-font-size-md);
+	--cui-input-border-radius: var(--cui-radius-base);
+	--cui-input-border-width: 1px;
+
+	/* ============================================
+	 * BUTTON
+	 * ============================================ */
+	--cui-btn-padding-y: var(--cui-spacing-2);
+	--cui-btn-padding-x: var(--cui-spacing-4);
+	--cui-btn-font-size: var(--cui-font-size-base);
+	--cui-btn-font-weight: var(--cui-font-weight-semibold);
+	--cui-btn-border-radius: var(--cui-radius-md);
+	--cui-btn-border-width: 1px;
+
+	/* ============================================
+	 * PAPER
+	 * ============================================ */
+	--cui-paper-bg: var(--cui-bg-surface);
+	--cui-paper-shadow: var(--cui-shadow-sm);
+	--cui-paper-radius: var(--cui-radius-base);
+	--cui-paper-padding: var(--cui-spacing-3);
+	--cui-paper-title-bg: rgb(252, 252, 252);
+	--cui-paper-title-border: rgb(229, 231, 235);
+	--cui-paper-body-bg: var(--cui-color-white);
+
+	/* ============================================
+	 * DIALOG
+	 * ============================================ */
+	--cui-dialog-backdrop: var(--cui-bg-overlay-dark);
+	--cui-dialog-bg: var(--cui-bg-page);
+	--cui-dialog-radius: var(--cui-radius-base);
+	--cui-dialog-shadow: var(--cui-shadow-lg);
+	--cui-dialog-sm-width: 20rem;
+	--cui-dialog-md-width: 30rem;
+	--cui-dialog-lg-width: 40rem;
+	--cui-dialog-xl-width: 50rem;
+
+	/* ============================================
+	 * DRAWER
+	 * ============================================ */
+	--cui-drawer-bg: var(--cui-bg-page);
+	--cui-drawer-shadow: var(--cui-shadow-lg);
+	--cui-drawer-width: 400px;
+	--cui-drawer-max-width: 90vw;
+
+	/* ============================================
+	 * SIDENAV
+	 * ============================================ */
+	--cui-sidenav-width: 260px;
+	--cui-sidenav-collapsed-width: 60px;
+	--cui-sidenav-bg: var(--cui-bg-surface);
+	--cui-sidenav-border: var(--cui-border-default);
+	--cui-sidenav-item-hover-bg: rgba(var(--cui-color-primary-rgb), 0.08);
+	--cui-sidenav-item-active-bg: rgba(var(--cui-color-secondary-rgb), 0.2);
+	--cui-sidenav-item-active-border: var(--cui-color-secondary);
+
+	/* ============================================
+	 * NAVBAR
+	 * ============================================ */
+	--cui-navbar-height: 60px;
+	--cui-navbar-bg: var(--cui-bg-surface);
+	--cui-navbar-border: var(--cui-border-default);
+
+	/* ============================================
+	 * DROPDOWN
+	 * ============================================ */
+	--cui-dropdown-bg: var(--cui-bg-surface);
+	--cui-dropdown-border: var(--cui-border-default);
+	--cui-dropdown-radius: var(--cui-radius-md);
+	--cui-dropdown-shadow: var(--cui-shadow-md);
+	--cui-dropdown-item-hover-bg: var(--cui-bg-surface-raised);
+	--cui-dropdown-item-active-bg: rgba(var(--cui-color-secondary-rgb), 0.15);
+
+	/* ============================================
+	 * POPOVER
+	 * ============================================ */
+	--cui-popover-bg: var(--cui-bg-surface);
+	--cui-popover-border: var(--cui-border-default);
+	--cui-popover-radius: var(--cui-radius-md);
+	--cui-popover-shadow: var(--cui-shadow-md);
+
+	/* ============================================
+	 * TOOLTIP
+	 * ============================================ */
+	--cui-tooltip-bg: var(--cui-color-gray-900);
+	--cui-tooltip-text: var(--cui-color-white);
+	--cui-tooltip-radius: var(--cui-radius-base);
+
+	/* ============================================
+	 * BADGE
+	 * ============================================ */
+	--cui-badge-padding-y: var(--cui-spacing-0_5);
+	--cui-badge-padding-x: var(--cui-spacing-2);
+	--cui-badge-font-size: var(--cui-font-size-xs);
+	--cui-badge-radius: var(--cui-radius-full);
+
+	/* ============================================
+	 * TABLE
+	 * ============================================ */
+	--cui-table-bg: var(--cui-bg-surface);
+	--cui-table-border: var(--cui-border-subtle);
+	--cui-table-radius: var(--cui-radius-base);
+	--cui-table-header-bg: var(--cui-bg-surface-raised);
+	--cui-table-row-hover-bg: var(--cui-bg-surface-raised);
+
+	/* ============================================
+	 * TABS
+	 * ============================================ */
+	--cui-tabs-border: var(--cui-border-default);
+	--cui-tab-hover-bg: var(--cui-bg-surface-raised);
+	--cui-tab-active-border: var(--cui-color-secondary);
+
+	/* ============================================
+	 * ALERT
+	 * ============================================ */
+	--cui-alert-radius: var(--cui-radius-md);
+	--cui-alert-info-bg: rgba(28, 126, 214, 0.1);
+	--cui-alert-info-border: var(--cui-color-info);
+	--cui-alert-success-bg: rgba(55, 178, 77, 0.1);
+	--cui-alert-success-border: var(--cui-color-success);
+	--cui-alert-warning-bg: rgba(252, 196, 25, 0.1);
+	--cui-alert-warning-border: var(--cui-color-warning);
+	--cui-alert-danger-bg: var(--cui-color-danger-subtle);
+	--cui-alert-danger-border: var(--cui-color-danger);
+
+	/* ============================================
+	 * AVATAR
+	 * ============================================ */
+	--cui-avatar-bg: var(--cui-color-gray-300);
+	--cui-avatar-text: var(--cui-color-gray-700);
+	--cui-avatar-radius: var(--cui-radius-full);
+
+	/* ============================================
+	 * LOADER
+	 * ============================================ */
+	--cui-loader-color: var(--cui-color-primary);
+	--cui-loader-size: 2rem;
+
+	/* ============================================
+	 * SWITCH
+	 * ============================================ */
+	--cui-switch-width: 2.5rem;
+	--cui-switch-height: 1.5rem;
+	--cui-switch-bg: var(--cui-color-gray-300);
+	--cui-switch-bg-checked: var(--cui-color-secondary);
+	--cui-switch-thumb-bg: var(--cui-color-white);
+
+	/* ============================================
+	 * CHECKBOX & RADIO
+	 * ============================================ */
+	--cui-check-size: 1.125rem;
+	--cui-check-bg: var(--cui-input-bg);
+	--cui-check-border: var(--cui-input-border);
+	--cui-check-bg-checked: var(--cui-color-secondary);
+	--cui-check-icon-color: var(--cui-color-primary);
+
+	/* ============================================
+	 * DATEPICKER
+	 * ============================================ */
+	--cui-datepicker-bg: var(--cui-bg-surface);
+	--cui-datepicker-border: var(--cui-border-default);
+	--cui-datepicker-shadow: var(--cui-shadow-md);
+	--cui-datepicker-day-selected-bg: var(--cui-color-secondary);
+	--cui-datepicker-day-selected-text: var(--cui-color-primary);
+	--cui-datepicker-day-today-border: var(--cui-color-accent);
+
+	/* ============================================
+	 * PAGINATION
+	 * ============================================ */
+	--cui-pagination-item-hover-bg: var(--cui-bg-surface-raised);
+	--cui-pagination-item-active-bg: var(--cui-color-primary);
+	--cui-pagination-item-active-text: var(--cui-color-white);
+
+	/* ============================================
+	 * TOAST
+	 * ============================================ */
+	--cui-toast-bg: var(--cui-bg-surface);
+	--cui-toast-border: var(--cui-border-default);
+	--cui-toast-radius: var(--cui-radius-md);
+	--cui-toast-shadow: var(--cui-shadow-lg);
+}
