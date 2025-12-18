@@ -1,5 +1,5 @@
 /* Import UI library styles */
-@import '@anthropic-public/ui-svelte/styles';
+@import '@placeholderco/placeholder-ui/styles';
 
 /* Documentation site specific styles */
 :root {

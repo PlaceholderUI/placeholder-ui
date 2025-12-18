@@ -1,4 +1,4 @@
-# UI Svelte
+# Placeholder UI
 
 A modern, accessible Svelte 5 component library with comprehensive theming support.
 
@@ -6,7 +6,8 @@ A modern, accessible Svelte 5 component library with comprehensive theming suppo
 
 | Package | Description |
 |---------|-------------|
-| [`@anthropic-public/ui-svelte`](./packages/ui-svelte) | Core component library |
+| [`@placeholderco/placeholder-ui`](./packages/ui-svelte) | Core component library |
+| [`@placeholderco/placeholder-ui-editors`](./packages/editors) | Code editors (CodeMirror, TipTap) |
 | [`docs`](./apps/docs) | Documentation site |
 
 ## Quick Start
@@ -14,7 +15,13 @@ A modern, accessible Svelte 5 component library with comprehensive theming suppo
 ### Installation
 
 ```bash
-npm install @anthropic-public/ui-svelte
+npm install @placeholderco/placeholder-ui
+```
+
+For code editors:
+
+```bash
+npm install @placeholderco/placeholder-ui-editors
 ```
 
 ### Setup
@@ -24,7 +31,7 @@ Import the styles in your root layout:
 ```svelte
 <!-- +layout.svelte -->
 <script>
-  import '@anthropic-public/ui-svelte/styles';
+  import '@placeholderco/placeholder-ui/styles';
 </script>
 ```
 
@@ -32,7 +39,7 @@ Import the styles in your root layout:
 
 ```svelte
 <script>
-  import { Button, Textbox, Dialog } from '@anthropic-public/ui-svelte';
+  import { Button, Textbox, Dialog } from '@placeholderco/placeholder-ui';
 </script>
 
 <Button variant="midnight">Click me</Button>
@@ -65,8 +72,11 @@ pnpm dev:docs
 | Command | Description |
 |---------|-------------|
 | `pnpm dev` | Start component library dev server |
+| `pnpm dev:editors` | Start editors package dev server |
 | `pnpm dev:docs` | Start documentation site |
 | `pnpm build` | Build the component library |
+| `pnpm build:editors` | Build the editors package |
+| `pnpm build:all` | Build all packages |
 | `pnpm build:docs` | Build library and docs site |
 | `pnpm check` | Type check all packages |
 | `pnpm test` | Run tests |
@@ -75,11 +85,13 @@ pnpm dev:docs
 ## Project Structure
 
 ```
-ui-svelte/
+placeholder-ui/
 ├── packages/
-│   └── ui-svelte/          # @anthropic-public/ui-svelte
-│       ├── src/lib/        # Components, icons, utilities
-│       └── src/routes/     # Component showcase (dev)
+│   ├── ui-svelte/          # @placeholderco/placeholder-ui
+│   │   ├── src/lib/        # Components, icons, utilities
+│   │   └── src/routes/     # Component showcase (dev)
+│   └── editors/            # @placeholderco/placeholder-ui-editors
+│       └── src/lib/        # CodeMirror, TipTap components
 ├── apps/
 │   └── docs/               # Documentation website
 ├── package.json            # Root workspace config

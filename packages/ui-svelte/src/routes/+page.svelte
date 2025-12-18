@@ -3,7 +3,7 @@
 </script>
 
 <div class="intro">
-	<h1>UI Svelte Component Library</h1>
+	<h1>Placeholder UI Component Library</h1>
 	<p class="tagline">A modern, accessible Svelte 5 component library built with runes</p>
 
 	<div class="badges">
@@ -14,7 +14,7 @@
 
 	<div class="actions">
 		<Button variant="midnight" href="/components/button">Get Started</Button>
-		<Button variant="midnight-outline" href="https://github.com/anthropics/ui-svelte">GitHub</Button>
+		<Button variant="midnight-outline" href="https://github.com/placeholderco/placeholder-ui">GitHub</Button>
 	</div>
 </div>
 
@@ -42,15 +42,15 @@
 
 <Paper class="quick-start">
 	<h2>Quick Start</h2>
-	<pre><code>npm install @anthropic-public/ui-svelte</code></pre>
+	<pre><code>npm install @placeholderco/placeholder-ui</code></pre>
 
 	<h3>Import Styles</h3>
 	<pre><code>{`// In your +layout.svelte or app.css
-import '@anthropic-public/ui-svelte/styles';`}</code></pre>
+import '@placeholderco/placeholder-ui/styles';`}</code></pre>
 
 	<h3>Use Components</h3>
 	<pre><code>{`<script>
-  import { Button, Textbox, Dialog } from '@anthropic-public/ui-svelte';
+  import { Button, Textbox, Dialog } from '@placeholderco/placeholder-ui';
 </script>
 
 <Button variant="midnight">Click me</Button>`}</code></pre>

@@ -88,9 +88,6 @@ export * from './util/DateFunctions.js';
 export * from './transitions/Transitions.js';
 export * from './util/NavigateTo.js';
 
-// Editors
-export { default as CodeMirror } from './editors/CodeMirror.svelte';
-
 // Theme
 export * from './theme.svelte.js';
 export * from './ui/Toast.svelte.js';

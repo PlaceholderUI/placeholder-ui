@@ -14,7 +14,7 @@
 
 	const appNav: Hyperlink = {
 		href: '/',
-		text: 'UI Svelte'
+		text: 'Placeholder UI'
 	};
 
 	const navigationData = [
@@ -95,12 +95,6 @@
 				{ href: '/components/appshell', label: 'App Shell' },
 				{ href: '/components/navbar', label: 'Navbar' },
 				{ href: '/components/sidenav', label: 'Sidenav' }
-			]
-		},
-		{
-			title: 'Editors',
-			items: [
-				{ href: '/components/codemirror', label: 'CodeMirror' }
 			]
 		}
 	];

@@ -1,17 +1,17 @@
 <script lang="ts">
-	import { Button, Badge, Progress, Skeleton, Avatar, Alert } from '@anthropic-public/ui-svelte';
+	import { Button, Badge, Progress, Skeleton, Avatar, Alert } from '@placeholderco/placeholder-ui';
 </script>
 
 <div class="hero">
 	<Badge variant="pistachio">Svelte 5</Badge>
-	<h1>UI Svelte</h1>
+	<h1>Placeholder UI</h1>
 	<p class="hero-subtitle">
 		A modern, accessible component library for Svelte 5 with dark mode support,
 		CSS variables theming, and 60+ ready-to-use components.
 	</p>
 	<div class="hero-actions">
 		<Button variant="midnight" href="/docs/installation">Get Started</Button>
-		<Button variant="secondary" href="https://github.com/anthropics/ui-svelte" target="_blank">
+		<Button variant="secondary" href="https://github.com/placeholderco/placeholder-ui" target="_blank">
 			GitHub
 		</Button>
 	</div>
@@ -108,13 +108,13 @@
 
 <section class="install-section">
 	<h2>Quick Install</h2>
-	<pre><code>npm install @anthropic-public/ui-svelte</code></pre>
+	<pre><code>npm install @placeholderco/placeholder-ui</code></pre>
 	<pre><code>{`<script>
-  import { Button, Alert } from '@anthropic-public/ui-svelte';
+  import { Button, Alert } from '@placeholderco/placeholder-ui';
 </script>
 
 <Button variant="midnight">Click me</Button>
-<Alert title="Hello">Welcome to UI Svelte!</Alert>`}</code></pre>
+<Alert title="Hello">Welcome to Placeholder UI!</Alert>`}</code></pre>
 </section>
 
 <style>

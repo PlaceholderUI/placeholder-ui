@@ -5,7 +5,7 @@ Thank you for your interest in contributing to this UI library! This document pr
 ## Getting Started
 
 1. Fork the repository
-2. Clone your fork: `git clone https://github.com/YOUR_USERNAME/ui-svelte.git`
+2. Clone your fork: `git clone https://github.com/YOUR_USERNAME/placeholder-ui.git`
 3. Install dependencies: `npm install`
 4. Start the development server: `npm run dev`
 

@@ -26,10 +26,17 @@ jobs:
       - name: Install dependencies
         run: pnpm install
 
-      - name: Build library
-        run: pnpm build
+      - name: Build all packages
+        run: pnpm build:all
 
-      - name: Publish to npm
+      - name: Publish placeholder-ui
+        if: startsWith(github.ref, 'refs/tags/placeholder-ui@')
         run: pnpm publish:package
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
+
+      - name: Publish placeholder-ui-editors
+        if: startsWith(github.ref, 'refs/tags/editors@')
+        run: pnpm publish:editors
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}

@@ -1,51 +1,48 @@
-# UI Svelte Documentation Site
+# Placeholder UI Documentation Site
 
-Documentation and showcase for the UI Svelte component library.
+Documentation and showcase for the Placeholder UI component library.
 
 ## Development
 
 ```bash
-# Install dependencies
-npm install
+# From the monorepo root
+pnpm install
 
 # Build the library first (required)
-cd ../open-source-library
-npm install
-npm run build
-cd ../docs-site
+pnpm build
 
-# Start development server
-npm run dev
+# Start documentation site
+pnpm dev:docs
 
 # Build for production
-npm run build
+pnpm build:docs
 
 # Preview production build
-npm run preview
+cd apps/docs && pnpm preview
 ```
 
 ## Deployment to Vercel
 
 ### Option 1: After publishing library to npm
 
-1. Publish `@anthropic-public/ui-svelte` to npm
-2. Update `package.json` to use the published version instead of `file:../open-source-library`
-3. Connect the docs-site directory to Vercel
+1. Publish `@placeholderco/placeholder-ui` to npm
+2. Update `package.json` to use the published version instead of `workspace:*`
+3. Connect the docs directory to Vercel
 4. Deploy
 
-### Option 2: Monorepo deployment
+### Option 2: Monorepo deployment (recommended)
 
-1. Set the root directory to the parent folder containing both `open-source-library` and `docs-site`
-2. Configure the build command to build both:
+1. Set the root directory to the monorepo root
+2. Configure the build command:
    ```
-   cd open-source-library && npm install && npm run build && cd ../docs-site && npm install && npm run build
+   pnpm install && pnpm build:docs
    ```
-3. Set the output directory to `docs-site/.svelte-kit/output`
+3. Set the output directory to `apps/docs/.svelte-kit/output`
 
 ## Project Structure
 
 ```
-docs-site/
+apps/docs/
 ├── src/
 │   ├── routes/
 │   │   ├── +layout.svelte    # Main layout with navigation

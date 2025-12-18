@@ -1,4 +1,4 @@
-# UI Svelte
+# Placeholder UI
 
 A modern, customizable Svelte 5 UI component library with comprehensive theming support via CSS variables.
 
@@ -15,14 +15,14 @@ A modern, customizable Svelte 5 UI component library with comprehensive theming 
 ## Installation
 
 ```bash
-npm install @anthropic-public/ui-svelte
+npm install @placeholderco/placeholder-ui
 ```
 
 ## Quick Start
 
 ```svelte
 <script>
-  import { AppShell, Button, Paper } from '@anthropic-public/ui-svelte';
+  import { AppShell, Button, Paper } from '@placeholderco/placeholder-ui';
 </script>
 
 <AppShell>
@@ -75,9 +75,21 @@ The `AppShell` component automatically imports all required styles.
 - `Navbar` - Navigation bar
 - `Sidenav` - Side navigation
 
-### Editors
-- `CodeMirror` - Code editor
-- `TipTap` - Rich text editor
+### Editors (separate package)
+
+For code and rich text editors, install the editors package:
+
+```bash
+npm install @placeholderco/placeholder-ui-editors
+```
+
+```svelte
+<script>
+  import { CodeMirror } from '@placeholderco/placeholder-ui-editors';
+</script>
+
+<CodeMirror bind:value={code} language="javascript" />
+```
 
 ## Theming
 
@@ -109,7 +121,7 @@ document.documentElement.classList.add('dark');
 Or use the built-in theme utilities:
 
 ```javascript
-import { setTheme } from '@anthropic-public/ui-svelte';
+import { setTheme } from '@placeholderco/placeholder-ui';
 
 setTheme('dark'); // 'light', 'dark', or 'system'
 ```
@@ -140,7 +152,7 @@ The library includes 145 SVG icons based on Tabler Icons:
 
 ```svelte
 <script>
-  import { Icon, iconCheck, iconX } from '@anthropic-public/ui-svelte';
+  import { Icon, iconCheck, iconX } from '@placeholderco/placeholder-ui';
 </script>
 
 <Icon svg={iconCheck} size="24px" />
