@@ -30,7 +30,7 @@ export { default as Stepper } from './ui/Stepper.svelte';
 export { default as Timeline } from './ui/Timeline.svelte';
 
 // Display Components
-export { default as Alert } from './display/alert/Alert.svelte';
+export { default as Alert } from './display/Alert.svelte';
 export { default as LinkCollection } from './display/LinkCollection.svelte';
 export { default as Paper } from './display/Paper.svelte';
 export { default as Avatar } from './display/Avatar.svelte';
