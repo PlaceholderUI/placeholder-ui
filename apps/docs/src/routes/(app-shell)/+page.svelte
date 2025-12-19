@@ -1,48 +1,81 @@
 <script lang="ts">
-	import { Button, Badge, Progress, Skeleton, Avatar, Alert } from '@placeholderco/placeholder-ui';
+	import {
+		Button,
+		Badge,
+		Progress,
+		Skeleton,
+		Avatar,
+		Alert,
+		Paper,
+	} from "@placeholderco/placeholder-ui";
 </script>
 
-<div class="hero">
-	<Badge variant="pistachio">Svelte 5</Badge>
-	<h1>Placeholder UI</h1>
-	<p class="hero-subtitle">
-		A modern, accessible component library for Svelte 5 with dark mode support,
-		CSS variables theming, and 60+ ready-to-use components.
-	</p>
-	<div class="hero-actions">
-		<Button variant="midnight" href="/docs/installation">Get Started</Button>
-		<Button variant="secondary" href="https://github.com/placeholderco/placeholder-ui" target="_blank">
-			GitHub
-		</Button>
+<Paper>
+	<div class="hero">
+		<Badge variant="pistachio">Svelte 5</Badge>
+		<h1>Placeholder UI</h1>
+		<p class="hero-subtitle">
+			A modern, accessible component library for Svelte 5 with dark mode
+			support, CSS variables theming, and 60+ ready-to-use components.
+		</p>
+		<div class="hero-actions">
+			<Button variant="midnight" href="/docs/installation"
+				>Get Started</Button
+			>
+			<Button
+				variant="secondary"
+				href="https://github.com/placeholderco/placeholder-ui"
+				target="_blank"
+			>
+				GitHub
+			</Button>
+		</div>
 	</div>
-</div>
+</Paper>
 
 <section class="features">
 	<h2>Features</h2>
 	<div class="feature-grid">
 		<div class="feature-card">
 			<h3>Svelte 5 Ready</h3>
-			<p>Built from the ground up with Svelte 5 runes, snippets, and modern patterns.</p>
+			<p>
+				Built from the ground up with Svelte 5 runes, snippets, and
+				modern patterns.
+			</p>
 		</div>
 		<div class="feature-card">
 			<h3>Dark Mode</h3>
-			<p>First-class dark mode support with automatic system preference detection.</p>
+			<p>
+				First-class dark mode support with automatic system preference
+				detection.
+			</p>
 		</div>
 		<div class="feature-card">
 			<h3>Accessible</h3>
-			<p>ARIA attributes and keyboard navigation built into every component.</p>
+			<p>
+				ARIA attributes and keyboard navigation built into every
+				component.
+			</p>
 		</div>
 		<div class="feature-card">
 			<h3>Customizable</h3>
-			<p>CSS variables theming system for easy customization without CSS-in-JS.</p>
+			<p>
+				CSS variables theming system for easy customization without
+				CSS-in-JS.
+			</p>
 		</div>
 		<div class="feature-card">
 			<h3>TypeScript</h3>
-			<p>Full TypeScript support with exported types for all components.</p>
+			<p>
+				Full TypeScript support with exported types for all components.
+			</p>
 		</div>
 		<div class="feature-card">
 			<h3>Tree-shakeable</h3>
-			<p>Import only what you need. Each component is individually exported.</p>
+			<p>
+				Import only what you need. Each component is individually
+				exported.
+			</p>
 		</div>
 	</div>
 </section>
@@ -93,10 +126,19 @@
 	<div class="preview-card">
 		<h3>Avatars & Badges</h3>
 		<div class="preview-box">
-			<div style="display: flex; align-items: center; gap: 1rem; flex-wrap: wrap;">
-				<Avatar src="https://i.pravatar.cc/150?img=1" alt="User" size={48} />
-				<Avatar src="https://i.pravatar.cc/150?img=2" alt="User" size={48} />
-				<Avatar initials="JS" size={48} />
+			<div
+				style="display: flex; align-items: center; gap: 1rem; flex-wrap: wrap;"
+			>
+				<Avatar
+					src="https://i.pravatar.cc/150?img=1"
+					alt="User"
+					size={48}
+				/>
+				<Avatar
+					src="https://i.pravatar.cc/150?img=2"
+					alt="User"
+					size={48}
+				/>
 				<Badge variant="midnight">Default</Badge>
 				<Badge variant="pistachio">Success</Badge>
 				<Badge variant="danger">Error</Badge>
@@ -108,13 +150,21 @@
 
 <section class="install-section">
 	<h2>Quick Install</h2>
-	<pre><code>npm install @placeholderco/placeholder-ui</code></pre>
-	<pre><code>{`<script>
-  import { Button, Alert } from '@placeholderco/placeholder-ui';
-</script>
+	<pre>
+		<code>
+			npm install @placeholderco/placeholder-ui
+		</code>
+	</pre>
+	<pre>
+		<code>
+			&lt;script&gt;
+  import &#123; Button, Alert &#125; from '@placeholderco/placeholder-ui';
+&lt;/script&gt;
 
-<Button variant="midnight">Click me</Button>
-<Alert title="Hello">Welcome to Placeholder UI!</Alert>`}</code></pre>
+&lt;Button variant="midnight"&gt;Click me&lt;/Button&gt;
+&lt;Alert title="Hello"&gt;Welcome to Placeholder UI!&lt;/Alert&gt;
+		</code>
+	</pre>
 </section>
 
 <style>
@@ -126,14 +176,22 @@
 	.hero h1 {
 		font-size: var(--cui-font-size-4xl);
 		margin: var(--cui-spacing-4) 0;
-		background: linear-gradient(135deg, var(--cui-color-primary), var(--cui-color-accent));
+		background: linear-gradient(
+			135deg,
+			var(--cui-color-primary),
+			var(--cui-color-accent)
+		);
 		-webkit-background-clip: text;
 		-webkit-text-fill-color: transparent;
 		background-clip: text;
 	}
 
 	:global(.dark) .hero h1 {
-		background: linear-gradient(135deg, var(--cui-color-secondary), var(--cui-color-accent));
+		background: linear-gradient(
+			135deg,
+			var(--cui-color-secondary),
+			var(--cui-color-accent)
+		);
 		-webkit-background-clip: text;
 		background-clip: text;
 	}
@@ -221,14 +279,5 @@
 		display: flex;
 		gap: var(--cui-spacing-3);
 		flex-wrap: wrap;
-	}
-
-	.install-section {
-		padding: var(--cui-spacing-12) 0;
-	}
-
-	.install-section h2 {
-		text-align: center;
-		margin-bottom: var(--cui-spacing-6);
 	}
 </style>
