@@ -144,7 +144,7 @@
 <style>
 	.rating {
 		display: inline-flex;
-		gap: var(--cui-spacing-1);
+		gap: var(--pui-spacing-1);
 	}
 
 	.rating.read-only {
@@ -186,7 +186,7 @@
 		display: flex;
 		align-items: center;
 		justify-content: center;
-		transition: transform var(--cui-transition-fast) var(--cui-ease-out);
+		transition: transform var(--pui-transition-fast) var(--pui-ease-out);
 	}
 
 	.rating-symbol-wrapper:hover .rating-symbol {
@@ -198,11 +198,11 @@
 	}
 
 	.rating-symbol.empty {
-		color: var(--cui-color-gray-300);
+		color: var(--pui-color-gray-300);
 	}
 
 	:global(.dark) .rating-symbol.empty {
-		color: var(--cui-color-dark-border);
+		color: var(--pui-color-dark-border);
 	}
 
 	.rating-symbol.full {
@@ -210,7 +210,7 @@
 		top: 0;
 		left: 0;
 		overflow: hidden;
-		color: var(--rating-color, var(--cui-color-warning));
+		color: var(--rating-color, var(--pui-color-warning));
 	}
 
 	.rating-symbol.full :global(svg) {
@@ -219,16 +219,16 @@
 
 	/* Colors */
 	.color-primary {
-		--rating-color: var(--cui-color-primary);
+		--rating-color: var(--pui-color-primary);
 	}
 	.color-secondary {
-		--rating-color: var(--cui-color-secondary);
+		--rating-color: var(--pui-color-secondary);
 	}
 	.color-accent {
-		--rating-color: var(--cui-color-accent);
+		--rating-color: var(--pui-color-accent);
 	}
 	.color-warning {
-		--rating-color: var(--cui-color-warning);
+		--rating-color: var(--pui-color-warning);
 	}
 
 	/* Sizes via icon prop */

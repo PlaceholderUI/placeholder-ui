@@ -142,10 +142,10 @@
 <style>
 	.codemirror-container {
 		width: 100%;
-		border: 1px solid var(--cui-color-border, #ddd);
+		border: 1px solid var(--pui-color-border, #ddd);
 		border-radius: 6px;
 		overflow: hidden;
-		background: var(--cui-color-bg-primary, #fff);
+		background: var(--pui-color-bg-primary, #fff);
 	}
 
 	.codemirror-wrapper {

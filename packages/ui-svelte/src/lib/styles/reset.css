@@ -21,8 +21,8 @@ html {
 }
 
 body {
-	line-height: var(--cui-line-height-normal, 1.5);
-	font-family: var(--cui-font-family-sans);
+	line-height: var(--pui-line-height-normal, 1.5);
+	font-family: var(--pui-font-family-sans);
 }
 
 img,

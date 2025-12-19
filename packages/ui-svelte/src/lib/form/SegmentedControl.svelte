@@ -79,65 +79,63 @@
 	.segmented-control {
 		position: relative;
 		display: inline-flex;
-		background-color: #e5e7eb;
-		border-radius: 0.5rem;
-		padding: 0.25rem;
+		background-color: var(--pui-color-gray-200);
+		border-radius: var(--pui-radius-lg);
+		padding: var(--pui-spacing-1);
 		user-select: none;
 	}
 
 	.segmented-control-background {
 		position: absolute;
-		background-color: white;
-		border-radius: 0.375rem;
-		transition: all 0.2s ease-in-out;
-		box-shadow:
-			0 1px 3px 0 rgba(0, 0, 0, 0.1),
-			0 1px 2px 0 rgba(0, 0, 0, 0.06);
+		background-color: var(--pui-color-white);
+		border-radius: var(--pui-radius-md);
+		transition: all var(--pui-transition-fast) var(--pui-ease-in-out);
+		box-shadow: var(--pui-shadow-sm);
 	}
 
 	.segmented-control-item {
 		position: relative;
 		align-items: center;
 		justify-content: center;
-		padding: 0.5rem 1rem;
+		padding: var(--pui-spacing-2) var(--pui-spacing-4);
 		cursor: pointer;
 		user-select: none;
 		border: none;
 		background: transparent;
-		border-radius: 0.375rem;
-		font-size: 0.875rem;
-		font-weight: 500;
-		color: #6b7280;
-		transition: color 0.2s ease-in-out;
+		border-radius: var(--pui-radius-md);
+		font-size: var(--pui-font-size-sm);
+		font-weight: var(--pui-font-weight-medium);
+		color: var(--pui-color-gray-500);
+		transition: color var(--pui-transition-fast) var(--pui-ease-in-out);
 		z-index: 1;
 	}
 
 	.segmented-control-item:hover {
-		color: #374151;
+		color: var(--pui-color-gray-700);
 	}
 
 	.segmented-control-item.selected {
-		color: #111827;
+		color: var(--pui-color-gray-900);
 	}
 
 	/* Dark mode styles */
 	:global(.dark) .segmented-control {
-		background-color: var(--input-bg-color);
+		background-color: var(--pui-input-bg);
 	}
 
 	:global(.dark) .segmented-control-background {
-		background-color: var(--midnight);
+		background-color: var(--pui-color-primary);
 	}
 
 	:global(.dark) .segmented-control-item {
-		color: #9ca3af;
+		color: var(--pui-color-gray-400);
 	}
 
 	:global(.dark) .segmented-control-item:hover {
-		color: #d1d5db;
+		color: var(--pui-color-gray-300);
 	}
 
 	:global(.dark) .segmented-control-item.selected {
-		color: #f9fafb;
+		color: var(--pui-color-gray-100);
 	}
 </style>

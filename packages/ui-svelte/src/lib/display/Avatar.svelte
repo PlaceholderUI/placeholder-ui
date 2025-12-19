@@ -101,17 +101,17 @@
 		display: inline-flex;
 		background: none;
 		border: none;
-		color: black;
+		color: var(--pui-color-black);
 		padding: 0;
-		transition: all 0.2s ease-in-out;
+		transition: all var(--pui-transition-fast) var(--pui-ease-in-out);
 		text-decoration: none;
 
 		.avatar {
 			cursor: pointer;
 
 			&:hover {
-				background: var(--midnight);
-				color: var(--text-color);
+				background: var(--pui-color-primary);
+				color: var(--pui-text-primary);
 			}
 		}
 
@@ -122,47 +122,45 @@
 
 	.avatar {
 		object-fit: cover;
-		background: #e8e8e8;
+		background: var(--pui-color-gray-200);
 		display: flex;
 		justify-content: center;
 		align-items: center;
-		transition: all 0.2s ease-in-out;
+		transition: all var(--pui-transition-fast) var(--pui-ease-in-out);
 	}
 
 	.avatar.circle {
-		border-radius: 50%;
+		border-radius: var(--pui-radius-full);
 	}
 
 	.avatar.rounded {
-		border-radius: 6px;
+		border-radius: var(--pui-radius-lg);
 	}
 
 	.initials {
 		display: flex;
 		align-items: center;
 		justify-content: center;
-		/* background-color: #ccc; Fallback color for initials */
-		color: #fff; /* Text color for initials */
-		/* font-size: calc({size} / 2); Adjust font size based on avatar size */
-		font-weight: bold;
-		border-radius: 50%;
+		color: var(--pui-color-white);
+		font-weight: var(--pui-font-weight-bold);
+		border-radius: var(--pui-radius-full);
 	}
 
 	:global(.dark) {
 		.avatar-container button,
 		.avatar-container a {
-			color: var(--text-color);
+			color: var(--pui-text-primary);
 
 			.avatar {
 				&:hover {
-					background: var(--pistachio);
-					color: black;
+					background: var(--pui-color-secondary);
+					color: var(--pui-color-black);
 				}
 			}
 		}
 
 		.avatar {
-			background: rgb(6, 7, 9); /* Dark mode background color */
+			background: var(--pui-color-dark-500);
 		}
 	}
 </style>

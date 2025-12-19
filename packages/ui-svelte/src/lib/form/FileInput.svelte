@@ -136,61 +136,61 @@
 		display: flex;
 		align-items: center;
 		width: 100%;
-		border: 1px solid var(--cui-input-border);
-		background-color: var(--cui-input-bg);
-		border-radius: var(--cui-radius-base);
+		border: 1px solid var(--pui-input-border);
+		background-color: var(--pui-input-bg);
+		border-radius: var(--pui-radius-base);
 		transition:
-			border-color var(--cui-transition-fast) var(--cui-ease-in-out),
-			box-shadow var(--cui-transition-fast) var(--cui-ease-in-out);
+			border-color var(--pui-transition-fast) var(--pui-ease-in-out),
+			box-shadow var(--pui-transition-fast) var(--pui-ease-in-out);
 	}
 
 	.file-input-wrapper:focus-within {
-		border-color: var(--cui-input-border-focus);
+		border-color: var(--pui-input-border-focus);
 	}
 
 	.file-input-wrapper.disabled {
 		opacity: 0.5;
 		cursor: not-allowed;
-		background: var(--cui-input-bg-disabled);
+		background: var(--pui-input-bg-disabled);
 	}
 
 	.variant-filled {
-		background-color: var(--cui-color-gray-100);
+		background-color: var(--pui-color-gray-100);
 		border-color: transparent;
 	}
 
 	:global(.dark) .variant-filled {
-		background-color: var(--cui-color-dark-200);
+		background-color: var(--pui-color-dark-200);
 	}
 
 	/* Sizes */
 	.size-xs .file-input-button {
-		padding: var(--cui-spacing-1) var(--cui-spacing-2);
-		font-size: var(--cui-font-size-xs);
+		padding: var(--pui-spacing-1) var(--pui-spacing-2);
+		font-size: var(--pui-font-size-xs);
 	}
 	.size-sm .file-input-button {
-		padding: var(--cui-spacing-1) var(--cui-spacing-2);
-		font-size: var(--cui-font-size-sm);
+		padding: var(--pui-spacing-1) var(--pui-spacing-2);
+		font-size: var(--pui-font-size-sm);
 	}
 	.size-md .file-input-button {
-		padding: var(--cui-spacing-2) var(--cui-spacing-3);
-		font-size: var(--cui-font-size-base);
+		padding: var(--pui-spacing-2) var(--pui-spacing-3);
+		font-size: var(--pui-font-size-base);
 	}
 	.size-lg .file-input-button {
-		padding: var(--cui-spacing-3) var(--cui-spacing-4);
-		font-size: var(--cui-font-size-md);
+		padding: var(--pui-spacing-3) var(--pui-spacing-4);
+		font-size: var(--pui-font-size-md);
 	}
 
 	.file-input-button {
 		display: flex;
 		align-items: center;
-		gap: var(--cui-spacing-2);
+		gap: var(--pui-spacing-2);
 		flex: 1;
 		background: none;
 		border: none;
 		cursor: pointer;
 		text-align: left;
-		color: var(--cui-input-text);
+		color: var(--pui-input-text);
 		min-width: 0;
 	}
 
@@ -201,7 +201,7 @@
 	.file-input-icon {
 		display: flex;
 		align-items: center;
-		color: var(--cui-text-muted);
+		color: var(--pui-text-muted);
 		flex-shrink: 0;
 	}
 
@@ -213,7 +213,7 @@
 	}
 
 	.file-input-text.placeholder {
-		color: var(--cui-text-muted);
+		color: var(--pui-text-muted);
 	}
 
 	.file-input-clear {
@@ -223,13 +223,13 @@
 		background: none;
 		border: none;
 		cursor: pointer;
-		padding: var(--cui-spacing-2);
-		color: var(--cui-text-muted);
-		border-radius: var(--cui-radius-sm);
-		transition: color var(--cui-transition-fast) var(--cui-ease-in-out);
+		padding: var(--pui-spacing-2);
+		color: var(--pui-text-muted);
+		border-radius: var(--pui-radius-sm);
+		transition: color var(--pui-transition-fast) var(--pui-ease-in-out);
 	}
 
 	.file-input-clear:hover {
-		color: var(--cui-color-danger);
+		color: var(--pui-color-danger);
 	}
 </style>

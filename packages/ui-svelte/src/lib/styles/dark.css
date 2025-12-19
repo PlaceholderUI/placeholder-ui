@@ -7,123 +7,136 @@
 	/* ============================================
 	 * SURFACE COLORS
 	 * ============================================ */
-	--cui-bg-page: var(--cui-color-dark-100);
-	--cui-bg-surface: var(--cui-color-dark-300);
-	--cui-bg-surface-raised: var(--cui-color-dark-200);
-	--cui-bg-surface-sunken: var(--cui-color-dark-400);
+	--pui-bg-page: var(--pui-color-dark-100);
+	--pui-bg-surface: var(--pui-color-dark-300);
+	--pui-bg-surface-raised: var(--pui-color-dark-200);
+	--pui-bg-surface-sunken: var(--pui-color-dark-400);
 
 	/* ============================================
 	 * TEXT COLORS
 	 * ============================================ */
-	--cui-text-primary: var(--cui-color-off-white);
-	--cui-text-secondary: rgb(180, 180, 180);
-	--cui-text-muted: rgb(140, 140, 140);
-	--cui-text-disabled: rgb(100, 100, 100);
-	--cui-text-placeholder: rgb(115, 115, 115);
-	--cui-text-danger: var(--cui-color-danger-lighter);
+	--pui-text-primary: var(--pui-color-off-white);
+	--pui-text-secondary: rgb(180, 180, 180);
+	--pui-text-muted: rgb(140, 140, 140);
+	--pui-text-disabled: rgb(100, 100, 100);
+	--pui-text-placeholder: rgb(115, 115, 115);
+	--pui-text-danger: var(--pui-color-danger-lighter);
 
 	/* ============================================
 	 * BORDER COLORS
 	 * ============================================ */
-	--cui-border-default: var(--cui-color-dark-border);
-	--cui-border-subtle: var(--cui-color-dark-border-subtle);
-	--cui-border-strong: rgb(75, 80, 90);
+	--pui-border-default: var(--pui-color-dark-border);
+	--pui-border-subtle: var(--pui-color-dark-border-subtle);
+	--pui-border-strong: rgb(75, 80, 90);
 
 	/* ============================================
 	 * ACCENT COLORS
 	 * ============================================ */
-	--cui-accent-color-rgb: var(--cui-color-secondary-rgb);
-	--cui-accent-color: var(--cui-color-secondary);
-	--cui-accent-text-color: var(--cui-color-black);
+	--pui-accent-color-rgb: var(--pui-color-secondary-rgb);
+	--pui-accent-color: var(--pui-color-secondary);
+	--pui-accent-text-color: var(--pui-color-black);
 
 	/* ============================================
 	 * SCROLLBAR
 	 * ============================================ */
-	--cui-scrollbar-track: var(--cui-color-dark-500);
-	--cui-scrollbar-thumb-border: var(--cui-color-black);
+	--pui-scrollbar-track: var(--pui-color-dark-500);
+	--pui-scrollbar-thumb-border: var(--pui-color-black);
 
 	/* ============================================
 	 * FORM INPUTS
 	 * ============================================ */
-	--cui-input-bg: var(--cui-color-dark-200);
-	--cui-input-bg-disabled: var(--cui-color-dark-border);
+	--pui-input-bg: var(--pui-color-dark-200);
+	--pui-input-bg-disabled: var(--pui-color-dark-border);
 
 	/* ============================================
 	 * PAPER
 	 * ============================================ */
-	--cui-paper-title-bg: var(--cui-color-dark-400);
-	--cui-paper-title-border: var(--cui-color-dark-border-subtle);
-	--cui-paper-body-bg: var(--cui-color-dark-300);
+	--pui-paper-title-bg: var(--pui-color-dark-400);
+	--pui-paper-title-border: var(--pui-color-dark-border-subtle);
+	--pui-paper-body-bg: var(--pui-color-dark-300);
 
 	/* ============================================
 	 * DIALOG
 	 * ============================================ */
-	--cui-dialog-backdrop: rgba(0, 0, 0, 0.75);
+	--pui-dialog-backdrop: rgba(0, 0, 0, 0.75);
 
 	/* ============================================
 	 * SIDENAV
 	 * ============================================ */
-	--cui-sidenav-item-hover-bg: rgba(var(--cui-color-primary-rgb), 0.2);
-	--cui-sidenav-item-active-bg: rgba(var(--cui-color-primary-rgb), 0.3);
-	--cui-sidenav-item-active-border: var(--cui-color-primary);
+	--pui-sidenav-item-hover-bg: rgba(var(--pui-color-primary-rgb), 0.2);
+	--pui-sidenav-item-active-bg: rgba(var(--pui-color-primary-rgb), 0.3);
+	--pui-sidenav-item-active-border: var(--pui-color-primary);
 
 	/* ============================================
 	 * DROPDOWN
 	 * ============================================ */
-	--cui-dropdown-item-hover-bg: var(--cui-color-dark-200);
-	--cui-dropdown-item-active-bg: rgba(var(--cui-color-secondary-rgb), 0.2);
+	--pui-dropdown-item-hover-bg: var(--pui-color-dark-200);
+	--pui-dropdown-item-active-bg: rgba(var(--pui-color-secondary-rgb), 0.2);
 
 	/* ============================================
 	 * TOOLTIP
 	 * ============================================ */
-	--cui-tooltip-bg: var(--cui-color-gray-100);
-	--cui-tooltip-text: var(--cui-color-gray-900);
+	--pui-tooltip-bg: var(--pui-color-gray-100);
+	--pui-tooltip-text: var(--pui-color-gray-900);
 
 	/* ============================================
 	 * TABLE
 	 * ============================================ */
-	--cui-table-header-bg: var(--cui-color-dark-400);
-	--cui-table-row-hover-bg: var(--cui-color-dark-200);
+	--pui-table-header-bg: var(--pui-color-dark-400);
+	--pui-table-row-hover-bg: var(--pui-color-dark-200);
 
 	/* ============================================
 	 * TABS
 	 * ============================================ */
-	--cui-tab-hover-bg: var(--cui-color-dark-200);
+	--pui-tab-hover-bg: var(--pui-color-dark-200);
 
 	/* ============================================
 	 * ALERT
 	 * ============================================ */
-	--cui-alert-info-bg: rgba(28, 126, 214, 0.15);
-	--cui-alert-success-bg: rgba(55, 178, 77, 0.15);
-	--cui-alert-warning-bg: rgba(252, 196, 25, 0.15);
-	--cui-alert-danger-bg: var(--cui-color-danger-subtle-dark);
+	--pui-alert-info-bg: rgba(28, 126, 214, 0.15);
+	--pui-alert-success-bg: rgba(55, 178, 77, 0.15);
+	--pui-alert-warning-bg: rgba(252, 196, 25, 0.15);
+	--pui-alert-danger-bg: var(--pui-color-danger-subtle-dark);
 
 	/* ============================================
 	 * AVATAR
 	 * ============================================ */
-	--cui-avatar-bg: var(--cui-color-gray-700);
-	--cui-avatar-text: var(--cui-color-gray-200);
+	--pui-avatar-bg: var(--pui-color-gray-700);
+	--pui-avatar-text: var(--pui-color-gray-200);
 
 	/* ============================================
 	 * LOADER
 	 * ============================================ */
-	--cui-loader-color: var(--cui-color-secondary);
+	--pui-loader-color: var(--pui-color-secondary);
 
 	/* ============================================
 	 * SELECT
 	 * ============================================ */
-	--cui-select-option-hover-bg: var(--cui-color-dark-200);
-	--cui-select-option-selected-bg: rgba(var(--cui-color-secondary-rgb), 0.2);
+	--pui-select-option-hover-bg: var(--pui-color-dark-200);
+	--pui-select-option-selected-bg: rgba(var(--pui-color-secondary-rgb), 0.2);
 
 	/* ============================================
 	 * DATEPICKER
 	 * ============================================ */
-	--cui-datepicker-day-hover-bg: var(--cui-color-dark-200);
+	--pui-datepicker-day-hover-bg: var(--pui-color-dark-200);
 
 	/* ============================================
 	 * PAGINATION
 	 * ============================================ */
-	--cui-pagination-item-hover-bg: var(--cui-color-dark-200);
-	--cui-pagination-item-active-bg: var(--cui-color-secondary);
-	--cui-pagination-item-active-text: var(--cui-color-black);
+	--pui-pagination-item-hover-bg: var(--pui-color-dark-200);
+	--pui-pagination-item-active-bg: var(--pui-color-secondary);
+	--pui-pagination-item-active-text: var(--pui-color-black);
+
+	/* ============================================
+	 * INTERACTIVE STATES
+	 * ============================================ */
+	--pui-bg-hover: rgba(255, 255, 255, 0.06);
+	--pui-bg-active: rgba(255, 255, 255, 0.1);
+
+	/* ============================================
+	 * DISABLED STATES
+	 * ============================================ */
+	--pui-border-disabled: #666;
+	--pui-bg-disabled: #444;
+	--pui-text-on-disabled: var(--pui-color-gray-600);
 }

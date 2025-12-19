@@ -39,7 +39,7 @@
 	let isDisabled = $derived(loading || disabled);
 	let isLink = $derived(!!href);
 
-	let elClass = $derived(`cui-button ${buttonClass} ${variant} size-${size}`);
+	let elClass = $derived(`pui-button ${buttonClass} ${variant} size-${size}`);
 </script>
 
 {#snippet buttonContent()}
@@ -76,204 +76,201 @@
 {/if}
 
 <style>
-	.cui-button {
-		padding: 0.5rem 1rem;
-		border-radius: 6px;
+	.pui-button {
+		padding: var(--pui-spacing-2) var(--pui-spacing-4);
+		border-radius: var(--pui-radius-lg);
 		cursor: pointer;
-		transition: all 0.2s ease-in-out;
+		transition: all var(--pui-transition-fast) var(--pui-ease-in-out);
 	}
 
 	.size-xs {
-		padding: 0.25rem 0.5rem;
-		font-size: 0.75rem;
-		line-height: 1rem;
+		padding: var(--pui-spacing-1) var(--pui-spacing-2);
+		font-size: var(--pui-font-size-xs);
+		line-height: var(--pui-line-height-none);
 	}
 
 	.size-sm {
-		padding: 0.375rem 0.75rem;
-		font-size: 0.8125rem;
-		line-height: 1.0625rem;
+		padding: var(--pui-spacing-1_5) var(--pui-spacing-3);
+		font-size: var(--pui-font-size-sm);
+		line-height: var(--pui-line-height-none);
 	}
 
 	.size-md {
-		padding: 0.5rem 1rem;
-		font-size: 0.875rem;
-		line-height: 1.125rem;
+		padding: var(--pui-spacing-2) var(--pui-spacing-4);
+		font-size: var(--pui-font-size-base);
+		line-height: var(--pui-line-height-tight);
 	}
 
 	.size-lg {
-		padding: 0.625rem 1.25rem;
-		font-size: 1rem;
-		line-height: 1.25rem;
+		padding: var(--pui-spacing-2_5) var(--pui-spacing-5);
+		font-size: var(--pui-font-size-md);
+		line-height: var(--pui-line-height-tight);
 	}
 
 	.size-xl {
-		padding: 0.75rem 1.5rem;
-		font-size: 1.125rem;
-		line-height: 1.375rem;
+		padding: var(--pui-spacing-3) var(--pui-spacing-6);
+		font-size: var(--pui-font-size-lg);
+		line-height: var(--pui-line-height-snug);
 	}
 
-	:global(.paper-title) .cui-button {
-		padding: 0.35rem 0.5rem;
+	:global(.paper-title) .pui-button {
+		padding: var(--pui-spacing-1_5) var(--pui-spacing-2);
 	}
 
 	.white {
-		--button-text-color: var(--midnight);
-		--button-bg-color: white;
+		--button-text-color: var(--pui-color-primary);
+		--button-bg-color: var(--pui-color-white);
 		--button-border: 0;
-		--button-hover-bg-color: var(--turquoise);
-		--button-active-bg-color: #c3e8e4;
-		--button-outline-color: var(--turquoise);
+		--button-hover-bg-color: var(--pui-color-accent);
+		--button-active-bg-color: var(--pui-color-accent-light);
+		--button-outline-color: var(--pui-color-accent);
 	}
 
 	.secondary {
-		font-weight: normal;
+		font-weight: var(--pui-font-weight-normal);
 		box-sizing: border-box;
-		--button-bg-color: var(--input-bg);
-		--button-border: 1px solid var(--border-color);
-		--button-hover-bg-color: var(--border-color);
-		--button-active-bg-color: #aaaaaa;
-		--button-outline-color: var(--text-color);
+		--button-bg-color: var(--pui-input-bg);
+		--button-border: 1px solid var(--pui-border-default);
+		--button-hover-bg-color: var(--pui-border-default);
+		--button-active-bg-color: var(--pui-color-gray-500);
+		--button-outline-color: var(--pui-text-primary);
 	}
 
 	.secondary-subtle {
-		font-weight: normal;
+		font-weight: var(--pui-font-weight-normal);
 		box-sizing: border-box;
 		--button-bg-color: transparent;
-		--button-hover-bg-color: #aaaaaa66;
-		--button-active-bg-color: #aaaaaa;
-		--button-outline-color: var(--text-color);
+		--button-hover-bg-color: rgba(170, 170, 170, 0.4);
+		--button-active-bg-color: var(--pui-color-gray-500);
+		--button-outline-color: var(--pui-text-primary);
 	}
 
 	.secondary-selected {
-		--button-bg-color: var(--accent-color);
-		--button-border: 1px solid var(--accent-color);
-		--button-text-color: white;
-		font-weight: normal;
+		--button-bg-color: var(--pui-accent-color);
+		--button-border: 1px solid var(--pui-accent-color);
+		--button-text-color: var(--pui-color-white);
+		font-weight: var(--pui-font-weight-normal);
 	}
 
 	.auto-subtle {
-		--button-text-color: var(--midnight);
+		--button-text-color: var(--pui-color-primary);
 		--button-bg-color: initial;
-		--button-hover-bg-color: var(--pistachio);
-		--button-hover-text-color: var(--midnight);
-		--button-active-bg-color: var(--midnight);
-		--button-active-text-color: var(--pistachio);
-		--button-outline-color: var(--turquoise);
+		--button-hover-bg-color: var(--pui-color-secondary);
+		--button-hover-text-color: var(--pui-color-primary);
+		--button-active-bg-color: var(--pui-color-primary);
+		--button-active-text-color: var(--pui-color-secondary);
+		--button-outline-color: var(--pui-color-accent);
 	}
 
 	.danger {
-		--button-text-color: white;
-		--button-bg-color: var(--danger-bg);
-
-		--button-hover-bg-color: var(--danger-bg-hover);
-
-		--button-active-bg-color: #b02a37;
-
-		--button-outline-color: var(--turquoise);
+		--button-text-color: var(--pui-color-white);
+		--button-bg-color: var(--pui-color-danger);
+		--button-hover-bg-color: var(--pui-color-danger-hover);
+		--button-active-bg-color: var(--pui-color-danger-active);
+		--button-outline-color: var(--pui-color-accent);
 
 		:global(.loader) {
-			color: white;
+			color: var(--pui-color-white);
 		}
 	}
 
 	.danger-subtle {
 		background-color: initial;
-		color: var(--danger-text);
+		color: var(--pui-text-danger);
 
 		&:hover:not(:disabled) {
-			background-color: var(--danger-bg-subtle);
+			background-color: var(--pui-color-danger-subtle);
 		}
 
 		:global(.loader) {
-			color: var(--danger-text);
+			color: var(--pui-text-danger);
 		}
 	}
 
 	.pistachio {
-		--button-text-color: var(--midnight);
-		--button-bg-color: var(--pistachio);
-		--button-hover-bg-color: var(--turquoise);
-		--button-active-bg-color: #c3e8e4;
-		--button-outline-color: var(--turquoise);
+		--button-text-color: var(--pui-color-primary);
+		--button-bg-color: var(--pui-color-secondary);
+		--button-hover-bg-color: var(--pui-color-accent);
+		--button-active-bg-color: var(--pui-color-accent-light);
+		--button-outline-color: var(--pui-color-accent);
 	}
 
 	.pistachio-outline {
-		--button-text-color: var(--pistachio);
+		--button-text-color: var(--pui-color-secondary);
 		--button-bg-color: initial;
-		--button-border: 1px solid var(--pistachio);
-		--button-hover-text-color: var(--turquoise);
-		--button-hover-border: 1px solid var(--turquoise);
-		--button-active-text-color: #c3e8e4;
-		--button-active-border: 1px solid #c3e8e4;
-		--button-outline-color: var(--turquoise);
+		--button-border: 1px solid var(--pui-color-secondary);
+		--button-hover-text-color: var(--pui-color-accent);
+		--button-hover-border: 1px solid var(--pui-color-accent);
+		--button-active-text-color: var(--pui-color-accent-light);
+		--button-active-border: 1px solid var(--pui-color-accent-light);
+		--button-outline-color: var(--pui-color-accent);
 	}
 
 	.pistachio-subtle {
-		--button-text-color: var(--pistachio);
+		--button-text-color: var(--pui-color-secondary);
 		--button-bg-color: initial;
-		--button-hover-text-color: var(--midnight);
-		--button-hover-bg-color: var(--pistachio);
-		--button-active-text-color: white;
-		--button-active-bg-color: #697f1a;
-		--button-outline-color: var(--turquoise);
+		--button-hover-text-color: var(--pui-color-primary);
+		--button-hover-bg-color: var(--pui-color-secondary);
+		--button-active-text-color: var(--pui-color-white);
+		--button-active-bg-color: var(--pui-color-secondary-dark);
+		--button-outline-color: var(--pui-color-accent);
 	}
 
 	.midnight {
-		--button-bg-color: var(--midnight);
-		--button-text-color: white;
-		--button-hover-bg-color: #697f1a;
-		--button-active-bg-color: #102828;
+		--button-bg-color: var(--pui-color-primary);
+		--button-text-color: var(--pui-color-white);
+		--button-hover-bg-color: var(--pui-color-secondary-dark);
+		--button-active-bg-color: var(--pui-color-primary-dark);
 	}
 
 	.midnight-outline {
-		--button-text-color: var(--midnight);
+		--button-text-color: var(--pui-color-primary);
 		--button-bg-color: initial;
-		--button-border: 1px solid var(--midnight);
-		--button-hover-text-color: #697f1a;
-		--button-hover-border: 1px solid #697f1a;
-		--button-active-text-color: #102828;
-		--button-active-border: 1px solid #102828;
+		--button-border: 1px solid var(--pui-color-primary);
+		--button-hover-text-color: var(--pui-color-secondary-dark);
+		--button-hover-border: 1px solid var(--pui-color-secondary-dark);
+		--button-active-text-color: var(--pui-color-primary-dark);
+		--button-active-border: 1px solid var(--pui-color-primary-dark);
 	}
 
 	.midnight-subtle {
-		--button-text-color: var(--midnight);
+		--button-text-color: var(--pui-color-primary);
 		--button-bg-color: initial;
-		--button-hover-text-color: white;
-		--button-hover-bg-color: var(--midnight);
-		--button-active-text-color: white;
-		--button-active-bg-color: #102828;
+		--button-hover-text-color: var(--pui-color-white);
+		--button-hover-bg-color: var(--pui-color-primary);
+		--button-active-text-color: var(--pui-color-white);
+		--button-active-bg-color: var(--pui-color-primary-dark);
 	}
 
 	.turquoise-subtle {
 		background-color: initial;
-		color: rgb(49, 129, 128);
+		color: var(--pui-color-accent-dark);
 
 		&:hover:not(:disabled) {
-			background-color: rgba(49, 129, 128, 0.25);
+			background-color: rgba(var(--pui-color-accent-rgb), 0.25);
 		}
 
 		&:focus-visible {
-			outline-color: var(--turquoise);
+			outline-color: var(--pui-color-accent);
 		}
 
 		:global(.loader) {
-			color: rgb(49, 129, 128);
+			color: var(--pui-color-accent-dark);
 		}
 	}
 
 	button,
 	a {
-		border-color: var(--midnight);
-		font-size: 0.875rem;
-		font-weight: 600;
-		line-height: 1.125rem;
-		letter-spacing: 0.05rem;
+		border-color: var(--pui-color-primary);
+		font-size: var(--pui-font-size-base);
+		font-weight: var(--pui-font-weight-semibold);
+		line-height: var(--pui-line-height-tight);
+		letter-spacing: var(--pui-letter-spacing-wide);
 		transition:
-			color 0.15s ease-in-out,
-			background-color 0.15s ease-in-out,
-			border-color 0.15s ease-in-out,
-			box-shadow 0.15s ease-in-out;
+			color var(--pui-transition-fast) var(--pui-ease-in-out),
+			background-color var(--pui-transition-fast) var(--pui-ease-in-out),
+			border-color var(--pui-transition-fast) var(--pui-ease-in-out),
+			box-shadow var(--pui-transition-fast) var(--pui-ease-in-out);
 
 		color: var(--button-text-color);
 		background-color: var(--button-bg-color);
@@ -292,8 +289,8 @@
 		}
 
 		&:focus-visible {
-			outline: solid 0.125rem var(--button-outline-color, var(--pistachio-dark));
-			outline-offset: 0.125rem;
+			outline: solid var(--pui-focus-ring-width) var(--button-outline-color, var(--pui-color-secondary-dark));
+			outline-offset: var(--pui-focus-ring-offset);
 		}
 
 		&:disabled {
@@ -303,30 +300,30 @@
 
 	:global(.dark) {
 		.secondary {
-			--button-text-color: white;
-			--button-active-bg-color: #333333;
+			--button-text-color: var(--pui-color-white);
+			--button-active-bg-color: var(--pui-color-dark-300);
 		}
 
 		.secondary-subtle {
-			--button-active-bg-color: #333333;
+			--button-active-bg-color: var(--pui-color-dark-300);
 		}
 
 		.secondary-selected {
-			--button-text-color: white;
+			--button-text-color: var(--pui-color-white);
 		}
 
 		.auto-subtle {
-			--button-text-color: white;
-			--button-hover-text-color: white;
-			--button-hover-bg-color: var(--midnight);
-			--button-active-text-color: var(--pistachio);
-			--button-active-bg-color: var(--midnight);
-			--button-outline-color: var(--pistachio);
+			--button-text-color: var(--pui-color-white);
+			--button-hover-text-color: var(--pui-color-white);
+			--button-hover-bg-color: var(--pui-color-primary);
+			--button-active-text-color: var(--pui-color-secondary);
+			--button-active-bg-color: var(--pui-color-primary);
+			--button-outline-color: var(--pui-color-secondary);
 		}
 	}
 
 	.action-icon {
-		padding: 0.25rem;
+		padding: var(--pui-spacing-1);
 	}
 
 	.action-icon > div {
@@ -338,9 +335,8 @@
 	.input-button {
 		border-top-left-radius: 0;
 		border-bottom-left-radius: 0;
-		padding: 0 0.5rem;
+		padding: 0 var(--pui-spacing-2);
 		height: 100%;
-		/* rounded-l-none py-0 !px-2 min-h-[33.6px] h-full */
 	}
 
 	.button-icon {
@@ -350,16 +346,15 @@
 	}
 
 	.button {
-		/* flex justify-center gap-x-2 */
 		display: flex;
 		align-items: center;
-		gap: 0.5rem;
+		gap: var(--pui-spacing-2);
 		width: auto;
 		justify-content: center;
 		user-select: none;
 	}
 
-	a.cui-button {
+	a.pui-button {
 		text-decoration: none;
 		display: inline-flex;
 	}

@@ -160,7 +160,7 @@
 	}
 
 	p {
-		color: var(--cui-color-text-secondary);
+		color: var(--pui-color-text-secondary);
 		margin-bottom: 1.5rem;
 	}
 
@@ -173,7 +173,7 @@
 
 	.value-display {
 		font-size: 0.875rem;
-		color: var(--cui-color-text-muted);
+		color: var(--pui-color-text-muted);
 		font-family: monospace;
 	}
 
@@ -187,16 +187,16 @@
 	.props-table td {
 		text-align: left;
 		padding: 0.75rem;
-		border-bottom: 1px solid var(--cui-color-border);
+		border-bottom: 1px solid var(--pui-color-border);
 	}
 
 	.props-table th {
 		font-weight: 600;
-		background: var(--cui-color-bg-secondary);
+		background: var(--pui-color-bg-secondary);
 	}
 
 	.props-table code {
-		background: var(--cui-color-bg-tertiary);
+		background: var(--pui-color-bg-tertiary);
 		padding: 0.125rem 0.375rem;
 		border-radius: 4px;
 		font-size: 0.8125rem;

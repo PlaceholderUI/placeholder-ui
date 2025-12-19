@@ -110,45 +110,45 @@
 
 	/* Variants */
 	.variant-default .accordion-item {
-		border-bottom: 1px solid var(--cui-color-gray-300);
+		border-bottom: 1px solid var(--pui-color-gray-300);
 	}
 
 	:global(.dark) .variant-default .accordion-item {
-		border-bottom-color: var(--cui-color-dark-border);
+		border-bottom-color: var(--pui-color-dark-border);
 	}
 
 	.variant-contained {
-		border: 1px solid var(--cui-color-gray-300);
+		border: 1px solid var(--pui-color-gray-300);
 	}
 
 	:global(.dark) .variant-contained {
-		border-color: var(--cui-color-dark-border);
+		border-color: var(--pui-color-dark-border);
 	}
 
 	.variant-contained .accordion-item:not(:last-child) {
-		border-bottom: 1px solid var(--cui-color-gray-300);
+		border-bottom: 1px solid var(--pui-color-gray-300);
 	}
 
 	:global(.dark) .variant-contained .accordion-item:not(:last-child) {
-		border-bottom-color: var(--cui-color-dark-border);
+		border-bottom-color: var(--pui-color-dark-border);
 	}
 
 	.variant-filled .accordion-item {
-		background-color: var(--cui-color-gray-100);
-		margin-bottom: var(--cui-spacing-2);
+		background-color: var(--pui-color-gray-100);
+		margin-bottom: var(--pui-spacing-2);
 	}
 
 	:global(.dark) .variant-filled .accordion-item {
-		background-color: var(--cui-color-dark-200);
+		background-color: var(--pui-color-dark-200);
 	}
 
 	.variant-separated .accordion-item {
-		border: 1px solid var(--cui-color-gray-300);
-		margin-bottom: var(--cui-spacing-2);
+		border: 1px solid var(--pui-color-gray-300);
+		margin-bottom: var(--pui-spacing-2);
 	}
 
 	:global(.dark) .variant-separated .accordion-item {
-		border-color: var(--cui-color-dark-border);
+		border-color: var(--pui-color-dark-border);
 	}
 
 	/* Radius */
@@ -158,51 +158,51 @@
 	}
 
 	.radius-sm {
-		border-radius: var(--cui-radius-sm);
+		border-radius: var(--pui-radius-sm);
 	}
 	.radius-sm .accordion-item:first-child {
-		border-top-left-radius: var(--cui-radius-sm);
-		border-top-right-radius: var(--cui-radius-sm);
+		border-top-left-radius: var(--pui-radius-sm);
+		border-top-right-radius: var(--pui-radius-sm);
 	}
 	.radius-sm .accordion-item:last-child {
-		border-bottom-left-radius: var(--cui-radius-sm);
-		border-bottom-right-radius: var(--cui-radius-sm);
+		border-bottom-left-radius: var(--pui-radius-sm);
+		border-bottom-right-radius: var(--pui-radius-sm);
 	}
 	.radius-sm.variant-filled .accordion-item,
 	.radius-sm.variant-separated .accordion-item {
-		border-radius: var(--cui-radius-sm);
+		border-radius: var(--pui-radius-sm);
 	}
 
 	.radius-md {
-		border-radius: var(--cui-radius-md);
+		border-radius: var(--pui-radius-md);
 	}
 	.radius-md .accordion-item:first-child {
-		border-top-left-radius: var(--cui-radius-md);
-		border-top-right-radius: var(--cui-radius-md);
+		border-top-left-radius: var(--pui-radius-md);
+		border-top-right-radius: var(--pui-radius-md);
 	}
 	.radius-md .accordion-item:last-child {
-		border-bottom-left-radius: var(--cui-radius-md);
-		border-bottom-right-radius: var(--cui-radius-md);
+		border-bottom-left-radius: var(--pui-radius-md);
+		border-bottom-right-radius: var(--pui-radius-md);
 	}
 	.radius-md.variant-filled .accordion-item,
 	.radius-md.variant-separated .accordion-item {
-		border-radius: var(--cui-radius-md);
+		border-radius: var(--pui-radius-md);
 	}
 
 	.radius-lg {
-		border-radius: var(--cui-radius-lg);
+		border-radius: var(--pui-radius-lg);
 	}
 	.radius-lg .accordion-item:first-child {
-		border-top-left-radius: var(--cui-radius-lg);
-		border-top-right-radius: var(--cui-radius-lg);
+		border-top-left-radius: var(--pui-radius-lg);
+		border-top-right-radius: var(--pui-radius-lg);
 	}
 	.radius-lg .accordion-item:last-child {
-		border-bottom-left-radius: var(--cui-radius-lg);
-		border-bottom-right-radius: var(--cui-radius-lg);
+		border-bottom-left-radius: var(--pui-radius-lg);
+		border-bottom-right-radius: var(--pui-radius-lg);
 	}
 	.radius-lg.variant-filled .accordion-item,
 	.radius-lg.variant-separated .accordion-item {
-		border-radius: var(--cui-radius-lg);
+		border-radius: var(--pui-radius-lg);
 	}
 
 	.accordion-item {
@@ -213,28 +213,28 @@
 		width: 100%;
 		display: flex;
 		align-items: center;
-		gap: var(--cui-spacing-2);
-		padding: var(--cui-spacing-3) var(--cui-spacing-4);
+		gap: var(--pui-spacing-2);
+		padding: var(--pui-spacing-3) var(--pui-spacing-4);
 		background: none;
 		border: none;
 		cursor: pointer;
-		font-size: var(--cui-font-size-base);
-		font-weight: var(--cui-font-weight-medium);
-		color: var(--text-color, var(--cui-color-gray-900));
+		font-size: var(--pui-font-size-base);
+		font-weight: var(--pui-font-weight-medium);
+		color: var(--pui-text-primary);
 		text-align: left;
-		transition: background-color var(--cui-transition-fast) var(--cui-ease-in-out);
+		transition: background-color var(--pui-transition-fast) var(--pui-ease-in-out);
 	}
 
 	:global(.dark) .accordion-control {
-		color: var(--cui-color-gray-100);
+		color: var(--pui-color-gray-100);
 	}
 
 	.accordion-control:hover {
-		background-color: var(--cui-color-gray-100);
+		background-color: var(--pui-color-gray-100);
 	}
 
 	:global(.dark) .accordion-control:hover {
-		background-color: var(--cui-color-dark-300);
+		background-color: var(--pui-color-dark-300);
 	}
 
 	.accordion-control.chevron-left {
@@ -253,8 +253,8 @@
 		display: flex;
 		align-items: center;
 		justify-content: center;
-		transition: transform var(--cui-transition-fast) var(--cui-ease-in-out);
-		color: var(--cui-color-gray-500);
+		transition: transform var(--pui-transition-fast) var(--pui-ease-in-out);
+		color: var(--pui-color-gray-500);
 	}
 
 	.accordion-chevron.rotated {
@@ -264,7 +264,7 @@
 	.accordion-panel {
 		display: grid;
 		grid-template-rows: 0fr;
-		transition: grid-template-rows var(--cui-transition-base) var(--cui-ease-in-out);
+		transition: grid-template-rows var(--pui-transition-base) var(--pui-ease-in-out);
 	}
 
 	.accordion-panel.open {
@@ -273,17 +273,17 @@
 
 	.accordion-content {
 		overflow: hidden;
-		padding: 0 var(--cui-spacing-4);
-		color: var(--text-color, var(--cui-color-gray-700));
-		font-size: var(--cui-font-size-sm);
-		line-height: var(--cui-line-height-relaxed);
+		padding: 0 var(--pui-spacing-4);
+		color: var(--pui-text-secondary);
+		font-size: var(--pui-font-size-sm);
+		line-height: var(--pui-line-height-relaxed);
 	}
 
 	:global(.dark) .accordion-content {
-		color: var(--cui-color-gray-300);
+		color: var(--pui-color-gray-300);
 	}
 
 	.accordion-panel.open .accordion-content {
-		padding-bottom: var(--cui-spacing-4);
+		padding-bottom: var(--pui-spacing-4);
 	}
 </style>

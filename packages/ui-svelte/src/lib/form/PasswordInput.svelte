@@ -164,30 +164,30 @@
 
 	.password {
 		width: 100%;
-		font-size: 1rem;
-		line-height: 1.5rem;
-		padding: 0.25rem 2.5rem 0.25rem 0.5rem;
-		border: 1px solid var(--cui-input-border);
-		background-color: var(--cui-input-bg);
-		color: var(--cui-input-text);
-		border-radius: 0.25rem;
+		font-size: var(--pui-font-size-md);
+		line-height: var(--pui-line-height-normal);
+		padding: var(--pui-spacing-1) var(--pui-spacing-10) var(--pui-spacing-1) var(--pui-spacing-2);
+		border: 1px solid var(--pui-input-border);
+		background-color: var(--pui-input-bg);
+		color: var(--pui-input-text);
+		border-radius: var(--pui-radius-base);
 		box-sizing: border-box;
 	}
 
 	.password.disabled {
 		opacity: 0.5;
 		cursor: not-allowed;
-		background: var(--cui-input-bg-disabled);
+		background: var(--pui-input-bg-disabled);
 	}
 
 	.password:focus {
-		border-color: var(--cui-input-border-focus);
+		border-color: var(--pui-input-border-focus);
 		outline: 2px solid transparent;
 		outline-offset: 2px;
 	}
 
 	.password:focus ~ .left-icon {
-		color: var(--cui-input-border-focus);
+		color: var(--pui-input-border-focus);
 	}
 
 	.with-left-icon {
@@ -200,7 +200,7 @@
 		top: 50%;
 		transform: translateY(-50%);
 		left: 0.5rem;
-		color: var(--cui-text-muted);
+		color: var(--pui-text-muted);
 	}
 
 	.visibility-toggle {
@@ -212,20 +212,20 @@
 		border: none;
 		cursor: pointer;
 		padding: 0.25rem;
-		color: var(--cui-text-muted);
+		color: var(--pui-text-muted);
 		display: flex;
 		align-items: center;
 		justify-content: center;
-		border-radius: var(--cui-radius-sm);
-		transition: color var(--cui-transition-fast) var(--cui-ease-in-out);
+		border-radius: var(--pui-radius-sm);
+		transition: color var(--pui-transition-fast) var(--pui-ease-in-out);
 	}
 
 	.visibility-toggle:hover:not(:disabled) {
-		color: var(--cui-color-gray-700);
+		color: var(--pui-color-gray-700);
 	}
 
 	:global(.dark) .visibility-toggle:hover:not(:disabled) {
-		color: var(--cui-color-gray-300);
+		color: var(--pui-color-gray-300);
 	}
 
 	.visibility-toggle:disabled {
@@ -241,12 +241,12 @@
 	}
 
 	.show-error {
-		border-color: var(--cui-text-danger);
+		border-color: var(--pui-text-danger);
 	}
 
 	.text-error {
-		color: var(--cui-text-danger);
-		font-size: var(--cui-font-size-sm);
-		margin-top: var(--cui-spacing-1);
+		color: var(--pui-text-danger);
+		font-size: var(--pui-font-size-sm);
+		margin-top: var(--pui-spacing-1);
 	}
 </style>

@@ -184,7 +184,7 @@
 
 <style>
 	.time-label {
-		margin-bottom: var(--cui-spacing-1, 0.25rem);
+		margin-bottom: var(--pui-spacing-1);
 	}
 
 	.time-wrapper {
@@ -194,7 +194,7 @@
 	}
 
 	.time-picker-container {
-		border-radius: 1rem;
+		border-radius: var(--pui-radius-lg);
 		overflow: hidden;
 	}
 
@@ -203,18 +203,18 @@
 		justify-content: space-between;
 		align-items: center;
 		flex-grow: 1;
-		gap: var(--cui-spacing-1, 0.25rem);
-		background-color: #f8f9fa;
-		border: 1px solid var(--border-color);
-		border-top-left-radius: 0.5rem;
-		border-bottom-left-radius: 0.5rem;
+		gap: var(--pui-spacing-1);
+		background-color: var(--pui-color-gray-100);
+		border: 1px solid var(--pui-border-default);
+		border-top-left-radius: var(--pui-radius-md);
+		border-bottom-left-radius: var(--pui-radius-md);
 
 		:global(.number-container) {
 			flex-grow: 1;
 
 			:global(.number-input input) {
 				text-align: center;
-				background-color: #f8f9fa;
+				background-color: var(--pui-color-gray-100);
 			}
 		}
 	}
@@ -225,43 +225,43 @@
 	}
 
 	.time-container :global(.number-container:first-child .number:hover) {
-		border-right: 1px solid var(--border-color) !important;
-		background-color: rgba(var(--accent-text-color-rgb), 0.2) !important;
+		border-right: 1px solid var(--pui-border-default) !important;
+		background-color: var(--pui-bg-hover) !important;
 	}
 
 	.time-container :global(.number-container:last-child .number:hover) {
-		border-left: 1px solid var(--border-color) !important;
-		background-color: rgba(var(--accent-text-color-rgb), 0.2) !important;
+		border-left: 1px solid var(--pui-border-default) !important;
+		background-color: var(--pui-bg-hover) !important;
 	}
 
 	.time-container :global(.number-container:first-child .number) {
-		border-top-left-radius: 0.5rem;
-		border-bottom-left-radius: 0.5rem;
+		border-top-left-radius: var(--pui-radius-md);
+		border-bottom-left-radius: var(--pui-radius-md);
 	}
 
-	.am-pm-container :global(.cui-button) {
+	.am-pm-container :global(.pui-button) {
 		border-radius: 0;
-		border-top-right-radius: 0.5rem;
-		border-bottom-right-radius: 0.5rem;
+		border-top-right-radius: var(--pui-radius-md);
+		border-bottom-right-radius: var(--pui-radius-md);
 	}
 
 	:global(.dark) {
 		.time-container {
-			background-color: #252529;
+			background-color: var(--pui-color-dark-200);
 
 			:global(.number-container) {
 				:global(.number-input input) {
-					background-color: #252529;
+					background-color: var(--pui-color-dark-200);
 				}
 			}
 		}
 
 		.time-container :global(.number-container:first-child .number:hover) {
-			background-color: rgba(var(--accent-text-color-rgb), 0.1) !important;
+			background-color: var(--pui-bg-hover) !important;
 		}
 
 		.time-container :global(.number-container:last-child .number:hover) {
-			background-color: rgba(var(--accent-text-color-rgb), 0.1) !important;
+			background-color: var(--pui-bg-hover) !important;
 		}
 	}
 </style>

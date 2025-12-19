@@ -9,7 +9,7 @@
 
 	let { class: classes = '', href = '/' }: Props = $props();
 
-	const fill = $derived(themeState.isDarkMode ? 'white' : 'var(--midnight)');
+	const fill = $derived(themeState.isDarkMode ? 'var(--pui-color-white)' : 'var(--pui-color-primary)');
 </script>
 
 <Link {href}>

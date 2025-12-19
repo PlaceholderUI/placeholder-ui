@@ -119,7 +119,7 @@
 	.pagination-container {
 		display: flex;
 		align-items: center;
-		gap: 0.5rem;
+		gap: var(--pui-spacing-2);
 	}
 
 	.pagination-container :global(.paginate-button) {
@@ -128,8 +128,8 @@
 		display: flex;
 		justify-content: center;
 	}
-	
+
 	:global(.dark) .pagination-container :global(.paginate-button.secondary-selected) {
-		color: black;
+		color: var(--pui-color-black);
 	}
 </style>

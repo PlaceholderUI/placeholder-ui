@@ -116,57 +116,57 @@
 		display: flex;
 		align-items: center;
 		justify-content: center;
-		background-color: var(--cui-color-gray-200);
-		border: var(--line-width) solid var(--bullet-color, var(--cui-color-gray-400));
-		color: var(--bullet-color, var(--cui-color-gray-400));
+		background-color: var(--pui-color-gray-200);
+		border: var(--line-width) solid var(--bullet-color, var(--pui-color-gray-400));
+		color: var(--bullet-color, var(--pui-color-gray-400));
 		z-index: 1;
-		transition: all var(--cui-transition-fast) var(--cui-ease-in-out);
+		transition: all var(--pui-transition-fast) var(--pui-ease-in-out);
 	}
 
 	:global(.dark) .timeline-bullet {
-		background-color: var(--cui-color-dark-200);
+		background-color: var(--pui-color-dark-200);
 	}
 
 	.timeline-item.active .timeline-bullet {
-		background-color: var(--bullet-color, var(--cui-color-primary));
-		color: var(--cui-color-white);
+		background-color: var(--bullet-color, var(--pui-color-primary));
+		color: var(--pui-color-white);
 	}
 
 	.timeline-line {
 		position: absolute;
 		top: var(--bullet-size);
 		width: var(--line-width);
-		height: calc(100% - var(--bullet-size) + var(--cui-spacing-4));
-		background-color: var(--cui-color-gray-300);
-		transition: background-color var(--cui-transition-fast) var(--cui-ease-in-out);
+		height: calc(100% - var(--bullet-size) + var(--pui-spacing-4));
+		background-color: var(--pui-color-gray-300);
+		transition: background-color var(--pui-transition-fast) var(--pui-ease-in-out);
 	}
 
 	:global(.dark) .timeline-line {
-		background-color: var(--cui-color-dark-border);
+		background-color: var(--pui-color-dark-border);
 	}
 
 	.timeline-line.active {
-		background-color: var(--bullet-color, var(--cui-color-primary));
+		background-color: var(--bullet-color, var(--pui-color-primary));
 	}
 
 	.timeline-content {
 		flex: 1;
-		padding-bottom: var(--cui-spacing-6);
+		padding-bottom: var(--pui-spacing-6);
 	}
 
 	.align-left .timeline-content {
-		padding-left: var(--cui-spacing-4);
+		padding-left: var(--pui-spacing-4);
 	}
 
 	.align-right .timeline-content {
-		padding-right: var(--cui-spacing-4);
+		padding-right: var(--pui-spacing-4);
 		text-align: right;
 	}
 
 	.timeline-header {
 		display: flex;
 		align-items: baseline;
-		gap: var(--cui-spacing-2);
+		gap: var(--pui-spacing-2);
 		flex-wrap: wrap;
 	}
 
@@ -175,51 +175,51 @@
 	}
 
 	.timeline-title {
-		font-weight: var(--cui-font-weight-semibold);
-		color: var(--cui-color-gray-900);
-		font-size: var(--cui-font-size-base);
+		font-weight: var(--pui-font-weight-semibold);
+		color: var(--pui-color-gray-900);
+		font-size: var(--pui-font-size-base);
 	}
 
 	:global(.dark) .timeline-title {
-		color: var(--cui-color-gray-100);
+		color: var(--pui-color-gray-100);
 	}
 
 	.timeline-date {
-		font-size: var(--cui-font-size-xs);
-		color: var(--cui-color-gray-500);
+		font-size: var(--pui-font-size-xs);
+		color: var(--pui-color-gray-500);
 	}
 
 	.timeline-description {
-		margin-top: var(--cui-spacing-1);
-		font-size: var(--cui-font-size-sm);
-		color: var(--cui-color-gray-600);
-		line-height: var(--cui-line-height-relaxed);
+		margin-top: var(--pui-spacing-1);
+		font-size: var(--pui-font-size-sm);
+		color: var(--pui-color-gray-600);
+		line-height: var(--pui-line-height-relaxed);
 	}
 
 	:global(.dark) .timeline-description {
-		color: var(--cui-color-gray-400);
+		color: var(--pui-color-gray-400);
 	}
 
 	/* Colors */
 	.color-primary {
-		--bullet-color: var(--cui-color-primary);
+		--bullet-color: var(--pui-color-primary);
 	}
 	.color-secondary {
-		--bullet-color: var(--cui-color-secondary);
+		--bullet-color: var(--pui-color-secondary);
 	}
 	.color-accent {
-		--bullet-color: var(--cui-color-accent);
+		--bullet-color: var(--pui-color-accent);
 	}
 	.color-success {
-		--bullet-color: var(--cui-color-success);
+		--bullet-color: var(--pui-color-success);
 	}
 	.color-warning {
-		--bullet-color: var(--cui-color-warning);
+		--bullet-color: var(--pui-color-warning);
 	}
 	.color-danger {
-		--bullet-color: var(--cui-color-danger);
+		--bullet-color: var(--pui-color-danger);
 	}
 	.color-gray {
-		--bullet-color: var(--cui-color-gray-400);
+		--bullet-color: var(--pui-color-gray-400);
 	}
 </style>

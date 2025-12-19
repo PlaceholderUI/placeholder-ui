@@ -174,30 +174,29 @@
 
 	.textbox {
 		width: 100%;
-		font-size: 1rem;
-		line-height: 1.5rem;
-		padding: 0.25rem;
-		border: 1px solid var(--cui-input-border);
-		background-color: var(--cui-input-bg);
-		color: var(--cui-input-text);
-		border-radius: 0.25rem;
-		padding: 0.25rem 0.5rem;
+		font-size: var(--pui-font-size-md);
+		line-height: var(--pui-line-height-normal);
+		padding: var(--pui-spacing-1) var(--pui-spacing-2);
+		border: 1px solid var(--pui-input-border);
+		background-color: var(--pui-input-bg);
+		color: var(--pui-input-text);
+		border-radius: var(--pui-radius-base);
 		box-sizing: border-box;
 	}
 
 	.textbox.disabled {
 		opacity: 0.5;
 		cursor: not-allowed;
-		background: var(--cui-input-bg-disabled);
+		background: var(--pui-input-bg-disabled);
 	}
 
 	.textbox:focus {
-		border-color: var(--cui-input-border-focus);
+		border-color: var(--pui-input-border-focus);
 		outline: 2px solid transparent;
-		outline-offset: 2px;
+		outline-offset: var(--pui-focus-ring-offset);
 
 		& ~ .left-icon {
-			color: var(--cui-input-border-focus);
+			color: var(--pui-input-border-focus);
 		}
 	}
 
@@ -207,28 +206,23 @@
 	}
 
 	.with-left-icon {
-		padding-left: 2rem;
+		padding-left: var(--pui-spacing-8);
 	}
 
 	.left-icon {
-		/* absolute {isFocused ? 'text-accent' : 'text-neutral-500'}
-				pointer-events-none
-				top-1/2 -translate-y-1/2
-				left-4 -translate-x-1/2 */
-
 		position: absolute;
 		pointer-events: none;
 		top: 50%;
 		transform: translateY(-40%);
-		left: 0.5rem;
-		color: var(--cui-text-muted);
+		left: var(--pui-spacing-2);
+		color: var(--pui-text-muted);
 	}
 
 	.show-error {
-		border-color: var(--cui-text-danger);
+		border-color: var(--pui-text-danger);
 	}
 
 	.text-error {
-		color: var(--cui-text-danger);
+		color: var(--pui-text-danger);
 	}
 </style>

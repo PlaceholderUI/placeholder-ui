@@ -52,9 +52,9 @@
 
 <style>
 	.paper-body {
-		border-radius: 0.25rem;
+		border-radius: var(--pui-radius-base);
 		position: relative;
-		padding: 0.75rem;
+		padding: var(--pui-spacing-3);
 		flex-grow: 1;
 	}
 
@@ -69,28 +69,24 @@
 	}
 
 	.paper-body-bg {
-		background-color: var(--paper-body-bg);
+		background-color: var(--pui-paper-body-bg);
 	}
 
 	.paper {
-		box-shadow:
-			rgba(0, 0, 0, 0.05) 0px 1px 3px 0px,
-			rgba(0, 0, 0, 0.1) 0px 1px 2px 0px;
+		box-shadow: var(--pui-shadow-sm);
 		display: flex;
 		flex-direction: column;
 	}
 
 	.paper-title {
-		border-bottom: 1px solid #ccc;
-		background: var(--paper-title-bg);
-		border-color: var(--paper-title-border);
-		border-top-left-radius: 0.25rem;
-		border-top-right-radius: 0.25rem;
-		font-weight: 600;
+		border-bottom: 1px solid var(--pui-border-disabled);
+		background: var(--pui-paper-title-bg);
+		border-color: var(--pui-paper-title-border);
+		border-top-left-radius: var(--pui-radius-base);
+		border-top-right-radius: var(--pui-radius-base);
+		font-weight: var(--pui-font-weight-semibold);
 		display: flex;
 		justify-content: space-between;
-
-		/* bg-paper-title rounded-t font-semibold flex justify-between border-paper-border */
 	}
 
 	:global(.dark) .paper-title {
@@ -98,20 +94,20 @@
 	}
 
 	.paper-title-text {
-		padding: 0.5rem 0.75rem;
+		padding: var(--pui-spacing-2) var(--pui-spacing-3);
 	}
 
 	.paper-title-buttons {
-		margin-right: 0.5rem;
+		margin-right: var(--pui-spacing-2);
 		display: flex;
 		align-items: center;
-		gap: 0.25rem;
+		gap: var(--pui-spacing-1);
 	}
 
 	.gap {
 		display: flex;
 		flex-direction: column;
-		gap: 0.5rem;
+		gap: var(--pui-spacing-2);
 	}
 
 	.p-0 {

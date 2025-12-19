@@ -185,30 +185,29 @@
 
 	.number {
 		width: 100%;
-		font-size: 1rem;
-		line-height: 1.5rem;
-		padding: 0.25rem;
-		border: 1px solid var(--border-color);
-		background-color: var(--input-bg-color);
-		color: var(--text-color);
-		border-radius: 0.25rem;
-		padding: 0.25rem 0.5rem;
+		font-size: var(--pui-font-size-md);
+		line-height: var(--pui-line-height-normal);
+		padding: var(--pui-spacing-1) var(--pui-spacing-2);
+		border: 1px solid var(--pui-input-border);
+		background-color: var(--pui-input-bg);
+		color: var(--pui-input-text);
+		border-radius: var(--pui-radius-base);
 		box-sizing: border-box;
 	}
 
 	.number.disabled {
 		opacity: 0.5;
 		cursor: not-allowed;
-		background: var(--border-color);
+		background: var(--pui-bg-disabled);
 	}
 
 	.number:focus {
-		border-color: var(--accent-color);
+		border-color: var(--pui-input-border-focus);
 		outline: 2px solid transparent;
-		outline-offset: 2px;
+		outline-offset: var(--pui-focus-ring-offset);
 
 		& ~ .left-icon {
-			color: var(--accent-color);
+			color: var(--pui-input-border-focus);
 		}
 	}
 
@@ -218,7 +217,7 @@
 	}
 
 	.with-left-icon {
-		padding-left: 2rem;
+		padding-left: var(--pui-spacing-8);
 	}
 
 	.left-icon {
@@ -226,15 +225,15 @@
 		pointer-events: none;
 		top: 50%;
 		transform: translateY(-40%);
-		left: 0.5rem;
-		color: rgb(115 115 115);
+		left: var(--pui-spacing-2);
+		color: var(--pui-text-muted);
 	}
 
 	.show-error {
-		border-color: var(--danger-text);
+		border-color: var(--pui-text-danger);
 	}
 
 	.text-error {
-		color: var(--danger-text);
+		color: var(--pui-text-danger);
 	}
 </style>

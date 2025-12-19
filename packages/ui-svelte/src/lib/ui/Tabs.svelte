@@ -80,7 +80,7 @@
 	.tabs {
 		position: relative;
 		display: inline-flex;
-		border-bottom: 1px solid #e5e7eb;
+		border-bottom: 1px solid var(--pui-border-default);
 		user-select: none;
 	}
 
@@ -89,58 +89,58 @@
 		display: flex;
 		align-items: center;
 		justify-content: center;
-		padding: 0.75rem 1.5rem;
+		padding: var(--pui-spacing-3) var(--pui-spacing-6);
 		cursor: pointer;
 		user-select: none;
 		border: none;
 		background: transparent;
-		font-size: 0.875rem;
-		font-weight: 500;
-		color: #6b7280;
-		transition: color 0.2s ease-in-out;
+		font-size: var(--pui-font-size-base);
+		font-weight: var(--pui-font-weight-medium);
+		color: var(--pui-color-gray-500);
+		transition: color var(--pui-transition-fast) var(--pui-ease-in-out);
 		z-index: 1;
 		border-bottom: 2px solid transparent;
 	}
 
 	.tab-item:hover {
-		color: #374151;
+		color: var(--pui-color-gray-700);
 	}
 
 	.tab-item.selected {
-		color: var(--midnight);
+		color: var(--pui-color-primary);
 	}
 
 	.tab-underline {
 		position: absolute;
 		bottom: -1px;
 		height: 2px;
-		background-color: var(--midnight);
-		transition: all 0.2s ease-in-out;
+		background-color: var(--pui-color-primary);
+		transition: all var(--pui-transition-fast) var(--pui-ease-in-out);
 		z-index: 2;
 	}
 
 	.solid {
-		background: var(--paper-body-bg);
+		background: var(--pui-paper-body-bg);
 	}
 
 	/* Dark mode styles */
 	:global(.dark) .tabs {
-		border-bottom-color: #374151;
+		border-bottom-color: var(--pui-color-gray-700);
 	}
 
 	:global(.dark) .tab-item {
-		color: #9ca3af;
+		color: var(--pui-color-gray-400);
 	}
 
 	:global(.dark) .tab-item:hover {
-		color: #d1d5db;
+		color: var(--pui-color-gray-300);
 	}
 
 	:global(.dark) .tab-item.selected {
-		color: var(--pistachio);
+		color: var(--pui-color-secondary);
 	}
 
 	:global(.dark) .tab-underline {
-		background-color: var(--pistachio);
+		background-color: var(--pui-color-secondary);
 	}
 </style>

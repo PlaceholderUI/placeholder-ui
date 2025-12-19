@@ -65,75 +65,75 @@ import '@placeholderco/placeholder-ui/styles';`}</code></pre>
 <style>
 	.intro {
 		text-align: center;
-		padding: var(--cui-spacing-8, 2rem) 0;
+		padding: var(--pui-spacing-8, 2rem) 0;
 	}
 
 	h1 {
 		font-size: 2.5rem;
-		margin-bottom: var(--cui-spacing-2, 0.5rem);
-		color: var(--cui-color-text-primary);
+		margin-bottom: var(--pui-spacing-2, 0.5rem);
+		color: var(--pui-color-text-primary);
 	}
 
 	.tagline {
 		font-size: 1.25rem;
-		color: var(--cui-color-text-secondary);
-		margin-bottom: var(--cui-spacing-4, 1rem);
+		color: var(--pui-color-text-secondary);
+		margin-bottom: var(--pui-spacing-4, 1rem);
 	}
 
 	.badges {
 		display: flex;
-		gap: var(--cui-spacing-2, 0.5rem);
+		gap: var(--pui-spacing-2, 0.5rem);
 		justify-content: center;
-		margin-bottom: var(--cui-spacing-6, 1.5rem);
+		margin-bottom: var(--pui-spacing-6, 1.5rem);
 	}
 
 	.actions {
 		display: flex;
-		gap: var(--cui-spacing-3, 0.75rem);
+		gap: var(--pui-spacing-3, 0.75rem);
 		justify-content: center;
 	}
 
 	.feature-section {
-		margin-top: var(--cui-spacing-8, 2rem);
+		margin-top: var(--pui-spacing-8, 2rem);
 	}
 
 	h2 {
 		font-size: 1.5rem;
-		margin-bottom: var(--cui-spacing-4, 1rem);
-		color: var(--cui-color-text-primary);
+		margin-bottom: var(--pui-spacing-4, 1rem);
+		color: var(--pui-color-text-primary);
 	}
 
 	.features {
 		display: grid;
 		grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-		gap: var(--cui-spacing-4, 1rem);
+		gap: var(--pui-spacing-4, 1rem);
 	}
 
 	.feature h3 {
 		font-size: 1.1rem;
-		margin-bottom: var(--cui-spacing-2, 0.5rem);
-		color: var(--cui-color-text-primary);
+		margin-bottom: var(--pui-spacing-2, 0.5rem);
+		color: var(--pui-color-text-primary);
 	}
 
 	.feature p {
-		color: var(--cui-color-text-secondary);
+		color: var(--pui-color-text-secondary);
 		line-height: 1.5;
 	}
 
 	.quick-start {
-		margin-top: var(--cui-spacing-6, 1.5rem);
+		margin-top: var(--pui-spacing-6, 1.5rem);
 	}
 
 	.quick-start h3 {
 		font-size: 1rem;
-		margin-top: var(--cui-spacing-4, 1rem);
-		margin-bottom: var(--cui-spacing-2, 0.5rem);
+		margin-top: var(--pui-spacing-4, 1rem);
+		margin-bottom: var(--pui-spacing-2, 0.5rem);
 	}
 
 	pre {
-		background: var(--cui-color-bg-tertiary, #f5f5f5);
-		padding: var(--cui-spacing-3, 0.75rem);
-		border-radius: var(--cui-radius-md, 0.5rem);
+		background: var(--pui-color-bg-tertiary, #f5f5f5);
+		padding: var(--pui-spacing-3, 0.75rem);
+		border-radius: var(--pui-radius-md, 0.5rem);
 		overflow-x: auto;
 		font-size: 0.875rem;
 	}
@@ -143,10 +143,10 @@ import '@placeholderco/placeholder-ui/styles';`}</code></pre>
 	}
 
 	.theme-section {
-		margin-top: var(--cui-spacing-6, 1.5rem);
+		margin-top: var(--pui-spacing-6, 1.5rem);
 	}
 
 	:global(.dark) pre {
-		background: var(--cui-color-bg-secondary, #1a1a1a);
+		background: var(--pui-color-bg-secondary, #1a1a1a);
 	}
 </style>

@@ -44,18 +44,18 @@
 	header {
 		position: sticky;
 		top: 0;
-		z-index: 40;
+		z-index: var(--pui-z-sticky);
 		height: 46px;
 
 		display: flex;
 
-		background: var(--midnight);
+		background: var(--pui-color-primary);
 
 		align-items: center;
-		padding: 0 1rem;
+		padding: 0 var(--pui-spacing-4);
 	}
 
 	:global(.dark) header {
-		background: black;
+		background: var(--pui-color-black);
 	}
 </style>

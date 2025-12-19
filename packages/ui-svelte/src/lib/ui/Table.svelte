@@ -113,7 +113,7 @@
 	};
 
 	const tableClasses = $derived(
-		`cui-table ${tableClass} ${striped ? 'striped' : ''} ${hover ? 'hover' : ''}`
+		`pui-table ${tableClass} ${striped ? 'striped' : ''} ${hover ? 'hover' : ''}`
 	);
 </script>
 
@@ -209,45 +209,45 @@
 	}
 
 	.table-search {
-		margin-bottom: 1rem;
+		margin-bottom: var(--pui-spacing-4);
 		max-width: 400px;
 	}
 
 	.table-wrapper {
 		width: 100%;
 		overflow-x: auto;
-		border: 1px solid var(--border-color);
-		background-color: var(--input-bg-color);
+		border: 1px solid var(--pui-border-default);
+		background-color: var(--pui-input-bg);
 	}
 
 	.table-wrapper.rounded {
-		border-radius: 0.5rem;
+		border-radius: var(--pui-radius-lg);
 	}
 
-	.cui-table {
+	.pui-table {
 		width: 100%;
 		border-collapse: collapse;
-		font-size: 0.875rem;
+		font-size: var(--pui-font-size-base);
 	}
 
 	.table-header {
-		padding: 0.5rem;
+		padding: var(--pui-spacing-2);
 		text-align: left;
-		font-weight: 600;
-		color: var(--text-color);
-		background-color: var(--bg-color);
-		border-bottom: 2px solid var(--border-color);
+		font-weight: var(--pui-font-weight-semibold);
+		color: var(--pui-text-primary);
+		background-color: var(--pui-bg-surface-raised);
+		border-bottom: 2px solid var(--pui-border-default);
 		user-select: none;
 		white-space: nowrap;
 	}
 
 	.table-header.sortable {
 		cursor: pointer;
-		transition: background-color 0.2s;
+		transition: background-color var(--pui-transition-fast) var(--pui-ease-out);
 	}
 
 	.table-header.sortable:hover {
-		background-color: var(--hover-bg);
+		background-color: var(--pui-bg-hover);
 	}
 
 	.table-header.center {
@@ -261,7 +261,7 @@
 	.header-content {
 		display: flex;
 		align-items: center;
-		gap: 0.5rem;
+		gap: var(--pui-spacing-2);
 		justify-content: space-between;
 	}
 
@@ -269,7 +269,7 @@
 		display: inline-flex;
 		align-items: center;
 		opacity: 0.5;
-		transition: opacity 0.2s;
+		transition: opacity var(--pui-transition-fast) var(--pui-ease-out);
 	}
 
 	.table-header.sortable:hover .sort-icon {
@@ -277,10 +277,10 @@
 	}
 
 	.table-cell {
-		padding: 0.5rem;
+		padding: var(--pui-spacing-2);
 		text-align: left;
-		color: var(--text-color);
-		border-bottom: 1px solid var(--border-color);
+		color: var(--pui-text-primary);
+		border-bottom: 1px solid var(--pui-border-default);
 	}
 
 	.table-cell.center {
@@ -291,13 +291,13 @@
 		text-align: right;
 	}
 
-	.cui-table.striped tbody tr:nth-child(even) {
-		background-color: var(--stripe-bg);
+	.pui-table.striped tbody tr:nth-child(even) {
+		background-color: var(--pui-bg-hover);
 	}
 
-	.cui-table.hover tbody tr:hover {
-		background-color: var(--hover-bg);
-		transition: background-color 0.2s;
+	.pui-table.hover tbody tr:hover {
+		background-color: var(--pui-bg-hover);
+		transition: background-color var(--pui-transition-fast) var(--pui-ease-out);
 	}
 
 	.clickable-row {
@@ -305,8 +305,8 @@
 	}
 
 	.clickable-row:hover {
-		background-color: var(--hover-bg);
-		transition: background-color 0.2s;
+		background-color: var(--pui-bg-hover);
+		transition: background-color var(--pui-transition-fast) var(--pui-ease-out);
 	}
 
 	tbody tr:last-child td {
@@ -315,9 +315,9 @@
 
 	.empty-cell,
 	.loading-cell {
-		padding: 2rem;
+		padding: var(--pui-spacing-8);
 		text-align: center;
-		color: var(--text-muted);
+		color: var(--pui-text-muted);
 		border-bottom: none;
 	}
 
@@ -326,21 +326,8 @@
 		font-style: italic;
 	}
 
-	/* CSS Variables for theming */
-	:global(:root) {
-		--stripe-bg: rgba(0, 0, 0, 0.02);
-		--hover-bg: rgba(0, 0, 0, 0.04);
-		--text-muted: #6b7280;
-	}
-
-	:global(.dark) {
-		--stripe-bg: rgba(255, 255, 255, 0.02);
-		--hover-bg: rgba(255, 255, 255, 0.04);
-		--text-muted: #9ca3af;
-	}
-
 	/* Icon styles for sort indicators */
-	:global(.cui-table .sort-icon svg) {
+	:global(.pui-table .sort-icon svg) {
 		width: 14px;
 		height: 14px;
 	}
@@ -349,11 +336,11 @@
 	@media (max-width: 640px) {
 		.table-header,
 		.table-cell {
-			padding: 0.5rem 0.75rem;
+			padding: var(--pui-spacing-2) var(--pui-spacing-3);
 		}
 
-		.cui-table {
-			font-size: 0.75rem;
+		.pui-table {
+			font-size: var(--pui-font-size-xs);
 		}
 	}
 </style>

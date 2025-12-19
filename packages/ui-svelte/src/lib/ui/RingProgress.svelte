@@ -34,12 +34,12 @@
 
 	// Color mapping
 	const colorMap: Record<string, string> = {
-		primary: 'var(--cui-color-primary)',
-		secondary: 'var(--cui-color-secondary)',
-		accent: 'var(--cui-color-accent)',
-		success: 'var(--cui-color-success)',
-		warning: 'var(--cui-color-warning)',
-		danger: 'var(--cui-color-danger)'
+		primary: 'var(--pui-color-primary)',
+		secondary: 'var(--pui-color-secondary)',
+		accent: 'var(--pui-color-accent)',
+		success: 'var(--pui-color-success)',
+		warning: 'var(--pui-color-warning)',
+		danger: 'var(--pui-color-danger)'
 	};
 
 	const strokeColor = $derived(colorMap[color] || color);
@@ -76,7 +76,7 @@
 			cy={center}
 			r={radius}
 			fill="none"
-			stroke="var(--ring-progress-bg, var(--cui-color-gray-200))"
+			stroke="var(--ring-progress-bg, var(--pui-color-gray-200))"
 			stroke-width={thickness}
 		/>
 		<!-- Progress sections -->
@@ -111,7 +111,7 @@
 	}
 
 	:global(.dark) .ring-progress {
-		--ring-progress-bg: var(--cui-color-dark-border);
+		--ring-progress-bg: var(--pui-color-dark-border);
 	}
 
 	svg {
@@ -120,8 +120,8 @@
 
 	.progress-ring {
 		transition:
-			stroke-dasharray var(--cui-transition-slow) var(--cui-ease-out),
-			stroke-dashoffset var(--cui-transition-slow) var(--cui-ease-out);
+			stroke-dasharray var(--pui-transition-slow) var(--pui-ease-out),
+			stroke-dashoffset var(--pui-transition-slow) var(--pui-ease-out);
 	}
 
 	.ring-label {
@@ -130,12 +130,12 @@
 		left: 50%;
 		transform: translate(-50%, -50%);
 		text-align: center;
-		font-size: var(--cui-font-size-lg);
-		font-weight: var(--cui-font-weight-semibold);
-		color: var(--text-color, var(--cui-color-gray-900));
+		font-size: var(--pui-font-size-lg);
+		font-weight: var(--pui-font-weight-semibold);
+		color: var(--pui-text-primary);
 	}
 
 	:global(.dark) .ring-label {
-		color: var(--cui-color-gray-100);
+		color: var(--pui-color-gray-100);
 	}
 </style>

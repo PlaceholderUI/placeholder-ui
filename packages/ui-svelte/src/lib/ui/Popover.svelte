@@ -141,12 +141,12 @@
 	.popover-content {
 		display: block;
 		position: absolute;
-		background-color: var(--paper-body-bg);
-		border: 1px solid var(--border-color);
+		background-color: var(--pui-paper-body-bg);
+		border: 1px solid var(--pui-border-default);
 		min-width: 160px;
-		box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
-		z-index: 1000;
-		border-radius: 4px;
+		box-shadow: var(--pui-shadow-lg);
+		z-index: var(--pui-z-dropdown);
+		border-radius: var(--pui-radius-base);
 	}
 
 	/* Position-specific styles */
@@ -154,28 +154,28 @@
 		top: 100%;
 		left: 50%;
 		transform: translateX(-50%);
-		margin-top: 4px;
+		margin-top: var(--pui-spacing-1);
 	}
 
 	.popover-top {
 		bottom: 100%;
 		left: 50%;
 		transform: translateX(-50%);
-		margin-bottom: 4px;
+		margin-bottom: var(--pui-spacing-1);
 	}
 
 	.popover-right {
 		top: 50%;
 		left: 100%;
 		transform: translateY(-50%);
-		margin-left: 4px;
+		margin-left: var(--pui-spacing-1);
 	}
 
 	.popover-left {
 		top: 50%;
 		right: 100%;
 		transform: translateY(-50%);
-		margin-right: 4px;
+		margin-right: var(--pui-spacing-1);
 	}
 
 	/* Arrow indicators for each position */
@@ -189,28 +189,28 @@
 		top: -12px;
 		left: 50%;
 		transform: translateX(-50%);
-		border-bottom-color: var(--border-color);
+		border-bottom-color: var(--pui-border-default);
 	}
 
 	.popover-top::before {
 		bottom: -12px;
 		left: 50%;
 		transform: translateX(-50%);
-		border-top-color: var(--border-color);
+		border-top-color: var(--pui-border-default);
 	}
 
 	.popover-right::before {
 		top: 50%;
 		left: -12px;
 		transform: translateY(-50%);
-		border-right-color: var(--border-color);
+		border-right-color: var(--pui-border-default);
 	}
 
 	.popover-left::before {
 		top: 50%;
 		right: -12px;
 		transform: translateY(-50%);
-		border-left-color: var(--border-color);
+		border-left-color: var(--pui-border-default);
 	}
 
 	/* clear all button styles */

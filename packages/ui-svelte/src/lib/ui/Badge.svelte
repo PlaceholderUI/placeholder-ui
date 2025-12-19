@@ -54,20 +54,20 @@
 <style>
 	.badge-container {
 		display: flex;
-		border-radius: 6px;
+		border-radius: var(--pui-radius-lg);
 		border: var(--badge-border, 0);
 	}
 
 	.badge {
-		font-size: 0.875rem;
-		line-height: 1.125rem;
-		letter-spacing: 0.05rem;
+		font-size: var(--pui-font-size-base);
+		line-height: var(--pui-line-height-tight);
+		letter-spacing: var(--pui-letter-spacing-wide);
 		display: flex;
 		justify-content: center;
 		align-items: center;
 		text-decoration: none;
-		padding: 0.25rem;
-		border-radius: 6px;
+		padding: var(--pui-spacing-1);
+		border-radius: var(--pui-radius-lg);
 	}
 
 	button.badge,
@@ -76,22 +76,22 @@
 	}
 
 	.badge-with-button .badge {
-		padding-right: 6px;
+		padding-right: var(--pui-spacing-1_5);
 		border-top-right-radius: 0;
 		border-bottom-right-radius: 0;
 	}
 
 	.badge-button {
-		border-radius: 6px;
+		border-radius: var(--pui-radius-lg);
 		border-top-left-radius: 0;
 		border-bottom-left-radius: 0;
-		border-left: 1px solid var(--badge-border-color, black);
+		border-left: 1px solid var(--badge-border-color, var(--pui-color-black));
 		display: flex;
 		align-items: center;
 		justify-content: center;
 		cursor: pointer;
 		border-right: var(--badge-border, 0);
-		padding: 4px;
+		padding: var(--pui-spacing-1);
 	}
 
 	button {
@@ -101,7 +101,7 @@
 	button.badge-button:active,
 	button.badge:active:not(:disabled),
 	a.badge:active:not(:disabled) {
-		transform: translateY(calc(0.0625rem * 1));
+		transform: translateY(1px);
 	}
 
 	a {
@@ -109,121 +109,121 @@
 	}
 
 	.pistachio {
-		--badge-bg-color: var(--pistachio);
-		--badge-text-color: var(--midnight);
-		--badge-hover-bg-color: var(--turquoise);
-		--badge-border-color: var(--pistachio-dark);
-		--badge-outline-color: var(--turquoise);
+		--badge-bg-color: var(--pui-color-secondary);
+		--badge-text-color: var(--pui-color-primary);
+		--badge-hover-bg-color: var(--pui-color-accent);
+		--badge-border-color: var(--pui-color-secondary-dark);
+		--badge-outline-color: var(--pui-color-accent);
 	}
 
 	.pistachio :global(.loader) {
-		color: var(--midnight);
+		color: var(--pui-color-primary);
 	}
 
 	.midnight {
-		--badge-bg-color: var(--midnight);
-		--badge-text-color: #fff;
-		--badge-hover-bg-color: var(--pistachio-dark);
-		--badge-border-color: rgb(24, 103, 99);
-		--badge-outline-color: var(--pistachio-dark);
+		--badge-bg-color: var(--pui-color-primary);
+		--badge-text-color: var(--pui-color-white);
+		--badge-hover-bg-color: var(--pui-color-secondary-dark);
+		--badge-border-color: var(--pui-color-accent-dark);
+		--badge-outline-color: var(--pui-color-secondary-dark);
 	}
 
 	.midnight :global(.loader) {
-		color: var(--pistachio);
+		color: var(--pui-color-secondary);
 	}
 
 	.white {
-		--badge-bg-color: white;
-		--badge-text-color: var(--midnight);
-		--badge-hover-bg-color: var(--turquoise);
-		--badge-border-color: #eee;
-		--badge-outline-color: var(--turquoise);
+		--badge-bg-color: var(--pui-color-white);
+		--badge-text-color: var(--pui-color-primary);
+		--badge-hover-bg-color: var(--pui-color-accent);
+		--badge-border-color: var(--pui-color-gray-200);
+		--badge-outline-color: var(--pui-color-accent);
 	}
 
 	.secondary {
-		--badge-bg-color: var(--input-bg);
-		--badge-border: 1px solid var(--border-color);
-		--badge-border-color: var(--border-color);
-		--badge-hover-bg-color: var(--border-color);
-		--badge-outline-color: var(--text-color);
+		--badge-bg-color: var(--pui-input-bg);
+		--badge-border: 1px solid var(--pui-border-default);
+		--badge-border-color: var(--pui-border-default);
+		--badge-hover-bg-color: var(--pui-border-default);
+		--badge-outline-color: var(--pui-text-primary);
 	}
 
 	.secondary-selected {
-		--badge-bg-color: var(--accent-color);
-		--badge-border: 1px solid var(--accent-color);
-		--badge-border-color: var(--accent-color);
-		--badge-text-color: white;
+		--badge-bg-color: var(--pui-accent-color);
+		--badge-border: 1px solid var(--pui-accent-color);
+		--badge-border-color: var(--pui-accent-color);
+		--badge-text-color: var(--pui-color-white);
 	}
 
 	.danger {
-		--badge-text-color: white;
-		--badge-bg-color: var(--danger-bg);
-		--badge-hover-bg-color: var(--danger-bg-hover);
-		--badge-outline-color: var(--turquoise);
-		--badge-border-color: var(--danger-bg-hover);
+		--badge-text-color: var(--pui-color-white);
+		--badge-bg-color: var(--pui-color-danger);
+		--badge-hover-bg-color: var(--pui-color-danger-hover);
+		--badge-outline-color: var(--pui-color-accent);
+		--badge-border-color: var(--pui-color-danger-hover);
 	}
 
 	.danger :global(.loader) {
-		color: white;
+		color: var(--pui-color-white);
 	}
 
 	.auto-outline {
-		--badge-text-color: var(--midnight);
+		--badge-text-color: var(--pui-color-primary);
 		--badge-bg-color: initial;
-		--badge-border: 1px solid var(--midnight);
-		--badge-border-color: var(--midnight);
-		--badge-hover-bg-color: #697f1a;
-		--badge-hover-border: 1px solid #697f1a;
-		--badge-outline-color: var(--pistachio-dark);
+		--badge-border: 1px solid var(--pui-color-primary);
+		--badge-border-color: var(--pui-color-primary);
+		--badge-hover-bg-color: var(--pui-color-secondary-dark);
+		--badge-hover-border: 1px solid var(--pui-color-secondary-dark);
+		--badge-outline-color: var(--pui-color-secondary-dark);
 	}
 
 	:global(.dark) .auto-outline {
-		--badge-text-color: var(--pistachio);
+		--badge-text-color: var(--pui-color-secondary);
 		--badge-bg-color: initial;
-		--badge-border: 1px solid var(--pistachio);
-		--badge-border-color: var(--pistachio);
-		--badge-hover-bg-color: var(--turquoise);
-		--badge-hover-border: 1px solid var(--turquoise);
-		--badge-outline-color: var(--turquoise);
+		--badge-border: 1px solid var(--pui-color-secondary);
+		--badge-border-color: var(--pui-color-secondary);
+		--badge-hover-bg-color: var(--pui-color-accent);
+		--badge-hover-border: 1px solid var(--pui-color-accent);
+		--badge-outline-color: var(--pui-color-accent);
 	}
 
 	.pistachio-outline {
-		--badge-text-color: var(--pistachio);
+		--badge-text-color: var(--pui-color-secondary);
 		--badge-bg-color: initial;
-		--badge-border: 1px solid var(--pistachio);
-		--badge-border-color: var(--pistachio);
-		--badge-hover-bg-color: var(--turquoise);
-		--badge-hover-border: 1px solid var(--turquoise);
-		--badge-outline-color: var(--turquoise);
+		--badge-border: 1px solid var(--pui-color-secondary);
+		--badge-border-color: var(--pui-color-secondary);
+		--badge-hover-bg-color: var(--pui-color-accent);
+		--badge-hover-border: 1px solid var(--pui-color-accent);
+		--badge-outline-color: var(--pui-color-accent);
 	}
 
 	.midnight-outline {
-		--badge-text-color: var(--midnight);
+		--badge-text-color: var(--pui-color-primary);
 		--badge-bg-color: initial;
-		--badge-border: 1px solid var(--midnight);
-		--badge-border-color: var(--midnight);
-		--badge-hover-bg-color: #697f1a;
-		--badge-hover-border: 1px solid #697f1a;
-		--badge-outline-color: var(--pistachio-dark);
+		--badge-border: 1px solid var(--pui-color-primary);
+		--badge-border-color: var(--pui-color-primary);
+		--badge-hover-bg-color: var(--pui-color-secondary-dark);
+		--badge-hover-border: 1px solid var(--pui-color-secondary-dark);
+		--badge-outline-color: var(--pui-color-secondary-dark);
 	}
 
 	.turquoise {
-		--badge-text-color: black;
-		--badge-bg-color: var(--turquoise);
-		--badge-hover-bg-color: rgb(49, 129, 128);
-		--badge-outline-color: var(--turquoise);
-		--badge-border-color: var(--turquoise-dark);
+		--badge-text-color: var(--pui-color-black);
+		--badge-bg-color: var(--pui-color-accent);
+		--badge-hover-bg-color: var(--pui-color-accent-dark);
+		--badge-outline-color: var(--pui-color-accent);
+		--badge-border-color: var(--pui-color-accent-dark);
 	}
 
 	button,
 	a,
 	div {
-		border-color: var(--badge-border-color, var(--midnight));
+		border-color: var(--badge-border-color, var(--pui-color-primary));
 		transition:
-			color 0.15s ease-in-out,
-			background-color 0.15s ease-in-out,
-			border-color 0.15s ease-in-out,
-			box-shadow 0.15s ease-in-out;
+			color var(--pui-transition-fast) var(--pui-ease-in-out),
+			background-color var(--pui-transition-fast) var(--pui-ease-in-out),
+			border-color var(--pui-transition-fast) var(--pui-ease-in-out),
+			box-shadow var(--pui-transition-fast) var(--pui-ease-in-out);
 
 		color: var(--badge-text-color);
 		background-color: var(--badge-bg-color);
@@ -237,27 +237,27 @@
 
 	button:focus-visible,
 	a:focus-visible {
-		outline: solid 0.125rem var(--badge-outline-color, var(--pistachio-dark));
-		outline-offset: 0.125rem;
+		outline: solid var(--pui-focus-ring-width) var(--badge-outline-color, var(--pui-color-secondary-dark));
+		outline-offset: var(--pui-focus-ring-offset);
 	}
 
 	:global(.dark) {
 		.secondary {
-			--badge-hover-bg-color: #333333;
+			--badge-hover-bg-color: var(--pui-color-dark-300);
 		}
 
 		.secondary-subtle {
-			--badge-hover-bg-color: #333333;
+			--badge-hover-bg-color: var(--pui-color-dark-300);
 		}
 
 		.secondary-selected {
-			--badge-text-color: var(--midnight);
+			--badge-text-color: var(--pui-color-primary);
 		}
 
 		.auto-subtle {
-			--badge-text-color: white;
-			--badge-hover-bg-color: var(--midnight);
-			--badge-outline-color: var(--pistachio);
+			--badge-text-color: var(--pui-color-white);
+			--badge-hover-bg-color: var(--pui-color-primary);
+			--badge-outline-color: var(--pui-color-secondary);
 		}
 	}
 
@@ -266,14 +266,14 @@
 	}
 
 	.shape-pill {
-		border-radius: 9999px;
-		padding: 0.25rem 0.5rem;
+		border-radius: var(--pui-radius-full);
+		padding: var(--pui-spacing-1) var(--pui-spacing-2);
 	}
 
 	.shape-pill .badge {
 		border: none;
 		padding: 0;
-		padding-right: 0.25rem;
+		padding-right: var(--pui-spacing-1);
 	}
 
 </style>

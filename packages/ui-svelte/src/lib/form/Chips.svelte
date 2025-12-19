@@ -95,34 +95,34 @@
 <style>
 	.radio-options {
 		display: flex;
-		gap: 0.5rem;
-		border-radius: 6px;
+		gap: var(--pui-spacing-2);
+		border-radius: var(--pui-radius-lg);
 	}
 
 	.radio-required {
-		padding: 0.25rem;
+		padding: var(--pui-spacing-1);
 	}
 
 	.error {
-		border: 1px solid var(--danger-text);
+		border: 1px solid var(--pui-text-danger);
 	}
 
 	.error-text {
-		margin-top: 0.25rem;
-		color: var(--danger-text);
+		margin-top: var(--pui-spacing-1);
+		color: var(--pui-text-danger);
 	}
 
 	:global(.chip) {
-		padding: 0.25rem 1rem !important;
-		border-radius: 5rem !important;
+		padding: var(--pui-spacing-1) var(--pui-spacing-4) !important;
+		border-radius: var(--pui-radius-full) !important;
 	}
 
 	:global(.chip.checked) {
-		padding-left: 0.3rem !important;
-		padding-right: 0.5rem !important;
+		padding-left: var(--pui-spacing-1) !important;
+		padding-right: var(--pui-spacing-2) !important;
 	}
 
 	:global(.chip .button) {
-		gap: 0.25rem;
+		gap: var(--pui-spacing-1);
 	}
 </style>

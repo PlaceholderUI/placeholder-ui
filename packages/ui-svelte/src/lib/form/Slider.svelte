@@ -151,19 +151,19 @@
 
 	.slider-wrapper {
 		width: 100%;
-		padding-top: var(--cui-spacing-1);
+		padding-top: var(--pui-spacing-1);
 	}
 
 	.slider-value-display {
 		text-align: right;
-		font-size: var(--cui-font-size-sm);
-		font-weight: var(--cui-font-weight-medium);
-		color: var(--text-color, var(--cui-color-gray-700));
-		margin-bottom: var(--cui-spacing-1);
+		font-size: var(--pui-font-size-sm);
+		font-weight: var(--pui-font-weight-medium);
+		color: var(--pui-text-secondary);
+		margin-bottom: var(--pui-spacing-1);
 	}
 
 	:global(.dark) .slider-value-display {
-		color: var(--cui-color-gray-300);
+		color: var(--pui-color-gray-300);
 	}
 
 	.slider-track-wrapper {
@@ -189,34 +189,34 @@
 		height: var(--track-height, 6px);
 		background: linear-gradient(
 			to right,
-			var(--slider-color, var(--cui-color-primary)) 0%,
-			var(--slider-color, var(--cui-color-primary)) var(--slider-percentage),
-			var(--cui-color-gray-300) var(--slider-percentage),
-			var(--cui-color-gray-300) 100%
+			var(--slider-color, var(--pui-color-primary)) 0%,
+			var(--slider-color, var(--pui-color-primary)) var(--slider-percentage),
+			var(--pui-color-gray-300) var(--slider-percentage),
+			var(--pui-color-gray-300) 100%
 		);
-		border-radius: var(--track-radius, var(--cui-radius-full));
+		border-radius: var(--track-radius, var(--pui-radius-full));
 	}
 
 	:global(.dark) .slider::-webkit-slider-runnable-track {
 		background: linear-gradient(
 			to right,
-			var(--slider-color, var(--cui-color-primary)) 0%,
-			var(--slider-color, var(--cui-color-primary)) var(--slider-percentage),
-			var(--cui-color-dark-border) var(--slider-percentage),
-			var(--cui-color-dark-border) 100%
+			var(--slider-color, var(--pui-color-primary)) 0%,
+			var(--slider-color, var(--pui-color-primary)) var(--slider-percentage),
+			var(--pui-color-dark-border) var(--slider-percentage),
+			var(--pui-color-dark-border) 100%
 		);
 	}
 
 	.slider::-moz-range-track {
 		height: var(--track-height, 6px);
-		background: var(--cui-color-gray-300);
-		border-radius: var(--track-radius, var(--cui-radius-full));
+		background: var(--pui-color-gray-300);
+		border-radius: var(--track-radius, var(--pui-radius-full));
 	}
 
 	.slider::-moz-range-progress {
-		background: var(--slider-color, var(--cui-color-primary));
+		background: var(--slider-color, var(--pui-color-primary));
 		height: var(--track-height, 6px);
-		border-radius: var(--track-radius, var(--cui-radius-full));
+		border-radius: var(--track-radius, var(--pui-radius-full));
 	}
 
 	/* Thumb */
@@ -225,12 +225,12 @@
 		appearance: none;
 		width: var(--thumb-size, 16px);
 		height: var(--thumb-size, 16px);
-		background: var(--cui-color-white);
-		border: 2px solid var(--slider-color, var(--cui-color-primary));
+		background: var(--pui-color-white);
+		border: 2px solid var(--slider-color, var(--pui-color-primary));
 		border-radius: 50%;
 		margin-top: calc((var(--track-height, 6px) - var(--thumb-size, 16px)) / 2);
-		box-shadow: var(--cui-shadow-sm);
-		transition: transform var(--cui-transition-fast) var(--cui-ease-out);
+		box-shadow: var(--pui-shadow-sm);
+		transition: transform var(--pui-transition-fast) var(--pui-ease-out);
 	}
 
 	.slider::-webkit-slider-thumb:hover {
@@ -240,10 +240,10 @@
 	.slider::-moz-range-thumb {
 		width: var(--thumb-size, 16px);
 		height: var(--thumb-size, 16px);
-		background: var(--cui-color-white);
-		border: 2px solid var(--slider-color, var(--cui-color-primary));
+		background: var(--pui-color-white);
+		border: 2px solid var(--slider-color, var(--pui-color-primary));
 		border-radius: 50%;
-		box-shadow: var(--cui-shadow-sm);
+		box-shadow: var(--pui-shadow-sm);
 	}
 
 	/* Sizes */
@@ -270,22 +270,22 @@
 
 	/* Colors */
 	.color-primary {
-		--slider-color: var(--cui-color-primary);
+		--slider-color: var(--pui-color-primary);
 	}
 	.color-secondary {
-		--slider-color: var(--cui-color-secondary);
+		--slider-color: var(--pui-color-secondary);
 	}
 	.color-accent {
-		--slider-color: var(--cui-color-accent);
+		--slider-color: var(--pui-color-accent);
 	}
 	.color-success {
-		--slider-color: var(--cui-color-success);
+		--slider-color: var(--pui-color-success);
 	}
 	.color-warning {
-		--slider-color: var(--cui-color-warning);
+		--slider-color: var(--pui-color-warning);
 	}
 	.color-danger {
-		--slider-color: var(--cui-color-danger);
+		--slider-color: var(--pui-color-danger);
 	}
 
 	/* Radius */
@@ -293,16 +293,16 @@
 		--track-radius: 0;
 	}
 	.radius-sm {
-		--track-radius: var(--cui-radius-sm);
+		--track-radius: var(--pui-radius-sm);
 	}
 	.radius-md {
-		--track-radius: var(--cui-radius-md);
+		--track-radius: var(--pui-radius-md);
 	}
 	.radius-lg {
-		--track-radius: var(--cui-radius-lg);
+		--track-radius: var(--pui-radius-lg);
 	}
 	.radius-full {
-		--track-radius: var(--cui-radius-full);
+		--track-radius: var(--pui-radius-full);
 	}
 
 	/* Thumb label */
@@ -310,11 +310,11 @@
 		position: absolute;
 		top: -28px;
 		transform: translateX(-50%);
-		background: var(--cui-color-gray-800);
-		color: var(--cui-color-white);
-		font-size: var(--cui-font-size-xs);
+		background: var(--pui-color-gray-800);
+		color: var(--pui-color-white);
+		font-size: var(--pui-font-size-xs);
 		padding: 2px 6px;
-		border-radius: var(--cui-radius-sm);
+		border-radius: var(--pui-radius-sm);
 		white-space: nowrap;
 		pointer-events: none;
 	}
@@ -324,7 +324,7 @@
 		position: relative;
 		width: 100%;
 		height: 20px;
-		margin-top: var(--cui-spacing-1);
+		margin-top: var(--pui-spacing-1);
 	}
 
 	.slider-mark {
@@ -339,20 +339,20 @@
 		width: 6px;
 		height: 6px;
 		border-radius: 50%;
-		background: var(--cui-color-gray-400);
-		margin-bottom: var(--cui-spacing-1);
+		background: var(--pui-color-gray-400);
+		margin-bottom: var(--pui-spacing-1);
 	}
 
 	.mark-dot.active {
-		background: var(--slider-color, var(--cui-color-primary));
+		background: var(--slider-color, var(--pui-color-primary));
 	}
 
 	.mark-label {
-		font-size: var(--cui-font-size-xs);
-		color: var(--cui-color-gray-600);
+		font-size: var(--pui-font-size-xs);
+		color: var(--pui-color-gray-600);
 	}
 
 	:global(.dark) .mark-label {
-		color: var(--cui-color-gray-400);
+		color: var(--pui-color-gray-400);
 	}
 </style>

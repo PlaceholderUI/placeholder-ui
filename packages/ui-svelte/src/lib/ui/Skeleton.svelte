@@ -35,12 +35,12 @@
 
 <style>
 	.skeleton {
-		background-color: var(--cui-color-gray-200);
+		background-color: var(--pui-color-gray-200);
 		display: block;
 	}
 
 	:global(.dark) .skeleton {
-		background-color: var(--cui-color-dark-border);
+		background-color: var(--pui-color-dark-border);
 	}
 
 	.circle {
@@ -52,19 +52,19 @@
 		border-radius: 0;
 	}
 	.radius-sm {
-		border-radius: var(--cui-radius-sm);
+		border-radius: var(--pui-radius-sm);
 	}
 	.radius-md {
-		border-radius: var(--cui-radius-md);
+		border-radius: var(--pui-radius-md);
 	}
 	.radius-lg {
-		border-radius: var(--cui-radius-lg);
+		border-radius: var(--pui-radius-lg);
 	}
 	.radius-xl {
-		border-radius: var(--cui-radius-xl);
+		border-radius: var(--pui-radius-xl);
 	}
 	.radius-full {
-		border-radius: var(--cui-radius-full);
+		border-radius: var(--pui-radius-full);
 	}
 
 	.animate {

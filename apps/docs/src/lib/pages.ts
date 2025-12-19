@@ -3,7 +3,7 @@ export interface PageInfo {
 	href: string;
 	description: string;
 	keywords: string[];
-	category: 'getting-started' | 'components' | 'form' | 'layout';
+	category: 'getting-started' | 'components' | 'form' | 'layout' | 'types';
 }
 
 export const pages: PageInfo[] = [
@@ -246,13 +246,6 @@ export const pages: PageInfo[] = [
 
 	// Layout Components
 	{
-		label: 'AppShell',
-		href: '/docs/components/appshell',
-		description: 'Application layout with header, sidebar, and content areas',
-		keywords: ['appshell', 'layout', 'shell', 'structure', 'app', 'scaffold'],
-		category: 'layout'
-	},
-	{
 		label: 'Navbar',
 		href: '/docs/components/navbar',
 		description: 'Top navigation bar with links and actions',
@@ -265,6 +258,15 @@ export const pages: PageInfo[] = [
 		description: 'Elevated surface container with shadow',
 		keywords: ['paper', 'card', 'surface', 'container', 'box', 'panel', 'elevation'],
 		category: 'layout'
+	},
+
+	// Types
+	{
+		label: 'ButtonVariant',
+		href: '/docs/types/button-variant',
+		description: 'Type definition for button visual style variants',
+		keywords: ['button', 'variant', 'type', 'typescript', 'style', 'color'],
+		category: 'types'
 	}
 ];
 

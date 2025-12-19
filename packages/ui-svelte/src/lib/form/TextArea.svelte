@@ -84,65 +84,65 @@
 		display: block;
 		width: 100%;
 		min-height: calc(2.25rem + 2px);
-		padding: 0.5rem;
-		font-size: 1rem;
-		font-weight: 400;
-		line-height: 1.5;
-		color: var(--text-base);
-		background-color: var(--input-bg-color);
+		padding: var(--pui-spacing-2);
+		font-size: var(--pui-font-size-md);
+		font-weight: var(--pui-font-weight-normal);
+		line-height: var(--pui-line-height-normal);
+		color: var(--pui-input-text);
+		background-color: var(--pui-input-bg);
 		background-image: none;
-		border: 1px solid var(--border-color);
-		border-radius: 0.375rem;
+		border: 1px solid var(--pui-input-border);
+		border-radius: var(--pui-radius-md);
 		appearance: none;
-		transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+		transition: border-color var(--pui-transition-fast) var(--pui-ease-in-out);
 		resize: vertical;
 
 		&::placeholder {
-			color: #6c757d;
+			color: var(--pui-text-placeholder);
 			opacity: 1;
 		}
 
 		&:focus {
-			border-color: var(--midnight);
+			border-color: var(--pui-color-primary);
 			outline: 0;
 			box-shadow: none;
 		}
 
 		&:disabled {
-			background-color: var(--main-border);
+			background-color: var(--pui-bg-disabled);
 			opacity: 1;
 			cursor: not-allowed;
 		}
 	}
 
 	:global(.dark) textarea {
-		background-color: var(--input-bg-color);
-		color: var(--text-base);
-		border-color: var(--border-color);
+		background-color: var(--pui-input-bg);
+		color: var(--pui-input-text);
+		border-color: var(--pui-input-border);
 
 		&::placeholder {
-			color: #9ca3af;
+			color: var(--pui-text-placeholder);
 		}
 
 		&:focus {
-			border-color: var(--pistachio);
+			border-color: var(--pui-color-secondary);
 		}
 
 		&:disabled {
-			background-color: var(--main-border);
-			color: var(--text-base);
+			background-color: var(--pui-bg-disabled);
+			color: var(--pui-input-text);
 		}
 	}
 
 	/* Fix for resize handle in dark mode */
 	:global(.dark) textarea::-webkit-resizer {
-		background-color: #2f353b;
-		border-color: var(--border-color);
+		background-color: var(--pui-color-gray-700);
+		border-color: var(--pui-border-default);
 	}
 
 	.loader {
 		position: absolute;
-		right: 8px;
-		top: 8px;
+		right: var(--pui-spacing-2);
+		top: var(--pui-spacing-2);
 	}
 </style>

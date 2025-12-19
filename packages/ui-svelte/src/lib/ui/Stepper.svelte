@@ -134,7 +134,7 @@
 	.orientation-vertical .step {
 		flex-direction: row;
 		align-items: flex-start;
-		padding-bottom: var(--cui-spacing-6);
+		padding-bottom: var(--pui-spacing-6);
 	}
 
 	.step-button {
@@ -158,7 +158,7 @@
 	.orientation-vertical .step-button {
 		flex-direction: row;
 		align-items: flex-start;
-		gap: var(--cui-spacing-3);
+		gap: var(--pui-spacing-3);
 		text-align: left;
 	}
 
@@ -172,122 +172,122 @@
 		align-items: center;
 		justify-content: center;
 		border-radius: 50%;
-		background-color: var(--cui-color-gray-200);
-		color: var(--cui-color-gray-600);
-		transition: all var(--cui-transition-fast) var(--cui-ease-in-out);
+		background-color: var(--pui-color-gray-200);
+		color: var(--pui-color-gray-600);
+		transition: all var(--pui-transition-fast) var(--pui-ease-in-out);
 	}
 
 	:global(.dark) .step-icon {
-		background-color: var(--cui-color-dark-border);
-		color: var(--cui-color-gray-400);
+		background-color: var(--pui-color-dark-border);
+		color: var(--pui-color-gray-400);
 	}
 
 	.step.active .step-icon {
-		background-color: var(--step-color, var(--cui-color-primary));
-		color: var(--cui-color-white);
+		background-color: var(--step-color, var(--pui-color-primary));
+		color: var(--pui-color-white);
 	}
 
 	.step.completed .step-icon {
-		background-color: var(--step-color, var(--cui-color-primary));
-		color: var(--cui-color-white);
+		background-color: var(--step-color, var(--pui-color-primary));
+		color: var(--pui-color-white);
 	}
 
 	/* Sizes */
 	.size-xs .step-icon {
 		width: 24px;
 		height: 24px;
-		font-size: var(--cui-font-size-xs);
+		font-size: var(--pui-font-size-xs);
 	}
 	.size-sm .step-icon {
 		width: 32px;
 		height: 32px;
-		font-size: var(--cui-font-size-sm);
+		font-size: var(--pui-font-size-sm);
 	}
 	.size-md .step-icon {
 		width: 40px;
 		height: 40px;
-		font-size: var(--cui-font-size-base);
+		font-size: var(--pui-font-size-base);
 	}
 	.size-lg .step-icon {
 		width: 48px;
 		height: 48px;
-		font-size: var(--cui-font-size-md);
+		font-size: var(--pui-font-size-md);
 	}
 	.size-xl .step-icon {
 		width: 56px;
 		height: 56px;
-		font-size: var(--cui-font-size-lg);
+		font-size: var(--pui-font-size-lg);
 	}
 
 	/* Colors */
 	.color-primary {
-		--step-color: var(--cui-color-primary);
+		--step-color: var(--pui-color-primary);
 	}
 	.color-secondary {
-		--step-color: var(--cui-color-secondary);
+		--step-color: var(--pui-color-secondary);
 	}
 	.color-accent {
-		--step-color: var(--cui-color-accent);
+		--step-color: var(--pui-color-accent);
 	}
 	.color-success {
-		--step-color: var(--cui-color-success);
+		--step-color: var(--pui-color-success);
 	}
 
 	.step-number {
-		font-weight: var(--cui-font-weight-semibold);
+		font-weight: var(--pui-font-weight-semibold);
 	}
 
 	.step-content {
-		margin-top: var(--cui-spacing-2);
+		margin-top: var(--pui-spacing-2);
 	}
 
 	.orientation-vertical .step-content {
 		margin-top: 0;
-		padding-top: var(--cui-spacing-1);
+		padding-top: var(--pui-spacing-1);
 	}
 
 	.step-label {
-		font-weight: var(--cui-font-weight-medium);
-		color: var(--cui-color-gray-600);
-		font-size: var(--cui-font-size-sm);
+		font-weight: var(--pui-font-weight-medium);
+		color: var(--pui-color-gray-600);
+		font-size: var(--pui-font-size-sm);
 	}
 
 	:global(.dark) .step-label {
-		color: var(--cui-color-gray-400);
+		color: var(--pui-color-gray-400);
 	}
 
 	.step.active .step-label,
 	.step.completed .step-label {
-		color: var(--cui-color-gray-900);
+		color: var(--pui-color-gray-900);
 	}
 
 	:global(.dark) .step.active .step-label,
 	:global(.dark) .step.completed .step-label {
-		color: var(--cui-color-gray-100);
+		color: var(--pui-color-gray-100);
 	}
 
 	.step-description {
-		font-size: var(--cui-font-size-xs);
-		color: var(--cui-color-gray-500);
-		margin-top: var(--cui-spacing-0_5);
+		font-size: var(--pui-font-size-xs);
+		color: var(--pui-color-gray-500);
+		margin-top: var(--pui-spacing-0_5);
 	}
 
 	:global(.dark) .step-description {
-		color: var(--cui-color-gray-500);
+		color: var(--pui-color-gray-500);
 	}
 
 	/* Separator */
 	.step-separator {
-		background-color: var(--cui-color-gray-300);
-		transition: background-color var(--cui-transition-fast) var(--cui-ease-in-out);
+		background-color: var(--pui-color-gray-300);
+		transition: background-color var(--pui-transition-fast) var(--pui-ease-in-out);
 	}
 
 	:global(.dark) .step-separator {
-		background-color: var(--cui-color-dark-border);
+		background-color: var(--pui-color-dark-border);
 	}
 
 	.step-separator.completed {
-		background-color: var(--step-color, var(--cui-color-primary));
+		background-color: var(--step-color, var(--pui-color-primary));
 	}
 
 	.orientation-horizontal .step-separator {
@@ -345,11 +345,11 @@
 	}
 
 	.step-panel {
-		margin-top: var(--cui-spacing-6);
+		margin-top: var(--pui-spacing-6);
 	}
 
 	.orientation-vertical .step-panel {
 		margin-top: 0;
-		margin-left: var(--cui-spacing-6);
+		margin-left: var(--pui-spacing-6);
 	}
 </style>

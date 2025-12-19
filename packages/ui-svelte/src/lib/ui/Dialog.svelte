@@ -193,23 +193,23 @@
 	}
 
 	dialog {
-		color: var(--text-color);
+		color: var(--pui-text-primary);
 		border: none;
 		background-color: transparent;
 		overflow: visible;
-		margin-top: 1rem;
+		margin-top: var(--pui-spacing-4);
 
-		animation: fadeOut 0.2s forwards;
+		animation: fadeOut var(--pui-transition-fast) forwards;
 		transition:
-			display 0.2s allow-discrete,
-			overlay 0.2s allow-discrete;
+			display var(--pui-transition-fast) allow-discrete,
+			overlay var(--pui-transition-fast) allow-discrete;
 		&::backdrop {
-			animation: backdropFadeOut 0.2s forwards;
+			animation: backdropFadeOut var(--pui-transition-fast) forwards;
 		}
 		&[open] {
-			animation: fadeIn 0.2s forwards;
+			animation: fadeIn var(--pui-transition-fast) forwards;
 			&::backdrop {
-				animation: backdropFadeIn 0.2s forwards;
+				animation: backdropFadeIn var(--pui-transition-fast) forwards;
 			}
 		}
 	}
@@ -217,10 +217,10 @@
 	.dialog-title {
 		display: flex;
 		justify-content: space-between;
-		margin-bottom: 0.5rem;
-		padding-bottom: 0.25rem;
-		border-bottom: 1px solid var(--border-color);
-		font-weight: 600;
+		margin-bottom: var(--pui-spacing-2);
+		padding-bottom: var(--pui-spacing-1);
+		border-bottom: 1px solid var(--pui-border-default);
+		font-weight: var(--pui-font-weight-semibold);
 	}
 
 	.dialog-body {
@@ -238,9 +238,9 @@
 	.dialog-footer {
 		display: flex;
 		justify-content: flex-end;
-		padding: 0.5rem 0;
-		border-top: 1px solid var(--border-color);
-		gap: 0.5rem;
+		padding: var(--pui-spacing-2) 0;
+		border-top: 1px solid var(--pui-border-default);
+		gap: var(--pui-spacing-2);
 	}
 
 	.overflow-visible {
@@ -252,7 +252,7 @@
 	}
 
 	.dialog-no-paper {
-		padding: 1rem;
+		padding: var(--pui-spacing-4);
 	}
 
 	.dialog-paper,
@@ -260,17 +260,17 @@
 		display: flex;
 		flex-direction: column;
 		box-sizing: border-box;
-		border-radius: 0.25rem;
-		background: #f1f3f5;
+		border-radius: var(--pui-radius-base);
+		background: var(--pui-color-gray-100);
 	}
 
 	:global(.dark .dialog-paper),
 	:global(.dark .dialog-no-paper) {
-		background-color: rgb(33, 34, 38);
+		background-color: var(--pui-color-dark-200);
 	}
 
 	dialog::backdrop {
-		background-color: #0008;
+		background-color: var(--pui-bg-overlay);
 	}
 
 	.dialog.sm {

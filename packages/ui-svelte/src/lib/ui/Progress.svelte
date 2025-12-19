@@ -67,27 +67,27 @@
 		display: flex;
 		justify-content: space-between;
 		align-items: center;
-		margin-bottom: var(--cui-spacing-1);
-		font-size: var(--cui-font-size-sm);
-		color: var(--text-color, var(--cui-color-gray-700));
+		margin-bottom: var(--pui-spacing-1);
+		font-size: var(--pui-font-size-sm);
+		color: var(--pui-text-secondary);
 	}
 
 	:global(.dark) .progress-label {
-		color: var(--cui-color-gray-300);
+		color: var(--pui-color-gray-300);
 	}
 
 	.progress-value {
-		font-weight: var(--cui-font-weight-medium);
+		font-weight: var(--pui-font-weight-medium);
 	}
 
 	.progress {
 		width: 100%;
-		background-color: var(--cui-color-gray-200);
+		background-color: var(--pui-color-gray-200);
 		overflow: hidden;
 	}
 
 	:global(.dark) .progress {
-		background-color: var(--cui-color-dark-border);
+		background-color: var(--pui-color-dark-border);
 	}
 
 	/* Sizes */
@@ -112,53 +112,53 @@
 		border-radius: 0;
 	}
 	.radius-sm {
-		border-radius: var(--cui-radius-sm);
+		border-radius: var(--pui-radius-sm);
 	}
 	.radius-md {
-		border-radius: var(--cui-radius-md);
+		border-radius: var(--pui-radius-md);
 	}
 	.radius-lg {
-		border-radius: var(--cui-radius-lg);
+		border-radius: var(--pui-radius-lg);
 	}
 	.radius-full {
-		border-radius: var(--cui-radius-full);
+		border-radius: var(--pui-radius-full);
 	}
 
 	.progress-bar {
 		height: 100%;
 		border-radius: inherit;
-		transition: width var(--cui-transition-slow) var(--cui-ease-out);
+		transition: width var(--pui-transition-slow) var(--pui-ease-out);
 		display: flex;
 		align-items: center;
 		justify-content: center;
 	}
 
 	.progress-bar-label {
-		font-size: var(--cui-font-size-xs);
-		font-weight: var(--cui-font-weight-medium);
-		color: white;
-		padding: 0 var(--cui-spacing-2);
+		font-size: var(--pui-font-size-xs);
+		font-weight: var(--pui-font-weight-medium);
+		color: var(--pui-color-white);
+		padding: 0 var(--pui-spacing-2);
 		white-space: nowrap;
 	}
 
 	/* Colors */
 	.color-primary {
-		background-color: var(--cui-color-primary);
+		background-color: var(--pui-color-primary);
 	}
 	.color-secondary {
-		background-color: var(--cui-color-secondary);
+		background-color: var(--pui-color-secondary);
 	}
 	.color-accent {
-		background-color: var(--cui-color-accent);
+		background-color: var(--pui-color-accent);
 	}
 	.color-success {
-		background-color: var(--cui-color-success);
+		background-color: var(--pui-color-success);
 	}
 	.color-warning {
-		background-color: var(--cui-color-warning);
+		background-color: var(--pui-color-warning);
 	}
 	.color-danger {
-		background-color: var(--cui-color-danger);
+		background-color: var(--pui-color-danger);
 	}
 
 	/* Striped */

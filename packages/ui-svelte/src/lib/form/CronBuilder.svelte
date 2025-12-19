@@ -520,7 +520,7 @@
 	.cron-builder {
 		display: flex;
 		flex-direction: column;
-		gap: 1rem;
+		gap: var(--pui-spacing-4);
 	}
 
 	.cron-builder.disabled {
@@ -535,7 +535,7 @@
 	.cron-settings {
 		display: grid;
 		grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-		gap: 1rem;
+		gap: var(--pui-spacing-4);
 	}
 
 	.weekday-selector {
@@ -544,39 +544,39 @@
 
 	.weekday-label {
 		display: block;
-		font-size: 0.875rem;
-		font-weight: 600;
-		color: var(--text-color);
-		margin-bottom: 0.5rem;
+		font-size: var(--pui-font-size-sm);
+		font-weight: var(--pui-font-weight-semibold);
+		color: var(--pui-text-primary);
+		margin-bottom: var(--pui-spacing-2);
 	}
 
 	.weekday-buttons {
 		display: flex;
-		gap: 0.5rem;
+		gap: var(--pui-spacing-2);
 		flex-wrap: wrap;
 	}
 
 	.weekday-btn {
-		padding: 0.5rem 1rem;
-		border: 1px solid var(--border-color);
-		background: var(--input-bg);
-		color: var(--text-color);
-		border-radius: 0.375rem;
+		padding: var(--pui-spacing-2) var(--pui-spacing-4);
+		border: 1px solid var(--pui-border-default);
+		background: var(--pui-input-bg);
+		color: var(--pui-text-primary);
+		border-radius: var(--pui-radius-md);
 		cursor: pointer;
-		font-size: 0.875rem;
-		font-weight: 500;
-		transition: all 0.2s;
+		font-size: var(--pui-font-size-sm);
+		font-weight: var(--pui-font-weight-medium);
+		transition: all var(--pui-transition-fast) var(--pui-ease-in-out);
 	}
 
 	.weekday-btn:hover:not(:disabled) {
-		background: rgba(var(--midnight-rgbc), 0.05);
-		border-color: var(--midnight);
+		background: var(--pui-bg-hover);
+		border-color: var(--pui-color-primary);
 	}
 
 	.weekday-btn.selected {
-		background: var(--midnight);
-		color: white;
-		border-color: var(--midnight);
+		background: var(--pui-color-primary);
+		color: var(--pui-color-white);
+		border-color: var(--pui-color-primary);
 	}
 
 	.weekday-btn:disabled {
@@ -586,23 +586,23 @@
 	.custom-inputs {
 		display: grid;
 		grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
-		gap: 1rem;
+		gap: var(--pui-spacing-4);
 		grid-column: 1 / -1;
 	}
 
 	.form-control {
 		width: 100%;
-		padding: 0.5rem;
-		border: 1px solid var(--border-color);
-		border-radius: 0.375rem;
-		background: var(--input-bg);
-		color: var(--text-color);
-		font-size: 0.875rem;
+		padding: var(--pui-spacing-2);
+		border: 1px solid var(--pui-border-default);
+		border-radius: var(--pui-radius-md);
+		background: var(--pui-input-bg);
+		color: var(--pui-text-primary);
+		font-size: var(--pui-font-size-sm);
 	}
 
 	.form-control:focus {
 		outline: none;
-		border-color: var(--midnight);
+		border-color: var(--pui-color-primary);
 	}
 
 	.form-control:disabled {
@@ -613,11 +613,11 @@
 	.cron-output {
 		display: grid;
 		grid-template-columns: 1fr 1fr 1fr;
-		gap: 1rem;
-		padding: 1rem;
-		background: rgba(var(--midnight-rgbc), 0.05);
-		border-radius: 0.375rem;
-		border: 1px solid var(--border-color);
+		gap: var(--pui-spacing-4);
+		padding: var(--pui-spacing-4);
+		background: var(--pui-bg-subtle);
+		border-radius: var(--pui-radius-md);
+		border: 1px solid var(--pui-border-default);
 	}
 
 	.cron-expression,
@@ -625,55 +625,55 @@
 	.cron-next-run {
 		display: flex;
 		flex-direction: column;
-		gap: 0.5rem;
+		gap: var(--pui-spacing-2);
 	}
 
 	.cron-output .cron-label {
-		font-size: 0.75rem;
-		font-weight: 600;
-		color: var(--text-muted);
+		font-size: var(--pui-font-size-xs);
+		font-weight: var(--pui-font-weight-semibold);
+		color: var(--pui-text-muted);
 		text-transform: uppercase;
 		letter-spacing: 0.05em;
 	}
 
 	.cron-expression code {
 		font-family: 'Courier New', monospace;
-		font-size: 0.875rem;
-		padding: 0.5rem;
-		background: var(--input-bg);
-		border: 1px solid var(--border-color);
-		border-radius: 0.25rem;
-		color: var(--midnight);
-		font-weight: 600;
+		font-size: var(--pui-font-size-sm);
+		padding: var(--pui-spacing-2);
+		background: var(--pui-input-bg);
+		border: 1px solid var(--pui-border-default);
+		border-radius: var(--pui-radius-sm);
+		color: var(--pui-color-primary);
+		font-weight: var(--pui-font-weight-semibold);
 	}
 
 	.readable-text,
 	.next-run-text {
-		font-size: 0.875rem;
-		color: var(--text-color);
-		padding: 0.5rem;
-		background: var(--input-bg);
-		border: 1px solid var(--border-color);
-		border-radius: 0.25rem;
+		font-size: var(--pui-font-size-sm);
+		color: var(--pui-text-primary);
+		padding: var(--pui-spacing-2);
+		background: var(--pui-input-bg);
+		border: 1px solid var(--pui-border-default);
+		border-radius: var(--pui-radius-sm);
 	}
 
 	:global(.dark) .weekday-btn:hover:not(:disabled) {
-		background: rgba(var(--pistachio-rgbc), 0.1);
-		border-color: var(--pistachio);
+		background: var(--pui-bg-hover);
+		border-color: var(--pui-color-secondary);
 	}
 
 	:global(.dark) .weekday-btn.selected {
-		background: var(--pistachio);
-		color: var(--midnight);
-		border-color: var(--pistachio);
+		background: var(--pui-color-secondary);
+		color: var(--pui-color-primary);
+		border-color: var(--pui-color-secondary);
 	}
 
 	:global(.dark) .cron-output {
-		background: rgba(var(--pistachio-rgbc), 0.05);
+		background: var(--pui-bg-subtle);
 	}
 
 	:global(.dark) .cron-expression code {
-		color: var(--pistachio);
+		color: var(--pui-color-secondary);
 	}
 
 	@media (max-width: 1024px) {

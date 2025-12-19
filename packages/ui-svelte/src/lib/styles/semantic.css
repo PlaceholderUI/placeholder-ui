@@ -7,67 +7,80 @@
 	/* ============================================
 	 * SURFACE COLORS
 	 * ============================================ */
-	--cui-bg-page: var(--cui-color-gray-100);
-	--cui-bg-surface: var(--cui-color-white);
-	--cui-bg-surface-raised: var(--cui-color-gray-50);
-	--cui-bg-surface-sunken: var(--cui-color-gray-200);
-	--cui-bg-overlay: rgba(0, 0, 0, 0.5);
-	--cui-bg-overlay-dark: rgba(0, 0, 0, 0.65);
+	--pui-bg-page: var(--pui-color-gray-100);
+	--pui-bg-surface: var(--pui-color-white);
+	--pui-bg-surface-raised: var(--pui-color-gray-50);
+	--pui-bg-surface-sunken: var(--pui-color-gray-200);
+	--pui-bg-overlay: rgba(0, 0, 0, 0.5);
+	--pui-bg-overlay-dark: rgba(0, 0, 0, 0.65);
 
 	/* ============================================
 	 * TEXT COLORS
 	 * ============================================ */
-	--cui-text-primary: var(--cui-color-black);
-	--cui-text-secondary: var(--cui-color-gray-700);
-	--cui-text-muted: var(--cui-color-gray-600);
-	--cui-text-disabled: var(--cui-color-gray-400);
-	--cui-text-placeholder: rgb(161, 161, 170);
+	--pui-text-primary: var(--pui-color-black);
+	--pui-text-secondary: var(--pui-color-gray-700);
+	--pui-text-muted: var(--pui-color-gray-600);
+	--pui-text-disabled: var(--pui-color-gray-400);
+	--pui-text-placeholder: rgb(161, 161, 170);
 
-	--cui-text-on-primary: var(--cui-color-white);
-	--cui-text-on-secondary: var(--cui-color-primary);
-	--cui-text-on-accent: var(--cui-color-primary);
-	--cui-text-on-danger: var(--cui-color-white);
+	--pui-text-on-primary: var(--pui-color-white);
+	--pui-text-on-secondary: var(--pui-color-primary);
+	--pui-text-on-accent: var(--pui-color-primary);
+	--pui-text-on-danger: var(--pui-color-white);
 
-	--cui-text-danger: var(--cui-color-danger-light);
-	--cui-text-warning: var(--cui-color-warning);
-	--cui-text-success: var(--cui-color-success);
-	--cui-text-info: var(--cui-color-info);
+	--pui-text-danger: var(--pui-color-danger-light);
+	--pui-text-warning: var(--pui-color-warning);
+	--pui-text-success: var(--pui-color-success);
+	--pui-text-info: var(--pui-color-info);
 
 	/* ============================================
 	 * BORDER COLORS
 	 * ============================================ */
-	--cui-border-default: rgb(226, 232, 240);
-	--cui-border-subtle: var(--cui-color-gray-200);
-	--cui-border-strong: var(--cui-color-gray-400);
-	--cui-border-focus: var(--cui-color-accent);
-	--cui-border-error: var(--cui-color-danger);
-	--cui-border-success: var(--cui-color-success);
+	--pui-border-default: rgb(226, 232, 240);
+	--pui-border-subtle: var(--pui-color-gray-200);
+	--pui-border-strong: var(--pui-color-gray-400);
+	--pui-border-focus: var(--pui-color-accent);
+	--pui-border-error: var(--pui-color-danger);
+	--pui-border-success: var(--pui-color-success);
 
 	/* ============================================
 	 * ACCENT COLORS
 	 * ============================================ */
-	--cui-accent-color-rgb: var(--cui-color-primary-rgb);
-	--cui-accent-color: var(--cui-color-primary);
-	--cui-accent-text-color: var(--cui-color-off-white);
+	--pui-accent-color-rgb: var(--pui-color-primary-rgb);
+	--pui-accent-color: var(--pui-color-primary);
+	--pui-accent-text-color: var(--pui-color-off-white);
 
 	/* ============================================
 	 * LINK COLORS
 	 * ============================================ */
-	--cui-link-color: var(--cui-color-accent-dark);
-	--cui-link-hover-color: var(--cui-color-secondary-dark);
+	--pui-link-color: var(--pui-color-accent-dark);
+	--pui-link-hover-color: var(--pui-color-secondary-dark);
 
 	/* ============================================
 	 * FOCUS RING
 	 * ============================================ */
-	--cui-focus-ring-color: var(--cui-color-accent);
-	--cui-focus-ring-width: 2px;
-	--cui-focus-ring-offset: 2px;
+	--pui-focus-ring-color: var(--pui-color-accent);
+	--pui-focus-ring-width: 2px;
+	--pui-focus-ring-offset: 2px;
 
 	/* ============================================
 	 * SCROLLBAR
 	 * ============================================ */
-	--cui-scrollbar-width: 19px;
-	--cui-scrollbar-track: var(--cui-color-white);
-	--cui-scrollbar-thumb: var(--cui-color-primary);
-	--cui-scrollbar-thumb-border: var(--cui-color-white);
+	--pui-scrollbar-width: 19px;
+	--pui-scrollbar-track: var(--pui-color-white);
+	--pui-scrollbar-thumb: var(--pui-color-primary);
+	--pui-scrollbar-thumb-border: var(--pui-color-white);
+
+	/* ============================================
+	 * INTERACTIVE STATES
+	 * ============================================ */
+	--pui-bg-hover: rgba(0, 0, 0, 0.04);
+	--pui-bg-active: rgba(0, 0, 0, 0.08);
+
+	/* ============================================
+	 * DISABLED STATES
+	 * ============================================ */
+	--pui-border-disabled: #ccc;
+	--pui-bg-disabled: #f5f5f5;
+	--pui-text-on-disabled: var(--pui-color-gray-500);
 }

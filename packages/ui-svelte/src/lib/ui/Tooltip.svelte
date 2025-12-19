@@ -375,29 +375,29 @@
 
 	.tooltip-v2-floating {
 		position: fixed;
-		z-index: 9999;
+		z-index: var(--pui-z-tooltip);
 		pointer-events: none;
-		--tooltip-bg: #e0e0e0;
-		--tooltip-text: #333;
+		--tooltip-bg: var(--pui-color-gray-200);
+		--tooltip-text: var(--pui-color-gray-800);
 	}
 
 	:global(.dark) .tooltip-v2-floating {
-		--tooltip-bg: rgb(51, 52, 57);
-		--tooltip-text: #e5e5e5;
+		--tooltip-bg: var(--pui-color-gray-800);
+		--tooltip-text: var(--pui-color-gray-200);
 	}
 
 	.tooltip-v2-content {
 		background: var(--tooltip-bg);
 		color: var(--tooltip-text);
-		padding: 0.5rem 0.75rem;
-		border-radius: 6px;
-		font-size: 0.875rem;
-		line-height: 1.4;
+		padding: var(--pui-spacing-2) var(--pui-spacing-3);
+		border-radius: var(--pui-radius-lg);
+		font-size: var(--pui-font-size-sm);
+		line-height: var(--pui-line-height-normal);
 		position: relative;
 	}
 
 	:global(.dark) .tooltip-v2-content {
-		box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+		box-shadow: var(--pui-shadow-md);
 	}
 
 	.tooltip-v2-arrow {

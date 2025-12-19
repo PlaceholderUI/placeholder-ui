@@ -434,7 +434,7 @@
 
 	.clear-button {
 		position: absolute;
-		right: 0.5rem;
+		right: var(--pui-spacing-2);
 		top: 50%;
 		transform: translateY(-50%);
 		line-height: 0;
@@ -444,13 +444,13 @@
 		width: 18rem;
 		text-align: center;
 		position: absolute;
-		z-index: 10;
+		z-index: var(--pui-z-dropdown);
 		user-select: none;
-		background-color: var(--paper-body-bg);
-		border: 1px solid var(--border-color);
-		border-radius: 0.375rem;
-		box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15);
-		padding: 0.5rem;
+		background-color: var(--pui-bg-surface-raised);
+		border: 1px solid var(--pui-border-default);
+		border-radius: var(--pui-radius-md);
+		box-shadow: var(--pui-shadow-lg);
+		padding: var(--pui-spacing-2);
 	}
 
 	.calendar.below {
@@ -465,13 +465,13 @@
 		display: flex;
 		justify-content: space-between;
 		align-items: center;
-		padding: 0.5rem;
+		padding: var(--pui-spacing-2);
 	}
 
 	.month-label {
-		font-weight: 600;
-		color: var(--text-color);
-		font-size: 1.125rem;
+		font-weight: var(--pui-font-weight-semibold);
+		color: var(--pui-text-primary);
+		font-size: var(--pui-font-size-lg);
 		background: none;
 		border: none;
 		cursor: default;
@@ -479,53 +479,53 @@
 
 	.month-label.clickable {
 		cursor: pointer;
-		padding: 0.25rem 0.5rem;
-		border-radius: 0.25rem;
-		transition: background-color 0.15s ease;
+		padding: var(--pui-spacing-1) var(--pui-spacing-2);
+		border-radius: var(--pui-radius-sm);
+		transition: background-color var(--pui-transition-fast) var(--pui-ease-in-out);
 	}
 
 	.month-label.clickable:hover {
-		background-color: rgba(var(--midnight-rgbc), 0.1);
+		background-color: var(--pui-bg-hover);
 	}
 
 	.year-grid {
 		display: grid;
 		grid-template-columns: repeat(3, 1fr);
-		gap: 0.5rem;
-		margin-top: 0.5rem;
-		padding: 0.5rem;
+		gap: var(--pui-spacing-2);
+		margin-top: var(--pui-spacing-2);
+		padding: var(--pui-spacing-2);
 	}
 
 	.year-button {
-		color: var(--text-color);
-		padding: 0.75rem 0.5rem;
-		border-radius: 0.375rem;
+		color: var(--pui-text-primary);
+		padding: var(--pui-spacing-3) var(--pui-spacing-2);
+		border-radius: var(--pui-radius-md);
 		border: none;
 		background: transparent;
 		cursor: pointer;
-		font-size: 0.875rem;
-		transition: all 0.15s ease;
+		font-size: var(--pui-font-size-sm);
+		transition: all var(--pui-transition-fast) var(--pui-ease-in-out);
 	}
 
 	.year-button:hover:not(.disabled) {
-		background-color: rgba(var(--midnight-rgbc), 0.1);
-		color: var(--midnight);
+		background-color: var(--pui-bg-hover);
+		color: var(--pui-color-primary);
 	}
 
 	.year-button.current-year {
-		background-color: rgba(var(--midnight-rgbc), 0.15);
-		color: var(--midnight);
-		font-weight: 600;
+		background-color: var(--pui-bg-active);
+		color: var(--pui-color-primary);
+		font-weight: var(--pui-font-weight-semibold);
 	}
 
 	.year-button.selected {
-		background-color: var(--midnight);
-		color: white;
-		font-weight: 600;
+		background-color: var(--pui-color-primary);
+		color: var(--pui-color-white);
+		font-weight: var(--pui-font-weight-semibold);
 	}
 
 	.year-button.disabled {
-		color: rgb(163 163 163) !important;
+		color: var(--pui-text-disabled) !important;
 		background-color: transparent !important;
 		cursor: not-allowed !important;
 		opacity: 0.5;
@@ -534,17 +534,17 @@
 	.days-header-bar {
 		display: grid;
 		grid-template-columns: repeat(7, 1fr);
-		margin-top: 0.5rem;
-		background-color: #f8f9fa;
-		border-radius: 0.25rem;
-		border: 1px solid var(--border-color);
+		margin-top: var(--pui-spacing-2);
+		background-color: var(--pui-color-gray-100);
+		border-radius: var(--pui-radius-sm);
+		border: 1px solid var(--pui-border-default);
 	}
 
 	.day-label {
-		color: #6b7280;
-		padding: 0.5rem;
-		font-size: 0.75rem;
-		font-weight: 600;
+		color: var(--pui-color-gray-500);
+		padding: var(--pui-spacing-2);
+		font-size: var(--pui-font-size-xs);
+		font-weight: var(--pui-font-weight-semibold);
 		text-transform: uppercase;
 		text-align: center;
 	}
@@ -552,50 +552,50 @@
 	.days-grid {
 		display: grid;
 		grid-template-columns: repeat(7, 1fr);
-		gap: 0.125rem;
-		margin-top: 0.5rem;
+		gap: 2px;
+		margin-top: var(--pui-spacing-2);
 	}
 
 	.day-button {
-		color: var(--text-color);
+		color: var(--pui-text-primary);
 		width: 2.25rem;
 		height: 2.25rem;
-		border-radius: 0.375rem;
+		border-radius: var(--pui-radius-md);
 		border: none;
 		background: transparent;
 		cursor: pointer;
-		font-size: 0.875rem;
-		transition: all 0.15s ease;
+		font-size: var(--pui-font-size-sm);
+		transition: all var(--pui-transition-fast) var(--pui-ease-in-out);
 		justify-self: center;
 	}
 
 	.day-button:hover {
-		background-color: rgba(var(--midnight-rgbc), 0.1);
-		color: var(--midnight);
+		background-color: var(--pui-bg-hover);
+		color: var(--pui-color-primary);
 	}
 
 	.today {
-		background-color: rgba(var(--midnight-rgbc), 0.15);
-		color: var(--midnight);
-		font-weight: 600;
+		background-color: var(--pui-bg-active);
+		color: var(--pui-color-primary);
+		font-weight: var(--pui-font-weight-semibold);
 	}
 
 	.selected {
-		background-color: var(--midnight);
-		color: white;
-		font-weight: 600;
+		background-color: var(--pui-color-primary);
+		color: var(--pui-color-white);
+		font-weight: var(--pui-font-weight-semibold);
 	}
 
 	.text-red {
-		color: rgb(248 113 113);
+		color: var(--pui-color-danger);
 	}
 
 	.text-grey {
-		color: rgb(163 163 163);
+		color: var(--pui-text-muted);
 	}
 
 	.disabled {
-		color: rgb(163 163 163) !important;
+		color: var(--pui-text-disabled) !important;
 		background-color: transparent !important;
 		cursor: not-allowed !important;
 		opacity: 0.5;
@@ -603,39 +603,39 @@
 
 	.disabled:hover {
 		background-color: transparent !important;
-		color: rgb(163 163 163) !important;
+		color: var(--pui-text-disabled) !important;
 	}
 
 	:global(.dark) {
 		.days-header-bar {
-			background-color: #252529;
+			background-color: var(--pui-color-dark-200);
 		}
 
 		.day-label {
-			color: #d1d5db;
+			color: var(--pui-color-gray-300);
 		}
 
 		.day-button:hover {
-			background-color: rgba(var(--pistachio-rgbc), 0.1);
-			color: var(--pistachio);
+			background-color: var(--pui-bg-hover);
+			color: var(--pui-color-secondary);
 		}
 
 		.today {
-			background-color: rgba(var(--pistachio-rgbc), 0.15);
-			color: var(--pistachio);
+			background-color: var(--pui-bg-active);
+			color: var(--pui-color-secondary);
 		}
 
 		.selected {
-			background-color: var(--pistachio);
-			color: var(--midnight);
+			background-color: var(--pui-color-secondary);
+			color: var(--pui-color-primary);
 		}
 
 		.text-grey {
-			color: #6b7280;
+			color: var(--pui-color-gray-500);
 		}
 
 		.disabled {
-			color: #6b7280 !important;
+			color: var(--pui-color-gray-500) !important;
 			background-color: transparent !important;
 			cursor: not-allowed !important;
 			opacity: 0.5;
@@ -643,30 +643,30 @@
 
 		.disabled:hover {
 			background-color: transparent !important;
-			color: #6b7280 !important;
+			color: var(--pui-color-gray-500) !important;
 		}
 
 		.month-label.clickable:hover {
-			background-color: rgba(var(--pistachio-rgbc), 0.1);
+			background-color: var(--pui-bg-hover);
 		}
 
 		.year-button:hover:not(.disabled) {
-			background-color: rgba(var(--pistachio-rgbc), 0.1);
-			color: var(--pistachio);
+			background-color: var(--pui-bg-hover);
+			color: var(--pui-color-secondary);
 		}
 
 		.year-button.current-year {
-			background-color: rgba(var(--pistachio-rgbc), 0.15);
-			color: var(--pistachio);
+			background-color: var(--pui-bg-active);
+			color: var(--pui-color-secondary);
 		}
 
 		.year-button.selected {
-			background-color: var(--pistachio);
-			color: var(--midnight);
+			background-color: var(--pui-color-secondary);
+			color: var(--pui-color-primary);
 		}
 
 		.year-button.disabled {
-			color: #6b7280 !important;
+			color: var(--pui-color-gray-500) !important;
 		}
 	}
 </style>

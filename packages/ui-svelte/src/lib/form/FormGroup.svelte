@@ -56,13 +56,13 @@
 
 <style>
 	.label {
-		font-size: 1rem;
-		line-height: 1.5rem;
+		font-size: var(--pui-font-size-md);
+		line-height: var(--pui-line-height-normal);
 	}
 
 	.error-text {
-		color: var(--danger-text);
-		font-size: 0.875rem;
-		margin-top: 0.25rem;
+		color: var(--pui-text-danger);
+		font-size: var(--pui-font-size-sm);
+		margin-top: var(--pui-spacing-1);
 	}
 </style>

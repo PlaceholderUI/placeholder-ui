@@ -66,70 +66,70 @@
 	.alert {
 		display: flex;
 		align-items: flex-start;
-		gap: var(--cui-spacing-3, 0.75rem);
-		padding: var(--cui-spacing-4, 1rem);
-		border-radius: var(--cui-radius-md, 0.5rem);
+		gap: var(--pui-spacing-3);
+		padding: var(--pui-spacing-4);
+		border-radius: var(--pui-radius-md);
 		border: 1px solid;
 	}
 
 	.alert-default {
-		background-color: var(--cui-color-gray-50, #f9fafb);
-		border-color: var(--cui-color-gray-200, #e5e7eb);
-		color: var(--cui-color-gray-800, #1f2937);
+		background-color: var(--pui-color-gray-50);
+		border-color: var(--pui-color-gray-200);
+		color: var(--pui-color-gray-800);
 	}
 
 	.alert-info {
-		background-color: var(--cui-color-info-50, #eff6ff);
-		border-color: var(--cui-color-info-200, #bfdbfe);
-		color: var(--cui-color-info-800, #1e40af);
+		background-color: var(--pui-color-info-50);
+		border-color: var(--pui-color-info-200);
+		color: var(--pui-color-info-800);
 	}
 
 	.alert-success {
-		background-color: var(--cui-color-success-50, #f0fdf4);
-		border-color: var(--cui-color-success-200, #bbf7d0);
-		color: var(--cui-color-success-800, #166534);
+		background-color: var(--pui-color-success-50);
+		border-color: var(--pui-color-success-200);
+		color: var(--pui-color-success-800);
 	}
 
 	.alert-warning {
-		background-color: var(--cui-color-warning-50, #fffbeb);
-		border-color: var(--cui-color-warning-200, #fde68a);
-		color: var(--cui-color-warning-800, #92400e);
+		background-color: var(--pui-color-warning-50);
+		border-color: var(--pui-color-warning-200);
+		color: var(--pui-color-warning-800);
 	}
 
 	.alert-danger {
-		background-color: var(--cui-color-danger-50, #fef2f2);
-		border-color: var(--cui-color-danger-200, #fecaca);
-		color: var(--cui-color-danger-800, #991b1b);
+		background-color: var(--pui-color-danger-50);
+		border-color: var(--pui-color-danger-200);
+		color: var(--pui-color-danger-800);
 	}
 
 	:global(.dark) .alert-default {
-		background-color: var(--cui-color-dark-200, #374151);
-		border-color: var(--cui-color-dark-border, #4b5563);
-		color: var(--cui-color-gray-100, #f3f4f6);
+		background-color: var(--pui-color-dark-200);
+		border-color: var(--pui-color-dark-border);
+		color: var(--pui-color-gray-100);
 	}
 
 	:global(.dark) .alert-info {
-		background-color: rgba(59, 130, 246, 0.1);
-		border-color: rgba(59, 130, 246, 0.3);
-		color: var(--cui-color-info-300, #93c5fd);
+		background-color: var(--pui-color-info-900);
+		border-color: var(--pui-color-info-700);
+		color: var(--pui-color-info-300);
 	}
 
 	:global(.dark) .alert-success {
-		background-color: rgba(34, 197, 94, 0.1);
-		border-color: rgba(34, 197, 94, 0.3);
-		color: var(--cui-color-success-300, #86efac);
+		background-color: var(--pui-color-success-900);
+		border-color: var(--pui-color-success-700);
+		color: var(--pui-color-success-300);
 	}
 
 	:global(.dark) .alert-warning {
-		background-color: rgba(245, 158, 11, 0.1);
-		border-color: rgba(245, 158, 11, 0.3);
-		color: var(--cui-color-warning-300, #fcd34d);
+		background-color: var(--pui-color-warning-900);
+		border-color: var(--pui-color-warning-700);
+		color: var(--pui-color-warning-300);
 	}
 
 	:global(.dark) .alert-danger {
-		background-color: rgba(239, 68, 68, 0.1);
-		border-color: rgba(239, 68, 68, 0.3);
-		color: var(--cui-color-danger-300, #fca5a5);
+		background-color: var(--pui-color-danger-900);
+		border-color: var(--pui-color-danger-700);
+		color: var(--pui-color-danger-300);
 	}
 
 	.alert-icon {
@@ -144,13 +144,13 @@
 	}
 
 	.alert-title {
-		font-weight: var(--cui-font-weight-semibold, 600);
-		margin-bottom: var(--cui-spacing-1, 0.25rem);
+		font-weight: var(--pui-font-weight-semibold);
+		margin-bottom: var(--pui-spacing-1);
 	}
 
 	.alert-message {
-		font-size: var(--cui-font-size-sm, 0.875rem);
-		line-height: var(--cui-line-height-relaxed, 1.625);
+		font-size: var(--pui-font-size-sm);
+		line-height: var(--pui-line-height-relaxed);
 	}
 
 	.alert-dismiss {
@@ -161,11 +161,11 @@
 		background: none;
 		border: none;
 		cursor: pointer;
-		padding: var(--cui-spacing-1, 0.25rem);
-		border-radius: var(--cui-radius-sm, 0.25rem);
+		padding: var(--pui-spacing-1);
+		border-radius: var(--pui-radius-sm);
 		color: inherit;
 		opacity: 0.7;
-		transition: opacity 0.15s ease;
+		transition: opacity var(--pui-transition-fast) var(--pui-ease-in-out);
 	}
 
 	.alert-dismiss:hover {

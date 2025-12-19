@@ -132,32 +132,21 @@
 {/if}
 
 <style>
-	/* .item {
-		&:hover,
-		&.selected {
-			@apply bg-main-border;
-			@apply text-accent;
-		}
-	} */
-
 	.combobox-multi {
 		position: absolute;
 		width: 100%;
-		z-index: 50;
-		border-radius: 0.25rem;
+		z-index: var(--pui-z-dropdown);
+		border-radius: var(--pui-radius-base);
 		overflow: hidden;
-		border: 1px solid var(--main-border-color);
-		background-color: var(--input-bg-color);
-		/* absolute w-full z-50 rounded overflow-hidden
-			border border-main-border bg-input */
+		border: 1px solid var(--pui-border-default);
+		background-color: var(--pui-input-bg);
 	}
 
 	.combobox-multi-panel {
 		overflow: auto;
 		max-height: 20rem;
-		border: 1px solid var(--border-color);
+		border: 1px solid var(--pui-border-default);
 		border-top: none;
-		/* max-h-80 overflow-auto */
 	}
 
 	.combobox-item {
@@ -166,46 +155,43 @@
 		align-items: center;
 		text-align: left;
 		background-color: transparent;
-		color: var(--text-color);
+		color: var(--pui-text-primary);
 		border: none;
-		font-size: 1rem;
+		font-size: var(--pui-font-size-md);
 		cursor: pointer;
-		gap: 0.5rem;
-		/* item w-full flex items-center text-left */
+		gap: var(--pui-spacing-2);
 	}
 
 	.p-2 {
-		padding: 0.5rem;
+		padding: var(--pui-spacing-2);
 	}
 
 	.combobox-item.selected,
 	.combobox-item:hover {
-		background-color: var(--border-color);
-		color: rgb(var(--accent-color-rgb));
+		background-color: var(--pui-bg-hover);
+		color: var(--pui-accent-color);
 	}
 
 	.seperator {
 		height: 1px;
-		background-color: var(--border-color);
-		margin: 0.5rem 0;
+		background-color: var(--pui-border-default);
+		margin: var(--pui-spacing-2) 0;
 	}
 
 	.group-label {
-		font-weight: bold;
-		padding: 0.5rem;
-		background-color: #f6f6f6;
-		color: rgb(var(--accent-color-rgb));
+		font-weight: var(--pui-font-weight-bold);
+		padding: var(--pui-spacing-2);
+		background-color: var(--pui-bg-surface-raised);
+		color: var(--pui-accent-color);
 	}
 
 	.no-results {
-		color: var(--text-color);
-		border: 1px solid var(--border-color);
+		color: var(--pui-text-primary);
+		border: 1px solid var(--pui-border-default);
 		border-top: none;
 	}
 
-	:global(.dark) {
-		.group-label {
-			background: black;
-		}
+	:global(.dark) .group-label {
+		background: var(--pui-color-black);
 	}
 </style>

@@ -139,33 +139,33 @@
 	header {
 		position: sticky;
 		top: 0;
-		z-index: 40;
+		z-index: var(--pui-z-sticky);
 		height: 46px;
 		display: flex;
-		background: white;
-		border-bottom: 0.666667px solid rgb(222, 226, 230);
+		background: var(--pui-color-white);
+		border-bottom: 1px solid var(--pui-border-default);
 	}
 
 	.links-container {
 		display: flex;
-		gap: 1rem;
+		gap: var(--pui-spacing-4);
 	}
 
 	:global(.dark) header {
-		background: black;
+		background: var(--pui-color-black);
 		border: none;
 	}
 
 	.inner-navbar {
 		display: flex;
 		align-items: center;
-		gap: 1rem;
+		gap: var(--pui-spacing-4);
 
 		margin: 0 auto;
-		padding: 0 1em;
+		padding: 0 var(--pui-spacing-4);
 		height: 100%;
 		width: 100%;
-		color: var(--midnight);
+		color: var(--pui-color-primary);
 	}
 
 	.middle {
@@ -193,8 +193,8 @@
 	.top-header {
 		border-bottom-width: 1px;
 		border-bottom-style: solid;
-		border-color: var(--border-color);
-		height: 1.5rem;
+		border-color: var(--pui-border-default);
+		height: var(--pui-spacing-6);
 	}
 
 	.inner-navbar :global(.cu-icon) {
@@ -206,10 +206,10 @@
 	}
 
 	.inner-navbar :global(.drawer-btn-left) {
-		margin-right: 0.25rem;
+		margin-right: var(--pui-spacing-1);
 	}
 
 	.inner-navbar :global(.drawer-btn-right) {
-		margin-left: 0.5rem;
+		margin-left: var(--pui-spacing-2);
 	}
 </style>

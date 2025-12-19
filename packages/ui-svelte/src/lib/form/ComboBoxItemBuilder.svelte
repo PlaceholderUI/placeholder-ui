@@ -323,21 +323,21 @@
 	}
 
 	.builder-content {
-		border: 1px solid var(--border-color);
-		border-radius: 0.375rem;
+		border: 1px solid var(--pui-border-default);
+		border-radius: var(--pui-radius-md);
 		overflow: hidden;
 	}
 
 	.header-row {
 		display: grid;
 		grid-template-columns: 3.5rem 1fr 1fr 2.5rem;
-		gap: 0.5rem;
-		padding: 0.5rem 0.75rem;
-		background-color: var(--input-bg-color);
-		border-bottom: 1px solid var(--border-color);
-		font-size: 0.75rem;
-		font-weight: 600;
-		color: var(--text-muted);
+		gap: var(--pui-spacing-2);
+		padding: var(--pui-spacing-2) var(--pui-spacing-3);
+		background-color: var(--pui-input-bg);
+		border-bottom: 1px solid var(--pui-border-default);
+		font-size: var(--pui-font-size-xs);
+		font-weight: var(--pui-font-weight-semibold);
+		color: var(--pui-text-muted);
 		text-transform: uppercase;
 		letter-spacing: 0.025em;
 	}
@@ -346,18 +346,18 @@
 	.add-row {
 		display: grid;
 		grid-template-columns: 3.5rem 1fr 1fr 2.5rem;
-		gap: 0.5rem;
-		padding: 0.5rem 0.75rem;
+		gap: var(--pui-spacing-2);
+		padding: var(--pui-spacing-2) var(--pui-spacing-3);
 		align-items: center;
-		border-bottom: 1px solid var(--border-color);
+		border-bottom: 1px solid var(--pui-border-default);
 	}
 
 	.item-row:last-of-type {
-		border-bottom: 1px solid var(--border-color);
+		border-bottom: 1px solid var(--pui-border-default);
 	}
 
 	.add-row {
-		background-color: rgba(var(--midnight-rgbc), 0.02);
+		background-color: var(--pui-bg-subtle);
 		border-bottom: none;
 	}
 
@@ -375,22 +375,22 @@
 
 	.item-input {
 		width: 100%;
-		padding: 0.375rem 0.5rem;
-		border: 1px solid var(--border-color);
-		border-radius: 0.25rem;
-		background-color: var(--input-bg-color);
-		color: var(--text-color);
-		font-size: 0.875rem;
-		transition: border-color 0.15s;
+		padding: var(--pui-spacing-1_5) var(--pui-spacing-2);
+		border: 1px solid var(--pui-border-default);
+		border-radius: var(--pui-radius-sm);
+		background-color: var(--pui-input-bg);
+		color: var(--pui-text-primary);
+		font-size: var(--pui-font-size-sm);
+		transition: border-color var(--pui-transition-fast) var(--pui-ease-in-out);
 	}
 
 	.item-input:focus {
 		outline: none;
-		border-color: var(--accent-color);
+		border-color: var(--pui-accent-color);
 	}
 
 	.item-input::placeholder {
-		color: var(--placeholder-color);
+		color: var(--pui-text-placeholder);
 	}
 
 	.new-input {
@@ -398,47 +398,48 @@
 	}
 
 	.item-input.error {
-		border-color: var(--danger-text);
+		border-color: var(--pui-text-danger);
 	}
 
 	.item-input.error:focus {
-		border-color: var(--danger-text);
+		border-color: var(--pui-text-danger);
 	}
 
 	.error-message {
-		padding: 0.375rem 0.75rem;
-		font-size: 0.75rem;
-		color: var(--danger-text);
-		background-color: rgba(var(--midnight-rgbc), 0.02);
+		padding: var(--pui-spacing-1_5) var(--pui-spacing-3);
+		font-size: var(--pui-font-size-xs);
+		color: var(--pui-text-danger);
+		background-color: var(--pui-bg-subtle);
 	}
 
 	.quick-add {
-		padding: 0.5rem 0.75rem;
-		background-color: rgba(var(--midnight-rgbc), 0.02);
+		padding: var(--pui-spacing-2) var(--pui-spacing-3);
+		background-color: var(--pui-bg-subtle);
 		display: flex;
 		justify-content: flex-end;
 	}
 
 	.summary {
 		display: flex;
-		gap: 1rem;
-		padding: 0.5rem 0;
-		font-size: 0.875rem;
-		color: var(--text-muted);
-		margin-top: 0.5rem;
+		gap: var(--pui-spacing-4);
+		padding: var(--pui-spacing-2) 0;
+		font-size: var(--pui-font-size-sm);
+		color: var(--pui-text-muted);
+		margin-top: var(--pui-spacing-2);
 	}
 
 	.summary-count {
-		font-weight: 500;
+		font-weight: var(--pui-font-weight-medium);
 	}
 
 	.summary-default {
-		color: var(--accent-color);
+		color: var(--pui-accent-color);
 	}
 
 	:global(.dark) .add-row,
-	:global(.dark) .quick-add {
-		background-color: rgba(var(--pistachio-rgbc), 0.02);
+	:global(.dark) .quick-add,
+	:global(.dark) .error-message {
+		background-color: var(--pui-bg-subtle);
 	}
 
 	/* Responsive adjustments */
@@ -447,13 +448,13 @@
 		.item-row,
 		.add-row {
 			grid-template-columns: 2.5rem 1fr 1fr 2rem;
-			gap: 0.25rem;
-			padding: 0.375rem 0.5rem;
+			gap: var(--pui-spacing-1);
+			padding: var(--pui-spacing-1_5) var(--pui-spacing-2);
 		}
 
 		.item-input {
-			padding: 0.25rem 0.375rem;
-			font-size: 0.8125rem;
+			padding: var(--pui-spacing-1) var(--pui-spacing-1_5);
+			font-size: var(--pui-font-size-sm);
 		}
 	}
 </style>

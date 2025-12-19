@@ -7,193 +7,193 @@
 	/* ============================================
 	 * FORM INPUTS
 	 * ============================================ */
-	--cui-input-bg: var(--cui-color-white);
-	--cui-input-bg-disabled: var(--cui-color-gray-200);
-	--cui-input-border: var(--cui-border-default);
-	--cui-input-border-focus: var(--cui-color-accent);
-	--cui-input-border-error: var(--cui-color-danger);
-	--cui-input-placeholder: var(--cui-text-placeholder);
-	--cui-input-text: var(--cui-text-primary);
-	--cui-input-padding-y: var(--cui-spacing-1);
-	--cui-input-padding-x: var(--cui-spacing-2);
-	--cui-input-font-size: var(--cui-font-size-md);
-	--cui-input-border-radius: var(--cui-radius-base);
-	--cui-input-border-width: 1px;
+	--pui-input-bg: var(--pui-color-white);
+	--pui-input-bg-disabled: var(--pui-color-gray-200);
+	--pui-input-border: var(--pui-border-default);
+	--pui-input-border-focus: var(--pui-color-accent);
+	--pui-input-border-error: var(--pui-color-danger);
+	--pui-input-placeholder: var(--pui-text-placeholder);
+	--pui-input-text: var(--pui-text-primary);
+	--pui-input-padding-y: var(--pui-spacing-1);
+	--pui-input-padding-x: var(--pui-spacing-2);
+	--pui-input-font-size: var(--pui-font-size-md);
+	--pui-input-border-radius: var(--pui-radius-base);
+	--pui-input-border-width: 1px;
 
 	/* ============================================
 	 * BUTTON
 	 * ============================================ */
-	--cui-btn-padding-y: var(--cui-spacing-2);
-	--cui-btn-padding-x: var(--cui-spacing-4);
-	--cui-btn-font-size: var(--cui-font-size-base);
-	--cui-btn-font-weight: var(--cui-font-weight-semibold);
-	--cui-btn-border-radius: var(--cui-radius-md);
-	--cui-btn-border-width: 1px;
+	--pui-btn-padding-y: var(--pui-spacing-2);
+	--pui-btn-padding-x: var(--pui-spacing-4);
+	--pui-btn-font-size: var(--pui-font-size-base);
+	--pui-btn-font-weight: var(--pui-font-weight-semibold);
+	--pui-btn-border-radius: var(--pui-radius-md);
+	--pui-btn-border-width: 1px;
 
 	/* ============================================
 	 * PAPER
 	 * ============================================ */
-	--cui-paper-bg: var(--cui-bg-surface);
-	--cui-paper-shadow: var(--cui-shadow-sm);
-	--cui-paper-radius: var(--cui-radius-base);
-	--cui-paper-padding: var(--cui-spacing-3);
-	--cui-paper-title-bg: rgb(252, 252, 252);
-	--cui-paper-title-border: rgb(229, 231, 235);
-	--cui-paper-body-bg: var(--cui-color-white);
+	--pui-paper-bg: var(--pui-bg-surface);
+	--pui-paper-shadow: var(--pui-shadow-sm);
+	--pui-paper-radius: var(--pui-radius-base);
+	--pui-paper-padding: var(--pui-spacing-3);
+	--pui-paper-title-bg: rgb(252, 252, 252);
+	--pui-paper-title-border: rgb(229, 231, 235);
+	--pui-paper-body-bg: var(--pui-color-white);
 
 	/* ============================================
 	 * DIALOG
 	 * ============================================ */
-	--cui-dialog-backdrop: var(--cui-bg-overlay-dark);
-	--cui-dialog-bg: var(--cui-bg-page);
-	--cui-dialog-radius: var(--cui-radius-base);
-	--cui-dialog-shadow: var(--cui-shadow-lg);
-	--cui-dialog-sm-width: 20rem;
-	--cui-dialog-md-width: 30rem;
-	--cui-dialog-lg-width: 40rem;
-	--cui-dialog-xl-width: 50rem;
+	--pui-dialog-backdrop: var(--pui-bg-overlay-dark);
+	--pui-dialog-bg: var(--pui-bg-page);
+	--pui-dialog-radius: var(--pui-radius-base);
+	--pui-dialog-shadow: var(--pui-shadow-lg);
+	--pui-dialog-sm-width: 20rem;
+	--pui-dialog-md-width: 30rem;
+	--pui-dialog-lg-width: 40rem;
+	--pui-dialog-xl-width: 50rem;
 
 	/* ============================================
 	 * DRAWER
 	 * ============================================ */
-	--cui-drawer-bg: var(--cui-bg-page);
-	--cui-drawer-shadow: var(--cui-shadow-lg);
-	--cui-drawer-width: 400px;
-	--cui-drawer-max-width: 90vw;
+	--pui-drawer-bg: var(--pui-bg-page);
+	--pui-drawer-shadow: var(--pui-shadow-lg);
+	--pui-drawer-width: 400px;
+	--pui-drawer-max-width: 90vw;
 
 	/* ============================================
 	 * SIDENAV
 	 * ============================================ */
-	--cui-sidenav-width: 260px;
-	--cui-sidenav-collapsed-width: 60px;
-	--cui-sidenav-bg: var(--cui-bg-surface);
-	--cui-sidenav-border: var(--cui-border-default);
-	--cui-sidenav-item-hover-bg: rgba(var(--cui-color-primary-rgb), 0.08);
-	--cui-sidenav-item-active-bg: rgba(var(--cui-color-secondary-rgb), 0.2);
-	--cui-sidenav-item-active-border: var(--cui-color-secondary);
+	--pui-sidenav-width: 260px;
+	--pui-sidenav-collapsed-width: 60px;
+	--pui-sidenav-bg: var(--pui-bg-surface);
+	--pui-sidenav-border: var(--pui-border-default);
+	--pui-sidenav-item-hover-bg: rgba(var(--pui-color-primary-rgb), 0.08);
+	--pui-sidenav-item-active-bg: rgba(var(--pui-color-secondary-rgb), 0.2);
+	--pui-sidenav-item-active-border: var(--pui-color-secondary);
 
 	/* ============================================
 	 * NAVBAR
 	 * ============================================ */
-	--cui-navbar-height: 60px;
-	--cui-navbar-bg: var(--cui-bg-surface);
-	--cui-navbar-border: var(--cui-border-default);
+	--pui-navbar-height: 60px;
+	--pui-navbar-bg: var(--pui-bg-surface);
+	--pui-navbar-border: var(--pui-border-default);
 
 	/* ============================================
 	 * DROPDOWN
 	 * ============================================ */
-	--cui-dropdown-bg: var(--cui-bg-surface);
-	--cui-dropdown-border: var(--cui-border-default);
-	--cui-dropdown-radius: var(--cui-radius-md);
-	--cui-dropdown-shadow: var(--cui-shadow-md);
-	--cui-dropdown-item-hover-bg: var(--cui-bg-surface-raised);
-	--cui-dropdown-item-active-bg: rgba(var(--cui-color-secondary-rgb), 0.15);
+	--pui-dropdown-bg: var(--pui-bg-surface);
+	--pui-dropdown-border: var(--pui-border-default);
+	--pui-dropdown-radius: var(--pui-radius-md);
+	--pui-dropdown-shadow: var(--pui-shadow-md);
+	--pui-dropdown-item-hover-bg: var(--pui-bg-surface-raised);
+	--pui-dropdown-item-active-bg: rgba(var(--pui-color-secondary-rgb), 0.15);
 
 	/* ============================================
 	 * POPOVER
 	 * ============================================ */
-	--cui-popover-bg: var(--cui-bg-surface);
-	--cui-popover-border: var(--cui-border-default);
-	--cui-popover-radius: var(--cui-radius-md);
-	--cui-popover-shadow: var(--cui-shadow-md);
+	--pui-popover-bg: var(--pui-bg-surface);
+	--pui-popover-border: var(--pui-border-default);
+	--pui-popover-radius: var(--pui-radius-md);
+	--pui-popover-shadow: var(--pui-shadow-md);
 
 	/* ============================================
 	 * TOOLTIP
 	 * ============================================ */
-	--cui-tooltip-bg: var(--cui-color-gray-900);
-	--cui-tooltip-text: var(--cui-color-white);
-	--cui-tooltip-radius: var(--cui-radius-base);
+	--pui-tooltip-bg: var(--pui-color-gray-900);
+	--pui-tooltip-text: var(--pui-color-white);
+	--pui-tooltip-radius: var(--pui-radius-base);
 
 	/* ============================================
 	 * BADGE
 	 * ============================================ */
-	--cui-badge-padding-y: var(--cui-spacing-0_5);
-	--cui-badge-padding-x: var(--cui-spacing-2);
-	--cui-badge-font-size: var(--cui-font-size-xs);
-	--cui-badge-radius: var(--cui-radius-full);
+	--pui-badge-padding-y: var(--pui-spacing-0_5);
+	--pui-badge-padding-x: var(--pui-spacing-2);
+	--pui-badge-font-size: var(--pui-font-size-xs);
+	--pui-badge-radius: var(--pui-radius-full);
 
 	/* ============================================
 	 * TABLE
 	 * ============================================ */
-	--cui-table-bg: var(--cui-bg-surface);
-	--cui-table-border: var(--cui-border-subtle);
-	--cui-table-radius: var(--cui-radius-base);
-	--cui-table-header-bg: var(--cui-bg-surface-raised);
-	--cui-table-row-hover-bg: var(--cui-bg-surface-raised);
+	--pui-table-bg: var(--pui-bg-surface);
+	--pui-table-border: var(--pui-border-subtle);
+	--pui-table-radius: var(--pui-radius-base);
+	--pui-table-header-bg: var(--pui-bg-surface-raised);
+	--pui-table-row-hover-bg: var(--pui-bg-surface-raised);
 
 	/* ============================================
 	 * TABS
 	 * ============================================ */
-	--cui-tabs-border: var(--cui-border-default);
-	--cui-tab-hover-bg: var(--cui-bg-surface-raised);
-	--cui-tab-active-border: var(--cui-color-secondary);
+	--pui-tabs-border: var(--pui-border-default);
+	--pui-tab-hover-bg: var(--pui-bg-surface-raised);
+	--pui-tab-active-border: var(--pui-color-secondary);
 
 	/* ============================================
 	 * ALERT
 	 * ============================================ */
-	--cui-alert-radius: var(--cui-radius-md);
-	--cui-alert-info-bg: rgba(28, 126, 214, 0.1);
-	--cui-alert-info-border: var(--cui-color-info);
-	--cui-alert-success-bg: rgba(55, 178, 77, 0.1);
-	--cui-alert-success-border: var(--cui-color-success);
-	--cui-alert-warning-bg: rgba(252, 196, 25, 0.1);
-	--cui-alert-warning-border: var(--cui-color-warning);
-	--cui-alert-danger-bg: var(--cui-color-danger-subtle);
-	--cui-alert-danger-border: var(--cui-color-danger);
+	--pui-alert-radius: var(--pui-radius-md);
+	--pui-alert-info-bg: rgba(28, 126, 214, 0.1);
+	--pui-alert-info-border: var(--pui-color-info);
+	--pui-alert-success-bg: rgba(55, 178, 77, 0.1);
+	--pui-alert-success-border: var(--pui-color-success);
+	--pui-alert-warning-bg: rgba(252, 196, 25, 0.1);
+	--pui-alert-warning-border: var(--pui-color-warning);
+	--pui-alert-danger-bg: var(--pui-color-danger-subtle);
+	--pui-alert-danger-border: var(--pui-color-danger);
 
 	/* ============================================
 	 * AVATAR
 	 * ============================================ */
-	--cui-avatar-bg: var(--cui-color-gray-300);
-	--cui-avatar-text: var(--cui-color-gray-700);
-	--cui-avatar-radius: var(--cui-radius-full);
+	--pui-avatar-bg: var(--pui-color-gray-300);
+	--pui-avatar-text: var(--pui-color-gray-700);
+	--pui-avatar-radius: var(--pui-radius-full);
 
 	/* ============================================
 	 * LOADER
 	 * ============================================ */
-	--cui-loader-color: var(--cui-color-primary);
-	--cui-loader-size: 2rem;
+	--pui-loader-color: var(--pui-color-primary);
+	--pui-loader-size: 2rem;
 
 	/* ============================================
 	 * SWITCH
 	 * ============================================ */
-	--cui-switch-width: 2.5rem;
-	--cui-switch-height: 1.5rem;
-	--cui-switch-bg: var(--cui-color-gray-300);
-	--cui-switch-bg-checked: var(--cui-color-secondary);
-	--cui-switch-thumb-bg: var(--cui-color-white);
+	--pui-switch-width: 2.5rem;
+	--pui-switch-height: 1.5rem;
+	--pui-switch-bg: var(--pui-color-gray-300);
+	--pui-switch-bg-checked: var(--pui-color-secondary);
+	--pui-switch-thumb-bg: var(--pui-color-white);
 
 	/* ============================================
 	 * CHECKBOX & RADIO
 	 * ============================================ */
-	--cui-check-size: 1.125rem;
-	--cui-check-bg: var(--cui-input-bg);
-	--cui-check-border: var(--cui-input-border);
-	--cui-check-bg-checked: var(--cui-color-secondary);
-	--cui-check-icon-color: var(--cui-color-primary);
+	--pui-check-size: 1.125rem;
+	--pui-check-bg: var(--pui-input-bg);
+	--pui-check-border: var(--pui-input-border);
+	--pui-check-bg-checked: var(--pui-color-secondary);
+	--pui-check-icon-color: var(--pui-color-primary);
 
 	/* ============================================
 	 * DATEPICKER
 	 * ============================================ */
-	--cui-datepicker-bg: var(--cui-bg-surface);
-	--cui-datepicker-border: var(--cui-border-default);
-	--cui-datepicker-shadow: var(--cui-shadow-md);
-	--cui-datepicker-day-selected-bg: var(--cui-color-secondary);
-	--cui-datepicker-day-selected-text: var(--cui-color-primary);
-	--cui-datepicker-day-today-border: var(--cui-color-accent);
+	--pui-datepicker-bg: var(--pui-bg-surface);
+	--pui-datepicker-border: var(--pui-border-default);
+	--pui-datepicker-shadow: var(--pui-shadow-md);
+	--pui-datepicker-day-selected-bg: var(--pui-color-secondary);
+	--pui-datepicker-day-selected-text: var(--pui-color-primary);
+	--pui-datepicker-day-today-border: var(--pui-color-accent);
 
 	/* ============================================
 	 * PAGINATION
 	 * ============================================ */
-	--cui-pagination-item-hover-bg: var(--cui-bg-surface-raised);
-	--cui-pagination-item-active-bg: var(--cui-color-primary);
-	--cui-pagination-item-active-text: var(--cui-color-white);
+	--pui-pagination-item-hover-bg: var(--pui-bg-surface-raised);
+	--pui-pagination-item-active-bg: var(--pui-color-primary);
+	--pui-pagination-item-active-text: var(--pui-color-white);
 
 	/* ============================================
 	 * TOAST
 	 * ============================================ */
-	--cui-toast-bg: var(--cui-bg-surface);
-	--cui-toast-border: var(--cui-border-default);
-	--cui-toast-radius: var(--cui-radius-md);
-	--cui-toast-shadow: var(--cui-shadow-lg);
+	--pui-toast-bg: var(--pui-bg-surface);
+	--pui-toast-border: var(--pui-border-default);
+	--pui-toast-radius: var(--pui-radius-md);
+	--pui-toast-shadow: var(--pui-shadow-lg);
 }

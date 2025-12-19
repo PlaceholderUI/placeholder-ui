@@ -38,7 +38,6 @@ export { default as Avatar } from './display/Avatar.svelte';
 // Layout Components
 export { default as Navbar } from './layout/Navbar.svelte';
 export { default as CustomNavbar } from './layout/CustomNavbar.svelte';
-export { default as AppShell } from './layout/AppShell.svelte';
 export { default as Sidenav } from './layout/Sidenav.svelte';
 export type { SidenavItem, SidenavSection } from './layout/Sidenav.svelte';
 

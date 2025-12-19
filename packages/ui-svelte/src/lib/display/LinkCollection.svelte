@@ -74,8 +74,8 @@
 	.link-collection {
 		display: flex;
 		flex-direction: column;
-		border: 1px solid var(--border-color);
-		border-radius: 6px;
+		border: 1px solid var(--pui-border-default);
+		border-radius: var(--pui-radius-md);
 	}
 
 	.link-collection.not-rounded {
@@ -98,7 +98,7 @@
 	.link-inner {
 		display: flex;
 		align-items: center;
-		gap: 0.5rem;
+		gap: var(--pui-spacing-2);
 	}
 
 	.link-inner.left {
@@ -106,18 +106,18 @@
 	}
 
 	.link-collection :global(.link) {
-		transition: all 200ms;
-		border-bottom: 1px solid var(--border-color);
-		padding: 0.5rem;
+		transition: all var(--pui-transition-fast) var(--pui-ease-in-out);
+		border-bottom: 1px solid var(--pui-border-default);
+		padding: var(--pui-spacing-2);
 		display: flex;
 		align-items: center;
-		gap: 0.5rem;
+		gap: var(--pui-spacing-2);
 		text-decoration: none;
-		color: var(--turquoise-dark);
+		color: var(--pui-color-accent);
 		font-weight: normal;
 
 		&:hover {
-			background: #b7e1d8;
+			background: var(--pui-bg-hover);
 		}
 
 		&:last-child {
@@ -127,12 +127,12 @@
 
 	:global(.dark) {
 		.link-collection :global(.link) {
-			color: var(--turquoise);
+			color: var(--pui-color-accent);
 		}
 
 		.link-collection :global(.link) {
 			&:hover {
-				background: var(--midnight);
+				background: var(--pui-bg-hover);
 			}
 		}
 	}
@@ -143,11 +143,11 @@
 
 	.footer-button {
 		flex: 1;
-		border-right: 1px solid var(--border-color);
+		border-right: 1px solid var(--pui-border-default);
 	}
 
 	.link-collection .footer-button :global(.link) {
-		font-weight: 600;
+		font-weight: var(--pui-font-weight-semibold);
 	}
 
 	.footer-button:last-child {

@@ -90,8 +90,8 @@
 	/>
 </svelte:head>
 
-<!-- Header using Navbar component -->
-<div class="docs-header">
+	<!-- Header using Navbar component -->
+	<div class="docs-header">
 		<Navbar
 			appNav={{ text: "Placeholder UI", href: "/" }}
 			secondaryItems={secondaryNavItems}
@@ -136,7 +136,7 @@
 				{@render children()}
 			</div>
 		</main>
-</div>
+	</div>
 
 <style>
 	.navbar-search {

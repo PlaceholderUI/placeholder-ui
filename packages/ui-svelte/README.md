@@ -22,18 +22,14 @@ npm install @placeholderco/placeholder-ui
 
 ```svelte
 <script>
-  import { AppShell, Button, Paper } from '@placeholderco/placeholder-ui';
+  import { Button, Paper } from '@placeholderco/placeholder-ui';
 </script>
 
-<AppShell>
-  <Paper>
-    <h1>Hello World</h1>
-    <Button variant="primary">Click Me</Button>
-  </Paper>
-</AppShell>
+<Paper>
+  <h1>Hello World</h1>
+  <Button variant="primary">Click Me</Button>
+</Paper>
 ```
-
-The `AppShell` component automatically imports all required styles.
 
 ## Components
 
@@ -71,7 +67,6 @@ The `AppShell` component automatically imports all required styles.
 - `LinkCollection` - Link lists
 
 ### Layout Components
-- `AppShell` - Application wrapper
 - `Navbar` - Navigation bar
 - `Sidenav` - Side navigation
 
@@ -98,15 +93,15 @@ The library uses CSS variables for theming. Override variables after importing s
 ```css
 :root {
   /* Brand colors */
-  --cui-color-primary: #1a365d;
-  --cui-color-secondary: #48bb78;
-  --cui-color-accent: #4fd1c5;
+  --pui-color-primary: #1a365d;
+  --pui-color-secondary: #48bb78;
+  --pui-color-accent: #4fd1c5;
 
   /* Typography */
-  --cui-font-family-sans: 'Inter', sans-serif;
+  --pui-font-family-sans: 'Inter', sans-serif;
 
   /* Spacing, radius, shadows, etc. */
-  --cui-radius-md: 8px;
+  --pui-radius-md: 8px;
 }
 ```
 
@@ -129,21 +124,21 @@ setTheme('dark'); // 'light', 'dark', or 'system'
 ## CSS Variable Reference
 
 ### Primitives (tokens.css)
-- `--cui-color-*` - Color palette
-- `--cui-font-size-*` - Typography sizes
-- `--cui-spacing-*` - Spacing scale
-- `--cui-radius-*` - Border radius
-- `--cui-shadow-*` - Box shadows
+- `--pui-color-*` - Color palette
+- `--pui-font-size-*` - Typography sizes
+- `--pui-spacing-*` - Spacing scale
+- `--pui-radius-*` - Border radius
+- `--pui-shadow-*` - Box shadows
 
 ### Semantic (semantic.css)
-- `--cui-bg-*` - Background colors
-- `--cui-text-*` - Text colors
-- `--cui-border-*` - Border colors
+- `--pui-bg-*` - Background colors
+- `--pui-text-*` - Text colors
+- `--pui-border-*` - Border colors
 
 ### Components (components.css)
-- `--cui-btn-*` - Button styles
-- `--cui-input-*` - Input styles
-- `--cui-paper-*` - Paper styles
+- `--pui-btn-*` - Button styles
+- `--pui-input-*` - Input styles
+- `--pui-paper-*` - Paper styles
 - And more per component...
 
 ## Icons

@@ -48,13 +48,13 @@
 
 <style>
     :root .switch-container {
-		--accent-color: var(--midnight);
-		--gray: #ccc;
+		--switch-accent-color: var(--pui-color-primary);
+		--switch-track-color: var(--pui-border-disabled);
 	}
 
     :global(.dark) .switch-container {
-        --accent-color: var(--midnight);
-        --gray: #444;
+        --switch-accent-color: var(--pui-color-primary);
+        --switch-track-color: var(--pui-color-gray-600);
     }
 
 	.disabled button {
@@ -64,13 +64,13 @@
 
     /* Inner Design Option */
     .s--inner button {
-        padding: 0.5em;
-        background-color: #fff;
-        border: 1px solid var(--gray);
+        padding: var(--pui-spacing-2);
+        background-color: var(--pui-color-white);
+        border: 1px solid var(--switch-track-color);
     }
 
     .s--inner button:focus {
-        outline: var(--midnight) solid 1px;
+        outline: var(--pui-color-primary) solid 1px;
     }
 
     /* Slider Design Option */
@@ -84,8 +84,8 @@
         width: 3em;
         height: 1.6em;
         position: relative;
-        margin: 0 0 0 0.5em;
-        background: var(--gray);
+        margin: 0 0 0 var(--pui-spacing-2);
+        background: var(--switch-track-color);
         border: none;
     }
 
@@ -94,24 +94,24 @@
         position: absolute;
         width: 1.3em;
         height: 1.3em;
-        background: #fff;
+        background: var(--pui-color-white);
         top: 0.13em;
         right: 1.5em;
-        transition: transform 0.3s;
+        transition: transform var(--pui-transition-slow) var(--pui-ease-in-out);
     }
 
     .s--slider button[aria-checked='true']{
-        background-color: var(--midnight)
+        background-color: var(--pui-color-primary);
     }
 
     .s--slider button[aria-checked='true']::before{
         transform: translateX(1.3em);
-        transition: transform 0.3s;
+        transition: transform var(--pui-transition-slow) var(--pui-ease-in-out);
     }
 
     .s--slider button:focus {
-        outline: 1px solid var(--midnight);
-        outline-offset: 2px;
+        outline: 1px solid var(--pui-color-primary);
+        outline-offset: var(--pui-focus-ring-offset);
     }
 
     /* Multi Design Option */
@@ -126,23 +126,23 @@
     }
 
 
-    /* gravy */ 
+    /* gravy */
 
     /* Inner Design Option */
 
     .s--inner button:focus {
-        outline-offset: 2px;
-        border-radius: 0.1em;
+        outline-offset: var(--pui-focus-ring-offset);
+        border-radius: var(--pui-radius-sm);
     }
 
     /* Slider Design Option */
     .s--slider button {
-        border-radius: 1.5em;
-    } 
-    
-    .s--slider button::before {
-        border-radius: 100%;
+        border-radius: var(--pui-radius-3xl);
     }
-   
+
+    .s--slider button::before {
+        border-radius: var(--pui-radius-full);
+    }
+
 
 </style>

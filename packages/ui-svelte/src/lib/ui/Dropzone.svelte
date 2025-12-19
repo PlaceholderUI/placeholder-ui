@@ -87,17 +87,21 @@
 
 <style>
 	.dropzone {
-		border: 1px dashed #ccc;
-		padding: 1rem;
+		border: 1px dashed var(--pui-border-default);
+		padding: var(--pui-spacing-4);
 		text-align: center;
 		cursor: pointer;
-		transition: all 0.2s ease-in-out;
-		border-radius: 6px;
+		transition: all var(--pui-transition-fast) var(--pui-ease-in-out);
+		border-radius: var(--pui-radius-lg);
 		flex-grow: 1;
+		background-color: var(--pui-input-bg);
+		color: var(--pui-text-primary);
 	}
 
-	.dropzone:hover, .dropzone.dragover {
-		background: #f0f0f0;
+	.dropzone:hover,
+	.dropzone.dragover {
+		background-color: var(--pui-bg-hover);
+		border-color: var(--pui-color-primary);
 	}
 
 	.hidden {
@@ -105,13 +109,14 @@
 	}
 
 	:global(.dark) .dropzone {
-		background: rgb(16, 17, 19);
-		border-color: rgb(46, 47, 49);
-		color: #fff;
+		background-color: var(--pui-input-bg);
+		border-color: var(--pui-border-default);
+		color: var(--pui-text-primary);
 	}
 
 	:global(.dark) .dropzone:hover,
 	:global(.dark) .dropzone.dragover {
-		background: rgb(36, 37, 39);
+		background-color: var(--pui-bg-hover);
+		border-color: var(--pui-color-secondary);
 	}
 </style>
