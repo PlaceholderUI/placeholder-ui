@@ -15,14 +15,14 @@
 </script>
 
 <script lang="ts">
-	import type { Snippet } from 'svelte';
-	import Icon from '../icon/Icon.svelte';
-	import Textbox from '../form/Textbox.svelte';
-	import ActionIcon from '../ui/ActionIcon.svelte';
-	import Drawer from '../ui/Drawer.svelte';
-	import { iconChevronRight, iconSearch, iconX } from '../icon/index.js';
-	import { slide } from 'svelte/transition';
-	import { viewportState } from '../theme.svelte.js';
+	import type { Snippet } from "svelte";
+	import Icon from "../icon/Icon.svelte";
+	import Textbox from "../form/Textbox.svelte";
+	import ActionIcon from "../ui/ActionIcon.svelte";
+	import Drawer from "../ui/Drawer.svelte";
+	import { iconChevronRight, iconSearch, iconX } from "../icon/index.js";
+	import { slide } from "svelte/transition";
+	import { viewportState } from "../theme.svelte.js";
 
 	interface Props {
 		sections?: SidenavSection[];
@@ -41,37 +41,43 @@
 		mobileBreakpoint?: number;
 		mobileOpen?: boolean;
 		mobileTitle?: string;
-		mobileDrawerPosition?: 'left' | 'right';
+		mobileDrawerPosition?: "left" | "right";
 	}
 
 	let {
 		sections = [],
 		bottomSections = [],
 		collapsed = false,
-		width = '260px',
-		collapsedWidth = '60px',
-		class: className = '',
+		width = "260px",
+		collapsedWidth = "60px",
+		class: className = "",
 		header,
 		footer,
 		searchable = false,
-		searchPlaceholder = 'Search...',
+		searchPlaceholder = "Search...",
 		onItemClick,
 		// Responsive props
 		responsive = false,
 		mobileBreakpoint = 768,
 		mobileOpen = $bindable(false),
-		mobileTitle = '',
-		mobileDrawerPosition = 'left'
+		mobileTitle = "",
+		mobileDrawerPosition = "left",
 	}: Props = $props();
 
-	let searchQuery = $state('');
+	let searchQuery = $state("");
 
 	// Track if we're in mobile mode using viewportState
-	const isMobile = $derived(responsive && viewportState.isBelow(mobileBreakpoint));
+	const isMobile = $derived(
+		responsive && viewportState.isBelow(mobileBreakpoint),
+	);
 
 	// Auto-close drawer when resizing to desktop
 	$effect(() => {
-		if (responsive && !viewportState.isBelow(mobileBreakpoint) && mobileOpen) {
+		if (
+			responsive &&
+			!viewportState.isBelow(mobileBreakpoint) &&
+			mobileOpen
+		) {
 			mobileOpen = false;
 		}
 	});
@@ -83,7 +89,11 @@
 		const lowerText = text.toLowerCase();
 
 		let queryIndex = 0;
-		for (let i = 0; i < lowerText.length && queryIndex < lowerQuery.length; i++) {
+		for (
+			let i = 0;
+			i < lowerText.length && queryIndex < lowerQuery.length;
+			i++
+		) {
 			if (lowerText[i] === lowerQuery[queryIndex]) {
 				queryIndex++;
 			}
@@ -97,22 +107,31 @@
 
 		return sects
 			.map((section) => {
-				const filteredItems = section.items.filter((item) => {
-					// Check if item matches
-					if (fuzzyMatch(searchQuery, item.label)) return true;
-					// Check if any sub-item matches
-					if (item.items?.some((sub) => fuzzyMatch(searchQuery, sub.label))) return true;
-					return false;
-				}).map((item) => {
-					// If item has sub-items, filter those too
-					if (item.items) {
-						return {
-							...item,
-							items: item.items.filter((sub) => fuzzyMatch(searchQuery, sub.label))
-						};
-					}
-					return item;
-				});
+				const filteredItems = section.items
+					.filter((item) => {
+						// Check if item matches
+						if (fuzzyMatch(searchQuery, item.label)) return true;
+						// Check if any sub-item matches
+						if (
+							item.items?.some((sub) =>
+								fuzzyMatch(searchQuery, sub.label),
+							)
+						)
+							return true;
+						return false;
+					})
+					.map((item) => {
+						// If item has sub-items, filter those too
+						if (item.items) {
+							return {
+								...item,
+								items: item.items.filter((sub) =>
+									fuzzyMatch(searchQuery, sub.label),
+								),
+							};
+						}
+						return item;
+					});
 
 				return { ...section, items: filteredItems };
 			})
@@ -123,7 +142,7 @@
 	let filteredBottomSections = $derived(filterSections(bottomSections));
 
 	function clearSearch() {
-		searchQuery = '';
+		searchQuery = "";
 	}
 
 	let expandedSections: Set<string> = $state(new Set());
@@ -226,10 +245,15 @@
 									onclick={() => handleLinkClick(item)}
 								>
 									{#if item.iconSvg}
-										<Icon svg={item.iconSvg} size="1.25em" />
+										<Icon
+											svg={item.iconSvg}
+											size="1.25em"
+										/>
 									{/if}
 									{#if !collapsed}
-										<span class="nav-label">{item.label}</span>
+										<span class="nav-label"
+											>{item.label}</span
+										>
 									{/if}
 								</a>
 							{:else}
@@ -237,26 +261,39 @@
 									type="button"
 									class="nav-link"
 									class:active={item.active}
-									class:has-children={item.items && item.items.length > 0}
+									class:has-children={item.items &&
+										item.items.length > 0}
 									title={collapsed ? item.label : undefined}
 									onclick={(e) => handleItemClick(item, e)}
 								>
 									{#if item.iconSvg}
-										<Icon svg={item.iconSvg} size="1.25em" />
+										<Icon
+											svg={item.iconSvg}
+											size="1.25em"
+										/>
 									{/if}
 									{#if !collapsed}
-										<span class="nav-label">{item.label}</span>
+										<span class="nav-label"
+											>{item.label}</span
+										>
 										{#if item.items && item.items.length > 0}
 											<Icon
 												svg={iconChevronRight}
 												size="0.75em"
-												class="chevron {isExpanded(item.label) ? 'expanded' : ''}"
+												class="chevron {isExpanded(
+													item.label,
+												)
+													? 'expanded'
+													: ''}"
 											/>
 										{/if}
 									{/if}
 								</button>
 								{#if item.items && item.items.length > 0 && isExpanded(item.label) && !collapsed}
-									<ul class="sub-nav-list" transition:slide={{ duration: 200 }}>
+									<ul
+										class="sub-nav-list"
+										transition:slide={{ duration: 200 }}
+									>
 										{#each item.items as subItem}
 											<li class="sub-nav-item">
 												{#if subItem.href}
@@ -264,24 +301,40 @@
 														href={subItem.href}
 														class="sub-nav-link"
 														class:active={subItem.active}
-														onclick={() => handleLinkClick(subItem)}
+														onclick={() =>
+															handleLinkClick(
+																subItem,
+															)}
 													>
 														{#if subItem.iconSvg}
-															<Icon svg={subItem.iconSvg} size="1em" />
+															<Icon
+																svg={subItem.iconSvg}
+																size="1em"
+															/>
 														{/if}
-														<span>{subItem.label}</span>
+														<span
+															>{subItem.label}</span
+														>
 													</a>
 												{:else}
 													<button
 														type="button"
 														class="sub-nav-link"
 														class:active={subItem.active}
-														onclick={() => handleLinkClick(subItem)}
+														onclick={() =>
+															handleLinkClick(
+																subItem,
+															)}
 													>
 														{#if subItem.iconSvg}
-															<Icon svg={subItem.iconSvg} size="1em" />
+															<Icon
+																svg={subItem.iconSvg}
+																size="1em"
+															/>
 														{/if}
-														<span>{subItem.label}</span>
+														<span
+															>{subItem.label}</span
+														>
 													</button>
 												{/if}
 											</li>
@@ -309,14 +362,21 @@
 										href={item.href}
 										class="nav-link"
 										class:active={item.active}
-										title={collapsed ? item.label : undefined}
+										title={collapsed
+											? item.label
+											: undefined}
 										onclick={() => handleLinkClick(item)}
 									>
 										{#if item.iconSvg}
-											<Icon svg={item.iconSvg} size="1.25em" />
+											<Icon
+												svg={item.iconSvg}
+												size="1.25em"
+											/>
 										{/if}
 										{#if !collapsed}
-											<span class="nav-label">{item.label}</span>
+											<span class="nav-label"
+												>{item.label}</span
+											>
 										{/if}
 									</a>
 								{:else}
@@ -324,26 +384,42 @@
 										type="button"
 										class="nav-link"
 										class:active={item.active}
-										class:has-children={item.items && item.items.length > 0}
-										title={collapsed ? item.label : undefined}
-										onclick={(e) => handleItemClick(item, e)}
+										class:has-children={item.items &&
+											item.items.length > 0}
+										title={collapsed
+											? item.label
+											: undefined}
+										onclick={(e) =>
+											handleItemClick(item, e)}
 									>
 										{#if item.iconSvg}
-											<Icon svg={item.iconSvg} size="1.25em" />
+											<Icon
+												svg={item.iconSvg}
+												size="1.25em"
+											/>
 										{/if}
 										{#if !collapsed}
-											<span class="nav-label">{item.label}</span>
+											<span class="nav-label"
+												>{item.label}</span
+											>
 											{#if item.items && item.items.length > 0}
 												<Icon
 													svg={iconChevronRight}
 													size="0.75em"
-													class="chevron {isExpanded(item.label) ? 'expanded' : ''}"
+													class="chevron {isExpanded(
+														item.label,
+													)
+														? 'expanded'
+														: ''}"
 												/>
 											{/if}
 										{/if}
 									</button>
 									{#if item.items && item.items.length > 0 && isExpanded(item.label) && !collapsed}
-										<ul class="sub-nav-list" transition:slide={{ duration: 200 }}>
+										<ul
+											class="sub-nav-list"
+											transition:slide={{ duration: 200 }}
+										>
 											{#each item.items as subItem}
 												<li class="sub-nav-item">
 													{#if subItem.href}
@@ -351,24 +427,40 @@
 															href={subItem.href}
 															class="sub-nav-link"
 															class:active={subItem.active}
-															onclick={() => handleLinkClick(subItem)}
+															onclick={() =>
+																handleLinkClick(
+																	subItem,
+																)}
 														>
 															{#if subItem.iconSvg}
-																<Icon svg={subItem.iconSvg} size="1em" />
+																<Icon
+																	svg={subItem.iconSvg}
+																	size="1em"
+																/>
 															{/if}
-															<span>{subItem.label}</span>
+															<span
+																>{subItem.label}</span
+															>
 														</a>
 													{:else}
 														<button
 															type="button"
 															class="sub-nav-link"
 															class:active={subItem.active}
-															onclick={() => handleLinkClick(subItem)}
+															onclick={() =>
+																handleLinkClick(
+																	subItem,
+																)}
 														>
 															{#if subItem.iconSvg}
-																<Icon svg={subItem.iconSvg} size="1em" />
+																<Icon
+																	svg={subItem.iconSvg}
+																	size="1em"
+																/>
 															{/if}
-															<span>{subItem.label}</span>
+															<span
+																>{subItem.label}</span
+															>
 														</button>
 													{/if}
 												</li>
@@ -399,7 +491,7 @@
 		position={mobileDrawerPosition}
 		{sections}
 		{bottomSections}
-		width={width}
+		{width}
 		onItemClick={handleDrawerItemClick}
 	>
 		{#snippet header()}
@@ -422,9 +514,10 @@
 		width: var(--sidenav-width);
 		min-width: var(--sidenav-width);
 		height: 100%;
-		background-color: var(--pui-bg-surface-raised);
-		border-right: 1px solid var(--pui-border-default);
-		transition: width var(--pui-transition-fast) var(--pui-ease-in-out), min-width var(--pui-transition-fast) var(--pui-ease-in-out);
+		background-color: var(--pui-paper-body-bg);
+		transition:
+			width var(--pui-transition-fast) var(--pui-ease-in-out),
+			min-width var(--pui-transition-fast) var(--pui-ease-in-out);
 		overflow: hidden;
 	}
 
@@ -460,7 +553,6 @@
 		flex: 1;
 		overflow-y: auto;
 		overflow-x: hidden;
-		padding: var(--pui-spacing-2) 0;
 	}
 
 	.sidenav-bottom {
@@ -486,6 +578,10 @@
 		border-bottom: 1px solid var(--pui-border-default);
 	}
 
+	.section-title:first-child {
+		border-top: none;
+	}
+
 	.nav-list {
 		list-style: none;
 		margin: 0;
@@ -509,7 +605,9 @@
 		border: none;
 		text-decoration: none;
 		cursor: pointer;
-		transition: background-color var(--pui-transition-fast) var(--pui-ease-in-out), color var(--pui-transition-fast) var(--pui-ease-in-out);
+		transition:
+			background-color var(--pui-transition-fast) var(--pui-ease-in-out),
+			color var(--pui-transition-fast) var(--pui-ease-in-out);
 		text-align: left;
 	}
 
@@ -572,7 +670,8 @@
 		align-items: center;
 		gap: var(--pui-spacing-2);
 		width: 100%;
-		padding: var(--pui-spacing-2) var(--pui-spacing-4) var(--pui-spacing-2) var(--pui-spacing-11);
+		padding: var(--pui-spacing-2) var(--pui-spacing-4) var(--pui-spacing-2)
+			var(--pui-spacing-11);
 		font-size: var(--pui-font-size-sm);
 		font-weight: var(--pui-font-weight-normal);
 		color: var(--pui-text-primary);
@@ -580,7 +679,9 @@
 		border: none;
 		text-decoration: none;
 		cursor: pointer;
-		transition: background-color var(--pui-transition-fast) var(--pui-ease-in-out), color var(--pui-transition-fast) var(--pui-ease-in-out);
+		transition:
+			background-color var(--pui-transition-fast) var(--pui-ease-in-out),
+			color var(--pui-transition-fast) var(--pui-ease-in-out);
 		text-align: left;
 	}
 

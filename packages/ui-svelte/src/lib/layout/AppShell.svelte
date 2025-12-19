@@ -37,7 +37,7 @@
 		children,
 		asideWidth = '260px',
 		asideRightWidth = '260px',
-		headerHeight = '60px',
+		headerHeight = 'auto',
 		footerHeight = '60px',
 		fixedHeader = true,
 		fixedAside = true,
