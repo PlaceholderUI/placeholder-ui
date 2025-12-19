@@ -7,14 +7,14 @@
 	<p class="tagline">A modern, accessible Svelte 5 component library built with runes</p>
 
 	<div class="badges">
-		<Badge variant="midnight">Svelte 5</Badge>
-		<Badge variant="pistachio">TypeScript</Badge>
-		<Badge variant="turquoise">Accessible</Badge>
+		<Badge variant="primary">Svelte 5</Badge>
+		<Badge variant="secondary">TypeScript</Badge>
+		<Badge variant="accent">Accessible</Badge>
 	</div>
 
 	<div class="actions">
-		<Button variant="midnight" href="/components/button">Get Started</Button>
-		<Button variant="midnight-outline" href="https://github.com/placeholderco/placeholder-ui">GitHub</Button>
+		<Button variant="primary" href="/components/button">Get Started</Button>
+		<Button variant="primary-outline" href="https://github.com/placeholderco/placeholder-ui">GitHub</Button>
 	</div>
 </div>
 
@@ -53,7 +53,7 @@ import '@placeholderco/placeholder-ui/styles';`}</code></pre>
   import { Button, Textbox, Dialog } from '@placeholderco/placeholder-ui';
 </script>
 
-<Button variant="midnight">Click me</Button>`}</code></pre>
+<Button variant="primary">Click me</Button>`}</code></pre>
 </Paper>
 
 <Paper class="theme-section">

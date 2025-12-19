@@ -22,7 +22,7 @@
 	}
 
 	let {
-		variant = 'midnight',
+		variant = 'primary',
 		size = 'md',
 		href = undefined,
 		loading = false,
@@ -47,7 +47,7 @@
 		{#if loading}
 			<div class="button-loader" style="height: {iconSize}">
 				<Loader
-					class={variant === 'pistachio' ? 'text-midnight' : 'text-pistachio'}
+					class={variant === 'secondary' ? 'text-primary' : 'text-secondary'}
 					sizeOverride={iconSize}
 				/>
 			</div>
@@ -126,7 +126,7 @@
 		--button-outline-color: var(--pui-color-accent);
 	}
 
-	.secondary {
+	.muted {
 		font-weight: var(--pui-font-weight-normal);
 		box-sizing: border-box;
 		--button-bg-color: var(--pui-input-bg);
@@ -136,7 +136,7 @@
 		--button-outline-color: var(--pui-text-primary);
 	}
 
-	.secondary-subtle {
+	.muted-subtle {
 		font-weight: var(--pui-font-weight-normal);
 		box-sizing: border-box;
 		--button-bg-color: transparent;
@@ -145,7 +145,7 @@
 		--button-outline-color: var(--pui-text-primary);
 	}
 
-	.secondary-selected {
+	.muted-selected {
 		--button-bg-color: var(--pui-accent-color);
 		--button-border: 1px solid var(--pui-accent-color);
 		--button-text-color: var(--pui-color-white);
@@ -187,7 +187,7 @@
 		}
 	}
 
-	.pistachio {
+	.secondary {
 		--button-text-color: var(--pui-color-primary);
 		--button-bg-color: var(--pui-color-secondary);
 		--button-hover-bg-color: var(--pui-color-accent);
@@ -195,7 +195,7 @@
 		--button-outline-color: var(--pui-color-accent);
 	}
 
-	.pistachio-outline {
+	.secondary-outline {
 		--button-text-color: var(--pui-color-secondary);
 		--button-bg-color: initial;
 		--button-border: 1px solid var(--pui-color-secondary);
@@ -206,7 +206,7 @@
 		--button-outline-color: var(--pui-color-accent);
 	}
 
-	.pistachio-subtle {
+	.secondary-subtle {
 		--button-text-color: var(--pui-color-secondary);
 		--button-bg-color: initial;
 		--button-hover-text-color: var(--pui-color-primary);
@@ -216,14 +216,14 @@
 		--button-outline-color: var(--pui-color-accent);
 	}
 
-	.midnight {
+	.primary {
 		--button-bg-color: var(--pui-color-primary);
 		--button-text-color: var(--pui-color-white);
 		--button-hover-bg-color: var(--pui-color-secondary-dark);
 		--button-active-bg-color: var(--pui-color-primary-dark);
 	}
 
-	.midnight-outline {
+	.primary-outline {
 		--button-text-color: var(--pui-color-primary);
 		--button-bg-color: initial;
 		--button-border: 1px solid var(--pui-color-primary);
@@ -233,7 +233,7 @@
 		--button-active-border: 1px solid var(--pui-color-primary-dark);
 	}
 
-	.midnight-subtle {
+	.primary-subtle {
 		--button-text-color: var(--pui-color-primary);
 		--button-bg-color: initial;
 		--button-hover-text-color: var(--pui-color-white);
@@ -242,7 +242,15 @@
 		--button-active-bg-color: var(--pui-color-primary-dark);
 	}
 
-	.turquoise-subtle {
+	.accent {
+		--button-text-color: var(--pui-color-black);
+		--button-bg-color: var(--pui-color-accent);
+		--button-hover-bg-color: var(--pui-color-accent-dark);
+		--button-active-bg-color: var(--pui-color-accent-light);
+		--button-outline-color: var(--pui-color-accent);
+	}
+
+	.accent-subtle {
 		background-color: initial;
 		color: var(--pui-color-accent-dark);
 
@@ -299,16 +307,16 @@
 	}
 
 	:global(.dark) {
-		.secondary {
+		.muted {
 			--button-text-color: var(--pui-color-white);
 			--button-active-bg-color: var(--pui-color-dark-300);
 		}
 
-		.secondary-subtle {
+		.muted-subtle {
 			--button-active-bg-color: var(--pui-color-dark-300);
 		}
 
-		.secondary-selected {
+		.muted-selected {
 			--button-text-color: var(--pui-color-white);
 		}
 

@@ -9,22 +9,22 @@
 
 <Paper title="Type Definition">
 	<pre class="code-block"><code>{`type ButtonVariant =
-  | 'midnight'
-  | 'midnight-outline'
-  | 'midnight-subtle'
-  | 'pistachio'
-  | 'pistachio-outline'
-  | 'pistachio-subtle'
+  | 'primary'
+  | 'primary-outline'
+  | 'primary-subtle'
   | 'secondary'
+  | 'secondary-outline'
   | 'secondary-subtle'
-  | 'secondary-selected'
+  | 'muted'
+  | 'muted-subtle'
+  | 'muted-selected'
   | 'danger'
   | 'danger-subtle'
   | 'white'
   | 'auto-subtle'
   | 'auto-outline'
-  | 'turquoise'
-  | 'turquoise-subtle';`}</code></pre>
+  | 'accent'
+  | 'accent-subtle';`}</code></pre>
 </Paper>
 
 <Paper title="Variant System">
@@ -43,17 +43,17 @@
 		</thead>
 		<tbody>
 			<tr>
-				<td><code>midnight</code></td>
+				<td><code>primary</code></td>
 				<td>Dark teal/green primary color</td>
 				<td>Primary actions, main CTAs</td>
 			</tr>
 			<tr>
-				<td><code>pistachio</code></td>
+				<td><code>secondary</code></td>
 				<td>Light green accent color</td>
 				<td>Secondary actions, success states</td>
 			</tr>
 			<tr>
-				<td><code>secondary</code></td>
+				<td><code>muted</code></td>
 				<td>Neutral gray</td>
 				<td>Tertiary actions, cancel buttons</td>
 			</tr>
@@ -63,7 +63,7 @@
 				<td>Destructive actions, errors</td>
 			</tr>
 			<tr>
-				<td><code>turquoise</code></td>
+				<td><code>accent</code></td>
 				<td>Teal accent color</td>
 				<td>Info states, highlights</td>
 			</tr>
@@ -88,42 +88,42 @@
 			<tr>
 				<td><code>-outline</code></td>
 				<td>Transparent background with colored border</td>
-				<td><code>midnight-outline</code></td>
+				<td><code>primary-outline</code></td>
 			</tr>
 			<tr>
 				<td><code>-subtle</code></td>
 				<td>Transparent background, colored on hover</td>
-				<td><code>pistachio-subtle</code></td>
+				<td><code>secondary-subtle</code></td>
 			</tr>
 			<tr>
 				<td><code>-selected</code></td>
 				<td>Active/selected state styling</td>
-				<td><code>secondary-selected</code></td>
+				<td><code>muted-selected</code></td>
 			</tr>
 		</tbody>
 	</table>
 </Paper>
 
 <Paper title="Visual Reference">
-	<h4>Midnight</h4>
+	<h4>Primary</h4>
 	<div class="button-row">
-		<Button variant="midnight">midnight</Button>
-		<Button variant="midnight-outline">midnight-outline</Button>
-		<Button variant="midnight-subtle">midnight-subtle</Button>
-	</div>
-
-	<h4>Pistachio</h4>
-	<div class="button-row">
-		<Button variant="pistachio">pistachio</Button>
-		<Button variant="pistachio-outline">pistachio-outline</Button>
-		<Button variant="pistachio-subtle">pistachio-subtle</Button>
+		<Button variant="primary">primary</Button>
+		<Button variant="primary-outline">primary-outline</Button>
+		<Button variant="primary-subtle">primary-subtle</Button>
 	</div>
 
 	<h4>Secondary</h4>
 	<div class="button-row">
 		<Button variant="secondary">secondary</Button>
+		<Button variant="secondary-outline">secondary-outline</Button>
 		<Button variant="secondary-subtle">secondary-subtle</Button>
-		<Button variant="secondary-selected">secondary-selected</Button>
+	</div>
+
+	<h4>Muted</h4>
+	<div class="button-row">
+		<Button variant="muted">muted</Button>
+		<Button variant="muted-subtle">muted-subtle</Button>
+		<Button variant="muted-selected">muted-selected</Button>
 	</div>
 
 	<h4>Danger</h4>
@@ -135,8 +135,8 @@
 	<h4>Other</h4>
 	<div class="button-row">
 		<Button variant="white">white</Button>
-		<Button variant="turquoise">turquoise</Button>
-		<Button variant="turquoise-subtle">turquoise-subtle</Button>
+		<Button variant="accent">accent</Button>
+		<Button variant="accent-subtle">accent-subtle</Button>
 		<Button variant="auto-subtle">auto-subtle</Button>
 	</div>
 </Paper>
@@ -145,7 +145,7 @@
 	<pre class="code-block"><code>{`import type { ButtonVariant } from '@placeholderco/placeholder-ui';
 
 // Usage
-const variant: ButtonVariant = 'midnight-outline';`}</code></pre>
+const variant: ButtonVariant = 'primary-outline';`}</code></pre>
 </Paper>
 
 <style>

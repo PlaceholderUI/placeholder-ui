@@ -42,7 +42,7 @@ Import the styles in your root layout:
   import { Button, Textbox, Dialog } from '@placeholderco/placeholder-ui';
 </script>
 
-<Button variant="midnight">Click me</Button>
+<Button variant="primary">Click me</Button>
 ```
 
 ## Development

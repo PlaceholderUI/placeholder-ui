@@ -36,6 +36,7 @@ export { default as Paper } from './display/Paper.svelte';
 export { default as Avatar } from './display/Avatar.svelte';
 
 // Layout Components
+export { default as AppShell } from './layout/AppShell.svelte';
 export { default as Navbar } from './layout/Navbar.svelte';
 export { default as CustomNavbar } from './layout/CustomNavbar.svelte';
 export { default as Sidenav } from './layout/Sidenav.svelte';

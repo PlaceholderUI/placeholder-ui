@@ -15,19 +15,19 @@
 <Paper title="Variants">
 	<p>The library uses a color + style modifier pattern for button variants.</p>
 	<div class="button-grid">
-		<Button variant="midnight">Midnight</Button>
-		<Button variant="midnight-outline">Midnight Outline</Button>
-		<Button variant="midnight-subtle">Midnight Subtle</Button>
-	</div>
-	<div class="button-grid">
-		<Button variant="pistachio">Pistachio</Button>
-		<Button variant="pistachio-outline">Pistachio Outline</Button>
-		<Button variant="pistachio-subtle">Pistachio Subtle</Button>
+		<Button variant="primary">Primary</Button>
+		<Button variant="primary-outline">Primary Outline</Button>
+		<Button variant="primary-subtle">Primary Subtle</Button>
 	</div>
 	<div class="button-grid">
 		<Button variant="secondary">Secondary</Button>
+		<Button variant="secondary-outline">Secondary Outline</Button>
 		<Button variant="secondary-subtle">Secondary Subtle</Button>
-		<Button variant="secondary-selected">Secondary Selected</Button>
+	</div>
+	<div class="button-grid">
+		<Button variant="muted">Muted</Button>
+		<Button variant="muted-subtle">Muted Subtle</Button>
+		<Button variant="muted-selected">Muted Selected</Button>
 	</div>
 	<div class="button-grid">
 		<Button variant="danger">Danger</Button>
@@ -49,8 +49,8 @@
 <Paper title="With Icons">
 	<div class="button-row">
 		<Button svg={iconPlus}>Add Item</Button>
-		<Button svg={iconCheck} variant="pistachio">Confirm</Button>
-		<Button rightSvg={iconArrowRight} variant="midnight-outline">Next</Button>
+		<Button svg={iconCheck} variant="secondary">Confirm</Button>
+		<Button rightSvg={iconArrowRight} variant="primary-outline">Next</Button>
 	</div>
 </Paper>
 
@@ -59,14 +59,14 @@
 		<Button {loading} onclick={simulateLoading}>
 			{loading ? 'Loading...' : 'Click to Load'}
 		</Button>
-		<Button loading variant="pistachio">Always Loading</Button>
+		<Button loading variant="secondary">Always Loading</Button>
 	</div>
 </Paper>
 
 <Paper title="Disabled">
 	<div class="button-row">
 		<Button disabled>Disabled</Button>
-		<Button disabled variant="pistachio">Disabled Pistachio</Button>
+		<Button disabled variant="secondary">Disabled Secondary</Button>
 		<Button disabled variant="danger">Disabled Danger</Button>
 	</div>
 </Paper>
@@ -74,7 +74,7 @@
 <Paper title="As Link">
 	<div class="button-row">
 		<Button href="/">Internal Link</Button>
-		<Button href="https://svelte.dev" target="_blank" variant="midnight-outline">
+		<Button href="https://svelte.dev" target="_blank" variant="primary-outline">
 			External Link
 		</Button>
 	</div>
@@ -94,7 +94,7 @@
 			<tr>
 				<td><code>variant</code></td>
 				<td><code>ButtonVariant</code></td>
-				<td><code>'midnight'</code></td>
+				<td><code>'primary'</code></td>
 				<td>Visual style variant</td>
 			</tr>
 			<tr>

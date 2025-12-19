@@ -16,7 +16,7 @@
 	}
 
 	let {
-		variant = 'midnight',
+		variant = 'primary',
 		shape = 'default',
 		href = undefined,
 		loading = false,
@@ -108,7 +108,7 @@
 		color: var(--badge-text-color) !important;
 	}
 
-	.pistachio {
+	.secondary {
 		--badge-bg-color: var(--pui-color-secondary);
 		--badge-text-color: var(--pui-color-primary);
 		--badge-hover-bg-color: var(--pui-color-accent);
@@ -116,11 +116,11 @@
 		--badge-outline-color: var(--pui-color-accent);
 	}
 
-	.pistachio :global(.loader) {
+	.secondary :global(.loader) {
 		color: var(--pui-color-primary);
 	}
 
-	.midnight {
+	.primary {
 		--badge-bg-color: var(--pui-color-primary);
 		--badge-text-color: var(--pui-color-white);
 		--badge-hover-bg-color: var(--pui-color-secondary-dark);
@@ -128,7 +128,7 @@
 		--badge-outline-color: var(--pui-color-secondary-dark);
 	}
 
-	.midnight :global(.loader) {
+	.primary :global(.loader) {
 		color: var(--pui-color-secondary);
 	}
 
@@ -140,7 +140,7 @@
 		--badge-outline-color: var(--pui-color-accent);
 	}
 
-	.secondary {
+	.muted {
 		--badge-bg-color: var(--pui-input-bg);
 		--badge-border: 1px solid var(--pui-border-default);
 		--badge-border-color: var(--pui-border-default);
@@ -148,7 +148,7 @@
 		--badge-outline-color: var(--pui-text-primary);
 	}
 
-	.secondary-selected {
+	.muted-selected {
 		--badge-bg-color: var(--pui-accent-color);
 		--badge-border: 1px solid var(--pui-accent-color);
 		--badge-border-color: var(--pui-accent-color);
@@ -187,7 +187,7 @@
 		--badge-outline-color: var(--pui-color-accent);
 	}
 
-	.pistachio-outline {
+	.secondary-outline {
 		--badge-text-color: var(--pui-color-secondary);
 		--badge-bg-color: initial;
 		--badge-border: 1px solid var(--pui-color-secondary);
@@ -197,7 +197,7 @@
 		--badge-outline-color: var(--pui-color-accent);
 	}
 
-	.midnight-outline {
+	.primary-outline {
 		--badge-text-color: var(--pui-color-primary);
 		--badge-bg-color: initial;
 		--badge-border: 1px solid var(--pui-color-primary);
@@ -207,7 +207,7 @@
 		--badge-outline-color: var(--pui-color-secondary-dark);
 	}
 
-	.turquoise {
+	.accent {
 		--badge-text-color: var(--pui-color-black);
 		--badge-bg-color: var(--pui-color-accent);
 		--badge-hover-bg-color: var(--pui-color-accent-dark);
@@ -242,15 +242,15 @@
 	}
 
 	:global(.dark) {
-		.secondary {
+		.muted {
 			--badge-hover-bg-color: var(--pui-color-dark-300);
 		}
 
-		.secondary-subtle {
+		.muted-subtle {
 			--badge-hover-bg-color: var(--pui-color-dark-300);
 		}
 
-		.secondary-selected {
+		.muted-selected {
 			--badge-text-color: var(--pui-color-primary);
 		}
 

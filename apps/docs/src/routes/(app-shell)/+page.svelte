@@ -12,18 +12,18 @@
 
 <Paper>
 	<div class="hero">
-		<Badge variant="pistachio">Svelte 5</Badge>
+		<Badge variant="secondary">Svelte 5</Badge>
 		<h1>Placeholder UI</h1>
 		<p class="hero-subtitle">
 			A modern, accessible component library for Svelte 5 with dark mode
 			support, CSS variables theming, and 60+ ready-to-use components.
 		</p>
 		<div class="hero-actions">
-			<Button variant="midnight" href="/docs/installation"
+			<Button variant="primary" href="/docs/installation"
 				>Get Started</Button
 			>
 			<Button
-				variant="secondary"
+				variant="muted"
 				href="https://github.com/placeholderco/placeholder-ui"
 				target="_blank"
 			>
@@ -87,9 +87,9 @@
 		<h3>Buttons</h3>
 		<div class="preview-box">
 			<div class="button-row">
-				<Button variant="midnight">Primary</Button>
-				<Button variant="pistachio">Secondary</Button>
-				<Button variant="secondary">Outline</Button>
+				<Button variant="primary">Primary</Button>
+				<Button variant="secondary">Secondary</Button>
+				<Button variant="muted">Muted</Button>
 				<Button variant="danger">Danger</Button>
 			</div>
 		</div>
@@ -139,10 +139,10 @@
 					alt="User"
 					size={48}
 				/>
-				<Badge variant="midnight">Default</Badge>
-				<Badge variant="pistachio">Success</Badge>
+				<Badge variant="primary">Default</Badge>
+				<Badge variant="secondary">Success</Badge>
 				<Badge variant="danger">Error</Badge>
-				<Badge variant="turquoise">Info</Badge>
+				<Badge variant="accent">Info</Badge>
 			</div>
 		</div>
 	</div>
@@ -161,7 +161,7 @@
   import &#123; Button, Alert &#125; from '@placeholderco/placeholder-ui';
 &lt;/script&gt;
 
-&lt;Button variant="midnight"&gt;Click me&lt;/Button&gt;
+&lt;Button variant="primary"&gt;Click me&lt;/Button&gt;
 &lt;Alert title="Hello"&gt;Welcome to Placeholder UI!&lt;/Alert&gt;
 		</code>
 	</pre>

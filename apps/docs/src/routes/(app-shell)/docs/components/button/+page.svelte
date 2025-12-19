@@ -27,25 +27,25 @@
 		The library uses a color + style modifier pattern for button variants.
 	</p>
 
-	<h4>Midnight</h4>
+	<h4>Primary</h4>
 	<div class="button-grid">
-		<Button variant="midnight">Midnight</Button>
-		<Button variant="midnight-outline">Midnight Outline</Button>
-		<Button variant="midnight-subtle">Midnight Subtle</Button>
-	</div>
-
-	<h4>Pistachio</h4>
-	<div class="button-grid">
-		<Button variant="pistachio">Pistachio</Button>
-		<Button variant="pistachio-outline">Pistachio Outline</Button>
-		<Button variant="pistachio-subtle">Pistachio Subtle</Button>
+		<Button variant="primary">Primary</Button>
+		<Button variant="primary-outline">Primary Outline</Button>
+		<Button variant="primary-subtle">Primary Subtle</Button>
 	</div>
 
 	<h4>Secondary</h4>
 	<div class="button-grid">
 		<Button variant="secondary">Secondary</Button>
+		<Button variant="secondary-outline">Secondary Outline</Button>
 		<Button variant="secondary-subtle">Secondary Subtle</Button>
-		<Button variant="secondary-selected">Secondary Selected</Button>
+	</div>
+
+	<h4>Muted</h4>
+	<div class="button-grid">
+		<Button variant="muted">Muted</Button>
+		<Button variant="muted-subtle">Muted Subtle</Button>
+		<Button variant="muted-selected">Muted Selected</Button>
 	</div>
 
 	<h4>Other</h4>
@@ -75,9 +75,9 @@
 	</p>
 	<div class="button-row">
 		<Button svg={iconPlus}>Add Item</Button>
-		<Button svg={iconCheck} variant="pistachio">Confirm</Button>
-		<Button rightSvg={iconArrowRight} variant="midnight-outline">Next</Button>
-		<Button svg={iconDownload} variant="secondary">Download</Button>
+		<Button svg={iconCheck} variant="secondary">Confirm</Button>
+		<Button rightSvg={iconArrowRight} variant="primary-outline">Next</Button>
+		<Button svg={iconDownload} variant="muted">Download</Button>
 		<Button svg={iconTrash} variant="danger">Delete</Button>
 	</div>
 </Paper>
@@ -90,7 +90,7 @@
 		<Button {loading} onclick={simulateLoading}>
 			{loading ? "Loading..." : "Click to Load"}
 		</Button>
-		<Button loading variant="pistachio">Always Loading</Button>
+		<Button loading variant="secondary">Always Loading</Button>
 		<Button loading variant="danger">Processing</Button>
 	</div>
 </Paper>
@@ -101,8 +101,8 @@
 	</p>
 	<div class="button-row">
 		<Button disabled>Disabled</Button>
-		<Button disabled variant="pistachio">Disabled Pistachio</Button>
-		<Button disabled variant="midnight-outline">Disabled Outline</Button>
+		<Button disabled variant="secondary">Disabled Secondary</Button>
+		<Button disabled variant="primary-outline">Disabled Outline</Button>
 		<Button disabled variant="danger">Disabled Danger</Button>
 	</div>
 </Paper>
@@ -113,10 +113,10 @@
 	</p>
 	<div class="button-row">
 		<Button href="/">Internal Link</Button>
-		<Button href="https://svelte.dev" target="_blank" variant="midnight-outline">
+		<Button href="https://svelte.dev" target="_blank" variant="primary-outline">
 			External Link
 		</Button>
-		<Button href="https://github.com" target="_blank" variant="secondary">
+		<Button href="https://github.com" target="_blank" variant="muted">
 			GitHub
 		</Button>
 	</div>
@@ -136,7 +136,7 @@
 			<tr>
 				<td><code>variant</code></td>
 				<td><a href="/docs/types/button-variant"><code>ButtonVariant</code></a></td>
-				<td><code>'midnight'</code></td>
+				<td><code>'primary'</code></td>
 				<td>Visual style variant</td>
 			</tr>
 			<tr>
@@ -234,7 +234,7 @@
 	</div>
 
 	<pre class="code-block"><code>{`/* Custom purple button */
-.custom-purple {
+.pui-button.custom-purple {
   --button-bg-color: #7c3aed;
   --button-text-color: white;
   --button-hover-bg-color: #6d28d9;
@@ -242,13 +242,13 @@
 }
 
 /* Gradient button */
-.custom-gradient {
+.pui-button.custom-gradient {
   background: linear-gradient(135deg, #ec4899, #8b5cf6) !important;
   --button-text-color: white;
 }
 
 /* Custom outline */
-.custom-orange-outline {
+.pui-button.custom-orange-outline {
   --button-bg-color: transparent;
   --button-text-color: #ea580c;
   --button-border: 2px solid #ea580c;
@@ -260,21 +260,21 @@
 <Paper title="Variant Reference">
 	<p class="section-description">Available button variants:</p>
 	<div class="variant-list">
-		<code>midnight</code>
-		<code>midnight-outline</code>
-		<code>midnight-subtle</code>
-		<code>pistachio</code>
-		<code>pistachio-outline</code>
-		<code>pistachio-subtle</code>
+		<code>primary</code>
+		<code>primary-outline</code>
+		<code>primary-subtle</code>
 		<code>secondary</code>
+		<code>secondary-outline</code>
 		<code>secondary-subtle</code>
-		<code>secondary-selected</code>
+		<code>muted</code>
+		<code>muted-subtle</code>
+		<code>muted-selected</code>
 		<code>danger</code>
 		<code>danger-subtle</code>
 		<code>white</code>
 		<code>auto-subtle</code>
-		<code>turquoise</code>
-		<code>turquoise-subtle</code>
+		<code>accent</code>
+		<code>accent-subtle</code>
 	</div>
 </Paper>
 
@@ -403,24 +403,24 @@
 	}
 
 	/* Custom button examples */
-	:global(.custom-purple) {
+	:global(.pui-button.custom-purple) {
 		--button-bg-color: #7c3aed;
 		--button-text-color: white;
 		--button-hover-bg-color: #6d28d9;
 		--button-active-bg-color: #5b21b6;
 	}
 
-	:global(.custom-gradient) {
+	:global(.pui-button.custom-gradient) {
 		background: linear-gradient(135deg, #ec4899, #8b5cf6) !important;
 		--button-text-color: white;
 		--button-hover-bg-color: transparent;
 	}
 
-	:global(.custom-gradient:hover) {
+	:global(.pui-button.custom-gradient:hover) {
 		background: linear-gradient(135deg, #db2777, #7c3aed) !important;
 	}
 
-	:global(.custom-orange-outline) {
+	:global(.pui-button.custom-orange-outline) {
 		--button-bg-color: transparent;
 		--button-text-color: #ea580c;
 		--button-border: 2px solid #ea580c;

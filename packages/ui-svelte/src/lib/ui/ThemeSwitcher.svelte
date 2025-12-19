@@ -11,7 +11,7 @@
 		darkVariant?: ButtonVariant;
 	}
 
-	let { lightVariant = 'midnight-subtle', darkVariant = 'pistachio-subtle' }: Props = $props();
+	let { lightVariant = 'primary-subtle', darkVariant = 'secondary-subtle' }: Props = $props();
 
 	function toggleDarkMode() {
 		setTheme(themeState.isDarkMode ? 'light' : 'dark');

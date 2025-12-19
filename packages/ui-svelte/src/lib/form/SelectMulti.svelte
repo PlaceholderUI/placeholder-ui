@@ -430,7 +430,7 @@
 								}}>{value.label}</Badge
 							>
 						{/if}
-						<!-- <span class="inline-flex items-center bg-midnight text-white rounded-md px-2">
+						<!-- <span class="inline-flex items-center bg-primary text-white rounded-md px-2">
 						{value.label}
 						<button
 							class="leading-0 ml-1 size-4 rounded hover:bg-neutral-400/25"

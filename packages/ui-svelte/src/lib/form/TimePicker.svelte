@@ -174,7 +174,7 @@
 					amPm = amPm === 'am' ? 'pm' : 'am';
 					UpdateTime();
 				}}
-				variant={themeState.isDarkMode ? 'pistachio' : 'midnight'}
+				variant={themeState.isDarkMode ? 'secondary' : 'primary'}
 			>
 				{amPm.toUpperCase()}
 			</Button>

@@ -33,7 +33,7 @@
 
 <Paper title="Required">
 	<Checkbox label="I accept the terms and conditions" bind:checked={termsAccepted} required />
-	<Button variant="midnight" disabled={!termsAccepted} class="mt-4">Submit</Button>
+	<Button variant="primary" disabled={!termsAccepted} class="mt-4">Submit</Button>
 </Paper>
 
 <Paper title="With Error State">

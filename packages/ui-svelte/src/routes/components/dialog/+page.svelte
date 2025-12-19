@@ -66,8 +66,8 @@
 		<p>Are you sure you want to proceed with this action?</p>
 		<p>This cannot be undone.</p>
 		{#snippet footer()}
-			<Button variant="secondary" onclick={() => (footerOpen = false)}>Cancel</Button>
-			<Button variant="midnight" onclick={() => (footerOpen = false)}>Confirm</Button>
+			<Button variant="muted" onclick={() => (footerOpen = false)}>Cancel</Button>
+			<Button variant="primary" onclick={() => (footerOpen = false)}>Confirm</Button>
 		{/snippet}
 	</Dialog>
 </Paper>
@@ -80,8 +80,8 @@
 			<Textbox label="Email" bind:value={formEmail} placeholder="you@example.com" />
 		</div>
 		{#snippet footer()}
-			<Button variant="secondary" onclick={() => (noPaperOpen = false)}>Cancel</Button>
-			<Button variant="midnight" onclick={() => (noPaperOpen = false)}>Submit</Button>
+			<Button variant="muted" onclick={() => (noPaperOpen = false)}>Cancel</Button>
+			<Button variant="primary" onclick={() => (noPaperOpen = false)}>Submit</Button>
 		{/snippet}
 	</Dialog>
 </Paper>
@@ -92,7 +92,7 @@
 		<p>This dialog cannot be closed by clicking outside.</p>
 		<p>You must use the button below.</p>
 		{#snippet footer()}
-			<Button variant="midnight" onclick={() => (noCloseOpen = false)}>Close</Button>
+			<Button variant="primary" onclick={() => (noCloseOpen = false)}>Close</Button>
 		{/snippet}
 	</Dialog>
 </Paper>

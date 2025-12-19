@@ -86,7 +86,7 @@
 		</div>
 		<!-- <ActionIcon
 			class="hamburger"
-			variant={$isDarkMode ? 'auto-subtle' : 'midnight'}
+			variant={$isDarkMode ? 'auto-subtle' : 'primary'}
 			onclick={toggleDrawer}
 			svg={iconHamburger}
 		/> -->
@@ -99,7 +99,7 @@
 				{/if}
 			{/each}
 		</div>
-		<ThemeSwitcher darkVariant="pistachio-subtle" lightVariant="midnight-subtle" />
+		<ThemeSwitcher darkVariant="secondary-subtle" lightVariant="primary-subtle" />
 		{#if !noLogo}
 			{#if logoHref}
 				<Logo href={logoHref} />

@@ -54,7 +54,7 @@
 <Paper title="With Right Slot">
 	<Textbox label="With Button" placeholder="Enter text...">
 		{#snippet right()}
-			<Button variant="midnight" size="sm">Submit</Button>
+			<Button variant="primary" size="sm">Submit</Button>
 		{/snippet}
 	</Textbox>
 </Paper>
