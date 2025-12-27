@@ -1,4 +1,5 @@
 <script lang="ts">
+    import { browser } from "$app/environment";
     import {
         iconHamburger,
         iconX,
@@ -20,7 +21,43 @@
     const secondaryNavItems: LinkNavbarItem[] = [
         { label: "GitHub", href: "https://github.com/anthropics/ui-svelte" },
     ];
-    
+
+    // Theme options
+    const themeOptions: ComboBoxItem[] = [
+        { value: "", label: "Default" },
+        { value: "svelte-prime", label: "Svelte Prime" },
+        { value: "nordic-frost", label: "Nordic Frost" },
+        { value: "matcha-clay", label: "Matcha Clay" },
+        { value: "neon-synth", label: "Neon Synth" },
+        { value: "brutalist-pop", label: "Brutalist Pop" },
+    ];
+
+    // Initialize theme from localStorage
+    let selectedTheme = $state<string>("");
+
+    if (browser) {
+        selectedTheme = localStorage.getItem("pui-theme") || "";
+        applyTheme(selectedTheme);
+    }
+
+    function applyTheme(theme: string) {
+        if (!browser) return;
+        if (theme) {
+            document.documentElement.setAttribute("data-theme", theme);
+        } else {
+            document.documentElement.removeAttribute("data-theme");
+        }
+    }
+
+    function handleThemeChange(theme: string | undefined) {
+        const newTheme = theme ?? "";
+        selectedTheme = newTheme;
+        if (browser) {
+            localStorage.setItem("pui-theme", newTheme);
+            applyTheme(newTheme);
+        }
+    }
+
     // Search options from pages
 	const searchOptions: ComboBoxItem[] = pages.map((p) => ({
 		value: p.href,
@@ -58,5 +95,14 @@
                 containerClass="navbar-search-container"
             />
         </div>
+    {/snippet}
+    {#snippet rightSection()}
+        <Select
+            value={selectedTheme}
+            options={themeOptions}
+            placeholder="Theme"
+            onchange={handleThemeChange}
+            containerClass="navbar-theme-container"
+        />
     {/snippet}
 </Navbar>

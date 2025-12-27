@@ -14,6 +14,7 @@
 		class?: string;
 		inContainer?: boolean;
 		middleSection?: Snippet;
+		rightSection?: Snippet;
 		// Drawer button options
 		showDrawerButton?: boolean;
 		drawerButtonPosition?: 'left' | 'right';
@@ -31,6 +32,7 @@
 		class: className = '',
 		inContainer = false,
 		middleSection = undefined,
+		rightSection = undefined,
 		// Drawer button options
 		showDrawerButton = false,
 		drawerButtonPosition = 'right',
@@ -99,6 +101,7 @@
 				{/if}
 			{/each}
 		</div>
+		{@render rightSection?.()}
 		<ThemeSwitcher darkVariant="secondary-subtle" lightVariant="primary-subtle" />
 		{#if !noLogo}
 			{#if logoHref}

@@ -8,7 +8,7 @@
 	 * SURFACE COLORS
 	 * ============================================ */
 	--pui-bg-page: var(--pui-color-dark-100);
-	--pui-bg-surface: var(--pui-color-dark-300);
+	--pui-bg-surface: var(--pui-color-dark-400);
 	--pui-bg-surface-raised: var(--pui-color-dark-200);
 	--pui-bg-surface-sunken: var(--pui-color-dark-400);
 

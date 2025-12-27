@@ -569,8 +569,6 @@
 
 	.section-title {
 		padding: var(--pui-spacing-3) var(--pui-spacing-4) var(--pui-spacing-2);
-		font-size: var(--pui-font-size-xs);
-		font-weight: var(--pui-font-weight-semibold);
 		text-transform: uppercase;
 		letter-spacing: 0.05em;
 		color: var(--pui-text-muted);
@@ -598,8 +596,6 @@
 		gap: var(--pui-spacing-3);
 		width: 100%;
 		padding: var(--pui-spacing-2_5) var(--pui-spacing-4);
-		font-size: var(--pui-font-size-sm);
-		font-weight: var(--pui-font-weight-medium);
 		color: var(--pui-text-primary);
 		background: none;
 		border: none;
@@ -672,8 +668,6 @@
 		width: 100%;
 		padding: var(--pui-spacing-2) var(--pui-spacing-4) var(--pui-spacing-2)
 			var(--pui-spacing-11);
-		font-size: var(--pui-font-size-sm);
-		font-weight: var(--pui-font-weight-normal);
 		color: var(--pui-text-primary);
 		background: none;
 		border: none;
@@ -694,7 +688,6 @@
 	}
 
 	.sub-nav-link.active {
-		font-weight: var(--pui-font-weight-medium);
 		border-left: 3px solid var(--pui-color-secondary);
 	}
 

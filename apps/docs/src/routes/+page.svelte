@@ -11,10 +11,9 @@
 </script>
 
 <Paper>
-	<div class="hero">
-		<Badge variant="secondary">Svelte 5</Badge>
-		<h1>Placeholder UI</h1>
-		<p class="hero-subtitle">
+	<div class="text-center">
+		<h1 class="mb-4 text-brand">Placeholder UI</h1>
+		<p class="hero-subtitle text-small">
 			A modern, accessible component library for Svelte 5 with dark mode
 			support, CSS variables theming, and 60+ ready-to-use components.
 		</p>
@@ -168,11 +167,6 @@
 </section>
 
 <style>
-	.hero {
-		text-align: center;
-		padding: var(--pui-spacing-12) 0;
-	}
-
 	.hero h1 {
 		font-size: var(--pui-font-size-4xl);
 		margin: var(--pui-spacing-4) 0;

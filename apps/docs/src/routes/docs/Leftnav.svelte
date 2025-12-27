@@ -1,4 +1,5 @@
 <script lang="ts">
+    import { page } from "$app/state";
     import { getPagesByCategory } from "$lib/pages";
     import { Sidenav, type SidenavSection } from "@placeholderco/placeholder-ui";
 
@@ -8,13 +9,14 @@
 
     let { sidebarOpen = $bindable() }: Props = $props();
 
-    // Build nav sections from pages.ts
-    const navSections: SidenavSection[] = [
+    // Build nav sections from pages.ts with active state
+    const navSections: SidenavSection[] = $derived([
         {
             title: "Getting Started",
             items: getPagesByCategory("getting-started").map((p) => ({
                 label: p.label,
                 href: p.href,
+                active: page.url.pathname === p.href,
             })),
         },
         {
@@ -22,6 +24,7 @@
             items: getPagesByCategory("components").map((p) => ({
                 label: p.label,
                 href: p.href,
+                active: page.url.pathname === p.href,
             })),
         },
         {
@@ -29,6 +32,7 @@
             items: getPagesByCategory("form").map((p) => ({
                 label: p.label,
                 href: p.href,
+                active: page.url.pathname === p.href,
             })),
         },
         {
@@ -36,6 +40,7 @@
             items: getPagesByCategory("layout").map((p) => ({
                 label: p.label,
                 href: p.href,
+                active: page.url.pathname === p.href,
             })),
         },
         {
@@ -43,9 +48,10 @@
             items: getPagesByCategory("types").map((p) => ({
                 label: p.label,
                 href: p.href,
+                active: page.url.pathname === p.href,
             })),
         },
-    ];
+    ]);
 </script>
 
 <Sidenav

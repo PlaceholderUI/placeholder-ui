@@ -61,19 +61,187 @@
 .text-center { text-align: center; }
 .text-end { text-align: end; }
 
+/* ============================================
+ * FONT SIZES
+ * ============================================ */
 .text-xs { font-size: var(--pui-font-size-xs); }
 .text-sm { font-size: var(--pui-font-size-sm); }
-.text-base { font-size: var(--pui-font-size-base); }
+.text-md { font-size: var(--pui-font-size-md); }
 .text-lg { font-size: var(--pui-font-size-lg); }
+.text-xl { font-size: var(--pui-font-size-xl); }
+.text-2xl { font-size: var(--pui-font-size-2xl); }
+.text-3xl { font-size: var(--pui-font-size-3xl); }
+.text-4xl { font-size: var(--pui-font-size-4xl); }
 
+/* ============================================
+ * FONT WEIGHTS
+ * ============================================ */
+.font-thin { font-weight: var(--pui-font-weight-thin); }
+.font-light { font-weight: var(--pui-font-weight-light); }
+.font-normal { font-weight: var(--pui-font-weight-normal); }
 .font-medium { font-weight: var(--pui-font-weight-medium); }
 .font-semibold { font-weight: var(--pui-font-weight-semibold); }
 .font-bold { font-weight: var(--pui-font-weight-bold); }
+.font-extrabold { font-weight: var(--pui-font-weight-extrabold); }
+.font-black { font-weight: var(--pui-font-weight-black); }
 
-/* Text Colors */
-.text-primary { color: var(--pui-text-primary); }
+/* ============================================
+ * LINE HEIGHTS
+ * ============================================ */
+.leading-none { line-height: var(--pui-line-height-none); }
+.leading-xs { line-height: var(--pui-line-height-tight); }
+.leading-sm { line-height: var(--pui-line-height-snug); }
+.leading-md { line-height: var(--pui-line-height-normal); }
+.leading-lg { line-height: var(--pui-line-height-relaxed); }
+.leading-xl { line-height: var(--pui-line-height-loose); }
+
+/* ============================================
+ * LETTER SPACING
+ * ============================================ */
+.tracking-xs { letter-spacing: var(--pui-letter-spacing-tighter); }
+.tracking-sm { letter-spacing: var(--pui-letter-spacing-tight); }
+.tracking-md { letter-spacing: var(--pui-letter-spacing-normal); }
+.tracking-lg { letter-spacing: var(--pui-letter-spacing-wide); }
+.tracking-xl { letter-spacing: var(--pui-letter-spacing-wider); }
+.tracking-2xl { letter-spacing: var(--pui-letter-spacing-widest); }
+
+/* ============================================
+ * FONT FAMILIES
+ * ============================================ */
+.font-sans { font-family: var(--pui-font-family-sans); }
+.font-mono { font-family: var(--pui-font-family-mono); }
+
+/* ============================================
+ * TEXT COLORS
+ * ============================================ */
+
+/* Semantic text colors */
+.text-body { color: var(--pui-text-primary); }
+.text-subtle { color: var(--pui-text-secondary); }
 .text-muted { color: var(--pui-text-muted); }
-.text-danger { color: var(--pui-text-danger); }
+
+/* Brand text colors */
+.text-primary { color: var(--pui-color-primary); }
+.text-secondary { color: var(--pui-color-secondary); }
+.text-accent { color: var(--pui-color-accent); }
+
+/* Status text colors */
+.text-danger { color: var(--pui-color-danger); }
+.text-warning { color: var(--pui-color-warning); }
+.text-success { color: var(--pui-color-success); }
+.text-info { color: var(--pui-color-info); }
+
+/* Neutral text colors */
+.text-white { color: var(--pui-color-white); }
+.text-black { color: var(--pui-color-black); }
+.text-gray-50 { color: var(--pui-color-gray-50); }
+.text-gray-100 { color: var(--pui-color-gray-100); }
+.text-gray-200 { color: var(--pui-color-gray-200); }
+.text-gray-300 { color: var(--pui-color-gray-300); }
+.text-gray-400 { color: var(--pui-color-gray-400); }
+.text-gray-500 { color: var(--pui-color-gray-500); }
+.text-gray-600 { color: var(--pui-color-gray-600); }
+.text-gray-700 { color: var(--pui-color-gray-700); }
+.text-gray-800 { color: var(--pui-color-gray-800); }
+.text-gray-900 { color: var(--pui-color-gray-900); }
+
+/* Inherit/current */
+.text-inherit { color: inherit; }
+.text-current { color: currentColor; }
+
+/* ============================================
+ * BACKGROUND COLORS
+ * ============================================ */
+
+/* Brand backgrounds */
+.bg-primary { background-color: var(--pui-color-primary); }
+.bg-primary-hover { background-color: var(--pui-color-primary-light); }
+.bg-primary-dark { background-color: var(--pui-color-primary-dark); }
+.bg-secondary { background-color: var(--pui-color-secondary); }
+.bg-secondary-hover { background-color: var(--pui-color-secondary-hover); }
+.bg-accent { background-color: var(--pui-color-accent); }
+.bg-accent-hover { background-color: var(--pui-color-accent-hover); }
+.bg-accent-light { background-color: var(--pui-color-accent-light); }
+
+/* Status backgrounds */
+.bg-danger { background-color: var(--pui-color-danger); }
+.bg-danger-subtle { background-color: var(--pui-color-danger-subtle); }
+.bg-warning { background-color: var(--pui-color-warning); }
+.bg-success { background-color: var(--pui-color-success); }
+.bg-info { background-color: var(--pui-color-info); }
+
+/* Neutral backgrounds */
+.bg-white { background-color: var(--pui-color-white); }
+.bg-black { background-color: var(--pui-color-black); }
+.bg-gray-50 { background-color: var(--pui-color-gray-50); }
+.bg-gray-100 { background-color: var(--pui-color-gray-100); }
+.bg-gray-200 { background-color: var(--pui-color-gray-200); }
+.bg-gray-300 { background-color: var(--pui-color-gray-300); }
+.bg-gray-400 { background-color: var(--pui-color-gray-400); }
+.bg-gray-500 { background-color: var(--pui-color-gray-500); }
+.bg-gray-600 { background-color: var(--pui-color-gray-600); }
+.bg-gray-700 { background-color: var(--pui-color-gray-700); }
+.bg-gray-800 { background-color: var(--pui-color-gray-800); }
+.bg-gray-900 { background-color: var(--pui-color-gray-900); }
+
+/* Dark mode backgrounds */
+.bg-dark-100 { background-color: var(--pui-color-dark-100); }
+.bg-dark-200 { background-color: var(--pui-color-dark-200); }
+.bg-dark-300 { background-color: var(--pui-color-dark-300); }
+.bg-dark-400 { background-color: var(--pui-color-dark-400); }
+.bg-dark-500 { background-color: var(--pui-color-dark-500); }
+
+/* Special backgrounds */
+.bg-transparent { background-color: transparent; }
+.bg-inherit { background-color: inherit; }
+
+/* ============================================
+ * BORDER COLORS
+ * ============================================ */
+
+/* Brand borders */
+.border-primary { border-color: var(--pui-color-primary); }
+.border-secondary { border-color: var(--pui-color-secondary); }
+.border-accent { border-color: var(--pui-color-accent); }
+
+/* Status borders */
+.border-danger { border-color: var(--pui-color-danger); }
+.border-warning { border-color: var(--pui-color-warning); }
+.border-success { border-color: var(--pui-color-success); }
+.border-info { border-color: var(--pui-color-info); }
+
+/* Neutral borders */
+.border-white { border-color: var(--pui-color-white); }
+.border-black { border-color: var(--pui-color-black); }
+.border-gray-50 { border-color: var(--pui-color-gray-50); }
+.border-gray-100 { border-color: var(--pui-color-gray-100); }
+.border-gray-200 { border-color: var(--pui-color-gray-200); }
+.border-gray-300 { border-color: var(--pui-color-gray-300); }
+.border-gray-400 { border-color: var(--pui-color-gray-400); }
+.border-gray-500 { border-color: var(--pui-color-gray-500); }
+.border-gray-600 { border-color: var(--pui-color-gray-600); }
+.border-gray-700 { border-color: var(--pui-color-gray-700); }
+.border-gray-800 { border-color: var(--pui-color-gray-800); }
+.border-gray-900 { border-color: var(--pui-color-gray-900); }
+
+/* Dark mode borders */
+.border-dark { border-color: var(--pui-color-dark-border); }
+.border-dark-subtle { border-color: var(--pui-color-dark-border-subtle); }
+
+/* Default/semantic borders */
+.border-default { border-color: var(--pui-border-default); }
+.border-transparent { border-color: transparent; }
+.border-inherit { border-color: inherit; }
+
+/* Border width utilities */
+.border-0 { border-width: 0; }
+.border { border-width: 1px; border-style: solid; }
+.border-2 { border-width: 2px; border-style: solid; }
+.border-4 { border-width: 4px; border-style: solid; }
+.border-t { border-top-width: 1px; border-top-style: solid; }
+.border-r { border-right-width: 1px; border-right-style: solid; }
+.border-b { border-bottom-width: 1px; border-bottom-style: solid; }
+.border-l { border-left-width: 1px; border-left-style: solid; }
 
 /* User Select */
 .select-none { user-select: none; }

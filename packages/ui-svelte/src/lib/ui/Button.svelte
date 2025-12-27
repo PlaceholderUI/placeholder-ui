@@ -131,7 +131,7 @@
 		box-sizing: border-box;
 		--button-bg-color: var(--pui-input-bg);
 		--button-border: 1px solid var(--pui-border-default);
-		--button-hover-bg-color: var(--pui-border-default);
+		--button-hover-bg-color: var(--pui-color-primary-light);
 		--button-active-bg-color: var(--pui-color-gray-500);
 		--button-outline-color: var(--pui-text-primary);
 	}
@@ -140,7 +140,7 @@
 		font-weight: var(--pui-font-weight-normal);
 		box-sizing: border-box;
 		--button-bg-color: transparent;
-		--button-hover-bg-color: rgba(170, 170, 170, 0.4);
+		--button-hover-bg-color: var(--pui-color-primary-light);
 		--button-active-bg-color: var(--pui-color-gray-500);
 		--button-outline-color: var(--pui-text-primary);
 	}
@@ -155,7 +155,7 @@
 	.auto-subtle {
 		--button-text-color: var(--pui-color-primary);
 		--button-bg-color: initial;
-		--button-hover-bg-color: var(--pui-color-secondary);
+		--button-hover-bg-color: var(--pui-color-primary-light);
 		--button-hover-text-color: var(--pui-color-primary);
 		--button-active-bg-color: var(--pui-color-primary);
 		--button-active-text-color: var(--pui-color-secondary);
@@ -210,7 +210,7 @@
 		--button-text-color: var(--pui-color-secondary);
 		--button-bg-color: initial;
 		--button-hover-text-color: var(--pui-color-primary);
-		--button-hover-bg-color: var(--pui-color-secondary);
+		--button-hover-bg-color: var(--pui-color-primary-light);
 		--button-active-text-color: var(--pui-color-white);
 		--button-active-bg-color: var(--pui-color-secondary-dark);
 		--button-outline-color: var(--pui-color-accent);
@@ -219,7 +219,7 @@
 	.primary {
 		--button-bg-color: var(--pui-color-primary);
 		--button-text-color: var(--pui-color-white);
-		--button-hover-bg-color: var(--pui-color-secondary-dark);
+		--button-hover-bg-color: var(--pui-color-primary-light);
 		--button-active-bg-color: var(--pui-color-primary-dark);
 	}
 
@@ -227,8 +227,8 @@
 		--button-text-color: var(--pui-color-primary);
 		--button-bg-color: initial;
 		--button-border: 1px solid var(--pui-color-primary);
-		--button-hover-text-color: var(--pui-color-secondary-dark);
-		--button-hover-border: 1px solid var(--pui-color-secondary-dark);
+		--button-hover-text-color: var(--pui-color-primary-light);
+		--button-hover-border: 1px solid var(--pui-color-primary-light);
 		--button-active-text-color: var(--pui-color-primary-dark);
 		--button-active-border: 1px solid var(--pui-color-primary-dark);
 	}
@@ -323,7 +323,7 @@
 		.auto-subtle {
 			--button-text-color: var(--pui-color-white);
 			--button-hover-text-color: var(--pui-color-white);
-			--button-hover-bg-color: var(--pui-color-primary);
+			--button-hover-bg-color: var(--pui-color-primary-light);
 			--button-active-text-color: var(--pui-color-secondary);
 			--button-active-bg-color: var(--pui-color-primary);
 			--button-outline-color: var(--pui-color-secondary);
