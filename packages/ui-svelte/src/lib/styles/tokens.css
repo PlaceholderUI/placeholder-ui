@@ -8,11 +8,13 @@
 	 * COLORS - Brand Palette
 	 * ============================================ */
 	--pui-color-primary: #7a4a99;
+	--pui-color-primary-rgb: 122, 74, 153;
 	--pui-color-primary-light: #a271bd;
 	--pui-color-primary-dark: #433e72;
 	--pui-color-primary-darker: #302C51;
 
 	--pui-color-secondary: #7c71bd;
+	--pui-color-secondary-rgb: 124, 113, 189;
 	--pui-color-secondary-hover: #b8cc66;
 	--pui-color-secondary-dark: #697f1a;
 

@@ -39,7 +39,7 @@
 	let isDisabled = $derived(loading || disabled);
 	let isLink = $derived(!!href);
 
-	let elClass = $derived(`pui-button ${buttonClass} ${variant} size-${size}`);
+	let elClass = $derived(`pui-button ${buttonClass} ${variant} size-${size}${effectsDisabled ? ' effects-disabled' : ''}`);
 </script>
 
 {#snippet buttonContent()}

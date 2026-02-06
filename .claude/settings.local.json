@@ -3,7 +3,8 @@
     "allow": [
       "Bash(pnpm install:*)",
       "Bash(mkdir:*)",
-      "Bash(ls -la \"C:\\\\Users\\\\cmdab\\\\Documents\\\\GitHub\\\\UiLib\\\\placeholder-ui\\\\packages\\\\ui-svelte\\\\dist\\\\styles\"\" 2>/dev/null || echo \"dist/styles not found \")"
+      "Bash(ls -la \"C:\\\\Users\\\\cmdab\\\\Documents\\\\GitHub\\\\UiLib\\\\placeholder-ui\\\\packages\\\\ui-svelte\\\\dist\\\\styles\"\" 2>/dev/null || echo \"dist/styles not found \")",
+      "Bash(pnpm --filter @placeholderco/placeholder-ui check:*)"
     ]
   }
 }

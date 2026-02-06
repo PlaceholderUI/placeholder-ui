@@ -3,6 +3,7 @@ export type ButtonVariant =
 	| 'muted'
 	| 'muted-subtle'
 	| 'muted-selected'
+	| 'secondary-selected'
 	| 'danger'
 	| 'danger-subtle'
 	| 'auto-subtle'
