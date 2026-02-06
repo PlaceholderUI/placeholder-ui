@@ -2,6 +2,7 @@
 	import type { Snippet } from 'svelte';
 
 	interface Props {
+		class?: string;
 		containerClass?: string;
 		bodyClass?: string;
 		titleClass?: string;
@@ -15,6 +16,7 @@
 	}
 
 	let {
+		class: className = '',
 		containerClass = '',
 		bodyClass = '',
 		titleClass = '',
@@ -28,7 +30,7 @@
 	}: Props = $props();
 </script>
 
-<div class="paper rounded {containerClass}">
+<div class="paper rounded {containerClass} {className}">
 	{#if title}
 		<!-- svelte-ignore a11y_click_events_have_key_events -->
 		<!-- svelte-ignore a11y_no_static_element_interactions -->

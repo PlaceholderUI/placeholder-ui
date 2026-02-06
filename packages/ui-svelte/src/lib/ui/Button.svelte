@@ -27,6 +27,7 @@
 		href = undefined,
 		loading = false,
 		disabled = false,
+		effectsDisabled = false,
 		svg = undefined,
 		rightSvg = undefined,
 		iconSize = '18px',

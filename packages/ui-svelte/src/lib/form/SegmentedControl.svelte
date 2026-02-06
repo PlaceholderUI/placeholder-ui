@@ -1,6 +1,6 @@
 <script lang="ts">
 	import type { ComboBoxItem } from '../models/ComboBoxItem.js';
-	import { onMount } from 'svelte';
+	import { onMount, tick } from 'svelte';
 
 	interface Props {
 		options: ComboBoxItem[];
@@ -17,21 +17,29 @@
 	// Calculate selected index for background positioning using derived state
 	const selectedIndex = $derived(options.findIndex((option) => option.value === value));
 
-    onMount(() => {
-        // recalculate 10 times on startup to ensure background is positioned correctly
-        for (let i = 0; i < 10; i++) {
-            setTimeout(() => {
-                if (selectedIndex >= 0 && buttonElements[selectedIndex]) {
-                    recalculateBackground();
-                }
-            }, 100 * i);
-        }
-    });
+	onMount(() => {
+		// Recalculate after initial DOM render
+		tick().then(() => {
+			if (selectedIndex >= 0 && buttonElements[selectedIndex]) {
+				recalculateBackground();
+			}
+		});
 
-	// Update background position and size based on selected element
+		// Use ResizeObserver to handle layout shifts (e.g. font loading, container resize)
+		const observer = new ResizeObserver(() => {
+			if (selectedIndex >= 0 && buttonElements[selectedIndex]) {
+				recalculateBackground();
+			}
+		});
+		observer.observe(containerRef);
+
+		return () => observer.disconnect();
+	});
+
+	// Update background position and size when selection changes
 	$effect(() => {
 		if (selectedIndex >= 0 && buttonElements[selectedIndex] && containerRef) {
-            recalculateBackground();
+			recalculateBackground();
 		}
 	});
 

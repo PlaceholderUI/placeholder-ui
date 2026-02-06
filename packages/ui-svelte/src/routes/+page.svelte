@@ -51,8 +51,7 @@ import '@placeholderco/placeholder-ui/styles';`}</code></pre>
 	<h3>Use Components</h3>
 	<pre><code>{`<script>
   import { Button, Textbox, Dialog } from '@placeholderco/placeholder-ui';
-</script>
-
+${"</scr" + "ipt>"}
 <Button variant="primary">Click me</Button>`}</code></pre>
 </Paper>
 
