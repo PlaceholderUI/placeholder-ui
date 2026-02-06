@@ -1,4 +1,5 @@
 <script lang="ts">
+	import { afterNavigate } from "$app/navigation";
 	import { page } from "$app/state";
 	import {
 		Navbar,
@@ -126,6 +127,11 @@
 			})),
 		})),
 	);
+
+	afterNavigate(() => {
+		const el = document.getElementById("page-content");
+		if (el) el.scrollTop = 0;
+	});
 
 	let isMobile = $state(false);
 
