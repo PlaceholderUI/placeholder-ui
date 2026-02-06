@@ -100,6 +100,7 @@
 			items: [
 				{ href: "/components/paper", label: "Paper" },
 				{ href: "/components/avatar", label: "Avatar" },
+				{ href: "/components/alert", label: "Alert" },
 				{
 					href: "/components/link-collection",
 					label: "Link Collection",

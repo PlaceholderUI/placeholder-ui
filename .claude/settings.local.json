@@ -7,7 +7,10 @@
       "Bash(pnpm --filter @placeholderco/placeholder-ui check:*)",
       "Bash(npx svelte-kit sync:*)",
       "Bash(npx svelte-check:*)",
-      "Bash(npx vitest run)"
+      "Bash(npx vitest run)",
+      "Bash(findstr:*)",
+      "Bash(Select-String:*)",
+      "Bash(grep:*)"
     ]
   }
 }
