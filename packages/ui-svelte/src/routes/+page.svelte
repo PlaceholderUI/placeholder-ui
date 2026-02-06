@@ -92,7 +92,7 @@ ${"</scr" + "ipt>"}
 		justify-content: center;
 	}
 
-	.feature-section {
+	:global(.feature-section) {
 		margin-top: var(--pui-spacing-8, 2rem);
 	}
 
@@ -119,11 +119,11 @@ ${"</scr" + "ipt>"}
 		line-height: 1.5;
 	}
 
-	.quick-start {
+	:global(.quick-start) {
 		margin-top: var(--pui-spacing-6, 1.5rem);
 	}
 
-	.quick-start h3 {
+	:global(.quick-start) h3 {
 		font-size: 1rem;
 		margin-top: var(--pui-spacing-4, 1rem);
 		margin-bottom: var(--pui-spacing-2, 0.5rem);
@@ -141,7 +141,7 @@ ${"</scr" + "ipt>"}
 		font-family: 'SF Mono', Monaco, 'Cascadia Code', monospace;
 	}
 
-	.theme-section {
+	:global(.theme-section) {
 		margin-top: var(--pui-spacing-6, 1.5rem);
 	}
 
