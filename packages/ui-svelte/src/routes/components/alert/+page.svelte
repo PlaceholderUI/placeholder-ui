@@ -42,6 +42,9 @@
 			<Alert variant="default">
 				This is a default alert providing general information.
 			</Alert>
+			<Alert variant="secondary">
+				This is a secondary alert providing general information.
+			</Alert>
 			<Alert variant="info">
 				This is an info alert highlighting useful details.
 			</Alert>

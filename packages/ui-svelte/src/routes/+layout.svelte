@@ -1,5 +1,6 @@
 <script lang="ts">
 	import { afterNavigate } from "$app/navigation";
+	import { resolve } from "$app/paths";
 	import { page } from "$app/state";
 	import { Sidenav, type SidenavSection } from "$lib/index.js";
 	import "../lib/styles/index.css";
@@ -26,7 +27,7 @@
 			title: "Getting Started",
 			items: getPagesByCategory("getting-started").map((p) => ({
 				label: p.label,
-				href: p.href,
+				href: resolve(p.href as any),
 				active: isActive(p.href),
 			})),
 		},
@@ -34,7 +35,7 @@
 			title: "UI Components",
 			items: getPagesByCategory("components").map((p) => ({
 				label: p.label,
-				href: p.href,
+				href: resolve(p.href as any),
 				active: isActive(p.href),
 			})),
 		},
@@ -42,7 +43,7 @@
 			title: "Form Components",
 			items: getPagesByCategory("form").map((p) => ({
 				label: p.label,
-				href: p.href,
+				href: resolve(p.href as any),
 				active: isActive(p.href),
 			})),
 		},
@@ -50,7 +51,7 @@
 			title: "Display Components",
 			items: getPagesByCategory("display").map((p) => ({
 				label: p.label,
-				href: p.href,
+				href: resolve(p.href as any),
 				active: isActive(p.href),
 			})),
 		},
@@ -58,7 +59,7 @@
 			title: "Layout Components",
 			items: getPagesByCategory("layout").map((p) => ({
 				label: p.label,
-				href: p.href,
+				href: resolve(p.href as any),
 				active: isActive(p.href),
 			})),
 		},
@@ -91,7 +92,7 @@
 		mobileDrawerPosition="right"
 	/>
 	<div id="page-content">
-		<div class="page-inner">
+		<div class="page-inner container">
 			{@render children?.()}
 		</div>
 	</div>
@@ -121,11 +122,5 @@
 		overflow-y: auto;
 		padding: 0 var(--pui-spacing-4, 1rem);
 		padding-bottom: var(--pui-spacing-12, 3rem);
-	}
-
-	.page-inner {
-		margin-top: var(--pui-spacing-4, 1rem);
-		margin-bottom: var(--pui-spacing-4, 1rem);
-		max-width: 1200px;
 	}
 </style>

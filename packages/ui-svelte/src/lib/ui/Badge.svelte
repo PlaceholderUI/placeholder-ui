@@ -1,4 +1,5 @@
 <script lang="ts">
+	import { resolve } from '$app/paths';
 	import Icon from '../icon/Icon.svelte';
 	import { iconX } from '../icon/index.js';
 	import type { Snippet } from 'svelte';
@@ -36,7 +37,7 @@
 
 <div class="badge-container {variant} shape-{shape} {onDelete ? 'badge-with-button' : ''} ">
 	{#if type == 'a' && !disabled}
-		<a class={elClass} {href}> {@render children?.()}</a>
+		<a class={elClass} href={resolve((href ?? '') as any)}> {@render children?.()}</a>
 	{:else if type == 'button'}
 		<button class={elClass} disabled={isDisabled}> {@render children?.()}</button>
 	{:else}

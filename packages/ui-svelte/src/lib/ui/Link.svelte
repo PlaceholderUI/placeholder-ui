@@ -1,5 +1,5 @@
 <script lang="ts">
-	import { base } from '$app/paths';
+	import { resolve } from '$app/paths';
 	import { navigateTo } from '../util/NavigateTo.js';
 	import type { Snippet } from 'svelte';
 
@@ -48,11 +48,6 @@
 			return;
 		}
 
-		// if link starts with base, do not duplicate
-		if (href?.startsWith(base)) {
-			href = href.slice(base.length);
-		}
-
 		// Prevent default navigation and use SvelteKit's client-side navigation
 		event.preventDefault();
 
@@ -63,7 +58,7 @@
 <a
 	{target}
 	class={classes}
-	href={href?.startsWith('/') ? `${base}${href}` : href}
+	href={href ? resolve(href as any) : href}
 	{rel}
 	onclick={handleClick}
 	data-sveltekit-preload-data="hover"

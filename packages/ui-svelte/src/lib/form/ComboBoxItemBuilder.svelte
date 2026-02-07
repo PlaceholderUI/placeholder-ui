@@ -386,7 +386,7 @@
 
 	.item-input:focus {
 		outline: none;
-		border-color: var(--pui-accent-color);
+		border-color: var(--pui-input-border-focus);
 	}
 
 	.item-input::placeholder {

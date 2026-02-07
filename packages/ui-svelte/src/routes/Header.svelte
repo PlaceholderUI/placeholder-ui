@@ -1,6 +1,7 @@
 <script lang="ts">
 	import { browser } from "$app/environment";
 	import { goto } from "$app/navigation";
+	import { resolve } from "$app/paths";
 	import {
 		iconHamburger,
 		iconX,
@@ -57,7 +58,7 @@
 	}
 
 	const searchOptions: ComboBoxItem[] = pages.map((p) => ({
-		value: p.href,
+		value: resolve(p.href as any),
 		label: p.label,
 	}));
 

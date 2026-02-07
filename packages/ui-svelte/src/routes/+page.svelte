@@ -7,8 +7,30 @@
 		Skeleton,
 		Avatar,
 		Alert,
-		ThemeSwitcher
+		Textbox,
+		Select,
+		Switch,
+		Checkbox,
+		Slider,
+		ThemeSwitcher,
+		iconSearch,
+		iconUser,
+		type ComboBoxItem
 	} from '$lib/index.js';
+
+	let nameValue = $state('');
+	let emailValue = $state('');
+	let selectedRole = $state<string | undefined>(undefined);
+	let notifications = $state(true);
+	let marketing = $state(false);
+	let termsAccepted = $state(false);
+	let sliderValue = $state(65);
+
+	const roleOptions: ComboBoxItem[] = [
+		{ value: 'admin', label: 'Admin' },
+		{ value: 'editor', label: 'Editor' },
+		{ value: 'viewer', label: 'Viewer' },
+	];
 </script>
 
 <div class="intro">
@@ -63,51 +85,74 @@
 <section class="preview-section">
 	<h2>Component Preview</h2>
 
-	<Paper class="preview-card">
-		<h3>Buttons</h3>
-		<div class="button-row">
-			<Button variant="primary">Primary</Button>
-			<Button variant="secondary">Secondary</Button>
-			<Button variant="muted">Muted</Button>
-			<Button variant="danger">Danger</Button>
-		</div>
-	</Paper>
-
-	<Paper class="preview-card">
-		<h3>Progress & Loading</h3>
-		<Progress value={65} color="primary" label="Progress" showValue />
-		<div style="margin-top: 1rem;">
-			<Skeleton width="100%" height="1rem" />
-			<div style="margin-top: 0.5rem; display: flex; gap: 1rem;">
-				<Skeleton width="60%" height="1rem" />
-				<Skeleton circle width="2rem" height="2rem" />
+	<div class="preview-grid">
+		<Paper class="preview-card">
+			<h3>Form Inputs</h3>
+			<div class="form-stack">
+				<Textbox bind:value={nameValue} label="Name" placeholder="John Doe" leftIconSvg={iconUser} />
+				<Textbox bind:value={emailValue} label="Email" placeholder="john@example.com" leftIconSvg={iconSearch} />
+				<Select bind:value={selectedRole} options={roleOptions} label="Role" placeholder="Select a role..." />
 			</div>
-		</div>
-	</Paper>
+		</Paper>
 
-	<Paper class="preview-card">
-		<h3>Alerts</h3>
-		<Alert variant="default" title="Information">
-			This is a default alert message.
-		</Alert>
-		<div style="margin-top: 0.5rem;">
-			<Alert variant="warning" title="Warning">
-				Please review your settings.
-			</Alert>
-		</div>
-	</Paper>
+		<Paper class="preview-card">
+			<h3>Toggles & Controls</h3>
+			<div class="form-stack">
+				<Switch label="Email notifications" bind:checked={notifications} description="Receive updates via email" />
+				<Switch label="Marketing emails" bind:checked={marketing} />
+				<Checkbox label="I accept the terms and conditions" bind:checked={termsAccepted} />
+				<div>
+					<div style="font-size: 0.875rem; margin-bottom: 0.5rem;">Volume: {sliderValue}%</div>
+					<Slider bind:value={sliderValue} min={0} max={100} />
+				</div>
+			</div>
+		</Paper>
 
-	<Paper class="preview-card">
-		<h3>Avatars & Badges</h3>
-		<div style="display: flex; align-items: center; gap: 1rem; flex-wrap: wrap;">
-			<Avatar src="https://i.pravatar.cc/150?img=1" alt="User" size={48} />
-			<Avatar src="https://i.pravatar.cc/150?img=2" alt="User" size={48} />
-			<Badge variant="primary">Default</Badge>
-			<Badge variant="secondary">Success</Badge>
-			<Badge variant="danger">Error</Badge>
-			<Badge variant="accent">Info</Badge>
-		</div>
-	</Paper>
+		<Paper class="preview-card">
+			<h3>Buttons</h3>
+			<div class="button-row">
+				<Button variant="primary">Primary</Button>
+				<Button variant="secondary">Secondary</Button>
+				<Button variant="muted">Muted</Button>
+				<Button variant="danger">Danger</Button>
+			</div>
+		</Paper>
+
+		<Paper class="preview-card">
+			<h3>Feedback</h3>
+			<Progress value={sliderValue} color="primary" label="Progress" showValue />
+			<div style="margin-top: 0.75rem;">
+				<Alert variant="success" title="Success">Your changes have been saved.</Alert>
+			</div>
+			<div style="margin-top: 0.5rem;">
+				<Alert variant="warning" title="Warning">Please review your settings.</Alert>
+			</div>
+		</Paper>
+
+		<Paper class="preview-card">
+			<h3>Avatars & Badges</h3>
+			<div style="display: flex; align-items: center; gap: 1rem; flex-wrap: wrap;">
+				<Avatar src="https://i.pravatar.cc/150?img=1" alt="User" size={3} />
+				<Avatar src="https://i.pravatar.cc/150?img=2" alt="User" size={3} />
+				<Badge variant="primary">Default</Badge>
+				<Badge variant="secondary">Success</Badge>
+				<Badge variant="danger">Error</Badge>
+				<Badge variant="accent">Info</Badge>
+			</div>
+		</Paper>
+
+		<Paper class="preview-card">
+			<h3>Loading States</h3>
+			<Skeleton width="100%" height="1rem" />
+			<div style="margin-top: 0.5rem;">
+				<Skeleton width="75%" height="1rem" />
+			</div>
+			<div style="margin-top: 0.5rem; display: flex; gap: 1rem; align-items: center;">
+				<Skeleton width="40%" height="1rem" />
+				<Skeleton circle width="2.5rem" height="2.5rem" />
+			</div>
+		</Paper>
+	</div>
 </section>
 
 <Paper class="quick-start">
@@ -212,13 +257,21 @@ ${"</scr" + "ipt>"}
 		margin-bottom: var(--pui-spacing-8, 2rem);
 	}
 
-	:global(.preview-card) {
-		margin-bottom: var(--pui-spacing-6, 1.5rem);
+	.preview-grid {
+		display: grid;
+		grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+		gap: var(--pui-spacing-6, 1.5rem);
 	}
 
 	:global(.preview-card) h3 {
 		font-size: 1rem;
 		margin-bottom: var(--pui-spacing-3, 0.75rem);
+	}
+
+	.form-stack {
+		display: flex;
+		flex-direction: column;
+		gap: var(--pui-spacing-3, 0.75rem);
 	}
 
 	.button-row {
@@ -260,6 +313,6 @@ ${"</scr" + "ipt>"}
 	}
 
 	:global(.dark) pre {
-		background: var(--pui-color-bg-secondary, #1a1a1a);
+		background: var(--pui-color-dark-300, #1a1a1d);
 	}
 </style>

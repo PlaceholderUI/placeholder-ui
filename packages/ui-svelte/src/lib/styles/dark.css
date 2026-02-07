@@ -93,10 +93,14 @@
 	/* ============================================
 	 * ALERT
 	 * ============================================ */
-	--pui-alert-info-bg: rgba(28, 126, 214, 0.15);
-	--pui-alert-success-bg: rgba(55, 178, 77, 0.15);
-	--pui-alert-warning-bg: rgba(252, 196, 25, 0.15);
-	--pui-alert-danger-bg: var(--pui-color-danger-subtle-dark);
+	--pui-alert-info-bg: #032830;
+	--pui-alert-info-border: #087990;
+	--pui-alert-success-bg: #051b11;
+	--pui-alert-success-border: #0f5132;
+	--pui-alert-warning-bg: #332701;
+	--pui-alert-warning-border: #997404;
+	--pui-alert-danger-bg: #2c0b0e;
+	--pui-alert-danger-border: #842029;
 
 	/* ============================================
 	 * AVATAR

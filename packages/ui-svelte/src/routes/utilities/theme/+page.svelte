@@ -212,6 +212,10 @@
 		color: var(--pui-text-primary);
 	}
 
+	:global(.dark) .code-block {
+		background: var(--pui-color-dark-300, #1a1a1d);
+	}
+
 	.info-grid {
 		display: grid;
 		grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));

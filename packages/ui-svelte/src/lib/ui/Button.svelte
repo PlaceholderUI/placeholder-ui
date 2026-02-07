@@ -1,5 +1,6 @@
 <script lang="ts">
 	import type { Snippet } from 'svelte';
+	import { resolve } from '$app/paths';
 	import Icon from '../icon/Icon.svelte';
 	import type { ButtonVariant } from './ButtonVariant.js';
 	import type { ButtonSize } from './ButtonSize.js';
@@ -39,6 +40,7 @@
 
 	let isDisabled = $derived(loading || disabled);
 	let isLink = $derived(!!href);
+	let resolvedHref = $derived(href ? resolve(href as any) : href);
 
 	let elClass = $derived(`pui-button ${buttonClass} ${variant} size-${size}${effectsDisabled ? ' effects-disabled' : ''}`);
 </script>
@@ -67,7 +69,7 @@
 {/snippet}
 
 {#if isLink && href && !disabled}
-	<a {target} class={elClass} {href} {onclick}>
+	<a {target} class={elClass} href={resolvedHref} {onclick}>
 		{@render buttonContent?.()}
 	</a>
 {:else}

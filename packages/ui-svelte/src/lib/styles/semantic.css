@@ -39,7 +39,7 @@
 	--pui-border-default: rgb(226, 232, 240);
 	--pui-border-subtle: var(--pui-color-gray-200);
 	--pui-border-strong: var(--pui-color-gray-400);
-	--pui-border-focus: var(--pui-color-accent);
+	--pui-border-focus: var(--pui-color-primary);
 	--pui-border-error: var(--pui-color-danger);
 	--pui-border-success: var(--pui-color-success);
 
@@ -59,7 +59,7 @@
 	/* ============================================
 	 * FOCUS RING
 	 * ============================================ */
-	--pui-focus-ring-color: var(--pui-color-accent);
+	--pui-focus-ring-color: var(--pui-color-primary);
 	--pui-focus-ring-width: 2px;
 	--pui-focus-ring-offset: 2px;
 

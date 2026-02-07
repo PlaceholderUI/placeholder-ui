@@ -10,7 +10,7 @@
 	--pui-input-bg: var(--pui-color-white);
 	--pui-input-bg-disabled: var(--pui-color-gray-200);
 	--pui-input-border: var(--pui-border-default);
-	--pui-input-border-focus: var(--pui-color-accent);
+	--pui-input-border-focus: var(--pui-color-primary);
 	--pui-input-border-error: var(--pui-color-danger);
 	--pui-input-placeholder: var(--pui-text-placeholder);
 	--pui-input-text: var(--pui-text-primary);
@@ -169,7 +169,7 @@
 	--pui-check-size: 1.125rem;
 	--pui-check-bg: var(--pui-input-bg);
 	--pui-check-border: var(--pui-input-border);
-	--pui-check-bg-checked: var(--pui-color-secondary);
+	--pui-check-bg-checked: var(--pui-color-primary);
 	--pui-check-icon-color: var(--pui-color-primary);
 
 	/* ============================================

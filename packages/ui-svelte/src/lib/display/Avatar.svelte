@@ -1,4 +1,5 @@
 <script lang="ts">
+	import { resolve } from '$app/paths';
 	import Icon from '../icon/Icon.svelte';
 
 	interface Props {
@@ -82,7 +83,7 @@
 			{@render img()}
 		</button>
 	{:else if href}
-		<a {href}>
+		<a href={resolve((href ?? '') as any)}>
 			{@render img()}
 		</a>
 	{:else}

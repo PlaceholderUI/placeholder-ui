@@ -504,7 +504,7 @@
 	}
 
 	.select:focus {
-		border-color: var(--pui-accent-color);
+		border-color: var(--pui-input-border-focus);
 		outline: 2px solid transparent;
 		outline-offset: var(--pui-focus-ring-offset);
 	}
