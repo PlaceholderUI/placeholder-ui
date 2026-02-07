@@ -127,7 +127,7 @@
 		transition: var(--pui-transition-slow) border-color var(--pui-ease-out);
 	}
 	:global(.dark) input:checked:before {
-		border-color: var(--pui-color-secondary);
+		border-color: var(--pui-color-primary);
 	}
 
 	input:disabled:before {
@@ -157,7 +157,7 @@
 		opacity: 0.5;
 	}
 	:global(.dark) input:after {
-		background-color: var(--pui-color-secondary);
+		background-color: var(--pui-color-primary);
 	}
 	input[type='radio']:before {
 		border-radius: var(--pui-radius-full);
