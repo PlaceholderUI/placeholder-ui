@@ -27,11 +27,11 @@ jobs:
       - name: Install dependencies
         run: pnpm install
 
+      - name: Build all packages
+        run: pnpm build:all
+
       - name: Type check
         run: pnpm check
 
       - name: Run tests
         run: pnpm test
-
-      - name: Build all packages
-        run: pnpm build:all
