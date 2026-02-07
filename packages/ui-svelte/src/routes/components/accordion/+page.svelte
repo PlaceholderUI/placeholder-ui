@@ -1,5 +1,6 @@
 <script lang="ts">
-	import { Accordion, Paper, type AccordionItem } from '$lib/index.js';
+	import { Table, Accordion, Paper, type AccordionItem } from '$lib/index.js';
+	import type { Column } from '$lib/index.js';
 
 	const basicItems: AccordionItem[] = [
 		{ id: 'item-1', title: 'What is Placeholder UI?', content: 'Placeholder UI is a Svelte 5 component library that provides a comprehensive set of accessible, customizable UI components built with modern web standards.' },
@@ -19,109 +20,72 @@
 		{ id: 'v-2', title: 'Section Two', content: 'Different variants change the visual appearance of the accordion.' },
 		{ id: 'v-3', title: 'Section Three', content: 'Choose the variant that best fits your design.' }
 	];
+
+	interface PropRow {
+		prop: string;
+		type: string;
+		default: string;
+		description: string;
+	}
+
+	const propsColumns: Column<PropRow>[] = [
+		{ key: 'prop', label: 'Prop' },
+		{ key: 'type', label: 'Type' },
+		{ key: 'default', label: 'Default' },
+		{ key: 'description', label: 'Description' },
+	];
+
+	const propsRows: PropRow[] = [
+		{ prop: 'items', type: 'AccordionItem[]', default: '[]', description: 'Array of accordion items with id, title, and content' },
+		{ prop: 'multiple', type: 'boolean', default: 'false', description: 'Allow multiple panels to be open at once' },
+		{ prop: 'defaultOpen', type: 'string[]', default: '[]', description: 'Array of item IDs to open by default' },
+		{ prop: 'variant', type: '\'default\' | \'contained\' | \'filled\' | \'separated\'', default: '\'default\'', description: 'Visual style variant' },
+		{ prop: 'radius', type: '\'none\' | \'sm\' | \'md\' | \'lg\'', default: '\'md\'', description: 'Border radius size' },
+		{ prop: 'chevronPosition', type: '\'left\' | \'right\'', default: '\'right\'', description: 'Position of the expand/collapse chevron icon' },
+		{ prop: 'disableChevronRotation', type: 'boolean', default: 'false', description: 'Prevent chevron from rotating on open' },
+		{ prop: 'class', type: 'string', default: '\'\'', description: 'Additional CSS classes' },
+	];
 </script>
 
 <h1>Accordion</h1>
 <p>Accordion displays collapsible content panels for presenting information in a limited space.</p>
 
-<Paper title="Basic Usage">
-	<Accordion items={basicItems} />
-</Paper>
+<div class="vstack">
+	<Paper title="Basic Usage">
+		<Accordion items={basicItems} />
+	</Paper>
 
-<Paper title="Multiple Open">
-	<Accordion items={multipleItems} multiple />
-</Paper>
+	<Paper title="Multiple Open">
+		<Accordion items={multipleItems} multiple />
+	</Paper>
 
-<Paper title="Variants">
-	<h3 style="margin-bottom: 0.5rem;">Default</h3>
-	<Accordion items={variantItems} variant="default" />
+	<Paper title="Variants">
+		<h3 style="margin-bottom: 0.5rem;">Default</h3>
+		<Accordion items={variantItems} variant="default" />
 
-	<h3 style="margin: 1.5rem 0 0.5rem;">Contained</h3>
-	<Accordion items={variantItems.map(i => ({ ...i, id: 'c-' + i.id }))} variant="contained" />
+		<h3 style="margin: 1.5rem 0 0.5rem;">Contained</h3>
+		<Accordion items={variantItems.map(i => ({ ...i, id: 'c-' + i.id }))} variant="contained" />
 
-	<h3 style="margin: 1.5rem 0 0.5rem;">Filled</h3>
-	<Accordion items={variantItems.map(i => ({ ...i, id: 'f-' + i.id }))} variant="filled" />
+		<h3 style="margin: 1.5rem 0 0.5rem;">Filled</h3>
+		<Accordion items={variantItems.map(i => ({ ...i, id: 'f-' + i.id }))} variant="filled" />
 
-	<h3 style="margin: 1.5rem 0 0.5rem;">Separated</h3>
-	<Accordion items={variantItems.map(i => ({ ...i, id: 's-' + i.id }))} variant="separated" />
-</Paper>
+		<h3 style="margin: 1.5rem 0 0.5rem;">Separated</h3>
+		<Accordion items={variantItems.map(i => ({ ...i, id: 's-' + i.id }))} variant="separated" />
+	</Paper>
 
-<Paper title="Chevron Left">
-	<Accordion items={basicItems.map(i => ({ ...i, id: 'left-' + i.id }))} chevronPosition="left" />
-</Paper>
+	<Paper title="Chevron Left">
+		<Accordion items={basicItems.map(i => ({ ...i, id: 'left-' + i.id }))} chevronPosition="left" />
+	</Paper>
 
-<Paper title="Default Open">
-	<Accordion items={basicItems.map(i => ({ ...i, id: 'open-' + i.id }))} defaultOpen={['open-item-1', 'open-item-3']} multiple />
-</Paper>
+	<Paper title="Default Open">
+		<Accordion items={basicItems.map(i => ({ ...i, id: 'open-' + i.id }))} defaultOpen={['open-item-1', 'open-item-3']} multiple />
+	</Paper>
 
-<Paper title="Props">
-	<table class="props-table">
-		<thead>
-			<tr>
-				<th>Prop</th>
-				<th>Type</th>
-				<th>Default</th>
-				<th>Description</th>
-			</tr>
-		</thead>
-		<tbody>
-			<tr>
-				<td><code>items</code></td>
-				<td><code>AccordionItem[]</code></td>
-				<td><code>[]</code></td>
-				<td>Array of accordion items with id, title, and content</td>
-			</tr>
-			<tr>
-				<td><code>multiple</code></td>
-				<td><code>boolean</code></td>
-				<td><code>false</code></td>
-				<td>Allow multiple panels to be open at once</td>
-			</tr>
-			<tr>
-				<td><code>defaultOpen</code></td>
-				<td><code>string[]</code></td>
-				<td><code>[]</code></td>
-				<td>Array of item IDs to open by default</td>
-			</tr>
-			<tr>
-				<td><code>variant</code></td>
-				<td><code>'default' | 'contained' | 'filled' | 'separated'</code></td>
-				<td><code>'default'</code></td>
-				<td>Visual style variant</td>
-			</tr>
-			<tr>
-				<td><code>radius</code></td>
-				<td><code>'none' | 'sm' | 'md' | 'lg'</code></td>
-				<td><code>'md'</code></td>
-				<td>Border radius size</td>
-			</tr>
-			<tr>
-				<td><code>chevronPosition</code></td>
-				<td><code>'left' | 'right'</code></td>
-				<td><code>'right'</code></td>
-				<td>Position of the expand/collapse chevron icon</td>
-			</tr>
-			<tr>
-				<td><code>disableChevronRotation</code></td>
-				<td><code>boolean</code></td>
-				<td><code>false</code></td>
-				<td>Prevent chevron from rotating on open</td>
-			</tr>
-			<tr>
-				<td><code>class</code></td>
-				<td><code>string</code></td>
-				<td><code>''</code></td>
-				<td>Additional CSS classes</td>
-			</tr>
-		</tbody>
-	</table>
-</Paper>
+	<Paper title="Props">
+		<Table columns={propsColumns} rows={propsRows} striped hover={false} />
+	</Paper>
+</div>
 
 <style>
 	h1 { margin-bottom: 0.5rem; }
-	p { color: var(--pui-color-text-secondary); margin-bottom: 1.5rem; }
-	.props-table { width: 100%; border-collapse: collapse; font-size: 0.875rem; }
-	.props-table th, .props-table td { text-align: left; padding: 0.75rem; border-bottom: 1px solid var(--pui-color-border); }
-	.props-table th { font-weight: 600; background: var(--pui-color-bg-secondary); }
-	.props-table code { background: var(--pui-color-bg-tertiary); padding: 0.125rem 0.375rem; border-radius: 4px; font-size: 0.8125rem; }
-</style>
+	p { color: var(--pui-color-text-secondary); margin-bottom: 1.5rem; }</style>

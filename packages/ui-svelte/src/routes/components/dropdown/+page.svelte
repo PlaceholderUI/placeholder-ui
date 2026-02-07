@@ -1,5 +1,6 @@
 <script lang="ts">
-	import { Dropdown, Paper, Button, iconSettings, iconUser, iconEdit } from '$lib/index.js';
+	import { Table, Dropdown, Paper, Button, iconSettings, iconUser, iconEdit } from '$lib/index.js';
+	import type { Column } from '$lib/index.js';
 	import type { Hyperlink } from '$lib/index.js';
 
 	let basicShow = $state(false);
@@ -39,129 +40,91 @@
 		{ href: 'https://kit.svelte.dev', text: 'SvelteKit', newTab: true },
 		{ href: 'https://vitejs.dev', text: 'Vite', newTab: true }
 	];
+
+	interface PropRow1 {
+		prop: string;
+		type: string;
+		default: string;
+		description: string;
+	}
+
+	const propsColumns1: Column<PropRow1>[] = [
+		{ key: 'prop', label: 'Prop' },
+		{ key: 'type', label: 'Type' },
+		{ key: 'default', label: 'Default' },
+		{ key: 'description', label: 'Description' },
+	];
+
+	const propsRows1: PropRow1[] = [
+		{ prop: 'show', type: 'boolean', default: 'false', description: 'Bindable visibility state' },
+		{ prop: 'label', type: 'string', default: 'required', description: 'Button label text' },
+		{ prop: 'buttonSvg', type: 'string', default: 'iconChevronDown', description: 'Icon for the trigger button' },
+		{ prop: 'links', type: 'Hyperlink[] | Hyperlink[][]', default: '[]', description: 'Array of links or grouped arrays' },
+		{ prop: 'alignToButton', type: '\'left\' | \'right\'', default: '\'left\'', description: 'Alignment of the dropdown' },
+		{ prop: 'class', type: 'string', default: '\'\'', description: 'Additional CSS classes' },
+	];
+
+	interface PropRow2 {
+		property: string;
+		type: string;
+		description: string;
+	}
+
+	const propsColumns2: Column<PropRow2>[] = [
+		{ key: 'property', label: 'Property' },
+		{ key: 'type', label: 'Type' },
+		{ key: 'description', label: 'Description' },
+	];
+
+	const propsRows2: PropRow2[] = [
+		{ property: 'href', type: 'string', description: 'Link URL' },
+		{ property: 'text', type: 'string', description: 'Display text' },
+		{ property: 'newTab', type: 'boolean', description: 'Open in new tab' },
+		{ property: 'svg', type: 'string', description: 'Optional icon SVG string' },
+	];
 </script>
 
 <h1>Dropdown</h1>
 <p>Button-triggered dropdown menu with links. Supports grouped links and alignment options.</p>
 
-<Paper title="Basic Usage">
-	<Dropdown bind:show={basicShow} label="Menu" links={basicLinks} />
-	<div class="value-display">show: {basicShow}</div>
-</Paper>
+<div class="vstack">
+	<Paper title="Basic Usage">
+		<Dropdown bind:show={basicShow} label="Menu" links={basicLinks} />
+		<div class="value-display">show: {basicShow}</div>
+	</Paper>
 
-<Paper title="Grouped Links">
-	<Dropdown bind:show={groupedShow} label="Account" links={groupedLinks} />
-	<div class="value-display">show: {groupedShow}</div>
-</Paper>
+	<Paper title="Grouped Links">
+		<Dropdown bind:show={groupedShow} label="Account" links={groupedLinks} />
+		<div class="value-display">show: {groupedShow}</div>
+	</Paper>
 
-<Paper title="Right Aligned">
-	<div class="demo-row" style="justify-content: flex-end;">
-		<Dropdown bind:show={rightShow} label="Options" links={basicLinks} alignToButton="right" />
-	</div>
-	<div class="value-display">show: {rightShow}, alignToButton: 'right'</div>
-</Paper>
+	<Paper title="Right Aligned">
+		<div class="demo-row" style="justify-content: flex-end;">
+			<Dropdown bind:show={rightShow} label="Options" links={basicLinks} alignToButton="right" />
+		</div>
+		<div class="value-display">show: {rightShow}, alignToButton: 'right'</div>
+	</Paper>
 
-<Paper title="With Icon Links">
-	<Dropdown bind:show={iconShow} label="Actions" links={iconLinks} buttonSvg={iconSettings} />
-	<div class="value-display">show: {iconShow}</div>
-</Paper>
+	<Paper title="With Icon Links">
+		<Dropdown bind:show={iconShow} label="Actions" links={iconLinks} buttonSvg={iconSettings} />
+		<div class="value-display">show: {iconShow}</div>
+	</Paper>
 
-<Paper title="External Links">
-	<Dropdown label="Resources" links={externalLinks} />
-	<div class="value-display">Links open in new tabs (newTab: true)</div>
-</Paper>
+	<Paper title="External Links">
+		<Dropdown label="Resources" links={externalLinks} />
+		<div class="value-display">Links open in new tabs (newTab: true)</div>
+	</Paper>
 
-<Paper title="Props">
-	<table class="props-table">
-		<thead>
-			<tr>
-				<th>Prop</th>
-				<th>Type</th>
-				<th>Default</th>
-				<th>Description</th>
-			</tr>
-		</thead>
-		<tbody>
-			<tr>
-				<td><code>show</code></td>
-				<td><code>boolean</code></td>
-				<td><code>false</code></td>
-				<td>Bindable visibility state</td>
-			</tr>
-			<tr>
-				<td><code>label</code></td>
-				<td><code>string</code></td>
-				<td>required</td>
-				<td>Button label text</td>
-			</tr>
-			<tr>
-				<td><code>buttonSvg</code></td>
-				<td><code>string</code></td>
-				<td><code>iconChevronDown</code></td>
-				<td>Icon for the trigger button</td>
-			</tr>
-			<tr>
-				<td><code>links</code></td>
-				<td><code>Hyperlink[] | Hyperlink[][]</code></td>
-				<td><code>[]</code></td>
-				<td>Array of links or grouped arrays</td>
-			</tr>
-			<tr>
-				<td><code>alignToButton</code></td>
-				<td><code>'left' | 'right'</code></td>
-				<td><code>'left'</code></td>
-				<td>Alignment of the dropdown</td>
-			</tr>
-			<tr>
-				<td><code>class</code></td>
-				<td><code>string</code></td>
-				<td><code>''</code></td>
-				<td>Additional CSS classes</td>
-			</tr>
-		</tbody>
-	</table>
+	<Paper title="Props">
+		<Table columns={propsColumns1} rows={propsRows1} striped hover={false} />
 
-	<h4 style="margin-top: 1.5rem; margin-bottom: 0.75rem;">Hyperlink Type</h4>
-	<table class="props-table">
-		<thead>
-			<tr>
-				<th>Property</th>
-				<th>Type</th>
-				<th>Description</th>
-			</tr>
-		</thead>
-		<tbody>
-			<tr>
-				<td><code>href</code></td>
-				<td><code>string</code></td>
-				<td>Link URL</td>
-			</tr>
-			<tr>
-				<td><code>text</code></td>
-				<td><code>string</code></td>
-				<td>Display text</td>
-			</tr>
-			<tr>
-				<td><code>newTab</code></td>
-				<td><code>boolean</code></td>
-				<td>Open in new tab</td>
-			</tr>
-			<tr>
-				<td><code>svg</code></td>
-				<td><code>string</code></td>
-				<td>Optional icon SVG string</td>
-			</tr>
-		</tbody>
-	</table>
-</Paper>
+		<h4 style="margin-top: 1.5rem; margin-bottom: 0.75rem;">Hyperlink Type</h4>
+		<Table columns={propsColumns2} rows={propsRows2} striped hover={false} />
+	</Paper>
+</div>
 
 <style>
 	h1 { margin-bottom: 0.5rem; }
 	p { color: var(--pui-color-text-secondary); margin-bottom: 1.5rem; }
 	.demo-row { display: flex; flex-wrap: wrap; gap: 0.75rem; align-items: center; }
-	.value-display { font-size: 0.875rem; color: var(--pui-color-text-muted); font-family: monospace; margin-top: 0.5rem; }
-	.props-table { width: 100%; border-collapse: collapse; font-size: 0.875rem; }
-	.props-table th, .props-table td { text-align: left; padding: 0.75rem; border-bottom: 1px solid var(--pui-color-border); }
-	.props-table th { font-weight: 600; background: var(--pui-color-bg-secondary); }
-	.props-table code { background: var(--pui-color-bg-tertiary); padding: 0.125rem 0.375rem; border-radius: 4px; font-size: 0.8125rem; }
-</style>
+	.value-display { font-size: 0.875rem; color: var(--pui-color-text-muted); font-family: monospace; margin-top: 0.5rem; }</style>

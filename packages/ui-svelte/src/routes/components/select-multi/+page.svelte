@@ -1,5 +1,6 @@
 <script lang="ts">
-	import { SelectMulti, Paper, type ComboBoxItem, type ComboBoxGroup } from '$lib/index.js';
+	import { Table, SelectMulti, Paper, type ComboBoxItem, type ComboBoxGroup } from '$lib/index.js';
+	import type { Column } from '$lib/index.js';
 
 	let selectedValues = $state<string[]>([]);
 	let searchableValues = $state<string[]>([]);
@@ -43,190 +44,123 @@
 			]
 		}
 	];
+
+	interface PropRow {
+		prop: string;
+		type: string;
+		default: string;
+		description: string;
+	}
+
+	const propsColumns: Column<PropRow>[] = [
+		{ key: 'prop', label: 'Prop' },
+		{ key: 'type', label: 'Type' },
+		{ key: 'default', label: 'Default' },
+		{ key: 'description', label: 'Description' },
+	];
+
+	const propsRows: PropRow[] = [
+		{ prop: 'values', type: 'string[]', default: '[]', description: 'Bindable array of selected values' },
+		{ prop: 'rawValues', type: 'ComboBoxItem[]', default: '[]', description: 'Bindable array of selected items with full data' },
+		{ prop: 'label', type: 'string', default: '\'\'', description: 'Label text above the select' },
+		{ prop: 'placeholder', type: 'string', default: '\'\\u00a0\'', description: 'Placeholder text when empty' },
+		{ prop: 'options', type: 'ComboBoxItem[]', default: '[]', description: 'Flat array of options' },
+		{ prop: 'groupedOptions', type: 'ComboBoxGroup[]', default: '[]', description: 'Grouped options array' },
+		{ prop: 'allowSearch', type: 'boolean', default: 'false', description: 'Enable search/filter input' },
+		{ prop: 'closeOnSelection', type: 'boolean', default: 'false', description: 'Close dropdown after each selection' },
+		{ prop: 'required', type: 'boolean', default: 'false', description: 'Shows required indicator' },
+		{ prop: 'disabled', type: 'boolean', default: 'false', description: 'Disables the select' },
+		{ prop: 'showError', type: 'boolean', default: 'false', description: 'Shows error styling' },
+		{ prop: 'errorText', type: 'string', default: '\'\'', description: 'Error message text' },
+		{ prop: 'onchange', type: '(values: string[]) => void', default: 'undefined', description: 'Called when selection changes' },
+		{ prop: 'onchangeRaw', type: '(items: ComboBoxItem[]) => void', default: 'undefined', description: 'Called with full item objects on change' },
+	];
 </script>
 
 <h1>SelectMulti</h1>
 <p>Multi-select dropdown component for choosing multiple options from a list.</p>
 
-<Paper title="Basic Usage">
-	<div class="form-grid">
-		<SelectMulti
-			label="Favorite Fruits"
-			options={fruitOptions}
-			bind:values={selectedValues}
-			placeholder="Select fruits..."
-		/>
-		<div class="value-display">Selected: {selectedValues.length > 0 ? selectedValues.join(', ') : 'none'}</div>
-	</div>
-</Paper>
+<div class="vstack">
+	<Paper title="Basic Usage">
+		<div class="form-grid">
+			<SelectMulti
+				label="Favorite Fruits"
+				options={fruitOptions}
+				bind:values={selectedValues}
+				placeholder="Select fruits..."
+			/>
+			<div class="value-display">Selected: {selectedValues.length > 0 ? selectedValues.join(', ') : 'none'}</div>
+		</div>
+	</Paper>
 
-<Paper title="Searchable">
-	<div class="form-grid">
-		<SelectMulti
-			label="Countries"
-			options={countryOptions}
-			bind:values={searchableValues}
-			placeholder="Search countries..."
-			allowSearch
-		/>
-		<div class="value-display">Selected: {searchableValues.length > 0 ? searchableValues.join(', ') : 'none'}</div>
-	</div>
-</Paper>
+	<Paper title="Searchable">
+		<div class="form-grid">
+			<SelectMulti
+				label="Countries"
+				options={countryOptions}
+				bind:values={searchableValues}
+				placeholder="Search countries..."
+				allowSearch
+			/>
+			<div class="value-display">Selected: {searchableValues.length > 0 ? searchableValues.join(', ') : 'none'}</div>
+		</div>
+	</Paper>
 
-<Paper title="Grouped Options">
-	<div class="form-grid">
-		<SelectMulti
-			label="Food Category"
-			{groupedOptions}
-			bind:values={groupedValues}
-			placeholder="Select food items..."
-		/>
-		<div class="value-display">Selected: {groupedValues.length > 0 ? groupedValues.join(', ') : 'none'}</div>
-	</div>
-</Paper>
+	<Paper title="Grouped Options">
+		<div class="form-grid">
+			<SelectMulti
+				label="Food Category"
+				{groupedOptions}
+				bind:values={groupedValues}
+				placeholder="Select food items..."
+			/>
+			<div class="value-display">Selected: {groupedValues.length > 0 ? groupedValues.join(', ') : 'none'}</div>
+		</div>
+	</Paper>
 
-<Paper title="Required">
-	<div class="form-grid">
-		<SelectMulti
-			label="Required Field"
-			options={fruitOptions}
-			bind:values={requiredValues}
-			placeholder="Select at least one..."
-			required
-		/>
-	</div>
-</Paper>
+	<Paper title="Required">
+		<div class="form-grid">
+			<SelectMulti
+				label="Required Field"
+				options={fruitOptions}
+				bind:values={requiredValues}
+				placeholder="Select at least one..."
+				required
+			/>
+		</div>
+	</Paper>
 
-<Paper title="Error State">
-	<div class="form-grid">
-		<SelectMulti
-			label="With Error"
-			options={fruitOptions}
-			bind:values={errorValues}
-			placeholder="Select..."
-			showError
-			errorText="Please select at least one option"
-		/>
-	</div>
-</Paper>
+	<Paper title="Error State">
+		<div class="form-grid">
+			<SelectMulti
+				label="With Error"
+				options={fruitOptions}
+				bind:values={errorValues}
+				placeholder="Select..."
+				showError
+				errorText="Please select at least one option"
+			/>
+		</div>
+	</Paper>
 
-<Paper title="Disabled">
-	<div class="form-grid">
-		<SelectMulti
-			label="Disabled"
-			options={fruitOptions}
-			placeholder="Cannot select"
-			disabled
-		/>
-	</div>
-</Paper>
+	<Paper title="Disabled">
+		<div class="form-grid">
+			<SelectMulti
+				label="Disabled"
+				options={fruitOptions}
+				placeholder="Cannot select"
+				disabled
+			/>
+		</div>
+	</Paper>
 
-<Paper title="Props">
-	<table class="props-table">
-		<thead>
-			<tr>
-				<th>Prop</th>
-				<th>Type</th>
-				<th>Default</th>
-				<th>Description</th>
-			</tr>
-		</thead>
-		<tbody>
-			<tr>
-				<td><code>values</code></td>
-				<td><code>string[]</code></td>
-				<td><code>[]</code></td>
-				<td>Bindable array of selected values</td>
-			</tr>
-			<tr>
-				<td><code>rawValues</code></td>
-				<td><code>ComboBoxItem[]</code></td>
-				<td><code>[]</code></td>
-				<td>Bindable array of selected items with full data</td>
-			</tr>
-			<tr>
-				<td><code>label</code></td>
-				<td><code>string</code></td>
-				<td><code>''</code></td>
-				<td>Label text above the select</td>
-			</tr>
-			<tr>
-				<td><code>placeholder</code></td>
-				<td><code>string</code></td>
-				<td><code>'\u00a0'</code></td>
-				<td>Placeholder text when empty</td>
-			</tr>
-			<tr>
-				<td><code>options</code></td>
-				<td><code>ComboBoxItem[]</code></td>
-				<td><code>[]</code></td>
-				<td>Flat array of options</td>
-			</tr>
-			<tr>
-				<td><code>groupedOptions</code></td>
-				<td><code>ComboBoxGroup[]</code></td>
-				<td><code>[]</code></td>
-				<td>Grouped options array</td>
-			</tr>
-			<tr>
-				<td><code>allowSearch</code></td>
-				<td><code>boolean</code></td>
-				<td><code>false</code></td>
-				<td>Enable search/filter input</td>
-			</tr>
-			<tr>
-				<td><code>closeOnSelection</code></td>
-				<td><code>boolean</code></td>
-				<td><code>false</code></td>
-				<td>Close dropdown after each selection</td>
-			</tr>
-			<tr>
-				<td><code>required</code></td>
-				<td><code>boolean</code></td>
-				<td><code>false</code></td>
-				<td>Shows required indicator</td>
-			</tr>
-			<tr>
-				<td><code>disabled</code></td>
-				<td><code>boolean</code></td>
-				<td><code>false</code></td>
-				<td>Disables the select</td>
-			</tr>
-			<tr>
-				<td><code>showError</code></td>
-				<td><code>boolean</code></td>
-				<td><code>false</code></td>
-				<td>Shows error styling</td>
-			</tr>
-			<tr>
-				<td><code>errorText</code></td>
-				<td><code>string</code></td>
-				<td><code>''</code></td>
-				<td>Error message text</td>
-			</tr>
-			<tr>
-				<td><code>onchange</code></td>
-				<td><code>(values: string[]) => void</code></td>
-				<td><code>undefined</code></td>
-				<td>Called when selection changes</td>
-			</tr>
-			<tr>
-				<td><code>onchangeRaw</code></td>
-				<td><code>(items: ComboBoxItem[]) => void</code></td>
-				<td><code>undefined</code></td>
-				<td>Called with full item objects on change</td>
-			</tr>
-		</tbody>
-	</table>
-</Paper>
+	<Paper title="Props">
+		<Table columns={propsColumns} rows={propsRows} striped hover={false} />
+	</Paper>
+</div>
 
 <style>
 	h1 { margin-bottom: 0.5rem; }
 	p { color: var(--pui-color-text-secondary); margin-bottom: 1.5rem; }
 	.form-grid { display: flex; flex-direction: column; gap: 1rem; max-width: 400px; }
-	.value-display { font-size: 0.875rem; color: var(--pui-color-text-muted); font-family: monospace; margin-top: 0.5rem; }
-	.props-table { width: 100%; border-collapse: collapse; font-size: 0.875rem; }
-	.props-table th, .props-table td { text-align: left; padding: 0.75rem; border-bottom: 1px solid var(--pui-color-border); }
-	.props-table th { font-weight: 600; background: var(--pui-color-bg-secondary); }
-	.props-table code { background: var(--pui-color-bg-tertiary); padding: 0.125rem 0.375rem; border-radius: 4px; font-size: 0.8125rem; }
-</style>
+	.value-display { font-size: 0.875rem; color: var(--pui-color-text-muted); font-family: monospace; margin-top: 0.5rem; }</style>

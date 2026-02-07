@@ -35,5 +35,4 @@ coverage/
 
 # Misc
 *.local
-.vercel
 .netlify

@@ -79,27 +79,27 @@
 	}
 
 	.alert-info {
-		background-color: var(--pui-color-info-50);
-		border-color: var(--pui-color-info-200);
-		color: var(--pui-color-info-800);
+		background-color: var(--pui-alert-info-bg);
+		border-color: var(--pui-alert-info-border);
+		color: var(--pui-color-info-dark, var(--pui-color-info));
 	}
 
 	.alert-success {
-		background-color: var(--pui-color-success-50);
-		border-color: var(--pui-color-success-200);
-		color: var(--pui-color-success-800);
+		background-color: var(--pui-alert-success-bg);
+		border-color: var(--pui-alert-success-border);
+		color: var(--pui-color-success-dark, var(--pui-color-success));
 	}
 
 	.alert-warning {
-		background-color: var(--pui-color-warning-50);
-		border-color: var(--pui-color-warning-200);
-		color: var(--pui-color-warning-800);
+		background-color: var(--pui-alert-warning-bg);
+		border-color: var(--pui-alert-warning-border);
+		color: var(--pui-color-warning-dark, var(--pui-color-warning));
 	}
 
 	.alert-danger {
-		background-color: var(--pui-color-danger-50);
-		border-color: var(--pui-color-danger-200);
-		color: var(--pui-color-danger-800);
+		background-color: var(--pui-alert-danger-bg);
+		border-color: var(--pui-alert-danger-border);
+		color: var(--pui-color-danger, var(--pui-color-danger));
 	}
 
 	:global(.dark) .alert-default {
@@ -109,27 +109,27 @@
 	}
 
 	:global(.dark) .alert-info {
-		background-color: var(--pui-color-info-900);
-		border-color: var(--pui-color-info-700);
-		color: var(--pui-color-info-300);
+		background-color: var(--pui-alert-info-bg);
+		border-color: var(--pui-alert-info-border);
+		color: var(--pui-color-info);
 	}
 
 	:global(.dark) .alert-success {
-		background-color: var(--pui-color-success-900);
-		border-color: var(--pui-color-success-700);
-		color: var(--pui-color-success-300);
+		background-color: var(--pui-alert-success-bg);
+		border-color: var(--pui-alert-success-border);
+		color: var(--pui-color-success);
 	}
 
 	:global(.dark) .alert-warning {
-		background-color: var(--pui-color-warning-900);
-		border-color: var(--pui-color-warning-700);
-		color: var(--pui-color-warning-300);
+		background-color: var(--pui-alert-warning-bg);
+		border-color: var(--pui-alert-warning-border);
+		color: var(--pui-color-warning);
 	}
 
 	:global(.dark) .alert-danger {
-		background-color: var(--pui-color-danger-900);
-		border-color: var(--pui-color-danger-700);
-		color: var(--pui-color-danger-300);
+		background-color: var(--pui-alert-danger-bg);
+		border-color: var(--pui-alert-danger-border);
+		color: var(--pui-color-danger-light, var(--pui-color-danger));
 	}
 
 	.alert-icon {

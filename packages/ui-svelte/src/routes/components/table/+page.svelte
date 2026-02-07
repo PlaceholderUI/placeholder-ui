@@ -29,127 +29,80 @@
 	function handleRowClick(row: Person, index: number) {
 		clickedRow = `${row.name} (row ${index})`;
 	}
+
+	interface PropRow {
+		prop: string;
+		type: string;
+		default: string;
+		description: string;
+	}
+
+	const propsColumns: Column<PropRow>[] = [
+		{ key: 'prop', label: 'Prop' },
+		{ key: 'type', label: 'Type' },
+		{ key: 'default', label: 'Default' },
+		{ key: 'description', label: 'Description' },
+	];
+
+	const propsRows: PropRow[] = [
+		{ prop: 'columns', type: 'Column[]', default: '[]', description: 'Column definitions with key, label, sortable, width, align, render' },
+		{ prop: 'rows', type: 'any[]', default: '[]', description: 'Array of row data objects' },
+		{ prop: 'searchable', type: 'boolean', default: 'false', description: 'Show search input above table' },
+		{ prop: 'searchPlaceholder', type: 'string', default: '\'Search...\'', description: 'Placeholder text for search input' },
+		{ prop: 'striped', type: 'boolean', default: 'false', description: 'Apply striped row styling' },
+		{ prop: 'hover', type: 'boolean', default: 'true', description: 'Highlight rows on hover' },
+		{ prop: 'emptyMessage', type: 'string', default: '\'No data available\'', description: 'Message shown when rows is empty' },
+		{ prop: 'loading', type: 'boolean', default: 'false', description: 'Show loading indicator' },
+		{ prop: 'onrowclick', type: '(row, index) => void', default: 'undefined', description: 'Callback when a row is clicked' },
+		{ prop: 'buttons', type: 'Snippet<[T, number]>', default: 'undefined', description: 'Action buttons snippet per row' },
+	];
 </script>
 
 <h1>Table</h1>
 <p>A data table component with sorting, searching, and customizable columns.</p>
 
-<Paper title="Basic Usage">
-	<Table {columns} {rows} />
-</Paper>
+<div class="vstack">
+	<Paper title="Basic Usage">
+		<Table {columns} {rows} />
+	</Paper>
 
-<Paper title="Searchable">
-	<Table {columns} {rows} searchable searchPlaceholder="Search people..." />
-</Paper>
+	<Paper title="Searchable">
+		<Table {columns} {rows} searchable searchPlaceholder="Search people..." />
+	</Paper>
 
-<Paper title="Striped">
-	<Table {columns} {rows} striped />
-</Paper>
+	<Paper title="Striped">
+		<Table {columns} {rows} striped />
+	</Paper>
 
-<Paper title="Loading State">
-	<Table {columns} rows={[]} loading />
-</Paper>
+	<Paper title="Loading State">
+		<Table {columns} rows={[]} loading />
+	</Paper>
 
-<Paper title="Empty State">
-	<Table {columns} rows={[]} emptyMessage="No users found matching your criteria." />
-</Paper>
+	<Paper title="Empty State">
+		<Table {columns} rows={[]} emptyMessage="No users found matching your criteria." />
+	</Paper>
 
-<Paper title="Row Click">
-	<Table {columns} {rows} onrowclick={handleRowClick} />
-	<div class="value-display">Clicked: {clickedRow || 'none'}</div>
-</Paper>
+	<Paper title="Row Click">
+		<Table {columns} {rows} onrowclick={handleRowClick} />
+		<div class="value-display">Clicked: {clickedRow || 'none'}</div>
+	</Paper>
 
-<Paper title="With Action Buttons">
-	<Table {columns} {rows}>
-		{#snippet buttons(row: Person, index: number)}
-			<Button size="xs" variant="primary-subtle" onclick={() => (clickedRow = `Edit: ${row.name}`)}>Edit</Button>
-			<Button size="xs" variant="danger-subtle" onclick={() => (clickedRow = `Delete: ${row.name}`)}>Delete</Button>
-		{/snippet}
-	</Table>
-	<div class="value-display">Action: {clickedRow || 'none'}</div>
-</Paper>
+	<Paper title="With Action Buttons">
+		<Table {columns} {rows}>
+			{#snippet buttons(row: Person, index: number)}
+				<Button size="xs" variant="primary-subtle" onclick={() => (clickedRow = `Edit: ${row.name}`)}>Edit</Button>
+				<Button size="xs" variant="danger-subtle" onclick={() => (clickedRow = `Delete: ${row.name}`)}>Delete</Button>
+			{/snippet}
+		</Table>
+		<div class="value-display">Action: {clickedRow || 'none'}</div>
+	</Paper>
 
-<Paper title="Props">
-	<table class="props-table">
-		<thead>
-			<tr>
-				<th>Prop</th>
-				<th>Type</th>
-				<th>Default</th>
-				<th>Description</th>
-			</tr>
-		</thead>
-		<tbody>
-			<tr>
-				<td><code>columns</code></td>
-				<td><code>Column[]</code></td>
-				<td><code>[]</code></td>
-				<td>Column definitions with key, label, sortable, width, align, render</td>
-			</tr>
-			<tr>
-				<td><code>rows</code></td>
-				<td><code>any[]</code></td>
-				<td><code>[]</code></td>
-				<td>Array of row data objects</td>
-			</tr>
-			<tr>
-				<td><code>searchable</code></td>
-				<td><code>boolean</code></td>
-				<td><code>false</code></td>
-				<td>Show search input above table</td>
-			</tr>
-			<tr>
-				<td><code>searchPlaceholder</code></td>
-				<td><code>string</code></td>
-				<td><code>'Search...'</code></td>
-				<td>Placeholder text for search input</td>
-			</tr>
-			<tr>
-				<td><code>striped</code></td>
-				<td><code>boolean</code></td>
-				<td><code>false</code></td>
-				<td>Apply striped row styling</td>
-			</tr>
-			<tr>
-				<td><code>hover</code></td>
-				<td><code>boolean</code></td>
-				<td><code>true</code></td>
-				<td>Highlight rows on hover</td>
-			</tr>
-			<tr>
-				<td><code>emptyMessage</code></td>
-				<td><code>string</code></td>
-				<td><code>'No data available'</code></td>
-				<td>Message shown when rows is empty</td>
-			</tr>
-			<tr>
-				<td><code>loading</code></td>
-				<td><code>boolean</code></td>
-				<td><code>false</code></td>
-				<td>Show loading indicator</td>
-			</tr>
-			<tr>
-				<td><code>onrowclick</code></td>
-				<td><code>(row, index) => void</code></td>
-				<td><code>undefined</code></td>
-				<td>Callback when a row is clicked</td>
-			</tr>
-			<tr>
-				<td><code>buttons</code></td>
-				<td><code>Snippet&lt;[T, number]&gt;</code></td>
-				<td><code>undefined</code></td>
-				<td>Action buttons snippet per row</td>
-			</tr>
-		</tbody>
-	</table>
-</Paper>
+	<Paper title="Props">
+		<Table columns={propsColumns} rows={propsRows} striped hover={false} />
+	</Paper>
+</div>
 
 <style>
 	h1 { margin-bottom: 0.5rem; }
 	p { color: var(--pui-color-text-secondary); margin-bottom: 1.5rem; }
-	.value-display { font-size: 0.875rem; color: var(--pui-color-text-muted); font-family: monospace; margin-top: 0.5rem; }
-	.props-table { width: 100%; border-collapse: collapse; font-size: 0.875rem; }
-	.props-table th, .props-table td { text-align: left; padding: 0.75rem; border-bottom: 1px solid var(--pui-color-border); }
-	.props-table th { font-weight: 600; background: var(--pui-color-bg-secondary); }
-	.props-table code { background: var(--pui-color-bg-tertiary); padding: 0.125rem 0.375rem; border-radius: 4px; font-size: 0.8125rem; }
-</style>
+	.value-display { font-size: 0.875rem; color: var(--pui-color-text-muted); font-family: monospace; margin-top: 0.5rem; }</style>
