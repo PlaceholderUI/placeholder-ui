@@ -6,7 +6,7 @@
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/placeholderco/placeholder-ui.git"
+    "url": "git+https://github.com/PlaceholderUI/placeholder-ui.git"
   },
   "engines": {
     "node": ">=20.0.0"

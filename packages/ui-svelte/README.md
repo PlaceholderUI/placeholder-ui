@@ -10,7 +10,7 @@ A modern, customizable Svelte 5 UI component library with comprehensive theming 
 - **Svelte 5** - Built with modern Svelte 5 runes
 - **TypeScript** - Full TypeScript support
 - **Accessible** - Built with accessibility in mind
-- **Lightweight** - No Bootstrap, minimal CSS footprint
+- **Lightweight** - Built for simple DX with just enough flexibility
 
 ## Installation
 

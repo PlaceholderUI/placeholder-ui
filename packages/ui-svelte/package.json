@@ -1,15 +1,15 @@
 {
 	"name": "@placeholderco/placeholder-ui",
-	"version": "1.0.0",
+	"version": "1.0.2",
 	"description": "A modern, customizable Svelte 5 UI component library with comprehensive theming support",
 	"license": "MIT",
 	"repository": {
 		"type": "git",
-		"url": "git+https://github.com/placeholderco/placeholder-ui.git"
+		"url": "git+https://github.com/PlaceholderUI/placeholder-ui.git"
 	},
-	"homepage": "https://github.com/placeholderco/placeholder-ui#readme",
+	"homepage": "https://github.com/PlaceholderUI/placeholder-ui#readme",
 	"bugs": {
-		"url": "https://github.com/placeholderco/placeholder-ui/issues"
+		"url": "https://github.com/PlaceholderUI/placeholder-ui/issues"
 	},
 	"keywords": [
 		"svelte",
