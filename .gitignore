@@ -30,6 +30,9 @@ yarn-error.log*
 # Testing
 coverage/
 
+# Claude
+.claude/
+
 # Misc
 *.local
 .vercel
