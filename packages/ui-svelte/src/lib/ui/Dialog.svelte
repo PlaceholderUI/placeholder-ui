@@ -197,7 +197,7 @@
 		border: none;
 		background-color: transparent;
 		overflow: visible;
-		margin-top: var(--pui-spacing-4);
+		margin: auto;
 
 		animation: fadeOut var(--pui-transition-fast) forwards;
 		transition:
