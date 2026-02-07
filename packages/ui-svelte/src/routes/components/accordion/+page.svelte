@@ -3,7 +3,7 @@
 
 	const basicItems: AccordionItem[] = [
 		{ id: 'item-1', title: 'What is Placeholder UI?', content: 'Placeholder UI is a Svelte 5 component library that provides a comprehensive set of accessible, customizable UI components built with modern web standards.' },
-		{ id: 'item-2', title: 'How do I install it?', content: 'Install via npm: npm install @anthropic-public/ui-svelte. The library requires Svelte 5 and uses runes exclusively.' },
+		{ id: 'item-2', title: 'How do I install it?', content: 'Install via npm: npm install @placeholderco/placeholder-ui. The library requires Svelte 5 and uses runes exclusively.' },
 		{ id: 'item-3', title: 'Is it free to use?', content: 'Yes, Placeholder UI is open source and free to use in both personal and commercial projects.' },
 		{ id: 'item-4', title: 'Does it support dark mode?', content: 'Yes, all components support dark mode out of the box via CSS custom properties and the .dark class on the document root.' }
 	];

@@ -282,10 +282,6 @@
 				}),
 			};
 		});
-		console.log(
-			"convertGroupOptions allGroups",
-			$state.snapshot(allGroups),
-		);
 		filteredGroups = [...allGroups];
 	}
 

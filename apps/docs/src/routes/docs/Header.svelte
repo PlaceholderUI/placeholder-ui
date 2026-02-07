@@ -19,7 +19,7 @@
 
     // Secondary navbar items (right side)
     const secondaryNavItems: LinkNavbarItem[] = [
-        { label: "GitHub", href: "https://github.com/anthropics/ui-svelte" },
+        { label: "GitHub", href: "https://github.com/PlaceholderUI/placeholder-ui" },
     ];
 
     // Theme options
