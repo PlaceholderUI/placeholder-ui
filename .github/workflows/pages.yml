@@ -26,13 +26,11 @@ jobs:
 
       - run: pnpm install
 
-      - run: pnpm --filter @placeholderco/placeholder-ui prepack
-
-      - run: pnpm --filter docs build
+      - run: pnpm --filter @placeholderco/placeholder-ui build
 
       - uses: actions/upload-pages-artifact@v3
         with:
-          path: apps/docs/build
+          path: packages/ui-svelte/build
 
   deploy:
     needs: build

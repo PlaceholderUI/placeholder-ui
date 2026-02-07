@@ -14,11 +14,11 @@
   "scripts": {
     "dev": "pnpm --filter @placeholderco/placeholder-ui dev",
     "dev:editors": "pnpm --filter @placeholderco/placeholder-ui-editors dev",
-    "dev:docs": "pnpm --filter docs dev",
+    "dev:docs": "pnpm --filter @placeholderco/placeholder-ui dev",
     "build": "pnpm --filter @placeholderco/placeholder-ui build",
     "build:editors": "pnpm --filter @placeholderco/placeholder-ui-editors build",
     "build:all": "pnpm --filter @placeholderco/placeholder-ui build && pnpm --filter @placeholderco/placeholder-ui-editors build",
-    "build:docs": "pnpm --filter @placeholderco/placeholder-ui build && pnpm --filter docs build",
+    "build:docs": "pnpm --filter @placeholderco/placeholder-ui build",
     "check": "pnpm -r check",
     "test": "pnpm --filter @placeholderco/placeholder-ui test",
     "format": "prettier --write .",

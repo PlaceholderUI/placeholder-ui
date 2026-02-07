@@ -1,160 +1,82 @@
 <script lang="ts">
 	import { afterNavigate } from "$app/navigation";
 	import { page } from "$app/state";
-	import {
-		Navbar,
-		Sidenav,
-		type Hyperlink,
-		type SidenavSection,
-	} from "$lib/index.js";
+	import { Sidenav, type SidenavSection } from "$lib/index.js";
 	import "../lib/styles/index.css";
+	import "./themes.css";
+	import Header from "./Header.svelte";
+	import { getPagesByCategory } from "./pages";
 
 	interface Props {
 		children?: any;
 	}
 
 	let { children }: Props = $props();
-	let mobileNavOpen = $state(false);
+	let sidebarOpen = $state(false);
 
-	let currentPath = $derived(page.url.pathname);
+	let currentRoute = $derived(page.route.id ?? '');
 
-	const appNav: Hyperlink = {
-		href: "/",
-		text: "Placeholder UI",
-	};
+	function isActive(href: string): boolean {
+		if (href === '/') return currentRoute === '/';
+		return currentRoute === href;
+	}
 
-	const navigationData = [
+	let sections: SidenavSection[] = $derived([
 		{
 			title: "Getting Started",
-			items: [
-				{ href: "/", label: "Introduction" },
-				{ href: "/utilities/theme", label: "Theme" },
-			],
-		},
-		{
-			title: "Form Components",
-			items: [
-				{ href: "/components/textbox", label: "Textbox" },
-				{ href: "/components/password-input", label: "Password Input" },
-				{ href: "/components/number", label: "Number" },
-				{ href: "/components/textarea", label: "TextArea" },
-				{ href: "/components/select", label: "Select" },
-				{ href: "/components/select-multi", label: "Select Multi" },
-				{ href: "/components/autocomplete", label: "Autocomplete" },
-				{ href: "/components/combobox", label: "ComboBox" },
-				{ href: "/components/combobox-multi", label: "ComboBox Multi" },
-				{ href: "/components/checkbox", label: "Checkbox" },
-				{ href: "/components/radio-group", label: "Radio Group" },
-				{ href: "/components/switch", label: "Switch" },
-				{
-					href: "/components/segmented-control",
-					label: "Segmented Control",
-				},
-				{ href: "/components/slider", label: "Slider" },
-				{ href: "/components/rating", label: "Rating" },
-				{ href: "/components/chips", label: "Chips" },
-				{ href: "/components/file-input", label: "File Input" },
-				{ href: "/components/datepicker", label: "Date Picker" },
-				{ href: "/components/timepicker", label: "Time Picker" },
-				{
-					href: "/components/datetimepicker",
-					label: "DateTime Picker",
-				},
-				{ href: "/components/cronbuilder", label: "CRON Builder" },
-				{ href: "/components/form-group", label: "Form Group" },
-			],
+			items: getPagesByCategory("getting-started").map((p) => ({
+				label: p.label,
+				href: p.href,
+				active: isActive(p.href),
+			})),
 		},
 		{
 			title: "UI Components",
-			items: [
-				{ href: "/components/button", label: "Button" },
-				{ href: "/components/action-icon", label: "Action Icon" },
-				{ href: "/components/badge", label: "Badge" },
-				{ href: "/components/loader", label: "Loader" },
-				{ href: "/components/progress", label: "Progress" },
-				{ href: "/components/ring-progress", label: "Ring Progress" },
-				{ href: "/components/skeleton", label: "Skeleton" },
-				{
-					href: "/components/loading-overlay",
-					label: "Loading Overlay",
-				},
-				{ href: "/components/dialog", label: "Dialog" },
-				{ href: "/components/drawer", label: "Drawer" },
-				{ href: "/components/dropdown", label: "Dropdown" },
-				{ href: "/components/popover", label: "Popover" },
-				{ href: "/components/tooltip", label: "Tooltip" },
-				{ href: "/components/tabs", label: "Tabs" },
-				{ href: "/components/accordion", label: "Accordion" },
-				{ href: "/components/table", label: "Table" },
-				{ href: "/components/pagination", label: "Pagination" },
-				{ href: "/components/breadcrumbs", label: "Breadcrumbs" },
-				{ href: "/components/stepper", label: "Stepper" },
-				{ href: "/components/timeline", label: "Timeline" },
-				{ href: "/components/dropzone", label: "Dropzone" },
-				{ href: "/components/toaster", label: "Toaster" },
-				{ href: "/components/link", label: "Link" },
-				{ href: "/components/icons", label: "Icons" },
-			],
+			items: getPagesByCategory("components").map((p) => ({
+				label: p.label,
+				href: p.href,
+				active: isActive(p.href),
+			})),
+		},
+		{
+			title: "Form Components",
+			items: getPagesByCategory("form").map((p) => ({
+				label: p.label,
+				href: p.href,
+				active: isActive(p.href),
+			})),
 		},
 		{
 			title: "Display Components",
-			items: [
-				{ href: "/components/paper", label: "Paper" },
-				{ href: "/components/avatar", label: "Avatar" },
-				{ href: "/components/alert", label: "Alert" },
-				{
-					href: "/components/link-collection",
-					label: "Link Collection",
-				},
-			],
+			items: getPagesByCategory("display").map((p) => ({
+				label: p.label,
+				href: p.href,
+				active: isActive(p.href),
+			})),
 		},
 		{
 			title: "Layout Components",
-			items: [
-				{ href: "/components/navbar", label: "Navbar" },
-				{ href: "/components/sidenav", label: "Sidenav" },
-			],
-		},
-	];
-
-	// Derive sections with active state based on current path
-	let sections: SidenavSection[] = $derived(
-		navigationData.map((section) => ({
-			title: section.title,
-			items: section.items.map((item) => ({
-				...item,
-				active: currentPath === item.href,
+			items: getPagesByCategory("layout").map((p) => ({
+				label: p.label,
+				href: p.href,
+				active: isActive(p.href),
 			})),
-		})),
-	);
+		},
+	]);
 
 	afterNavigate(() => {
 		const el = document.getElementById("page-content");
 		if (el) el.scrollTop = 0;
 	});
-
-	let isMobile = $state(false);
-
-	$effect(() => {
-		if (typeof window !== "undefined") {
-			const checkMobile = () => {
-				isMobile = window.innerWidth < 768;
-			};
-			checkMobile();
-			window.addEventListener("resize", checkMobile);
-			return () => window.removeEventListener("resize", checkMobile);
-		}
-	});
 </script>
 
+<svelte:head>
+	<title>Placeholder UI - Component Library</title>
+	<meta name="description" content="A modern Svelte 5 component library with theme support" />
+</svelte:head>
+
 <div class="navbar-wrapper">
-	<Navbar
-		{appNav}
-		items={isMobile ? [] : [{ label: "Home", href: "/" }]}
-		noLogo={isMobile}
-		showDrawerButton={isMobile}
-		onDrawerButtonClick={() => (mobileNavOpen = true)}
-	/>
+	<Header bind:sidebarOpen />
 </div>
 
 <div class="layout-container">
@@ -164,8 +86,8 @@
 		class="app-sidenav"
 		searchable
 		responsive
-		bind:mobileOpen={mobileNavOpen}
-		mobileTitle="Components"
+		bind:mobileOpen={sidebarOpen}
+		mobileTitle="Navigation"
 		mobileDrawerPosition="right"
 	/>
 	<div id="page-content">
