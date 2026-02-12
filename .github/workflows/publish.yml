@@ -1,12 +1,18 @@
 name: Publish to npm
 
 on:
-  release:
-    types: [published]
+  push:
+    branches: [master]
+    paths:
+      - 'packages/ui-svelte/**'
+      - 'packages/editors/**'
 
 jobs:
   publish:
     runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      id-token: write
 
     steps:
       - uses: actions/checkout@v4
@@ -30,13 +36,7 @@ jobs:
         run: pnpm build:all
 
       - name: Publish placeholder-ui
-        if: startsWith(github.ref, 'refs/tags/placeholder-ui@')
-        run: pnpm publish:package
-        env:
-          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
+        run: pnpm publish:package --provenance || true
 
       - name: Publish placeholder-ui-editors
-        if: startsWith(github.ref, 'refs/tags/editors@')
-        run: pnpm publish:editors
-        env:
-          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
+        run: pnpm publish:editors --provenance || true
