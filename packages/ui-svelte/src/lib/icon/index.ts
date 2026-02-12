@@ -54,7 +54,6 @@ export { default as iconListNumbers } from "./list-numbers.svg?raw";
 export { default as iconLoader } from "./loader.svg?raw";
 export { default as iconLock } from "./lock.svg?raw";
 export { default as iconLockOpen } from "./lock-open.svg?raw";
-export { default as iconLogo } from "./logo.svg?raw";
 export { default as iconMail } from "./mail.svg?raw";
 export { default as iconMessageCircle } from "./message-circle.svg?raw";
 export { default as iconMoon } from "./moon.svg?raw";

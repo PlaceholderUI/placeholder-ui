@@ -8,7 +8,6 @@ export { default as Dropdown } from './ui/Dropdown.svelte';
 export { default as Dropzone } from './ui/Dropzone.svelte';
 export { default as Link } from './ui/Link.svelte';
 export { default as Loader } from './ui/Loader.svelte';
-export { default as Logo } from './ui/Logo.svelte';
 export { default as Pagination } from './ui/Pagination.svelte';
 export { default as Popover } from './ui/Popover.svelte';
 export { default as Tabs } from './ui/Tabs.svelte';

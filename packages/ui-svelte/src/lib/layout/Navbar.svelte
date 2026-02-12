@@ -1,7 +1,6 @@
 <script lang="ts">
 	import type { LinkNavbarItem } from '../models/NavbarItem.js';
 	import { Link, ThemeSwitcher, ActionIcon, iconHamburger, type Hyperlink } from '../index.js';
-	import Logo from '../ui/Logo.svelte';
 	import type { Snippet } from 'svelte';
 
 	interface Props {
@@ -9,8 +8,6 @@
 		appNav?: Hyperlink;
 		items?: LinkNavbarItem[];
 		secondaryItems?: LinkNavbarItem[];
-		noLogo?: boolean;
-		logoHref?: string;
 		class?: string;
 		inContainer?: boolean;
 		middleSection?: Snippet;
@@ -27,8 +24,6 @@
 		appNav = undefined,
 		items = [],
 		secondaryItems = [],
-		noLogo = false,
-		logoHref = undefined,
 		class: className = '',
 		inContainer = false,
 		middleSection = undefined,
@@ -103,13 +98,6 @@
 		</div>
 		{@render rightSection?.()}
 		<ThemeSwitcher darkVariant="secondary-subtle" lightVariant="primary-subtle" />
-		{#if !noLogo}
-			{#if logoHref}
-				<Logo href={logoHref} />
-			{:else}
-				<Logo />
-			{/if}
-		{/if}
 		{#if showDrawerButton && drawerButtonPosition === 'right'}
 			<ActionIcon
 				svg={drawerButtonIcon}

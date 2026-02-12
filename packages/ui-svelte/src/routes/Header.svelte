@@ -75,7 +75,6 @@
 <Navbar
 	appNav={{ text: "Placeholder UI", href: "/" }}
 	secondaryItems={secondaryNavItems}
-	noLogo={true}
 	showDrawerButton={true}
 	drawerButtonPosition="left"
 	drawerButtonIcon={sidebarOpen ? iconX : iconHamburger}

@@ -20,8 +20,6 @@
 		{ prop: 'appNav', type: 'Hyperlink', default: 'undefined', description: 'Application branding link (href + text)' },
 		{ prop: 'items', type: 'LinkNavbarItem[]', default: '[]', description: 'Primary navigation links' },
 		{ prop: 'secondaryItems', type: 'LinkNavbarItem[]', default: '[]', description: 'Secondary navigation links (right side)' },
-		{ prop: 'noLogo', type: 'boolean', default: 'false', description: 'Hide the application logo' },
-		{ prop: 'logoHref', type: 'string', default: 'undefined', description: 'Custom link URL for the logo' },
 		{ prop: 'showDrawerButton', type: 'boolean', default: 'false', description: 'Show hamburger menu button (typically for mobile)' },
 		{ prop: 'drawerButtonPosition', type: '\'left\' | \'right\'', default: '\'right\'', description: 'Position of the drawer toggle button' },
 		{ prop: 'onDrawerButtonClick', type: '() => void', default: 'undefined', description: 'Callback when the drawer button is clicked' },

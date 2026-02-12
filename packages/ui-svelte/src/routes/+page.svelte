@@ -1,4 +1,5 @@
 <script lang="ts">
+	import { resolve } from '$app/paths';
 	import {
 		Button,
 		Paper,
@@ -47,7 +48,7 @@
 	</div>
 
 	<div class="actions">
-		<Button variant="primary" href="/components/button">Get Started</Button>
+		<Button variant="primary" href={resolve('/components/button' as any)}>Get Started</Button>
 		<Button variant="primary-outline" href="https://github.com/PlaceholderUI/placeholder-ui">GitHub</Button>
 	</div>
 </div>
