@@ -1,6 +1,6 @@
 {
   "name": "placeholder-ui-monorepo",
-  "version": "1.0.1",
+  "version": "1.0.3",
   "private": true,
   "description": "A modern Svelte 5 UI component library",
   "license": "MIT",
