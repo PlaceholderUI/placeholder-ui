@@ -4,7 +4,7 @@
 	import Button from "./Button.svelte";
 	import { clickOutside } from "../actions/ClickOutside.js";
 
-	type PopoverPosition = "top" | "bottom" | "left" | "right";
+	type PopoverPosition = "top" | "bottom" | "bottom-left" | "bottom-right" | "left" | "right";
 	type PopoverTrigger = "click" | "hover";
 
 	interface Props {
@@ -157,6 +157,18 @@
 		margin-top: var(--pui-spacing-1);
 	}
 
+	.popover-bottom-left {
+		top: 100%;
+		right: calc(50% - 16px);
+		margin-top: var(--pui-spacing-1);
+	}
+
+	.popover-bottom-right {
+		top: 100%;
+		left: calc(50% - 16px);
+		margin-top: var(--pui-spacing-1);
+	}
+
 	.popover-top {
 		bottom: 100%;
 		left: 50%;
@@ -189,6 +201,18 @@
 		top: -12px;
 		left: 50%;
 		transform: translateX(-50%);
+		border-bottom-color: var(--pui-border-default);
+	}
+
+	.popover-bottom-left::before {
+		top: -12px;
+		right: 12px;
+		border-bottom-color: var(--pui-border-default);
+	}
+
+	.popover-bottom-right::before {
+		top: -12px;
+		left: 12px;
 		border-bottom-color: var(--pui-border-default);
 	}
 

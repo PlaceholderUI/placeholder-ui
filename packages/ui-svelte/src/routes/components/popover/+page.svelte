@@ -10,6 +10,8 @@
 	let rightShow = $state(false);
 	let leftShow = $state(false);
 	let bottomShow = $state(false);
+	let bottomLeftShow = $state(false);
+	let bottomRightShow = $state(false);
 
 	interface PropRow {
 		prop: string;
@@ -28,7 +30,7 @@
 	const propsRows: PropRow[] = [
 		{ prop: 'show', type: 'boolean', default: 'false', description: 'Bindable visibility state' },
 		{ prop: 'label', type: 'string', default: 'undefined', description: 'Text for the default trigger button' },
-		{ prop: 'position', type: '\'top\' | \'bottom\' | \'left\' | \'right\'', default: '\'bottom\'', description: 'Popover position relative to trigger' },
+		{ prop: 'position', type: '\'top\' | \'bottom\' | \'bottom-left\' | \'bottom-right\' | \'left\' | \'right\'', default: '\'bottom\'', description: 'Popover position relative to trigger' },
 		{ prop: 'cssWidth', type: 'string', default: '\'auto\'', description: 'Custom width for the popover' },
 		{ prop: 'trigger', type: '\'click\' | \'hover\'', default: '\'click\'', description: 'How the popover is triggered' },
 		{ prop: 'hoverDelay', type: 'number', default: '1000', description: 'Delay in ms before showing on hover' },
@@ -110,6 +112,16 @@
 			<Popover bind:show={rightShow} label="Right" position="right">
 				<div class="popover-body">
 					<p>Position: right</p>
+				</div>
+			</Popover>
+			<Popover bind:show={bottomLeftShow} label="bvsadasd" position="bottom-left" cssWidth="350px">
+				<div class="popover-body">
+					<p>Position: bottom-left (content extends left, arrow at right edge)</p>
+				</div>
+			</Popover>
+			<Popover bind:show={bottomRightShow} label="Bottom Right" position="bottom-right" cssWidth="350px">
+				<div class="popover-body">
+					<p>Position: bottom-right (content extends right, arrow at left edge)</p>
 				</div>
 			</Popover>
 		</div>
