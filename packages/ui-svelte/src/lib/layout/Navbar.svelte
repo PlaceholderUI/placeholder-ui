@@ -2,6 +2,7 @@
 	import type { LinkNavbarItem } from '../models/NavbarItem.js';
 	import type { SidenavSection } from './Sidenav.svelte';
 	import { Link, ThemeSwitcher, ActionIcon, Drawer, iconHamburger, type Hyperlink } from '../index.js';
+	import { themeState } from '../theme.svelte.js';
 	import type { Snippet } from 'svelte';
 
 	interface Props {
@@ -121,7 +122,7 @@
 		{#if isCollapsed}
 			<ActionIcon
 				svg={iconHamburger}
-				variant="secondary-subtle"
+				variant={themeState.isDarkMode ? 'secondary-subtle' : 'primary-subtle'}
 				size="1.25rem"
 				onclick={handleBurgerClick}
 				class="responsive-burger"
