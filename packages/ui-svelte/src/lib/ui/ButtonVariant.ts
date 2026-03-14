@@ -1,0 +1,18 @@
+export type ButtonVariant =
+	| 'white'
+	| 'muted'
+	| 'muted-subtle'
+	| 'muted-selected'
+	| 'secondary-selected'
+	| 'danger'
+	| 'danger-subtle'
+	| 'auto-subtle'
+	| 'auto-outline'
+	| 'secondary'
+	| 'secondary-outline'
+	| 'secondary-subtle'
+	| 'primary'
+	| 'primary-outline'
+	| 'primary-subtle'
+	| 'accent'
+	| 'accent-subtle';

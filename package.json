@@ -1,0 +1,34 @@
+{
+  "name": "placeholder-ui-monorepo",
+  "version": "1.0.5",
+  "private": true,
+  "description": "A modern Svelte 5 UI component library",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/PlaceholderUI/placeholder-ui.git"
+  },
+  "engines": {
+    "node": ">=24.0.0"
+  },
+  "scripts": {
+    "dev": "pnpm --filter @placeholderco/placeholder-ui dev",
+    "dev:editors": "pnpm --filter @placeholderco/placeholder-ui-editors dev",
+    "dev:docs": "pnpm --filter @placeholderco/placeholder-ui dev",
+    "build": "pnpm --filter @placeholderco/placeholder-ui build",
+    "build:editors": "pnpm --filter @placeholderco/placeholder-ui-editors build",
+    "build:all": "pnpm --filter @placeholderco/placeholder-ui build && pnpm --filter @placeholderco/placeholder-ui-editors build",
+    "build:docs": "pnpm --filter @placeholderco/placeholder-ui build",
+    "check": "pnpm -r check",
+    "test": "pnpm --filter @placeholderco/placeholder-ui test",
+    "format": "prettier --write .",
+    "clean": "rimraf packages/*/dist packages/*/.svelte-kit apps/*/.svelte-kit",
+    "publish:package": "pnpm --filter @placeholderco/placeholder-ui publish --access public",
+    "publish:editors": "pnpm --filter @placeholderco/placeholder-ui-editors publish --access public"
+  },
+  "devDependencies": {
+    "prettier": "^3.8.1",
+    "prettier-plugin-svelte": "^3.5.1",
+    "rimraf": "^6.1.3"
+  }
+}

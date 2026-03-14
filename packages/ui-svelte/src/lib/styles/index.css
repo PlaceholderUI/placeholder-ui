@@ -1,0 +1,116 @@
+/**
+ * UI Library Core Styles
+ *
+ * Main entry point for all library styles.
+ * Import this file to get default styling.
+ *
+ * To customize, override CSS variables after importing:
+ *
+ * @example
+ * :root {
+ *   --pui-color-primary: #1a365d;
+ *   --pui-font-family-sans: 'Inter', sans-serif;
+ * }
+ */
+
+@import './reset.css';
+@import './tokens.css';
+@import './semantic.css';
+@import './components.css';
+@import './dark.css';
+@import './utilities.css';
+
+/* ============================================
+ * BASE STYLES
+ * ============================================ */
+
+:root {
+	background-color: var(--pui-bg-page);
+	color: var(--pui-text-primary);
+	font-family: var(--pui-font-family-sans);
+	font-size: var(--pui-font-size-md);
+	line-height: var(--pui-line-height-normal);
+}
+
+body {
+	margin: 0;
+	min-height: 100vh;
+}
+
+/* ============================================
+ * LINK STYLES
+ * ============================================ */
+
+a {
+	color: var(--pui-link-color);
+	text-decoration: none;
+	transition: color var(--pui-transition-base) var(--pui-ease-in-out);
+}
+
+a:hover {
+	color: var(--pui-link-hover-color);
+}
+
+header a {
+	color: var(--pui-color-primary);
+	text-decoration: none;
+	transition: color var(--pui-transition-base) var(--pui-ease-in-out);
+}
+
+.dark header a {
+	color: var(--pui-color-white);
+}
+
+.dark header a:hover {
+	color: var(--pui-color-secondary);
+}
+
+/* ============================================
+ * SCROLLBAR STYLES
+ * ============================================ */
+
+*::-webkit-scrollbar {
+	width: var(--pui-scrollbar-width);
+	height: var(--pui-scrollbar-width);
+}
+
+*::-webkit-scrollbar-track {
+	background: var(--pui-scrollbar-track);
+}
+
+*::-webkit-scrollbar-thumb {
+	background-color: var(--pui-scrollbar-thumb);
+	border-radius: 10px;
+	border: 5px solid var(--pui-scrollbar-thumb-border);
+}
+
+* {
+	scrollbar-width: thin;
+	scrollbar-color: var(--pui-scrollbar-thumb) var(--pui-scrollbar-track);
+}
+
+/* ============================================
+ * FOCUS STYLES
+ * ============================================ */
+
+:focus-visible {
+	outline: var(--pui-focus-ring-width) solid var(--pui-focus-ring-color);
+	outline-offset: var(--pui-focus-ring-offset);
+}
+
+:focus:not(:focus-visible) {
+	outline: none;
+}
+
+/* ============================================
+ * SELECTION STYLES
+ * ============================================ */
+
+::selection {
+	background-color: rgba(var(--pui-color-accent-rgb), 0.3);
+	color: inherit;
+}
+
+.dark ::selection {
+	background-color: rgba(var(--pui-color-secondary-rgb), 0.3);
+}
