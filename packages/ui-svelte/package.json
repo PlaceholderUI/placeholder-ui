@@ -58,24 +58,24 @@
 	},
 	"devDependencies": {
 		"@sveltejs/adapter-static": "^3.0.10",
-		"@sveltejs/kit": "^2.49.1",
+		"@sveltejs/kit": "^2.55.0",
 		"@sveltejs/package": "^2.5.7",
-		"@sveltejs/vite-plugin-svelte": "^6.2.1",
+		"@sveltejs/vite-plugin-svelte": "^7.0.0",
 		"@testing-library/jest-dom": "^6.9.1",
-		"@testing-library/svelte": "^5.2.9",
-		"jsdom": "^27.3.0",
-		"prettier": "^3.4.2",
-		"prettier-plugin-svelte": "^3.3.3",
-		"publint": "^0.3.15",
-		"svelte": "^5.45.6",
-		"svelte-check": "^4.3.4",
+		"@testing-library/svelte": "^5.3.1",
+		"jsdom": "^28.1.0",
+		"prettier": "^3.8.1",
+		"prettier-plugin-svelte": "^3.5.1",
+		"publint": "^0.3.18",
+		"svelte": "^5.53.12",
+		"svelte-check": "^4.4.5",
 		"typescript": "^5.9.3",
-		"vite": "^7.2.6",
-		"vitest": "^4.0.15"
+		"vite": "^8.0.0",
+		"vitest": "^4.1.0"
 	},
 	"dependencies": {
-		"dayjs": "^1.11.18",
-		"svelte-sonner": "^1.0.4"
+		"dayjs": "^1.11.20",
+		"svelte-sonner": "^1.1.0"
 	},
 	"publishConfig": {
 		"access": "public"
