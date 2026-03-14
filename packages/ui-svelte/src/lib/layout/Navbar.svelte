@@ -1,6 +1,7 @@
 <script lang="ts">
 	import type { LinkNavbarItem } from '../models/NavbarItem.js';
-	import { Link, ThemeSwitcher, ActionIcon, iconHamburger, type Hyperlink } from '../index.js';
+	import type { SidenavSection } from './Sidenav.svelte';
+	import { Link, ThemeSwitcher, ActionIcon, Drawer, iconHamburger, type Hyperlink } from '../index.js';
 	import type { Snippet } from 'svelte';
 
 	interface Props {
@@ -12,6 +13,10 @@
 		inContainer?: boolean;
 		middleSection?: Snippet;
 		rightSection?: Snippet;
+		/** Enable responsive collapse to burger menu on small screens (default: true) */
+		responsive?: boolean;
+		/** Breakpoint in pixels at which the navbar collapses (default: 768) */
+		responsiveBreakpoint?: number;
 		// Drawer button options
 		showDrawerButton?: boolean;
 		drawerButtonPosition?: 'left' | 'right';
@@ -28,13 +33,48 @@
 		inContainer = false,
 		middleSection = undefined,
 		rightSection = undefined,
+		responsive = true,
+		responsiveBreakpoint = 768,
 		// Drawer button options
 		showDrawerButton = false,
 		drawerButtonPosition = 'right',
 		drawerButtonIcon = iconHamburger,
 		onDrawerButtonClick = undefined
 	}: Props = $props();
+
+	let drawerOpen = $state(false);
+	let windowWidth = $state(typeof window !== 'undefined' ? window.innerWidth : 1024);
+	const isCollapsed = $derived(responsive && windowWidth <= responsiveBreakpoint);
+
+	const drawerSections = $derived.by((): SidenavSection[] => {
+		const sections: SidenavSection[] = [];
+		if (items.length > 0) {
+			sections.push({
+				items: items.map((item) => ({
+					label: item.label,
+					href: item.href,
+					iconSvg: item.iconSvg
+				}))
+			});
+		}
+		if (secondaryItems.length > 0) {
+			sections.push({
+				items: secondaryItems.map((item) => ({
+					label: item.label,
+					href: item.href,
+					iconSvg: item.iconSvg
+				}))
+			});
+		}
+		return sections;
+	});
+
+	function handleBurgerClick() {
+		drawerOpen = true;
+	}
 </script>
+
+<svelte:window onresize={() => (windowWidth = window.innerWidth)} />
 
 <header>
 	<div class="inner-navbar {className} {inContainer ? 'container' : ''}">
@@ -52,52 +92,41 @@
 				<Link class="text-xl" href={appNav.href}>{appNav.text}</Link>
 			</div>
 		{/if}
-		<!-- {#each items.filter((x) => !x.showInOnly || x.showInOnly === 'Navbar') as item}
-			{#if 'subItems' in item && item.subItems && item.subItems.length > 0}
-				<div class:hidden-when-small={!item.alwaysShow} class={item.class}>
-					<Dropdown let:toggleShow>
-						<button onclick={toggleShow} class="cursor-pointer"
-							>{item.label}
-							<Icon svg={iconChevronRight} size="0.35em" class="ml-1 rotate-90" /></button
-						>
-						<div slot="dropdown">
-							{#each item.subItems as subItem}
-								<NavbarItemDisplay item={subItem} isInDrawer={false} />
-							{/each}
-						</div>
-					</Dropdown>
-				</div>
-			{:else}
-				<NavbarItemDisplay {item} isInDrawer={false} />
-			{/if}
-		{/each} -->
 
-		<div class="primary links-container">
-			{#each items as item}
-				<Link href={item.href}>{item.label}</Link>
-			{/each}
-		</div>
+		{#if !isCollapsed}
+			<div class="primary links-container">
+				{#each items as item}
+					<Link href={item.href}>{item.label}</Link>
+				{/each}
+			</div>
+		{/if}
 
 		<div class="middle">
 			{@render middleSection?.()}
 		</div>
-		<!-- <ActionIcon
-			class="hamburger"
-			variant={$isDarkMode ? 'auto-subtle' : 'primary'}
-			onclick={toggleDrawer}
-			svg={iconHamburger}
-		/> -->
-		<div class="secondary links-container">
-			{#each secondaryItems as item}
-				{#if item.href.indexOf('/') === 0}
-					<Link href={item.href}>{item.label}</Link>
-				{:else}
-					<a href={item.href}>{item.label}</a>
-				{/if}
-			{/each}
-		</div>
-		{@render rightSection?.()}
+
+		{#if !isCollapsed}
+			<div class="secondary links-container">
+				{#each secondaryItems as item}
+					{#if item.href.indexOf('/') === 0}
+						<Link href={item.href}>{item.label}</Link>
+					{:else}
+						<a href={item.href}>{item.label}</a>
+					{/if}
+				{/each}
+			</div>
+			{@render rightSection?.()}
+		{/if}
 		<ThemeSwitcher darkVariant="secondary-subtle" lightVariant="primary-subtle" />
+		{#if isCollapsed}
+			<ActionIcon
+				svg={iconHamburger}
+				variant="secondary-subtle"
+				size="1.25rem"
+				onclick={handleBurgerClick}
+				class="responsive-burger"
+			/>
+		{/if}
 		{#if showDrawerButton && drawerButtonPosition === 'right'}
 			<ActionIcon
 				svg={drawerButtonIcon}
@@ -110,21 +139,15 @@
 	</div>
 </header>
 
-<!-- <Drawer bind:open={showDrawer}>
-	<div class="header top-header">{drawerHeader ?? ''}</div>
-	{#each items.filter((x) => !x.showInOnly || x.showInOnly === 'Drawer') as item}
-		{#if 'subItems' in item && item.subItems && item.subItems.length > 0}
-			<div class="header">{item.label}</div>
-			<div class="collection">
-				{#each item.subItems as subItem}
-					<NavbarItemDisplay item={subItem} isInDrawer={true} />
-				{/each}
-			</div>
-		{:else}
-			<div class="collection"><NavbarItemDisplay {item} isInDrawer={true} /></div>
-		{/if}
-	{/each}
-</Drawer> -->
+{#if responsive}
+	<Drawer
+		bind:open={drawerOpen}
+		title={drawerHeader ?? appNav?.text ?? ''}
+		sections={drawerSections}
+		closeForLargeScreens={true}
+		largeScreenBreakpoint={responsiveBreakpoint}
+	/>
+{/if}
 
 <style>
 	header {
@@ -163,29 +186,8 @@
 		flex-grow: 1;
 	}
 
-	.hidden-when-small {
-		display: none;
-	}
-
-	.inner-navbar :global(.hamburger) {
-		margin-left: auto;
-	}
-
-	@media (max-width: 640px) {
-		.hidden-when-small {
-			display: block;
-		}
-
-		.inner-navbar :global(.hamburger) {
-			display: none;
-		}
-	}
-
-	.top-header {
-		border-bottom-width: 1px;
-		border-bottom-style: solid;
-		border-color: var(--pui-border-default);
-		height: var(--pui-spacing-6);
+	.inner-navbar :global(.responsive-burger) {
+		flex-shrink: 0;
 	}
 
 	.inner-navbar :global(.cu-icon) {
