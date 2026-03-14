@@ -15,4 +15,8 @@ export type ButtonVariant =
 	| 'primary-outline'
 	| 'primary-subtle'
 	| 'accent'
-	| 'accent-subtle';
+	| 'accent-subtle'
+	| 'success'
+	| 'success-subtle'
+	| 'warning'
+	| 'warning-subtle';

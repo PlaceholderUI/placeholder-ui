@@ -268,6 +268,56 @@
 		}
 	}
 
+	.success {
+		--button-text-color: var(--pui-color-white);
+		--button-bg-color: var(--pui-color-success);
+		--button-hover-bg-color: var(--pui-color-success-hover);
+		--button-active-bg-color: var(--pui-color-success-active);
+		--button-outline-color: var(--pui-color-success);
+
+		:global(.loader) {
+			color: var(--pui-color-white);
+		}
+	}
+
+	.success-subtle {
+		background-color: initial;
+		color: var(--pui-color-success);
+
+		&:hover:not(:disabled) {
+			background-color: var(--pui-color-success-subtle);
+		}
+
+		:global(.loader) {
+			color: var(--pui-color-success);
+		}
+	}
+
+	.warning {
+		--button-text-color: var(--pui-color-black);
+		--button-bg-color: var(--pui-color-warning);
+		--button-hover-bg-color: var(--pui-color-warning-hover);
+		--button-active-bg-color: var(--pui-color-warning-active);
+		--button-outline-color: var(--pui-color-warning);
+
+		:global(.loader) {
+			color: var(--pui-color-black);
+		}
+	}
+
+	.warning-subtle {
+		background-color: initial;
+		color: var(--pui-color-warning-dark);
+
+		&:hover:not(:disabled) {
+			background-color: var(--pui-color-warning-subtle);
+		}
+
+		:global(.loader) {
+			color: var(--pui-color-warning-dark);
+		}
+	}
+
 	button,
 	a {
 		border-color: var(--pui-color-primary);
@@ -328,6 +378,18 @@
 			--button-active-text-color: var(--pui-color-secondary);
 			--button-active-bg-color: var(--pui-color-primary);
 			--button-outline-color: var(--pui-color-secondary);
+		}
+
+		.success-subtle {
+			&:hover:not(:disabled) {
+				background-color: var(--pui-color-success-subtle-dark);
+			}
+		}
+
+		.warning-subtle {
+			&:hover:not(:disabled) {
+				background-color: var(--pui-color-warning-subtle-dark);
+			}
 		}
 	}
 

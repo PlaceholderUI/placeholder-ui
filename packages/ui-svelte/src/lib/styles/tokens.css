@@ -37,11 +37,17 @@
 
 	--pui-color-warning: #fcc419;
 	--pui-color-warning-hover: #fab005;
+	--pui-color-warning-active: #f59f00;
 	--pui-color-warning-dark: #e8b508;
+	--pui-color-warning-subtle: rgba(252, 196, 25, 0.12);
+	--pui-color-warning-subtle-dark: rgba(252, 196, 25, 0.2);
 
 	--pui-color-success: #37b24d;
 	--pui-color-success-hover: #2f9e44;
+	--pui-color-success-active: #2b8a3e;
 	--pui-color-success-dark: #2b8a3e;
+	--pui-color-success-subtle: rgba(55, 178, 77, 0.12);
+	--pui-color-success-subtle-dark: rgba(55, 178, 77, 0.2);
 
 	--pui-color-info: #1c7ed6;
 	--pui-color-info-hover: #1971c2;

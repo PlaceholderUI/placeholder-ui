@@ -53,6 +53,8 @@
 			<Badge variant="secondary">Secondary</Badge>
 			<Badge variant="accent">Accent</Badge>
 			<Badge variant="danger">Danger</Badge>
+			<Badge variant="success">Success</Badge>
+			<Badge variant="warning">Warning</Badge>
 			<Badge variant="muted">Muted</Badge>
 			<Badge variant="white">White</Badge>
 		</div>
@@ -68,6 +70,8 @@
 			<Badge variant="secondary-subtle">Secondary Subtle</Badge>
 			<Badge variant="muted-subtle">Muted Subtle</Badge>
 			<Badge variant="danger-subtle">Danger Subtle</Badge>
+			<Badge variant="success-subtle">Success Subtle</Badge>
+			<Badge variant="warning-subtle">Warning Subtle</Badge>
 		</div>
 		<div class="demo-section"></div>
 		<div class="demo-row">
