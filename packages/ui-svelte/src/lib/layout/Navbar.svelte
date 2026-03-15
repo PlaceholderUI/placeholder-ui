@@ -14,6 +14,8 @@
 		inContainer?: boolean;
 		middleSection?: Snippet;
 		rightSection?: Snippet;
+		/** Icons displayed to the left of the ThemeSwitcher, visible even when collapsed on mobile */
+		iconSection?: Snippet;
 		/** Enable responsive collapse to burger menu on small screens (default: true) */
 		responsive?: boolean;
 		/** Breakpoint in pixels at which the navbar collapses (default: 768) */
@@ -34,6 +36,7 @@
 		inContainer = false,
 		middleSection = undefined,
 		rightSection = undefined,
+		iconSection = undefined,
 		responsive = true,
 		responsiveBreakpoint = 768,
 		// Drawer button options
@@ -117,6 +120,11 @@
 				{/each}
 			</div>
 			{@render rightSection?.()}
+		{/if}
+		{#if iconSection}
+			<div class="icon-section">
+				{@render iconSection()}
+			</div>
 		{/if}
 		<ThemeSwitcher darkVariant="secondary-subtle" lightVariant="primary-subtle" />
 		{#if isCollapsed}
@@ -205,5 +213,12 @@
 
 	.inner-navbar :global(.drawer-btn-right) {
 		margin-left: var(--pui-spacing-2);
+	}
+
+	.icon-section {
+		display: flex;
+		align-items: center;
+		gap: var(--pui-spacing-1);
+		flex-shrink: 0;
 	}
 </style>

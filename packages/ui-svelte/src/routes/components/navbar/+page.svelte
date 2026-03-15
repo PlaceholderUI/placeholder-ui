@@ -1,5 +1,5 @@
 <script lang="ts">
-	import { Navbar, Table, Paper, type LinkNavbarItem } from '$lib/index.js';
+	import { Navbar, Table, Paper, ActionIcon, iconBell, iconSearch, iconSettings, type LinkNavbarItem } from '$lib/index.js';
 	import type { Column } from '$lib/index.js';
 
 	interface PropRow {
@@ -28,6 +28,7 @@
 		{ prop: 'inContainer', type: 'boolean', default: 'false', description: 'Constrain navbar content within a container' },
 		{ prop: 'middleSection', type: 'Snippet', default: 'undefined', description: 'Custom content for the middle area' },
 		{ prop: 'rightSection', type: 'Snippet', default: 'undefined', description: 'Custom content for the right area' },
+		{ prop: 'iconSection', type: 'Snippet', default: 'undefined', description: 'Icon actions shown left of ThemeSwitcher, visible even when collapsed' },
 		{ prop: 'drawerHeader', type: 'string', default: 'undefined', description: 'Title shown in the responsive drawer header' },
 	];
 
@@ -61,6 +62,28 @@
 				responsive={true}
 				drawerHeader="Navigation"
 			/>
+		</div>
+	</Paper>
+
+	<Paper title="Icon Section">
+		<p style="margin: 0 0 1rem;">
+			Use the <code>iconSection</code> snippet to place action icons to the left of the ThemeSwitcher.
+			These icons remain visible even when the navbar collapses on mobile.
+		</p>
+		<div class="demo-frame">
+			<Navbar
+				appNav={{ text: 'My App', href: '#' }}
+				items={demoItems}
+				secondaryItems={demoSecondary}
+				responsive={true}
+				drawerHeader="Navigation"
+			>
+				{#snippet iconSection()}
+					<ActionIcon svg={iconSearch} variant="primary-subtle" size="1.25rem" onclick={() => {}} />
+					<ActionIcon svg={iconBell} variant="primary-subtle" size="1.25rem" onclick={() => {}} />
+					<ActionIcon svg={iconSettings} variant="primary-subtle" size="1.25rem" onclick={() => {}} />
+				{/snippet}
+			</Navbar>
 		</div>
 	</Paper>
 
