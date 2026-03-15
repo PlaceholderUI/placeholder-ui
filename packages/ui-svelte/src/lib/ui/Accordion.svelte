@@ -91,11 +91,13 @@
 				</button>
 				<div class="accordion-panel" class:open aria-hidden={!open}>
 					<div class="accordion-content">
-						{#if itemContent}
-							{@render itemContent(item)}
-						{:else if item.content}
-							{item.content}
-						{/if}
+						<div class="accordion-content-inner">
+							{#if itemContent}
+								{@render itemContent(item)}
+							{:else if item.content}
+								{item.content}
+							{/if}
+						</div>
 					</div>
 				</div>
 			</div>
@@ -106,11 +108,22 @@
 <style>
 	.accordion {
 		width: 100%;
+		--_accordion-radius: var(--pui-radius-md);
+	}
+
+	/* Radius */
+	.radius-none { --_accordion-radius: 0; }
+	.radius-sm { --_accordion-radius: var(--pui-radius-sm); }
+	.radius-md { --_accordion-radius: var(--pui-radius-md); }
+	.radius-lg { --_accordion-radius: var(--pui-radius-lg); }
+
+	.accordion {
+		border-radius: var(--_accordion-radius);
 	}
 
 	/* Variants */
 	.variant-default .accordion-item {
-		border-bottom: 1px solid var(--pui-color-gray-300);
+		border-bottom: 1px solid var(--pui-border-default);
 	}
 
 	:global(.dark) .variant-default .accordion-item {
@@ -118,7 +131,7 @@
 	}
 
 	.variant-contained {
-		border: 1px solid var(--pui-color-gray-300);
+		border: 1px solid var(--pui-border-default);
 	}
 
 	:global(.dark) .variant-contained {
@@ -126,7 +139,7 @@
 	}
 
 	.variant-contained .accordion-item:not(:last-child) {
-		border-bottom: 1px solid var(--pui-color-gray-300);
+		border-bottom: 1px solid var(--pui-border-default);
 	}
 
 	:global(.dark) .variant-contained .accordion-item:not(:last-child) {
@@ -134,7 +147,7 @@
 	}
 
 	.variant-filled .accordion-item {
-		background-color: var(--pui-color-gray-100);
+		background-color: var(--pui-bg-surface-raised);
 		margin-bottom: var(--pui-spacing-2);
 	}
 
@@ -143,7 +156,7 @@
 	}
 
 	.variant-separated .accordion-item {
-		border: 1px solid var(--pui-color-gray-300);
+		border: 1px solid var(--pui-border-default);
 		margin-bottom: var(--pui-spacing-2);
 	}
 
@@ -151,58 +164,22 @@
 		border-color: var(--pui-color-dark-border);
 	}
 
-	/* Radius */
-	.radius-none,
-	.radius-none .accordion-item {
-		border-radius: 0;
+	/* Item radius — contained/default: first/last corners; filled/separated: all corners */
+	.variant-default .accordion-item:first-child,
+	.variant-contained .accordion-item:first-child {
+		border-top-left-radius: var(--_accordion-radius);
+		border-top-right-radius: var(--_accordion-radius);
 	}
 
-	.radius-sm {
-		border-radius: var(--pui-radius-sm);
-	}
-	.radius-sm .accordion-item:first-child {
-		border-top-left-radius: var(--pui-radius-sm);
-		border-top-right-radius: var(--pui-radius-sm);
-	}
-	.radius-sm .accordion-item:last-child {
-		border-bottom-left-radius: var(--pui-radius-sm);
-		border-bottom-right-radius: var(--pui-radius-sm);
-	}
-	.radius-sm.variant-filled .accordion-item,
-	.radius-sm.variant-separated .accordion-item {
-		border-radius: var(--pui-radius-sm);
+	.variant-default .accordion-item:last-child,
+	.variant-contained .accordion-item:last-child {
+		border-bottom-left-radius: var(--_accordion-radius);
+		border-bottom-right-radius: var(--_accordion-radius);
 	}
 
-	.radius-md {
-		border-radius: var(--pui-radius-md);
-	}
-	.radius-md .accordion-item:first-child {
-		border-top-left-radius: var(--pui-radius-md);
-		border-top-right-radius: var(--pui-radius-md);
-	}
-	.radius-md .accordion-item:last-child {
-		border-bottom-left-radius: var(--pui-radius-md);
-		border-bottom-right-radius: var(--pui-radius-md);
-	}
-	.radius-md.variant-filled .accordion-item,
-	.radius-md.variant-separated .accordion-item {
-		border-radius: var(--pui-radius-md);
-	}
-
-	.radius-lg {
-		border-radius: var(--pui-radius-lg);
-	}
-	.radius-lg .accordion-item:first-child {
-		border-top-left-radius: var(--pui-radius-lg);
-		border-top-right-radius: var(--pui-radius-lg);
-	}
-	.radius-lg .accordion-item:last-child {
-		border-bottom-left-radius: var(--pui-radius-lg);
-		border-bottom-right-radius: var(--pui-radius-lg);
-	}
-	.radius-lg.variant-filled .accordion-item,
-	.radius-lg.variant-separated .accordion-item {
-		border-radius: var(--pui-radius-lg);
+	.variant-filled .accordion-item,
+	.variant-separated .accordion-item {
+		border-radius: var(--_accordion-radius);
 	}
 
 	.accordion-item {
@@ -218,6 +195,7 @@
 		background: none;
 		border: none;
 		cursor: pointer;
+		font-family: inherit;
 		font-size: var(--pui-font-size-base);
 		font-weight: var(--pui-font-weight-medium);
 		color: var(--pui-text-primary);
@@ -229,20 +207,25 @@
 		color: var(--pui-color-gray-100);
 	}
 
+	.accordion-item.open > .accordion-control {
+		background-color: var(--pui-bg-surface-raised);
+	}
+
+	:global(.dark) .accordion-item.open > .accordion-control {
+		background-color: rgba(255, 255, 255, 0.06);
+	}
+
 	.accordion-control:hover {
-		background-color: var(--pui-color-gray-100);
+		background-color: var(--pui-bg-hover);
 	}
 
 	:global(.dark) .accordion-control:hover {
-		background-color: var(--pui-color-dark-300);
+		background-color: rgba(255, 255, 255, 0.08);
 	}
 
-	.accordion-control.chevron-left {
-		flex-direction: row;
-	}
-
-	.accordion-control.chevron-right {
-		flex-direction: row;
+	.accordion-control:focus-visible {
+		outline: var(--pui-focus-ring-width) solid var(--pui-focus-ring-color);
+		outline-offset: calc(-1 * var(--pui-focus-ring-width));
 	}
 
 	.accordion-title {
@@ -254,7 +237,7 @@
 		align-items: center;
 		justify-content: center;
 		transition: transform var(--pui-transition-fast) var(--pui-ease-in-out);
-		color: var(--pui-color-gray-500);
+		color: var(--pui-text-muted);
 	}
 
 	.accordion-chevron.rotated {
@@ -273,17 +256,16 @@
 
 	.accordion-content {
 		overflow: hidden;
-		padding: 0 var(--pui-spacing-4);
+	}
+
+	.accordion-content-inner {
+		padding: var(--pui-spacing-2) var(--pui-spacing-4) var(--pui-spacing-4);
 		color: var(--pui-text-secondary);
 		font-size: var(--pui-font-size-sm);
 		line-height: var(--pui-line-height-relaxed);
 	}
 
-	:global(.dark) .accordion-content {
+	:global(.dark) .accordion-content-inner {
 		color: var(--pui-color-gray-300);
-	}
-
-	.accordion-panel.open .accordion-content {
-		padding-bottom: var(--pui-spacing-4);
 	}
 </style>
