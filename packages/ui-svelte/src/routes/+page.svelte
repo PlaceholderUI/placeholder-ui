@@ -99,7 +99,7 @@
 		<Paper class="preview-card">
 			<h3>Toggles & Controls</h3>
 			<div class="form-stack">
-				<Switch label="Email notifications" bind:checked={notifications} description="Receive updates via email" />
+				<Switch label="Email notifications" bind:checked={notifications} />
 				<Switch label="Marketing emails" bind:checked={marketing} />
 				<Checkbox label="I accept the terms and conditions" bind:checked={termsAccepted} />
 				<div>

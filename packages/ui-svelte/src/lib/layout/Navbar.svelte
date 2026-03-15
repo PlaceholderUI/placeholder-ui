@@ -1,9 +1,16 @@
 <script lang="ts">
-	import type { LinkNavbarItem } from '../models/NavbarItem.js';
-	import type { SidenavSection } from './Sidenav.svelte';
-	import { Link, ThemeSwitcher, ActionIcon, Drawer, iconHamburger, type Hyperlink } from '../index.js';
-	import { themeState } from '../theme.svelte.js';
-	import type { Snippet } from 'svelte';
+	import type { LinkNavbarItem } from "../models/NavbarItem.js";
+	import type { SidenavSection } from "./Sidenav.svelte";
+	import {
+		Link,
+		ThemeSwitcher,
+		ActionIcon,
+		Drawer,
+		iconHamburger,
+		type Hyperlink,
+	} from "../index.js";
+	import { themeState } from "../theme.svelte.js";
+	import type { Snippet } from "svelte";
 
 	interface Props {
 		drawerHeader?: string | undefined;
@@ -22,7 +29,7 @@
 		responsiveBreakpoint?: number;
 		// Drawer button options
 		showDrawerButton?: boolean;
-		drawerButtonPosition?: 'left' | 'right';
+		drawerButtonPosition?: "left" | "right";
 		drawerButtonIcon?: string;
 		onDrawerButtonClick?: () => void;
 	}
@@ -32,7 +39,7 @@
 		appNav = undefined,
 		items = [],
 		secondaryItems = [],
-		class: className = '',
+		class: className = "",
 		inContainer = false,
 		middleSection = undefined,
 		rightSection = undefined,
@@ -41,14 +48,18 @@
 		responsiveBreakpoint = 768,
 		// Drawer button options
 		showDrawerButton = false,
-		drawerButtonPosition = 'right',
+		drawerButtonPosition = "right",
 		drawerButtonIcon = iconHamburger,
-		onDrawerButtonClick = undefined
+		onDrawerButtonClick = undefined,
 	}: Props = $props();
 
 	let drawerOpen = $state(false);
-	let windowWidth = $state(typeof window !== 'undefined' ? window.innerWidth : 1024);
-	const isCollapsed = $derived(responsive && windowWidth <= responsiveBreakpoint);
+	let windowWidth = $state(
+		typeof window !== "undefined" ? window.innerWidth : 1024,
+	);
+	const isCollapsed = $derived(
+		responsive && windowWidth <= responsiveBreakpoint,
+	);
 
 	const drawerSections = $derived.by((): SidenavSection[] => {
 		const sections: SidenavSection[] = [];
@@ -57,8 +68,8 @@
 				items: items.map((item) => ({
 					label: item.label,
 					href: item.href,
-					iconSvg: item.iconSvg
-				}))
+					iconSvg: item.iconSvg,
+				})),
 			});
 		}
 		if (secondaryItems.length > 0) {
@@ -66,8 +77,8 @@
 				items: secondaryItems.map((item) => ({
 					label: item.label,
 					href: item.href,
-					iconSvg: item.iconSvg
-				}))
+					iconSvg: item.iconSvg,
+				})),
 			});
 		}
 		return sections;
@@ -82,7 +93,7 @@
 
 <header>
 	<div class="inner-navbar {className} {inContainer ? 'container' : ''}">
-		{#if showDrawerButton && drawerButtonPosition === 'left'}
+		{#if showDrawerButton && drawerButtonPosition === "left"}
 			<ActionIcon
 				svg={drawerButtonIcon}
 				variant="secondary-subtle"
@@ -112,7 +123,7 @@
 		{#if !isCollapsed}
 			<div class="secondary links-container">
 				{#each secondaryItems as item}
-					{#if item.href.indexOf('/') === 0}
+					{#if item.href.indexOf("/") === 0}
 						<Link href={item.href}>{item.label}</Link>
 					{:else}
 						<a href={item.href}>{item.label}</a>
@@ -121,22 +132,27 @@
 			</div>
 			{@render rightSection?.()}
 		{/if}
-		{#if iconSection}
-			<div class="icon-section">
+		<div class="icon-section">
+			{#if iconSection}
 				{@render iconSection()}
-			</div>
-		{/if}
-		<ThemeSwitcher darkVariant="secondary-subtle" lightVariant="primary-subtle" />
+			{/if}
+			<ThemeSwitcher
+				darkVariant="secondary-subtle"
+				lightVariant="primary-subtle"
+			/>
+		</div>
 		{#if isCollapsed}
 			<ActionIcon
 				svg={iconHamburger}
-				variant={themeState.isDarkMode ? 'secondary-subtle' : 'primary-subtle'}
+				variant={themeState.isDarkMode
+					? "secondary-subtle"
+					: "primary-subtle"}
 				size="1.25rem"
 				onclick={handleBurgerClick}
 				class="responsive-burger"
 			/>
 		{/if}
-		{#if showDrawerButton && drawerButtonPosition === 'right'}
+		{#if showDrawerButton && drawerButtonPosition === "right"}
 			<ActionIcon
 				svg={drawerButtonIcon}
 				variant="secondary-subtle"
@@ -151,7 +167,7 @@
 {#if responsive}
 	<Drawer
 		bind:open={drawerOpen}
-		title={drawerHeader ?? appNav?.text ?? ''}
+		title={drawerHeader ?? appNav?.text ?? ""}
 		sections={drawerSections}
 		closeForLargeScreens={true}
 		largeScreenBreakpoint={responsiveBreakpoint}
