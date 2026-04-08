@@ -79,7 +79,7 @@
 			{disabled}
 			{autofocus}
 			{required}
-			autocomplete={autocomplete}
+			autocomplete={autocomplete as AutoFill}
 			style={height ? `height: ${height}` : undefined}
 			bind:value
 			bind:this={textboxElement}

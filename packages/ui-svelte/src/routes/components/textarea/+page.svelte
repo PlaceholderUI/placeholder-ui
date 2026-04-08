@@ -28,7 +28,7 @@
 		{ prop: 'required', type: 'boolean', default: 'false', description: 'Shows required indicator' },
 		{ prop: 'disabled', type: 'boolean', default: 'false', description: 'Disables the textarea' },
 		{ prop: 'tooltipText', type: 'string', default: 'undefined', description: 'Tooltip hint text' },
-		{ prop: 'noAutocomplete', type: 'boolean', default: 'false', description: 'Disables browser autocomplete' },
+		{ prop: 'autocomplete', type: 'string', default: 'undefined', description: 'HTML autocomplete attribute (e.g. "off" to disable)' },
 	];
 </script>
 
@@ -72,7 +72,7 @@
 			<TextArea
 				label="Sensitive Notes"
 				placeholder="Enter private notes..."
-				noAutocomplete
+				autocomplete="off"
 			/>
 		</div>
 	</Paper>

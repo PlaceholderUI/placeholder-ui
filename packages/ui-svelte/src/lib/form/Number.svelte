@@ -14,7 +14,8 @@
 		placeholder?: string;
 		required?: boolean;
 		autofocus?: boolean;
-		noAutocomplete?: boolean;
+		/** HTML autocomplete attribute */
+		autocomplete?: string;
 		loading?: boolean;
 		groupClass?: string;
 		numberElement?: HTMLElement;
@@ -49,7 +50,7 @@
 		placeholder = undefined,
 		required = false,
 		autofocus = false,
-		noAutocomplete = false,
+		autocomplete = undefined,
 		loading = false,
 		class: classes = '',
 		containerClass = '',
@@ -138,7 +139,7 @@
 				{min}
 				{max}
 				{step}
-				autocomplete={!noAutocomplete ? 'on' : 'off'}
+				autocomplete={(autocomplete ?? 'on') as AutoFill}
 				bind:value
 				bind:this={numberElement}
 				onblur={() => {

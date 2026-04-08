@@ -331,7 +331,7 @@
 		placeholder="Enter date"
 		{disabled}
 		{required}
-		noAutocomplete
+		autocomplete="off"
 		{tooltipLocation}
 		{tooltipContent}
 		{tooltipText}

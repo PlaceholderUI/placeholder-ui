@@ -16,7 +16,6 @@
 		autofocus?: boolean;
 		/** HTML autocomplete attribute for the input */
 		autocomplete?: string;
-		noAutocomplete?: boolean;
 		preventPasswordSave?: boolean;
 		loading?: boolean;
 		groupClass?: string;
@@ -54,7 +53,6 @@
 		required = false,
 		autofocus = false,
 		autocomplete = undefined,
-		noAutocomplete = false,
 		preventPasswordSave = false,
 		loading = false,
 		class: classes = '',
@@ -115,7 +113,6 @@
 
 	const autocompleteValue = $derived.by(() => {
 		if (autocomplete) return autocomplete;
-		if (noAutocomplete) return 'off';
 		if (type === 'password' && preventPasswordSave) return 'one-time-code';
 		return 'on';
 	});
@@ -134,7 +131,7 @@
 				{disabled}
 				{autofocus}
 				{required}
-				autocomplete={autocompleteValue}
+				autocomplete={autocompleteValue as AutoFill}
 				bind:value
 				bind:this={textboxElement}
 				onblur={(e) => {

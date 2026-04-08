@@ -495,7 +495,7 @@
 					bind:textboxElement
 					placeholder="Start typing to search..."
 					disabled={preloading}
-					noAutocomplete
+					autocomplete="off"
 					oninput={() => onFilterChange(filterString)}
 					onkeydown={onKeyDown}
 				/>

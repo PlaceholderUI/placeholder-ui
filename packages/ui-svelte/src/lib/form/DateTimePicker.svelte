@@ -324,7 +324,7 @@
 		placeholder="Select date and time"
 		{disabled}
 		{required}
-		noAutocomplete
+		autocomplete="off"
 		bind:textboxElement
 		value={readableDate}
 		onfocus={() => {

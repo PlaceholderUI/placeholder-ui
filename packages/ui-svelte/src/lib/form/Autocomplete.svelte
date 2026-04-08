@@ -69,6 +69,14 @@
 		onSelect?: (e: ComboBoxItem) => void;
 		/** Callback when selection changes (returns full item object) */
 		onchangeRaw?: (e: ComboBoxItem | undefined) => void;
+		/** Allow creating new options not in the list */
+		allowCreate?: boolean;
+		/** Show a "no results" message when no options match */
+		showNoResultsMessage?: boolean;
+		/** Show required indicator (alias for required) */
+		showRequired?: boolean;
+		/** Callback when a new option is created (requires allowCreate) */
+		onCreate?: (value: string) => void;
 	}
 </script>
 
@@ -110,7 +118,11 @@
 		onchange = undefined,
 		enterPressed = undefined,
 		onSelect = undefined,
-		onchangeRaw = undefined
+		onchangeRaw = undefined,
+		allowCreate = false,
+		showNoResultsMessage = false,
+		showRequired = false,
+		onCreate = undefined
 	}: AutocompleteProps = $props();
 
 	let preloading = $state(false);
@@ -222,6 +234,17 @@
 		selectionJustMade = true;
 		open = false;
 
+		// Handle "Create" items from allowCreate
+		if (allowCreate && selectedValue.label.startsWith('Create "')) {
+			const created = selectedValue.value;
+			value = created;
+			internalValue = value;
+			rawValue = { value: created, label: created };
+			onCreate?.(created);
+			onchangeRaw?.(rawValue);
+			return;
+		}
+
 		allGroups.flatMap((x) => x.items).forEach((option) => {
 			option.selected = option.value === selectedValue.value;
 		});
@@ -264,6 +287,19 @@
 				}))
 				.filter((group) => group.items.length > 0);
 			open = true;
+		}
+
+		if (allowCreate && filterValue) {
+			const hasExact = filteredGroups
+				.flatMap((g) => g.items)
+				.some((x) => x.label.toLowerCase() === filterValue.toLowerCase());
+			if (!hasExact) {
+				const createItem: ComboBoxItem = { value: filterValue, label: `Create "${filterValue}"` };
+				filteredGroups = [
+					...filteredGroups,
+					{ label: '', items: [createItem] }
+				];
+			}
 		}
 
 		onchange?.(filterValue);
@@ -309,7 +345,7 @@
 		{label}
 		class={classes}
 		{containerClass}
-		{required}
+		required={required || showRequired}
 		{showError}
 		{errorText}
 		{tooltipLocation}
@@ -339,7 +375,7 @@
 				groupedOptions={filteredGroups}
 				{open}
 				loading={searching}
-				showNoResultsMessage={!hideNoResults}
+				showNoResultsMessage={showNoResultsMessage || !hideNoResults}
 				{loadingText}
 			/>
 		</div>

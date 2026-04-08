@@ -78,6 +78,7 @@
 		tooltipText,
 		onchange,
 		onchangeRaw,
+		autocomplete = undefined,
 	}: Props = $props();
 
 	const autoName = `select-${Math.random().toString(36).substring(2, 15)}`;
@@ -339,7 +340,7 @@
 					oninput={() => onFilterChange(filterString)}
 					onkeydown={onKeyDown}
 					name={resolvedName}
-					autocomplete={autocomplete ?? 'off'}
+					autocomplete={(autocomplete ?? 'off') as AutoFill}
 					disabled={preloading || disabled}
 					placeholder={isEmpty ? placeholder : rawValue?.label || ""}
 					class="select select-input {extraClasses} {classes}"

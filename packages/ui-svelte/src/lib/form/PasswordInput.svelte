@@ -11,7 +11,8 @@
 		placeholder?: string;
 		required?: boolean;
 		autofocus?: boolean;
-		noAutocomplete?: boolean;
+		/** HTML autocomplete attribute */
+		autocomplete?: string;
 		loading?: boolean;
 		groupClass?: string;
 		leftIconSvg?: string;
@@ -41,7 +42,7 @@
 		placeholder = undefined,
 		required = false,
 		autofocus = false,
-		noAutocomplete = false,
+		autocomplete = undefined,
 		loading = false,
 		class: classes = '',
 		containerClass = '',
@@ -108,7 +109,7 @@
 				{disabled}
 				{autofocus}
 				{required}
-				autocomplete={noAutocomplete ? 'off' : 'current-password'}
+				autocomplete={(autocomplete ?? 'current-password') as AutoFill}
 				bind:value
 				onblur={() => {
 					isFocused = false;
