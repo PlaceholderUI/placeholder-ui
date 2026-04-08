@@ -1,6 +1,6 @@
 {
   "name": "@placeholderco/placeholder-ui-editors",
-  "version": "1.0.11",
+  "version": "1.0.12",
   "description": "Code editors for @placeholderco/placeholder-ui - CodeMirror and TipTap integrations",
   "license": "MIT",
   "repository": {
