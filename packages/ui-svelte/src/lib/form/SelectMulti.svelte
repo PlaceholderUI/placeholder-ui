@@ -488,7 +488,6 @@
 		<div class="select-panel-inner" use:clickOutside={closePopover}>
 			{#if allowSearch}
 				<Textbox
-					{name}
 					bind:value={filterString}
 					class="w-full
 						{open ? '!border-accent' : 'hidden'}

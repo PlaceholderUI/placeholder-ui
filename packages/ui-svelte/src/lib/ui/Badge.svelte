@@ -108,6 +108,7 @@
 		cursor: pointer;
 		border-right: var(--badge-border, 0);
 		padding: var(--pui-spacing-1);
+		padding-left: calc(var(--pui-spacing-1) - 1px);
 	}
 
 	button {

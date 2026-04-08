@@ -108,8 +108,8 @@
 	h1 { margin-bottom: 0.5rem; }
 	p { color: var(--pui-color-text-secondary); margin-bottom: 1.5rem; }
 	.code-block {
-		background: var(--pui-color-bg-tertiary, #f5f5f5);
-		border: 1px solid var(--pui-color-border);
+		background: var(--pui-bg-surface-sunken);
+		border: 1px solid var(--pui-border-default);
 		border-radius: 0.375rem;
 		padding: 1rem;
 		font-size: 0.8125rem;
