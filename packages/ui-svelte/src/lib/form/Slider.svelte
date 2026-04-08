@@ -7,6 +7,8 @@
 	}
 
 	interface Props {
+		/** HTML name attribute for the slider */
+		name?: string;
 		label?: string;
 		value?: number;
 		min?: number;
@@ -31,6 +33,7 @@
 	}
 
 	let {
+		name,
 		label = '',
 		value = $bindable(0),
 		min = 0,

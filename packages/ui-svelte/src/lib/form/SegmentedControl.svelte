@@ -1,14 +1,21 @@
 <script lang="ts">
 	import type { ComboBoxItem } from '../models/ComboBoxItem.js';
+	import FormGroup from './FormGroup.svelte';
 	import { onMount, tick } from 'svelte';
+
+	export type SegmentedControlSize = 'default' | 'sm';
 
 	interface Props {
 		options: ComboBoxItem[];
 		value?: any;
+		/** Label text displayed above the control */
+		label?: string;
+		/** Visual size: 'default' or 'sm' (sized to match Textbox/Select) */
+		size?: SegmentedControlSize;
 		onchange?: (value: string) => void;
 	}
 
-	let { options, value = $bindable(), onchange }: Props = $props();
+	let { options, value = $bindable(), label, size = 'default', onchange }: Props = $props();
 
 	let containerRef: HTMLDivElement;
 	let buttonElements = $state<HTMLButtonElement[]>([]);
@@ -68,20 +75,30 @@
 	}
 </script>
 
-<div class="segmented-control" bind:this={containerRef}>
-	<div class="segmented-control-background" style={backgroundStyle}></div>
-	{#each options as option, index}
-		{@const isSelected = option.value === value}
+{#snippet control()}
+	<div class="segmented-control size-{size}" bind:this={containerRef}>
+		<div class="segmented-control-background" style={backgroundStyle}></div>
+		{#each options as option, index}
+			{@const isSelected = option.value === value}
 
-		<button
-			bind:this={buttonElements[index]}
-			class="segmented-control-item {isSelected ? 'selected' : ''}"
-			onclick={() => setValue(option.value)}
-		>
-			{option.label}
-		</button>
-	{/each}
-</div>
+			<button
+				bind:this={buttonElements[index]}
+				class="segmented-control-item {isSelected ? 'selected' : ''}"
+				onclick={() => setValue(option.value)}
+			>
+				{option.label}
+			</button>
+		{/each}
+	</div>
+{/snippet}
+
+{#if label}
+	<FormGroup {label}>
+		{@render control()}
+	</FormGroup>
+{:else}
+	{@render control()}
+{/if}
 
 <style>
 	.segmented-control {
@@ -99,6 +116,15 @@
 		border-radius: var(--pui-radius-md);
 		transition: all var(--pui-transition-fast) var(--pui-ease-in-out);
 		box-shadow: var(--pui-shadow-sm);
+	}
+
+	.segmented-control.size-sm {
+		padding: 2px;
+	}
+
+	.segmented-control.size-sm .segmented-control-item {
+		padding: var(--pui-spacing-1) var(--pui-spacing-3);
+		font-size: var(--pui-font-size-xs);
 	}
 
 	.segmented-control-item {

@@ -18,6 +18,9 @@ export { default as Toaster } from './ui/Toaster.svelte';
 export { default as Tooltip } from './ui/Tooltip.svelte';
 
 // New UI Components
+export { default as ProgressBar } from './ui/ProgressBar.svelte';
+export type { ProgressBarSegment } from './ui/ProgressBar.svelte';
+export type { ProgressBarVariant } from './ui/ProgressBarVariant.js';
 export { default as Progress } from './ui/Progress.svelte';
 export { default as Skeleton } from './ui/Skeleton.svelte';
 export { default as LoadingOverlay } from './ui/LoadingOverlay.svelte';
@@ -48,10 +51,15 @@ export { default as Checkbox } from './form/Checkbox.svelte';
 export { default as ComboBoxItemBuilder } from './form/ComboBoxItemBuilder.svelte';
 export { default as CronBuilder } from './form/CronBuilder.svelte';
 export { default as DatePicker } from './form/DatePicker.svelte';
+export type { DatePickerProps } from './form/DatePicker.svelte';
+export { default as DateRangePicker } from './form/DateRangePicker.svelte';
+export type { DateRangePickerProps } from './form/DateRangePicker.svelte';
 export { default as TimePicker } from './form/TimePicker.svelte';
 export { default as DateTimePicker } from './form/DateTimePicker.svelte';
 export { default as FormGroup } from './form/FormGroup.svelte';
 export { default as Number } from './form/Number.svelte';
+export { default as Radio } from './form/Radio.svelte';
+export type { RadioProps } from './form/Radio.svelte';
 export { default as RadioGroup } from './form/RadioGroup.svelte';
 export { default as Select } from './form/Select.svelte';
 export { default as SelectMulti } from './form/SelectMulti.svelte';
@@ -74,6 +82,7 @@ export * from './icon/index.js';
 // Types
 export type { ButtonVariant } from './ui/ButtonVariant.js';
 export type { ButtonSize } from './ui/ButtonSize.js';
+export type { SegmentedControlSize } from './form/SegmentedControl.svelte';
 export type { Hyperlink } from './models/Hyperlink.js';
 export type { LinkCollectionItem } from './models/LinkCollectionItem.js';
 
@@ -85,6 +94,7 @@ export * from './models/NotifyModel.js';
 export * from './actions/ClickOutside.js';
 export * from './util/CronParser.js';
 export * from './util/DateFunctions.js';
+export * from './util/interceptLinkClick.js';
 export * from './transitions/Transitions.js';
 export * from './util/NavigateTo.js';
 

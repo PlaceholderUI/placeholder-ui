@@ -1,181 +1,295 @@
-<script lang="ts">
-	import ComboBox from "./ComboBox.svelte";
-	import { clickOutside } from "../actions/ClickOutside.js";
-	import Textbox from "./Textbox.svelte";
-	import type { NotifyModel } from "../models/NotifyModel.js";
+<script module lang="ts">
 	import type {
+		ComboBoxGroup,
 		ComboBoxItem,
 		FetchFunctionType,
-		SearchFunctionType,
-	} from "../models/ComboBoxItem.js";
-	import { onMount } from "svelte";
+		RetrieveLabelFunctionType,
+		SearchFunctionType
+	} from '../models/ComboBoxItem.js';
+	import type { Snippet } from 'svelte';
 
-	interface Props {
+	export interface AutocompleteProps {
+		/** HTML name attribute for the input */
+		name?: string;
+		/** Label text displayed above the input */
 		label?: string;
+		/** Current input value (bindable) */
 		value?: string;
+		/** Full selected item object (bindable) */
+		rawValue?: ComboBoxItem;
+		/** Placeholder text when input is empty */
 		placeholder?: string;
-		showRequired?: boolean;
-		classes?: string;
+		/** Mark field as required (shows asterisk) */
+		required?: boolean;
+		/** CSS classes for the input element */
+		class?: string;
+		/** CSS classes for the container element */
+		containerClass?: string;
+		/** Disable the input */
+		disabled?: boolean;
+		/** Show error state styling */
+		showError?: boolean;
+		/** Error message to display */
+		errorText?: string;
+		/** Auto-focus the input on mount */
 		autofocus?: boolean;
-		showNoResultsMessage?: boolean;
+		/** Auto-focus on every dialog open */
+		autofocusDialog?: boolean;
+		/** Hide "no results" message when search finds nothing */
+		hideNoResults?: boolean;
+		/** Prevent updating value when an option is selected */
 		preventChangeOnSelection?: boolean;
-		allowCreate?: boolean;
+		/** Text shown while loading options */
 		loadingText?: string;
+		/** CSS classes for the FormGroup wrapper */
 		groupClass?: string;
+		/** SVG icon displayed on the left side */
 		leftIconSvg?: string;
+		/** Static list of autocomplete options */
 		options?: ComboBoxItem[];
-		fetchFunction?: FetchFunctionType;
-		searchFunction?: SearchFunctionType;
+		/** Options organized into groups */
+		groupedOptions?: ComboBoxGroup[];
+		/** Position of the tooltip */
+		tooltipLocation?: 'top' | 'bottom' | 'left' | 'right';
+		/** Async function to fetch all options */
+		fetchFunction?: FetchFunctionType | null;
+		/** Async function to search/filter options based on input */
+		searchFunction?: SearchFunctionType | null;
+		/** Async function to retrieve label for a value */
+		retrieveLabelFunction?: RetrieveLabelFunctionType | null;
+		/** Rich tooltip content using a Svelte snippet */
+		tooltipContent?: Snippet;
+		/** Simple tooltip text */
+		tooltipText?: string;
+		/** Callback when input value changes */
 		onchange?: (e: string) => void;
+		/** Callback when Enter key is pressed */
 		enterPressed?: (e: string) => void;
+		/** Callback when an option is selected */
 		onSelect?: (e: ComboBoxItem) => void;
-		onCreate?: (value: string) => void;
+		/** Callback when selection changes (returns full item object) */
+		onchangeRaw?: (e: ComboBoxItem | undefined) => void;
 	}
+</script>
+
+<script lang="ts">
+	import ComboBoxMulti from './ComboBoxMulti.svelte';
+	import { clickOutside } from '../actions/ClickOutside.js';
+	import Textbox from './Textbox.svelte';
+	import type { NotifyModel } from '../models/NotifyModel.js';
+	import { onMount, tick } from 'svelte';
+	import { useDialogEvents } from '../ui/DialogEvents.svelte.js';
 
 	let {
+		name,
 		label,
-		value = $bindable(""),
-		placeholder = "Start typing to search...",
-		showRequired = false,
-		classes = "",
+		value = $bindable(''),
+		rawValue = $bindable(undefined),
+		placeholder = 'Start typing to search...',
+		required = false,
+		class: classes = '',
+		containerClass = '',
+		disabled = false,
+		showError = false,
+		errorText = '',
 		autofocus = false,
-		showNoResultsMessage = false,
+		autofocusDialog = false,
+		hideNoResults = false,
 		preventChangeOnSelection = false,
-		allowCreate = false,
-		loadingText = "",
-		groupClass = "",
+		loadingText = '',
+		groupClass = '',
 		leftIconSvg,
-		options,
-		fetchFunction,
-		searchFunction,
+		options = [],
+		groupedOptions = [],
+		tooltipLocation = 'top',
+		fetchFunction = null,
+		searchFunction = null,
+		retrieveLabelFunction = null,
+		tooltipContent,
+		tooltipText,
 		onchange = undefined,
 		enterPressed = undefined,
 		onSelect = undefined,
-		onCreate = undefined,
-	}: Props = $props();
+		onchangeRaw = undefined
+	}: AutocompleteProps = $props();
 
 	let preloading = $state(false);
 	let searching = $state(false);
-	let timeout = setTimeout(() => {});
+	let timeout: number;
 
-	let allOptions: ComboBoxItem[] = [];
-	let filteredOptions: ComboBoxItem[] = $state([]);
+	let allGroups: ComboBoxGroup[] = $state([]);
+	let filteredGroups: ComboBoxGroup[] = $state([]);
 
 	let open = $state(false);
+	let internalValue = $state(value);
 
 	onMount(() => {
 		if (fetchFunction) {
 			preloading = true;
 			fetchFunction().then((response: NotifyModel<ComboBoxItem[]>) => {
 				convertOptions(response.object!);
+				preloadValues();
 				preloading = false;
 			});
 		} else {
-			if (options) convertOptions(options);
+			if (groupedOptions.length) {
+				convertGroupOptions(groupedOptions);
+			} else if (options.length) {
+				convertOptions(options);
+			}
+			preloadValues();
 		}
 	});
 
-	function convertOptions(options: ComboBoxItem[]) {
-		allOptions = options.map((option) => {
-			return {
-				html: option.label,
-				value: option.value,
-				selected: option.value == value,
-				label: option.label,
-			};
-		});
-		filteredOptions = [...allOptions];
+	useDialogEvents({
+		onFirstOpen: () => {
+			if (autofocus) {
+				setTimeout(() => {
+					doFocus();
+				}, 150);
+			}
+		},
+		onOpen: () => {
+			if (autofocusDialog) {
+				setTimeout(() => {
+					doFocus();
+				}, 150);
+			}
+		}
+	});
+
+	function doFocus() {
+		open = true;
+		tick().then(() => textboxElement?.focus());
 	}
 
-	const CREATE_PREFIX = "__create__";
+	$effect(() => {
+		if (value !== internalValue) {
+			internalValue = value;
+			rawValue =
+				allGroups.flatMap((x) => x.items).find((x) => x.value === value) ?? undefined;
+			onchangeRaw?.(rawValue);
+			preloadValues();
+		}
+	});
 
-	function onSelection(selectedValue: ComboBoxItem) {
-		open = false;
-
-		if (selectedValue.value.startsWith(CREATE_PREFIX)) {
-			const newValue = selectedValue.value.slice(CREATE_PREFIX.length);
-			const newItem: ComboBoxItem = { label: newValue, value: newValue };
-			if (options) {
-				options.push(newItem);
-				convertOptions(options);
-			} else {
-				allOptions.push({ ...newItem, selected: true });
-			}
-			if (!preventChangeOnSelection) value = newValue;
-			onSelect?.(newItem);
-			onCreate?.(newValue);
+	function preloadValues() {
+		if (!value) {
+			rawValue = undefined;
 			return;
 		}
 
-		if (options) {
-			options.forEach((option) => {
-				option.selected = option.value == selectedValue.value;
+		const foundOption = allGroups.flatMap((x) => x.items).find((x) => x.value === value);
+
+		if (foundOption !== undefined) {
+			rawValue = foundOption;
+		} else if (searchFunction && retrieveLabelFunction) {
+			preloading = true;
+			retrieveLabelFunction(value).then((response) => {
+				rawValue = {
+					label: response.object ?? value!.toString(),
+					value: value!
+				};
+				preloading = false;
 			});
 		}
+	}
 
-		if (!preventChangeOnSelection) value = selectedValue.value;
+	function convertOptions(opts: ComboBoxItem[]) {
+		const allOptions = opts.map((option) => ({
+			...option,
+			selected: option.value === value
+		}));
+		allGroups = [{ label: '', items: [...allOptions] }];
+		filteredGroups = [{ label: '', items: [...allOptions] }];
+	}
+
+	function convertGroupOptions(groups: ComboBoxGroup[]) {
+		allGroups = groups.map((group) => ({
+			...group,
+			items: group.items.map((option) => ({
+				...option,
+				selected: option.value === value,
+				groupName: group.label
+			}))
+		}));
+		filteredGroups = [...allGroups];
+	}
+
+	let selectionJustMade = false;
+
+	function onSelection(selectedValue: ComboBoxItem) {
+		selectionJustMade = true;
+		open = false;
+
+		allGroups.flatMap((x) => x.items).forEach((option) => {
+			option.selected = option.value === selectedValue.value;
+		});
+
+		if (!preventChangeOnSelection) {
+			value = selectedValue.value;
+			internalValue = value;
+		}
+
+		rawValue = selectedValue;
 
 		onSelect?.(selectedValue);
+		onchangeRaw?.(selectedValue);
 	}
 
-	function appendCreateOption(opts: ComboBoxItem[], query: string): ComboBoxItem[] {
-		if (!allowCreate || !query.trim()) return opts;
-		const normalizedQuery = query.trim().toLowerCase();
-		const exactMatch = opts.some((o) => o.label.toLowerCase() === normalizedQuery);
-		if (exactMatch) return opts;
-		return [...opts, { label: `Create "${query.trim()}"`, value: CREATE_PREFIX + query.trim() }];
-	}
+	function onFilterChange(filterValue: string) {
+		if (filterValue.length === 0) {
+			filteredGroups = allGroups;
+			open = true;
+			return;
+		}
 
-	function onFilterChange(value: string) {
-		if (searchFunction && value) {
+		if (searchFunction && filterValue) {
 			clearTimeout(timeout);
 			searching = true;
-			timeout = setTimeout(() => {
-				searchFunction(value).then(
-					(response: NotifyModel<ComboBoxItem[]>) => {
-						convertOptions(response.object!);
-						filteredOptions = appendCreateOption(filteredOptions, value);
-						searching = false;
-					},
-				);
+			timeout = window.setTimeout(() => {
+				searchFunction(filterValue).then((response: NotifyModel<ComboBoxItem[]>) => {
+					convertOptions(response.object!);
+					searching = false;
+					open = true;
+				});
 			}, 300);
-		} else if (allOptions) {
-			filteredOptions = allOptions.filter((option) =>
-				option.label.toLowerCase().includes(value.toLowerCase()),
-			);
-			filteredOptions = appendCreateOption(filteredOptions, value);
+		} else if (allGroups.length) {
+			filteredGroups = allGroups
+				.map((group) => ({
+					...group,
+					items: group.items.filter((x) =>
+						x.label.toLowerCase().includes(filterValue.toLowerCase())
+					)
+				}))
+				.filter((group) => group.items.length > 0);
 			open = true;
 		}
 
-		onchange?.(value);
+		onchange?.(filterValue);
 	}
 
 	let textboxElement: HTMLElement | undefined = $state(undefined);
-
-	// returns true if an item was selected, false otherwise
-	let comboBoxKeyDown: ((e: KeyboardEvent) => boolean) | undefined =
-		$state(undefined);
+	let comboBoxEl: ReturnType<typeof ComboBoxMulti> | undefined = $state(undefined);
 
 	function onKeyDown(e: KeyboardEvent) {
 		if (!open) {
-			if (e.key === "Enter")
-				// If combobox is not open return user entered string
-				enterPressed?.(value);
-
+			if (e.key === 'Enter') enterPressed?.(value);
 			return;
 		}
 
-		if (e.key === "Escape") {
+		if (e.key === 'Escape') {
 			e.preventDefault();
 			open = false;
-		} else if (comboBoxKeyDown) {
-			const itemSelected = comboBoxKeyDown(e);
+		} else {
+			selectionJustMade = false;
+			comboBoxEl?.handleKeyDown?.(e);
 
-			if (!itemSelected && e.key === "Enter") enterPressed?.(value);
+			if (!selectionJustMade && e.key === 'Enter') enterPressed?.(value);
 		}
 	}
 
-	function onFocus(e: any) {
+	function onFocus(_value: string, e: FocusEvent) {
 		open = true;
 		const target = e?.target as HTMLInputElement;
 		target?.select();
@@ -188,36 +302,68 @@
 	}
 </script>
 
-<Textbox
-	{label}
-	class={classes}
-	required={showRequired}
-	bind:textboxElement
-	placeholder={preloading ? "Loading..." : placeholder}
-	loading={searching || preloading}
-	disabled={preloading}
-	noAutocomplete
-	{groupClass}
-	{leftIconSvg}
-	bind:value
-	oninput={() => {
-		onFilterChange(value);
-	}}
-	onfocus={onFocus}
-	onkeydown={onKeyDown}
->
-	<div class="relative w-full" use:clickOutside={closePopover}>
-		<ComboBox
-			{value}
-			onselection={onSelection}
-			options={filteredOptions}
-			{open}
-			loading={searching}
-			{showNoResultsMessage}
-			{loadingText}
-		/>
+<div class="autocomplete-container">
+	<Textbox
+		{name}
+		type="search"
+		{label}
+		class={classes}
+		{containerClass}
+		{required}
+		{showError}
+		{errorText}
+		{tooltipLocation}
+		{tooltipContent}
+		{tooltipText}
+		bind:textboxElement
+		placeholder={preloading ? 'Loading...' : placeholder}
+		loading={searching || preloading}
+		disabled={preloading || disabled}
+		autocomplete="off"
+		{groupClass}
+		{leftIconSvg}
+		bind:value
+		oninput={() => {
+			onFilterChange(value);
+		}}
+		onfocus={onFocus}
+		onkeydown={onKeyDown}
+	/>
+	<div class="autocomplete-panel {open ? '' : 'hidden'}">
+		<div class="autocomplete-panel-inner" use:clickOutside={closePopover}>
+			<ComboBoxMulti
+				bind:this={comboBoxEl}
+				filterString={value}
+				values={rawValue ? [rawValue] : []}
+				onSelection={onSelection}
+				groupedOptions={filteredGroups}
+				{open}
+				loading={searching}
+				showNoResultsMessage={!hideNoResults}
+				{loadingText}
+			/>
+		</div>
 	</div>
-</Textbox>
+</div>
 
 <style>
+	.autocomplete-container {
+		position: relative;
+	}
+
+	.autocomplete-panel {
+		position: absolute;
+		width: 100%;
+		left: 0;
+		z-index: 70;
+	}
+
+	.autocomplete-panel-inner {
+		position: relative;
+		width: 100%;
+	}
+
+	.hidden {
+		display: none;
+	}
 </style>

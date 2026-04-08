@@ -21,6 +21,8 @@
 	import { onMount, tick, type Snippet } from "svelte";
 
 	interface Props {
+		/** HTML name attribute for the select */
+		name?: string;
 		label?: string;
 		values?: string[];
 		rawValues?: ComboBoxItem[];
@@ -50,6 +52,7 @@
 	}
 
 	let {
+		name,
 		label = "",
 		values = $bindable([]),
 		rawValues = $bindable([]),
@@ -485,6 +488,7 @@
 		<div class="select-panel-inner" use:clickOutside={closePopover}>
 			{#if allowSearch}
 				<Textbox
+					{name}
 					bind:value={filterString}
 					class="w-full
 						{open ? '!border-accent' : 'hidden'}

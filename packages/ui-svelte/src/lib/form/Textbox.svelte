@@ -4,12 +4,18 @@
 	import Loader from '../ui/Loader.svelte';
 	import Icon from '../icon/Icon.svelte';
 
+	const autoName = `textbox-${Math.random().toString(36).substring(2, 15)}`;
+
 	interface Props {
+		/** HTML name attribute for the input (falls back to label, then auto-generated) */
+		name?: string;
 		label?: string;
 		inputId?: string;
 		placeholder?: string;
 		required?: boolean;
 		autofocus?: boolean;
+		/** HTML autocomplete attribute for the input */
+		autocomplete?: string;
 		noAutocomplete?: boolean;
 		preventPasswordSave?: boolean;
 		loading?: boolean;
@@ -24,6 +30,8 @@
 		showError?: boolean;
 		errorText?: string;
 		tooltipLocation?: 'top' | 'bottom' | 'left' | 'right';
+		/** Rich tooltip content using a Svelte snippet */
+		tooltipContent?: Snippet;
 		tooltipText?: string;
 		onenter?: (v: string) => void;
 		onchange?: (e: Event) => void;
@@ -31,19 +39,21 @@
 		onkeydown?: (e: KeyboardEvent) => void;
 		onkeypress?: (e: KeyboardEvent) => void;
 		onkeyup?: (e: KeyboardEvent) => void;
-		onfocus?: (e: FocusEvent) => void;
-		onblur?: (e: FocusEvent) => void;
+		onfocus?: (value: string, e: FocusEvent) => void;
+		onblur?: (value: string, e: FocusEvent) => void;
 		right?: Snippet;
 		children?: Snippet;
-		type?: 'text' | 'password';
+		type?: 'text' | 'password' | 'email' | 'number' | 'search' | 'tel' | 'url';
 	}
 
 	let {
+		name,
 		label = '',
 		inputId = undefined,
 		placeholder = undefined,
 		required = false,
 		autofocus = false,
+		autocomplete = undefined,
 		noAutocomplete = false,
 		preventPasswordSave = false,
 		loading = false,
@@ -58,6 +68,7 @@
 		showError = false,
 		errorText = '',
 		tooltipLocation = 'top',
+		tooltipContent = undefined,
 		tooltipText = undefined,
 		onenter = undefined,
 		onchange = undefined,
@@ -98,7 +109,12 @@
 		return classes;
 	});
 
+	const resolvedName = $derived(
+		(name || label || autoName).replace(/[^a-zA-Z0-9_\-:.]/g, '_')
+	);
+
 	const autocompleteValue = $derived.by(() => {
+		if (autocomplete) return autocomplete;
 		if (noAutocomplete) return 'off';
 		if (type === 'password' && preventPasswordSave) return 'one-time-code';
 		return 'on';
@@ -106,13 +122,14 @@
 </script>
 
 <div class="textbox-container {containerClass}">
-	<FormGroup {label} {required} {id} class={groupClass} {tooltipLocation} {tooltipText}>
+	<FormGroup {label} {required} {id} class={groupClass} {tooltipLocation} {tooltipText} {tooltipContent}>
 		<div class="textbox-input">
 			<!-- svelte-ignore a11y_autofocus -->
 			<input
 				class="textbox {classes} {extraClasses.join(' ')}"
 				{type}
 				{id}
+				name={resolvedName}
 				{placeholder}
 				{disabled}
 				{autofocus}
@@ -120,13 +137,13 @@
 				autocomplete={autocompleteValue}
 				bind:value
 				bind:this={textboxElement}
-				onblur={() => {
+				onblur={(e) => {
 					isFocused = false;
-					onblur?.(new FocusEvent('blur'));
+					onblur?.(value, e);
 				}}
-				onfocus={() => {
+				onfocus={(e) => {
 					isFocused = true;
-					onfocus?.(new FocusEvent('focus'));
+					onfocus?.(value, e);
 				}}
 				{onchange}
 				{oninput}
@@ -145,16 +162,11 @@
 				</div>
 			{/if}
 			{#if loading}
-				<div
-					class="absolute
-				top-1/2 -translate-y-1/2
-				-translate-x-1/2
-				{leftIconSvg ? 'left-4' : 'right-0'}"
-				>
+				<div class="loader" class:loader-left={!!leftIconSvg}>
 					<Loader sizeOverride="1.1rem" />
 				</div>
 			{:else}
-				<div class="contents">
+				<div class="right-slot">
 					{@render right?.()}
 				</div>
 			{/if}
@@ -205,6 +217,16 @@
 		border-bottom-right-radius: 0;
 	}
 
+	.right-slot {
+		display: flex;
+	}
+
+	.right-slot :global(> *) {
+		border-top-left-radius: 0;
+		border-bottom-left-radius: 0;
+		border-left: none;
+	}
+
 	.with-left-icon {
 		padding-left: var(--pui-spacing-8);
 	}
@@ -216,6 +238,19 @@
 		transform: translateY(-40%);
 		left: var(--pui-spacing-2);
 		color: var(--pui-text-muted);
+	}
+
+	.loader {
+		position: absolute;
+		right: var(--pui-spacing-2);
+		top: 50%;
+		transform: translateY(-50%);
+		pointer-events: none;
+	}
+
+	.loader.loader-left {
+		right: auto;
+		left: var(--pui-spacing-2);
 	}
 
 	.show-error {

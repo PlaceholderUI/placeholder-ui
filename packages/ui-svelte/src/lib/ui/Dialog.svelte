@@ -13,6 +13,8 @@
 		preventOverflow?: boolean;
 		size?: 'sm' | 'md' | 'lg' | 'xl' | 'full';
 		class?: string;
+		/** Use space-between layout for footer (useful for left/right button groups) */
+		footerBetween?: boolean;
 		footer?: Snippet;
 		children?: Snippet;
 	}
@@ -25,6 +27,7 @@
 		preventOverflow = false,
 		size = 'md',
 		class: classes = '',
+		footerBetween = false,
 		footer,
 		children
 	}: Props = $props();
@@ -107,7 +110,7 @@
 		{@render children?.()}
 	</div>
 	{#if footer}
-		<div class="dialog-footer">
+		<div class="dialog-footer" class:footer-between={footerBetween}>
 			{@render footer?.()}
 		</div>
 	{/if}
@@ -241,6 +244,10 @@
 		padding: var(--pui-spacing-2) 0;
 		border-top: 1px solid var(--pui-border-default);
 		gap: var(--pui-spacing-2);
+	}
+
+	.dialog-footer.footer-between {
+		justify-content: space-between;
 	}
 
 	.overflow-visible {

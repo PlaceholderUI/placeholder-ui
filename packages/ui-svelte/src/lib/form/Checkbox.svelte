@@ -1,5 +1,11 @@
 <script lang="ts">
+	import { Icon, iconInfoCircle } from '../icon/index.js';
+	import Tooltip from '../ui/Tooltip.svelte';
+	import type { Snippet } from 'svelte';
+
 	interface Props {
+		/** HTML name attribute for the checkbox */
+		name?: string;
 		label?: string;
 		required?: boolean;
 		class?: string;
@@ -8,10 +14,23 @@
 		showError?: boolean;
 		errorText?: string;
 		checked?: boolean;
+		/** When true, the checkbox state is controlled externally only. Clicking will call onchange but won't toggle the checkbox. */
+		controlled?: boolean;
+		/** Whether the checkbox is in an indeterminate state */
+		indeterminate?: boolean;
 		onchange?: (e: boolean) => void;
+		/** Accessible label for screen readers (use when no visible label) */
+		ariaLabel?: string;
+		/** Rich tooltip content using a Svelte snippet */
+		tooltipContent?: Snippet;
+		/** Simple tooltip text */
+		tooltipText?: string;
+		/** Position of the tooltip */
+		tooltipLocation?: 'top' | 'bottom' | 'left' | 'right';
 	}
 
 	let {
+		name,
 		label,
 		required = false,
 		class: classes = '',
@@ -20,28 +39,65 @@
 		showError = false,
 		errorText = '',
 		checked = $bindable(false),
-		onchange = undefined
+		controlled = false,
+		indeterminate = false,
+		onchange = undefined,
+		ariaLabel = undefined,
+		tooltipContent,
+		tooltipText,
+		tooltipLocation = 'top'
 	}: Props = $props();
 
 	const nonce = Math.random().toString(36).substring(2, 15);
+	const resolvedName = $derived(
+		(name || label || `checkbox-${nonce}`).replace(/[^a-zA-Z0-9_\-:.]/g, '_')
+	);
 
 	const id = $derived(inputId ? inputId : label ? `input-${label}` : `input-${nonce}`);
+
+	let inputEl = $state<HTMLInputElement>();
+	$effect(() => { if (inputEl) inputEl.indeterminate = indeterminate; });
 </script>
 
 <div class="checkbox-container {disabled ? 'disabled' : ''}">
 	<label for={id}>
-		<input
-			class="checkbox {showError && 'error'} {classes}"
-			type="checkbox"
-			{id}
-			{disabled}
-			bind:checked
-			onchange={() => onchange?.(checked)}
-		/>
+		{#if controlled}
+			<input
+				bind:this={inputEl}
+				class="checkbox {showError && 'error'} {classes}"
+				type="checkbox"
+				{id}
+				name={resolvedName}
+				{disabled}
+				{checked}
+				aria-label={ariaLabel}
+				onchange={(e) => {
+					e.currentTarget.checked = checked;
+					onchange?.(!checked);
+				}}
+			/>
+		{:else}
+			<input
+				bind:this={inputEl}
+				class="checkbox {showError && 'error'} {classes}"
+				type="checkbox"
+				{id}
+				name={resolvedName}
+				{disabled}
+				bind:checked
+				aria-label={ariaLabel}
+				onchange={() => onchange?.(checked)}
+			/>
+		{/if}
 		<span class="label-text"
 			>{label}
 			{#if required}
 				<span class="required">*</span>
+			{/if}
+			{#if tooltipContent || tooltipText}
+				<Tooltip {tooltipContent} location={tooltipLocation} text={tooltipText}>
+					<Icon svg={iconInfoCircle} size="1em" />
+				</Tooltip>
 			{/if}</span
 		>
 	</label>
@@ -149,6 +205,26 @@
 		-webkit-animation: toggleOnCheckbox var(--pui-transition-fast) var(--pui-ease-out) forwards;
 		animation: toggleOnCheckbox var(--pui-transition-fast) var(--pui-ease-out) forwards;
 	}
+
+	/* Indeterminate state */
+	input[type='checkbox']:indeterminate:before {
+		border-color: var(--pui-color-primary);
+	}
+	:global(.dark) input[type='checkbox']:indeterminate:before {
+		border-color: var(--pui-color-secondary);
+	}
+	input[type='checkbox']:indeterminate:after {
+		width: 10px;
+		height: 2px;
+		border-radius: 1px;
+		background-color: var(--pui-color-primary);
+		box-shadow: none;
+		transform: translate(-50%, -50%) scale(1);
+	}
+	:global(.dark) input[type='checkbox']:indeterminate:after {
+		background-color: var(--pui-color-secondary);
+	}
+
 	input[type='checkbox'].filled:before {
 		border-radius: var(--pui-radius-sm);
 		transition:

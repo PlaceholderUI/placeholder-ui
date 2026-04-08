@@ -2,6 +2,7 @@
 	import { Table, Paper, Button, type Column } from '$lib/index.js';
 
 	interface Person {
+		id: string;
 		name: string;
 		email: string;
 		role: string;
@@ -16,15 +17,16 @@
 	];
 
 	const rows: Person[] = [
-		{ name: 'Alice Johnson', email: 'alice@example.com', role: 'Admin', status: 'Active' },
-		{ name: 'Bob Smith', email: 'bob@example.com', role: 'Editor', status: 'Active' },
-		{ name: 'Carol Williams', email: 'carol@example.com', role: 'Viewer', status: 'Inactive' },
-		{ name: 'David Brown', email: 'david@example.com', role: 'Editor', status: 'Active' },
-		{ name: 'Eva Martinez', email: 'eva@example.com', role: 'Admin', status: 'Active' },
-		{ name: 'Frank Davis', email: 'frank@example.com', role: 'Viewer', status: 'Inactive' }
+		{ id: '1', name: 'Alice Johnson', email: 'alice@example.com', role: 'Admin', status: 'Active' },
+		{ id: '2', name: 'Bob Smith', email: 'bob@example.com', role: 'Editor', status: 'Active' },
+		{ id: '3', name: 'Carol Williams', email: 'carol@example.com', role: 'Viewer', status: 'Inactive' },
+		{ id: '4', name: 'David Brown', email: 'david@example.com', role: 'Editor', status: 'Active' },
+		{ id: '5', name: 'Eva Martinez', email: 'eva@example.com', role: 'Admin', status: 'Active' },
+		{ id: '6', name: 'Frank Davis', email: 'frank@example.com', role: 'Viewer', status: 'Inactive' }
 	];
 
 	let clickedRow = $state('');
+	let selectedRows = $state<Person[]>([]);
 
 	function handleRowClick(row: Person, index: number) {
 		clickedRow = `${row.name} (row ${index})`;
@@ -54,6 +56,10 @@
 		{ prop: 'emptyMessage', type: 'string', default: '\'No data available\'', description: 'Message shown when rows is empty' },
 		{ prop: 'loading', type: 'boolean', default: 'false', description: 'Show loading indicator' },
 		{ prop: 'onrowclick', type: '(row, index) => void', default: 'undefined', description: 'Callback when a row is clicked' },
+		{ prop: 'selectable', type: 'boolean', default: 'false', description: 'Enable checkbox row selection' },
+		{ prop: 'rowKey', type: 'string', default: 'undefined', description: 'Field name to uniquely identify rows (required when selectable)' },
+		{ prop: 'selectedRows', type: 'T[]', default: '[]', description: 'Currently selected row objects (bindable)' },
+		{ prop: 'onselect', type: '(rows: T[]) => void', default: 'undefined', description: 'Callback when selection changes' },
 		{ prop: 'buttons', type: 'Snippet<[T, number]>', default: 'undefined', description: 'Action buttons snippet per row' },
 	];
 </script>
@@ -87,6 +93,11 @@
 		<div class="value-display">Clicked: {clickedRow || 'none'}</div>
 	</Paper>
 
+	<Paper title="Selectable">
+		<Table {columns} {rows} selectable rowKey="id" bind:selectedRows />
+		<div class="value-display">Selected: {selectedRows.length > 0 ? selectedRows.map(r => r.name).join(', ') : 'none'}</div>
+	</Paper>
+
 	<Paper title="With Action Buttons">
 		<Table {columns} {rows}>
 			{#snippet buttons(row: Person, index: number)}
@@ -105,4 +116,5 @@
 <style>
 	h1 { margin-bottom: 0.5rem; }
 	p { color: var(--pui-color-text-secondary); margin-bottom: 1.5rem; }
-	.value-display { font-size: 0.875rem; color: var(--pui-color-text-muted); font-family: monospace; margin-top: 0.5rem; }</style>
+	.value-display { font-size: 0.875rem; color: var(--pui-color-text-muted); font-family: monospace; margin-top: 0.5rem; }
+</style>

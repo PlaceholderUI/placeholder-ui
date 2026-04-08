@@ -1,43 +1,52 @@
 <script lang="ts">
 	import FormGroup from './FormGroup.svelte';
-	
+
+	const autoName = `textarea-${Math.random().toString(36).substring(2, 15)}`;
+
 	interface Props {
+		/** HTML name attribute for the textarea (falls back to label, then auto-generated) */
+		name?: string;
 		label?: string;
 		inputId?: string;
 		placeholder?: string;
 		required?: boolean;
 		autofocus?: boolean;
-		noAutocomplete?: boolean;
+		/** HTML autocomplete attribute */
+		autocomplete?: string;
 		groupClass?: string;
 		textboxElement?: HTMLElement;
 		class?: string;
 		containerClass?: string;
 		disabled?: boolean;
 		value?: string;
+		/** Height of the textarea (e.g., '200px', '10rem') */
+		height?: string;
 		tooltipLocation?: 'top' | 'bottom' | 'left' | 'right';
 		tooltipText?: string;
-		onblur?: (e: FocusEvent) => void;
-		onfocus?: (e: FocusEvent) => void;
-		onchange?: (e: FocusEvent) => void;
-		oninput?: (e: FocusEvent) => void;
-		onkeydown?: (e: FocusEvent) => void;
-		onkeypress?: (e: FocusEvent) => void;
-		onkeyup?: (e: FocusEvent) => void;
+		onblur?: (value: string, e: FocusEvent) => void;
+		onfocus?: (value: string, e: FocusEvent) => void;
+		onchange?: (e: Event) => void;
+		oninput?: (e: Event) => void;
+		onkeydown?: (e: KeyboardEvent) => void;
+		onkeypress?: (e: KeyboardEvent) => void;
+		onkeyup?: (e: KeyboardEvent) => void;
 	}
 
 	let {
+		name,
 		label = '',
 		inputId = undefined,
 		placeholder = undefined,
 		required = false,
 		autofocus = false,
-		noAutocomplete = false,
+		autocomplete = undefined,
 		class: classes = '',
 		containerClass = '',
 		groupClass = '',
 		textboxElement: textboxElement = undefined,
 		disabled = false,
 		value = $bindable(''),
+		height = undefined,
 		tooltipLocation = 'top',
 		tooltipText = undefined,
 		onblur = undefined,
@@ -46,8 +55,12 @@
 		oninput = undefined,
 		onkeydown = undefined,
 		onkeypress = undefined,
-		onkeyup = undefined,
+		onkeyup = undefined
 	}: Props = $props();
+
+	let resolvedName = $derived(
+		(name || label || autoName).replace(/[^a-zA-Z0-9_\-:.]/g, '_')
+	);
 
 	let showRequiredRing = $state(false);
 	const id = $derived(inputId ?? `input-${label.replaceAll(' ', '')}`);
@@ -61,20 +74,22 @@
             {showRequiredRing && '!border-required'}
             {classes}"
 			{id}
+			name={resolvedName}
 			{placeholder}
 			{disabled}
 			{autofocus}
 			{required}
-			autocomplete={!noAutocomplete ? 'on' : 'off'}
+			autocomplete={autocomplete}
+			style={height ? `height: ${height}` : undefined}
 			bind:value
 			bind:this={textboxElement}
-			{onblur}
-			{onfocus}
-			onchange={() => onchange?.(new FocusEvent('change'))}
-			oninput={() => oninput?.(new FocusEvent('input'))}
-			onkeydown={() => onkeydown?.(new FocusEvent('keydown'))}
-			onkeypress={() => onkeypress?.(new FocusEvent('keypress'))}
-			onkeyup={() => onkeyup?.(new FocusEvent('keyup'))}
+			onblur={(e) => onblur?.(value, e)}
+			onfocus={(e) => onfocus?.(value, e)}
+			{onchange}
+			{oninput}
+			{onkeydown}
+			{onkeypress}
+			{onkeyup}
 		></textarea>
 	</FormGroup>
 </div>

@@ -6,8 +6,12 @@
 
 	interface Props {
 		variant?: ButtonVariant;
+		/** Size of the badge */
+		size?: 'sm' | 'md' | 'lg';
 		shape?: 'pill' | 'default';
 		href?: string;
+		/** Link target attribute (e.g. '_blank') */
+		target?: string;
 		loading?: boolean;
 		disabled?: boolean;
 		onDelete?: () => void;
@@ -17,8 +21,10 @@
 
 	let {
 		variant = 'primary',
+		size = 'md',
 		shape = 'default',
 		href = undefined,
+		target = undefined,
 		loading = false,
 		disabled = false,
 		onDelete = undefined,
@@ -34,9 +40,9 @@
 	);
 </script>
 
-<div class="badge-container {variant} shape-{shape} {onDelete ? 'badge-with-button' : ''} ">
+<div class="badge-container {variant} shape-{shape} size-{size} {onDelete ? 'badge-with-button' : ''} ">
 	{#if type == 'a' && !disabled}
-		<a class={elClass} {href}> {@render children?.()}</a>
+		<a class={elClass} {href} {target}> {@render children?.()}</a>
 	{:else if type == 'button'}
 		<button class={elClass} disabled={isDisabled}> {@render children?.()}</button>
 	{:else}
@@ -54,7 +60,7 @@
 <style>
 	.badge-container {
 		display: flex;
-		border-radius: var(--pui-radius-lg);
+		border-radius: var(--pui-radius-md);
 		border: var(--badge-border, 0);
 	}
 
@@ -68,6 +74,16 @@
 		text-decoration: none;
 		padding: var(--pui-spacing-1);
 		border-radius: var(--pui-radius-lg);
+	}
+
+	.size-sm .badge {
+		font-size: var(--pui-font-size-xs);
+		padding: 2px var(--pui-spacing-1);
+	}
+
+	.size-lg .badge {
+		font-size: var(--pui-font-size-md);
+		padding: var(--pui-spacing-1_5) var(--pui-spacing-2);
 	}
 
 	button.badge,
@@ -124,7 +140,7 @@
 		--badge-bg-color: var(--pui-color-primary);
 		--badge-text-color: var(--pui-color-white);
 		--badge-hover-bg-color: var(--pui-color-secondary-dark);
-		--badge-border-color: var(--pui-color-accent-dark);
+		--badge-border-color: var(--pui-color-primary-darker);
 		--badge-outline-color: var(--pui-color-secondary-dark);
 	}
 

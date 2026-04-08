@@ -19,6 +19,8 @@
 	import { onMount, tick, type Snippet } from "svelte";
 
 	interface Props {
+		/** HTML name attribute for the select (falls back to label, then auto-generated) */
+		name?: string;
 		label?: string;
 		value?: string;
 		rawValue?: ComboBoxItem;
@@ -32,7 +34,8 @@
 		autofocus?: boolean; // will also cause dialog autofocus on first open only
 		autofocusDialog?: boolean; // will cause autofocus on every open, not just the first time
 		allowSearch?: boolean;
-		showNoResultsMessage?: boolean;
+		/** Hide "no results" message when search finds nothing */
+		hideNoResults?: boolean;
 		loadingText?: string;
 		options?: ComboBoxItem[];
 		groupedOptions?: ComboBoxGroup[];
@@ -44,9 +47,12 @@
 		tooltipText?: string;
 		onchange?: (e: string | undefined) => void;
 		onchangeRaw?: (e: ComboBoxItem | undefined) => void;
+		/** HTML autocomplete attribute for the input */
+		autocomplete?: string;
 	}
 
 	let {
+		name,
 		label = "",
 		value = $bindable(undefined),
 		rawValue = undefined,
@@ -60,7 +66,7 @@
 		autofocus = false,
 		autofocusDialog = false,
 		allowSearch = false,
-		showNoResultsMessage = true,
+		hideNoResults = false,
 		loadingText = "",
 		options = [],
 		groupedOptions = [],
@@ -73,6 +79,11 @@
 		onchange,
 		onchangeRaw,
 	}: Props = $props();
+
+	const autoName = `select-${Math.random().toString(36).substring(2, 15)}`;
+	let resolvedName = $derived(
+		(name || label || autoName).replace(/[^a-zA-Z0-9_\-:.]/g, '_')
+	);
 
 	// Use derived for computed allowSearch
 	let computedAllowSearch = $derived(searchFunction ? true : allowSearch);
@@ -327,10 +338,12 @@
 					bind:value={filterString}
 					oninput={() => onFilterChange(filterString)}
 					onkeydown={onKeyDown}
-					autocomplete="off"
+					name={resolvedName}
+					autocomplete={autocomplete ?? 'off'}
 					disabled={preloading || disabled}
 					placeholder={isEmpty ? placeholder : rawValue?.label || ""}
 					class="select select-input {extraClasses} {classes}"
+					type="search"
 				/>
 				{#if preloading || searching}
 					<div class="loader">
@@ -461,7 +474,7 @@
 				groupedOptions={filteredGroups}
 				{open}
 				loading={searching}
-				{showNoResultsMessage}
+				showNoResultsMessage={!hideNoResults}
 				{loadingText}
 			/>
 		</div>

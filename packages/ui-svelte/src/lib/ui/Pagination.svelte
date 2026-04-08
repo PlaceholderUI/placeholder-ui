@@ -90,7 +90,7 @@
 <div class="pagination-container">
 	<ActionIcon
 		svg={iconChevronLeft}
-		variant="secondary"
+		variant="primary-outline"
 		onclick={() => setPage(selectedPage - 1)}
 		disabled={selectedPage <= 1}
 	/>
@@ -98,7 +98,7 @@
 	{#each determinePages(selectedPage, totalPages) as page}
 		{#if page.page}
 			<Button
-				variant={page.isSelected ? 'secondary-selected' : 'secondary'}
+				variant={page.isSelected ? 'primary' : 'primary-outline'}
 				class="paginate-button"
 				onclick={() => setPage(page.page!)}>{page.page}</Button
 			>
@@ -109,7 +109,7 @@
 
 	<ActionIcon
 		svg={chevronRight}
-		variant="secondary"
+		variant="primary-outline"
 		disabled={totalPages === undefined || selectedPage >= totalPages}
 		onclick={() => setPage(selectedPage + 1)}
 	/>

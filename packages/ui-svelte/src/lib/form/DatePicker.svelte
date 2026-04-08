@@ -1,21 +1,42 @@
+<script module lang="ts">
+	import type { Snippet } from 'svelte';
+
+	export interface DatePickerProps {
+		/** Label text displayed above the input */
+		label?: string;
+		/** Disable the date picker */
+		disabled?: boolean;
+		/** Mark field as required (shows asterisk) */
+		required?: boolean;
+		/** CSS classes for the container element */
+		containerClass?: string;
+		/** Selected date value in ISO format (bindable) */
+		value?: string | undefined;
+		/** Minimum selectable date in ISO format */
+		minDate?: string | undefined;
+		/** Maximum selectable date in ISO format */
+		maxDate?: string | undefined;
+		/** Position of the tooltip */
+		tooltipLocation?: 'top' | 'bottom' | 'left' | 'right';
+		/** Rich tooltip content using a Svelte snippet */
+		tooltipContent?: Snippet;
+		/** Simple tooltip text */
+		tooltipText?: string;
+		/** Callback when selected date changes */
+		onchange?: (date: string | undefined) => void;
+	}
+</script>
+
 <script lang="ts">
 	import Textbox from "./Textbox.svelte";
 	import { fade } from "svelte/transition";
 	import dayjs from "dayjs";
+	import customParseFormat from "dayjs/plugin/customParseFormat.js";
 	import { clickOutside } from "../actions/ClickOutside.js";
 	import ActionIcon from "../ui/ActionIcon.svelte";
 	import { iconChevronLeft, iconChevronRight, iconX } from "../icon/index.js";
 
-	interface Props {
-		label?: string;
-		disabled?: boolean;
-		required?: boolean;
-		containerClass?: string;
-		value?: string | undefined;
-		minDate?: string | undefined;
-		maxDate?: string | undefined;
-		onchange?: (date: string | undefined) => void;
-	}
+	dayjs.extend(customParseFormat);
 
 	let {
 		label,
@@ -25,8 +46,11 @@
 		value = $bindable(undefined),
 		minDate,
 		maxDate,
+		tooltipLocation = 'top',
+		tooltipContent,
+		tooltipText,
 		onchange,
-	}: Props = $props();
+	}: DatePickerProps = $props();
 
 	const days = ["Mo", "Tu", "We", "Th", "Fr", "Sa", "Su"];
 
@@ -308,11 +332,20 @@
 		{disabled}
 		{required}
 		noAutocomplete
+		{tooltipLocation}
+		{tooltipContent}
+		{tooltipText}
 		bind:textboxElement
 		value={readableDate}
 		onfocus={() => {
 			checkDropdownPosition();
 			showCalendar = true;
+		}}
+		onblur={(val) => {
+			const parsed = dayjs(val, ["D MMMM YYYY", "DD/MM/YYYY", "YYYY-MM-DD"], true);
+			if (parsed.isValid()) {
+				setDate(parsed, true, false);
+			}
 		}}
 		onkeyup={onDateTextChange}
 		class={showRequiredRing ? "!border-required" : ""}

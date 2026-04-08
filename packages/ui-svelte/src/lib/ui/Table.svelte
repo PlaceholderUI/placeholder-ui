@@ -1,6 +1,7 @@
 <script lang="ts">
 	import { type Snippet } from 'svelte';
 	import Textbox from '../form/Textbox.svelte';
+	import Checkbox from '../form/Checkbox.svelte';
 	import Icon from '../icon/Icon.svelte';
 	import { iconArrowsSort, iconChevronDown, iconChevronUp, iconSearch } from '../icon/index.js';
 
@@ -14,19 +15,40 @@
 	}
 
 	interface Props<T = any> {
+		/** Column definitions for the table */
 		columns: Column<T>[];
+		/** Data rows to display */
 		rows: T[];
+		/** Enable search/filter functionality */
 		searchable?: boolean;
+		/** Placeholder text for search input */
 		searchPlaceholder?: string;
+		/** Additional CSS classes */
 		class?: string;
+		/** Enable alternating row colors */
 		striped?: boolean;
+		/** Disable rounded corners on table container */
 		notRounded?: boolean;
+		/** Enable hover effect on rows */
 		hover?: boolean;
+		/** Message shown when no data is available */
 		emptyMessage?: string;
+		/** Show loading state */
 		loading?: boolean;
+		/** Content to render below the table */
 		children?: Snippet;
+		/** Action buttons snippet, receives row data and index */
 		buttons?: Snippet<[T, number]>;
+		/** Callback when a row is clicked */
 		onrowclick?: (row: T, index: number) => void;
+		/** Enable checkbox selection */
+		selectable?: boolean;
+		/** Field name used to uniquely identify rows (required when selectable is true) */
+		rowKey?: string;
+		/** Currently selected row objects (bindable) */
+		selectedRows?: T[];
+		/** Callback when selection changes */
+		onselect?: (selectedRows: T[]) => void;
 	}
 
 	let {
@@ -42,12 +64,82 @@
 		loading = false,
 		children,
 		buttons,
-		onrowclick
+		onrowclick,
+		selectable = false,
+		rowKey = undefined,
+		selectedRows = $bindable([]),
+		onselect = undefined
 	}: Props = $props();
 
 	let searchQuery = $state('');
 	let sortColumn = $state<string | null>(null);
 	let sortDirection = $state<'asc' | 'desc'>('asc');
+
+	let _selectionWarned = false;
+	$effect(() => { if (selectable && !rowKey && !_selectionWarned) { _selectionWarned = true; console.warn('Table: rowKey is required when selectable is true'); } });
+
+	// Prune selectedRows when rows change to remove entries no longer present
+	$effect(() => {
+		if (!selectable || !rowKey || selectedRows.length === 0) return;
+		const validKeys = new Set(rows.map(r => getValue(r, rowKey)));
+		const pruned = selectedRows.filter(r => validKeys.has(getValue(r, rowKey)));
+		if (pruned.length !== selectedRows.length) {
+			selectedRows = pruned;
+			onselect?.(selectedRows);
+		}
+	});
+
+	// Set of selected row keys for O(1) lookup
+	const selectedKeys = $derived.by(() => {
+		if (!selectable || !rowKey) return new Set<any>();
+		return new Set(selectedRows.map(r => getValue(r, rowKey)));
+	});
+
+	function isRowSelected(row: any): boolean {
+		if (!selectable || !rowKey) return false;
+		return selectedKeys.has(getValue(row, rowKey));
+	}
+
+	function toggleRow(row: any) {
+		if (!selectable || !rowKey) return;
+
+		const key = getValue(row, rowKey);
+		if (selectedKeys.has(key)) {
+			selectedRows = selectedRows.filter(r => getValue(r, rowKey) !== key);
+		} else {
+			selectedRows = [...selectedRows, row];
+		}
+		onselect?.(selectedRows);
+	}
+
+	function toggleAll() {
+		if (!selectable || !rowKey) return;
+
+		const allSelected = filteredRows.length > 0 && filteredRows.every(row => selectedKeys.has(getValue(row, rowKey!)));
+
+		if (allSelected) {
+			// Deselect all filtered rows, preserve off-screen selections
+			const filteredKeys = new Set(filteredRows.map(r => getValue(r, rowKey!)));
+			selectedRows = selectedRows.filter(r => !filteredKeys.has(getValue(r, rowKey!)));
+		} else {
+			// Select all filtered rows, merge with existing
+			const existingKeys = new Set(selectedRows.map(r => getValue(r, rowKey!)));
+			const newSelections = filteredRows.filter(r => !existingKeys.has(getValue(r, rowKey!)));
+			selectedRows = [...selectedRows, ...newSelections];
+		}
+		onselect?.(selectedRows);
+	}
+
+	const isAllSelected = $derived.by(() => {
+		if (!selectable || !rowKey || filteredRows.length === 0) return false;
+		return filteredRows.every(row => selectedKeys.has(getValue(row, rowKey)));
+	});
+
+	const isSomeSelected = $derived.by(() => {
+		if (!selectable || !rowKey || filteredRows.length === 0) return false;
+		const selectedCount = filteredRows.filter(row => selectedKeys.has(getValue(row, rowKey))).length;
+		return selectedCount > 0 && selectedCount < filteredRows.length;
+	});
 
 	function handleSort(column: Column) {
 		if (!column.sortable) return;
@@ -133,6 +225,15 @@
 		<table class={tableClasses}>
 			<thead>
 				<tr>
+					{#if selectable && rowKey}
+						<th class="table-header checkbox-cell" style="width: 40px">
+							<Checkbox
+								controlled
+								checked={isAllSelected}
+								onchange={() => toggleAll()}
+							/>
+						</th>
+					{/if}
 					{#each columns as column}
 						<th
 							class="table-header {column.sortable ? 'sortable' : ''} {column.align || 'left'}"
@@ -160,22 +261,34 @@
 			<tbody>
 				{#if loading}
 					<tr>
-						<td colspan={columns.length + (buttons ? 1 : 0)} class="loading-cell">
+						<td colspan={columns.length + (selectable && rowKey ? 1 : 0) + (buttons ? 1 : 0)} class="loading-cell">
 							<div class="loading-content">Loading...</div>
 						</td>
 					</tr>
 				{:else if filteredRows.length === 0}
 					<tr>
-						<td colspan={columns.length + (buttons ? 1 : 0)} class="empty-cell">
+						<td colspan={columns.length + (selectable && rowKey ? 1 : 0) + (buttons ? 1 : 0)} class="empty-cell">
 							<div class="empty-content">{emptyMessage}</div>
 						</td>
 					</tr>
 				{:else}
 					{#each filteredRows as row, index}
 						<tr
-							class={onrowclick ? 'clickable-row' : ''}
-							onclick={() => onrowclick?.(row, index)}
+							class="{onrowclick || selectable ? 'clickable-row' : ''} {selectable && isRowSelected(row) ? 'selected' : ''}"
+							onclick={() => {
+								if (selectable) toggleRow(row);
+								onrowclick?.(row, index);
+							}}
 						>
+							{#if selectable && rowKey}
+								<td class="table-cell checkbox-cell" onclick={(e) => e.stopPropagation()}>
+									<Checkbox
+										controlled
+										checked={isRowSelected(row)}
+										onchange={() => toggleRow(row)}
+									/>
+								</td>
+							{/if}
 							{#each columns as column}
 								{@const value = getValue(row, column.key)}
 								<td class="table-cell {column.align || 'left'}">
@@ -291,6 +404,21 @@
 		text-align: right;
 	}
 
+	.checkbox-cell {
+		width: 40px;
+		text-align: center;
+		padding: var(--pui-spacing-1);
+	}
+
+	.checkbox-cell :global(.checkbox-container) {
+		display: inline-flex;
+		justify-content: center;
+	}
+
+	.checkbox-cell :global(input) {
+		margin: 2px;
+	}
+
 	.pui-table.striped tbody tr:nth-child(even) {
 		background-color: var(--pui-bg-hover);
 	}
@@ -298,6 +426,16 @@
 	.pui-table.hover tbody tr:hover {
 		background-color: var(--pui-bg-hover);
 		transition: background-color var(--pui-transition-fast) var(--pui-ease-out);
+	}
+
+	.pui-table tbody tr.selected,
+	.pui-table.striped tbody tr.selected:nth-child(even) {
+		background-color: var(--pui-bg-active);
+	}
+
+	.pui-table tbody tr.selected:hover,
+	.pui-table.hover tbody tr.selected:hover {
+		background-color: var(--pui-bg-active);
 	}
 
 	.clickable-row {

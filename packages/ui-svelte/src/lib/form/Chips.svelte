@@ -1,11 +1,18 @@
 <script lang="ts">
 	import type { ComboBoxItem } from '../models/ComboBoxItem.js';
+	import type { ButtonVariant } from '../ui/ButtonVariant.js';
 	import FormGroup from './FormGroup.svelte';
 	import { iconCheck } from '../icon/index.js';
 	import Button from '../ui/Button.svelte';
 
 	interface Props {
-		label: string;
+		label?: string;
+		/** Visual style variant for chips */
+		variant?: ButtonVariant;
+		/** Visual style variant for selected/checked chips */
+		selectedVariant?: ButtonVariant;
+		/** Visual style variant for deselected chips (overrides variant for unselected state) */
+		deselectedVariant?: ButtonVariant;
 		options: ComboBoxItem[];
 		required?: boolean;
 		showError?: boolean;
@@ -22,7 +29,10 @@
 	}
 
 	let {
-		label,
+		label = '',
+		variant = undefined,
+		selectedVariant = undefined,
+		deselectedVariant = undefined,
 		options,
 		required = false,
 		showError = false,
@@ -73,13 +83,17 @@
 		>
 			{#each options as option}
 				{@const checked = multiple ? values.includes(option.value) : option.value === value}
+				{@const hasSelection = multiple ? values.length > 0 : value !== undefined}
+				{@const chipVariant = checked
+					? (selectedVariant ?? variant)
+					: (deselectedVariant && (multiple || hasSelection) ? deselectedVariant : variant)}
 				<div class="flex">
 					{#if checked}
-						<Button class="chip checked" {disabled} onclick={() => handleChange(option)} svg={iconCheck} iconSize={'16px'}
+						<Button class="chip checked" {disabled} onclick={() => handleChange(option)} svg={iconCheck} iconSize={'16px'} variant={chipVariant}
 							>{option.label}</Button
 						>
 					{:else}
-						<Button class="chip" {disabled} onclick={() => handleChange(option)}
+						<Button class="chip" {disabled} onclick={() => handleChange(option)} variant={chipVariant}
 							>{option.label}</Button
 						>
 					{/if}

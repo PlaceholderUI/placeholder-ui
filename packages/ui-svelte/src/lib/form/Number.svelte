@@ -4,7 +4,11 @@
 	import Loader from '../ui/Loader.svelte';
 	import Icon from '../icon/Icon.svelte';
 
+	const autoName = `number-${Math.random().toString(36).substring(2, 15)}`;
+
 	interface Props {
+		/** HTML name attribute for the input (falls back to label, then auto-generated) */
+		name?: string;
 		label?: string;
 		inputId?: string;
 		placeholder?: string;
@@ -39,6 +43,7 @@
 	}
 
 	let {
+		name,
 		label = '',
 		inputId = undefined,
 		placeholder = undefined,
@@ -79,6 +84,10 @@
 		// generate 6 character random string
 		return Math.random().toString(36).substring(2, 8);
 	});
+
+	const resolvedName = $derived(
+		(name || label || autoName).replace(/[^a-zA-Z0-9_\-:.]/g, '_')
+	);
 
 	const extraClasses: string[] = $derived.by(() => {
 		const classes = [];
@@ -121,6 +130,7 @@
 				class="number {classes} {extraClasses.join(' ')}"
 				type="number"
 				{id}
+				name={resolvedName}
 				{placeholder}
 				{disabled}
 				{autofocus}
@@ -156,12 +166,7 @@
 				</div>
 			{/if}
 			{#if loading}
-				<div
-					class="absolute
-				top-1/2 -translate-y-1/2
-				-translate-x-1/2
-				{leftIconSvg ? 'left-4' : 'right-0'}"
-				>
+				<div class="loader" class:loader-left={!!leftIconSvg}>
 					<Loader sizeOverride="1.1rem" />
 				</div>
 			{:else}
@@ -227,6 +232,19 @@
 		transform: translateY(-40%);
 		left: var(--pui-spacing-2);
 		color: var(--pui-text-muted);
+	}
+
+	.loader {
+		position: absolute;
+		right: var(--pui-spacing-2);
+		top: 50%;
+		transform: translateY(-50%);
+		pointer-events: none;
+	}
+
+	.loader.loader-left {
+		right: auto;
+		left: var(--pui-spacing-2);
 	}
 
 	.show-error {
