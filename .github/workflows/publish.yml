@@ -5,8 +5,9 @@ on:
   push:
     branches: [master]
     paths:
-      - 'packages/ui-svelte/**'
-      - 'packages/editors/**'
+      - 'src/lib/**'
+      - 'package.json'
+      - 'pnpm-lock.yaml'
 
 jobs:
   publish:
@@ -21,7 +22,7 @@ jobs:
       - name: Install pnpm
         uses: pnpm/action-setup@v4
         with:
-          version: 9
+          version: 10
 
       - name: Setup Node.js
         uses: actions/setup-node@v4
@@ -31,13 +32,10 @@ jobs:
           registry-url: 'https://registry.npmjs.org'
 
       - name: Install dependencies
-        run: pnpm install
+        run: pnpm install --frozen-lockfile
 
-      - name: Build all packages
-        run: pnpm build:all
+      - name: Build package
+        run: pnpm build
 
       - name: Publish placeholder-ui
-        run: pnpm publish:package --provenance || true
-
-      - name: Publish placeholder-ui-editors
-        run: pnpm publish:editors --provenance || true
+        run: pnpm publish:package --provenance --no-git-checks || true

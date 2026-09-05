@@ -1,0 +1,178 @@
+/*
+ * PlaceholderUI design tokens
+ * ---------------------------
+ * Everything a consumer needs to re-brand the library lives in the `--ui-*`
+ * custom properties below. Override them in your own stylesheet, or call
+ * `applyTheme()` / `themeToCss()` from the package to generate them from a
+ * `ThemeConfig` object.
+ *
+ * Colour roles (keep these relationships when re-branding):
+ *   --ui-primary   dark brand colour. Used for solid buttons, headings, active
+ *                  states. Text on top of it uses --ui-primary-contrast.
+ *   --ui-accent    light brand colour. Used for highlights, hover states and as
+ *                  the adaptive accent in dark mode. Text on top of it uses
+ *                  --ui-accent-contrast.
+ *   --ui-tertiary  light supporting colour. Its *-dark shade is used for links
+ *                  and subtle text.
+ */
+
+:root {
+	/* ---- Typography ---- */
+	--ui-font-family:
+		ui-sans-serif, system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif, 'Apple Color Emoji',
+		'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
+
+	/* ---- Brand colours (neutral defaults) ---- */
+	--ui-primary-rgb: 30 58 95;
+	--ui-primary-rgbc: 30, 58, 95;
+	--ui-primary: rgb(var(--ui-primary-rgb));
+	--ui-primary-dark: #12253d;
+	--ui-primary-contrast: #ffffff;
+
+	--ui-accent-rgb: 147 197 253;
+	--ui-accent-rgbc: 147, 197, 253;
+	--ui-accent: rgb(var(--ui-accent-rgb));
+	--ui-accent-dark: #1d4ed8;
+	--ui-accent-contrast: var(--ui-primary);
+
+	--ui-tertiary-rgb: 165 243 252;
+	--ui-tertiary-rgbc: 165, 243, 252;
+	--ui-tertiary: rgb(var(--ui-tertiary-rgb));
+	--ui-tertiary-dark-rgbc: 14, 116, 144;
+	--ui-tertiary-dark: rgb(var(--ui-tertiary-dark-rgbc));
+	--ui-tertiary-light: #cffafe;
+
+	/* ---- Link colours ---- */
+	--ui-link-color: var(--ui-tertiary-dark);
+	--ui-link-hover-color: var(--ui-accent-dark);
+
+	/* ---- Legacy aliases (deprecated, kept for backwards compatibility) ---- */
+	--midnight-rgb: var(--ui-primary-rgb);
+	--midnight-rgbc: var(--ui-primary-rgbc);
+	--midnight: var(--ui-primary);
+	--pistachio-rgb: var(--ui-accent-rgb);
+	--pistachio-rgbc: var(--ui-accent-rgbc);
+	--pistachio: var(--ui-accent);
+	--pistachio-dark: var(--ui-accent-dark);
+	--turquoise: var(--ui-tertiary);
+	--turquoise-dark: var(--ui-tertiary-dark);
+
+	/* ---- Surfaces and text (light mode) ---- */
+	--off-white: rgb(221, 221, 221);
+	--input-bg: #fff;
+	--page-bg: #f1f3f5;
+	--text-color: #000;
+	--border-color: rgb(226, 232, 240);
+	--accent-color-rgb: var(--ui-primary-rgbc);
+	--accent-color: rgb(var(--accent-color-rgb));
+	--accent-text-color-rgb: 221, 221, 221;
+	--accent-text-color: rgb(221, 221, 221);
+	--paper-title-bg: rgb(252, 252, 252);
+	--paper-title-border: rgb(229, 231, 235);
+	--paper-body-bg: rgb(255, 255, 255);
+	--danger-bg: #e03131;
+	--danger-bg-hover: #c92a2a;
+	--danger-text: #ff5e5e;
+	--danger-bg-subtle: rgba(250, 82, 82, 0.12);
+
+	/* inputs */
+	--placeholder-color: rgb(161 161 170);
+	--input-bg-color: #fff;
+	--label-color: #6c757d;
+
+	/* layout */
+	--header-height: 46px;
+	--page-content-height: calc(100vh - var(--header-height));
+
+	--scrollbar-track: #fff;
+	--scrollbar-thumb: var(--ui-primary);
+
+	background-color: var(--page-bg);
+	color: var(--text-color);
+	font-family: var(--ui-font-family);
+}
+
+.dark {
+	--input-bg: rgb(33, 37, 41);
+	--page-bg: rgb(36, 37, 40);
+	--text-color: rgb(221, 221, 221);
+	--accent-color-rgb: var(--ui-accent-rgbc);
+	--border-color: rgb(55, 58, 64);
+	--accent-text-color-rgb: 221, 221, 221;
+	--accent-text-color: #000;
+	--paper-title-bg: rgb(18, 18, 18);
+	--paper-title-border: rgb(46, 46, 46);
+	--paper-body-bg: rgb(25, 26, 28);
+	--danger-text: #ffa8a8;
+	--danger-bg-subtle: rgba(250, 82, 82, 0.2);
+
+	/* inputs */
+	--placeholder-color: rgb(115 115 115);
+	--input-bg-color: rgb(33, 37, 41);
+	--label-color: rgb(141, 144, 149);
+
+	--scrollbar-track: #111;
+}
+
+body {
+	margin: 0;
+	font-family: var(--ui-font-family);
+}
+
+/* Form controls do not inherit fonts by default; make them follow the UI font
+   even when Bootstrap's reboot is not loaded. */
+button,
+input,
+select,
+textarea {
+	font-family: inherit;
+}
+
+header a {
+	text-decoration: none;
+	color: var(--ui-primary);
+	transition: color 200ms;
+}
+
+.dark header a {
+	color: white;
+}
+
+.dark header a:hover {
+	color: var(--ui-accent);
+}
+
+header .text-xl {
+	font-size: 1.25rem;
+	line-height: 1.75rem;
+}
+
+*::-webkit-scrollbar {
+	width: 19px;
+}
+
+*::-webkit-scrollbar-track {
+	background: var(--scrollbar-track);
+}
+
+*::-webkit-scrollbar-thumb {
+	background-color: var(--scrollbar-thumb);
+	border-radius: 10px;
+	border: 5px solid var(--scrollbar-track);
+}
+
+.vstack {
+	gap: 1rem;
+	display: flex;
+	flex-direction: column;
+}
+
+a {
+	color: var(--ui-link-color);
+	text-decoration: none;
+	transition: 200ms all;
+}
+
+a:hover {
+	color: var(--ui-link-hover-color);
+}

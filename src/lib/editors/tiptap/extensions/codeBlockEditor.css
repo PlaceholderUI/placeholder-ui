@@ -1,0 +1,236 @@
+/* Styles for the CodeBlockEditor TipTap extension (CodeMirror-powered code blocks).
+   Syntax colors target the stable tok-* classes emitted by @lezer/highlight's
+   classHighlighter: light palette follows CodeMirror's default highlight style,
+   dark palette follows One Dark. Dark mode uses the library's `.dark` root class. */
+
+.code-block-editor {
+	position: relative;
+	margin: 0 0 1em 0;
+	border: 1px solid var(--border-color, #dddddd);
+	border-radius: 6px;
+	background: var(--page-bg, #f7f7f8);
+}
+
+.code-block-editor.ProseMirror-selectednode {
+	border-color: var(--ui-tertiary, #40c5b5);
+}
+
+.code-block-editor .cm-editor {
+	background: transparent;
+}
+
+.code-block-editor .cm-editor.cm-focused {
+	outline: none;
+}
+
+.code-block-editor .cm-editor .cm-scroller {
+	font-family: 'Monaco', 'Courier New', monospace;
+	font-size: 0.875em;
+	line-height: 1.5;
+	border-radius: 6px;
+}
+
+.code-block-editor .cm-editor .cm-content {
+	padding: 12px 14px;
+	caret-color: var(--text-color, #1a1a1a);
+}
+
+.dark .code-block-editor .cm-editor .cm-cursor {
+	border-left-color: #e6e6e6;
+}
+
+.dark .code-block-editor .cm-editor .cm-selectionBackground {
+	background: rgba(115, 135, 175, 0.35);
+}
+
+.dark .code-block-editor .cm-editor.cm-focused .cm-selectionBackground {
+	background: rgba(115, 135, 175, 0.45);
+}
+
+.dark .code-block-editor .cm-editor .cm-matchingBracket {
+	background: rgba(255, 255, 255, 0.12);
+}
+
+/* Language picker */
+.code-block-editor .code-block-language {
+	position: absolute;
+	top: 6px;
+	right: 6px;
+	z-index: 2;
+	max-width: 40%;
+	padding: 2px 6px;
+	font-size: 12px;
+	border: 1px solid var(--border-color, #dddddd);
+	border-radius: 4px;
+	background: var(--paper-body-bg, #ffffff);
+	color: var(--text-color, #1a1a1a);
+	opacity: 0.4;
+	transition: opacity 0.15s ease;
+	cursor: pointer;
+}
+
+.code-block-editor:hover .code-block-language,
+.code-block-editor .code-block-language:focus {
+	opacity: 1;
+}
+
+.code-block-editor .code-block-language:disabled {
+	cursor: default;
+}
+
+/* Autocomplete tooltip */
+.code-block-editor .cm-tooltip {
+	border: 1px solid var(--border-color, #dddddd);
+	background: var(--paper-body-bg, #ffffff);
+	color: var(--text-color, #1a1a1a);
+	border-radius: 4px;
+}
+
+.code-block-editor .cm-tooltip.cm-tooltip-autocomplete > ul > li[aria-selected] {
+	background: var(--ui-tertiary, #40c5b5);
+	color: #ffffff;
+}
+
+/* Syntax palette — light */
+.code-block-editor .cm-editor .tok-keyword {
+	color: #770088;
+}
+
+.code-block-editor .cm-editor .tok-atom,
+.code-block-editor .cm-editor .tok-bool,
+.code-block-editor .cm-editor .tok-url,
+.code-block-editor .cm-editor .tok-labelName {
+	color: #221199;
+}
+
+.code-block-editor .cm-editor .tok-literal,
+.code-block-editor .cm-editor .tok-number,
+.code-block-editor .cm-editor .tok-inserted {
+	color: #116644;
+}
+
+.code-block-editor .cm-editor .tok-string,
+.code-block-editor .cm-editor .tok-deleted {
+	color: #aa1111;
+}
+
+.code-block-editor .cm-editor .tok-string2 {
+	color: #ee4400;
+}
+
+.code-block-editor .cm-editor .tok-variableName.tok-definition {
+	color: #0000ff;
+}
+
+.code-block-editor .cm-editor .tok-variableName.tok-local {
+	color: #3300aa;
+}
+
+.code-block-editor .cm-editor .tok-typeName,
+.code-block-editor .cm-editor .tok-namespace {
+	color: #008855;
+}
+
+.code-block-editor .cm-editor .tok-className {
+	color: #116677;
+}
+
+.code-block-editor .cm-editor .tok-variableName2,
+.code-block-editor .cm-editor .tok-macroName {
+	color: #225566;
+}
+
+.code-block-editor .cm-editor .tok-propertyName {
+	color: #0055aa;
+}
+
+.code-block-editor .cm-editor .tok-propertyName.tok-definition {
+	color: #0000cc;
+}
+
+.code-block-editor .cm-editor .tok-comment {
+	color: #994400;
+	font-style: italic;
+}
+
+.code-block-editor .cm-editor .tok-meta {
+	color: #7a757a;
+}
+
+.code-block-editor .cm-editor .tok-invalid {
+	color: #ff0000;
+}
+
+.code-block-editor .cm-editor .tok-heading {
+	font-weight: 700;
+}
+
+.code-block-editor .cm-editor .tok-emphasis {
+	font-style: italic;
+}
+
+.code-block-editor .cm-editor .tok-strong {
+	font-weight: 700;
+}
+
+.code-block-editor .cm-editor .tok-link {
+	text-decoration: underline;
+}
+
+/* Syntax palette — dark (One Dark) */
+.dark .code-block-editor .cm-editor .tok-keyword {
+	color: #c678dd;
+}
+
+.dark .code-block-editor .cm-editor .tok-atom,
+.dark .code-block-editor .cm-editor .tok-bool,
+.dark .code-block-editor .cm-editor .tok-url,
+.dark .code-block-editor .cm-editor .tok-labelName,
+.dark .code-block-editor .cm-editor .tok-literal,
+.dark .code-block-editor .cm-editor .tok-number {
+	color: #d19a66;
+}
+
+.dark .code-block-editor .cm-editor .tok-string,
+.dark .code-block-editor .cm-editor .tok-inserted {
+	color: #98c379;
+}
+
+.dark .code-block-editor .cm-editor .tok-string2,
+.dark .code-block-editor .cm-editor .tok-operator {
+	color: #56b6c2;
+}
+
+.dark .code-block-editor .cm-editor .tok-deleted {
+	color: #e06c75;
+}
+
+.dark .code-block-editor .cm-editor .tok-variableName.tok-definition,
+.dark .code-block-editor .cm-editor .tok-variableName.tok-local,
+.dark .code-block-editor .cm-editor .tok-propertyName.tok-definition {
+	color: #61afef;
+}
+
+.dark .code-block-editor .cm-editor .tok-typeName,
+.dark .code-block-editor .cm-editor .tok-namespace,
+.dark .code-block-editor .cm-editor .tok-className {
+	color: #e5c07b;
+}
+
+.dark .code-block-editor .cm-editor .tok-variableName2,
+.dark .code-block-editor .cm-editor .tok-macroName,
+.dark .code-block-editor .cm-editor .tok-propertyName {
+	color: #e06c75;
+}
+
+.dark .code-block-editor .cm-editor .tok-comment {
+	color: #7f848e;
+}
+
+.dark .code-block-editor .cm-editor .tok-meta {
+	color: #abb2bf;
+}
+
+.dark .code-block-editor .cm-editor .tok-invalid {
+	color: #ff5c57;
+}

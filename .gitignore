@@ -37,3 +37,5 @@ coverage/
 *.local
 .netlify
 nul
+# Company-specific brand presets (never published)
+private/

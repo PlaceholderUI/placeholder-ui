@@ -17,20 +17,22 @@ jobs:
 
       - uses: pnpm/action-setup@v4
         with:
-          version: 9
+          version: 10
 
       - uses: actions/setup-node@v4
         with:
           node-version: '24'
           cache: 'pnpm'
 
-      - run: pnpm install
+      - run: pnpm install --frozen-lockfile
 
-      - run: pnpm --filter @placeholderco/placeholder-ui build
+      - run: pnpm build
+        env:
+          BASE_PATH: /placeholder-ui
 
       - uses: actions/upload-pages-artifact@v3
         with:
-          path: packages/ui-svelte/build
+          path: build
 
   deploy:
     needs: build

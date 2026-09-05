@@ -1,3 +1,25 @@
+# pnpm settings for this project (pnpm 10+ reads project settings from here).
+# Resolve platform-specific native optional dependencies (rolldown/esbuild/etc.
+# .node binaries) for every OS/CPU the team builds on, so the committed lockfile
+# installs correctly on x64 AND arm64 (and glibc/musl Linux/CI containers) —
+# without this, a lockfile generated on one arch is missing the other's binary.
+supportedArchitectures:
+  os:
+    - win32
+    - darwin
+    - linux
+  cpu:
+    - x64
+    - arm64
+  libc:
+    - glibc
+    - musl
+
+allowBuilds:
+  esbuild: true
+
 packages:
-  - 'packages/*'
-  - 'apps/*'
+  - '.'
+
+# Delay installing newly published versions for supply-chain safety (in minutes).
+minimumReleaseAge: 1440

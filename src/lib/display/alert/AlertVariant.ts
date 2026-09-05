@@ -1,0 +1,1 @@
+export type AlertVariant = 'default' | 'warning' | 'danger';
