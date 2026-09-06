@@ -12,10 +12,16 @@
 	import Logo from '$lib/ui/Logo.svelte';
 	import type { Snippet } from 'svelte';
 
-	export type NavbarVariant = 'default' | 'primary';
+	export type NavbarVariant = 'default' | 'primary' | 'site';
 
 	export interface NavbarProps {
-		/** Visual variant. `primary` uses the primary brand colour as the background across all themes */
+		/**
+		 * Visual variant.
+		 * - `primary` uses the primary brand colour as the background across all themes.
+		 * - `site` is a marketing-site header: logo on the left, links pushed to the right with an
+		 *   accent underline on the `active` item. Below 768px the links collapse and the drawer
+		 *   button (enable with `showDrawerButton`) is shown instead.
+		 */
 		variant?: NavbarVariant;
 		/** App navigation link displayed as a header */
 		appNav?: Hyperlink;
@@ -67,10 +73,16 @@
 	}: NavbarProps = $props();
 
 	const isPrimary = $derived(variant === 'primary');
+	const isSite = $derived(variant === 'site');
 </script>
 
-<header class={isPrimary ? 'primary' : ''}>
+<header class={isPrimary ? 'primary' : isSite ? 'site' : ''}>
 	<div class="inner-navbar {className} {inContainer ? 'container' : ''}">
+		{#if isSite && !noLogo}
+			<span class="site-logo">
+				<Logo href={logoHref} />
+			</span>
+		{/if}
 		{@render leftSection?.()}
 		{#if showDrawerButton && drawerButtonPosition === 'left'}
 			<ActionIcon
@@ -122,7 +134,7 @@
 			darkVariant="accent-subtle"
 			lightVariant={isPrimary ? 'accent-subtle' : 'primary-subtle'}
 		/>
-		{#if !viewportState.isMobile && !noLogo}
+		{#if !isSite && !viewportState.isMobile && !noLogo}
 			{#if logoHref}
 				<Logo href={logoHref} fill={isPrimary ? 'white' : undefined} />
 			{:else}
@@ -195,6 +207,112 @@
 		> :global(.navbar-parent-trigger:hover),
 	header.primary .inner-navbar .header-hero :global(a:hover) {
 		color: var(--ui-accent);
+	}
+
+	/* Site variant: marketing-site header. Logo on the left, links on the right with a 2px
+	   underline that lights up (accent) on the active item. */
+	header.site .inner-navbar .links-container {
+		gap: 1.5rem;
+	}
+
+	header.site .inner-navbar .links-container > :global(a),
+	header.site
+		.inner-navbar
+		.links-container
+		> :global(.navbar-parent)
+		> :global(.navbar-parent-trigger) {
+		font-weight: 500;
+		padding: 0.35rem 0;
+		border-bottom: 2px solid transparent;
+		transition:
+			color 200ms,
+			border-color 200ms;
+	}
+
+	header.site .inner-navbar .links-container > :global(a:hover),
+	header.site
+		.inner-navbar
+		.links-container
+		> :global(.navbar-parent)
+		> :global(.navbar-parent-trigger:hover) {
+		color: var(--ui-tertiary-dark);
+	}
+
+	:global(.dark) header.site .inner-navbar .links-container > :global(a:hover),
+	:global(.dark)
+		header.site
+		.inner-navbar
+		.links-container
+		> :global(.navbar-parent)
+		> :global(.navbar-parent-trigger:hover) {
+		color: var(--ui-accent);
+	}
+
+	header.site .inner-navbar .links-container > :global(a.active),
+	header.site
+		.inner-navbar
+		.links-container
+		> :global(.navbar-parent)
+		> :global(.navbar-parent-trigger.active) {
+		border-bottom-color: var(--ui-accent);
+	}
+
+	/* Brand logo sits on the left and is sized by height so any aspect ratio works */
+	header.site .site-logo {
+		display: inline-flex;
+		align-items: center;
+		flex-shrink: 0;
+	}
+
+	header.site .site-logo :global(.logo),
+	header.site .site-logo :global(.pui-icon) {
+		display: inline-flex;
+		align-items: center;
+	}
+
+	header.site .site-logo :global(.pui-icon svg) {
+		height: 40px;
+		width: auto;
+		display: block;
+	}
+
+	/* Primary links are right-aligned in the site variant (unless a growing .middle exists) */
+	header.site .primary.links-container {
+		margin-left: auto;
+	}
+
+	header.site .primary.links-container ~ .secondary,
+	header.site .primary.links-container ~ .right,
+	header.site .primary.links-container ~ :global(.theme-switcher) {
+		margin-left: 0;
+	}
+
+	@media (max-width: 767px) {
+		/* Links collapse into the drawer; the drawer button takes their place */
+		header.site .inner-navbar .links-container {
+			display: none;
+		}
+
+		header.site .site-logo :global(.pui-icon svg) {
+			height: 34px;
+		}
+
+		/* The hidden links containers still count as siblings, so re-apply the auto margin
+		   to the first visible right-hand element */
+		header.site .inner-navbar > .right,
+		header.site .inner-navbar > :global(.theme-switcher) {
+			margin-left: auto;
+		}
+
+		header.site .inner-navbar > .right ~ :global(.theme-switcher) {
+			margin-left: 0;
+		}
+	}
+
+	@media (min-width: 768px) {
+		header.site .inner-navbar :global(.drawer-btn) {
+			display: none;
+		}
 	}
 
 	.inner-navbar {

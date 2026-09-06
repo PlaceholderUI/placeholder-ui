@@ -25,7 +25,12 @@
 	{@const Component = item.component}
 	<Component {...item.componentProps} />
 {:else if 'href' in item}
-	<Link href={item.href} onclick={item.onclick} class="navbar-item {item.class ?? ''}">
+	<Link
+		href={item.href}
+		onclick={item.onclick}
+		class="navbar-item {item.class ?? ''} {item.active ? 'active' : ''}"
+		ariaCurrent={item.active ? 'page' : undefined}
+	>
 		{#if item.iconSvg}
 			<Icon svg={item.iconSvg} size="1.1em" class="navbar-item-icon" />
 		{/if}
@@ -35,7 +40,7 @@
 	<div class="navbar-parent" use:clickOutside={close}>
 		<button
 			type="button"
-			class="navbar-item navbar-parent-trigger {item.class ?? ''}"
+			class="navbar-item navbar-parent-trigger {item.class ?? ''} {item.active ? 'active' : ''}"
 			aria-expanded={open}
 			aria-haspopup="true"
 			onclick={(e) => {

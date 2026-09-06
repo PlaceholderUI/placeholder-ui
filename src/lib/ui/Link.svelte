@@ -16,6 +16,8 @@
 		children?: Snippet;
 		/** Click event handler */
 		onclick?: (event: MouseEvent) => void;
+		/** Value for the `aria-current` attribute (e.g. `'page'` for the current page) */
+		ariaCurrent?: 'page' | 'step' | 'location' | 'date' | 'time' | 'true' | undefined;
 	}
 
 	let {
@@ -24,7 +26,8 @@
 		target = undefined,
 		class: classes = '',
 		children,
-		onclick
+		onclick,
+		ariaCurrent = undefined
 	}: LinkProps = $props();
 </script>
 
@@ -33,6 +36,7 @@
 	class={classes}
 	href={href?.startsWith('/') ? resolve(href as any) : href}
 	{rel}
+	aria-current={ariaCurrent}
 	onclick={(e) => interceptLinkClick(e, { href, target, onclick })}
 	data-sveltekit-preload-data="hover"
 >

@@ -4,6 +4,8 @@ type BaseNavbarItem = {
 	alwaysShow?: boolean;
 	showInOnly?: undefined | 'Navbar' | 'Drawer';
 	class?: string;
+	/** Marks the item as the current page. Adds an `active` class (and `aria-current="page"` on links); the `site` navbar variant underlines it. */
+	active?: boolean;
 	/** Custom click handler. For link items, call event.preventDefault() to override the default href navigation. */
 	onclick?: (event: MouseEvent) => void;
 };

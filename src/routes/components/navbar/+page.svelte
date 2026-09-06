@@ -3,6 +3,8 @@
 	import Paper from '$lib/display/Paper.svelte';
 	import Button from '$lib/ui/Button.svelte';
 	import Badge from '$lib/ui/Badge.svelte';
+	import Drawer from '$lib/ui/Drawer.svelte';
+	import type { SidenavSection } from '$lib/layout/Sidenav.svelte';
 	import type { Hyperlink } from '$lib/models/Hyperlink.js';
 	import type { LinkNavbarItem, NavbarItem } from '$lib/models/NavbarItem.js';
 	import {
@@ -62,6 +64,19 @@
 				{ href: '#logout', label: 'Log out', iconSvg: iconLogout }
 			]
 		}
+	]);
+
+	// Site variant: marketing-site links with the current page marked `active`
+	let siteItems: LinkNavbarItem[] = $state([
+		{ href: '#home', label: 'Home', active: true },
+		{ href: '#services', label: 'Services' },
+		{ href: '#team', label: 'Our Team' },
+		{ href: '#blog', label: 'Blog' },
+		{ href: '#contact', label: 'Contact' }
+	]);
+	let siteDrawerOpen = $state(false);
+	const siteDrawerSections: SidenavSection[] = $derived([
+		{ items: siteItems.map((n) => ({ label: n.label, href: n.href, active: n.active })) }
 	]);
 
 	// Secondary items (usually right-aligned)
@@ -140,6 +155,34 @@
 		<p class="description">
 			Setting <code>variant="primary"</code> gives the navbar a primary background on every theme, with
 			light text for contrast.
+		</p>
+	</Paper>
+
+	<Paper title="Site Variant">
+		<div class="navbar-demo">
+			<Navbar
+				variant="site"
+				items={siteItems}
+				inContainer
+				showDrawerButton
+				onDrawerButtonClick={() => (siteDrawerOpen = true)}
+			/>
+		</div>
+		<Drawer
+			bind:open={siteDrawerOpen}
+			position="right"
+			width="18rem"
+			title="Menu"
+			closeForLargeScreens
+			largeScreenBreakpoint={768}
+			sections={siteDrawerSections}
+			onItemClick={() => (siteDrawerOpen = false)}
+		/>
+		<p class="description">
+			<code>variant="site"</code> is a marketing-site header: the logo sits on the left and the
+			links are pushed to the right with a 2px accent underline on the item flagged
+			<code>active</code>. Below 768px the links collapse and the drawer button (enable it with
+			<code>showDrawerButton</code>) is shown instead — resize the window to try it.
 		</p>
 	</Paper>
 
@@ -384,9 +427,13 @@
 			<ul>
 				<li><code>appNav</code> - Hyperlink object for the main brand/app link</li>
 				<li>
+					<code>variant</code> - <code>default</code>, <code>primary</code> (brand background) or
+					<code>site</code> (logo left, underlined active link, collapses to drawer button)
+				</li>
+				<li>
 					<code>items</code> - Array of primary navigation items. Each item may carry an
-					<code>iconSvg</code> (leading icon) and either an <code>href</code> (link) or
-					<code>subItems</code> (fold-out sub-list)
+					<code>iconSvg</code> (leading icon), an <code>active</code> flag (current page) and either
+					an <code>href</code> (link) or <code>subItems</code> (fold-out sub-list)
 				</li>
 				<li><code>secondaryItems</code> - Array of secondary navigation items (right-aligned)</li>
 				<li><code>middleSection</code> - Snippet for custom content in the center area</li>
