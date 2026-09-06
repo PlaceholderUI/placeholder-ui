@@ -72,7 +72,7 @@
 		cursor: not-allowed;
 	}
 
-	.toolbar-button :global(.cu-icon) {
+	.toolbar-button :global(.pui-icon) {
 		height: 19px;
 	}
 </style>

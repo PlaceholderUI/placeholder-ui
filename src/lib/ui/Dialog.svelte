@@ -34,7 +34,7 @@
 		/** @deprecated Scrolling is now the default; use `allowOverflow` to opt out. */
 		preventOverflow?: boolean;
 		/** Size preset for the dialog width */
-		size?: 'sm' | 'md' | 'lg' | 'xl' | 'full';
+		size?: 'md' | 'lg' | 'xl' | 'full';
 		/** Additional CSS classes */
 		class?: string;
 		/** Footer content (typically action buttons) */
@@ -142,12 +142,12 @@
 {#snippet DialogInner()}
 	{#if title}
 		<div class="dialog-title">
-			<span id={titleId} class="font-bold">{title}</span>
+			<span id={titleId} class="dialog-title-text">{title}</span>
 			{#if allowImplicitClose}
 				<ActionIcon
 					onclick={() => (show = false)}
 					variant="secondary-subtle"
-					class="flex !p-[0.3rem] mr-1 !leading-0"
+					class="dialog-close"
 					svg={iconX}
 					size="1rem"
 					ariaLabel="Close dialog"
@@ -182,8 +182,9 @@
 		{#if noPaper}
 			{@render DialogInner()}
 		{:else}
-			<div class="dialog-paper {overflowClass}">
-				<Paper containerClass={classes}>
+			<div class="dialog-paper">
+				<!-- Dialog owns the section padding so header and footer dividers span the card -->
+				<Paper containerClass={classes} noPadding noGap>
 					{@render DialogInner()}
 				</Paper>
 			</div>
@@ -260,7 +261,7 @@
 		background-color: transparent;
 		overflow: visible;
 		margin: auto;
-		max-width: min(calc(100vw - 2rem), calc(100% - 6px));
+		max-width: calc(100% - 2rem);
 		/* Cap to the visible viewport with equal margins; the flex chain below
 		   (dialog > inner > paper > body, each min-height: 0) passes this limit
 		   down so the body shrinks instead of spilling past the bottom edge.
@@ -294,36 +295,77 @@
 		min-height: 0;
 	}
 
-	/* Paper sits inside the height chain; .paper-body already has an inline
-	   min-height: 0, so only .paper needs the shrink link */
-	.dialog :global(.paper) {
+	/* Paper sits inside the height chain. Without a gap its body is a plain
+	   block, so make it a shrinkable flex column here; the sections below rely
+	   on that to give the body the leftover height */
+	.dialog :global(.paper),
+	.dialog :global(.paper-body) {
+		display: flex;
+		flex-direction: column;
 		min-height: 0;
 	}
 
+	/* Section padding: 1rem inset, 0.75rem vertical for the header and footer,
+	   1rem for the body. Dividers run edge to edge */
 	.dialog-title {
 		display: flex;
+		align-items: center;
 		justify-content: space-between;
-		margin-bottom: 0.5rem;
-		padding-bottom: 0.25rem;
+		gap: 0.75rem;
+		padding: 0.75rem 1rem;
 		border-bottom: 1px solid var(--border-color);
-		font-weight: 600;
 		flex-shrink: 0;
 	}
 
+	.dialog-title-text {
+		font-size: 1.0625rem;
+		font-weight: 600;
+		line-height: 1.4;
+		min-width: 0;
+		overflow-wrap: anywhere;
+	}
+
+	/* Keep the close button from setting the header height: its hit area
+	   overhangs the text line and the right inset instead */
+	.dialog-title :global(button.dialog-close) {
+		flex-shrink: 0;
+		padding: 0.25rem;
+		margin: -0.25rem -0.5rem -0.25rem 0;
+		line-height: 0;
+	}
+
+	/* The only scroll container. Padding lives inside it so focus rings and
+	   negative-margin rows are not clipped, and the scrollbar hugs the edge */
 	.dialog-body {
 		display: flex;
 		flex-direction: column;
 		min-width: 0;
 		min-height: 0;
 		flex-shrink: 1;
+		padding: 1rem;
 	}
 
+	/* The body padding is the spacing; don't let the first and last elements
+	   (or a wrapper's first and last) add their own margins on top of it */
+	.dialog-body > :global(:first-child),
+	.dialog-body > :global(:first-child > :first-child) {
+		margin-top: 0;
+	}
+
+	.dialog-body > :global(:last-child),
+	.dialog-body > :global(:last-child > :last-child) {
+		margin-bottom: 0;
+	}
+
+	/* Actions align right. A secondary action can sit on the left with
+	   `margin-right: auto` */
 	.dialog-footer {
 		display: flex;
-		justify-content: space-between;
-		padding-top: 0.5rem;
-		border-top: 1px solid var(--border-color);
+		align-items: center;
+		justify-content: flex-end;
 		gap: 0.5rem;
+		padding: 0.75rem 1rem;
+		border-top: 1px solid var(--border-color);
 		flex-shrink: 0;
 	}
 
@@ -335,31 +377,20 @@
 		overflow-y: auto;
 	}
 
-	.dialog-no-paper {
-		padding: 1rem;
-	}
-
 	.dialog-paper,
 	.dialog-no-paper {
 		display: flex;
 		flex-direction: column;
-		box-sizing: border-box;
-		border-radius: 0.25rem;
-		background: #f1f3f5;
 		min-height: 0;
 	}
 
-	:global(.dark .dialog-paper),
-	:global(.dark .dialog-no-paper) {
-		background-color: rgb(33, 34, 38);
+	.dialog-no-paper {
+		border-radius: 0.25rem;
+		background-color: var(--paper-body-bg);
 	}
 
 	dialog::backdrop {
 		background-color: #0008;
-	}
-
-	.dialog.sm {
-		width: 20rem;
 	}
 
 	.dialog.md {

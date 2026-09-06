@@ -748,7 +748,7 @@
 		line-height: 1.5;
 	}
 
-	/* Default variant - use pistachio theme */
+	/* Default variant - accent tint */
 	.editor-content :global(.ProseMirror .alert-default) {
 		background: rgba(var(--ui-accent-rgbc), 0.3);
 		border: 1px solid var(--ui-accent);

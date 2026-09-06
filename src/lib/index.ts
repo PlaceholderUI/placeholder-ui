@@ -35,7 +35,7 @@ export { default as ContextMenu } from './ui/ContextMenu.svelte';
 export type { ContextMenuProps, ContextMenuItem } from './ui/ContextMenu.svelte';
 export { default as ProgressBar } from './ui/ProgressBar.svelte';
 export type { ProgressBarProps, ProgressBarSegment } from './ui/ProgressBar.svelte';
-export type { ProgressBarVariant, LegacyProgressBarVariant } from './ui/ProgressBarVariant.js';
+export type { ProgressBarVariant } from './ui/ProgressBarVariant.js';
 export { default as Tabs } from './ui/Tabs.svelte';
 export type { TabsProps } from './ui/Tabs.svelte';
 export { default as Table } from './ui/Table.svelte';
@@ -156,7 +156,7 @@ export type { GitCardProps } from './cards/GitCard.svelte';
 export * from './icon/index.js';
 export type { IconProps } from './icon/Icon.svelte';
 
-export type { ButtonVariant, LegacyButtonVariant } from './ui/ButtonVariant.js';
+export type { ButtonVariant } from './ui/ButtonVariant.js';
 export type { ButtonSize } from './ui/ButtonSize.js';
 export type { Hyperlink } from './models/Hyperlink.js';
 export type { LinkCollectionItem } from './models/LinkCollectionItem.js';

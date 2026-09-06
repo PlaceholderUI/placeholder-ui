@@ -122,8 +122,7 @@
 		color: var(--badge-text-color) !important;
 	}
 
-	.accent,
-	.pistachio {
+	.accent {
 		--badge-bg-color: var(--ui-accent);
 		--badge-text-color: var(--ui-primary);
 		--badge-hover-bg-color: var(--ui-tertiary);
@@ -131,13 +130,11 @@
 		--badge-outline-color: var(--ui-tertiary);
 	}
 
-	.accent :global(.loader),
-	.pistachio :global(.loader) {
+	.accent :global(.loader) {
 		color: var(--ui-primary);
 	}
 
-	.primary,
-	.midnight {
+	.primary {
 		--badge-bg-color: var(--ui-primary);
 		--badge-text-color: #fff;
 		--badge-hover-bg-color: var(--ui-accent-dark);
@@ -145,8 +142,7 @@
 		--badge-outline-color: var(--ui-accent-dark);
 	}
 
-	.primary :global(.loader),
-	.midnight :global(.loader) {
+	.primary :global(.loader) {
 		color: var(--ui-accent);
 	}
 
@@ -213,8 +209,7 @@
 		--badge-outline-color: var(--ui-tertiary);
 	}
 
-	.accent-outline,
-	.pistachio-outline {
+	.accent-outline {
 		--badge-text-color: var(--ui-accent);
 		--badge-bg-color: initial;
 		--badge-border: 1px solid var(--ui-accent);
@@ -224,8 +219,7 @@
 		--badge-outline-color: var(--ui-tertiary);
 	}
 
-	.primary-outline,
-	.midnight-outline {
+	.primary-outline {
 		--badge-text-color: var(--ui-primary);
 		--badge-bg-color: initial;
 		--badge-border: 1px solid var(--ui-primary);
@@ -235,8 +229,7 @@
 		--badge-outline-color: var(--ui-accent-dark);
 	}
 
-	.tertiary,
-	.turquoise {
+	.tertiary {
 		--badge-text-color: black;
 		--badge-bg-color: var(--ui-tertiary);
 		--badge-hover-bg-color: var(--ui-tertiary-dark);

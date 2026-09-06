@@ -12,8 +12,7 @@
 	import Logo from '$lib/ui/Logo.svelte';
 	import type { Snippet } from 'svelte';
 
-	/** `midnight` is a legacy alias for `primary`. */
-	export type NavbarVariant = 'default' | 'primary' | 'midnight';
+	export type NavbarVariant = 'default' | 'primary';
 
 	export interface NavbarProps {
 		/** Visual variant. `primary` uses the primary brand colour as the background across all themes */
@@ -67,7 +66,7 @@
 		onDrawerButtonClick = undefined
 	}: NavbarProps = $props();
 
-	const isPrimary = $derived(variant === 'primary' || variant === 'midnight');
+	const isPrimary = $derived(variant === 'primary');
 </script>
 
 <header class={isPrimary ? 'primary' : ''}>
@@ -254,7 +253,7 @@
 		height: 1.5rem;
 	}
 
-	.inner-navbar :global(.cu-icon) {
+	.inner-navbar :global(.pui-icon) {
 		display: flex;
 	}
 

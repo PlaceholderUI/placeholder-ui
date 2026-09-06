@@ -217,8 +217,7 @@
 		}
 	}
 
-	.accent,
-	.pistachio {
+	.accent {
 		--button-text-color: var(--ui-primary);
 		--button-bg-color: var(--ui-accent);
 		--button-hover-bg-color: var(--ui-tertiary);
@@ -226,8 +225,7 @@
 		--button-outline-color: var(--ui-tertiary);
 	}
 
-	.accent-outline,
-	.pistachio-outline {
+	.accent-outline {
 		--button-text-color: var(--ui-accent);
 		--button-bg-color: initial;
 		--button-border: 1px solid var(--ui-accent);
@@ -238,8 +236,7 @@
 		--button-outline-color: var(--ui-tertiary);
 	}
 
-	.accent-subtle,
-	.pistachio-subtle {
+	.accent-subtle {
 		--button-text-color: var(--ui-accent);
 		--button-bg-color: initial;
 		--button-hover-text-color: var(--ui-primary);
@@ -249,16 +246,14 @@
 		--button-outline-color: var(--ui-tertiary);
 	}
 
-	.primary,
-	.midnight {
+	.primary {
 		--button-bg-color: var(--ui-primary);
 		--button-text-color: white;
 		--button-hover-bg-color: var(--ui-accent-dark);
 		--button-active-bg-color: var(--ui-primary-dark);
 	}
 
-	.primary-outline,
-	.midnight-outline {
+	.primary-outline {
 		--button-text-color: var(--ui-primary);
 		--button-bg-color: initial;
 		--button-border: 1px solid var(--ui-primary);
@@ -268,8 +263,7 @@
 		--button-active-border: 1px solid var(--ui-primary-dark);
 	}
 
-	.primary-subtle,
-	.midnight-subtle {
+	.primary-subtle {
 		--button-text-color: var(--ui-primary);
 		--button-bg-color: initial;
 		--button-hover-text-color: white;
@@ -278,8 +272,7 @@
 		--button-active-bg-color: var(--ui-primary-dark);
 	}
 
-	.tertiary,
-	.turquoise {
+	.tertiary {
 		--button-text-color: var(--ui-primary);
 		--button-bg-color: var(--ui-tertiary);
 		--button-hover-bg-color: var(--ui-accent);
@@ -287,8 +280,7 @@
 		--button-outline-color: var(--ui-accent);
 	}
 
-	.tertiary-subtle,
-	.turquoise-subtle {
+	.tertiary-subtle {
 		background-color: initial;
 		color: var(--ui-tertiary-dark);
 

@@ -132,20 +132,17 @@
 	}
 
 	/* Variant colors */
-	.primary,
-	.midnight {
+	.primary {
 		background-color: var(--ui-primary);
 		color: #fff;
 	}
 
-	.accent,
-	.pistachio {
+	.accent {
 		background-color: var(--ui-accent);
 		color: var(--ui-primary);
 	}
 
-	.tertiary,
-	.turquoise {
+	.tertiary {
 		background-color: var(--ui-tertiary);
 		color: var(--ui-primary);
 	}

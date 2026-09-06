@@ -1,6 +1,6 @@
 {
 	"name": "@placeholderco/placeholder-ui",
-	"version": "2.2.0",
+	"version": "2.2.1",
 	"description": "A modern, customizable Svelte 5 UI component library with comprehensive theming support. Re-brand it with a single config object.",
 	"license": "MIT",
 	"author": "Placeholderco",

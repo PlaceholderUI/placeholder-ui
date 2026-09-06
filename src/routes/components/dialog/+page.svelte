@@ -106,7 +106,6 @@
 		<div class="size-section">
 			<h4>Different Sizes</h4>
 			<div class="size-grid">
-				<Button onclick={() => (basicDialog = true)}>Small</Button>
 				<Button onclick={() => (basicDialog = true)}>Medium (default)</Button>
 				<Button onclick={() => (customDialog = true)}>Large</Button>
 				<Button variant="secondary" onclick={() => (fullScreenDialog = true)}>Full Screen</Button>
@@ -207,7 +206,7 @@
 	<Paper title="Features">
 		<div class="feature-list">
 			<ul>
-				<li><strong>Multiple sizes:</strong> sm, md, lg, xl, and full-screen options</li>
+				<li><strong>Multiple sizes:</strong> md, lg, xl, and full-screen options</li>
 				<li><strong>Smooth animations:</strong> Fade in/out with backdrop animations</li>
 				<li><strong>Click outside to close:</strong> Optional implicit close behavior</li>
 				<li><strong>ESC key support:</strong> Close with keyboard for accessibility</li>
@@ -236,7 +235,7 @@
 </Dialog>
 
 <!-- Info Dialog -->
-<Dialog bind:show={infoDialog} title="Information" size="sm">
+<Dialog bind:show={infoDialog} title="Information">
 	<div class="dialog-content">
 		<div class="info-content">
 			<ActionIcon svg={iconInfoCircle} variant="primary-subtle" size="2rem" />
@@ -267,7 +266,7 @@
 </Dialog>
 
 <!-- Confirmation Dialog -->
-<Dialog bind:show={deleteDialog} title="Confirm Delete" size="sm">
+<Dialog bind:show={deleteDialog} title="Confirm Delete">
 	<div class="dialog-content">
 		<div class="warning-content">
 			<ActionIcon svg={iconAlertTriangle} variant="danger-subtle" size="2rem" />
@@ -285,8 +284,7 @@
 
 <!-- Scrolling Dialog with Popups -->
 {#snippet scrollDialogBody()}
-	<!-- Plain wrapper (no overflow of its own) so the Dialog body is what scrolls -->
-	<div class="scroll-demo-content">
+	<div>
 		<div class="form-fields">
 			<Select label="Country" options={countryOptions} bind:value={scrollCountry} allowSearch />
 			<DatePicker label="Start date" bind:value={scrollDate} />
@@ -327,7 +325,6 @@
 <Dialog bind:show={scrollDialog} title="Scrolling Dialog" size="md">
 	{@render scrollDialogBody()}
 	{#snippet footer()}
-		<span></span>
 		<Button onclick={() => (scrollDialog = false)}>Close</Button>
 	{/snippet}
 </Dialog>
@@ -340,7 +337,6 @@
 >
 	{@render scrollDialogBody()}
 	{#snippet footer()}
-		<span></span>
 		<Button onclick={() => (scrollDialogVisible = false)}>Close</Button>
 	{/snippet}
 </Dialog>
@@ -413,10 +409,6 @@
 </Dialog>
 
 <style>
-	.scroll-demo-content {
-		padding: 1rem 0;
-	}
-
 	.scroll-popup-row {
 		display: flex;
 		flex-wrap: wrap;
@@ -607,11 +599,6 @@
 	}
 
 	/* Dialog Content Styles */
-	.dialog-content {
-		padding: 1rem 0;
-		overflow-y: auto;
-	}
-
 	.info-content,
 	.warning-content {
 		display: flex;

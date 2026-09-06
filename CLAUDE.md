@@ -68,9 +68,7 @@ If adding a variant to an existing component (e.g., TipTapBubble alongside TipTa
   optional overrides for dark mode; `applyTheme` injects a `<style>` with `:root` / `:root.dark`
   rules (not inline styles), so light/dark values switch with the existing `.dark` class.
 - Variant names are semantic: `primary` / `accent` / `tertiary` (+ `-outline`, `-subtle`).
-  `midnight` / `pistachio` / `turquoise` are deprecated aliases kept for backwards compatibility.
   When adding a variant, add it under the semantic name only.
-- `--midnight`, `--pistachio`, `--turquoise` CSS vars are deprecated aliases of the `--ui-*` tokens.
 - The library ships no logo and no font file. `Logo.svelte` falls back to a placeholder SVG.
 - Company-specific presets live outside the package (the `private/` folder is git-ignored).
 

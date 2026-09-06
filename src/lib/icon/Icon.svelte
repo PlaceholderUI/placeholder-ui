@@ -29,24 +29,24 @@
 <span
 	style="--svg-stroke: {stroke}; --svg-fill: {fill}; {sizeStyle}"
 	class:flip
-	class="cu-icon {classes}"
+	class="pui-icon {classes}"
 >
 	{@html svg}
 </span>
 
 <style>
-	.cu-icon {
+	.pui-icon {
 		display: inline-flex;
 		align-items: center;
 		justify-content: center;
 	}
 
-	.cu-icon :global(svg) {
+	.pui-icon :global(svg) {
 		width: 100%;
 		height: 100%;
 	}
 
-	.cu-icon :global(svg:not(.icons-tabler-filled)) {
+	.pui-icon :global(svg:not(.icons-tabler-filled)) {
 		stroke: var(--svg-stroke);
 		fill: var(--svg-fill);
 	}

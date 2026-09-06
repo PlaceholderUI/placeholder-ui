@@ -46,16 +46,6 @@
 	--ui-link-color: var(--ui-tertiary-dark);
 	--ui-link-hover-color: var(--ui-accent-dark);
 
-	/* ---- Legacy aliases (deprecated, kept for backwards compatibility) ---- */
-	--midnight-rgb: var(--ui-primary-rgb);
-	--midnight-rgbc: var(--ui-primary-rgbc);
-	--midnight: var(--ui-primary);
-	--pistachio-rgb: var(--ui-accent-rgb);
-	--pistachio-rgbc: var(--ui-accent-rgbc);
-	--pistachio: var(--ui-accent);
-	--pistachio-dark: var(--ui-accent-dark);
-	--turquoise: var(--ui-tertiary);
-	--turquoise-dark: var(--ui-tertiary-dark);
 
 	/* ---- Surfaces and text (light mode) ---- */
 	--off-white: rgb(221, 221, 221);

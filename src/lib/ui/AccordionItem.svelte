@@ -219,52 +219,44 @@
 		--accordion-open-color: var(--danger-text);
 	}
 
-	.variant-accent,
-	.variant-pistachio {
+	.variant-accent {
 		--accordion-open-bg: var(--ui-accent);
 		--accordion-open-color: var(--ui-primary);
 	}
 
-	.variant-accent-subtle,
-	.variant-pistachio-subtle {
+	.variant-accent-subtle {
 		--accordion-open-bg: rgba(var(--ui-accent-rgbc), 0.15);
 		--accordion-open-color: var(--text-color);
 	}
 
-	.variant-accent-outline,
-	.variant-pistachio-outline {
+	.variant-accent-outline {
 		--accordion-open-bg: transparent;
 		--accordion-open-color: var(--ui-accent);
 		--accordion-open-border-color: var(--ui-accent);
 	}
 
-	.variant-primary,
-	.variant-midnight {
+	.variant-primary {
 		--accordion-open-bg: var(--ui-primary);
 		--accordion-open-color: white;
 	}
 
-	.variant-primary-subtle,
-	.variant-midnight-subtle {
+	.variant-primary-subtle {
 		--accordion-open-bg: rgba(var(--ui-primary-rgbc), 0.1);
 		--accordion-open-color: var(--text-color);
 	}
 
-	.variant-primary-outline,
-	.variant-midnight-outline {
+	.variant-primary-outline {
 		--accordion-open-bg: transparent;
 		--accordion-open-color: var(--ui-primary);
 		--accordion-open-border-color: var(--ui-primary);
 	}
 
-	.variant-tertiary,
-	.variant-turquoise {
+	.variant-tertiary {
 		--accordion-open-bg: var(--ui-tertiary);
 		--accordion-open-color: var(--ui-primary);
 	}
 
-	.variant-tertiary-subtle,
-	.variant-turquoise-subtle {
+	.variant-tertiary-subtle {
 		--accordion-open-bg: rgba(var(--ui-tertiary-dark-rgbc), 0.25);
 		--accordion-open-color: var(--ui-tertiary-dark);
 	}

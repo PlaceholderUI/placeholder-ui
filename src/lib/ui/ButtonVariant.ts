@@ -5,10 +5,6 @@
  *   - `primary`   → `--ui-primary`   (dark brand colour)
  *   - `accent`    → `--ui-accent`    (light brand colour)
  *   - `tertiary`  → `--ui-tertiary`  (supporting colour)
- *
- * The `midnight`, `pistachio` and `turquoise` names are legacy aliases for
- * `primary`, `accent` and `tertiary` respectively. They keep working but new code
- * should use the semantic names.
  */
 export type ButtonVariant =
 	| 'white'
@@ -27,16 +23,4 @@ export type ButtonVariant =
 	| 'accent-subtle'
 	| 'tertiary'
 	| 'tertiary-subtle'
-	| 'shaded'
-	| LegacyButtonVariant;
-
-/** @deprecated Use `primary`, `accent` and `tertiary` instead. */
-export type LegacyButtonVariant =
-	| 'pistachio'
-	| 'pistachio-outline'
-	| 'pistachio-subtle'
-	| 'midnight'
-	| 'midnight-outline'
-	| 'midnight-subtle'
-	| 'turquoise'
-	| 'turquoise-subtle';
+	| 'shaded';
