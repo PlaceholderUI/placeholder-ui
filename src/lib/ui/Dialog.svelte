@@ -1,3 +1,32 @@
+<script lang="ts" module>
+	// One lock shared by every instance so a nested dialog closing does not
+	// hand the page its scrollbar back while the parent is still open
+	let lockCount = 0;
+	let savedOverflow = '';
+	let savedPaddingRight = '';
+
+	function lockBodyScroll() {
+		if (lockCount++ > 0) return;
+		const body = document.body;
+		savedOverflow = body.style.overflow;
+		savedPaddingRight = body.style.paddingRight;
+		// Hiding the scrollbar widens the page and shifts everything sideways,
+		// which reads as a flicker behind the backdrop; pad by its width instead
+		const scrollbarWidth = window.innerWidth - document.documentElement.clientWidth;
+		if (scrollbarWidth > 0) {
+			const current = parseFloat(getComputedStyle(body).paddingRight) || 0;
+			body.style.paddingRight = `${current + scrollbarWidth}px`;
+		}
+		body.style.overflow = 'hidden';
+	}
+
+	function unlockBodyScroll() {
+		if (--lockCount > 0) return;
+		document.body.style.overflow = savedOverflow;
+		document.body.style.paddingRight = savedPaddingRight;
+	}
+</script>
+
 <script lang="ts">
 	import Paper from '$lib/display/Paper.svelte';
 	import { iconX } from '$lib/icon/index.js';
@@ -110,10 +139,8 @@
 	// Lock body scroll while open; effects only run in the browser, so this is SSR-safe
 	$effect(() => {
 		if (show) {
-			document.body.style.overflow = 'hidden';
-			return () => {
-				document.body.style.overflow = '';
-			};
+			lockBodyScroll();
+			return unlockBodyScroll;
 		}
 	});
 
@@ -193,66 +220,21 @@
 </dialog>
 
 <style>
-	/* Animate transform, not margin — the native dialog centers itself via
-	   `margin: auto`, and a margin animation with `forwards` fill would
-	   permanently override it and pin the dialog to the top of the viewport */
-	@keyframes fadeIn {
-		from {
-			opacity: 0;
-			transform: translateY(-0.5rem);
-		}
-		to {
-			opacity: 1;
-			transform: translateY(0);
-		}
-	}
-	@keyframes fadeOut {
-		from {
-			opacity: 1;
-			transform: translateY(0);
-		}
-		to {
-			opacity: 0;
-			transform: translateY(-0.5rem);
-		}
-	}
-
-	@keyframes fadeInFull {
-		from {
-			opacity: 0;
-		}
-		to {
-			opacity: 1;
-		}
-	}
-	@keyframes fadeOutFull {
-		from {
-			opacity: 1;
-		}
-		to {
-			opacity: 0;
-		}
-	}
-
-	/* Keyframes for the backdrop pseudo-element */
-	@keyframes backdropFadeIn {
-		from {
-			background: hsl(0 0% 0% / 0%);
-		}
-		to {
-			background: hsl(0 0% 0% / 65%);
-		}
-	}
-	@keyframes backdropFadeOut {
-		from {
-			background: hsl(0 0% 0% / 65%);
-		}
-		to {
-			background: hsl(0 0% 0% / 0%);
-		}
-	}
-
+	/* Open/close is a transition driven by [open] plus @starting-style, not a
+	   keyframe animation. Keyframes with a `forwards` fill kept a transform
+	   applied while open, and the backdrop's static colour could paint for a
+	   frame before its animation took over, showing as a flash on open.
+	   Transitions have no fill state: the closed values are the base rule, the
+	   open values live on [open], and @starting-style supplies the from-values
+	   for the first frame after display switches on */
 	dialog {
+		/* Everything that shapes the box lives here, not on [open]: the close
+		   transition runs after [open] is removed, so rules scoped to it would
+		   drop out while the dialog is still fading. That includes the browser's
+		   own :modal positioning, which stops applying the moment close() runs */
+		position: fixed;
+		inset: 0;
+		flex-direction: column;
 		color: var(--text-color);
 		border: none;
 		/* The dialog element itself is focused by showModal(); don't draw a
@@ -270,22 +252,56 @@
 		max-height: calc(100vh - 2rem);
 		max-height: calc(100dvh - 2rem);
 
-		animation: fadeOut 0.2s forwards;
+		opacity: 0;
+		/* Animate transform, not margin: the native dialog centres itself via
+		   `margin: auto` */
+		transform: translateY(-0.5rem);
 		transition:
+			opacity 0.2s ease,
+			transform 0.2s ease,
 			display 0.2s allow-discrete,
 			overlay 0.2s allow-discrete;
-		&::backdrop {
-			animation: backdropFadeOut 0.2s forwards;
+	}
+
+	dialog[open] {
+		/* Only when [open] — an unconditional author display would override
+		   the UA's display: none on closed dialogs and make them visible */
+		display: flex;
+		opacity: 1;
+		/* `none`, not translateY(0): a transform of any value makes the dialog
+		   the containing block for position: fixed descendants */
+		transform: none;
+	}
+
+	@starting-style {
+		dialog[open] {
+			opacity: 0;
+			transform: translateY(-0.5rem);
 		}
-		&[open] {
-			/* Only when [open] — an unconditional author display would override
-			   the UA's display: none on closed dialogs and make them visible */
-			display: flex;
-			flex-direction: column;
-			animation: fadeIn 0.2s forwards;
-			&::backdrop {
-				animation: backdropFadeIn 0.2s forwards;
-			}
+	}
+
+	dialog::backdrop {
+		background-color: rgb(0 0 0 / 0);
+		transition:
+			background-color 0.2s ease,
+			display 0.2s allow-discrete,
+			overlay 0.2s allow-discrete;
+	}
+
+	dialog[open]::backdrop {
+		background-color: rgb(0 0 0 / 0.65);
+	}
+
+	@starting-style {
+		dialog[open]::backdrop {
+			background-color: rgb(0 0 0 / 0);
+		}
+	}
+
+	@media (prefers-reduced-motion: reduce) {
+		dialog,
+		dialog::backdrop {
+			transition-duration: 0.01ms;
 		}
 	}
 
@@ -389,10 +405,6 @@
 		background-color: var(--paper-body-bg);
 	}
 
-	dialog::backdrop {
-		background-color: #0008;
-	}
-
 	.dialog.md {
 		width: 30rem;
 	}
@@ -410,11 +422,9 @@
 		max-width: 100%;
 		max-height: 100%;
 		margin-top: auto;
-		animation: fadeOutFull 0.2s forwards;
-
-		&[open] {
-			animation: fadeInFull 0.2s forwards;
-		}
+		/* Full-screen fades in place; more specific than the @starting-style
+		   rule above, so it wins for both the starting and the open state */
+		transform: none;
 	}
 
 	.dialog.full,
