@@ -46,7 +46,6 @@
 	--ui-link-color: var(--ui-tertiary-dark);
 	--ui-link-hover-color: var(--ui-accent-dark);
 
-
 	/* ---- Surfaces and text (light mode) ---- */
 	--off-white: rgb(221, 221, 221);
 	--input-bg: #fff;
@@ -80,6 +79,13 @@
 	background-color: var(--page-bg);
 	color: var(--text-color);
 	font-family: var(--ui-font-family);
+}
+
+/* The `site` Navbar variant is a taller marketing header. Raising the token here (rather than
+   on the header itself) keeps --page-content-height, Sidenav and Drawer in step with it.
+   :where() keeps specificity at :root level so a consumer's own --header-height still wins. */
+:root:where(:has(.pui-navbar.site)) {
+	--header-height: 68px;
 }
 
 .dark {

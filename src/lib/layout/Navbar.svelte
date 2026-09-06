@@ -11,6 +11,7 @@
 	import Link from '$lib/ui/Link.svelte';
 	import Logo from '$lib/ui/Logo.svelte';
 	import type { Snippet } from 'svelte';
+	import { themeState } from '$lib/theme.svelte.js';
 
 	export type NavbarVariant = 'default' | 'primary' | 'site';
 
@@ -20,7 +21,9 @@
 		 * - `primary` uses the primary brand colour as the background across all themes.
 		 * - `site` is a marketing-site header: logo on the left, links pushed to the right with an
 		 *   accent underline on the `active` item. Below 768px the links collapse and the drawer
-		 *   button (enable with `showDrawerButton`) is shown instead.
+		 *   button (enable with `showDrawerButton`) is shown instead. While a site header is on the
+		 *   page, `--header-height` is raised to 68px (see app.css), so `--page-content-height`
+		 *   follows automatically.
 		 */
 		variant?: NavbarVariant;
 		/** App navigation link displayed as a header */
@@ -74,9 +77,13 @@
 
 	const isPrimary = $derived(variant === 'primary');
 	const isSite = $derived(variant === 'site');
+	// Site variant: the drawer button is the only nav control on mobile, so keep it legible on dark
+	const drawerButtonVariant = $derived(
+		isPrimary || (isSite && themeState.isDarkMode) ? 'accent-subtle' : 'secondary-subtle'
+	);
 </script>
 
-<header class={isPrimary ? 'primary' : isSite ? 'site' : ''}>
+<header class="pui-navbar {isPrimary ? 'primary' : isSite ? 'site' : ''}">
 	<div class="inner-navbar {className} {inContainer ? 'container' : ''}">
 		{#if isSite && !noLogo}
 			<span class="site-logo">
@@ -87,7 +94,7 @@
 		{#if showDrawerButton && drawerButtonPosition === 'left'}
 			<ActionIcon
 				svg={drawerButtonIcon}
-				variant={isPrimary ? 'accent-subtle' : 'secondary-subtle'}
+				variant={drawerButtonVariant}
 				size="1.25rem"
 				onclick={onDrawerButtonClick}
 				class="drawer-btn drawer-btn-left"
@@ -144,7 +151,7 @@
 		{#if showDrawerButton && drawerButtonPosition === 'right'}
 			<ActionIcon
 				svg={drawerButtonIcon}
-				variant={isPrimary ? 'accent-subtle' : 'secondary-subtle'}
+				variant={drawerButtonVariant}
 				size="1.25rem"
 				onclick={onDrawerButtonClick}
 				class="drawer-btn drawer-btn-right"
