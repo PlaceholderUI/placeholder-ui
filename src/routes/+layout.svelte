@@ -66,7 +66,8 @@
 				{ href: '/components/autocomplete', label: 'Autocomplete' },
 				{ href: '/components/autocompletemulti', label: 'AutocompleteMulti' },
 				{ href: '/components/segmented-control', label: 'Segmented Control' },
-				{ href: '/components/chips', label: 'Chips' }
+				{ href: '/components/chips', label: 'Chips' },
+				{ href: '/components/colorpicker', label: 'Colour Picker' }
 			]
 		},
 		{
