@@ -13,8 +13,8 @@
 	<Paper title="Viewport Dimensions">
 		<div class="demo-section">
 			<p class="description">
-				The <code>viewportState</code> object provides reactive access to window dimensions and breakpoint helpers.
-				Resize your browser to see the values update in real-time.
+				The <code>viewportState</code> object provides reactive access to window dimensions and breakpoint
+				helpers. Resize your browser to see the values update in real-time.
 			</p>
 
 			<div class="state-display">
@@ -41,9 +41,7 @@ viewportState.height  // number`}</pre>
 
 	<Paper title="Breakpoint Booleans">
 		<div class="demo-section">
-			<p class="description">
-				Pre-defined boolean helpers for common breakpoint checks.
-			</p>
+			<p class="description">Pre-defined boolean helpers for common breakpoint checks.</p>
 
 			<div class="breakpoint-grid">
 				<div class="breakpoint-item" class:active={viewportState.isSmall}>
@@ -195,17 +193,11 @@ breakpoints.ultrawide // 2100`}</pre>
 
 			<div class="responsive-example">
 				{#if viewportState.isMobile}
-					<div class="example-box mobile">
-						Mobile Layout
-					</div>
+					<div class="example-box mobile">Mobile Layout</div>
 				{:else if viewportState.isTablet}
-					<div class="example-box tablet">
-						Tablet Layout
-					</div>
+					<div class="example-box tablet">Tablet Layout</div>
 				{:else}
-					<div class="example-box desktop">
-						Desktop Layout
-					</div>
+					<div class="example-box desktop">Desktop Layout</div>
 				{/if}
 			</div>
 		</div>

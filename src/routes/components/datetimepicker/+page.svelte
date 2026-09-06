@@ -30,7 +30,9 @@
 		console.log('DateTime changed:', dateTime);
 	}
 
-	let tomorrowNinePm = $state(dayjs().add(1, 'day').hour(21).minute(30).second(0).format('YYYY-MM-DDTHH:mm:ssZ'));
+	let tomorrowNinePm = $state(
+		dayjs().add(1, 'day').hour(21).minute(30).second(0).format('YYYY-MM-DDTHH:mm:ssZ')
+	);
 </script>
 
 <div class="page-header">
@@ -66,16 +68,8 @@
 
 	<Paper title="States">
 		<div class="form-grid">
-			<DateTimePicker 
-				label="Required DateTime" 
-				required={true} 
-				bind:value={requiredDateTime} 
-			/>
-			<DateTimePicker 
-				label="Disabled" 
-				disabled={true} 
-				bind:value={disabledDateTime} 
-			/>
+			<DateTimePicker label="Required DateTime" required={true} bind:value={requiredDateTime} />
+			<DateTimePicker label="Disabled" disabled={true} bind:value={disabledDateTime} />
 			<div class="date-info">
 				<strong>Values:</strong>
 				<p>Required: {requiredDateTime || 'None'}</p>
@@ -86,9 +80,9 @@
 
 	<Paper title="Date Range Restrictions">
 		<div class="form-grid">
-			<DateTimePicker 
-				label="Limited Date Range" 
-				bind:value={minMaxDateTime} 
+			<DateTimePicker
+				label="Limited Date Range"
+				bind:value={minMaxDateTime}
 				minDate={oneWeekAgo}
 				maxDate={oneWeekFromNow}
 				onchange={handleDateTimeChange}
@@ -118,7 +112,11 @@
 				<strong>Time Restrictions:</strong>
 				<p>Min: {dayjs(todayAt2pm).format('h:mm A')}</p>
 				<p>Max: {dayjs(todayAt6pm).format('h:mm A')}</p>
-				<p>Selected: {timeRestrictedDateTime ? dayjs(timeRestrictedDateTime).format('h:mm A') : 'None'}</p>
+				<p>
+					Selected: {timeRestrictedDateTime
+						? dayjs(timeRestrictedDateTime).format('h:mm A')
+						: 'None'}
+				</p>
 				<p><em>Only today's date is available, with times restricted to 2:00 PM - 6:30 PM</em></p>
 			</div>
 		</div>
@@ -135,7 +133,9 @@
 			<div class="date-info">
 				<strong>Business Hours:</strong>
 				<p>Hours: 9:00 AM - 5:00 PM</p>
-				<p>Selected: {businessHoursDateTime ? dayjs(businessHoursDateTime).format('h:mm A') : 'None'}</p>
+				<p>
+					Selected: {businessHoursDateTime ? dayjs(businessHoursDateTime).format('h:mm A') : 'None'}
+				</p>
 				<p><em>Only today is available, with times restricted to business hours</em></p>
 			</div>
 		</div>
@@ -166,14 +166,23 @@
 		<div class="feature-list">
 			<ul>
 				<li><strong>Combined date and time:</strong> Select both date and time in one component</li>
-				<li><strong>Calendar popup:</strong> Click on the input to open a visual calendar with time picker</li>
-				<li><strong>Keyboard input:</strong> Type dates in formats like "15 January 2024" or "15/01/2024"</li>
+				<li>
+					<strong>Calendar popup:</strong> Click on the input to open a visual calendar with time picker
+				</li>
+				<li>
+					<strong>Keyboard input:</strong> Type dates in formats like "15 January 2024" or "15/01/2024"
+				</li>
 				<li><strong>Today highlighting:</strong> Current date is highlighted in the calendar</li>
-				<li><strong>Weekend styling:</strong> Weekends (Saturday/Sunday) are colored differently</li>
+				<li>
+					<strong>Weekend styling:</strong> Weekends (Saturday/Sunday) are colored differently
+				</li>
 				<li><strong>Month navigation:</strong> Use arrow buttons to navigate between months</li>
 				<li><strong>Time selection:</strong> Integrated time picker for precise time selection</li>
 				<li><strong>Date restrictions:</strong> Set minimum and maximum selectable dates</li>
-				<li><strong>Time restrictions:</strong> Time picker respects minDate/maxDate - when selecting boundary dates, available times are automatically constrained</li>
+				<li>
+					<strong>Time restrictions:</strong> Time picker respects minDate/maxDate - when selecting boundary
+					dates, available times are automatically constrained
+				</li>
 				<li><strong>Visual feedback:</strong> Disabled dates are grayed out and unclickable</li>
 				<li><strong>Click outside to close:</strong> Calendar closes when clicking outside</li>
 				<li><strong>Theme support:</strong> Colors adapt to light/dark mode</li>

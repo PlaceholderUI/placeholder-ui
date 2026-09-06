@@ -126,12 +126,7 @@
 
 	<Paper title="Variants">
 		<div class="chips-section">
-			<Chips
-				label="Accent"
-				variant="accent"
-				options={colorOptions}
-				bind:value={variantAccent}
-			/>
+			<Chips label="Accent" variant="accent" options={colorOptions} bind:value={variantAccent} />
 			<Chips label="Danger" variant="danger" options={colorOptions} bind:value={variantDanger} />
 			<Chips
 				label="Tertiary Subtle"

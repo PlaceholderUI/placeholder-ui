@@ -288,9 +288,7 @@
 						? `${groupedRawValue.label} (${groupedRawValue.value})`
 						: 'None'}
 				</p>
-				<p class="note">
-					Options are organized into Frontend, Backend, and Languages groups.
-				</p>
+				<p class="note">Options are organized into Frontend, Backend, and Languages groups.</p>
 			</div>
 		</div>
 	</Paper>
@@ -365,9 +363,7 @@
 			<div class="autocomplete-info">
 				<strong>Event Data:</strong>
 				<p>
-					Selected Item: {selectedItem
-						? `${selectedItem.label} (${selectedItem.value})`
-						: 'None'}
+					Selected Item: {selectedItem ? `${selectedItem.label} (${selectedItem.value})` : 'None'}
 				</p>
 				<p>
 					Raw Value (bindable): {selectedRawValue
@@ -405,8 +401,8 @@
 					<p class="log-entry">{tag}</p>
 				{/each}
 				<p class="note">
-					Type a value that doesn't match any option to see an "Add" suggestion at the
-					bottom of the list. Selecting it fires <code>onItemAdded</code>.
+					Type a value that doesn't match any option to see an "Add" suggestion at the bottom of the
+					list. Selecting it fires <code>onItemAdded</code>.
 				</p>
 			</div>
 		</div>
@@ -427,8 +423,8 @@
 				<strong>Async Search:</strong>
 				<p>Query: "{techSearch}"</p>
 				<p class="note">
-					This example simulates a 500ms network delay when searching. Try typing "React"
-					or "JavaScript".
+					This example simulates a 500ms network delay when searching. Try typing "React" or
+					"JavaScript".
 				</p>
 			</div>
 		</div>
@@ -477,10 +473,7 @@
 					<li>Dream Company: {dreamCompany || 'Not specified'}</li>
 				</ul>
 				<div class="summary-actions">
-					<button
-						class="btn-primary"
-						disabled={!userCountry || !userCity || !primaryTech}
-					>
+					<button class="btn-primary" disabled={!userCountry || !userCity || !primaryTech}>
 						Save Profile
 					</button>
 				</div>
@@ -496,11 +489,18 @@
 				<li><strong>Click to select:</strong> Mouse selection from dropdown list</li>
 				<li><strong>Custom icons:</strong> Add icons to enhance visual context</li>
 				<li><strong>Loading states:</strong> Built-in spinner for async operations</li>
-				<li><strong>Event handling:</strong> onChange, onSelect, onchangeRaw, and enterPressed callbacks</li>
+				<li>
+					<strong>Event handling:</strong> onChange, onSelect, onchangeRaw, and enterPressed callbacks
+				</li>
 				<li><strong>Async search:</strong> Support for remote data fetching</li>
 				<li><strong>Grouped options:</strong> Organize options into labeled groups</li>
-				<li><strong>Add new values:</strong> allowAdd suggests adding the typed value, with an onItemAdded callback</li>
-				<li><strong>rawValue binding:</strong> Bindable access to the full selected ComboBoxItem</li>
+				<li>
+					<strong>Add new values:</strong> allowAdd suggests adding the typed value, with an onItemAdded
+					callback
+				</li>
+				<li>
+					<strong>rawValue binding:</strong> Bindable access to the full selected ComboBoxItem
+				</li>
 				<li><strong>Flexible data:</strong> Works with any array of ComboBoxItem objects</li>
 				<li><strong>Auto-focus:</strong> Focus management and text selection</li>
 				<li><strong>Dialog support:</strong> autofocusDialog for dialog integration</li>
@@ -510,7 +510,9 @@
 				<li><strong>Error states:</strong> showError and errorText for form validation</li>
 				<li><strong>Tooltips:</strong> tooltipText, tooltipContent, and tooltipLocation</li>
 				<li><strong>Required field support:</strong> Form validation integration</li>
-				<li><strong>Retrieve label:</strong> retrieveLabelFunction for pre-populated async values</li>
+				<li>
+					<strong>Retrieve label:</strong> retrieveLabelFunction for pre-populated async values
+				</li>
 				<li><strong>Accessibility:</strong> ARIA compliant with screen reader support</li>
 				<li><strong>Prevent auto-fill:</strong> Prevents browser autocomplete interference</li>
 			</ul>

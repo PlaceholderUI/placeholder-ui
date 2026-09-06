@@ -26,7 +26,11 @@
 	let sizeStyle = $derived(size ? `width:${size};height:${size};` : '');
 </script>
 
-<span style="--svg-stroke: {stroke}; --svg-fill: {fill}; {sizeStyle}" class:flip class="cu-icon {classes}">
+<span
+	style="--svg-stroke: {stroke}; --svg-fill: {fill}; {sizeStyle}"
+	class:flip
+	class="cu-icon {classes}"
+>
 	{@html svg}
 </span>
 

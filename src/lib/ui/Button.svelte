@@ -87,7 +87,13 @@
 {/snippet}
 
 {#if isLink && href && !disabled}
-	<a {target} class={elClass} aria-label={ariaLabel} href={href?.startsWith('/') ? resolve(href as any) : href} onclick={(e) => interceptLinkClick(e, { href, target, onclick })}>
+	<a
+		{target}
+		class={elClass}
+		aria-label={ariaLabel}
+		href={href?.startsWith('/') ? resolve(href as any) : href}
+		onclick={(e) => interceptLinkClick(e, { href, target, onclick })}
+	>
 		{@render buttonContent?.()}
 	</a>
 {:else}

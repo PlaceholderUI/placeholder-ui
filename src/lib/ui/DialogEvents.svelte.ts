@@ -18,23 +18,23 @@ export function useDialogEvents(callbacks: {
 	onFirstOpen?: () => void;
 }) {
 	const context = useDialog();
-	
+
 	// If not in a dialog context, callbacks won't be registered
 	if (!context) {
 		return null;
 	}
-	
+
 	if (callbacks.onOpen) {
 		context.onOpen = callbacks.onOpen;
 	}
-	
+
 	if (callbacks.onClose) {
 		context.onClose = callbacks.onClose;
 	}
-	
+
 	if (callbacks.onFirstOpen) {
 		context.onFirstOpen = callbacks.onFirstOpen;
 	}
-	
+
 	return context;
 }

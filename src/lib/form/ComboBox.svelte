@@ -78,9 +78,7 @@
 		{:else}
 			<div class="combobox-panel">
 				{#each options as option, index}
-					{@const localClasses = [
-						selectedIndex === index ? 'selected p-2' : 'p-2'
-					]}
+					{@const localClasses = [selectedIndex === index ? 'selected p-2' : 'p-2']}
 					<button
 						class="combobox-item {localClasses} {option.class}"
 						class:selected={selectedIndex === index}
@@ -150,7 +148,9 @@
 		padding: 0.5rem;
 	}
 
-	.error, .loading, .no-results {
+	.error,
+	.loading,
+	.no-results {
 		padding: 0.5rem;
 	}
 

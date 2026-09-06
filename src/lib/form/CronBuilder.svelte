@@ -194,7 +194,13 @@
 		isParsingExpression = true;
 
 		// Try to detect frequency type
-		if (min.startsWith('*/') && hour === '*' && dayOfMonth === '*' && month === '*' && dayOfWeek === '*') {
+		if (
+			min.startsWith('*/') &&
+			hour === '*' &&
+			dayOfMonth === '*' &&
+			month === '*' &&
+			dayOfWeek === '*'
+		) {
 			frequency = 'minute';
 			minuteInterval = parseInt(min.split('/')[1]) || 1;
 		} else if (hour.startsWith('*/') && dayOfMonth === '*' && month === '*' && dayOfWeek === '*') {
@@ -210,7 +216,10 @@
 			frequency = 'weekly';
 			weeklyMinute = parseInt(min) || 0;
 			weeklyHour = parseInt(hour) || 0;
-			weeklyDays = dayOfWeek.split(',').map(d => parseInt(d)).filter(d => !isNaN(d));
+			weeklyDays = dayOfWeek
+				.split(',')
+				.map((d) => parseInt(d))
+				.filter((d) => !isNaN(d));
 		} else if (month === '*' && dayOfWeek === '*' && !dayOfMonth.includes('*')) {
 			frequency = 'monthly';
 			monthlyMinute = parseInt(min) || 0;
@@ -236,7 +245,7 @@
 
 	function toggleWeekday(day: number) {
 		if (weeklyDays.includes(day)) {
-			weeklyDays = weeklyDays.filter(d => d !== day);
+			weeklyDays = weeklyDays.filter((d) => d !== day);
 		} else {
 			weeklyDays = [...weeklyDays, day];
 		}
@@ -298,14 +307,16 @@
 				return `Every ${dayText} at ${dailyHour.toString().padStart(2, '0')}:${dailyMinute.toString().padStart(2, '0')}`;
 
 			case 'weekly':
-				const dayNames = weeklyDays.map(d => weekDays.find(wd => wd.value === d)?.label).join(', ');
+				const dayNames = weeklyDays
+					.map((d) => weekDays.find((wd) => wd.value === d)?.label)
+					.join(', ');
 				return `Every ${dayNames} at ${weeklyHour.toString().padStart(2, '0')}:${weeklyMinute.toString().padStart(2, '0')}`;
 
 			case 'monthly':
 				return `Day ${monthlyDay} of every month at ${monthlyHour.toString().padStart(2, '0')}:${monthlyMinute.toString().padStart(2, '0')}`;
 
 			case 'yearly':
-				const monthName = monthOptions.find(m => m.value === yearlyMonth.toString())?.label;
+				const monthName = monthOptions.find((m) => m.value === yearlyMonth.toString())?.label;
 				return `${monthName} ${yearlyDay} at ${yearlyHour.toString().padStart(2, '0')}:${yearlyMinute.toString().padStart(2, '0')}`;
 
 			case 'custom':
@@ -329,12 +340,7 @@
 >
 	<div class="cron-builder {classes}" class:disabled>
 		<div class="cron-frequency">
-			<Select
-				label="Frequency"
-				bind:value={frequency}
-				options={frequencyOptions}
-				{disabled}
-			/>
+			<Select label="Frequency" bind:value={frequency} options={frequencyOptions} {disabled} />
 		</div>
 
 		<div class="cron-settings">
@@ -347,42 +353,12 @@
 					{disabled}
 				/>
 			{:else if frequency === 'hourly'}
-				<Number
-					label="Interval (hours)"
-					bind:value={hourlyInterval}
-					min={1}
-					max={23}
-					{disabled}
-				/>
-				<Number
-					label="At minute"
-					bind:value={hourlyMinute}
-					min={0}
-					max={59}
-					{disabled}
-				/>
+				<Number label="Interval (hours)" bind:value={hourlyInterval} min={1} max={23} {disabled} />
+				<Number label="At minute" bind:value={hourlyMinute} min={0} max={59} {disabled} />
 			{:else if frequency === 'daily'}
-				<Number
-					label="Interval (days)"
-					bind:value={dailyInterval}
-					min={1}
-					max={31}
-					{disabled}
-				/>
-				<Number
-					label="Hour"
-					bind:value={dailyHour}
-					min={0}
-					max={23}
-					{disabled}
-				/>
-				<Number
-					label="Minute"
-					bind:value={dailyMinute}
-					min={0}
-					max={59}
-					{disabled}
-				/>
+				<Number label="Interval (days)" bind:value={dailyInterval} min={1} max={31} {disabled} />
+				<Number label="Hour" bind:value={dailyHour} min={0} max={23} {disabled} />
+				<Number label="Minute" bind:value={dailyMinute} min={0} max={59} {disabled} />
 			{:else if frequency === 'weekly'}
 				<div class="weekday-selector">
 					<span class="weekday-label">Days of Week</span>
@@ -400,71 +376,17 @@
 						{/each}
 					</div>
 				</div>
-				<Number
-					label="Hour"
-					bind:value={weeklyHour}
-					min={0}
-					max={23}
-					{disabled}
-				/>
-				<Number
-					label="Minute"
-					bind:value={weeklyMinute}
-					min={0}
-					max={59}
-					{disabled}
-				/>
+				<Number label="Hour" bind:value={weeklyHour} min={0} max={23} {disabled} />
+				<Number label="Minute" bind:value={weeklyMinute} min={0} max={59} {disabled} />
 			{:else if frequency === 'monthly'}
-				<Number
-					label="Day of Month"
-					bind:value={monthlyDay}
-					min={1}
-					max={31}
-					{disabled}
-				/>
-				<Number
-					label="Hour"
-					bind:value={monthlyHour}
-					min={0}
-					max={23}
-					{disabled}
-				/>
-				<Number
-					label="Minute"
-					bind:value={monthlyMinute}
-					min={0}
-					max={59}
-					{disabled}
-				/>
+				<Number label="Day of Month" bind:value={monthlyDay} min={1} max={31} {disabled} />
+				<Number label="Hour" bind:value={monthlyHour} min={0} max={23} {disabled} />
+				<Number label="Minute" bind:value={monthlyMinute} min={0} max={59} {disabled} />
 			{:else if frequency === 'yearly'}
-				<Number
-					label="Month"
-					bind:value={yearlyMonth}
-					min={1}
-					max={12}
-					{disabled}
-				/>
-				<Number
-					label="Day"
-					bind:value={yearlyDay}
-					min={1}
-					max={31}
-					{disabled}
-				/>
-				<Number
-					label="Hour"
-					bind:value={yearlyHour}
-					min={0}
-					max={23}
-					{disabled}
-				/>
-				<Number
-					label="Minute"
-					bind:value={yearlyMinute}
-					min={0}
-					max={59}
-					{disabled}
-				/>
+				<Number label="Month" bind:value={yearlyMonth} min={1} max={12} {disabled} />
+				<Number label="Day" bind:value={yearlyDay} min={1} max={31} {disabled} />
+				<Number label="Hour" bind:value={yearlyHour} min={0} max={23} {disabled} />
+				<Number label="Minute" bind:value={yearlyMinute} min={0} max={59} {disabled} />
 			{:else if frequency === 'custom'}
 				<div class="custom-inputs">
 					<FormGroup label="Minute">

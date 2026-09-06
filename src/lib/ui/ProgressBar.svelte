@@ -63,10 +63,7 @@
 			</div>
 		{/each}
 	{:else}
-		<div
-			class="fill {variant} {animated ? 'animated' : ''}"
-			style="width: {clampedValue}%"
-		>
+		<div class="fill {variant} {animated ? 'animated' : ''}" style="width: {clampedValue}%">
 			{#if label}
 				<span class="label">{label}</span>
 			{/if}

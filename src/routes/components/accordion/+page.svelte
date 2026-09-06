@@ -27,12 +27,12 @@
 	<Paper title="Basic Usage">
 		<Accordion bind:value={single}>
 			<AccordionItem value="item-1" title="What is this component?">
-				An accordion lets you toggle the visibility of related content sections one at a
-				time, keeping the interface compact.
+				An accordion lets you toggle the visibility of related content sections one at a time,
+				keeping the interface compact.
 			</AccordionItem>
 			<AccordionItem value="item-2" title="When should I use it?">
-				Use it for FAQs, settings panels, or any place where you want to group content
-				and let users reveal only what they need.
+				Use it for FAQs, settings panels, or any place where you want to group content and let users
+				reveal only what they need.
 			</AccordionItem>
 			<AccordionItem value="item-3" title="Is it accessible?">
 				Yes — triggers are real buttons with <code>aria-expanded</code> and
@@ -45,8 +45,8 @@
 	<Paper title="Allow Multiple Open">
 		<Accordion multiple bind:value={multi}>
 			<AccordionItem value="features" title="Features" icon={iconSettings}>
-				Single or multiple expansion, bindable value, custom header snippets, leading
-				icons, and smooth slide transitions.
+				Single or multiple expansion, bindable value, custom header snippets, leading icons, and
+				smooth slide transitions.
 			</AccordionItem>
 			<AccordionItem value="account" title="Account" icon={iconUser}>
 				Manage your profile, password, and connected services here.
@@ -60,9 +60,7 @@
 
 	<Paper title="Disabled Item & Custom Header">
 		<Accordion>
-			<AccordionItem value="a" title="Standard item">
-				A regular collapsible panel.
-			</AccordionItem>
+			<AccordionItem value="a" title="Standard item">A regular collapsible panel.</AccordionItem>
 			<AccordionItem value="b" disabled title="Disabled item">
 				This content cannot be reached because the item is disabled.
 			</AccordionItem>
@@ -77,8 +75,8 @@
 
 	<Paper title="Colour Variants">
 		<p class="hint">
-			Set <code>variant</code> to any Button variant to colour the expanded panel's header.
-			The default is <code>primary</code> in both light and dark mode; use
+			Set <code>variant</code> to any Button variant to colour the expanded panel's header. The
+			default is <code>primary</code> in both light and dark mode; use
 			<code>auto-subtle</code> for theme-aware accent/primary colours.
 		</p>
 		<div class="variant-grid">
@@ -127,8 +125,8 @@
 
 	<Paper title="Accordion-level Title Snippet">
 		<p class="hint">
-			Provide an <code>itemTitle</code> snippet on the Accordion to template every panel title.
-			It receives the item's <code>title</code>, <code>value</code>, <code>open</code> and
+			Provide an <code>itemTitle</code> snippet on the Accordion to template every panel title. It
+			receives the item's <code>title</code>, <code>value</code>, <code>open</code> and
 			<code>disabled</code> state.
 		</p>
 		<Accordion>
@@ -148,8 +146,7 @@
 				{#snippet header()}
 					<span class="custom-header">Item-level <strong>header</strong> wins</span>
 				{/snippet}
-				An item's own <code>header</code> snippet takes precedence over the accordion-level
-				template.
+				An item's own <code>header</code> snippet takes precedence over the accordion-level template.
 			</AccordionItem>
 		</Accordion>
 	</Paper>
@@ -157,13 +154,28 @@
 	<Paper title="Features">
 		<div class="feature-list">
 			<ul>
-				<li><strong>Single or multiple:</strong> Use the <code>multiple</code> prop to allow several panels open at once</li>
-				<li><strong>Bindable value:</strong> Two-way bind the open item(s) via <code>value</code></li>
-				<li><strong>Icons:</strong> Add a leading icon to any item with the <code>icon</code> prop</li>
-				<li><strong>Custom headers:</strong> Provide a <code>header</code> snippet for rich titles</li>
-				<li><strong>Title templates:</strong> An accordion-level <code>itemTitle</code> snippet renders every panel title</li>
+				<li>
+					<strong>Single or multiple:</strong> Use the <code>multiple</code> prop to allow several panels
+					open at once
+				</li>
+				<li>
+					<strong>Bindable value:</strong> Two-way bind the open item(s) via <code>value</code>
+				</li>
+				<li>
+					<strong>Icons:</strong> Add a leading icon to any item with the <code>icon</code> prop
+				</li>
+				<li>
+					<strong>Custom headers:</strong> Provide a <code>header</code> snippet for rich titles
+				</li>
+				<li>
+					<strong>Title templates:</strong> An accordion-level <code>itemTitle</code> snippet renders
+					every panel title
+				</li>
 				<li><strong>Size variants:</strong> Default or compact via <code>size="sm"</code></li>
-				<li><strong>Colour variants:</strong> Style the expanded header with any Button variant via <code>variant</code>, with per-item overrides</li>
+				<li>
+					<strong>Colour variants:</strong> Style the expanded header with any Button variant via
+					<code>variant</code>, with per-item overrides
+				</li>
 				<li><strong>Disabled items:</strong> Prevent toggling individual panels</li>
 				<li><strong>Accessible:</strong> Proper button semantics and ARIA attributes</li>
 				<li><strong>Theme aware:</strong> Adapts to light and dark mode</li>

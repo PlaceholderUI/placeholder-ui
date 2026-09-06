@@ -45,20 +45,9 @@
 
 	<Paper title="States">
 		<div class="form-grid">
-			<DatePicker 
-				label="Required Date" 
-				required={true} 
-				bind:value={requiredDate} 
-			/>
-			<DatePicker 
-				label="Disabled" 
-				disabled={true} 
-				bind:value={disabledDate} 
-			/>
-			<DatePicker 
-				label="Pre-filled Date" 
-				bind:value={prefilledDate} 
-			/>
+			<DatePicker label="Required Date" required={true} bind:value={requiredDate} />
+			<DatePicker label="Disabled" disabled={true} bind:value={disabledDate} />
+			<DatePicker label="Pre-filled Date" bind:value={prefilledDate} />
 			<div class="date-info">
 				<strong>Values:</strong>
 				<p>Required: {requiredDate || 'None'}</p>
@@ -70,8 +59,8 @@
 
 	<Paper title="With Event Handler">
 		<div class="form-grid">
-			<DatePicker 
-				label="Date with Change Handler" 
+			<DatePicker
+				label="Date with Change Handler"
 				bind:value={basicDate}
 				onchange={handleDateChange}
 			/>
@@ -94,9 +83,9 @@
 
 	<Paper title="Date Range Restrictions">
 		<div class="form-grid">
-			<DatePicker 
-				label="Limited Range" 
-				bind:value={minMaxDate} 
+			<DatePicker
+				label="Limited Range"
+				bind:value={minMaxDate}
 				minDate={oneWeekAgo}
 				maxDate={oneWeekFromNow}
 			/>
@@ -111,14 +100,14 @@
 
 	<Paper title="Past and Future Only">
 		<div class="form-grid">
-			<DatePicker 
-				label="Past Dates Only" 
-				bind:value={pastOnlyDate} 
+			<DatePicker
+				label="Past Dates Only"
+				bind:value={pastOnlyDate}
 				maxDate={today.format('YYYY-MM-DD')}
 			/>
-			<DatePicker 
-				label="Future Dates Only" 
-				bind:value={futureOnlyDate} 
+			<DatePicker
+				label="Future Dates Only"
+				bind:value={futureOnlyDate}
 				minDate={today.format('YYYY-MM-DD')}
 				maxDate={oneMonthFromNow}
 			/>
@@ -150,9 +139,13 @@
 		<div class="feature-list">
 			<ul>
 				<li><strong>Calendar popup:</strong> Click on the input to open a visual calendar</li>
-				<li><strong>Keyboard input:</strong> Type dates in formats like "15 January 2024" or "15/01/2024"</li>
+				<li>
+					<strong>Keyboard input:</strong> Type dates in formats like "15 January 2024" or "15/01/2024"
+				</li>
 				<li><strong>Today highlighting:</strong> Current date is highlighted in the calendar</li>
-				<li><strong>Weekend styling:</strong> Weekends (Saturday/Sunday) are colored differently</li>
+				<li>
+					<strong>Weekend styling:</strong> Weekends (Saturday/Sunday) are colored differently
+				</li>
 				<li><strong>Month navigation:</strong> Use arrow buttons to navigate between months</li>
 				<li><strong>Click outside to close:</strong> Calendar closes when clicking outside</li>
 				<li><strong>Theme support:</strong> Colors adapt to light/dark mode</li>

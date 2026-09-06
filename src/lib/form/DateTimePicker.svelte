@@ -394,8 +394,8 @@
 
 					<TimePicker
 						bind:value={selectedTime}
-						minDate={minDate}
-						maxDate={maxDate}
+						{minDate}
+						{maxDate}
 						selectedDate={selectedDate?.format('YYYY-MM-DD')}
 						onchange={(t) => {
 							selectedTime = t!;

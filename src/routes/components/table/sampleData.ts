@@ -105,8 +105,50 @@ export const sampleUsers: User[] = [
 ];
 
 // Larger generated dataset for the pagination demo
-const firstNames = ['Olivia', 'Liam', 'Emma', 'Noah', 'Ava', 'Ethan', 'Sophia', 'Mason', 'Isabella', 'Lucas', 'Mia', 'Oliver', 'Amelia', 'Elijah', 'Harper', 'James', 'Evelyn', 'Benjamin', 'Abigail', 'Henry'];
-const lastNames = ['Anderson', 'Baker', 'Carter', 'Dixon', 'Ellis', 'Foster', 'Griffin', 'Hayes', 'Ingram', 'Jenkins', 'Keller', 'Lawson', 'Mitchell', 'Norris', 'Owens', 'Parker', 'Quinn', 'Reyes', 'Sutton', 'Turner'];
+const firstNames = [
+	'Olivia',
+	'Liam',
+	'Emma',
+	'Noah',
+	'Ava',
+	'Ethan',
+	'Sophia',
+	'Mason',
+	'Isabella',
+	'Lucas',
+	'Mia',
+	'Oliver',
+	'Amelia',
+	'Elijah',
+	'Harper',
+	'James',
+	'Evelyn',
+	'Benjamin',
+	'Abigail',
+	'Henry'
+];
+const lastNames = [
+	'Anderson',
+	'Baker',
+	'Carter',
+	'Dixon',
+	'Ellis',
+	'Foster',
+	'Griffin',
+	'Hayes',
+	'Ingram',
+	'Jenkins',
+	'Keller',
+	'Lawson',
+	'Mitchell',
+	'Norris',
+	'Owens',
+	'Parker',
+	'Quinn',
+	'Reyes',
+	'Sutton',
+	'Turner'
+];
 const roles = ['Admin', 'User', 'Manager'];
 const departments = ['Engineering', 'Marketing', 'Sales', 'HR', 'IT'];
 const statuses: User['status'][] = ['active', 'inactive', 'pending'];

@@ -29,7 +29,8 @@
 <div class="vstack">
 	<Paper title="Basic Alert">
 		<Alert>
-			This is a basic alert with the default styling. Use alerts to display important information to users.
+			This is a basic alert with the default styling. Use alerts to display important information to
+			users.
 		</Alert>
 	</Paper>
 
@@ -38,11 +39,11 @@
 			<Alert variant="default">
 				<strong>Default Alert:</strong> Standard informational message with a subtle appearance.
 			</Alert>
-			
+
 			<Alert variant="warning">
 				<strong>Warning Alert:</strong> Use this variant to highlight potential issues or important notices.
 			</Alert>
-			
+
 			<Alert variant="danger">
 				<strong>Danger Alert:</strong> Critical alerts for errors, failures, or destructive actions.
 			</Alert>
@@ -54,11 +55,11 @@
 			<Alert title="Information" variant="default">
 				This alert has a title to provide more context about the message.
 			</Alert>
-			
+
 			<Alert title="Important Notice" variant="warning">
 				Titles help organize alert content and make it easier to scan.
 			</Alert>
-			
+
 			<Alert title="Critical Error" variant="danger">
 				This error requires immediate attention from the user.
 			</Alert>
@@ -96,7 +97,10 @@
 
 			{#if alertCount > 0}
 				<Alert title="Button Clicked" variant="warning">
-					You've clicked the trigger button <Badge variant="secondary">{alertCount}</Badge> time{alertCount !== 1 ? 's' : ''}.
+					You've clicked the trigger button <Badge variant="secondary">{alertCount}</Badge> time{alertCount !==
+					1
+						? 's'
+						: ''}.
 				</Alert>
 			{/if}
 
@@ -104,9 +108,7 @@
 				<Alert title="Dismissible Alert" variant="default">
 					This alert simulates a dismissible behavior.
 					<div class="mt-2">
-						<Button onclick={dismissAlert} variant="secondary">
-							Dismiss
-						</Button>
+						<Button onclick={dismissAlert} variant="secondary">Dismiss</Button>
 					</div>
 				</Alert>
 			{/if}
@@ -115,7 +117,8 @@
 
 	<Paper title="Custom Styling">
 		<Alert class="custom-alert" title="Custom Styled Alert">
-			You can apply custom classes to alerts for additional styling. This alert has a custom border radius and shadow.
+			You can apply custom classes to alerts for additional styling. This alert has a custom border
+			radius and shadow.
 		</Alert>
 	</Paper>
 
@@ -154,7 +157,7 @@
 		flex-direction: column;
 		gap: 1rem;
 	}
-	
+
 	.row {
 		display: flex;
 		align-items: center;

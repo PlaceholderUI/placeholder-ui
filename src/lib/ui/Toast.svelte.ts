@@ -12,7 +12,7 @@ import { toast as sonnerToast } from 'svelte-sonner';
  * @param options - Additional options for the toast
  */
 function toastDefault(message: string, options?: any) {
-  return sonnerToast.message(message, options);
+	return sonnerToast.message(message, options);
 }
 
 /**
@@ -21,7 +21,7 @@ function toastDefault(message: string, options?: any) {
  * @param options - Additional options for the toast
  */
 toastDefault.success = (message: string, options?: any) => {
-  return sonnerToast.success(message, options);
+	return sonnerToast.success(message, options);
 };
 
 /**
@@ -30,7 +30,7 @@ toastDefault.success = (message: string, options?: any) => {
  * @param options - Additional options for the toast
  */
 toastDefault.info = (message: string, options?: any) => {
-  return sonnerToast.info(message, options);
+	return sonnerToast.info(message, options);
 };
 
 /**
@@ -39,7 +39,7 @@ toastDefault.info = (message: string, options?: any) => {
  * @param options - Additional options for the toast
  */
 toastDefault.warning = (message: string, options?: any) => {
-  return sonnerToast.warning(message, options);
+	return sonnerToast.warning(message, options);
 };
 
 /**
@@ -48,7 +48,7 @@ toastDefault.warning = (message: string, options?: any) => {
  * @param options - Additional options for the toast
  */
 toastDefault.error = (message: string, options?: any) => {
-  return sonnerToast.error(message, options);
+	return sonnerToast.error(message, options);
 };
 
 /**
@@ -57,7 +57,7 @@ toastDefault.error = (message: string, options?: any) => {
  * @param options - Additional options for the toast
  */
 toastDefault.loading = (message: string, options?: any) => {
-  return sonnerToast.loading(message, options);
+	return sonnerToast.loading(message, options);
 };
 
 /**
@@ -66,7 +66,7 @@ toastDefault.loading = (message: string, options?: any) => {
  * @param options - Additional options for the toast
  */
 toastDefault.custom = (message: any, options?: any) => {
-  return sonnerToast.custom(message, options);
+	return sonnerToast.custom(message, options);
 };
 
 /**
@@ -74,8 +74,15 @@ toastDefault.custom = (message: any, options?: any) => {
  * @param promise - The promise to track
  * @param options - Options for each state (loading, success, error)
  */
-toastDefault.promise = (promise: Promise<any>, options: { loading?: string; success?: string | ((data: any) => string); error?: string | ((error: any) => string) }) => {
-  return sonnerToast.promise(promise, options);
+toastDefault.promise = (
+	promise: Promise<any>,
+	options: {
+		loading?: string;
+		success?: string | ((data: any) => string);
+		error?: string | ((error: any) => string);
+	}
+) => {
+	return sonnerToast.promise(promise, options);
 };
 
 /**
@@ -83,7 +90,7 @@ toastDefault.promise = (promise: Promise<any>, options: { loading?: string; succ
  * @param id - The ID of the toast to dismiss
  */
 toastDefault.dismiss = (id?: string | number) => {
-  return sonnerToast.dismiss(id);
+	return sonnerToast.dismiss(id);
 };
 
 export const toast = toastDefault;

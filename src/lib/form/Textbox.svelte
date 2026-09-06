@@ -108,9 +108,7 @@
 		type = 'text'
 	}: TextboxProps = $props();
 
-	let resolvedName = $derived(
-		(name || label || autoName).replace(/[^a-zA-Z0-9_\-:.]/g, '_')
-	);
+	let resolvedName = $derived((name || label || autoName).replace(/[^a-zA-Z0-9_\-:.]/g, '_'));
 
 	let id = $derived.by(() => {
 		if (inputId) return inputId;
@@ -132,7 +130,15 @@
 </script>
 
 <div class="textbox-container {containerClass}">
-	<FormGroup {label} {required} {id} class={groupClass} {tooltipLocation} {tooltipContent} {tooltipText}>
+	<FormGroup
+		{label}
+		{required}
+		{id}
+		class={groupClass}
+		{tooltipLocation}
+		{tooltipContent}
+		{tooltipText}
+	>
 		<div class="textbox-input">
 			<!-- svelte-ignore a11y_autofocus -->
 			<input

@@ -51,11 +51,7 @@
 <div class="vstack">
 	<Paper title="Basic Usage">
 		<div class="demo-section">
-			<CronBuilder
-				label="Schedule"
-				bind:value={basicExpression}
-				onchange={handleChange('Basic')}
-			/>
+			<CronBuilder label="Schedule" bind:value={basicExpression} onchange={handleChange('Basic')} />
 		</div>
 	</Paper>
 
@@ -87,10 +83,7 @@
 			<h4>Click to Copy Common CRON Expressions</h4>
 			<div class="examples-grid">
 				{#each examples as example}
-					<button
-						class="example-card"
-						onclick={() => copyToClipboard(example.expression)}
-					>
+					<button class="example-card" onclick={() => copyToClipboard(example.expression)}>
 						<div class="example-label">{example.label}</div>
 						<code class="example-expression">{example.expression}</code>
 					</button>
@@ -101,11 +94,7 @@
 
 	<Paper title="Disabled State">
 		<div class="demo-section">
-			<CronBuilder
-				label="Read-Only Schedule"
-				bind:value={disabledExpression}
-				disabled={true}
-			/>
+			<CronBuilder label="Read-Only Schedule" bind:value={disabledExpression} disabled={true} />
 		</div>
 	</Paper>
 
@@ -173,7 +162,8 @@
 
 				<div class="code-example">
 					<h5>Usage Example</h5>
-					<pre><code>{`import { CronParser, getNextCronRunDate, getNextCronRunDates } from 'your-library';
+					<pre><code
+							>{`import { CronParser, getNextCronRunDate, getNextCronRunDates } from 'your-library';
 
 // Get the next run date
 const nextRun = getNextCronRunDate('0 9 * * 1-5');
@@ -189,7 +179,8 @@ console.log(description); // "in 2 hours"
 
 // Validate expression
 const isValid = CronParser.isValid('0 9 * * 1-5');
-console.log(isValid); // true`}</code></pre>
+console.log(isValid); // true`}</code
+						></pre>
 				</div>
 			</div>
 		</div>
@@ -266,10 +257,17 @@ console.log(isValid); // true`}</code></pre>
 	<Paper title="Features">
 		<div class="feature-list">
 			<ul>
-				<li><strong>Visual Builder:</strong> Easy-to-use interface for creating CRON expressions</li>
-				<li><strong>Multiple Frequencies:</strong> Support for minute, hourly, daily, weekly, monthly, yearly schedules</li>
+				<li>
+					<strong>Visual Builder:</strong> Easy-to-use interface for creating CRON expressions
+				</li>
+				<li>
+					<strong>Multiple Frequencies:</strong> Support for minute, hourly, daily, weekly, monthly, yearly
+					schedules
+				</li>
 				<li><strong>Custom Mode:</strong> Direct input for advanced CRON expressions</li>
-				<li><strong>Expression Parsing:</strong> Automatically detects and sets up UI from existing expressions</li>
+				<li>
+					<strong>Expression Parsing:</strong> Automatically detects and sets up UI from existing expressions
+				</li>
 				<li><strong>Human Readable:</strong> Shows plain English description of schedule</li>
 				<li><strong>Real-time Preview:</strong> See CRON expression update as you configure</li>
 				<li><strong>Day Selection:</strong> Interactive buttons for selecting weekdays</li>

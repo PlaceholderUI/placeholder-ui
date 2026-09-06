@@ -124,12 +124,7 @@ export class CronParser {
 	 * Check if a value matches a CRON field
 	 * Supports: *, specific values, ranges (1-5), lists (1,3,5), and steps (*\/5)
 	 */
-	private static matchesValue(
-		value: number,
-		cronField: string,
-		min: number,
-		max: number
-	): boolean {
+	private static matchesValue(value: number, cronField: string, min: number, max: number): boolean {
 		// Handle wildcard
 		if (cronField === '*') return true;
 

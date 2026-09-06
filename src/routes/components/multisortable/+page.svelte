@@ -54,9 +54,9 @@
 <div class="page-header">
 	<h1>MultiSortable</h1>
 	<p>
-		Cross-container drag-and-drop. Lists that share a <code>group</code> name exchange items with
-		each other — drag a card into another column and it's removed from the source and inserted at the
-		drop marker. Reordering within a list still works. Empty lists remain valid drop targets.
+		Cross-container drag-and-drop. Lists that share a <code>group</code> name exchange items with each
+		other — drag a card into another column and it's removed from the source and inserted at the drop
+		marker. Reordering within a list still works. Empty lists remain valid drop targets.
 	</p>
 </div>
 
@@ -76,7 +76,8 @@
 						getKey={(c) => c.id}
 						handle=".grip"
 						class="column-body"
-						onChange={() => (lastChange = `${column.title}: ${column.cards.map((c) => c.title).join(', ') || '(empty)'}`)}
+						onChange={() =>
+							(lastChange = `${column.title}: ${column.cards.map((c) => c.title).join(', ') || '(empty)'}`)}
 					>
 						{#snippet children(card, _i, dragging)}
 							<div class="card" class:dragging>
@@ -103,8 +104,8 @@
 
 	<Paper title="Two-list transfer with a receive filter">
 		<p class="muted">
-			The <strong>Granted</strong> list rejects <code>Admin</code> via <code>canReceive</code>. Everything
-			else moves freely both ways.
+			The <strong>Granted</strong> list rejects <code>Admin</code> via <code>canReceive</code>.
+			Everything else moves freely both ways.
 		</p>
 		<div class="transfer">
 			<div class="transfer-col">

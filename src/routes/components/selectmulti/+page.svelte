@@ -570,10 +570,9 @@
 					Regions: {dependentRegions.length ? dependentRegions.join(', ') : 'None'}
 				</p>
 				<p class="note">
-					Region options aggregate from all selected countries (US, CA, UK, DE have regions
-					defined; others don't). Deselecting a country drops its regions from the value
-					automatically thanks to SelectMulti's static-options stale-value cleanup — no parent-side
-					$effect needed.
+					Region options aggregate from all selected countries (US, CA, UK, DE have regions defined;
+					others don't). Deselecting a country drops its regions from the value automatically thanks
+					to SelectMulti's static-options stale-value cleanup — no parent-side $effect needed.
 				</p>
 			</div>
 		</div>
@@ -601,9 +600,9 @@
 				<p>Selected: {mutableValues.length ? mutableValues.join(', ') : 'None'}</p>
 				<p>Options count: {mutableOptions.length}</p>
 				<p class="note">
-					Try: open the dropdown, type a filter, then click a swap button — the active filter
-					should re-apply to the new options. Select fruits and then swap to vegetables — the stale
-					values drop automatically so form submits don't carry them.
+					Try: open the dropdown, type a filter, then click a swap button — the active filter should
+					re-apply to the new options. Select fruits and then swap to vegetables — the stale values
+					drop automatically so form submits don't carry them.
 				</p>
 			</div>
 		</div>
@@ -626,7 +625,9 @@
 				<strong>Grouped Swap:</strong>
 				<p>Selected: {groupedValues.length ? groupedValues.join(', ') : 'None'}</p>
 				<p>Current set: {showTechGroups ? 'Tech' : 'Animals'}</p>
-				<p class="note">Tests that <code>groupedOptions</code> prop changes are picked up after mount.</p>
+				<p class="note">
+					Tests that <code>groupedOptions</code> prop changes are picked up after mount.
+				</p>
 			</div>
 		</div>
 	</Paper>
@@ -650,8 +651,8 @@
 				<p>Selected: {stableValues.length ? stableValues.join(', ') : 'None'}</p>
 				<p class="note">
 					Each tick passes a brand-new array reference with the same contents. The ref guard does
-					<em>not</em> deep-compare, so this will re-convert on every tick — confirm the dropdown
-					doesn't lose state or flicker.
+					<em>not</em> deep-compare, so this will re-convert on every tick — confirm the dropdown doesn't
+					lose state or flicker.
 				</p>
 			</div>
 		</div>
@@ -721,13 +722,22 @@
 				<li><strong>Disabled states:</strong> Support for disabled selects</li>
 				<li><strong>Event handling:</strong> onchange and onchangeRaw callbacks</li>
 				<li><strong>Raw value access:</strong> Access to full item objects, not just values</li>
-				<li><strong>Initial raw values:</strong> Pass rawValues up front to preset selections with known labels</li>
+				<li>
+					<strong>Initial raw values:</strong> Pass rawValues up front to preset selections with known
+					labels
+				</li>
 				<li><strong>Keyboard navigation:</strong> Full keyboard support with arrow keys</li>
 				<li><strong>Dynamic loading:</strong> Support for async data fetching</li>
 				<li><strong>Custom placeholders:</strong> Configurable placeholder text</li>
-				<li><strong>Custom display components:</strong> Use custom components for rich item display</li>
-				<li><strong>Reactive options:</strong> Options/groupedOptions prop changes flow through at runtime</li>
-				<li><strong>Stale-value protection:</strong> Static option swaps drop values no longer in the list</li>
+				<li>
+					<strong>Custom display components:</strong> Use custom components for rich item display
+				</li>
+				<li>
+					<strong>Reactive options:</strong> Options/groupedOptions prop changes flow through at runtime
+				</li>
+				<li>
+					<strong>Stale-value protection:</strong> Static option swaps drop values no longer in the list
+				</li>
 				<li><strong>Accessibility:</strong> ARIA compliant with screen reader support</li>
 			</ul>
 		</div>

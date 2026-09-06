@@ -139,8 +139,8 @@
 	<Paper title="Navigation Drawer">
 		<div class="demo-section">
 			<p class="description">
-				A full navigation drawer using <code>sections</code> prop with SidenavSection data.
-				Supports expandable sub-items and icons.
+				A full navigation drawer using <code>sections</code> prop with SidenavSection data. Supports expandable
+				sub-items and icons.
 			</p>
 			<div class="button-row">
 				<ActionIcon
@@ -159,9 +159,7 @@
 			<p class="description">
 				A settings drawer with grouped options. Uses <code>title</code> prop for header.
 			</p>
-			<Button variant="secondary" onclick={() => (settingsDrawer = true)}>
-				Open Settings
-			</Button>
+			<Button variant="secondary" onclick={() => (settingsDrawer = true)}>Open Settings</Button>
 		</div>
 	</Paper>
 
@@ -170,21 +168,16 @@
 			<p class="description">
 				Drawer that slides from the right using <code>position="right"</code>.
 			</p>
-			<Button variant="secondary" onclick={() => (rightDrawer = true)}>
-				Open from Right
-			</Button>
+			<Button variant="secondary" onclick={() => (rightDrawer = true)}>Open from Right</Button>
 		</div>
 	</Paper>
 
 	<Paper title="Custom Content Drawer">
 		<div class="demo-section">
 			<p class="description">
-				Use the <code>children</code> snippet for fully custom content instead of navigation
-				items.
+				Use the <code>children</code> snippet for fully custom content instead of navigation items.
 			</p>
-			<Button variant="secondary" onclick={() => (customDrawer = true)}>
-				Open Custom Drawer
-			</Button>
+			<Button variant="secondary" onclick={() => (customDrawer = true)}>Open Custom Drawer</Button>
 		</div>
 	</Paper>
 
@@ -200,7 +193,9 @@
 			<div class="drawer-states">
 				<strong>Current States:</strong>
 				<div class="state-grid">
-					<span class:open={navigationDrawer}>Navigation: {navigationDrawer ? 'Open' : 'Closed'}</span>
+					<span class:open={navigationDrawer}
+						>Navigation: {navigationDrawer ? 'Open' : 'Closed'}</span
+					>
 					<span class:open={settingsDrawer}>Settings: {settingsDrawer ? 'Open' : 'Closed'}</span>
 					<span class:open={rightDrawer}>Right: {rightDrawer ? 'Open' : 'Closed'}</span>
 					<span class:open={customDrawer}>Custom: {customDrawer ? 'Open' : 'Closed'}</span>
@@ -230,7 +225,9 @@
 		<div class="feature-list">
 			<ul>
 				<li><strong>Svelte 5:</strong> Built with modern $props, $state, $effect runes</li>
-				<li><strong>Navigation sections:</strong> Uses SidenavSection/SidenavItem types for consistency</li>
+				<li>
+					<strong>Navigation sections:</strong> Uses SidenavSection/SidenavItem types for consistency
+				</li>
 				<li><strong>Expandable items:</strong> Sub-navigation with smooth slide animations</li>
 				<li><strong>Position:</strong> Left or right side positioning</li>
 				<li><strong>Custom content:</strong> Use children snippet for custom layouts</li>
@@ -284,7 +281,9 @@
 	<div class="custom-content">
 		<div class="custom-section">
 			<h4>Welcome!</h4>
-			<p>This drawer uses custom content via the children snippet instead of navigation sections.</p>
+			<p>
+				This drawer uses custom content via the children snippet instead of navigation sections.
+			</p>
 		</div>
 		<div class="custom-section">
 			<h4>Actions</h4>

@@ -28,9 +28,9 @@
 	});
 </script>
 
-<Textbox 
+<Textbox
 	bind:value={inputValue}
 	bind:textboxElement={inputElement}
-	label="Auto-focus input" 
+	label="Auto-focus input"
 	placeholder="This input focuses when dialog opens and clears when it closes"
 />

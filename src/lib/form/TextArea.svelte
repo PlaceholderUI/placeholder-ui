@@ -78,9 +78,7 @@
 		onkeyup = undefined
 	}: TextAreaProps = $props();
 
-	let resolvedName = $derived(
-		(name || label || autoName).replace(/[^a-zA-Z0-9_\-:.]/g, '_')
-	);
+	let resolvedName = $derived((name || label || autoName).replace(/[^a-zA-Z0-9_\-:.]/g, '_'));
 
 	let showRequiredRing = $state(false);
 	const id = $derived(inputId ?? `input-${label.replaceAll(' ', '')}`);
@@ -109,8 +107,7 @@
 			{oninput}
 			{onkeydown}
 			{onkeypress}
-			{onkeyup}
-		></textarea>
+			{onkeyup}></textarea>
 	</FormGroup>
 </div>
 
@@ -129,7 +126,9 @@
 		border: 1px solid var(--border-color);
 		border-radius: 0.375rem;
 		appearance: none;
-		transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+		transition:
+			border-color 0.15s ease-in-out,
+			box-shadow 0.15s ease-in-out;
 		resize: vertical;
 
 		&::placeholder {

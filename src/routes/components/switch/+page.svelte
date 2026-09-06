@@ -60,14 +60,8 @@
 	<Paper title="Basic Usage">
 		<div class="form-grid">
 			<div class="switch-section">
-				<Switch 
-					label="Basic Switch" 
-					bind:checked={basicSwitch} 
-				/>
-				<Switch 
-					label="Pre-enabled Switch" 
-					bind:checked={preEnabledSwitch} 
-				/>
+				<Switch label="Basic Switch" bind:checked={basicSwitch} />
+				<Switch label="Pre-enabled Switch" bind:checked={preEnabledSwitch} />
 			</div>
 			<div class="switch-info">
 				<strong>Current Values:</strong>
@@ -80,26 +74,10 @@
 	<Paper title="States">
 		<div class="form-grid">
 			<div class="switch-section">
-				<Switch 
-					label="Required Switch" 
-					required={true} 
-					bind:checked={requiredSwitch} 
-				/>
-				<Switch 
-					label="Disabled (Off)" 
-					disabled={true} 
-					bind:checked={disabledOffSwitch} 
-				/>
-				<Switch 
-					label="Disabled (On)" 
-					disabled={true} 
-					bind:checked={disabledOnSwitch} 
-				/>
-				<Switch 
-					label="Switch with Error" 
-					showError={true}
-					bind:checked={errorSwitch} 
-				/>
+				<Switch label="Required Switch" required={true} bind:checked={requiredSwitch} />
+				<Switch label="Disabled (Off)" disabled={true} bind:checked={disabledOffSwitch} />
+				<Switch label="Disabled (On)" disabled={true} bind:checked={disabledOnSwitch} />
+				<Switch label="Switch with Error" showError={true} bind:checked={errorSwitch} />
 			</div>
 			<div class="switch-info">
 				<strong>State Values:</strong>
@@ -114,16 +92,12 @@
 	<Paper title="With Event Handlers">
 		<div class="form-grid">
 			<div class="switch-section">
-				<Switch 
-					label="Switch with Change Handler" 
+				<Switch
+					label="Switch with Change Handler"
 					bind:checked={basicSwitch}
 					onchange={handleBasicSwitchChange}
 				/>
-				<Switch 
-					label="Dark Mode Toggle" 
-					bind:checked={darkMode}
-					onchange={handleDarkModeChange}
-				/>
+				<Switch label="Dark Mode Toggle" bind:checked={darkMode} onchange={handleDarkModeChange} />
 			</div>
 			<div class="switch-info">
 				<p>These switches log changes to the console.</p>
@@ -137,13 +111,13 @@
 		<div class="settings-section">
 			<h3>Notification Settings</h3>
 			<div class="settings-group">
-				<Switch 
-					label="Email Notifications" 
+				<Switch
+					label="Email Notifications"
 					bind:checked={emailNotifications}
 					onchange={handleNotificationChange}
 				/>
-				<Switch 
-					label="Push Notifications" 
+				<Switch
+					label="Push Notifications"
 					bind:checked={pushNotifications}
 					disabled={!emailNotifications}
 				/>
@@ -151,31 +125,19 @@
 
 			<h3>Account Settings</h3>
 			<div class="settings-group">
-				<Switch 
-					label="Public Profile" 
-					bind:checked={publicProfile}
-				/>
-				<Switch 
-					label="Two-Factor Authentication" 
+				<Switch label="Public Profile" bind:checked={publicProfile} />
+				<Switch
+					label="Two-Factor Authentication"
 					bind:checked={twoFactorAuth}
 					onchange={handleTwoFactorChange}
 				/>
-				<Switch 
-					label="Analytics Tracking" 
-					bind:checked={analyticsTracking}
-				/>
+				<Switch label="Analytics Tracking" bind:checked={analyticsTracking} />
 			</div>
 
 			<h3>Application Settings</h3>
 			<div class="settings-group">
-				<Switch 
-					label="Auto-save" 
-					bind:checked={autoSave}
-				/>
-				<Switch 
-					label="Dark Mode" 
-					bind:checked={darkMode}
-				/>
+				<Switch label="Auto-save" bind:checked={autoSave} />
+				<Switch label="Dark Mode" bind:checked={darkMode} />
 			</div>
 
 			<div class="settings-summary">
@@ -184,23 +146,51 @@
 					<div class="summary-section">
 						<h4>Notifications</h4>
 						<ul>
-							<li>Email: <span class="status {emailNotifications ? 'on' : 'off'}">{emailNotifications ? 'Enabled' : 'Disabled'}</span></li>
-							<li>Push: <span class="status {pushNotifications ? 'on' : 'off'}">{pushNotifications ? 'Enabled' : 'Disabled'}</span></li>
+							<li>
+								Email: <span class="status {emailNotifications ? 'on' : 'off'}"
+									>{emailNotifications ? 'Enabled' : 'Disabled'}</span
+								>
+							</li>
+							<li>
+								Push: <span class="status {pushNotifications ? 'on' : 'off'}"
+									>{pushNotifications ? 'Enabled' : 'Disabled'}</span
+								>
+							</li>
 						</ul>
 					</div>
 					<div class="summary-section">
 						<h4>Account</h4>
 						<ul>
-							<li>Public Profile: <span class="status {publicProfile ? 'on' : 'off'}">{publicProfile ? 'Public' : 'Private'}</span></li>
-							<li>2FA: <span class="status {twoFactorAuth ? 'on' : 'off'}">{twoFactorAuth ? 'Enabled' : 'Disabled'}</span></li>
-							<li>Analytics: <span class="status {analyticsTracking ? 'on' : 'off'}">{analyticsTracking ? 'Enabled' : 'Disabled'}</span></li>
+							<li>
+								Public Profile: <span class="status {publicProfile ? 'on' : 'off'}"
+									>{publicProfile ? 'Public' : 'Private'}</span
+								>
+							</li>
+							<li>
+								2FA: <span class="status {twoFactorAuth ? 'on' : 'off'}"
+									>{twoFactorAuth ? 'Enabled' : 'Disabled'}</span
+								>
+							</li>
+							<li>
+								Analytics: <span class="status {analyticsTracking ? 'on' : 'off'}"
+									>{analyticsTracking ? 'Enabled' : 'Disabled'}</span
+								>
+							</li>
 						</ul>
 					</div>
 					<div class="summary-section">
 						<h4>Application</h4>
 						<ul>
-							<li>Auto-save: <span class="status {autoSave ? 'on' : 'off'}">{autoSave ? 'Enabled' : 'Disabled'}</span></li>
-							<li>Dark Mode: <span class="status {darkMode ? 'on' : 'off'}">{darkMode ? 'Enabled' : 'Disabled'}</span></li>
+							<li>
+								Auto-save: <span class="status {autoSave ? 'on' : 'off'}"
+									>{autoSave ? 'Enabled' : 'Disabled'}</span
+								>
+							</li>
+							<li>
+								Dark Mode: <span class="status {darkMode ? 'on' : 'off'}"
+									>{darkMode ? 'Enabled' : 'Disabled'}</span
+								>
+							</li>
 						</ul>
 					</div>
 				</div>
@@ -212,24 +202,10 @@
 		<div class="feature-toggles-section">
 			<h3>Developer Options</h3>
 			<div class="switch-section">
-				<Switch 
-					label="Beta Features" 
-					bind:checked={betaFeatures}
-				/>
-				<Switch 
-					label="Experimental UI" 
-					bind:checked={experimentalUI}
-					disabled={!betaFeatures}
-				/>
-				<Switch 
-					label="Advanced Mode" 
-					bind:checked={advancedMode}
-				/>
-				<Switch 
-					label="Debug Mode" 
-					bind:checked={debugMode}
-					disabled={!advancedMode}
-				/>
+				<Switch label="Beta Features" bind:checked={betaFeatures} />
+				<Switch label="Experimental UI" bind:checked={experimentalUI} disabled={!betaFeatures} />
+				<Switch label="Advanced Mode" bind:checked={advancedMode} />
+				<Switch label="Debug Mode" bind:checked={debugMode} disabled={!advancedMode} />
 			</div>
 			<div class="feature-info">
 				<strong>Feature Status:</strong>

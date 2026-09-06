@@ -4,10 +4,7 @@
 	import Button from '$lib/ui/Button.svelte';
 	import Textbox from '$lib/form/Textbox.svelte';
 	import Select from '$lib/form/Select.svelte';
-	import { 
-		iconRefresh,
-		iconSearch
-	} from '$lib/icon/index.js';
+	import { iconRefresh, iconSearch } from '$lib/icon/index.js';
 
 	// Pagination state variables
 	let basicPage = $state(1);
@@ -64,16 +61,17 @@
 
 	// Computed values for pagination
 	let totalUserPages = $derived(Math.ceil(mockUsers.length / Number(itemsPerPage)));
-	let currentUsers = $derived(mockUsers.slice(
-		(dataTablePage - 1) * Number(itemsPerPage),
-		dataTablePage * Number(itemsPerPage)
-	));
+	let currentUsers = $derived(
+		mockUsers.slice(
+			(dataTablePage - 1) * Number(itemsPerPage),
+			dataTablePage * Number(itemsPerPage)
+		)
+	);
 
 	let totalProductPages = $derived(Math.ceil(mockProducts.length / 12));
-	let currentProducts = $derived(mockProducts.slice(
-		(searchResultsPage - 1) * 12,
-		searchResultsPage * 12
-	));
+	let currentProducts = $derived(
+		mockProducts.slice((searchResultsPage - 1) * 12, searchResultsPage * 12)
+	);
 
 	// Event handlers
 	function handlePageChange(context: string, newPage: number) {
@@ -140,7 +138,10 @@
 
 <div class="page-header">
 	<h1>Pagination</h1>
-	<p>Navigation component for splitting large datasets across multiple pages with ellipsis and smart page button management.</p>
+	<p>
+		Navigation component for splitting large datasets across multiple pages with ellipsis and smart
+		page button management.
+	</p>
 </div>
 
 <div class="vstack">
@@ -151,27 +152,27 @@
 				<div class="pagination-examples">
 					<div class="pagination-demo">
 						<span class="demo-label">Small dataset (5 pages)</span>
-						<Pagination 
+						<Pagination
 							bind:selectedPage={smallPage}
 							totalPages={5}
 							onPageChange={handleSmallPageChange}
 						/>
 						<span class="current-info">Current: Page {smallPage} of 5</span>
 					</div>
-					
+
 					<div class="pagination-demo">
 						<span class="demo-label">Medium dataset (15 pages)</span>
-						<Pagination 
+						<Pagination
 							bind:selectedPage={basicPage}
 							totalPages={15}
 							onPageChange={handleBasicPageChange}
 						/>
 						<span class="current-info">Current: Page {basicPage} of 15</span>
 					</div>
-					
+
 					<div class="pagination-demo">
 						<span class="demo-label">Large dataset (100 pages)</span>
-						<Pagination 
+						<Pagination
 							bind:selectedPage={largePage}
 							totalPages={100}
 							onPageChange={handleLargePageChange}
@@ -201,27 +202,21 @@
 				<div class="config-controls">
 					<div class="config-group">
 						<label for="total-pages">Total Pages:</label>
-						<Textbox 
-							bind:value={totalPagesConfig}
-						/>
+						<Textbox bind:value={totalPagesConfig} />
 					</div>
 					<div class="config-group">
 						<label for="max-buttons">Max Page Buttons:</label>
-						<Textbox 
-							bind:value={maxButtonsConfig}
-						/>
+						<Textbox bind:value={maxButtonsConfig} />
 					</div>
 					<div class="config-group">
 						<label for="start-page">Starting Page:</label>
-						<Textbox 
-							bind:value={configPage}
-						/>
+						<Textbox bind:value={configPage} />
 					</div>
 				</div>
-				
+
 				<div class="config-result">
 					<div class="result-display">
-						<Pagination 
+						<Pagination
 							selectedPage={Number(configPage)}
 							totalPages={Number(totalPagesConfig)}
 							maxPageButtons={Number(maxButtonsConfig)}
@@ -229,7 +224,10 @@
 						/>
 					</div>
 					<div class="config-info">
-						<p><strong>Configuration:</strong> {totalPagesConfig} total pages, max {maxButtonsConfig} buttons</p>
+						<p>
+							<strong>Configuration:</strong>
+							{totalPagesConfig} total pages, max {maxButtonsConfig} buttons
+						</p>
 						<p><strong>Current:</strong> Page {configPage} of {totalPagesConfig}</p>
 					</div>
 				</div>
@@ -243,18 +241,15 @@
 			<div class="table-controls">
 				<div class="table-info">
 					<span><strong>{mockUsers.length}</strong> total users</span>
-					<Select 
+					<Select
 						bind:value={itemsPerPage}
 						options={itemsPerPageOptions}
 						onchange={handleItemsPerPageChange}
 					/>
 				</div>
 				<div class="jump-controls">
-					<Textbox 
-						bind:value={jumpPageInput}
-						placeholder="Page #"
-					/>
-					<Button 
+					<Textbox bind:value={jumpPageInput} placeholder="Page #" />
+					<Button
 						variant="secondary"
 						onclick={() => jumpToPage(jumpPageInput)}
 						disabled={!jumpPageInput}
@@ -263,7 +258,7 @@
 					</Button>
 				</div>
 			</div>
-			
+
 			<div class="data-table">
 				<table>
 					<thead>
@@ -294,15 +289,18 @@
 					</tbody>
 				</table>
 			</div>
-			
+
 			<div class="table-pagination">
 				<div class="pagination-info-display">
 					<span>
-						Showing {((dataTablePage - 1) * Number(itemsPerPage)) + 1}-{Math.min(dataTablePage * Number(itemsPerPage), mockUsers.length)} 
+						Showing {(dataTablePage - 1) * Number(itemsPerPage) + 1}-{Math.min(
+							dataTablePage * Number(itemsPerPage),
+							mockUsers.length
+						)}
 						of {mockUsers.length} users
 					</span>
 				</div>
-				<Pagination 
+				<Pagination
 					bind:selectedPage={dataTablePage}
 					totalPages={totalUserPages}
 					onPageChange={handleDataTablePageChange}
@@ -320,15 +318,11 @@
 					<span><strong>{mockProducts.length}</strong> products found</span>
 				</div>
 				<div class="search-controls">
-					<Button variant="secondary-subtle" svg={iconRefresh}>
-						Refresh
-					</Button>
-					<Button variant="secondary-subtle" svg={iconSearch}>
-						Advanced Search
-					</Button>
+					<Button variant="secondary-subtle" svg={iconRefresh}>Refresh</Button>
+					<Button variant="secondary-subtle" svg={iconSearch}>Advanced Search</Button>
 				</div>
 			</div>
-			
+
 			<div class="products-grid">
 				{#each currentProducts as product}
 					<div class="product-card">
@@ -344,15 +338,18 @@
 					</div>
 				{/each}
 			</div>
-			
+
 			<div class="search-pagination">
 				<div class="pagination-info-display">
 					<span>
-						Page {searchResultsPage} of {totalProductPages} 
-						({((searchResultsPage - 1) * 12) + 1}-{Math.min(searchResultsPage * 12, mockProducts.length)} of {mockProducts.length} products)
+						Page {searchResultsPage} of {totalProductPages}
+						({(searchResultsPage - 1) * 12 + 1}-{Math.min(
+							searchResultsPage * 12,
+							mockProducts.length
+						)} of {mockProducts.length} products)
 					</span>
 				</div>
-				<Pagination 
+				<Pagination
 					bind:selectedPage={searchResultsPage}
 					totalPages={totalProductPages}
 					onPageChange={handleSearchPageChange}
@@ -366,12 +363,8 @@
 			<h4>Pagination States</h4>
 			<div class="demo-controls">
 				<div class="control-buttons">
-					<Button onclick={resetPagination}>
-						Reset All Pages
-					</Button>
-					<Button variant="secondary" onclick={clearLog}>
-						Clear Activity Log
-					</Button>
+					<Button onclick={resetPagination}>Reset All Pages</Button>
+					<Button variant="secondary" onclick={clearLog}>Clear Activity Log</Button>
 				</div>
 				<div class="current-states">
 					<strong>Current Page States:</strong>
@@ -392,16 +385,16 @@
 		<div class="log-section">
 			<div class="log-header">
 				<h4>Pagination Activity</h4>
-				<Button variant="secondary-subtle" onclick={clearLog}>
-					Clear Log
-				</Button>
+				<Button variant="secondary-subtle" onclick={clearLog}>Clear Log</Button>
 			</div>
 			<div class="action-log">
 				{#each actionLog as entry}
 					<p class="log-entry">{entry}</p>
 				{/each}
 				{#if actionLog.length === 0}
-					<p class="no-actions">No pagination activity yet. Try navigating through the examples above!</p>
+					<p class="no-actions">
+						No pagination activity yet. Try navigating through the examples above!
+					</p>
 				{/if}
 			</div>
 		</div>
@@ -410,7 +403,9 @@
 	<Paper title="Features">
 		<div class="feature-list">
 			<ul>
-				<li><strong>Smart ellipsis:</strong> Automatically shows "..." when there are too many pages</li>
+				<li>
+					<strong>Smart ellipsis:</strong> Automatically shows "..." when there are too many pages
+				</li>
 				<li><strong>Configurable buttons:</strong> Set maximum number of page buttons displayed</li>
 				<li><strong>Navigation controls:</strong> Previous/next arrows with disabled states</li>
 				<li><strong>Selected state:</strong> Clear visual indication of current page</li>
@@ -605,7 +600,8 @@
 		background-color: var(--paper-body-bg);
 	}
 
-	th, td {
+	th,
+	td {
 		padding: 0.75rem;
 		text-align: left;
 		border-bottom: 1px solid var(--border-color);

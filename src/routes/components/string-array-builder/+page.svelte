@@ -19,17 +19,17 @@
 
 <div class="page-header">
 	<h1>StringArray Builder</h1>
-	<p>Visually build flat string arrays. Same UX as ComboBox Builder, but a single value column and no selected state.</p>
+	<p>
+		Visually build flat string arrays. Same UX as ComboBox Builder, but a single value column and no
+		selected state.
+	</p>
 </div>
 
 <div class="vstack">
 	<Paper title="Basic Usage">
 		<div class="demo-grid">
 			<div class="builder-section">
-				<StringArrayBuilder
-					label="Build Values"
-					bind:items={basicItems}
-				/>
+				<StringArrayBuilder label="Build Values" bind:items={basicItems} />
 			</div>
 			<div class="preview-section">
 				<h4>Generated Output</h4>
@@ -45,11 +45,7 @@
 	<Paper title="Pre-populated with Custom Placeholder">
 		<div class="demo-grid">
 			<div class="builder-section">
-				<StringArrayBuilder
-					label="Tags"
-					bind:items={tagItems}
-					placeholder="Enter a tag..."
-				/>
+				<StringArrayBuilder label="Tags" bind:items={tagItems} placeholder="Enter a tag..." />
 			</div>
 			<div class="preview-section">
 				<h4>Tags</h4>

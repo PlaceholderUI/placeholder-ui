@@ -103,7 +103,9 @@
 						<div class="group-label">{group.label}</div>
 					{/if}
 					{#each group.items as option, localIndex}
-						{@const globalIndex = groupedOptions.slice(0, groupIndex).reduce((acc, g) => acc + g.items.length, 0) + localIndex}
+						{@const globalIndex =
+							groupedOptions.slice(0, groupIndex).reduce((acc, g) => acc + g.items.length, 0) +
+							localIndex}
 						{@const localClasses = [selectedIndex === globalIndex ? 'selected p-2' : 'p-2']}
 						<button
 							class="combobox-item {localClasses.join(' ')} {option.class}"

@@ -70,7 +70,8 @@
 <div class="page-header">
 	<h1>Popover</h1>
 	<p>
-		Floating popover component with click-triggered display, customizable content, and directional positioning.
+		Floating popover component with click-triggered display, customizable content, and directional
+		positioning.
 	</p>
 </div>
 
@@ -174,7 +175,10 @@
 						{/snippet}
 						<div class="info-tooltip">
 							<h6>Information</h6>
-							<p>Hover popovers are great for displaying additional context without requiring a click.</p>
+							<p>
+								Hover popovers are great for displaying additional context without requiring a
+								click.
+							</p>
 						</div>
 					</Popover>
 				</div>
@@ -351,7 +355,9 @@
 						</div>
 						<div class="form-actions">
 							<button class="form-btn secondary">Cancel</button>
-							<button class="form-btn primary" onclick={() => addToLog('Item added')}>Add Item</button>
+							<button class="form-btn primary" onclick={() => addToLog('Item added')}
+								>Add Item</button
+							>
 						</div>
 					</div>
 				</Popover>
@@ -381,20 +387,69 @@
 			<div class="nav-examples">
 				<Popover label="Products" position="bottom" cssWidth="200px">
 					<nav class="nav-menu">
-						<a href="#1" onclick={(e) => { e.preventDefault(); addToLog('Navigate: All Products'); }}>All Products</a>
-						<a href="#2" onclick={(e) => { e.preventDefault(); addToLog('Navigate: Featured'); }}>Featured</a>
-						<a href="#3" onclick={(e) => { e.preventDefault(); addToLog('Navigate: New Arrivals'); }}>New Arrivals</a>
-						<a href="#4" onclick={(e) => { e.preventDefault(); addToLog('Navigate: Sale'); }}>Sale Items</a>
+						<a
+							href="#1"
+							onclick={(e) => {
+								e.preventDefault();
+								addToLog('Navigate: All Products');
+							}}>All Products</a
+						>
+						<a
+							href="#2"
+							onclick={(e) => {
+								e.preventDefault();
+								addToLog('Navigate: Featured');
+							}}>Featured</a
+						>
+						<a
+							href="#3"
+							onclick={(e) => {
+								e.preventDefault();
+								addToLog('Navigate: New Arrivals');
+							}}>New Arrivals</a
+						>
+						<a
+							href="#4"
+							onclick={(e) => {
+								e.preventDefault();
+								addToLog('Navigate: Sale');
+							}}>Sale Items</a
+						>
 					</nav>
 				</Popover>
 
 				<Popover label="Account" position="bottom" cssWidth="180px">
 					<nav class="nav-menu">
-						<a href="#1" onclick={(e) => { e.preventDefault(); addToLog('Navigate: Profile'); }}>My Profile</a>
-						<a href="#2" onclick={(e) => { e.preventDefault(); addToLog('Navigate: Orders'); }}>Orders</a>
-						<a href="#3" onclick={(e) => { e.preventDefault(); addToLog('Navigate: Wishlist'); }}>Wishlist</a>
+						<a
+							href="#1"
+							onclick={(e) => {
+								e.preventDefault();
+								addToLog('Navigate: Profile');
+							}}>My Profile</a
+						>
+						<a
+							href="#2"
+							onclick={(e) => {
+								e.preventDefault();
+								addToLog('Navigate: Orders');
+							}}>Orders</a
+						>
+						<a
+							href="#3"
+							onclick={(e) => {
+								e.preventDefault();
+								addToLog('Navigate: Wishlist');
+							}}>Wishlist</a
+						>
 						<div class="menu-divider"></div>
-						<a href="#4" class="danger" onclick={(e) => { e.preventDefault(); addToLog('Navigate: Logout'); }}>Logout</a>
+						<a
+							href="#4"
+							class="danger"
+							onclick={(e) => {
+								e.preventDefault();
+								addToLog('Navigate: Logout');
+							}}>Logout</a
+						>
 					</nav>
 				</Popover>
 			</div>
@@ -486,7 +541,10 @@
 					<strong>Custom triggers:</strong> Use any element as trigger via button snippet
 				</li>
 				<li><strong>Arrow indicators:</strong> Visual arrow pointing to trigger element</li>
-				<li><strong>Auto-dismiss:</strong> Closes when clicking outside (click mode) or mouse leaves (hover mode)</li>
+				<li>
+					<strong>Auto-dismiss:</strong> Closes when clicking outside (click mode) or mouse leaves (hover
+					mode)
+				</li>
 				<li><strong>Width control:</strong> Customizable width with cssWidth prop</li>
 				<li><strong>Theme integration:</strong> Full light/dark mode support</li>
 				<li><strong>Stop propagation:</strong> Click events inside popover don't close it</li>
@@ -913,7 +971,6 @@
 		color: var(--danger);
 	}
 
-
 	.filter-content {
 		padding: 1rem;
 	}
@@ -1120,7 +1177,6 @@
 		align-items: center;
 		justify-content: center;
 	}
-
 
 	.search-filters {
 		display: flex;

@@ -1,5 +1,5 @@
 export interface PaginatedResults<T> {
-    page: number;
-    totalPages: number;
-    results: T[];
+	page: number;
+	totalPages: number;
+	results: T[];
 }

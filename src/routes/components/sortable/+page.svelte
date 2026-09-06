@@ -42,8 +42,8 @@
 	<h1>Sortable</h1>
 	<p>
 		Drag-and-drop reorderable list. Works with any data via a snippet — the component handles drag
-		mechanics, animates items out of the way as you drag, and writes the reordered array back to
-		the bound prop.
+		mechanics, animates items out of the way as you drag, and writes the reordered array back to the
+		bound prop.
 	</p>
 </div>
 

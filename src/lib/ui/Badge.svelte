@@ -43,12 +43,12 @@
 	let isDisabled: boolean = $derived(loading || disabled);
 	let type: 'a' | 'button' | 'div' = $derived(onClick ? 'button' : href ? 'a' : 'div');
 
-	const elClass = $derived(
-		`badge ${isDisabled ? 'disabled' : ''}`
-	);
+	const elClass = $derived(`badge ${isDisabled ? 'disabled' : ''}`);
 </script>
 
-<div class="badge-container {variant} shape-{shape} size-{size} {onDelete ? 'badge-with-button' : ''} ">
+<div
+	class="badge-container {variant} shape-{shape} size-{size} {onDelete ? 'badge-with-button' : ''} "
+>
 	{#if type == 'a' && !disabled}
 		<a class={elClass} {href} {target}> {@render children?.()}</a>
 	{:else if type == 'button'}
@@ -334,5 +334,4 @@
 	.size-lg .badge-button {
 		padding: 6px;
 	}
-
 </style>

@@ -27,7 +27,12 @@
 
 	<Paper title="Tooltips">
 		<div class="form-grid">
-			<Textbox label="Simple Tooltip" tooltipText="Enter your full name here" placeholder="Enter some text..." bind:value={basicValue} />
+			<Textbox
+				label="Simple Tooltip"
+				tooltipText="Enter your full name here"
+				placeholder="Enter some text..."
+				bind:value={basicValue}
+			/>
 			<Textbox label="Rich Tooltip" placeholder="Enter some text..." bind:value={basicValue}>
 				{#snippet tooltipContent()}
 					<strong>Tip:</strong> Use <em>rich content</em> like links or formatted text.

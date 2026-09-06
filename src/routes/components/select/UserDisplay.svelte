@@ -18,11 +18,7 @@
 </script>
 
 <div class="user-display">
-	<Avatar 
-		src={(option as any).avatar} 
-		alt={option.label} 
-		size={sizeMap[size]}
-	/>
+	<Avatar src={(option as any).avatar} alt={option.label} size={sizeMap[size]} />
 	<div class="user-info">
 		<span class="user-name">{option.label}</span>
 		{#if (option as any).email}

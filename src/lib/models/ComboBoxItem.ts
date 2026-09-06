@@ -1,28 +1,28 @@
-import type { NotifyModel } from "./NotifyModel.js";
+import type { NotifyModel } from './NotifyModel.js';
 
 export interface ComboBoxGroup {
-    label: string;
-    items: ComboBoxItem[];
-    showGroupName?: boolean;
+	label: string;
+	items: ComboBoxItem[];
+	showGroupName?: boolean;
 }
 
 export interface ComboBoxItem {
-    label: string;
-    value: string;
-    href?: string;
-    class?: string;
-    selected?: boolean;
-    component?: any;
-    componentProps?: any;
-    selectedComponent?: any;
-    selectedComponentProps?: any;
-    groupName?: string;
-    imageSrc?: string;
-    description?: string;
-    /** Marks a synthetic "add new value" suggestion (see Autocomplete) */
-    isAddNew?: boolean;
+	label: string;
+	value: string;
+	href?: string;
+	class?: string;
+	selected?: boolean;
+	component?: any;
+	componentProps?: any;
+	selectedComponent?: any;
+	selectedComponentProps?: any;
+	groupName?: string;
+	imageSrc?: string;
+	description?: string;
+	/** Marks a synthetic "add new value" suggestion (see Autocomplete) */
+	isAddNew?: boolean;
 }
 
-export type FetchFunctionType = (() => Promise<NotifyModel<ComboBoxItem[]>>);
-export type SearchFunctionType = ((query: string) => Promise<NotifyModel<ComboBoxItem[]>>);
-export type RetrieveLabelFunctionType = ((value: any) => Promise<NotifyModel<string | undefined>>);
+export type FetchFunctionType = () => Promise<NotifyModel<ComboBoxItem[]>>;
+export type SearchFunctionType = (query: string) => Promise<NotifyModel<ComboBoxItem[]>>;
+export type RetrieveLabelFunctionType = (value: any) => Promise<NotifyModel<string | undefined>>;

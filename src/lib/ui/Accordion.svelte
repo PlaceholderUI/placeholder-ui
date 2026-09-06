@@ -59,9 +59,7 @@
 		children
 	}: AccordionProps = $props();
 
-	const openValues = $derived(
-		Array.isArray(value) ? value : value ? [value] : []
-	);
+	const openValues = $derived(Array.isArray(value) ? value : value ? [value] : []);
 
 	function isOpen(itemValue: string): boolean {
 		return openValues.includes(itemValue);

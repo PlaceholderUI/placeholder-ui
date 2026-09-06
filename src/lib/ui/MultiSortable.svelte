@@ -114,9 +114,7 @@
 		if (!accepts(ctx)) return;
 		const host = container;
 		if (!host) return;
-		const itemEls = Array.from(
-			host.querySelectorAll<HTMLElement>(':scope > .pui-msortable-item')
-		);
+		const itemEls = Array.from(host.querySelectorAll<HTMLElement>(':scope > .pui-msortable-item'));
 		if (itemEls.length === 0) {
 			dropIndex = null;
 			return;

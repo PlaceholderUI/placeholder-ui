@@ -34,9 +34,7 @@
 		return items.some((item, i) => item === value && i !== excludeIndex);
 	}
 
-	let isDuplicateNewValue = $derived(
-		newValue.trim() !== '' && valueExists(newValue.trim())
-	);
+	let isDuplicateNewValue = $derived(newValue.trim() !== '' && valueExists(newValue.trim()));
 
 	function addItem() {
 		const trimmed = newValue.trim();

@@ -104,8 +104,8 @@
 
 	// Custom display component examples
 	const userOptions: any[] = [
-		{ 
-			label: 'John Doe', 
+		{
+			label: 'John Doe',
 			value: 'john',
 			email: 'john.doe@example.com',
 			avatar: 'https://i.pravatar.cc/150?u=john',
@@ -114,8 +114,8 @@
 			selectedComponent: UserDisplay,
 			selectedComponentProps: { size: 'medium', showStatus: true }
 		},
-		{ 
-			label: 'Jane Smith', 
+		{
+			label: 'Jane Smith',
 			value: 'jane',
 			email: 'jane.smith@example.com',
 			avatar: 'https://i.pravatar.cc/150?u=jane',
@@ -124,8 +124,8 @@
 			selectedComponent: UserDisplay,
 			selectedComponentProps: { size: 'medium', showStatus: true }
 		},
-		{ 
-			label: 'Bob Johnson', 
+		{
+			label: 'Bob Johnson',
 			value: 'bob',
 			email: 'bob.johnson@example.com',
 			avatar: 'https://i.pravatar.cc/150?u=bob',
@@ -134,8 +134,8 @@
 			selectedComponent: UserDisplay,
 			selectedComponentProps: { size: 'medium', showStatus: true }
 		},
-		{ 
-			label: 'Alice Williams', 
+		{
+			label: 'Alice Williams',
 			value: 'alice',
 			email: 'alice.williams@example.com',
 			avatar: 'https://i.pravatar.cc/150?u=alice',
@@ -144,8 +144,8 @@
 			selectedComponent: UserDisplay,
 			selectedComponentProps: { size: 'medium', showStatus: true }
 		},
-		{ 
-			label: 'Charlie Brown', 
+		{
+			label: 'Charlie Brown',
 			value: 'charlie',
 			email: 'charlie.brown@example.com',
 			avatar: 'https://i.pravatar.cc/150?u=charlie',
@@ -329,16 +329,16 @@
 	<Paper title="Basic Usage">
 		<div class="form-grid">
 			<div class="select-section">
-				<Select 
-					label="Choose Country" 
+				<Select
+					label="Choose Country"
 					options={countryOptions}
 					placeholder="Select a country..."
-					bind:value={basicCountry} 
+					bind:value={basicCountry}
 				/>
-				<Select 
-					label="Priority (Pre-selected)" 
+				<Select
+					label="Priority (Pre-selected)"
 					options={priorityOptions}
-					bind:value={preSelectedPriority} 
+					bind:value={preSelectedPriority}
 				/>
 			</div>
 			<div class="select-info">
@@ -352,26 +352,26 @@
 	<Paper title="States">
 		<div class="form-grid">
 			<div class="select-section">
-				<Select 
-					label="Required Status" 
+				<Select
+					label="Required Status"
 					options={statusOptions}
 					placeholder="Please select a status..."
 					required={true}
-					bind:value={requiredStatus} 
+					bind:value={requiredStatus}
 				/>
-				<Select 
-					label="Disabled Select" 
+				<Select
+					label="Disabled Select"
 					options={statusOptions}
 					disabled={true}
-					bind:value={disabledChoice} 
+					bind:value={disabledChoice}
 				/>
-				<Select 
-					label="Select with Error" 
+				<Select
+					label="Select with Error"
 					options={statusOptions}
 					placeholder="This has an error..."
 					showError={true}
 					errorText="Please select a valid option"
-					bind:value={errorChoice} 
+					bind:value={errorChoice}
 				/>
 			</div>
 			<div class="select-info">
@@ -386,18 +386,20 @@
 	<Paper title="Searchable Select">
 		<div class="form-grid">
 			<div class="select-section">
-				<Select 
-					label="Country with Search" 
+				<Select
+					label="Country with Search"
 					options={largeOptionsList}
 					placeholder="Type to search countries..."
 					allowSearch={true}
-					bind:value={searchableCountry} 
+					bind:value={searchableCountry}
 				/>
 			</div>
 			<div class="select-info">
 				<strong>Search Features:</strong>
 				<p>Selected: {searchableCountry || 'None selected'}</p>
-				<p class="note">Start typing to filter the options. This example includes {largeOptionsList.length} countries.</p>
+				<p class="note">
+					Start typing to filter the options. This example includes {largeOptionsList.length} countries.
+				</p>
 			</div>
 		</div>
 	</Paper>
@@ -405,11 +407,11 @@
 	<Paper title="Grouped Options">
 		<div class="form-grid">
 			<div class="select-section">
-				<Select 
-					label="Skill Category" 
+				<Select
+					label="Skill Category"
 					groupedOptions={categoryGroups}
 					placeholder="Select your expertise..."
-					bind:value={groupedCategory} 
+					bind:value={groupedCategory}
 				/>
 			</div>
 			<div class="select-info">
@@ -423,16 +425,16 @@
 	<Paper title="Event Handlers & Raw Values">
 		<div class="form-grid">
 			<div class="select-section">
-				<Select 
-					label="Country with Events" 
+				<Select
+					label="Country with Events"
 					options={countryOptions}
 					placeholder="Select country..."
 					bind:value={basicCountry}
 					onchange={handleCountryChange}
 					onchangeRaw={handleRawCountryChange}
 				/>
-				<Select 
-					label="Priority with Events" 
+				<Select
+					label="Priority with Events"
 					options={priorityOptions}
 					bind:value={preSelectedPriority}
 					onchange={handlePriorityChange}
@@ -441,8 +443,16 @@
 			</div>
 			<div class="select-info">
 				<strong>Event Data:</strong>
-				<p>Raw Country: {rawCountryValue ? `${rawCountryValue.label} (${rawCountryValue.value})` : 'None'}</p>
-				<p>Raw Priority: {rawPriorityValue ? `${rawPriorityValue.label} (${rawPriorityValue.value})` : 'None'}</p>
+				<p>
+					Raw Country: {rawCountryValue
+						? `${rawCountryValue.label} (${rawCountryValue.value})`
+						: 'None'}
+				</p>
+				<p>
+					Raw Priority: {rawPriorityValue
+						? `${rawPriorityValue.label} (${rawPriorityValue.value})`
+						: 'None'}
+				</p>
 				<p class="note">Check console for detailed event logs.</p>
 			</div>
 		</div>
@@ -451,8 +461,8 @@
 	<Paper title="Custom Display Components">
 		<div class="form-grid">
 			<div class="select-section">
-				<Select 
-					label="Assign User" 
+				<Select
+					label="Assign User"
 					options={userOptions}
 					placeholder="Select a user..."
 					bind:value={selectedUser}
@@ -501,8 +511,8 @@
 				<p>Country: {dependentCountry || 'None'}</p>
 				<p>Region: {dependentRegion || 'None'}</p>
 				<p class="note">
-					Region options update reactively when country changes. Regions are defined for US, CA,
-					UK, and DE — pick others to see the empty/disabled state.
+					Region options update reactively when country changes. Regions are defined for US, CA, UK,
+					and DE — pick others to see the empty/disabled state.
 				</p>
 			</div>
 		</div>
@@ -530,11 +540,10 @@
 				<p>Selected: {mutableValue || 'None'}</p>
 				<p>Options count: {mutableOptions.length}</p>
 				<p class="note">
-					Try: open the dropdown, type a filter, then click a swap button — the active filter
-					should re-apply to the new options. Selecting a value and then swapping clears the
-					binding (Select auto-clears <code>value</code> when the current selection isn't in the
-					new options and no async data source is configured, so form submits don't carry stale
-					keys).
+					Try: open the dropdown, type a filter, then click a swap button — the active filter should
+					re-apply to the new options. Selecting a value and then swapping clears the binding
+					(Select auto-clears <code>value</code> when the current selection isn't in the new options and
+					no async data source is configured, so form submits don't carry stale keys).
 				</p>
 			</div>
 		</div>
@@ -582,10 +591,9 @@
 				<strong>Reference Test:</strong>
 				<p>Selected: {stableValue || 'None'}</p>
 				<p class="note">
-					Each tick passes a brand-new array reference with the same contents. The current ref
-					guard does <em>not</em> deep-compare, so this will re-convert on every tick — confirm
-					the dropdown doesn't lose state or flicker. Open the dropdown and click the button to
-					verify.
+					Each tick passes a brand-new array reference with the same contents. The current ref guard
+					does <em>not</em> deep-compare, so this will re-convert on every tick — confirm the dropdown
+					doesn't lose state or flicker. Open the dropdown and click the button to verify.
 				</p>
 			</div>
 		</div>
@@ -595,26 +603,22 @@
 		<div class="form-section">
 			<h3>User Profile Setup</h3>
 			<div class="select-section">
-				<Select 
-					label="Country" 
+				<Select
+					label="Country"
 					options={countryOptions}
 					placeholder="Select your country..."
 					bind:value={userCountry}
 					required={true}
 				/>
-				<Select 
-					label="Task Priority Preference" 
+				<Select
+					label="Task Priority Preference"
 					options={priorityOptions}
 					bind:value={taskPriority}
 					required={true}
 				/>
-				<Select 
-					label="Project Status" 
-					options={statusOptions}
-					bind:value={projectStatus}
-				/>
-				<Select 
-					label="Primary Skill" 
+				<Select label="Project Status" options={statusOptions} bind:value={projectStatus} />
+				<Select
+					label="Primary Skill"
 					groupedOptions={categoryGroups}
 					placeholder="Choose your main expertise..."
 					bind:value={skillCategory}
@@ -631,10 +635,7 @@
 					<li>Primary Skill: {skillCategory || 'Not selected'}</li>
 				</ul>
 				<div class="summary-actions">
-					<button 
-						class="btn-primary" 
-						disabled={!userCountry || !taskPriority || !skillCategory}
-					>
+					<button class="btn-primary" disabled={!userCountry || !taskPriority || !skillCategory}>
 						Save Profile
 					</button>
 				</div>
@@ -658,7 +659,9 @@
 				<li><strong>Keyboard navigation:</strong> Full keyboard support with arrow keys</li>
 				<li><strong>Dynamic loading:</strong> Support for async data fetching</li>
 				<li><strong>Custom placeholders:</strong> Configurable placeholder text</li>
-				<li><strong>Custom display components:</strong> Use custom components for rich item display</li>
+				<li>
+					<strong>Custom display components:</strong> Use custom components for rich item display
+				</li>
 				<li><strong>Accessibility:</strong> ARIA compliant with screen reader support</li>
 			</ul>
 		</div>
@@ -743,15 +746,31 @@
 		margin-bottom: 0.5rem;
 	}
 
-	.priority-low { color: #10b981; }
-	.priority-medium { color: #f59e0b; }
-	.priority-high { color: #f97316; }
-	.priority-critical { color: #dc2626; }
+	.priority-low {
+		color: #10b981;
+	}
+	.priority-medium {
+		color: #f59e0b;
+	}
+	.priority-high {
+		color: #f97316;
+	}
+	.priority-critical {
+		color: #dc2626;
+	}
 
-	.status-active { color: #10b981; }
-	.status-inactive { color: #6b7280; }
-	.status-pending { color: #f59e0b; }
-	.status-archived { color: #9ca3af; }
+	.status-active {
+		color: #10b981;
+	}
+	.status-inactive {
+		color: #6b7280;
+	}
+	.status-pending {
+		color: #f59e0b;
+	}
+	.status-archived {
+		color: #9ca3af;
+	}
 
 	.summary-actions {
 		border-top: 1px solid var(--border-color);

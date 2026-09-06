@@ -1,4 +1,4 @@
-import dayjs from "./dayjs.js";
+import dayjs from './dayjs.js';
 
 export function getDateInXTimeAgo(date: string) {
 	const d = dayjs(date);

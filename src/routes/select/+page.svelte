@@ -29,7 +29,7 @@
 		},
 		{
 			label: 'Group 2',
-            showGroupName: false,
+			showGroupName: false,
 			items: [
 				{ label: 'Group 2 Test option 5', value: '5', selected: false },
 				{ label: 'Group 2 Test option 6', value: '6', selected: false },

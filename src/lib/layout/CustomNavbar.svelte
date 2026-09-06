@@ -1,6 +1,6 @@
 <script lang="ts">
 	import type { Snippet } from 'svelte';
-	
+
 	export interface CustomNavbarProps {
 		/** Header text for the mobile drawer */
 		drawerHeader?: string | undefined;

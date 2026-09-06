@@ -1,12 +1,12 @@
 <script lang="ts">
 	import Paper from '$lib/display/Paper.svelte';
 	import ActionIcon from '$lib/ui/ActionIcon.svelte';
-	import { 
-		iconPlus, 
-		iconTrash, 
-		iconEdit, 
-		iconSearch, 
-		iconDownload, 
+	import {
+		iconPlus,
+		iconTrash,
+		iconEdit,
+		iconSearch,
+		iconDownload,
 		iconCloudUpload,
 		iconRefresh,
 		iconCopy,
@@ -39,7 +39,7 @@
 	function handleAsyncAction(action: string) {
 		isLoading = true;
 		addToLog(`${action} started (loading...)`);
-		
+
 		setTimeout(() => {
 			isLoading = false;
 			addToLog(`${action} completed`);
@@ -68,30 +68,12 @@
 			<div class="icon-section">
 				<h4>Common Actions</h4>
 				<div class="icon-grid">
-					<ActionIcon 
-						svg={iconPlus} 
-						onclick={() => handleAction('Add')}
-					/>
-					<ActionIcon 
-						svg={iconEdit} 
-						onclick={() => handleAction('Edit')}
-					/>
-					<ActionIcon 
-						svg={iconTrash} 
-						onclick={() => handleAction('Delete')}
-					/>
-					<ActionIcon 
-						svg={iconSearch} 
-						onclick={() => handleAction('Search')}
-					/>
-					<ActionIcon 
-						svg={iconDownload} 
-						onclick={() => handleAction('Download')}
-					/>
-					<ActionIcon 
-						svg={iconRefresh} 
-						onclick={() => handleAction('Refresh')}
-					/>
+					<ActionIcon svg={iconPlus} onclick={() => handleAction('Add')} />
+					<ActionIcon svg={iconEdit} onclick={() => handleAction('Edit')} />
+					<ActionIcon svg={iconTrash} onclick={() => handleAction('Delete')} />
+					<ActionIcon svg={iconSearch} onclick={() => handleAction('Search')} />
+					<ActionIcon svg={iconDownload} onclick={() => handleAction('Download')} />
+					<ActionIcon svg={iconRefresh} onclick={() => handleAction('Refresh')} />
 				</div>
 			</div>
 			<div class="icon-info">
@@ -227,9 +209,9 @@
 						<span>Disabled</span>
 					</div>
 					<div class="state-example">
-						<ActionIcon 
-							svg={iconCloudUpload} 
-							variant="secondary" 
+						<ActionIcon
+							svg={iconCloudUpload}
+							variant="secondary"
 							loading={isLoading}
 							onclick={() => handleAsyncAction('Upload')}
 						/>
@@ -261,18 +243,38 @@
 				<h4>Toolbar Actions</h4>
 				<div class="toolbar">
 					<ActionIcon svg={iconCopy} variant="auto-subtle" onclick={() => handleAction('Copy')} />
-					<ActionIcon svg={iconDownload} variant="auto-subtle" onclick={() => handleAction('Download')} />
+					<ActionIcon
+						svg={iconDownload}
+						variant="auto-subtle"
+						onclick={() => handleAction('Download')}
+					/>
 					<ActionIcon svg={iconEdit} variant="auto-subtle" onclick={() => handleAction('Edit')} />
-					<ActionIcon svg={iconTrash} variant="danger-subtle" onclick={() => handleAction('Delete')} />
+					<ActionIcon
+						svg={iconTrash}
+						variant="danger-subtle"
+						onclick={() => handleAction('Delete')}
+					/>
 				</div>
 			</div>
 
 			<div class="contact-example">
 				<h4>Contact Actions</h4>
 				<div class="contact-actions">
-					<ActionIcon svg={iconMail} variant="primary-subtle" onclick={() => handleAction('Email')} />
-					<ActionIcon svg={iconPhone} variant="accent-subtle" onclick={() => handleAction('Call')} />
-					<ActionIcon svg={iconUser} variant="tertiary-subtle" onclick={() => handleAction('Profile')} />
+					<ActionIcon
+						svg={iconMail}
+						variant="primary-subtle"
+						onclick={() => handleAction('Email')}
+					/>
+					<ActionIcon
+						svg={iconPhone}
+						variant="accent-subtle"
+						onclick={() => handleAction('Call')}
+					/>
+					<ActionIcon
+						svg={iconUser}
+						variant="tertiary-subtle"
+						onclick={() => handleAction('Profile')}
+					/>
 				</div>
 			</div>
 		</div>
@@ -282,31 +284,11 @@
 		<div class="demo-section">
 			<h4>Action Log Demo</h4>
 			<div class="demo-controls">
-				<ActionIcon 
-					svg={iconPlus} 
-					variant="accent" 
-					onclick={() => handleAction('Create Item')}
-				/>
-				<ActionIcon 
-					svg={iconEdit} 
-					variant="primary" 
-					onclick={() => handleAction('Edit Item')}
-				/>
-				<ActionIcon 
-					svg={iconCopy} 
-					variant="tertiary" 
-					onclick={() => handleAction('Copy Item')}
-				/>
-				<ActionIcon 
-					svg={iconTrash} 
-					variant="danger" 
-					onclick={() => handleAction('Delete Item')}
-				/>
-				<ActionIcon 
-					svg={iconX} 
-					variant="secondary" 
-					onclick={clearLog}
-				/>
+				<ActionIcon svg={iconPlus} variant="accent" onclick={() => handleAction('Create Item')} />
+				<ActionIcon svg={iconEdit} variant="primary" onclick={() => handleAction('Edit Item')} />
+				<ActionIcon svg={iconCopy} variant="tertiary" onclick={() => handleAction('Copy Item')} />
+				<ActionIcon svg={iconTrash} variant="danger" onclick={() => handleAction('Delete Item')} />
+				<ActionIcon svg={iconX} variant="secondary" onclick={clearLog} />
 			</div>
 			<div class="action-log">
 				<strong>Recent Actions:</strong>

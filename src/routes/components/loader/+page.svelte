@@ -3,12 +3,7 @@
 	import Loader from '$lib/ui/Loader.svelte';
 	import Button from '$lib/ui/Button.svelte';
 	import ActionIcon from '$lib/ui/ActionIcon.svelte';
-	import { 
-		iconRefresh, 
-		iconDownload, 
-		iconCloudUpload,
-		iconPlus
-	} from '$lib/icon/index.js';
+	import { iconRefresh, iconDownload, iconCloudUpload, iconPlus } from '$lib/icon/index.js';
 
 	// Loader state variables
 	let showBasicLoader = false;
@@ -37,12 +32,15 @@
 	}
 
 	// Simulate async operations
-	async function simulateAsyncOperation(operationType: keyof typeof loadingStates, duration: number = 2000) {
+	async function simulateAsyncOperation(
+		operationType: keyof typeof loadingStates,
+		duration: number = 2000
+	) {
 		loadingStates[operationType] = true;
 		addToLog(`Started ${operationType}...`);
-		
-		await new Promise(resolve => setTimeout(resolve, duration));
-		
+
+		await new Promise((resolve) => setTimeout(resolve, duration));
+
 		loadingStates[operationType] = false;
 		addToLog(`Completed ${operationType}`);
 	}
@@ -50,35 +48,35 @@
 	function toggleBasicLoader() {
 		showBasicLoader = !showBasicLoader;
 		if (showBasicLoader) {
-			setTimeout(() => showBasicLoader = false, 3000);
+			setTimeout(() => (showBasicLoader = false), 3000);
 		}
 	}
 
 	function toggleFullScreenLoader() {
 		showFullScreenLoader = !showFullScreenLoader;
 		if (showFullScreenLoader) {
-			setTimeout(() => showFullScreenLoader = false, 3000);
+			setTimeout(() => (showFullScreenLoader = false), 3000);
 		}
 	}
 
 	function toggleButtonLoader() {
 		showButtonLoader = !showButtonLoader;
 		if (showButtonLoader) {
-			setTimeout(() => showButtonLoader = false, 2000);
+			setTimeout(() => (showButtonLoader = false), 2000);
 		}
 	}
 
 	function toggleCardLoader() {
 		showCardLoader = !showCardLoader;
 		if (showCardLoader) {
-			setTimeout(() => showCardLoader = false, 2500);
+			setTimeout(() => (showCardLoader = false), 2500);
 		}
 	}
 
 	function toggleDataLoader() {
 		showDataLoader = !showDataLoader;
 		if (showDataLoader) {
-			setTimeout(() => showDataLoader = false, 4000);
+			setTimeout(() => (showDataLoader = false), 4000);
 		}
 	}
 
@@ -162,9 +160,7 @@
 
 				<div class="interactive-demo">
 					<div class="demo-controls">
-						<Button variant="accent" onclick={toggleCardLoader}>
-							Toggle Card Loader
-						</Button>
+						<Button variant="accent" onclick={toggleCardLoader}>Toggle Card Loader</Button>
 					</div>
 					<div class="loader-card" class:loading={showCardLoader}>
 						{#if showCardLoader}
@@ -187,8 +183,8 @@
 			<h4>Real-world Loading Examples</h4>
 			<div class="async-grid">
 				<div class="async-demo">
-					<Button 
-						variant="primary" 
+					<Button
+						variant="primary"
 						disabled={loadingStates.saving}
 						onclick={() => simulateAsyncOperation('saving')}
 					>
@@ -202,8 +198,8 @@
 				</div>
 
 				<div class="async-demo">
-					<Button 
-						variant="tertiary" 
+					<Button
+						variant="tertiary"
 						svg={iconDownload}
 						disabled={loadingStates.downloading}
 						onclick={() => simulateAsyncOperation('downloading')}
@@ -223,7 +219,7 @@
 							<Loader sizeOverride="20px" class="text-brand-accent" />
 						</div>
 					{:else}
-						<ActionIcon 
+						<ActionIcon
 							svg={iconCloudUpload}
 							variant="accent-subtle"
 							onclick={() => simulateAsyncOperation('uploading', 3000)}
@@ -238,7 +234,7 @@
 							<Loader sizeOverride="20px" class="text-brand-primary" />
 						</div>
 					{:else}
-						<ActionIcon 
+						<ActionIcon
 							svg={iconRefresh}
 							variant="secondary-subtle"
 							onclick={() => simulateAsyncOperation('refreshing', 1500)}
@@ -279,11 +275,7 @@
 			<h4>Table with Loading State</h4>
 			<div class="data-demo">
 				<div class="table-controls">
-					<Button 
-						variant="accent-outline"
-						onclick={toggleDataLoader}
-						disabled={showDataLoader}
-					>
+					<Button variant="accent-outline" onclick={toggleDataLoader} disabled={showDataLoader}>
 						{showDataLoader ? 'Loading Data...' : 'Reload Table'}
 					</Button>
 				</div>
@@ -340,9 +332,7 @@
 		<div class="log-section">
 			<div class="log-header">
 				<h4>Loading Activity</h4>
-				<Button variant="secondary-subtle" onclick={clearLog}>
-					Clear Log
-				</Button>
+				<Button variant="secondary-subtle" onclick={clearLog}>Clear Log</Button>
 			</div>
 			<div class="action-log">
 				{#each actionLog as entry}
@@ -358,7 +348,9 @@
 	<Paper title="Features">
 		<div class="feature-list">
 			<ul>
-				<li><strong>Customizable sizes:</strong> Any size value supported with sizeOverride prop</li>
+				<li>
+					<strong>Customizable sizes:</strong> Any size value supported with sizeOverride prop
+				</li>
 				<li><strong>Full-screen overlay:</strong> Built-in overlay mode with backdrop</li>
 				<li><strong>Smooth animation:</strong> CSS-based rotation with 2-second cycle</li>
 				<li><strong>Theme integration:</strong> Colors adapt to light/dark mode</li>
@@ -596,7 +588,8 @@
 		background-color: var(--paper-body-bg);
 	}
 
-	th, td {
+	th,
+	td {
 		padding: 0.75rem;
 		text-align: left;
 		border-bottom: 1px solid var(--border-color);

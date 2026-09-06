@@ -10,13 +10,14 @@
 	import Tooltip from '$lib/ui/Tooltip.svelte';
 	import Popover from '$lib/ui/Popover.svelte';
 	import Dropdown from '$lib/ui/Dropdown.svelte';
-	import { 
-		iconEdit, 
-		iconTrash, 
+	import {
+		iconEdit,
+		iconTrash,
 		iconDownload,
 		iconInfoCircle,
 		iconAlertTriangle,
-		iconUser	} from '$lib/icon/index.js';
+		iconUser
+	} from '$lib/icon/index.js';
 
 	// Dialog state variables
 	let basicDialog = false;
@@ -88,12 +89,8 @@
 			<div class="dialog-section">
 				<h4>Simple Dialogs</h4>
 				<div class="button-row">
-					<Button onclick={() => basicDialog = true}>
-						Basic Dialog
-					</Button>
-					<Button variant="secondary" onclick={() => infoDialog = true}>
-						Info Dialog
-					</Button>
+					<Button onclick={() => (basicDialog = true)}>Basic Dialog</Button>
+					<Button variant="secondary" onclick={() => (infoDialog = true)}>Info Dialog</Button>
 				</div>
 			</div>
 			<div class="dialog-info">
@@ -109,10 +106,10 @@
 		<div class="size-section">
 			<h4>Different Sizes</h4>
 			<div class="size-grid">
-				<Button onclick={() => basicDialog = true}>Small</Button>
-				<Button onclick={() => basicDialog = true}>Medium (default)</Button>
-				<Button onclick={() => customDialog = true}>Large</Button>
-				<Button variant="secondary" onclick={() => fullScreenDialog = true}>Full Screen</Button>
+				<Button onclick={() => (basicDialog = true)}>Small</Button>
+				<Button onclick={() => (basicDialog = true)}>Medium (default)</Button>
+				<Button onclick={() => (customDialog = true)}>Large</Button>
+				<Button variant="secondary" onclick={() => (fullScreenDialog = true)}>Full Screen</Button>
 			</div>
 		</div>
 	</Paper>
@@ -121,9 +118,7 @@
 		<div class="form-dialog-section">
 			<h4>User Profile Form</h4>
 			<div class="form-demo">
-				<Button svg={iconUser} onclick={() => formDialog = true}>
-					Edit Profile
-				</Button>
+				<Button svg={iconUser} onclick={() => (formDialog = true)}>Edit Profile</Button>
 				<div class="current-values">
 					<strong>Current Values:</strong>
 					<p>Name: {userName || 'Not set'}</p>
@@ -141,20 +136,20 @@
 				<div class="item-card">
 					<span class="item-name">{selectedItem}</span>
 					<div class="item-actions">
-						<ActionIcon 
-							svg={iconDownload} 
+						<ActionIcon
+							svg={iconDownload}
 							variant="primary-subtle"
-							onclick={() => customDialog = true}
+							onclick={() => (customDialog = true)}
 						/>
-						<ActionIcon 
-							svg={iconEdit} 
+						<ActionIcon
+							svg={iconEdit}
 							variant="secondary-subtle"
-							onclick={() => formDialog = true}
+							onclick={() => (formDialog = true)}
 						/>
-						<ActionIcon 
-							svg={iconTrash} 
+						<ActionIcon
+							svg={iconTrash}
 							variant="danger-subtle"
-							onclick={() => deleteDialog = true}
+							onclick={() => (deleteDialog = true)}
 						/>
 					</div>
 				</div>
@@ -166,8 +161,8 @@
 		<div class="custom-section">
 			<p>
 				The dialog body scrolls by default. Selects, pickers, tooltips, popovers and dropdowns
-				render in the browser's top layer, so they open outside the scrolling area instead of
-				being clipped by it. Scroll the body while a select is open to see it track its field.
+				render in the browser's top layer, so they open outside the scrolling area instead of being
+				clipped by it. Scroll the body while a select is open to see it track its field.
 			</p>
 			<div class="custom-options">
 				<Button onclick={() => (scrollDialog = true)}>Open Scrolling Dialog</Button>
@@ -182,10 +177,10 @@
 		<div class="custom-section">
 			<h4>Custom Dialog Options</h4>
 			<div class="custom-options">
-				<Button variant="tertiary" onclick={() => noPaperDialog = true}>
+				<Button variant="tertiary" onclick={() => (noPaperDialog = true)}>
 					No Paper Background
 				</Button>
-				<Button variant="accent-outline" onclick={() => customDialog = true}>
+				<Button variant="accent-outline" onclick={() => (customDialog = true)}>
 					Custom Styled
 				</Button>
 			</div>
@@ -196,9 +191,7 @@
 		<div class="log-section">
 			<div class="log-header">
 				<h4>Recent Actions</h4>
-				<Button variant="secondary-subtle" onclick={clearLog}>
-					Clear Log
-				</Button>
+				<Button variant="secondary-subtle" onclick={clearLog}>Clear Log</Button>
 			</div>
 			<div class="action-log">
 				{#each actionLog as entry}
@@ -254,9 +247,7 @@
 		</div>
 	</div>
 	{#snippet footer()}
-		<Button onclick={() => infoDialog = false}>
-			Got it
-		</Button>
+		<Button onclick={() => (infoDialog = false)}>Got it</Button>
 	{/snippet}
 </Dialog>
 
@@ -270,12 +261,8 @@
 		</div>
 	</div>
 	{#snippet footer()}
-		<Button variant="secondary" onclick={() => formDialog = false}>
-			Cancel
-		</Button>
-		<Button onclick={handleSave} disabled={!userName || !userEmail}>
-			Save Profile
-		</Button>
+		<Button variant="secondary" onclick={() => (formDialog = false)}>Cancel</Button>
+		<Button onclick={handleSave} disabled={!userName || !userEmail}>Save Profile</Button>
 	{/snippet}
 </Dialog>
 
@@ -291,12 +278,8 @@
 		</div>
 	</div>
 	{#snippet footer()}
-		<Button variant="secondary" onclick={() => deleteDialog = false}>
-			Cancel
-		</Button>
-		<Button variant="danger" onclick={handleDelete}>
-			Delete
-		</Button>
+		<Button variant="secondary" onclick={() => (deleteDialog = false)}>Cancel</Button>
+		<Button variant="danger" onclick={handleDelete}>Delete</Button>
 	{/snippet}
 </Dialog>
 
@@ -326,9 +309,9 @@
 		</div>
 		{#each Array(12) as _, i}
 			<p>
-				Paragraph {i + 1}. Filler content so the body is taller than the viewport and has to
-				scroll. Open the country select above, then scroll this body: the list stays anchored
-				to the field and is never clipped by the scrolling container.
+				Paragraph {i + 1}. Filler content so the body is taller than the viewport and has to scroll.
+				Open the country select above, then scroll this body: the list stays anchored to the field
+				and is never clipped by the scrolling container.
 			</p>
 		{/each}
 		<div class="form-fields">
@@ -349,7 +332,12 @@
 	{/snippet}
 </Dialog>
 
-<Dialog bind:show={scrollDialogVisible} title="Scrolling Dialog (allowOverflow)" size="md" allowOverflow>
+<Dialog
+	bind:show={scrollDialogVisible}
+	title="Scrolling Dialog (allowOverflow)"
+	size="md"
+	allowOverflow
+>
 	{@render scrollDialogBody()}
 	{#snippet footer()}
 		<span></span>
@@ -371,12 +359,8 @@
 		</div>
 	</div>
 	{#snippet footer()}
-		<Button variant="secondary" onclick={() => customDialog = false}>
-			Cancel
-		</Button>
-		<Button variant="tertiary" onclick={handleDownload}>
-			Download Now
-		</Button>
+		<Button variant="secondary" onclick={() => (customDialog = false)}>Cancel</Button>
+		<Button variant="tertiary" onclick={handleDownload}>Download Now</Button>
 	{/snippet}
 </Dialog>
 
@@ -388,22 +372,29 @@
 		<div class="full-screen-demo">
 			<div class="demo-section">
 				<h4>Section 1</h4>
-				<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+				<p>
+					Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt
+					ut labore et dolore magna aliqua.
+				</p>
 			</div>
 			<div class="demo-section">
 				<h4>Section 2</h4>
-				<p>Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+				<p>
+					Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea
+					commodo consequat.
+				</p>
 			</div>
 			<div class="demo-section">
 				<h4>Section 3</h4>
-				<p>Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.</p>
+				<p>
+					Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat
+					nulla pariatur.
+				</p>
 			</div>
 		</div>
 	</div>
 	{#snippet footer()}
-		<Button variant="secondary" onclick={() => fullScreenDialog = false}>
-			Close
-		</Button>
+		<Button variant="secondary" onclick={() => (fullScreenDialog = false)}>Close</Button>
 	{/snippet}
 </Dialog>
 
@@ -417,9 +408,7 @@
 		</div>
 	</div>
 	{#snippet footer()}
-		<Button variant="accent" onclick={() => noPaperDialog = false}>
-			Close
-		</Button>
+		<Button variant="accent" onclick={() => (noPaperDialog = false)}>Close</Button>
 	{/snippet}
 </Dialog>
 
@@ -708,7 +697,11 @@
 
 	.custom-dialog-content {
 		padding: 1.5rem;
-		background: linear-gradient(135deg, rgba(var(--ui-accent-rgbc), 0.1) 0%, rgba(var(--ui-tertiary-rgbc), 0.1) 100%);
+		background: linear-gradient(
+			135deg,
+			rgba(var(--ui-accent-rgbc), 0.1) 0%,
+			rgba(var(--ui-tertiary-rgbc), 0.1) 100%
+		);
 		border-radius: 0.5rem;
 	}
 

@@ -63,14 +63,14 @@
 	const autoName = `checkbox-${crypto.randomUUID()}`;
 	const nonce = Math.random().toString(36).substring(2, 15);
 
-	let resolvedName = $derived(
-		(name || label || autoName).replace(/[^a-zA-Z0-9_\-:.]/g, '_')
-	);
+	let resolvedName = $derived((name || label || autoName).replace(/[^a-zA-Z0-9_\-:.]/g, '_'));
 
 	const id = $derived(inputId ? inputId : label ? `input-${label}` : `input-${nonce}`);
 
 	let inputEl = $state<HTMLInputElement>();
-	$effect(() => { if (inputEl) inputEl.indeterminate = indeterminate; });
+	$effect(() => {
+		if (inputEl) inputEl.indeterminate = indeterminate;
+	});
 </script>
 
 <div class="checkbox-container {disabled ? 'disabled' : ''}">

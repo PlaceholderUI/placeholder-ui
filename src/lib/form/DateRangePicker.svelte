@@ -164,7 +164,15 @@
 				isInRange = date.isSame(effStart, 'date');
 			}
 
-			displayedDates.push({ date, text: date.date().toString(), color, isRangeStart, isRangeEnd, isInRange, isDisabled });
+			displayedDates.push({
+				date,
+				text: date.date().toString(),
+				color,
+				isRangeStart,
+				isRangeEnd,
+				isInRange,
+				isDisabled
+			});
 		}
 
 		return displayedDates;
@@ -313,12 +321,7 @@
 
 			{#if displayText && !disabled}
 				<div class="drp-clear">
-					<ActionIcon
-						variant="secondary-subtle"
-						svg={iconX}
-						size="0.75rem"
-						onclick={clearRange}
-					/>
+					<ActionIcon variant="secondary-subtle" svg={iconX} size="0.75rem" onclick={clearRange} />
 				</div>
 			{/if}
 
@@ -334,17 +337,33 @@
 						<!-- Month navigation -->
 						<div class="month-buttons">
 							{#if showYearPicker}
-								<ActionIcon svg={iconChevronLeft} size="1.5rem" onclick={() => incrementYearRange(-1)} />
+								<ActionIcon
+									svg={iconChevronLeft}
+									size="1.5rem"
+									onclick={() => incrementYearRange(-1)}
+								/>
 								<button class="month-label clickable" onclick={toggleYearPicker}>
 									{yearRangeStart} – {yearRangeStart + yearRangeSize - 1}
 								</button>
-								<ActionIcon svg={iconChevronRight} size="1.5rem" onclick={() => incrementYearRange(1)} />
+								<ActionIcon
+									svg={iconChevronRight}
+									size="1.5rem"
+									onclick={() => incrementYearRange(1)}
+								/>
 							{:else}
-								<ActionIcon svg={iconChevronLeft} size="1.5rem" onclick={() => incrementFocusedMonth(-1)} />
+								<ActionIcon
+									svg={iconChevronLeft}
+									size="1.5rem"
+									onclick={() => incrementFocusedMonth(-1)}
+								/>
 								<button class="month-label clickable" onclick={toggleYearPicker}>
 									{focusedMonth.format('MMMM YYYY')}
 								</button>
-								<ActionIcon svg={iconChevronRight} size="1.5rem" onclick={() => incrementFocusedMonth(1)} />
+								<ActionIcon
+									svg={iconChevronRight}
+									size="1.5rem"
+									onclick={() => incrementFocusedMonth(1)}
+								/>
 							{/if}
 						</div>
 
@@ -377,12 +396,16 @@
 							<!-- svelte-ignore a11y_no_static_element_interactions -->
 							<div
 								class="days-grid"
-								onmouseleave={() => { if (selectingEnd) hoverDate = undefined; }}
+								onmouseleave={() => {
+									if (selectingEnd) hoverDate = undefined;
+								}}
 							>
 								{#each calculateDays(effectiveStart, effectiveEnd, focusedMonth) as d, i (i)}
 									<div
 										class={buildCellClasses(d)}
-										onmouseenter={() => { if (selectingEnd && !d.isDisabled) hoverDate = d.date; }}
+										onmouseenter={() => {
+											if (selectingEnd && !d.isDisabled) hoverDate = d.date;
+										}}
 									>
 										<button
 											class={buildButtonClasses(d)}
@@ -482,7 +505,6 @@
 		box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15);
 		padding: 0.5rem;
 	}
-
 
 	.month-buttons {
 		display: flex;
@@ -641,7 +663,9 @@
 		background: transparent;
 		cursor: pointer;
 		font-size: 0.875rem;
-		transition: background-color 0.15s ease, color 0.15s ease;
+		transition:
+			background-color 0.15s ease,
+			color 0.15s ease;
 		flex-shrink: 0;
 		display: flex;
 		align-items: center;

@@ -7,7 +7,7 @@
 	import Select from '$lib/form/Select.svelte';
 	import Checkbox from '$lib/form/Checkbox.svelte';
 	import Toaster from '$lib/ui/Toaster.svelte';
-	import { 
+	import {
 		iconUser,
 		iconEdit,
 		iconTrash,
@@ -77,7 +77,7 @@
 	function showLoadingToast() {
 		toast.loading('Loading your data, please wait...');
 		addToLog('Loading toast displayed');
-		
+
 		// Simulate loading completion
 		setTimeout(() => {
 			toast.dismiss();
@@ -148,10 +148,10 @@
 
 	function handleUploadAction() {
 		let uploadToastId: string | number;
-		
+
 		// Start with loading toast
 		uploadToastId = toast.loading('Uploading files...');
-		
+
 		// Simulate upload progress
 		setTimeout(() => {
 			toast.dismiss(uploadToastId);
@@ -171,39 +171,42 @@
 	function handleBatchAction() {
 		const items = ['Document 1', 'Image 2', 'Spreadsheet 3'];
 		let completed = 0;
-		
+
 		const processingToast = toast.loading(`Processing ${items.length} items...`);
-		
+
 		items.forEach((item, index) => {
-			setTimeout(() => {
-				completed++;
-				
-				if (completed === items.length) {
-					toast.dismiss(processingToast);
-					toast.success(`All ${items.length} items processed successfully!`);
-					addToLog('Batch processing completed');
-				} else {
-					toast.dismiss(processingToast);
-					toast.loading(`Processing... ${completed}/${items.length} completed`);
-				}
-			}, (index + 1) * 1000);
+			setTimeout(
+				() => {
+					completed++;
+
+					if (completed === items.length) {
+						toast.dismiss(processingToast);
+						toast.success(`All ${items.length} items processed successfully!`);
+						addToLog('Batch processing completed');
+					} else {
+						toast.dismiss(processingToast);
+						toast.loading(`Processing... ${completed}/${items.length} completed`);
+					}
+				},
+				(index + 1) * 1000
+			);
 		});
 	}
 
 	// Form validation toasts
 	function validateForm() {
 		const errors = [];
-		
+
 		if (!customMessage.trim()) {
 			errors.push('Message is required');
 		}
-		
+
 		if (parseInt(customDuration) < 1000) {
 			errors.push('Duration must be at least 1000ms');
 		}
-		
+
 		if (errors.length > 0) {
-			errors.forEach(error => {
+			errors.forEach((error) => {
 				toast.error(error);
 			});
 			addToLog(`Form validation failed: ${errors.length} errors`);
@@ -230,21 +233,21 @@
 	// Complex scenarios
 	function simulateWorkflow() {
 		toast.info('Starting workflow process...');
-		
+
 		setTimeout(() => {
 			toast.loading('Validating inputs...');
 		}, 1000);
-		
+
 		setTimeout(() => {
 			toast.dismiss();
 			toast.loading('Processing data...');
 		}, 2500);
-		
+
 		setTimeout(() => {
 			toast.dismiss();
 			toast.loading('Saving results...');
 		}, 4000);
-		
+
 		setTimeout(() => {
 			toast.dismiss();
 			toast.success('Workflow completed successfully!', {
@@ -266,7 +269,9 @@
 
 <div class="page-header">
 	<h1>Toast</h1>
-	<p>Notification toast component powered by svelte-sonner with rich colors and customizable options.</p>
+	<p>
+		Notification toast component powered by svelte-sonner with rich colors and customizable options.
+	</p>
 </div>
 
 <div class="vstack">
@@ -275,24 +280,12 @@
 			<div class="toast-section">
 				<h4>Standard Notifications</h4>
 				<div class="toast-examples">
-					<Button onclick={showBasicToast}>
-						Basic Toast
-					</Button>
-					<Button variant="secondary" onclick={showSuccessToast}>
-						Success Toast
-					</Button>
-					<Button variant="danger" onclick={showErrorToast}>
-						Error Toast
-					</Button>
-					<Button variant="secondary" onclick={showWarningToast}>
-						Warning Toast
-					</Button>
-					<Button variant="secondary" onclick={showInfoToast}>
-						Info Toast
-					</Button>
-					<Button variant="secondary" onclick={showLoadingToast}>
-						Loading Toast
-					</Button>
+					<Button onclick={showBasicToast}>Basic Toast</Button>
+					<Button variant="secondary" onclick={showSuccessToast}>Success Toast</Button>
+					<Button variant="danger" onclick={showErrorToast}>Error Toast</Button>
+					<Button variant="secondary" onclick={showWarningToast}>Warning Toast</Button>
+					<Button variant="secondary" onclick={showInfoToast}>Info Toast</Button>
+					<Button variant="secondary" onclick={showLoadingToast}>Loading Toast</Button>
 				</div>
 			</div>
 			<div class="toast-info">
@@ -316,46 +309,28 @@
 			<div class="config-form">
 				<div class="config-fields">
 					<div class="field-group">
-						<Textbox 
-							label="Custom Message" 
+						<Textbox
+							label="Custom Message"
 							bind:value={customMessage}
 							placeholder="Enter your toast message"
 						/>
 					</div>
 					<div class="field-row">
 						<div class="field-group">
-							<Textbox 
-								label="Duration (ms)" 
-								bind:value={customDuration}
-								placeholder="4000"
-							/>
+							<Textbox label="Duration (ms)" bind:value={customDuration} placeholder="4000" />
 						</div>
 						<div class="field-group">
-							<Select 
-								label="Position"
-								bind:value={toastPosition}
-								options={positionOptions}
-							/>
+							<Select label="Position" bind:value={toastPosition} options={positionOptions} />
 						</div>
 					</div>
 					<div class="field-options">
-						<Checkbox 
-							bind:checked={showCloseButton} 
-							label="Show close button"
-						/>
-						<Checkbox 
-							bind:checked={richColorsEnabled} 
-							label="Enable rich colors"
-						/>
+						<Checkbox bind:checked={showCloseButton} label="Show close button" />
+						<Checkbox bind:checked={richColorsEnabled} label="Enable rich colors" />
 					</div>
 				</div>
 				<div class="config-actions">
-					<Button variant="accent" onclick={showCustomToast}>
-						Show Custom Toast
-					</Button>
-					<Button variant="secondary" onclick={validateForm}>
-						Validate Form
-					</Button>
+					<Button variant="accent" onclick={showCustomToast}>Show Custom Toast</Button>
+					<Button variant="secondary" onclick={validateForm}>Validate Form</Button>
 				</div>
 			</div>
 		</div>
@@ -366,15 +341,14 @@
 			<h4>Async Operation Tracking</h4>
 			<div class="promise-demo">
 				<div class="promise-description">
-					<p>Promise toasts automatically handle loading, success, and error states for async operations.</p>
+					<p>
+						Promise toasts automatically handle loading, success, and error states for async
+						operations.
+					</p>
 				</div>
 				<div class="promise-actions">
-					<Button onclick={showPromiseToast}>
-						Simulate API Call
-					</Button>
-					<Button variant="tertiary" onclick={simulateWorkflow}>
-						Multi-Step Workflow
-					</Button>
+					<Button onclick={showPromiseToast}>Simulate API Call</Button>
+					<Button variant="tertiary" onclick={simulateWorkflow}>Multi-Step Workflow</Button>
 				</div>
 			</div>
 		</div>
@@ -386,35 +360,23 @@
 			<div class="action-demo">
 				<div class="action-grid">
 					<div class="action-item">
-						<ActionIcon 
-							svg={iconEdit} 
-							variant="secondary-subtle"
-							onclick={handleSaveAction}
-						/>
+						<ActionIcon svg={iconEdit} variant="secondary-subtle" onclick={handleSaveAction} />
 						<span>Save Document</span>
 					</div>
 					<div class="action-item">
-						<ActionIcon 
-							svg={iconTrash} 
-							variant="danger-subtle"
-							onclick={handleDeleteAction}
-						/>
+						<ActionIcon svg={iconTrash} variant="danger-subtle" onclick={handleDeleteAction} />
 						<span>Delete Item</span>
 					</div>
 					<div class="action-item">
-						<ActionIcon 
-							svg={iconCloudUpload} 
+						<ActionIcon
+							svg={iconCloudUpload}
 							variant="tertiary-subtle"
 							onclick={handleUploadAction}
 						/>
 						<span>Upload Files</span>
 					</div>
 					<div class="action-item">
-						<ActionIcon 
-							svg={iconRefresh} 
-							variant="accent-subtle"
-							onclick={handleBatchAction}
-						/>
+						<ActionIcon svg={iconRefresh} variant="accent-subtle" onclick={handleBatchAction} />
 						<span>Batch Process</span>
 					</div>
 				</div>
@@ -430,12 +392,8 @@
 			<h4>Multiple Toast Management</h4>
 			<div class="bulk-demo">
 				<div class="bulk-actions">
-					<Button onclick={showMultipleToasts}>
-						Show Multiple Toasts
-					</Button>
-					<Button variant="secondary" onclick={dismissAllToasts}>
-						Dismiss All Toasts
-					</Button>
+					<Button onclick={showMultipleToasts}>Show Multiple Toasts</Button>
+					<Button variant="secondary" onclick={dismissAllToasts}>Dismiss All Toasts</Button>
 				</div>
 				<div class="bulk-info">
 					<p><strong>Toast Stack:</strong> Multiple toasts stack vertically</p>
@@ -453,8 +411,8 @@
 				<div class="example-card">
 					<h5>Form Submission</h5>
 					<p>Save user data with confirmation</p>
-					<Button 
-						variant="primary" 
+					<Button
+						variant="primary"
 						onclick={() => {
 							toast.loading('Saving profile...');
 							setTimeout(() => {
@@ -466,12 +424,12 @@
 						Save Profile
 					</Button>
 				</div>
-				
+
 				<div class="example-card">
 					<h5>File Operations</h5>
 					<p>Copy files with progress tracking</p>
-					<Button 
-						variant="secondary" 
+					<Button
+						variant="secondary"
 						svg={iconCopy}
 						onclick={() => {
 							const copyId = toast.loading('Copying 5 files...');
@@ -484,18 +442,18 @@
 						Copy Files
 					</Button>
 				</div>
-				
+
 				<div class="example-card">
 					<h5>Data Synchronization</h5>
 					<p>Sync data with server</p>
-					<Button 
-						variant="tertiary" 
+					<Button
+						variant="tertiary"
 						svg={iconRefresh}
 						onclick={() => {
 							const syncPromise = new Promise((resolve) => {
 								setTimeout(() => resolve({ synced: 156 }), 2500);
 							});
-							
+
 							toast.promise(syncPromise, {
 								loading: 'Syncing data...',
 								success: (data: any) => `Synced ${data.synced} records`,
@@ -506,20 +464,22 @@
 						Sync Data
 					</Button>
 				</div>
-				
+
 				<div class="example-card">
 					<h5>User Authentication</h5>
 					<p>Login with error handling</p>
-					<Button 
-						variant="accent" 
+					<Button
+						variant="accent"
 						svg={iconUser}
 						onclick={() => {
 							const loginPromise = new Promise((resolve, reject) => {
 								setTimeout(() => {
-									Math.random() > 0.5 ? resolve({ user: 'John' }) : reject(new Error('Invalid credentials'));
+									Math.random() > 0.5
+										? resolve({ user: 'John' })
+										: reject(new Error('Invalid credentials'));
 								}, 1500);
 							});
-							
+
 							toast.promise(loginPromise, {
 								loading: 'Signing in...',
 								success: 'Welcome back!',
@@ -538,9 +498,7 @@
 		<div class="log-section">
 			<div class="log-header">
 				<h4>Toast Activity</h4>
-				<Button variant="secondary-subtle" onclick={clearLog}>
-					Clear Log
-				</Button>
+				<Button variant="secondary-subtle" onclick={clearLog}>Clear Log</Button>
 			</div>
 			<div class="action-log">
 				{#each actionLog as entry}
@@ -556,8 +514,12 @@
 	<Paper title="Features">
 		<div class="feature-list">
 			<ul>
-				<li><strong>Multiple types:</strong> Success, error, warning, info, loading, and custom toasts</li>
-				<li><strong>Promise integration:</strong> Automatic loading/success/error states for async operations</li>
+				<li>
+					<strong>Multiple types:</strong> Success, error, warning, info, loading, and custom toasts
+				</li>
+				<li>
+					<strong>Promise integration:</strong> Automatic loading/success/error states for async operations
+				</li>
 				<li><strong>Action buttons:</strong> Interactive buttons within toast notifications</li>
 				<li><strong>Custom positioning:</strong> 6 different position options around the screen</li>
 				<li><strong>Rich colors:</strong> Enhanced visual styling with theme-aware colors</li>
@@ -909,11 +871,11 @@
 		.field-row {
 			grid-template-columns: 1fr;
 		}
-		
+
 		.examples-grid {
 			grid-template-columns: 1fr;
 		}
-		
+
 		.action-grid {
 			grid-template-columns: repeat(2, 1fr);
 		}

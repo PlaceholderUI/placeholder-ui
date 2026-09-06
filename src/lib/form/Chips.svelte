@@ -84,8 +84,6 @@
 			onchange?.(values.length > 0 ? values : undefined);
 		}
 	}
-
-
 </script>
 
 <div class="radio-container {containerClass}">
@@ -102,15 +100,25 @@
 				{@const hasSelection = multiple ? values.length > 0 : value !== undefined}
 				{@const chipVariant = checked
 					? (selectedVariant ?? variant)
-					: (deselectedVariant && (multiple || hasSelection) ? deselectedVariant : variant)}
+					: deselectedVariant && (multiple || hasSelection)
+						? deselectedVariant
+						: variant}
 				<div class="flex">
 					{#if checked}
-						<Button class="chip checked" {disabled} onclick={() => handleChange(option)} svg={iconCheck} iconSize={'16px'} variant={chipVariant}
-							>{option.label}</Button
+						<Button
+							class="chip checked"
+							{disabled}
+							onclick={() => handleChange(option)}
+							svg={iconCheck}
+							iconSize={'16px'}
+							variant={chipVariant}>{option.label}</Button
 						>
 					{:else}
-						<Button class="chip" {disabled} onclick={() => handleChange(option)} variant={chipVariant}
-							>{option.label}</Button
+						<Button
+							class="chip"
+							{disabled}
+							onclick={() => handleChange(option)}
+							variant={chipVariant}>{option.label}</Button
 						>
 					{/if}
 				</div>

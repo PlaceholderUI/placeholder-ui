@@ -6,23 +6,73 @@
 
 	// New icons added in latest update
 	const newIcons = new Set([
-		'iconArchive', 'iconArrowDown', 'iconArrowLeft', 'iconArrowRight', 'iconArrowUp',
-		'iconAt', 'iconBell', 'iconBookmark', 'iconCalendar', 'iconCamera', 'iconChartBar',
-		'iconChartLine', 'iconChartPie', 'iconCheckbox', 'iconChecklist', 'iconCircleCheck',
-		'iconCircleX', 'iconClock', 'iconCreditCard', 'iconDots', 'iconDotsVertical',
-		'iconExternalLink', 'iconEye', 'iconEyeOff', 'iconFilter', 'iconFingerprint',
-		'iconFlag', 'iconHeart', 'iconHome', 'iconKey', 'iconListCheck', 'iconLogin',
-		'iconLogout', 'iconMapPin', 'iconMaximize', 'iconMicrophone', 'iconMinimize',
-		'iconNote', 'iconPlayerPause', 'iconPrinter', 'iconQrcode', 'iconSend', 'iconSettings',
-		'iconShare', 'iconShoppingCart', 'iconSortAscending', 'iconSortDescending', 'iconStar',
-		'iconTag', 'iconTrendingDown', 'iconTrendingUp', 'iconUpload', 'iconVolume',
-		'iconVolumeOff', 'iconWorld', 'iconZoomIn', 'iconZoomOut'
+		'iconArchive',
+		'iconArrowDown',
+		'iconArrowLeft',
+		'iconArrowRight',
+		'iconArrowUp',
+		'iconAt',
+		'iconBell',
+		'iconBookmark',
+		'iconCalendar',
+		'iconCamera',
+		'iconChartBar',
+		'iconChartLine',
+		'iconChartPie',
+		'iconCheckbox',
+		'iconChecklist',
+		'iconCircleCheck',
+		'iconCircleX',
+		'iconClock',
+		'iconCreditCard',
+		'iconDots',
+		'iconDotsVertical',
+		'iconExternalLink',
+		'iconEye',
+		'iconEyeOff',
+		'iconFilter',
+		'iconFingerprint',
+		'iconFlag',
+		'iconHeart',
+		'iconHome',
+		'iconKey',
+		'iconListCheck',
+		'iconLogin',
+		'iconLogout',
+		'iconMapPin',
+		'iconMaximize',
+		'iconMicrophone',
+		'iconMinimize',
+		'iconNote',
+		'iconPlayerPause',
+		'iconPrinter',
+		'iconQrcode',
+		'iconSend',
+		'iconSettings',
+		'iconShare',
+		'iconShoppingCart',
+		'iconSortAscending',
+		'iconSortDescending',
+		'iconStar',
+		'iconTag',
+		'iconTrendingDown',
+		'iconTrendingUp',
+		'iconUpload',
+		'iconVolume',
+		'iconVolumeOff',
+		'iconWorld',
+		'iconZoomIn',
+		'iconZoomOut'
 	]);
 
 	const iconList = Object.entries(icons)
 		.filter(([key]) => key.startsWith('icon') && key !== 'Icon')
 		.map(([key, value]) => ({
-			name: key.replace('icon', '').replace(/([A-Z])/g, '-$1').toLowerCase().slice(1),
+			name: key
+				.replace('icon', '')
+				.replace(/([A-Z])/g, '-$1')
+				.toLowerCase()
+				.slice(1),
 			key,
 			svg: value as string,
 			isNew: newIcons.has(key)
@@ -34,19 +84,19 @@
 	let showNewOnly = $state(false);
 
 	const filteredIcons = $derived(
-		iconList.filter(icon => {
+		iconList.filter((icon) => {
 			const matchesSearch = !searchQuery || icon.name.includes(searchQuery.toLowerCase());
 			const matchesNew = !showNewOnly || icon.isNew;
 			return matchesSearch && matchesNew;
 		})
 	);
 
-	const newIconCount = iconList.filter(i => i.isNew).length;
-	
+	const newIconCount = iconList.filter((i) => i.isNew).length;
+
 	function copyIconName(iconKey: string) {
 		navigator.clipboard.writeText(iconKey);
 		copiedIcon = iconKey;
-		setTimeout(() => copiedIcon = '', 2000);
+		setTimeout(() => (copiedIcon = ''), 2000);
 	}
 </script>
 
@@ -63,25 +113,25 @@
 				<Icon svg={icons.iconUser} />
 				<pre><code>{`<Icon svg={iconUser} />`}</code></pre>
 			</div>
-			
+
 			<div class="example">
 				<h4>Colored Icon</h4>
 				<Icon svg={icons.iconUser} stroke="#22c55e" />
 				<pre><code>{`<Icon svg={iconUser} stroke="#22c55e" />`}</code></pre>
 			</div>
-			
+
 			<div class="example">
 				<h4>Filled Icon</h4>
 				<Icon svg={icons.iconUser} fill="#3b82f6" stroke="#3b82f6" />
 				<pre><code>{`<Icon svg={iconUser} fill="#3b82f6" stroke="#3b82f6" />`}</code></pre>
 			</div>
-			
+
 			<div class="example">
 				<h4>Flipped Icon</h4>
 				<Icon svg={icons.iconChevronRight} flip={true} />
 				<pre><code>{`<Icon svg={iconChevronRight} flip={true} />`}</code></pre>
 			</div>
-			
+
 			<div class="example">
 				<h4>With Button</h4>
 				<Button variant="primary" svg={icons.iconTrash}>Delete</Button>
@@ -89,7 +139,7 @@
 			</div>
 		</div>
 	</Paper>
-	
+
 	<Paper title="Available Icons">
 		<div class="search-container">
 			<input
@@ -101,13 +151,13 @@
 			<button
 				class="new-filter-btn"
 				class:active={showNewOnly}
-				onclick={() => showNewOnly = !showNewOnly}
+				onclick={() => (showNewOnly = !showNewOnly)}
 			>
 				New ({newIconCount})
 			</button>
 			<span class="icon-count">{filteredIcons.length} icons</span>
 		</div>
-		
+
 		<div class="icons-grid">
 			{#each filteredIcons as icon (icon.key)}
 				<button
@@ -147,25 +197,25 @@
 		color: var(--text-muted);
 		margin: 0;
 	}
-	
+
 	.example-grid {
 		display: grid;
 		grid-template-columns: repeat(auto-fit, minmax(175px, 1fr));
 		gap: 1rem;
 		margin-bottom: 1rem;
 	}
-	
+
 	.example {
 		text-align: center;
 	}
-	
+
 	.example h4 {
 		margin: 0 0 1rem 0;
 		font-size: 0.875rem;
 		font-weight: 600;
 		color: var(--text-muted);
 	}
-	
+
 	.example pre {
 		margin-top: 1rem;
 		padding: 0.5rem;
@@ -174,18 +224,18 @@
 		font-size: 0.75rem;
 		overflow-x: auto;
 	}
-	
+
 	.example code {
 		font-family: 'Consolas', 'Monaco', monospace;
 	}
-	
+
 	.search-container {
 		display: flex;
 		align-items: center;
 		gap: 1rem;
 		margin-bottom: 1.5rem;
 	}
-	
+
 	.search-input {
 		flex: 1;
 		padding: 0.5rem 1rem;
@@ -195,23 +245,23 @@
 		color: var(--text-color);
 		font-size: 0.875rem;
 	}
-	
+
 	.search-input:focus {
 		outline: none;
 		border-color: var(--accent-color);
 	}
-	
+
 	.icon-count {
 		color: var(--text-muted);
 		font-size: 0.875rem;
 	}
-	
+
 	.icons-grid {
 		display: grid;
 		grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
 		gap: 0.75rem;
 	}
-	
+
 	.icon-card {
 		position: relative;
 		display: flex;
@@ -224,32 +274,32 @@
 		cursor: pointer;
 		transition: all 0.2s;
 	}
-	
+
 	.icon-card:hover {
 		background: var(--bg-subtle);
 		border-color: var(--accent-color);
 		transform: translateY(-2px);
 	}
-	
+
 	.icon-card.copied {
 		background: var(--success-bg, #10b98114);
 		border-color: var(--success-color, #10b981);
 	}
-	
+
 	.icon-name {
 		margin-top: 0.5rem;
 		font-size: 0.75rem;
 		color: var(--text-color);
 		word-break: break-word;
 	}
-	
+
 	.icon-key {
 		margin-top: 0.25rem;
 		font-size: 0.625rem;
 		color: var(--text-muted);
 		font-family: 'Consolas', 'Monaco', monospace;
 	}
-	
+
 	.copied-badge {
 		position: absolute;
 		top: 0.25rem;

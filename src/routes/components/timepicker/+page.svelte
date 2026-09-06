@@ -83,7 +83,12 @@
 				<p>Min: 9:00 AM</p>
 				<p>Max: 5:00 PM</p>
 				<p>Selected: {formatTime(businessHoursTime)}</p>
-				<p><em>Hours and minutes are restricted to business hours. AM/PM toggle is disabled when switching would be invalid.</em></p>
+				<p>
+					<em
+						>Hours and minutes are restricted to business hours. AM/PM toggle is disabled when
+						switching would be invalid.</em
+					>
+				</p>
 			</div>
 		</div>
 	</Paper>
@@ -102,7 +107,9 @@
 				<p>Min: 12:00 PM</p>
 				<p>Max: 6:00 PM</p>
 				<p>Selected: {formatTime(afternoonTime)}</p>
-				<p><em>Only afternoon times are available. Try toggling AM/PM - it will be disabled.</em></p>
+				<p>
+					<em>Only afternoon times are available. Try toggling AM/PM - it will be disabled.</em>
+				</p>
 			</div>
 		</div>
 	</Paper>
@@ -130,15 +137,26 @@
 		<div class="feature-list">
 			<ul>
 				<li><strong>12-hour format:</strong> Uses AM/PM time format for easy selection</li>
-				<li><strong>Hour selection:</strong> Choose hours from 1-12 with increment/decrement buttons</li>
-				<li><strong>Minute selection:</strong> Choose minutes from 0-59 with increment/decrement buttons</li>
+				<li>
+					<strong>Hour selection:</strong> Choose hours from 1-12 with increment/decrement buttons
+				</li>
+				<li>
+					<strong>Minute selection:</strong> Choose minutes from 0-59 with increment/decrement buttons
+				</li>
 				<li><strong>AM/PM toggle:</strong> Quick toggle button to switch between AM and PM</li>
-				<li><strong>Time restrictions:</strong> Supports minDate/maxDate to constrain available times</li>
-				<li><strong>Smart constraints:</strong> When time is restricted, hours/minutes update dynamically and AM/PM toggle disables when invalid</li>
+				<li>
+					<strong>Time restrictions:</strong> Supports minDate/maxDate to constrain available times
+				</li>
+				<li>
+					<strong>Smart constraints:</strong> When time is restricted, hours/minutes update dynamically
+					and AM/PM toggle disables when invalid
+				</li>
 				<li><strong>Keyboard input:</strong> Direct number input for precise time entry</li>
 				<li><strong>Visual feedback:</strong> Disabled states are clearly indicated</li>
 				<li><strong>Theme support:</strong> Colors adapt to light/dark mode</li>
-				<li><strong>Compact design:</strong> Clean, minimal interface that fits inline with forms</li>
+				<li>
+					<strong>Compact design:</strong> Clean, minimal interface that fits inline with forms
+				</li>
 			</ul>
 		</div>
 	</Paper>

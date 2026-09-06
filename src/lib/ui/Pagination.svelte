@@ -48,7 +48,7 @@
 		// For maxPageButtons, we need to fit: first, last, and some middle pages + ellipsis
 		// Reserve 2 slots for first and last pages, leaving maxPageButtons - 2 for middle + ellipsis
 		const middleSlots = maxPageButtons - 2;
-		
+
 		// Calculate how many pages we can show around the selected page
 		const sidePages = Math.floor((middleSlots - 1) / 2); // -1 to account for potential ellipsis
 
@@ -134,7 +134,7 @@
 		display: flex;
 		justify-content: center;
 	}
-	
+
 	:global(.dark) .pagination-container :global(.paginate-button.secondary-selected) {
 		color: black;
 	}

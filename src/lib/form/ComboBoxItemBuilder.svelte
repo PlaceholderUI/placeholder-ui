@@ -84,16 +84,12 @@
 
 	// Check if a value already exists (excluding a specific index for editing)
 	function valueExists(value: string, excludeIndex: number | undefined = undefined): boolean {
-		return items.some((item, i) =>
-			item.value === value && i !== excludeIndex
-		);
+		return items.some((item, i) => item.value === value && i !== excludeIndex);
 	}
 
 	// Check if a label already exists (excluding a specific index for editing)
 	function labelExists(label: string, excludeIndex: number | undefined = undefined): boolean {
-		return items.some((item, i) =>
-			item.label === label && i !== excludeIndex
-		);
+		return items.some((item, i) => item.label === label && i !== excludeIndex);
 	}
 
 	function removeItem(index: number) {
@@ -103,9 +99,9 @@
 		// Remove from defaults if it was selected and no remaining item shares the value
 		if (
 			defaultValues.includes(removedItem.value) &&
-			!items.some(item => item.value === removedItem.value)
+			!items.some((item) => item.value === removedItem.value)
 		) {
-			defaultValues = defaultValues.filter(v => v !== removedItem.value);
+			defaultValues = defaultValues.filter((v) => v !== removedItem.value);
 		}
 
 		notifyChange();
@@ -115,7 +111,7 @@
 		if (checked) {
 			defaultValues = [...defaultValues, value];
 		} else {
-			defaultValues = defaultValues.filter(v => v !== value);
+			defaultValues = defaultValues.filter((v) => v !== value);
 		}
 		notifyChange();
 	}
@@ -132,21 +128,14 @@
 		// If they were in sync, also update the value to maintain exact match (if it wouldn't create a duplicate)
 		if (wasInSync && (allowDuplicateValues || !valueExists(label, index))) {
 			const oldValue = currentItem.value;
-			items = items.map((item, i) =>
-				i === index ? { ...item, label, value: label } : item
-			);
+			items = items.map((item, i) => (i === index ? { ...item, label, value: label } : item));
 
 			// Update defaults if the value was changed and no remaining item shares the old value
-			if (
-				defaultValues.includes(oldValue) &&
-				!items.some(item => item.value === oldValue)
-			) {
-				defaultValues = defaultValues.map(v => v === oldValue ? label : v);
+			if (defaultValues.includes(oldValue) && !items.some((item) => item.value === oldValue)) {
+				defaultValues = defaultValues.map((v) => (v === oldValue ? label : v));
 			}
 		} else {
-			items = items.map((item, i) =>
-				i === index ? { ...item, label } : item
-			);
+			items = items.map((item, i) => (i === index ? { ...item, label } : item));
 		}
 
 		notifyChange();
@@ -157,16 +146,11 @@
 		if (!allowDuplicateValues && valueExists(newVal, index)) return;
 
 		const oldValue = items[index].value;
-		items = items.map((item, i) =>
-			i === index ? { ...item, value: newVal } : item
-		);
+		items = items.map((item, i) => (i === index ? { ...item, value: newVal } : item));
 
 		// Update defaults if the value was changed and no remaining item shares the old value
-		if (
-			defaultValues.includes(oldValue) &&
-			!items.some(item => item.value === oldValue)
-		) {
-			defaultValues = defaultValues.map(v => v === oldValue ? newVal : v);
+		if (defaultValues.includes(oldValue) && !items.some((item) => item.value === oldValue)) {
+			defaultValues = defaultValues.map((v) => (v === oldValue ? newVal : v));
 		}
 
 		notifyChange();
@@ -186,7 +170,7 @@
 
 	// Computed output for display/copying
 	let outputItems = $derived(
-		items.map(item => ({
+		items.map((item) => ({
 			...item,
 			selected: defaultValues.includes(item.value)
 		}))
@@ -194,9 +178,7 @@
 
 	// Get labels for selected defaults
 	let defaultLabels = $derived(
-		defaultValues
-			.map(v => items.find(i => i.value === v)?.label ?? v)
-			.join(', ')
+		defaultValues.map((v) => items.find((i) => i.value === v)?.label ?? v).join(', ')
 	);
 </script>
 

@@ -56,19 +56,8 @@
 		<div class="form-grid">
 			<div class="slider-section">
 				<Slider label="Basic Slider" hideValue bind:value={basicValue} />
-				<Slider
-					label="Custom Range (0-50)"
-					bind:value={customRangeValue}
-					min={0}
-					max={50}
-				/>
-				<Slider
-					label="With Step (10)"
-					bind:value={stepValue}
-					min={0}
-					max={100}
-					step={10}
-				/>
+				<Slider label="Custom Range (0-50)" bind:value={customRangeValue} min={0} max={50} />
+				<Slider label="With Step (10)" bind:value={stepValue} min={0} max={100} step={10} />
 			</div>
 			<div class="slider-info">
 				<strong>Current Values:</strong>
@@ -82,22 +71,14 @@
 	<Paper title="With Value Display">
 		<div class="form-grid">
 			<div class="slider-section">
-				<Slider
-					label="Volume"
-					bind:value={volumeValue}
-						onchange={handleVolumeChange}
-				/>
+				<Slider label="Volume" bind:value={volumeValue} onchange={handleVolumeChange} />
 				<Slider
 					label="Brightness"
 					tooltipText="Adjust the screen brightness"
 					bind:value={brightnessValue}
-						formatValue={formatPercent}
+					formatValue={formatPercent}
 				/>
-				<Slider
-					label="Completion"
-					bind:value={percentValue}
-						formatValue={formatPercent}
-				/>
+				<Slider label="Completion" bind:value={percentValue} formatValue={formatPercent} />
 			</div>
 			<div class="slider-info">
 				<strong>Formatted Values:</strong>
@@ -111,22 +92,14 @@
 	<Paper title="States">
 		<div class="form-grid">
 			<div class="slider-section">
-				<Slider
-					label="Required Slider"
-					required
-					bind:value={requiredValue}
-					/>
-				<Slider
-					label="Disabled Slider"
-					disabled
-					bind:value={disabledValue}
-					/>
+				<Slider label="Required Slider" required bind:value={requiredValue} />
+				<Slider label="Disabled Slider" disabled bind:value={disabledValue} />
 				<Slider
 					label="Error State"
 					showError
 					errorText="Value must be at least 50"
 					bind:value={errorValue}
-					/>
+				/>
 			</div>
 			<div class="slider-info">
 				<strong>State Values:</strong>
@@ -147,7 +120,7 @@
 					min={0}
 					max={1000}
 					step={10}
-						formatValue={formatCurrency}
+					formatValue={formatCurrency}
 				/>
 				<Slider
 					label="Max Price"
@@ -155,7 +128,7 @@
 					min={0}
 					max={1000}
 					step={10}
-						formatValue={formatCurrency}
+					formatValue={formatCurrency}
 				/>
 			</div>
 			<p class="example-description">
@@ -179,7 +152,7 @@
 					bind:value={opacity}
 					min={0}
 					max={100}
-						formatValue={formatPercent}
+					formatValue={formatPercent}
 				/>
 				<Slider
 					label="Font Size"
@@ -187,13 +160,10 @@
 					min={10}
 					max={32}
 					step={1}
-						formatValue={formatPixels}
+					formatValue={formatPixels}
 				/>
 			</div>
-			<div
-				class="preview-box"
-				style="opacity: {opacity / 100}; font-size: {fontSize}px;"
-			>
+			<div class="preview-box" style="opacity: {opacity / 100}; font-size: {fontSize}px;">
 				Preview Text
 			</div>
 		</div>
@@ -203,7 +173,9 @@
 		<div class="feature-list">
 			<ul>
 				<li><strong>Range control:</strong> Configurable min, max, and step values</li>
-				<li><strong>Value display:</strong> Optional inline value display with custom formatting</li>
+				<li>
+					<strong>Value display:</strong> Optional inline value display with custom formatting
+				</li>
 				<li><strong>Theme support:</strong> Accent color adapts to light/dark mode</li>
 				<li><strong>Accessibility:</strong> Keyboard navigation with arrow keys</li>
 				<li><strong>Visual feedback:</strong> Filled track shows current position</li>
@@ -302,7 +274,9 @@
 		border-radius: 0.375rem;
 		text-align: center;
 		font-weight: 500;
-		transition: opacity 0.15s ease, font-size 0.15s ease;
+		transition:
+			opacity 0.15s ease,
+			font-size 0.15s ease;
 	}
 
 	.feature-list ul {

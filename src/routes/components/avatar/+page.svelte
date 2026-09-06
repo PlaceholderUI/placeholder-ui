@@ -63,7 +63,7 @@
 					<Avatar src="" fallBackSvg={iconUser} backgroundColor="#4ECDC4" shape="circle" />
 				</div>
 			</div>
-			
+
 			<div class="shape-example">
 				<h4>Rounded</h4>
 				<div class="row">
@@ -72,7 +72,7 @@
 					<Avatar src="" fallBackSvg={iconUserGroup} backgroundColor="#96CEB4" shape="rounded" />
 				</div>
 			</div>
-			
+
 			<div class="shape-example">
 				<h4>Square</h4>
 				<div class="row">
@@ -92,21 +92,21 @@
 				<Avatar src="" initials="SM" backgroundColor="#FF6B6B" size={1.5} />
 				<Avatar src="" fallBackSvg={iconUser} backgroundColor="#4ECDC4" size={1.5} />
 			</div>
-			
+
 			<div class="size-row">
 				<span class="size-label">Medium (2.5rem)</span>
 				<Avatar src="/favicon.png" alt="Medium" size={2.5} />
 				<Avatar src="" initials="MD" backgroundColor="#45B7D1" size={2.5} />
 				<Avatar src="" fallBackSvg={iconUser} backgroundColor="#96CEB4" size={2.5} />
 			</div>
-			
+
 			<div class="size-row">
 				<span class="size-label">Large (4rem)</span>
 				<Avatar src="/favicon.png" alt="Large" size={4} />
 				<Avatar src="" initials="LG" backgroundColor="#FECA57" size={4} />
 				<Avatar src="" fallBackSvg={iconUser} backgroundColor="#FF9FF3" size={4} />
 			</div>
-			
+
 			<div class="size-row">
 				<span class="size-label">Custom ({customSize}rem)</span>
 				<Avatar src="/favicon.png" alt="Custom" size={customSize} />
@@ -114,17 +114,10 @@
 				<Avatar src="" fallBackSvg={iconUser} backgroundColor="#FFB3BA" size={customSize} />
 			</div>
 		</div>
-		
+
 		<div class="size-control">
 			<label for="size-slider">Adjust custom size:</label>
-			<input
-				type="range"
-				id="size-slider"
-				min="1"
-				max="6"
-				step="0.5"
-				bind:value={customSize}
-			/>
+			<input type="range" id="size-slider" min="1" max="6" step="0.5" bind:value={customSize} />
 			<span>{customSize}rem</span>
 		</div>
 	</Paper>
@@ -146,7 +139,7 @@
 				<div class="interaction-info">
 					{#if selectedAvatar}
 						<p>
-							Last clicked: <strong>{selectedAvatar}</strong> 
+							Last clicked: <strong>{selectedAvatar}</strong>
 							<Badge variant="secondary">{clickCount} clicks</Badge>
 						</p>
 					{:else}
@@ -184,7 +177,7 @@
 					/>
 					<p>Image with initials fallback</p>
 				</div>
-				
+
 				<div class="fallback-item">
 					<Avatar
 						src={imageError ? 'https://invalid-url.com/broken.jpg' : '/favicon.png'}
@@ -194,7 +187,7 @@
 					/>
 					<p>Image with icon fallback</p>
 				</div>
-				
+
 				<div class="fallback-item">
 					<Avatar
 						src={imageError ? 'https://invalid-url.com/broken.jpg' : '/favicon.png'}
@@ -204,7 +197,7 @@
 					<p>Image with default fallback</p>
 				</div>
 			</div>
-			
+
 			<Button onclick={triggerImageError} variant="danger">
 				{imageError ? 'Images broken (showing fallbacks)' : 'Trigger Image Error'}
 			</Button>
@@ -239,11 +232,19 @@
 			<h4>Best Practices</h4>
 			<ul>
 				<li><strong>Provide meaningful alt text:</strong> For accessibility when using images</li>
-				<li><strong>Use appropriate fallbacks:</strong> Initials for named users, icons for generic users</li>
-				<li><strong>Consistent sizing:</strong> Use the same size for avatars in the same context</li>
-				<li><strong>Color accessibility:</strong> Ensure sufficient contrast for initials and backgrounds</li>
+				<li>
+					<strong>Use appropriate fallbacks:</strong> Initials for named users, icons for generic users
+				</li>
+				<li>
+					<strong>Consistent sizing:</strong> Use the same size for avatars in the same context
+				</li>
+				<li>
+					<strong>Color accessibility:</strong> Ensure sufficient contrast for initials and backgrounds
+				</li>
 				<li><strong>Loading states:</strong> Always provide fallbacks for failed image loads</li>
-				<li><strong>Interactive feedback:</strong> Use hover states and cursors for clickable avatars</li>
+				<li>
+					<strong>Interactive feedback:</strong> Use hover states and cursors for clickable avatars
+				</li>
 			</ul>
 
 			<h4>Common Use Cases</h4>
@@ -278,7 +279,7 @@
 		flex-direction: column;
 		gap: 1.5rem;
 	}
-	
+
 	.row {
 		display: flex;
 		align-items: center;

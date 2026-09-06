@@ -65,7 +65,12 @@
 
 	<Paper title="States">
 		<div class="form-grid">
-			<DateRangePicker label="Required" required bind:startDate={basicStart} bind:endDate={basicEnd} />
+			<DateRangePicker
+				label="Required"
+				required
+				bind:startDate={basicStart}
+				bind:endDate={basicEnd}
+			/>
 			<DateRangePicker
 				label="Disabled"
 				disabled
@@ -111,7 +116,9 @@
 	<Paper title="Features">
 		<ul class="feature-list">
 			<li><strong>Two-click selection:</strong> First click sets start, second sets end</li>
-			<li><strong>Hover preview:</strong> Hover over dates to preview the range before confirming</li>
+			<li>
+				<strong>Hover preview:</strong> Hover over dates to preview the range before confirming
+			</li>
 			<li><strong>Range highlight:</strong> Selected range shown with a background color strip</li>
 			<li><strong>Auto-swap:</strong> Selecting an end before start automatically swaps them</li>
 			<li><strong>Cancel on close:</strong> Clicking outside cancels an incomplete selection</li>

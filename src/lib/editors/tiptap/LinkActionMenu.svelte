@@ -163,7 +163,12 @@
 			<button class="link-icon-button" onclick={startEditing} title="Edit link" type="button">
 				<Icon svg={iconEdit} size="16px" />
 			</button>
-			<button class="link-icon-button danger" onclick={removeLink} title="Remove link" type="button">
+			<button
+				class="link-icon-button danger"
+				onclick={removeLink}
+				title="Remove link"
+				type="button"
+			>
 				<Icon svg={iconTrash} size="16px" />
 			</button>
 		{/if}

@@ -39,27 +39,25 @@
 	let categoryDefaults: string[] = $state([]);
 	let categorySelectedValue = $state('');
 
-	let categoryOptions = $derived(
-		categoryItems.map(item => ({ ...item }))
-	);
+	let categoryOptions = $derived(categoryItems.map((item) => ({ ...item })));
 
 	// Computed options with selected state applied
 	let basicOptions = $derived(
-		basicItems.map(item => ({
+		basicItems.map((item) => ({
 			...item,
 			selected: basicDefaults.includes(item.value)
 		}))
 	);
 
 	let multiOptions = $derived(
-		multiItems.map(item => ({
+		multiItems.map((item) => ({
 			...item,
 			selected: multiDefaults.includes(item.value)
 		}))
 	);
 
 	let statusOptions = $derived(
-		statusItems.map(item => ({
+		statusItems.map((item) => ({
 			...item,
 			selected: statusDefaults.includes(item.value)
 		}))
@@ -93,14 +91,14 @@
 				<h4>Generated Output</h4>
 				{#if basicItems.length > 0}
 					<pre class="code-preview">{JSON.stringify(
-						basicItems.map(item => ({
-							label: item.label,
-							value: item.value,
-							...(basicDefaults.includes(item.value) ? { selected: true } : {})
-						})),
-						null,
-						2
-					)}</pre>
+							basicItems.map((item) => ({
+								label: item.label,
+								value: item.value,
+								...(basicDefaults.includes(item.value) ? { selected: true } : {})
+							})),
+							null,
+							2
+						)}</pre>
 
 					<h4>Test with Select</h4>
 					<Select
@@ -122,8 +120,8 @@
 			Select multiple items as defaults for use with SelectMulti. Column headers are renamed via
 			<code>labelHeader</code> and <code>valueHeader</code>; placeholders follow the headers unless
 			overridden with <code>labelPlaceholder</code> / <code>valuePlaceholder</code>. Since keys
-			differ from skill names here, <code>disableValueSync</code> stops the key field auto-copying
-			the label.
+			differ from skill names here, <code>disableValueSync</code> stops the key field auto-copying the
+			label.
 		</p>
 		<div class="demo-grid">
 			<div class="builder-section">
@@ -175,15 +173,12 @@
 				/>
 			</div>
 			<div class="preview-section">
-				<Select
-					label="Document Status"
-					options={statusOptions}
-					bind:value={statusSelectedValue}
-				/>
+				<Select label="Document Status" options={statusOptions} bind:value={statusSelectedValue} />
 				<p class="selected-value">Selected: {statusSelectedValue || 'None'}</p>
 
 				<div class="tip">
-					<strong>Tip:</strong> When using with Select (single), only the first selected item becomes the default value.
+					<strong>Tip:</strong> When using with Select (single), only the first selected item becomes
+					the default value.
 				</div>
 			</div>
 		</div>
@@ -191,8 +186,8 @@
 
 	<Paper title="Hide Selected Column">
 		<p class="section-description">
-			Pass <code>hideSelected</code> to omit the Selected checkbox column entirely.
-			Useful when you only need to build the label/value pairs without tracking defaults.
+			Pass <code>hideSelected</code> to omit the Selected checkbox column entirely. Useful when you only
+			need to build the label/value pairs without tracking defaults.
 		</p>
 		<div class="demo-grid">
 			<div class="builder-section">
@@ -222,19 +217,43 @@
 	<Paper title="Features">
 		<div class="feature-list">
 			<ul>
-				<li><strong>Add items:</strong> Start typing in the empty bottom row — the item is added automatically</li>
+				<li>
+					<strong>Add items:</strong> Start typing in the empty bottom row — the item is added automatically
+				</li>
 				<li><strong>Remove items:</strong> Click the trash icon to remove any item</li>
 				<li><strong>Select defaults:</strong> Use checkboxes to mark items as selected/default</li>
 				<li><strong>Multiple selection:</strong> Check multiple items for SelectMulti use cases</li>
 				<li><strong>Inline editing:</strong> Edit labels and values directly in the table</li>
-				<li><strong>Keyboard support:</strong> Press Enter in an item row to jump back to the empty row</li>
-				<li><strong>Two-way binding:</strong> Use bind:items and bind:defaultValues for reactive updates</li>
-				<li><strong>Change callback:</strong> onchange event fires when items or defaults change</li>
-				<li><strong>Custom column headers:</strong> Rename the Label and Value columns via <code>labelHeader</code> and <code>valueHeader</code></li>
-				<li><strong>Custom placeholders:</strong> Configure labelPlaceholder and valuePlaceholder props (default to the column headers)</li>
-				<li><strong>Independent values:</strong> Set <code>disableValueSync</code> to stop the value field auto-copying the label</li>
-				<li><strong>Duplicate values:</strong> Set <code>allowDuplicateValues</code> to let multiple items share a value (labels stay unique; shared values share selected state)</li>
-				<li><strong>Hide selected column:</strong> Set <code>hideSelected</code> when default-value tracking isn't needed</li>
+				<li>
+					<strong>Keyboard support:</strong> Press Enter in an item row to jump back to the empty row
+				</li>
+				<li>
+					<strong>Two-way binding:</strong> Use bind:items and bind:defaultValues for reactive updates
+				</li>
+				<li>
+					<strong>Change callback:</strong> onchange event fires when items or defaults change
+				</li>
+				<li>
+					<strong>Custom column headers:</strong> Rename the Label and Value columns via
+					<code>labelHeader</code>
+					and <code>valueHeader</code>
+				</li>
+				<li>
+					<strong>Custom placeholders:</strong> Configure labelPlaceholder and valuePlaceholder props
+					(default to the column headers)
+				</li>
+				<li>
+					<strong>Independent values:</strong> Set <code>disableValueSync</code> to stop the value field
+					auto-copying the label
+				</li>
+				<li>
+					<strong>Duplicate values:</strong> Set <code>allowDuplicateValues</code> to let multiple items
+					share a value (labels stay unique; shared values share selected state)
+				</li>
+				<li>
+					<strong>Hide selected column:</strong> Set <code>hideSelected</code> when default-value tracking
+					isn't needed
+				</li>
 			</ul>
 		</div>
 	</Paper>

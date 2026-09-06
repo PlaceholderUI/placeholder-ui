@@ -14,7 +14,8 @@
 		darkVariant?: ButtonVariant;
 	}
 
-	let { lightVariant = 'primary-subtle', darkVariant = 'accent-subtle' }: ThemeSwitcherProps = $props();
+	let { lightVariant = 'primary-subtle', darkVariant = 'accent-subtle' }: ThemeSwitcherProps =
+		$props();
 
 	const themeCycle = ['light', 'dark', 'system'] as const;
 

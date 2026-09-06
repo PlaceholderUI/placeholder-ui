@@ -7,7 +7,7 @@
 	import Checkbox from '$lib/form/Checkbox.svelte';
 	import Select from '$lib/form/Select.svelte';
 	import { toast } from '$lib/ui/Toast.svelte';
-	import { 
+	import {
 		iconCloudUpload,
 		iconTrash,
 		iconDownload,
@@ -59,13 +59,13 @@
 	function handleBasicUpload(files: File[]) {
 		addToLog(`Basic upload: ${files.length} file(s) selected`);
 		basicLoading = true;
-		
+
 		// Simulate upload process
 		setTimeout(() => {
 			uploadedFiles = [...uploadedFiles, ...files];
 			basicLoading = false;
 			toast.success(`Successfully uploaded ${files.length} file(s)`);
-			addToLog(`Basic upload completed: ${files.map(f => f.name).join(', ')}`);
+			addToLog(`Basic upload completed: ${files.map((f) => f.name).join(', ')}`);
 		}, 2000);
 	}
 
@@ -73,7 +73,7 @@
 	// the onReject callback receives whatever was filtered.
 	function handleRejected(files: File[]) {
 		toast.error(`${files.length} file(s) rejected by validation`);
-		addToLog(`Rejected files: ${files.map(f => f.name).join(', ')}`);
+		addToLog(`Rejected files: ${files.map((f) => f.name).join(', ')}`);
 	}
 
 	function handleImageUpload(files: File[]) {
@@ -83,7 +83,7 @@
 			imageFiles = [...imageFiles, ...files];
 			imageLoading = false;
 			toast.success(`${files.length} image(s) uploaded successfully`);
-			addToLog(`Image upload completed: ${files.map(f => f.name).join(', ')}`);
+			addToLog(`Image upload completed: ${files.map((f) => f.name).join(', ')}`);
 		}, 1500);
 	}
 
@@ -94,14 +94,14 @@
 			documentFiles = [...documentFiles, ...files];
 			documentLoading = false;
 			toast.success(`${files.length} document(s) uploaded successfully`);
-			addToLog(`Document upload completed: ${files.map(f => f.name).join(', ')}`);
+			addToLog(`Document upload completed: ${files.map((f) => f.name).join(', ')}`);
 		}, 2500);
 	}
 
 	function handleMultipleUpload(files: File[]) {
 		addToLog(`Multiple upload: ${files.length} file(s) selected`);
 		multipleLoading = true;
-		
+
 		if (showProgress) {
 			uploadProgress = 0;
 			const progressInterval = setInterval(() => {
@@ -114,7 +114,7 @@
 						multipleLoading = false;
 						uploadProgress = 0;
 						toast.success(`All ${files.length} file(s) uploaded successfully`);
-						addToLog(`Multiple upload completed: ${files.map(f => f.name).join(', ')}`);
+						addToLog(`Multiple upload completed: ${files.map((f) => f.name).join(', ')}`);
 					}, 500);
 				}
 			}, 200);
@@ -123,7 +123,7 @@
 				multipleFiles = [...multipleFiles, ...files];
 				multipleLoading = false;
 				toast.success(`${files.length} file(s) uploaded successfully`);
-				addToLog(`Multiple upload completed: ${files.map(f => f.name).join(', ')}`);
+				addToLog(`Multiple upload completed: ${files.map((f) => f.name).join(', ')}`);
 			}, 2000);
 		}
 	}
@@ -131,7 +131,7 @@
 	function handleCustomUpload(files: File[]) {
 		addToLog(`Custom upload: ${files.length} file(s) with type filter: ${acceptedTypes}`);
 		toast.success(`${files.length} file(s) accepted for upload`);
-		addToLog(`Custom upload completed: ${files.map(f => f.name).join(', ')}`);
+		addToLog(`Custom upload completed: ${files.map((f) => f.name).join(', ')}`);
 	}
 
 	// Utility functions
@@ -152,7 +152,7 @@
 
 	function removeFile(fileList: File[], index: number, listName: string) {
 		const fileName = fileList[index].name;
-		
+
 		if (listName === 'basic') {
 			uploadedFiles = uploadedFiles.filter((_, i) => i !== index);
 		} else if (listName === 'image') {
@@ -162,13 +162,14 @@
 		} else if (listName === 'multiple') {
 			multipleFiles = multipleFiles.filter((_, i) => i !== index);
 		}
-		
+
 		toast.info(`Removed: ${fileName}`);
 		addToLog(`File removed: ${fileName} from ${listName} list`);
 	}
 
 	function clearAllFiles() {
-		const totalFiles = uploadedFiles.length + imageFiles.length + documentFiles.length + multipleFiles.length;
+		const totalFiles =
+			uploadedFiles.length + imageFiles.length + documentFiles.length + multipleFiles.length;
 		uploadedFiles = [];
 		imageFiles = [];
 		documentFiles = [];
@@ -185,7 +186,7 @@
 		a.download = file.name;
 		a.click();
 		URL.revokeObjectURL(url);
-		
+
 		toast.success(`Downloaded: ${file.name}`);
 		addToLog(`File downloaded: ${file.name}`);
 	}
@@ -197,10 +198,10 @@
 			toast.warning('No files to process');
 			return;
 		}
-		
+
 		toast.loading(`Processing ${allFiles.length} file(s)...`);
 		addToLog(`Batch processing started: ${allFiles.length} files`);
-		
+
 		setTimeout(() => {
 			toast.dismiss();
 			toast.success(`Batch processing completed for ${allFiles.length} file(s)`);
@@ -211,7 +212,9 @@
 
 <div class="page-header">
 	<h1>Dropzone</h1>
-	<p>File upload component with drag-and-drop support, file type validation, and progress tracking.</p>
+	<p>
+		File upload component with drag-and-drop support, file type validation, and progress tracking.
+	</p>
 </div>
 
 <div class="vstack">
@@ -220,10 +223,7 @@
 			<div class="dropzone-section">
 				<h4>Simple File Upload</h4>
 				<div class="upload-demo">
-					<Dropzone 
-						loading={basicLoading}
-						onFileSubmit={handleBasicUpload}
-					/>
+					<Dropzone loading={basicLoading} onFileSubmit={handleBasicUpload} />
 					{#if uploadedFiles.length > 0}
 						<div class="file-list">
 							<h6>Uploaded Files ({uploadedFiles.length})</h6>
@@ -235,13 +235,13 @@
 										<span class="file-size">{formatFileSize(file.size)}</span>
 									</div>
 									<div class="file-actions">
-										<ActionIcon 
-											svg={iconDownload} 
+										<ActionIcon
+											svg={iconDownload}
 											variant="tertiary-subtle"
 											onclick={() => downloadFile(file)}
 										/>
-										<ActionIcon 
-											svg={iconTrash} 
+										<ActionIcon
+											svg={iconTrash}
 											variant="danger-subtle"
 											onclick={() => removeFile(uploadedFiles, index, 'basic')}
 										/>
@@ -283,8 +283,8 @@
 								<div class="image-preview">
 									<img src={URL.createObjectURL(file)} alt={file.name} />
 									<div class="image-overlay">
-										<ActionIcon 
-											svg={iconTrash} 
+										<ActionIcon
+											svg={iconTrash}
 											variant="danger-subtle"
 											onclick={() => removeFile(imageFiles, index, 'image')}
 										/>
@@ -299,7 +299,7 @@
 					</div>
 				{/if}
 			</div>
-			
+
 			<h4>Document Upload Only</h4>
 			<div class="restriction-demo">
 				<Dropzone
@@ -320,8 +320,8 @@
 									</span>
 								</div>
 								<Badge variant="accent">Document</Badge>
-								<ActionIcon 
-									svg={iconTrash} 
+								<ActionIcon
+									svg={iconTrash}
 									variant="danger-subtle"
 									onclick={() => removeFile(documentFiles, index, 'document')}
 								/>
@@ -361,9 +361,7 @@
 					<div class="multiple-list">
 						<div class="list-header">
 							<h6>Batch Upload Results ({multipleFiles.length} files)</h6>
-							<Button variant="secondary-subtle" onclick={processBatch}>
-								Process Batch
-							</Button>
+							<Button variant="secondary-subtle" onclick={processBatch}>Process Batch</Button>
 						</div>
 						<div class="file-grid">
 							{#each multipleFiles as file, index}
@@ -371,8 +369,8 @@
 									<ActionIcon svg={getFileIcon(file.name)} variant="secondary-subtle" />
 									<span class="grid-name">{file.name}</span>
 									<span class="grid-size">{formatFileSize(file.size)}</span>
-									<ActionIcon 
-										svg={iconTrash} 
+									<ActionIcon
+										svg={iconTrash}
 										variant="danger-subtle"
 										onclick={() => removeFile(multipleFiles, index, 'multiple')}
 									/>
@@ -390,7 +388,7 @@
 			<h4>Configurable Dropzone</h4>
 			<div class="custom-config">
 				<div class="config-field">
-					<Select 
+					<Select
 						label="Accepted File Types"
 						bind:value={acceptedTypes}
 						options={fileTypeOptions}
@@ -432,15 +430,9 @@
 				</div>
 			</div>
 			<div class="management-actions">
-				<Button onclick={processBatch}>
-					Process All Files
-				</Button>
-				<Button variant="secondary" onclick={clearAllFiles}>
-					Clear All Files
-				</Button>
-				<Button variant="secondary-subtle" svg={iconRefresh}>
-					Refresh View
-				</Button>
+				<Button onclick={processBatch}>Process All Files</Button>
+				<Button variant="secondary" onclick={clearAllFiles}>Clear All Files</Button>
+				<Button variant="secondary-subtle" svg={iconRefresh}>Refresh View</Button>
 			</div>
 		</div>
 	</Paper>
@@ -449,9 +441,7 @@
 		<div class="log-section">
 			<div class="log-header">
 				<h4>Upload Activity</h4>
-				<Button variant="secondary-subtle" onclick={clearLog}>
-					Clear Log
-				</Button>
+				<Button variant="secondary-subtle" onclick={clearLog}>Clear Log</Button>
 			</div>
 			<div class="action-log">
 				{#each actionLog as entry}
@@ -467,14 +457,23 @@
 	<Paper title="Features">
 		<div class="feature-list">
 			<ul>
-				<li><strong>Drag and drop:</strong> Native HTML5 drag and drop support with visual feedback</li>
+				<li>
+					<strong>Drag and drop:</strong> Native HTML5 drag and drop support with visual feedback
+				</li>
 				<li><strong>Click to browse:</strong> Traditional file input as fallback option</li>
 				<li><strong>File type filtering:</strong> Accept attribute for restricting file types</li>
 				<li><strong>Multiple files:</strong> Support for single or multiple file selection</li>
-				<li><strong>Loading states:</strong> Built-in loading indicator with full-screen overlay</li>
+				<li>
+					<strong>Loading states:</strong> Built-in loading indicator with full-screen overlay
+				</li>
 				<li><strong>Visual feedback:</strong> Hover and drag-over states for better UX</li>
-				<li><strong>File validation:</strong> Built-in accept, maxSize and maxFiles validation for both drops and browsing</li>
-				<li><strong>Rejection callback:</strong> onReject reports files filtered out by validation</li>
+				<li>
+					<strong>File validation:</strong> Built-in accept, maxSize and maxFiles validation for both
+					drops and browsing
+				</li>
+				<li>
+					<strong>Rejection callback:</strong> onReject reports files filtered out by validation
+				</li>
 				<li><strong>Theme support:</strong> Full light/dark mode integration</li>
 				<li><strong>Custom styling:</strong> Dashed border with smooth transitions</li>
 				<li><strong>Progress tracking:</strong> Loading states for upload simulation</li>
@@ -953,15 +952,15 @@
 		.image-grid {
 			grid-template-columns: repeat(2, 1fr);
 		}
-		
+
 		.file-grid {
 			grid-template-columns: 1fr;
 		}
-		
+
 		.management-stats {
 			grid-template-columns: repeat(2, 1fr);
 		}
-		
+
 		.management-actions {
 			flex-direction: column;
 		}

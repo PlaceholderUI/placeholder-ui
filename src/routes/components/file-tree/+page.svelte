@@ -305,8 +305,8 @@
 			</li>
 			<li>
 				<code>selectedId</code> — bindable string of the highlighted row. Setting it
-				programmatically expands every ancestor folder so the selection is visible (try the
-				"Select nested file" button above with the <code>util</code> folder collapsed).
+				programmatically expands every ancestor folder so the selection is visible (try the "Select
+				nested file" button above with the <code>util</code> folder collapsed).
 			</li>
 			<li>
 				<code>isDraggable</code> — boolean (default <code>true</code>). When false, rows can't be

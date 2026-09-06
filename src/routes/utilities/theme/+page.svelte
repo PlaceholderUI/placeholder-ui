@@ -133,7 +133,8 @@ const theme = getTheme();`}</pre>
 
 		<div class="code-section">
 			<strong>Usage:</strong>
-			<pre class="code-block">{`import { applyTheme, themeToCss } from '@placeholderco/placeholder-ui';
+			<pre
+				class="code-block">{`import { applyTheme, themeToCss } from '@placeholderco/placeholder-ui';
 import logo from './logo.svg?raw';
 import darkLogo from './logo-dark.svg?raw';
 

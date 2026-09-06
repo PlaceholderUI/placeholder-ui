@@ -49,8 +49,12 @@
 	let minutes: number = $derived(time.minute());
 
 	// Calculate time constraints based on selected date
-	const isMinDateSelected = $derived(selectedDate && minDate && dayjs(selectedDate).isSame(dayjs(minDate), 'day'));
-	const isMaxDateSelected = $derived(selectedDate && maxDate && dayjs(selectedDate).isSame(dayjs(maxDate), 'day'));
+	const isMinDateSelected = $derived(
+		selectedDate && minDate && dayjs(selectedDate).isSame(dayjs(minDate), 'day')
+	);
+	const isMaxDateSelected = $derived(
+		selectedDate && maxDate && dayjs(selectedDate).isSame(dayjs(maxDate), 'day')
+	);
 
 	const minHour = $derived.by(() => {
 		if (!isMinDateSelected || !minDate) return 1;
@@ -86,7 +90,8 @@
 		if (!isMinDateSelected || !minDate) return 0;
 		const minTime = dayjs(minDate);
 		const minHour24 = minTime.hour();
-		const currentHour24 = amPm === 'pm' ? (hours === 12 ? 12 : hours + 12) : (hours === 12 ? 0 : hours);
+		const currentHour24 =
+			amPm === 'pm' ? (hours === 12 ? 12 : hours + 12) : hours === 12 ? 0 : hours;
 
 		// Only apply minute constraint if we're on the same hour
 		return minHour24 === currentHour24 ? minTime.minute() : 0;
@@ -96,7 +101,8 @@
 		if (!isMaxDateSelected || !maxDate) return 59;
 		const maxTime = dayjs(maxDate);
 		const maxHour24 = maxTime.hour();
-		const currentHour24 = amPm === 'pm' ? (hours === 12 ? 12 : hours + 12) : (hours === 12 ? 0 : hours);
+		const currentHour24 =
+			amPm === 'pm' ? (hours === 12 ? 12 : hours + 12) : hours === 12 ? 0 : hours;
 
 		// Only apply minute constraint if we're on the same hour
 		return maxHour24 === currentHour24 ? maxTime.minute() : 59;

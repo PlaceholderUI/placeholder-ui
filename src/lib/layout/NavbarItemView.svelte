@@ -61,7 +61,9 @@
 			<div
 				class="navbar-submenu"
 				class:flyout={depth > 0}
-				style={item.submenuWidth ? `width: ${item.submenuWidth}; min-width: ${item.submenuWidth};` : ''}
+				style={item.submenuWidth
+					? `width: ${item.submenuWidth}; min-width: ${item.submenuWidth};`
+					: ''}
 				onclick={(e) => {
 					// Close the fold-out once an actual link is chosen (but not when toggling a nested parent)
 					if ((e.target as HTMLElement).closest('a')) close();

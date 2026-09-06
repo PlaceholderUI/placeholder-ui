@@ -222,19 +222,16 @@
 
 	<Paper title="Size Variants">
 		<p class="section-description">
-			The default size is sized to sit alongside Textbox and Select components in a filter bar.
-			Use <code>lg</code> for a larger control.
+			The default size is sized to sit alongside Textbox and Select components in a filter bar. Use <code
+				>lg</code
+			> for a larger control.
 		</p>
 		<div class="inline-filter-row">
 			<div class="inline-filter-item">
 				<Textbox label="Search" placeholder="Search..." bind:value={searchText} />
 			</div>
 			<div class="inline-filter-item">
-				<SegmentedControl
-					label="Status"
-					options={inlineFilterOptions}
-					bind:value={inlineFilter}
-				/>
+				<SegmentedControl label="Status" options={inlineFilterOptions} bind:value={inlineFilter} />
 			</div>
 			<div class="inline-filter-item">
 				<Select label="Category" options={inlineCategoryOptions} bind:value={inlineCategory} />
@@ -254,13 +251,25 @@
 		<div class="form-grid">
 			<div class="control-section">
 				<div class="control-group">
-					<SegmentedControl label="Boolean Choice" options={booleanOptions} bind:value={booleanValue} />
+					<SegmentedControl
+						label="Boolean Choice"
+						options={booleanOptions}
+						bind:value={booleanValue}
+					/>
 				</div>
 				<div class="control-group">
-					<SegmentedControl label="Priority (3 options)" options={priorityOptions} bind:value={taskPriority} />
+					<SegmentedControl
+						label="Priority (3 options)"
+						options={priorityOptions}
+						bind:value={taskPriority}
+					/>
 				</div>
 				<div class="control-group">
-					<SegmentedControl label="Status (4 options)" options={statusOptions} bind:value={projectStatus} />
+					<SegmentedControl
+						label="Status (4 options)"
+						options={statusOptions}
+						bind:value={projectStatus}
+					/>
 				</div>
 				<div class="control-group">
 					<SegmentedControl label="Size (5 options)" options={sizeOptions} bind:value={itemSize} />
@@ -280,7 +289,11 @@
 	<Paper title="Text Alignment Example">
 		<div class="alignment-demo">
 			<div class="control-group">
-				<SegmentedControl label="Text Alignment" options={alignmentOptions} bind:value={textAlignment} />
+				<SegmentedControl
+					label="Text Alignment"
+					options={alignmentOptions}
+					bind:value={textAlignment}
+				/>
 			</div>
 			<div class="preview-text alignment-{textAlignment}">
 				<p>This text alignment changes based on the segmented control above.</p>
@@ -295,18 +308,34 @@
 			<div class="dashboard-controls">
 				<div class="control-row">
 					<div class="control-group">
-						<SegmentedControl label="View" options={dashboardViewOptions} bind:value={dashboardView} />
+						<SegmentedControl
+							label="View"
+							options={dashboardViewOptions}
+							bind:value={dashboardView}
+						/>
 					</div>
 					<div class="control-group">
-						<SegmentedControl label="Chart Type" options={chartTypeOptions} bind:value={chartType} />
+						<SegmentedControl
+							label="Chart Type"
+							options={chartTypeOptions}
+							bind:value={chartType}
+						/>
 					</div>
 				</div>
 				<div class="control-row">
 					<div class="control-group">
-						<SegmentedControl label="Data Range" options={dataRangeOptions} bind:value={dataRange} />
+						<SegmentedControl
+							label="Data Range"
+							options={dataRangeOptions}
+							bind:value={dataRange}
+						/>
 					</div>
 					<div class="control-group">
-						<SegmentedControl label="Report Type" options={reportTypeOptions} bind:value={reportType} />
+						<SegmentedControl
+							label="Report Type"
+							options={reportTypeOptions}
+							bind:value={reportType}
+						/>
 					</div>
 				</div>
 			</div>
@@ -417,12 +446,11 @@
 	<Paper title="Programmatic Recalculation">
 		<div class="recalc-section">
 			<p class="section-description">
-				The component exposes a <code>recalculateBackground(delay?)</code> function on its
-				instance (via <code>bind:this</code>). The sliding background only repositions
-				automatically when the selection changes — if a layout change resizes the segments
-				without changing the selection, call this function to snap it back into place. Pass an
-				optional delay in milliseconds to defer the measurement, e.g. until a CSS transition
-				has finished.
+				The component exposes a <code>recalculateBackground(delay?)</code> function on its instance
+				(via <code>bind:this</code>). The sliding background only repositions automatically when the
+				selection changes — if a layout change resizes the segments without changing the selection,
+				call this function to snap it back into place. Pass an optional delay in milliseconds to
+				defer the measurement, e.g. until a CSS transition has finished.
 			</p>
 
 			<div class="control-group">
@@ -444,14 +472,15 @@
 			</div>
 
 			<p class="note">
-				"Toggle label length" swaps the option labels (S/M/L ↔ Small/Medium/Large), which
-				resizes the segments while the background stays where it was. "Recalculate background"
-				repositions it under the selected option.
+				"Toggle label length" swaps the option labels (S/M/L ↔ Small/Medium/Large), which resizes
+				the segments while the background stays where it was. "Recalculate background" repositions
+				it under the selected option.
 			</p>
 
 			<div class="code-example">
 				<h4>Implementation Example:</h4>
-				<pre><code>{`let control;
+				<pre><code
+						>{`let control;
 
 <SegmentedControl bind:this={control} {options} bind:value={selected} />
 
@@ -459,7 +488,8 @@
 control.recalculateBackground();
 
 // Or wait 200ms first, e.g. for a CSS transition to finish:
-control.recalculateBackground(200);`}</code></pre>
+control.recalculateBackground(200);`}</code
+					></pre>
 			</div>
 		</div>
 	</Paper>
@@ -480,8 +510,8 @@ control.recalculateBackground(200);`}</code></pre>
 				</li>
 				<li><strong>Dynamic positioning:</strong> Background perfectly follows selected option</li>
 				<li>
-					<strong>Programmatic recalculation:</strong> <code>recalculateBackground()</code> instance
-					function to reposition the background after external layout changes
+					<strong>Programmatic recalculation:</strong> <code>recalculateBackground()</code> instance function
+					to reposition the background after external layout changes
 				</li>
 				<li><strong>Visual feedback:</strong> Clear hover and selected states</li>
 				<li><strong>Touch friendly:</strong> Optimized for touch devices</li>

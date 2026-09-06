@@ -69,7 +69,12 @@
 		{/if}
 	</Paper>
 
-	<Paper title="Custom Classes" containerClass="ring-1" bodyClass="p-4" titleClass="text-brand-primary">
+	<Paper
+		title="Custom Classes"
+		containerClass="ring-1"
+		bodyClass="p-4"
+		titleClass="text-brand-primary"
+	>
 		<p>
 			Style each region with <code>containerClass</code>, <code>titleClass</code>, and
 			<code>bodyClass</code>.

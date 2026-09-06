@@ -471,7 +471,7 @@
 		border-top: 1px solid var(--border-color);
 		border-bottom: 1px solid var(--border-color);
 	}
-	
+
 	.section-title:first-child {
 		border-top: none;
 	}

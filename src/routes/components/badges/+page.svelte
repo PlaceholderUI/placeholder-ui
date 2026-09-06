@@ -84,9 +84,7 @@
 			>
 				Click & Delete
 			</Badge>
-			<Badge variant="accent" onclick={() => console.log('Accent clicked')}>
-				Clickable only
-			</Badge>
+			<Badge variant="accent" onclick={() => console.log('Accent clicked')}>Clickable only</Badge>
 			<Badge variant="danger" ondelete={() => console.log('Danger deleted')}>Deletable only</Badge>
 		</div>
 	</Paper>

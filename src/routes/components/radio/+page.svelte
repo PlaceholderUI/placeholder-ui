@@ -75,16 +75,8 @@
 	<Paper title="Basic Usage">
 		<div class="form-grid">
 			<div class="radio-section">
-				<RadioGroup 
-					label="Choose Color" 
-					options={colorOptions}
-					bind:value={basicColor} 
-				/>
-				<RadioGroup 
-					label="Choose Size" 
-					options={sizeOptions}
-					bind:value={basicSize} 
-				/>
+				<RadioGroup label="Choose Color" options={colorOptions} bind:value={basicColor} />
+				<RadioGroup label="Choose Size" options={sizeOptions} bind:value={basicSize} />
 			</div>
 			<div class="radio-info">
 				<strong>Current Values:</strong>
@@ -97,24 +89,24 @@
 	<Paper title="States">
 		<div class="form-grid">
 			<div class="radio-section">
-				<RadioGroup 
-					label="Required Choice" 
+				<RadioGroup
+					label="Required Choice"
 					options={colorOptions}
 					required={true}
-					bind:value={requiredChoice} 
+					bind:value={requiredChoice}
 				/>
-				<RadioGroup 
-					label="Disabled RadioGroup" 
+				<RadioGroup
+					label="Disabled RadioGroup"
 					options={colorOptions}
 					disabled={true}
-					bind:value={disabledChoice} 
+					bind:value={disabledChoice}
 				/>
-				<RadioGroup 
-					label="RadioGroup with Error" 
+				<RadioGroup
+					label="RadioGroup with Error"
 					options={colorOptions}
 					showError={true}
 					errorText="Please select an option"
-					bind:value={errorChoice} 
+					bind:value={errorChoice}
 				/>
 			</div>
 			<div class="radio-info">
@@ -129,15 +121,17 @@
 	<Paper title="Boolean Values">
 		<div class="form-grid">
 			<div class="radio-section">
-				<RadioGroup 
-					label="Do you agree?" 
-					options={yesNoOptions}
-					bind:value={booleanChoice} 
-				/>
+				<RadioGroup label="Do you agree?" options={yesNoOptions} bind:value={booleanChoice} />
 			</div>
 			<div class="radio-info">
 				<strong>Boolean Value:</strong>
-				<p>Agreement: {booleanChoice !== undefined ? (booleanChoice === 'true' ? 'Yes (true)' : 'No (false)') : 'None selected'}</p>
+				<p>
+					Agreement: {booleanChoice !== undefined
+						? booleanChoice === 'true'
+							? 'Yes (true)'
+							: 'No (false)'
+						: 'None selected'}
+				</p>
 				<p class="note">RadioGroups can work with boolean values too!</p>
 			</div>
 		</div>
@@ -146,14 +140,14 @@
 	<Paper title="With Event Handlers">
 		<div class="form-grid">
 			<div class="radio-section">
-				<RadioGroup 
-					label="Color with Change Handler" 
+				<RadioGroup
+					label="Color with Change Handler"
 					options={colorOptions}
 					bind:value={basicColor}
 					onchange={handleColorChange}
 				/>
-				<RadioGroup 
-					label="Priority with Change Handler" 
+				<RadioGroup
+					label="Priority with Change Handler"
 					options={priorityOptions}
 					bind:value={taskPriority}
 					onchange={handlePriorityChange}
@@ -170,20 +164,20 @@
 		<div class="form-section">
 			<h3>Task Configuration</h3>
 			<div class="radio-section">
-				<RadioGroup 
-					label="Task Priority" 
+				<RadioGroup
+					label="Task Priority"
 					options={priorityOptions}
 					bind:value={taskPriority}
 					required={true}
 				/>
-				<RadioGroup 
-					label="Payment Method" 
+				<RadioGroup
+					label="Payment Method"
 					options={paymentOptions}
 					bind:value={paymentMethod}
 					required={true}
 				/>
-				<RadioGroup 
-					label="Notification Preferences" 
+				<RadioGroup
+					label="Notification Preferences"
 					options={notificationOptions}
 					bind:value={notificationPreference}
 				/>
@@ -191,15 +185,14 @@
 			<div class="form-summary">
 				<strong>Configuration Summary:</strong>
 				<ul>
-					<li>Priority: <span class="priority-{taskPriority}">{taskPriority || 'Not set'}</span></li>
+					<li>
+						Priority: <span class="priority-{taskPriority}">{taskPriority || 'Not set'}</span>
+					</li>
 					<li>Payment: {paymentMethod || 'Not selected'}</li>
 					<li>Notifications: {notificationPreference}</li>
 				</ul>
 				<div class="summary-actions">
-					<button 
-						class="btn-primary" 
-						disabled={!taskPriority || !paymentMethod}
-					>
+					<button class="btn-primary" disabled={!taskPriority || !paymentMethod}>
 						Save Configuration
 					</button>
 				</div>
@@ -224,7 +217,10 @@
 			</div>
 			<div class="radio-info">
 				<strong>Vertical prop:</strong>
-				<p>Use <code>vertical</code> to stack radio options in a column instead of the default horizontal row layout.</p>
+				<p>
+					Use <code>vertical</code> to stack radio options in a column instead of the default horizontal
+					row layout.
+				</p>
 			</div>
 		</div>
 	</Paper>
@@ -239,7 +235,9 @@
 				<li><strong>Error states:</strong> Display error messages and styling</li>
 				<li><strong>Disabled states:</strong> Support for disabled radio groups</li>
 				<li><strong>Event handling:</strong> onChange callback for custom logic</li>
-				<li><strong>Flexible values:</strong> Support for string, number, boolean, and object values</li>
+				<li>
+					<strong>Flexible values:</strong> Support for string, number, boolean, and object values
+				</li>
 				<li><strong>Vertical layout:</strong> Option to display radio buttons in a column</li>
 				<li><strong>Accessibility:</strong> Proper labeling and keyboard navigation</li>
 				<li><strong>Form integration:</strong> Works seamlessly with form validation</li>
@@ -326,10 +324,18 @@
 		margin-bottom: 0.5rem;
 	}
 
-	.priority-low { color: #10b981; }
-	.priority-medium { color: #f59e0b; }
-	.priority-high { color: #f97316; }
-	.priority-critical { color: #dc2626; }
+	.priority-low {
+		color: #10b981;
+	}
+	.priority-medium {
+		color: #f59e0b;
+	}
+	.priority-high {
+		color: #f97316;
+	}
+	.priority-critical {
+		color: #dc2626;
+	}
 
 	.summary-actions {
 		border-top: 1px solid var(--border-color);

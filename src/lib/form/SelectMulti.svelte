@@ -471,7 +471,6 @@
 		color: var(--placeholder-color);
 	}
 
-
 	.disabled {
 		opacity: 0.5;
 		cursor: not-allowed;

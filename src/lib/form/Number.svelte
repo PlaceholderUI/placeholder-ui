@@ -108,9 +108,7 @@
 		children
 	}: NumberProps = $props();
 
-	let resolvedName = $derived(
-		(name || label || autoName).replace(/[^a-zA-Z0-9_\-:.]/g, '_')
-	);
+	let resolvedName = $derived((name || label || autoName).replace(/[^a-zA-Z0-9_\-:.]/g, '_'));
 
 	let id = $derived.by(() => {
 		if (inputId) return inputId;

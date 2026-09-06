@@ -52,9 +52,7 @@
 	}: RadioGroupProps = $props();
 
 	const autoName = `radio-${crypto.randomUUID()}`;
-	const resolvedName = $derived(
-		(name || label || autoName).replace(/[^a-zA-Z0-9_\-:.]/g, '_')
-	);
+	const resolvedName = $derived((name || label || autoName).replace(/[^a-zA-Z0-9_\-:.]/g, '_'));
 
 	function handleChange(option: ComboBoxItem) {
 		if (option.value === value) return;
