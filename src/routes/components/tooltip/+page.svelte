@@ -613,7 +613,7 @@
 </div>
 
 <!-- Tooltip Test Dialog -->
-<Dialog bind:show={tooltipDialog} title="Tooltips in Modal" preventOverflow>
+<Dialog bind:show={tooltipDialog} title="Tooltips in Modal">
 	<div class="dialog-content">
 		<p class="tooltip-test-intro">
 			Hover over the elements below to test tooltip positioning inside a modal dialog.

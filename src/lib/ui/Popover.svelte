@@ -3,6 +3,7 @@
 	import type { Snippet } from 'svelte';
 	import Button from './Button.svelte';
 	import { clickOutside } from '$lib/util/ClickOutside.js';
+	import { floating } from '$lib/util/Floating.js';
 
 	type PopoverPosition = 'top' | 'bottom' | 'left' | 'right';
 	type PopoverTrigger = 'click' | 'hover';
@@ -40,6 +41,7 @@
 		hoverDelay = 1000
 	}: PopoverProps = $props();
 
+	let triggerElement: HTMLElement | undefined = $state(undefined);
 	let hoverTimeout: ReturnType<typeof setTimeout> | null = null;
 	let isHovering = false;
 
@@ -99,7 +101,8 @@
 		{#if button}
 			<!-- svelte-ignore a11y_no_static_element_interactions -->
 			<!-- svelte-ignore a11y_mouse_events_have_key_events -->
-			<button 
+			<button
+				bind:this={triggerElement}
 				onclick={handleClick}
 				onmouseenter={handleMouseEnter}
 				onmouseleave={handleMouseLeave}
@@ -110,6 +113,7 @@
 			<!-- svelte-ignore a11y_no_static_element_interactions -->
 			<!-- svelte-ignore a11y_mouse_events_have_key_events -->
 			<div
+				bind:this={triggerElement}
 				onmouseenter={handleMouseEnter}
 				onmouseleave={handleMouseLeave}
 			>
@@ -122,8 +126,12 @@
 			<!-- svelte-ignore a11y_click_events_have_key_events -->
 			<!-- svelte-ignore a11y_no_static_element_interactions -->
 			<!-- svelte-ignore a11y_mouse_events_have_key_events -->
+			<!-- Rendered in the top layer so a scrolling Dialog body cannot clip it.
+			     data-placement (set by use:floating, after any flip) drives the arrow. -->
 			<div
-				class="popover-content popover-{position}"
+				class="popover-content"
+				data-placement={position}
+				use:floating={{ anchor: () => triggerElement, placement: position, offset: 6 }}
 				onclick={(e) => e.stopPropagation()}
 				onmouseenter={handleContentMouseEnter}
 				onmouseleave={handleContentMouseLeave}
@@ -140,9 +148,9 @@
 		position: relative;
 	}
 
+	/* Position and top-layer promotion come from use:floating */
 	.popover-content {
 		display: block;
-		position: absolute;
 		background-color: var(--paper-body-bg);
 		border: 1px solid var(--border-color);
 		min-width: 160px;
@@ -151,64 +159,35 @@
 		border-radius: 4px;
 	}
 
-	/* Position-specific styles */
-	.popover-bottom {
-		top: 100%;
-		left: 50%;
-		transform: translateX(-50%);
-		margin-top: 4px;
-	}
-
-	.popover-top {
-		bottom: 100%;
-		left: 50%;
-		transform: translateX(-50%);
-		margin-bottom: 4px;
-	}
-
-	.popover-right {
-		top: 50%;
-		left: 100%;
-		transform: translateY(-50%);
-		margin-left: 4px;
-	}
-
-	.popover-left {
-		top: 50%;
-		right: 100%;
-		transform: translateY(-50%);
-		margin-right: 4px;
-	}
-
-	/* Arrow indicators for each position */
+	/* Arrow indicators for each resolved placement */
 	.popover-content::before {
 		content: '';
 		position: absolute;
 		border: 6px solid transparent;
 	}
 
-	.popover-bottom::before {
+	.popover-content[data-placement='bottom']::before {
 		top: -12px;
 		left: 50%;
 		transform: translateX(-50%);
 		border-bottom-color: var(--border-color);
 	}
 
-	.popover-top::before {
+	.popover-content[data-placement='top']::before {
 		bottom: -12px;
 		left: 50%;
 		transform: translateX(-50%);
 		border-top-color: var(--border-color);
 	}
 
-	.popover-right::before {
+	.popover-content[data-placement='right']::before {
 		top: 50%;
 		left: -12px;
 		transform: translateY(-50%);
 		border-right-color: var(--border-color);
 	}
 
-	.popover-left::before {
+	.popover-content[data-placement='left']::before {
 		top: 50%;
 		right: -12px;
 		transform: translateY(-50%);

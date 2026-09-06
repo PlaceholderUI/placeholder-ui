@@ -1,6 +1,7 @@
 <script lang="ts">
 	import type { Snippet } from 'svelte';
 	import { fade } from 'svelte/transition';
+	import { findFixedContainingBlock } from '$lib/util/Floating.js';
 
 	export type TooltipLocation =
 		| 'top'
@@ -138,43 +139,6 @@
 
 	function clamp(value: number, min: number, max: number): number {
 		return Math.max(min, Math.min(value, max));
-	}
-
-	/**
-	 * A transform, filter, perspective, containment or container-type on an ancestor
-	 * makes that ancestor the containing block for `position: fixed` descendants —
-	 * left/top stop meaning "from the viewport" while getBoundingClientRect() keeps
-	 * reporting viewport coordinates. Dialog hits this: its open animation uses a
-	 * `forwards` fill, which leaves `transform: translateY(0)` applied while open.
-	 */
-	function findFixedContainingBlock(element: HTMLElement): HTMLElement | null {
-		let node = element.parentElement;
-
-		while (node) {
-			const style = getComputedStyle(node);
-			// Newer properties go through getPropertyValue so an older DOM lib (or a
-			// browser without support) reports '' instead of failing to compile.
-			const containerType = style.getPropertyValue('container-type');
-			const backdropFilter =
-				style.getPropertyValue('backdrop-filter') ||
-				style.getPropertyValue('-webkit-backdrop-filter');
-
-			if (
-				style.transform !== 'none' ||
-				style.perspective !== 'none' ||
-				style.filter !== 'none' ||
-				(backdropFilter !== '' && backdropFilter !== 'none') ||
-				(containerType !== '' && containerType !== 'normal') ||
-				/\b(paint|layout|strict|content)\b/.test(style.contain) ||
-				/\b(transform|perspective|filter)\b/.test(style.willChange)
-			) {
-				return node;
-			}
-
-			node = node.parentElement;
-		}
-
-		return null;
 	}
 
 	/** Viewport coordinates of the origin that left/top are measured from. */

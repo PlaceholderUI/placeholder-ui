@@ -127,19 +127,7 @@
 		leftAlignedOpen = false;
 		rightAlignedOpen = false;
 	}
-
-	function handleWindowClick(event: MouseEvent) {
-		// Check if the click was inside a dropdown or dropdown button
-		const target = event.target as HTMLElement;
-		if (target.closest('.dropdown')) {
-			return; // Don't close if clicking inside a dropdown
-		}
-		closeAllDropdowns();
-	}
 </script>
-
-<!-- Click outside to close dropdowns -->
-<svelte:window onclick={handleWindowClick} />
 
 <div class="page-header">
 	<h1>Dropdown</h1>

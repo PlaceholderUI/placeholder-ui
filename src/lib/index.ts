@@ -185,6 +185,7 @@ export * from "./models/NavbarItem.js";
 export * from "./models/NotifyModel.js";
 
 export * from "./util/ClickOutside.js";
+export * from "./util/Floating.js";
 export * from "./util/CronParser.js";
 export { dayjs } from "./util/dayjs.js";
 export type {

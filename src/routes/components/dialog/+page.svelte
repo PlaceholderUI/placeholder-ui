@@ -5,6 +5,11 @@
 	import Textbox from '$lib/form/Textbox.svelte';
 	import TextArea from '$lib/form/TextArea.svelte';
 	import ActionIcon from '$lib/ui/ActionIcon.svelte';
+	import Select from '$lib/form/Select.svelte';
+	import DatePicker from '$lib/form/DatePicker.svelte';
+	import Tooltip from '$lib/ui/Tooltip.svelte';
+	import Popover from '$lib/ui/Popover.svelte';
+	import Dropdown from '$lib/ui/Dropdown.svelte';
 	import { 
 		iconEdit, 
 		iconTrash, 
@@ -22,6 +27,19 @@
 	let noPaperDialog = false;
 	let infoDialog = false;
 	let deleteDialog = false;
+	let scrollDialog = false;
+	let scrollDialogVisible = false;
+	let scrollCountry: string | undefined = undefined;
+	let scrollDate: string | undefined = undefined;
+	const countryOptions = [
+		{ label: 'Australia', value: 'au' },
+		{ label: 'Canada', value: 'ca' },
+		{ label: 'Germany', value: 'de' },
+		{ label: 'Japan', value: 'jp' },
+		{ label: 'New Zealand', value: 'nz' },
+		{ label: 'United Kingdom', value: 'uk' },
+		{ label: 'United States', value: 'us' }
+	];
 
 	// Form data
 	let userName = '';
@@ -144,6 +162,22 @@
 		</div>
 	</Paper>
 
+	<Paper title="Scrolling Content with Popups">
+		<div class="custom-section">
+			<p>
+				The dialog body scrolls by default. Selects, pickers, tooltips, popovers and dropdowns
+				render in the browser's top layer, so they open outside the scrolling area instead of
+				being clipped by it. Scroll the body while a select is open to see it track its field.
+			</p>
+			<div class="custom-options">
+				<Button onclick={() => (scrollDialog = true)}>Open Scrolling Dialog</Button>
+				<Button variant="secondary" onclick={() => (scrollDialogVisible = true)}>
+					Same Dialog with allowOverflow
+				</Button>
+			</div>
+		</div>
+	</Paper>
+
 	<Paper title="Custom Styling">
 		<div class="custom-section">
 			<h4>Custom Dialog Options</h4>
@@ -187,7 +221,10 @@
 				<li><strong>Body scroll lock:</strong> Prevents background scrolling when open</li>
 				<li><strong>Custom styling:</strong> Support for custom classes and no-paper mode</li>
 				<li><strong>Footer support:</strong> Built-in footer area for action buttons</li>
-				<li><strong>Overflow handling:</strong> Configurable overflow behavior</li>
+				<li>
+					<strong>Overflow handling:</strong> Body scrolls by default; popups escape to the top
+					layer. Use <code>allowOverflow</code> to let content spill instead
+				</li>
 				<li><strong>Theme integration:</strong> Full light/dark mode support</li>
 				<li><strong>Event context:</strong> onOpen, onClose, and onFirstOpen events</li>
 				<li><strong>Paper integration:</strong> Built-in Paper component styling</li>
@@ -263,6 +300,63 @@
 	{/snippet}
 </Dialog>
 
+<!-- Scrolling Dialog with Popups -->
+{#snippet scrollDialogBody()}
+	<!-- Plain wrapper (no overflow of its own) so the Dialog body is what scrolls -->
+	<div class="scroll-demo-content">
+		<div class="form-fields">
+			<Select label="Country" options={countryOptions} bind:value={scrollCountry} allowSearch />
+			<DatePicker label="Start date" bind:value={scrollDate} />
+			<div class="scroll-popup-row">
+				<Tooltip text="Tooltips are position: fixed and were never clipped" location="right">
+					<Button variant="secondary">Hover for tooltip</Button>
+				</Tooltip>
+				<Popover label="Popover" position="bottom">
+					<div style="padding: 0.75rem;">Rendered in the top layer.</div>
+				</Popover>
+				<Dropdown
+					label="Dropdown"
+					variant="tertiary"
+					links={[
+						{ text: 'First link', href: '#' },
+						{ text: 'Second link', href: '#' }
+					]}
+				/>
+			</div>
+		</div>
+		{#each Array(12) as _, i}
+			<p>
+				Paragraph {i + 1}. Filler content so the body is taller than the viewport and has to
+				scroll. Open the country select above, then scroll this body: the list stays anchored
+				to the field and is never clipped by the scrolling container.
+			</p>
+		{/each}
+		<div class="form-fields">
+			<Select
+				label="Country (near the bottom, flips upward when there is no room below)"
+				options={countryOptions}
+				bind:value={scrollCountry}
+			/>
+		</div>
+	</div>
+{/snippet}
+
+<Dialog bind:show={scrollDialog} title="Scrolling Dialog" size="md">
+	{@render scrollDialogBody()}
+	{#snippet footer()}
+		<span></span>
+		<Button onclick={() => (scrollDialog = false)}>Close</Button>
+	{/snippet}
+</Dialog>
+
+<Dialog bind:show={scrollDialogVisible} title="Scrolling Dialog (allowOverflow)" size="md" allowOverflow>
+	{@render scrollDialogBody()}
+	{#snippet footer()}
+		<span></span>
+		<Button onclick={() => (scrollDialogVisible = false)}>Close</Button>
+	{/snippet}
+</Dialog>
+
 <!-- Custom Dialog -->
 <Dialog bind:show={customDialog} title="Download File" size="lg">
 	<div class="dialog-content">
@@ -330,6 +424,17 @@
 </Dialog>
 
 <style>
+	.scroll-demo-content {
+		padding: 1rem 0;
+	}
+
+	.scroll-popup-row {
+		display: flex;
+		flex-wrap: wrap;
+		gap: 0.75rem;
+		align-items: center;
+	}
+
 	.page-header {
 		margin-bottom: 2rem;
 	}

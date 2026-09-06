@@ -26,6 +26,7 @@
 	import { fade } from 'svelte/transition';
 	import dayjs from '$lib/util/dayjs.js';
 	import { clickOutside } from '$lib/util/ClickOutside.js';
+	import { floating } from '$lib/util/Floating.js';
 	import ActionIcon from '$lib/ui/ActionIcon.svelte';
 	import { iconChevronLeft, iconChevronRight, iconX } from '$lib/icon/index.js';
 
@@ -65,7 +66,7 @@
 	let focusedMonth = $state((selectedStart ?? todayDate).startOf('month'));
 	let showCalendar = $state(false);
 	let showYearPicker = $state(false);
-	let dropdownPosition: 'above' | 'below' = $state('below');
+	let inputWrapElement: HTMLElement | undefined = $state(undefined);
 	let containerElement: HTMLElement | undefined = $state(undefined);
 
 	const yearRangeSize = 12;
@@ -242,14 +243,6 @@
 		focusedMonth = focusedMonth.add(delta, 'month');
 	}
 
-	function checkDropdownPosition() {
-		if (!containerElement) return;
-		const rect = containerElement.getBoundingClientRect();
-		const spaceBelow = window.innerHeight - rect.bottom;
-		const spaceAbove = rect.top;
-		dropdownPosition = spaceBelow < 340 && spaceAbove > spaceBelow ? 'above' : 'below';
-	}
-
 	function onClickOutside(event: MouseEvent) {
 		if (!showCalendar) return;
 		const target = event.target as HTMLElement;
@@ -301,16 +294,15 @@
 			class:drp-open={showCalendar}
 			role="button"
 			tabindex={disabled ? -1 : 0}
+			bind:this={inputWrapElement}
 			onclick={() => {
 				if (!disabled) {
-					checkDropdownPosition();
 					showCalendar = true;
 				}
 			}}
 			onkeydown={(e) => {
 				if (!disabled && (e.key === 'Enter' || e.key === ' ')) {
 					e.preventDefault();
-					checkDropdownPosition();
 					showCalendar = true;
 				}
 			}}
@@ -332,9 +324,11 @@
 
 			<div class="drp-calendar-anchor">
 				{#if showCalendar}
+					<!-- Rendered in the top layer so a scrolling Dialog body cannot clip it -->
 					<div
-						class="calendar {dropdownPosition}"
+						class="calendar"
 						transition:fade={{ duration: 150 }}
+						use:floating={{ anchor: () => inputWrapElement, placement: 'bottom-start', offset: 4 }}
 						use:clickOutside={onClickOutside}
 					>
 						<!-- Month navigation -->
@@ -477,10 +471,10 @@
 
 	/* ---- Calendar ---- */
 
+	/* Position and top-layer promotion come from use:floating */
 	.calendar {
 		width: 19rem;
 		text-align: center;
-		position: absolute;
 		z-index: 10;
 		background-color: var(--paper-body-bg);
 		border: 1px solid var(--border-color);
@@ -489,14 +483,6 @@
 		padding: 0.5rem;
 	}
 
-	.calendar.below {
-		top: 0.25rem;
-	}
-
-	.calendar.above {
-		bottom: calc(100% + 0.25rem);
-		top: auto;
-	}
 
 	.month-buttons {
 		display: flex;

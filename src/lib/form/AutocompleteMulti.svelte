@@ -86,6 +86,7 @@
 	import ComboBoxMulti from '$lib/form/ComboBoxMulti.svelte';
 	import FormGroup from '$lib/form/FormGroup.svelte';
 	import { clickOutside } from '$lib/util/ClickOutside.js';
+	import { floating } from '$lib/util/Floating.js';
 	import { ComboBoxMultiCore } from './comboBoxCore.svelte.js';
 	import Icon from '$lib/icon/Icon.svelte';
 	import Loader from '$lib/ui/Loader.svelte';
@@ -305,6 +306,7 @@
 
 	let textboxElement: HTMLInputElement | undefined = $state(undefined);
 	let comboBoxEl: ReturnType<typeof ComboBoxMulti> | undefined = $state(undefined);
+	let containerElement: HTMLElement | undefined = $state(undefined);
 
 	function onKeyDown(e: KeyboardEvent) {
 		if (e.key === 'Backspace' && filterValue.length === 0 && rawValues.length > 0) {
@@ -348,7 +350,7 @@
 	});
 </script>
 
-<div class="autocomplete-multi-container {containerClass}">
+<div class="autocomplete-multi-container {containerClass}" bind:this={containerElement}>
 	<FormGroup
 		{label}
 		{required}
@@ -414,21 +416,27 @@
 		</div>
 	</FormGroup>
 
-	<div class="autocomplete-panel {open ? '' : 'hidden'}">
-		<div class="autocomplete-panel-inner" use:clickOutside={closePopover}>
-			<ComboBoxMulti
-				bind:this={comboBoxEl}
-				filterString={filterValue}
-				values={rawValues}
-				{onSelection}
-				groupedOptions={displayGroups}
-				{open}
-				loading={core.searching}
-				{hideNoResults}
-				{loadingText}
-			/>
+	{#if open}
+		<!-- Rendered in the top layer so a scrolling Dialog body cannot clip it -->
+		<div
+			class="autocomplete-panel"
+			use:floating={{ anchor: () => containerElement, placement: 'bottom-start', matchWidth: true }}
+		>
+			<div class="autocomplete-panel-inner" use:clickOutside={closePopover}>
+				<ComboBoxMulti
+					bind:this={comboBoxEl}
+					filterString={filterValue}
+					values={rawValues}
+					{onSelection}
+					groupedOptions={displayGroups}
+					{open}
+					loading={core.searching}
+					{hideNoResults}
+					{loadingText}
+				/>
+			</div>
 		</div>
-	</div>
+	{/if}
 </div>
 
 <style>
@@ -496,19 +504,13 @@
 		line-height: 0;
 	}
 
+	/* Position, width and top-layer promotion come from use:floating */
 	.autocomplete-panel {
-		position: absolute;
-		width: 100%;
-		left: 0;
 		z-index: 70;
 	}
 
 	.autocomplete-panel-inner {
 		position: relative;
 		width: 100%;
-	}
-
-	.hidden {
-		display: none;
 	}
 </style>

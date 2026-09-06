@@ -25,7 +25,13 @@
 		title?: string | undefined;
 		/** Render without the Paper wrapper component */
 		noPaper?: boolean;
-		/** Prevent content from overflowing the dialog bounds */
+		/**
+		 * Let content overflow the dialog bounds instead of scrolling inside it.
+		 * The body scrolls by default; dropdowns, pickers and tooltips render in
+		 * the browser's top layer, so they are never clipped by that scroll.
+		 */
+		allowOverflow?: boolean;
+		/** @deprecated Scrolling is now the default; use `allowOverflow` to opt out. */
 		preventOverflow?: boolean;
 		/** Size preset for the dialog width */
 		size?: 'sm' | 'md' | 'lg' | 'xl' | 'full';
@@ -42,6 +48,7 @@
 		allowImplicitClose = true,
 		title = undefined,
 		noPaper = false,
+		allowOverflow = false,
 		preventOverflow = false,
 		size = 'md',
 		class: classes = '',
@@ -50,6 +57,12 @@
 	}: DialogProps = $props();
 
 	const uid = $props.id();
+
+	// preventOverflow is the legacy opt-in for the behaviour that is now default,
+	// so it wins over allowOverflow when both are set
+	const overflowClass = $derived(
+		allowOverflow && !preventOverflow ? 'overflow-visible' : 'overflow-y-auto'
+	);
 	const titleId = `${uid}-title`;
 
 	let dialogElement: HTMLDialogElement | undefined = $state(undefined);
@@ -142,7 +155,7 @@
 			{/if}
 		</div>
 	{/if}
-	<div class="dialog-body {preventOverflow ? 'overflow-y-auto' : 'overflow-visible'}">
+	<div class="dialog-body {overflowClass}">
 		{@render children?.()}
 	</div>
 	{#if footer}
@@ -169,7 +182,7 @@
 		{#if noPaper}
 			{@render DialogInner()}
 		{:else}
-			<div class="dialog-paper {preventOverflow ? 'overflow-y-auto' : 'overflow-visible'}">
+			<div class="dialog-paper {overflowClass}">
 				<Paper containerClass={classes}>
 					{@render DialogInner()}
 				</Paper>

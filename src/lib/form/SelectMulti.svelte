@@ -1,5 +1,6 @@
 <script lang="ts">
 	import { clickOutside } from '$lib/util/ClickOutside.js';
+	import { floating } from '$lib/util/Floating.js';
 	import type {
 		ComboBoxGroup,
 		ComboBoxItem,
@@ -245,6 +246,7 @@
 	}
 
 	let comboBoxEl: ReturnType<typeof ComboBoxMulti> | undefined = $state(undefined);
+	let containerElement: HTMLElement | undefined = $state(undefined);
 	let textboxElement: HTMLElement | undefined = $state(undefined);
 	let buttonElement: HTMLElement;
 	let comboBoxKeyDown: ((e: KeyboardEvent) => void) | undefined = $state(undefined);
@@ -283,6 +285,7 @@
 <div
 	class="select-container {containerClass}"
 	class:mb-[1px]={computedAllowSearch && open && !isEmpty}
+	bind:this={containerElement}
 >
 	<FormGroup {label} {required} {tooltipContent} {tooltipLocation}>
 		<button
@@ -363,39 +366,40 @@
 			{/if}
 		</button>
 	</FormGroup>
-	<div
-		class="select-panel top-full
-			{open ? '' : 'hidden'}"
-	>
-		<div class="select-panel-inner" use:clickOutside={closePopover}>
-			{#if computedAllowSearch}
-				<Textbox
-					bind:value={filterString}
-					class="w-full
-						{open ? '!border-accent' : 'hidden'}
-						{open && !isEmpty ? 'border-t-0 rounded-t-none' : ''}"
-					bind:textboxElement
-					placeholder="Start typing to search..."
-					disabled={core.preloading}
-					autocomplete="off"
-					oninput={() => onFilterChange(filterString)}
-					onkeydown={onKeyDown}
+	{#if open}
+		<!-- Rendered in the top layer so a scrolling Dialog body cannot clip it -->
+		<div
+			class="select-panel"
+			use:floating={{ anchor: () => containerElement, placement: 'bottom-start', matchWidth: true }}
+		>
+			<div class="select-panel-inner" use:clickOutside={closePopover}>
+				{#if computedAllowSearch}
+					<Textbox
+						bind:value={filterString}
+						class="w-full !border-accent {!isEmpty ? 'border-t-0 rounded-t-none' : ''}"
+						bind:textboxElement
+						placeholder="Start typing to search..."
+						disabled={core.preloading}
+						autocomplete="off"
+						oninput={() => onFilterChange(filterString)}
+						onkeydown={onKeyDown}
+					/>
+				{/if}
+				<ComboBoxMulti
+					bind:this={comboBoxEl}
+					{filterString}
+					values={rawValues}
+					{onSelection}
+					onkeydown={comboBoxKeyDown}
+					groupedOptions={core.filteredGroups}
+					open={open && !hideCombobox}
+					loading={core.searching}
+					{hideNoResults}
+					{loadingText}
 				/>
-			{/if}
-			<ComboBoxMulti
-				bind:this={comboBoxEl}
-				{filterString}
-				values={rawValues}
-				{onSelection}
-				onkeydown={comboBoxKeyDown}
-				groupedOptions={core.filteredGroups}
-				open={open && !hideCombobox}
-				loading={core.searching}
-				{hideNoResults}
-				{loadingText}
-			/>
+			</div>
 		</div>
-	</div>
+	{/if}
 	{#if showError && errorText}
 		<div class="text-error text-xs">{errorText}</div>
 	{/if}
@@ -453,10 +457,8 @@
 		padding: 0.25rem;
 	}
 
+	/* Position, width and top-layer promotion come from use:floating */
 	.select-panel {
-		position: absolute;
-		width: 100%;
-		left: 0;
 		z-index: 70;
 	}
 
@@ -469,9 +471,6 @@
 		color: var(--placeholder-color);
 	}
 
-	.hidden {
-		display: none;
-	}
 
 	.disabled {
 		opacity: 0.5;

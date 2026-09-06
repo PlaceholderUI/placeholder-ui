@@ -81,6 +81,7 @@
 <script lang="ts">
 	import ComboBoxMulti from '$lib/form/ComboBoxMulti.svelte';
 	import { clickOutside } from '$lib/util/ClickOutside.js';
+	import { floating } from '$lib/util/Floating.js';
 	import Textbox from './Textbox.svelte';
 	import { ComboBoxCore, findItemByValue } from './comboBoxCore.svelte.js';
 	import { tick } from 'svelte';
@@ -258,6 +259,7 @@
 
 	let textboxElement: HTMLElement | undefined = $state(undefined);
 	let comboBoxEl: ReturnType<typeof ComboBoxMulti> | undefined = $state(undefined);
+	let containerElement: HTMLElement | undefined = $state(undefined);
 
 	function onKeyDown(e: KeyboardEvent) {
 		if (!open) {
@@ -289,7 +291,7 @@
 	}
 </script>
 
-<div class="autocomplete-container">
+<div class="autocomplete-container" bind:this={containerElement}>
 	<Textbox
 		{name}
 		type="search"
@@ -316,21 +318,27 @@
 		onfocus={onFocus}
 		onkeydown={onKeyDown}
 	/>
-	<div class="autocomplete-panel {open ? '' : 'hidden'}">
-		<div class="autocomplete-panel-inner" use:clickOutside={closePopover}>
-			<ComboBoxMulti
-				bind:this={comboBoxEl}
-				filterString={value}
-				values={rawValue ? [rawValue] : []}
-				{onSelection}
-				groupedOptions={displayGroups}
-				{open}
-				loading={core.searching}
-				{hideNoResults}
-				{loadingText}
-			/>
+	{#if open}
+		<!-- Rendered in the top layer so a scrolling Dialog body cannot clip it -->
+		<div
+			class="autocomplete-panel"
+			use:floating={{ anchor: () => containerElement, placement: 'bottom-start', matchWidth: true }}
+		>
+			<div class="autocomplete-panel-inner" use:clickOutside={closePopover}>
+				<ComboBoxMulti
+					bind:this={comboBoxEl}
+					filterString={value}
+					values={rawValue ? [rawValue] : []}
+					{onSelection}
+					groupedOptions={displayGroups}
+					{open}
+					loading={core.searching}
+					{hideNoResults}
+					{loadingText}
+				/>
+			</div>
 		</div>
-	</div>
+	{/if}
 </div>
 
 <style>
@@ -338,19 +346,13 @@
 		position: relative;
 	}
 
+	/* Position, width and top-layer promotion come from use:floating */
 	.autocomplete-panel {
-		position: absolute;
-		width: 100%;
-		left: 0;
 		z-index: 70;
 	}
 
 	.autocomplete-panel-inner {
 		position: relative;
 		width: 100%;
-	}
-
-	.hidden {
-		display: none;
 	}
 </style>

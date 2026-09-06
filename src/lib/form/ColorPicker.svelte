@@ -205,6 +205,7 @@
 	import FormGroup from '$lib/form/FormGroup.svelte';
 	import ActionIcon from '$lib/ui/ActionIcon.svelte';
 	import { clickOutside } from '$lib/util/ClickOutside.js';
+	import { floating } from '$lib/util/Floating.js';
 	import { iconX, iconPalette } from '$lib/icon/index.js';
 
 	const autoName = `colorpicker-${crypto.randomUUID()}`;
@@ -306,19 +307,10 @@
 
 	// --- Popup -----------------------------------------------------------------
 	let open = $state(false);
-	let dropdownPosition: 'above' | 'below' = $state('below');
 	let triggerEl: HTMLElement | undefined = $state();
-
-	function checkDropdownPosition() {
-		if (!triggerEl) return;
-		const rect = triggerEl.getBoundingClientRect();
-		const spaceBelow = window.innerHeight - rect.bottom;
-		dropdownPosition = spaceBelow < 320 && rect.top > 320 ? 'above' : 'below';
-	}
 
 	function toggle() {
 		if (disabled) return;
-		if (!open) checkDropdownPosition();
 		open = !open;
 	}
 
@@ -511,11 +503,13 @@
 			</div>
 
 			{#if open}
+				<!-- Rendered in the top layer so a scrolling Dialog body cannot clip it -->
 				<div
-					class="panel {dropdownPosition}"
+					class="panel"
 					role="dialog"
 					aria-label="Colour picker"
 					transition:fade={{ duration: 150 }}
+					use:floating={{ anchor: () => triggerEl, placement: 'bottom-start', offset: 4 }}
 					use:clickOutside={onClickOutside}
 				>
 					<div
@@ -773,10 +767,9 @@
 	}
 
 	/* ---- Panel ----------------------------------------------------------- */
+	/* Position and top-layer promotion come from use:floating */
 	.panel {
-		position: absolute;
 		z-index: 10;
-		left: 0;
 		width: 16rem;
 		padding: 0.75rem;
 		display: flex;
@@ -787,14 +780,6 @@
 		border: 1px solid var(--border-color);
 		border-radius: 0.375rem;
 		box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15);
-	}
-
-	.panel.below {
-		top: calc(100% + 0.25rem);
-	}
-
-	.panel.above {
-		bottom: calc(100% + 0.25rem);
 	}
 
 	.sv-area {

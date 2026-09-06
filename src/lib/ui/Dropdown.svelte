@@ -5,6 +5,8 @@
 	import type { Hyperlink } from '$lib/models/Hyperlink.js';
 	import LinkCollection from '$lib/display/LinkCollection.svelte';
 	import { iconChevronDown } from '$lib/icon/index.js';
+	import { floating } from '$lib/util/Floating.js';
+	import { clickOutside } from '$lib/util/ClickOutside.js';
 
 	export interface DropdownProps {
 		/** Whether the dropdown is expanded (bindable) */
@@ -32,16 +34,32 @@
 		class: classes = '',
 		alignToButton = 'left'
 	}: DropdownProps = $props();
+
+	let triggerElement: HTMLElement | undefined = $state(undefined);
 </script>
 
-<div class="dropdown {classes} {alignToButton}">
+<!-- The floating content is still a DOM descendant of this wrapper (only its rendering
+     moves to the top layer), so a contains() check covers both the button and the menu -->
+<div
+	class="dropdown {classes} {alignToButton}"
+	bind:this={triggerElement}
+	use:clickOutside={() => (show = false)}
+>
 	<Button class="ps-2" {variant} svg={buttonSvg} onclick={() => (show = !show)}>
 		{label}
 	</Button>
 	{#if show}
+		<!-- Rendered in the top layer so a scrolling Dialog body cannot clip it -->
 		<!-- svelte-ignore a11y_click_events_have_key_events -->
 		<!-- svelte-ignore a11y_no_static_element_interactions -->
-		<div class="dropdown-content" onclick={(e) => e.stopPropagation()}>
+		<div
+			class="dropdown-content"
+			use:floating={{
+				anchor: () => triggerElement,
+				placement: alignToButton === 'right' ? 'bottom-end' : 'bottom-start'
+			}}
+			onclick={(e) => e.stopPropagation()}
+		>
 			{#if links.length > 0 && Array.isArray(links[0])}
 				{#each links as group}
 					<div class="dropdown-group">
@@ -60,10 +78,8 @@
 		position: relative;
 	}
 
+	/* Position and top-layer promotion come from use:floating */
 	.dropdown-content {
-		position: absolute;
-		top: 100%;
-		left: 0;
 		background-color: var(--paper-body-bg);
 		min-width: 160px;
 		box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
@@ -92,11 +108,6 @@
 
 	.dropdown-content :global(a:hover) {
 		background-color: var(--border-color);
-	}
-
-	.dropdown.right .dropdown-content {
-		left: auto;
-		right: 0;
 	}
 
 	:global(.dark) {

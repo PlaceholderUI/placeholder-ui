@@ -141,7 +141,7 @@
 	} */
 
 	.combobox-multi {
-		position: absolute;
+		position: relative;
 		width: 100%;
 		z-index: 50;
 		border-radius: 0.25rem;
@@ -154,7 +154,9 @@
 
 	.combobox-multi-panel {
 		overflow: auto;
-		max-height: 20rem;
+		/* --ui-floating-max-height is set by the floating action to the room left
+		   on the chosen side, so long lists shrink rather than run off-screen */
+		max-height: min(20rem, var(--ui-floating-max-height, 20rem));
 		border: 1px solid var(--border-color);
 		border-top: none;
 		/* max-h-80 overflow-auto */

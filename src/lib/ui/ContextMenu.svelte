@@ -38,6 +38,7 @@
 
 <script lang="ts">
 	import ContextMenuList from './ContextMenuList.svelte';
+	import { topLayer } from '$lib/util/Floating.js';
 
 	let {
 		open = $bindable(false),
@@ -53,16 +54,6 @@
 	let posX = $state(0);
 	let posY = $state(0);
 	let placed = $state(false);
-
-	/** Move the menu to <body> so it can't be clipped by overflow/transform ancestors. */
-	function portal(node: HTMLElement) {
-		document.body.appendChild(node);
-		return {
-			destroy() {
-				node.remove();
-			}
-		};
-	}
 
 	function close() {
 		if (!open) return;
@@ -127,8 +118,11 @@
 
 {#if open}
 	<!-- svelte-ignore a11y_no_static_element_interactions -->
+	<!-- Promoted to the top layer so overflow/transform ancestors cannot clip it. Unlike a
+	     body portal, the menu stays inside its subtree, so it remains usable inside a
+	     modal Dialog (everything outside an open modal is inert). -->
 	<div
-		use:portal
+		use:topLayer
 		bind:this={menuEl}
 		class="pui-ctxmenu {classes}"
 		style="left: {posX}px; top: {posY}px; visibility: {placed ? 'visible' : 'hidden'};"

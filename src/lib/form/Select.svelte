@@ -1,5 +1,6 @@
 <script lang="ts">
 	import { clickOutside } from '$lib/util/ClickOutside.js';
+	import { floating } from '$lib/util/Floating.js';
 	import type {
 		ComboBoxGroup,
 		ComboBoxItem,
@@ -209,6 +210,7 @@
 	}
 
 	let comboBoxEl: ReturnType<typeof ComboBoxMulti> | undefined = $state(undefined);
+	let containerElement: HTMLElement | undefined = $state(undefined);
 	let textboxElement: HTMLElement | undefined = $state(undefined);
 	let buttonElement: HTMLElement | undefined = $state(undefined);
 	let comboBoxKeyDown: ((e: KeyboardEvent) => void) | undefined = $state(undefined);
@@ -253,7 +255,7 @@
 	});
 </script>
 
-<div class="select-container {containerClass}">
+<div class="select-container {containerClass}" bind:this={containerElement}>
 	<FormGroup {label} {required} {tooltipContent} {tooltipText} {tooltipLocation}>
 		{#if computedAllowSearch && open}
 			<div class="select-input-wrapper">
@@ -375,26 +377,28 @@
 			</button>
 		{/if}
 	</FormGroup>
-	<div
-		class="select-panel
-			{isEmpty ? 'bottom-0' : 'top-full'}
-			{open ? '' : 'hidden'}"
-	>
-		<div class="select-panel-inner" use:clickOutside={closePopover}>
-			<ComboBoxMulti
-				bind:this={comboBoxEl}
-				{filterString}
-				values={rawValue ? [rawValue] : []}
-				{onSelection}
-				onkeydown={comboBoxKeyDown}
-				groupedOptions={core.filteredGroups}
-				{open}
-				loading={core.searching}
-				{hideNoResults}
-				{loadingText}
-			/>
+	{#if open}
+		<!-- Rendered in the top layer so a scrolling Dialog body cannot clip it -->
+		<div
+			class="select-panel"
+			use:floating={{ anchor: () => containerElement, placement: 'bottom-start', matchWidth: true }}
+		>
+			<div class="select-panel-inner" use:clickOutside={closePopover}>
+				<ComboBoxMulti
+					bind:this={comboBoxEl}
+					{filterString}
+					values={rawValue ? [rawValue] : []}
+					{onSelection}
+					onkeydown={comboBoxKeyDown}
+					groupedOptions={core.filteredGroups}
+					{open}
+					loading={core.searching}
+					{hideNoResults}
+					{loadingText}
+				/>
+			</div>
 		</div>
-	</div>
+	{/if}
 	{#if showError && errorText}
 		<div class="text-error text-xs">{errorText}</div>
 	{/if}
@@ -473,14 +477,11 @@
 		right: 0.4rem;
 	}
 
+	/* Position, width and top-layer promotion come from use:floating */
 	.select-panel {
-		position: absolute;
-		width: 100%;
-		left: 0;
 		z-index: 70;
 		border-top-left-radius: 0;
 		border-top-right-radius: 0;
-		/* absolute w-full left-0 z-20 */
 	}
 
 	.select-panel-inner {
@@ -491,10 +492,6 @@
 	.placeholder {
 		color: var(--placeholder-color);
 		/* text-zinc-400 dark:text-neutral-500 */
-	}
-
-	.hidden {
-		display: none;
 	}
 
 	.disabled {

@@ -32,6 +32,7 @@
 	import { fade } from 'svelte/transition';
 	import dayjs from '$lib/util/dayjs.js';
 	import { clickOutside } from '$lib/util/ClickOutside.js';
+	import { floating } from '$lib/util/Floating.js';
 	import ActionIcon from '$lib/ui/ActionIcon.svelte';
 	import { iconChevronLeft, iconChevronRight, iconX } from '$lib/icon/index.js';
 
@@ -204,7 +205,6 @@
 	let readableDate: string = $state('');
 	let showCalendar = $state(false);
 	let showYearPicker = $state(false);
-	let dropdownPosition: 'above' | 'below' = $state('below');
 
 	// Year picker: show a range of years centered around the focused year
 	const yearRangeSize = 12;
@@ -239,22 +239,6 @@
 			yearRangeStart = Math.floor(focusedMonth.year() / yearRangeSize) * yearRangeSize;
 		}
 		showYearPicker = !showYearPicker;
-	}
-
-	function checkDropdownPosition() {
-		if (!textboxElement) return;
-		
-		const rect = textboxElement.getBoundingClientRect();
-		const dropdownHeight = 300; // Approximate height of the calendar dropdown
-		const spaceBelow = window.innerHeight - rect.bottom;
-		const spaceAbove = rect.top;
-		
-		// If not enough space below and more space above, position above
-		if (spaceBelow < dropdownHeight && spaceAbove > spaceBelow) {
-			dropdownPosition = 'above';
-		} else {
-			dropdownPosition = 'below';
-		}
 	}
 
 	function onClickOutside(event: MouseEvent) {
@@ -315,7 +299,6 @@
 		bind:textboxElement
 		value={readableDate}
 		onfocus={() => {
-			checkDropdownPosition();
 			showCalendar = true;
 		}}
 		onkeyup={onDateTextChange}
@@ -339,7 +322,13 @@
 		{/snippet}
 		<div class="date-picker">
 			{#if showCalendar}
-				<div class="calendar {dropdownPosition}" transition:fade={{ duration: 200 }} use:clickOutside={onClickOutside}>
+				<!-- Rendered in the top layer so a scrolling Dialog body cannot clip it -->
+				<div
+					class="calendar"
+					transition:fade={{ duration: 200 }}
+					use:floating={{ anchor: () => textboxElement, placement: 'bottom-start', offset: 4 }}
+					use:clickOutside={onClickOutside}
+				>
 					<div class="month-buttons">
 						{#if showYearPicker}
 							<ActionIcon
@@ -426,10 +415,10 @@
 		line-height: 0;
 	}
 
+	/* Position and top-layer promotion come from use:floating */
 	.calendar {
 		width: 18rem;
 		text-align: center;
-		position: absolute;
 		z-index: 10;
 		user-select: none;
 		background-color: var(--paper-body-bg);
@@ -437,14 +426,6 @@
 		border-radius: 0.375rem;
 		box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15);
 		padding: 0.5rem;
-	}
-
-	.calendar.below {
-		top: 0
-	}
-
-	.calendar.above {
-		bottom: 2.25rem;
 	}
 
 	.month-buttons {
