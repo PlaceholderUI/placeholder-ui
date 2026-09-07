@@ -1,4 +1,5 @@
 <script lang="ts">
+	import { onMount } from 'svelte';
 	import { setTheme, themeState } from '$lib/theme.svelte.js';
 
 	import sunSvg from '$lib/icon/sun.svg?raw';
@@ -31,6 +32,17 @@
 		system: 'System theme'
 	};
 
+	// The server always renders the 'system' theme (no localStorage), but the client loads the
+	// saved theme at module load. Rendering the server values until mounted keeps the hydrated
+	// markup identical and avoids a hydration_html_changed warning from the {@html} icon.
+	let mounted = $state(false);
+	onMount(() => {
+		mounted = true;
+	});
+
+	const theme = $derived(mounted ? themeState.theme : 'system');
+	const isDarkMode = $derived(mounted ? themeState.isDarkMode : false);
+
 	function cycleTheme() {
 		const index = themeCycle.indexOf(themeState.theme);
 		setTheme(themeCycle[(index + 1) % themeCycle.length]);
@@ -38,14 +50,14 @@
 </script>
 
 <div class="theme-switcher">
-	{#key themeState.theme}
+	{#key theme}
 		<ActionIcon
-			variant={themeState.isDarkMode ? darkVariant : lightVariant}
-			svg={icons[themeState.theme]}
+			variant={isDarkMode ? darkVariant : lightVariant}
+			svg={icons[theme]}
 			class="action-icon"
 			size="1.6em"
 			onclick={cycleTheme}
-			tooltip={tooltips[themeState.theme]}
+			tooltip={tooltips[theme]}
 		/>
 	{/key}
 </div>
