@@ -32,6 +32,11 @@
 		<p>This editor has <a href="/components/buttons">an internal link</a> and <a href="https://tiptap.dev" target="_blank" rel="noopener noreferrer">an external TipTap link</a>.</p>
 		<p>Click either link to open the link action popup.</p>
 	`;
+	let buttonContent = `
+		<h2>Call to Action</h2>
+		<p>Ready to get started? <a class="editor-button editor-button-primary" href="/components/buttons">See the buttons</a> or <a class="editor-button editor-button-accent-outline editor-button-sm" href="https://tiptap.dev" target="_blank" rel="noopener noreferrer">read the TipTap docs</a>.</p>
+		<p>Select some text and press the button tool to turn it into a button, or press it with nothing selected to insert a new one.</p>
+	`;
 	let tableContent = `
 		<p>Place the cursor inside the table and click the table button for row and column actions.</p>
 		<table>
@@ -210,6 +215,17 @@ ORDER BY Documents DESC;</code></pre>
 		<TipTap bind:value={clickableLinkContent} />
 	</Paper>
 
+	<Paper title="Buttons">
+		<p class="description">
+			The button tool turns the selected text, or a new label, into a call-to-action link styled
+			like the library's <code>Button</code>: pick a style and size and enter the URL. A button is a
+			plain <code>&lt;a class="editor-button ..."&gt;</code> tag styled by <code>app.css</code>, so
+			the saved HTML looks the same wherever it is rendered. Put the cursor in a button and press
+			the tool again to change or remove it.
+		</p>
+		<TipTap bind:value={buttonContent} />
+	</Paper>
+
 	<Paper title="Programmatic Control">
 		<p class="description">Use the exposed methods to control the editor programmatically.</p>
 		<TipTap bind:this={customEditor} onUpdate={handleCustomUpdate} />
@@ -350,6 +366,7 @@ ORDER BY Documents DESC;</code></pre>
 					<li>Horizontal rules</li>
 					<li>Image uploads</li>
 					<li>Tables</li>
+					<li>Call-to-action buttons</li>
 					<li>Undo/Redo</li>
 					<li>Tab key support</li>
 				</ul>

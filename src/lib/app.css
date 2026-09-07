@@ -172,3 +172,91 @@ a {
 a:hover {
 	color: var(--ui-link-hover-color);
 }
+
+/* ---- Buttons in rich text ----
+   The TipTap toolbar's Button turns a link into a call-to-action:
+   `<a class="editor-button editor-button-accent editor-button-lg" href="...">`.
+   The classes live here rather than in the editor so the saved HTML looks the
+   same wherever it is rendered. The look follows the Button component. */
+.editor-button {
+	--editor-button-fg: var(--ui-primary-contrast);
+	--editor-button-bg: var(--ui-primary);
+	--editor-button-border: transparent;
+	--editor-button-hover-fg: var(--ui-primary-contrast);
+	--editor-button-hover-bg: var(--ui-accent-dark);
+	--editor-button-hover-border: transparent;
+	display: inline-block;
+	padding: 0.5rem 1rem;
+	border: 0;
+	border-radius: 6px;
+	background-color: var(--editor-button-bg);
+	color: var(--editor-button-fg);
+	font-size: 0.875rem;
+	font-weight: 600;
+	line-height: 1.125rem;
+	letter-spacing: 0.05rem;
+	text-decoration: none;
+	transition:
+		color 0.15s ease-in-out,
+		background-color 0.15s ease-in-out,
+		border-color 0.15s ease-in-out;
+}
+
+.editor-button:hover {
+	color: var(--editor-button-hover-fg);
+	background-color: var(--editor-button-hover-bg);
+	border-color: var(--editor-button-hover-border);
+	text-decoration: none;
+}
+
+.editor-button:focus-visible {
+	outline: solid 0.125rem var(--ui-accent-dark);
+	outline-offset: 2px;
+}
+
+.editor-button-accent {
+	--editor-button-fg: var(--ui-accent-contrast);
+	--editor-button-bg: var(--ui-accent);
+	--editor-button-hover-fg: var(--ui-primary);
+	--editor-button-hover-bg: var(--ui-tertiary);
+}
+
+.editor-button-tertiary {
+	--editor-button-fg: var(--ui-primary);
+	--editor-button-bg: var(--ui-tertiary);
+	--editor-button-hover-fg: var(--ui-primary);
+	--editor-button-hover-bg: var(--ui-accent);
+}
+
+.editor-button-primary-outline,
+.editor-button-accent-outline {
+	border: 1px solid var(--editor-button-border);
+	--editor-button-bg: transparent;
+	--editor-button-hover-bg: transparent;
+}
+
+.editor-button-primary-outline {
+	--editor-button-fg: var(--ui-primary);
+	--editor-button-border: var(--ui-primary);
+	--editor-button-hover-fg: var(--ui-accent-dark);
+	--editor-button-hover-border: var(--ui-accent-dark);
+}
+
+.editor-button-accent-outline {
+	--editor-button-fg: var(--ui-accent);
+	--editor-button-border: var(--ui-accent);
+	--editor-button-hover-fg: var(--ui-tertiary);
+	--editor-button-hover-border: var(--ui-tertiary);
+}
+
+.editor-button-sm {
+	padding: 0.375rem 0.75rem;
+	font-size: 0.8125rem;
+	line-height: 1.0625rem;
+}
+
+.editor-button-lg {
+	padding: 0.625rem 1.25rem;
+	font-size: 1rem;
+	line-height: 1.25rem;
+}

@@ -19,6 +19,7 @@ export { default as iconAt } from './at.svg?raw';
 export { default as iconBell } from './bell.svg?raw';
 export { default as iconBold } from './bold.svg?raw';
 export { default as iconBookmark } from './bookmark.svg?raw';
+export { default as iconButton } from './button.svg?raw';
 export { default as iconCalendar } from './calendar.svg?raw';
 export { default as iconCamera } from './camera.svg?raw';
 export { default as iconChartBar } from './chart-bar.svg?raw';

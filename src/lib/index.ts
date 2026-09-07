@@ -147,6 +147,17 @@ export type {
 	CodeBlockLanguageId
 } from './editors/tiptap/extensions/index.js';
 export type { AnyExtension } from '@tiptap/core';
+export {
+	editorButtonVariants,
+	editorButtonSizes,
+	editorButtonClass,
+	parseEditorButtonClass
+} from './editors/tiptap/buttonLink.js';
+export type {
+	EditorButtonVariant,
+	EditorButtonSize,
+	EditorButtonStyle
+} from './editors/tiptap/buttonLink.js';
 export { default as CodeMirror } from './editors/CodeMirror.svelte';
 export type { CodeMirrorProps } from './editors/CodeMirror.svelte';
 

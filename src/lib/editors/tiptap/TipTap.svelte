@@ -31,6 +31,7 @@
 	import UnderlineButton from './toolbar/UnderlineButton.svelte';
 	import ColorButton from './toolbar/ColorButton.svelte';
 	import LinkButton from './toolbar/LinkButton.svelte';
+	import ButtonLinkButton from './toolbar/ButtonLinkButton.svelte';
 	import SuperscriptButton from './toolbar/SuperscriptButton.svelte';
 	import SubscriptButton from './toolbar/SubscriptButton.svelte';
 	import AlignLeftButton from './toolbar/AlignLeftButton.svelte';
@@ -485,6 +486,7 @@
 				<div class="toolbar-divider"></div>
 
 				<div class="toolbar-group">
+					<ButtonLinkButton editor={editorState.editor} />
 					<AlertButton editor={editorState.editor} />
 				</div>
 
@@ -627,6 +629,19 @@
 
 	:global(.dark) .editor-content :global(.ProseMirror a.editor-link:hover) {
 		background: rgba(var(--ui-accent-rgbc), 0.1);
+	}
+
+	/* Buttons keep the app.css button look instead of the link colours above. */
+	.editor-content :global(.ProseMirror a.editor-link.editor-button) {
+		color: var(--editor-button-fg);
+		background-color: var(--editor-button-bg);
+		text-decoration: none;
+	}
+
+	.editor-content :global(.ProseMirror a.editor-link.editor-button:hover),
+	:global(.dark) .editor-content :global(.ProseMirror a.editor-link.editor-button:hover) {
+		color: var(--editor-button-hover-fg);
+		background-color: var(--editor-button-hover-bg);
 	}
 
 	/* Ensure the editor remains clickable while links show the action menu. */

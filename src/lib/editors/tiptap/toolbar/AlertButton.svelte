@@ -58,7 +58,7 @@
 <div style="position: relative; display: inline-block;">
 	<ToolbarButton
 		icon={iconAlertTriangle}
-		title="Insert Alert"
+		title="Alert"
 		active={showDialog}
 		onclick={toggleDialog}
 	/>
@@ -66,7 +66,7 @@
 	{#if showDialog}
 		<div class="alert-dialog" bind:this={dialogElement}>
 			<div class="dialog-header">
-				<h4>Insert Alert</h4>
+				<h4>Alert</h4>
 			</div>
 
 			<div class="dialog-body">
