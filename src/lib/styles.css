@@ -6,58 +6,34 @@
 
 h1,.display-1 {
     font-size: clamp(2.25rem, 4vw + 1rem, 3.9rem);
-    font-style: normal;
-    font-weight: 600;
-    line-height: 3.625rem;
 }
 
 h2,.display-2 {
     font-size: clamp(1.85rem, 3vw + 0.85rem, 3.1rem);
-    font-style: normal;
-    font-weight: 600;
-    line-height: 2.5rem;
 }
 
 h3,.display-3 {
     font-size: clamp(1.5rem, 2.2vw + 0.75rem, 2.5rem);
-    font-style: normal;
-    font-weight: 600;
-    line-height: 2.5rem;
 }
 
 h4,.display-4 {
     font-size: clamp(1.25rem, 1.5vw + 0.7rem, 2rem);
-    font-style: normal;
-    font-weight: 600;
-    line-height: 2.125rem;
 }
 
 h5,.display-5 {
     font-size: clamp(1.1rem, 0.9vw + 0.7rem, 1.6rem);
-    font-style: normal;
-    font-weight: 600;
-    line-height: 1.875rem;
 }
 
 h6,.display-6 {
     font-size: clamp(1rem, 0.5vw + 0.75rem, 1.25rem);
-    font-style: normal;
-    font-weight: 600;
-    line-height: 1.625rem;
 }
 
 h7,.display-7 {
     font-size: 1rem;
-    font-style: normal;
-    font-weight: 600;
-    line-height: 1.25rem;
 }
 
 h8,.display-8 {
     font-size: 0.875rem;
-    font-style: normal;
-    font-weight: 600;
-    line-height: 1.125rem;
 }
 
 .text-black,
