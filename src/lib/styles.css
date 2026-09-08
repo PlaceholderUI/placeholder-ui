@@ -4,6 +4,63 @@
     --gutter-y: 0
 }
 
+
+h1,.display-1 {
+    font-size: 3rem;
+    font-style: normal;
+    font-weight: 600;
+    line-height: 3.625rem;
+}
+
+h2,.display-2 {
+    font-size: 2rem;
+    font-style: normal;
+    font-weight: 600;
+    line-height: 2.5rem;
+}
+
+h3,.display-3 {
+    font-size: 1.75rem;
+    font-style: normal;
+    font-weight: 600;
+    line-height: 2.5rem;
+}
+
+h4,.display-4 {
+    font-size: 1.5rem;
+    font-style: normal;
+    font-weight: 600;
+    line-height: 2.125rem;
+}
+
+h5,.display-5 {
+    font-size: 1.25rem;
+    font-style: normal;
+    font-weight: 600;
+    line-height: 1.875rem;
+}
+
+h6,.display-6 {
+    font-size: 1.125rem;
+    font-style: normal;
+    font-weight: 600;
+    line-height: 1.625rem;
+}
+
+h7,.display-7 {
+    font-size: 1rem;
+    font-style: normal;
+    font-weight: 600;
+    line-height: 1.25rem;
+}
+
+h8,.display-8 {
+    font-size: 0.875rem;
+    font-style: normal;
+    font-weight: 600;
+    line-height: 1.125rem;
+}
+
 .text-black,
 .text-black-50,
 .text-body,

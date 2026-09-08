@@ -19,8 +19,7 @@ Peer dependency: `svelte ^5`.
 
 ## Quick start
 
-Wrap your app in `AppShell` (it loads the base stylesheet and, by default,
-Bootstrap 5), then use components:
+Wrap your app in `AppShell` (it loads the base stylesheet), then use components:
 
 ```svelte
 <script lang="ts">
@@ -33,15 +32,11 @@ Bootstrap 5), then use components:
 </AppShell>
 ```
 
-If you ship your own Bootstrap build or do not want Bootstrap at all, skip
-`AppShell` and import the token stylesheet yourself:
+Or skip `AppShell` and import the token stylesheet yourself:
 
 ```ts
 import '@placeholderco/placeholder-ui/app.css';
 ```
-
-The bundled Bootstrap is also available on its own as `@placeholderco/placeholder-ui/bootstrap.css`.
-
 ## Branding
 
 Everything colour- and font-related resolves to `--ui-*` custom properties, so

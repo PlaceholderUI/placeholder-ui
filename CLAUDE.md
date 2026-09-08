@@ -74,7 +74,6 @@ If adding a variant to an existing component (e.g., TipTapBubble alongside TipTa
 
 ### Styling
 
-- Bootstrap CSS for base styles
 - Component-scoped `<style>` blocks
 - Dark mode via `:global(.dark)` parent selector pattern
 - Global styles and design tokens in `src/lib/app.css`

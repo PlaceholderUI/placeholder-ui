@@ -115,8 +115,7 @@ body {
 	font-family: var(--ui-font-family);
 }
 
-/* Form controls do not inherit fonts by default; make them follow the UI font
-   even when Bootstrap's reboot is not loaded. */
+/* Form controls do not inherit fonts by default; make them follow the UI font */
 button,
 input,
 select,

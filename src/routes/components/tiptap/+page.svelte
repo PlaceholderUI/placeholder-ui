@@ -239,8 +239,7 @@ ORDER BY Documents DESC;</code></pre>
 		<p class="description">
 			The <code>class</code> attribute is kept on paragraphs, headings, lists, tables, images and
 			inline marks, so classes in loaded or pasted HTML survive the round-trip through the editor
-			instead of being stripped. The Bootstrap utility classes below are preserved in the output
-			HTML. To narrow or extend the covered types, pass
+			instead of being stripped.
 			<code
 				>ClassAttribute.configure({'{'} types
 				{'}'})</code

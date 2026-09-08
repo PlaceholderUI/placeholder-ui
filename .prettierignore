@@ -9,9 +9,6 @@ build/
 out/
 .svelte-kit/
 
-# Vendored / minified
-src/lib/bootstrap.min.css
-
 # Company-specific brand presets
 private/
 
