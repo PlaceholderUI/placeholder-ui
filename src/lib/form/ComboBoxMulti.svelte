@@ -108,6 +108,7 @@
 							localIndex}
 						{@const localClasses = [selectedIndex === globalIndex ? 'selected p-2' : 'p-2']}
 						<button
+							type="button"
 							class="combobox-item {localClasses.join(' ')} {option.class}"
 							role="option"
 							aria-selected={selectedIndex === globalIndex}

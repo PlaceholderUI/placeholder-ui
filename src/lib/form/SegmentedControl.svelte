@@ -93,6 +93,7 @@
 			{@const isSelected = option.value === value}
 
 			<button
+				type="button"
 				bind:this={buttonElements[index]}
 				class="segmented-control-item {isSelected ? 'selected' : ''}"
 				onclick={() => setValue(option.value)}

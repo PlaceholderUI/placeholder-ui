@@ -289,6 +289,7 @@
 >
 	<FormGroup {label} {required} {tooltipContent} {tooltipLocation}>
 		<button
+			type="button"
 			bind:this={buttonElement}
 			onclick={() => {
 				open = !open;

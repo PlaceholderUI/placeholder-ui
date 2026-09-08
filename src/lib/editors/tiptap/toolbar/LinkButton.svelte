@@ -99,9 +99,11 @@
 					placeholder="Enter URL"
 					class="link-input"
 				/>
-				<button onclick={setLink} class="link-submit-button" title="Apply">✓</button>
+				<button type="button" onclick={setLink} class="link-submit-button" title="Apply">✓</button>
 				{#if editor.isActive('link')}
-					<button onclick={removeLink} class="link-remove-button" title="Remove Link">✕</button>
+					<button type="button" onclick={removeLink} class="link-remove-button" title="Remove Link"
+						>✕</button
+					>
 				{/if}
 			</div>
 			<label class="link-checkbox-label">

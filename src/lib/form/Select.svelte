@@ -314,6 +314,7 @@
 			</div>
 		{:else}
 			<button
+				type="button"
 				bind:this={buttonElement}
 				onclick={() => {
 					open = !open;

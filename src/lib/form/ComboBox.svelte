@@ -80,6 +80,7 @@
 				{#each options as option, index}
 					{@const localClasses = [selectedIndex === index ? 'selected p-2' : 'p-2']}
 					<button
+						type="button"
 						class="combobox-item {localClasses} {option.class}"
 						class:selected={selectedIndex === index}
 						onclick={() => {

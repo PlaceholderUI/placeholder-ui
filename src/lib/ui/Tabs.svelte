@@ -70,6 +70,7 @@
 		{@const isSelected = option.value === activeTab}
 
 		<button
+			type="button"
 			bind:this={buttonElements[index]}
 			class="tab-item {isSelected ? 'selected' : ''} {solidBg ? 'solid' : ''}"
 			onclick={() => setValue(option.value)}

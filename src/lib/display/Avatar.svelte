@@ -88,7 +88,7 @@
 
 <div class="avatar-container {classes}">
 	{#if onClick}
-		<button onclick={onClick}>
+		<button type="button" onclick={onClick}>
 			{@render img()}
 		</button>
 	{:else if href}

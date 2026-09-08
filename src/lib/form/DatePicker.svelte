@@ -336,7 +336,7 @@
 								size="1.5rem"
 								onclick={() => incrementYearRange(-1)}
 							/>
-							<button class="month-label clickable" onclick={toggleYearPicker}>
+							<button type="button" class="month-label clickable" onclick={toggleYearPicker}>
 								{yearRangeStart} - {yearRangeStart + yearRangeSize - 1}
 							</button>
 							<ActionIcon
@@ -350,7 +350,7 @@
 								size="1.5rem"
 								onclick={() => incrementFocusedMonth(-1)}
 							/>
-							<button class="month-label clickable" onclick={toggleYearPicker}>
+							<button type="button" class="month-label clickable" onclick={toggleYearPicker}>
 								{focusedMonth.format('MMMM YYYY')}
 							</button>
 							<ActionIcon
@@ -365,6 +365,7 @@
 						<div class="year-grid">
 							{#each getYearRange() as year}
 								<button
+									type="button"
 									class="year-button"
 									class:selected={focusedMonth.year() === year}
 									class:current-year={todayDate.year() === year}
@@ -387,6 +388,7 @@
 						<div class="days-grid">
 							{#each calculateDays(selectedDate, focusedMonth) as day, i (i)}
 								<button
+									type="button"
 									class="day-button {buildDayClasses(day)}"
 									disabled={day.isDisabled}
 									onclick={(e) => handleDateChangeClick(e, day.date, day.isDisabled)}

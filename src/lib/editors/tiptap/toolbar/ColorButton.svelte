@@ -84,6 +84,7 @@
 			<div class="color-preset-grid">
 				{#each brandColors as swatch}
 					<button
+						type="button"
 						class="color-preset"
 						style="background: {swatch.value}"
 						onclick={() => applyColor(swatch.value)}
@@ -97,6 +98,7 @@
 			<div class="color-section-title">Common Colors</div>
 			<div class="color-preset-grid">
 				<button
+					type="button"
 					class="color-preset"
 					style="background: #000000"
 					onclick={() => applyColor('#000000')}
@@ -104,6 +106,7 @@
 					aria-label="Black"
 				></button>
 				<button
+					type="button"
 					class="color-preset"
 					style="background: #495057"
 					onclick={() => applyColor('#495057')}
@@ -111,6 +114,7 @@
 					aria-label="Gray"
 				></button>
 				<button
+					type="button"
 					class="color-preset"
 					style="background: #fa5252"
 					onclick={() => applyColor('#fa5252')}
@@ -118,6 +122,7 @@
 					aria-label="Red"
 				></button>
 				<button
+					type="button"
 					class="color-preset"
 					style="background: #ff922b"
 					onclick={() => applyColor('#ff922b')}
@@ -125,6 +130,7 @@
 					aria-label="Orange"
 				></button>
 				<button
+					type="button"
 					class="color-preset"
 					style="background: #fcc419"
 					onclick={() => applyColor('#fcc419')}
@@ -132,6 +138,7 @@
 					aria-label="Yellow"
 				></button>
 				<button
+					type="button"
 					class="color-preset"
 					style="background: #51cf66"
 					onclick={() => applyColor('#51cf66')}
@@ -139,6 +146,7 @@
 					aria-label="Green"
 				></button>
 				<button
+					type="button"
 					class="color-preset"
 					style="background: #22b8cf"
 					onclick={() => applyColor('#22b8cf')}
@@ -146,6 +154,7 @@
 					aria-label="Cyan"
 				></button>
 				<button
+					type="button"
 					class="color-preset"
 					style="background: #228be6"
 					onclick={() => applyColor('#228be6')}
@@ -153,6 +162,7 @@
 					aria-label="Blue"
 				></button>
 				<button
+					type="button"
 					class="color-preset"
 					style="background: #9775fa"
 					onclick={() => applyColor('#9775fa')}
@@ -160,6 +170,7 @@
 					aria-label="Purple"
 				></button>
 				<button
+					type="button"
 					class="color-preset"
 					style="background: #f06595"
 					onclick={() => applyColor('#f06595')}
@@ -175,7 +186,12 @@
 					class="color-input"
 					title="Custom Color"
 				/>
-				<button onclick={removeColor} class="color-remove-button" title="Remove Color">
+				<button
+					type="button"
+					onclick={removeColor}
+					class="color-remove-button"
+					title="Remove Color"
+				>
 					Clear
 				</button>
 			</div>

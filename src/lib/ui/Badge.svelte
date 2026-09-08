@@ -52,14 +52,16 @@
 	{#if type == 'a' && !disabled}
 		<a class={elClass} {href} {target}> {@render children?.()}</a>
 	{:else if type == 'button'}
-		<button class={elClass} disabled={isDisabled} onclick={onClick}> {@render children?.()}</button>
+		<button type="button" class={elClass} disabled={isDisabled} onclick={onClick}>
+			{@render children?.()}</button
+		>
 	{:else}
 		<div class={elClass}>
 			{@render children?.()}
 		</div>
 	{/if}
 	{#if onDelete}
-		<button class="badge-button {variant}" disabled={isDisabled} onclick={onDelete}>
+		<button type="button" class="badge-button {variant}" disabled={isDisabled} onclick={onDelete}>
 			<Icon size={size === 'sm' ? '12px' : size === 'lg' ? '16px' : '14px'} svg={iconX} />
 		</button>
 	{/if}
