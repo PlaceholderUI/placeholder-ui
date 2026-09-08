@@ -15,7 +15,14 @@
 	import { TextStyle } from '@tiptap/extension-text-style';
 	import Collaboration from '@tiptap/extension-collaboration';
 	import { CollaborationCaret } from '@tiptap/extension-collaboration-caret';
-	import { Alert, CodeBlockEditor, Div, Span, type CodeBlocksOptions } from './extensions/index.js';
+	import {
+		Alert,
+		ClassAttribute,
+		CodeBlockEditor,
+		Div,
+		Span,
+		type CodeBlocksOptions
+	} from './extensions/index.js';
 	import type { CollaborationConfig } from './collaboration.js';
 	import FormGroup from '$lib/form/FormGroup.svelte';
 	import LinkActionMenu from './LinkActionMenu.svelte';
@@ -263,6 +270,8 @@
 			Alert,
 			TabHandler,
 			TableKit.configure({ table: { resizable: true } }),
+			// Keep `class` on standard nodes/marks so classes in loaded HTML survive
+			ClassAttribute,
 			...customExtensions
 		];
 

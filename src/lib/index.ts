@@ -136,11 +136,14 @@ export { default as TipTapBubble } from './editors/tiptap/TipTapBubble.svelte';
 export type { TipTapBubbleProps } from './editors/tiptap/TipTapBubble.svelte';
 export type { CollaborationConfig, CollaborationUser } from './editors/tiptap/collaboration.js';
 export {
+	ClassAttribute,
+	defaultClassAttributeTypes,
 	CodeBlockEditor,
 	codeBlockLanguages,
 	resolveCodeBlockLanguage
 } from './editors/tiptap/extensions/index.js';
 export type {
+	ClassAttributeOptions,
 	CodeBlocksOptions,
 	CodeBlockEditorOptions,
 	CodeBlockLanguageDef,

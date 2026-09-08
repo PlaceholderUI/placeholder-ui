@@ -37,6 +37,15 @@
 		<p>Ready to get started? <a class="editor-button editor-button-primary" href="/components/buttons">See the buttons</a> or <a class="editor-button editor-button-accent-outline editor-button-sm" href="https://tiptap.dev" target="_blank" rel="noopener noreferrer">read the TipTap docs</a>.</p>
 		<p>Select some text and press the button tool to turn it into a button, or press it with nothing selected to insert a new one.</p>
 	`;
+	let classContent = `
+		<h2 class="text-center">Classes are preserved</h2>
+		<p class="lead">This paragraph has a <code>lead</code> class and stays that way after editing.</p>
+		<ul class="list-unstyled">
+			<li class="fw-bold">Bold list item via <code>fw-bold</code></li>
+			<li class="text-muted">Muted list item via <code>text-muted</code></li>
+		</ul>
+		<p>Inline marks keep classes too: <strong class="text-danger">a red strong</strong> and <em class="text-success">a green emphasis</em>.</p>
+	`;
 	let tableContent = `
 		<p>Place the cursor inside the table and click the table button for row and column actions.</p>
 		<table>
@@ -224,6 +233,25 @@ ORDER BY Documents DESC;</code></pre>
 			the tool again to change or remove it.
 		</p>
 		<TipTap bind:value={buttonContent} />
+	</Paper>
+
+	<Paper title="CSS Classes">
+		<p class="description">
+			The <code>class</code> attribute is kept on paragraphs, headings, lists, tables, images and
+			inline marks, so classes in loaded or pasted HTML survive the round-trip through the editor
+			instead of being stripped. The Bootstrap utility classes below are preserved in the output
+			HTML. To narrow or extend the covered types, pass
+			<code
+				>ClassAttribute.configure({'{'} types
+				{'}'})</code
+			>
+			via the <code>extensions</code> prop.
+		</p>
+		<TipTap bind:value={classContent} />
+		<div class="content-preview">
+			<strong>Output HTML:</strong>
+			<pre>{classContent}</pre>
+		</div>
 	</Paper>
 
 	<Paper title="Programmatic Control">
