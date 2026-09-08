@@ -47,6 +47,8 @@
 		'iconPlayerPause',
 		'iconPrinter',
 		'iconQrcode',
+		'iconQuote',
+		'iconQuoteOpen',
 		'iconSend',
 		'iconSettings',
 		'iconShare',

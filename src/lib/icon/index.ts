@@ -124,6 +124,8 @@ export { default as iconPlayerStop } from './player-stop.svg?raw';
 export { default as iconPlus } from './plus.svg?raw';
 export { default as iconPrinter } from './printer.svg?raw';
 export { default as iconQrcode } from './qrcode.svg?raw';
+export { default as iconQuote } from './quote.svg?raw';
+export { default as iconQuoteOpen } from './quote-open.svg?raw';
 export { default as iconRefresh } from './refresh.svg?raw';
 export { default as iconReorder } from './reorder.svg?raw';
 export { default as iconSearch } from './search.svg?raw';
