@@ -1,6 +1,7 @@
 <script lang="ts">
 	import Paper from '$lib/display/Paper.svelte';
 	import Dialog from '$lib/ui/Dialog.svelte';
+	import ConfirmDialog from '$lib/ui/ConfirmDialog.svelte';
 	import Button from '$lib/ui/Button.svelte';
 	import Textbox from '$lib/form/Textbox.svelte';
 	import TextArea from '$lib/form/TextArea.svelte';
@@ -29,6 +30,11 @@
 	let infoDialog = false;
 	let deleteDialog = false;
 	let scrollDialog = false;
+	let confirmSimple = false;
+	let confirmDanger = false;
+	let confirmAck = false;
+	let confirmCustom = false;
+	let confirmNote = '';
 	let scrollDialogVisible = false;
 	let scrollCountry: string | undefined = undefined;
 	let scrollDate: string | undefined = undefined;
@@ -75,6 +81,12 @@
 
 	function clearLog() {
 		actionLog = [];
+	}
+
+	async function archiveItem() {
+		// Returning a promise keeps the dialog open with OK in a loading state
+		await new Promise((resolve) => setTimeout(resolve, 1200));
+		addToLog(`Archived: ${selectedItem}`);
 	}
 </script>
 
@@ -156,6 +168,23 @@
 		</div>
 	</Paper>
 
+	<Paper title="OK / Cancel Dialog">
+		<div class="custom-section">
+			<p>
+				<code>ConfirmDialog</code> wraps <code>Dialog</code> with a ready-made OK / Cancel footer.
+				Pass <code>title</code> and <code>message</code> for a one-liner, or a snippet for custom
+				content. <code>onConfirm</code> may return a promise to show a loading state, or
+				<code>false</code> to keep the dialog open.
+			</p>
+			<div class="custom-options">
+				<Button onclick={() => (confirmSimple = true)}>Simple Confirm</Button>
+				<Button variant="danger" onclick={() => (confirmDanger = true)}>Destructive (async)</Button>
+				<Button variant="secondary" onclick={() => (confirmAck = true)}>OK only</Button>
+				<Button variant="tertiary" onclick={() => (confirmCustom = true)}>Custom content</Button>
+			</div>
+		</div>
+	</Paper>
+
 	<Paper title="Scrolling Content with Popups">
 		<div class="custom-section">
 			<p>
@@ -213,6 +242,10 @@
 				<li><strong>Body scroll lock:</strong> Prevents background scrolling when open</li>
 				<li><strong>Custom styling:</strong> Support for custom classes and no-paper mode</li>
 				<li><strong>Footer support:</strong> Built-in footer area for action buttons</li>
+				<li>
+					<strong>OK / Cancel preset:</strong> <code>ConfirmDialog</code> adds labelled buttons, async
+					loading and sensible initial focus
+				</li>
 				<li>
 					<strong>Overflow handling:</strong> Body scrolls by default; popups escape to the top
 					layer. Use <code>allowOverflow</code> to let content spill instead
@@ -281,6 +314,51 @@
 		<Button variant="danger" onclick={handleDelete}>Delete</Button>
 	{/snippet}
 </Dialog>
+
+<!-- OK / Cancel Dialogs -->
+<ConfirmDialog
+	bind:show={confirmSimple}
+	title="Publish changes?"
+	message="Your edits will be visible to everyone immediately."
+	okText="Publish"
+	onConfirm={() => addToLog('Published changes')}
+	onCancel={() => addToLog('Publish cancelled')}
+/>
+
+<ConfirmDialog
+	bind:show={confirmDanger}
+	title="Archive item?"
+	message={`"${selectedItem}" will be moved to the archive.\nYou can restore it later from Settings.`}
+	okText="Archive"
+	okVariant="danger"
+	okSvg={iconTrash}
+	onConfirm={archiveItem}
+/>
+
+<ConfirmDialog
+	bind:show={confirmAck}
+	title="Upload complete"
+	message="Your file has been uploaded and is ready to share."
+	okText="Got it"
+	hideCancel
+	onConfirm={() => addToLog('Acknowledged upload')}
+/>
+
+<ConfirmDialog
+	bind:show={confirmCustom}
+	title="Rename item"
+	okText="Rename"
+	okDisabled={!confirmNote}
+	onConfirm={() => {
+		addToLog(`Renamed ${selectedItem} to ${confirmNote}`);
+		confirmNote = '';
+	}}
+>
+	<div class="form-fields">
+		<p>Snippet content replaces the plain message, so any form can sit inside.</p>
+		<Textbox label="New name" bind:value={confirmNote} placeholder="Enter a new name" />
+	</div>
+</ConfirmDialog>
 
 <!-- Scrolling Dialog with Popups -->
 {#snippet scrollDialogBody()}

@@ -15,6 +15,8 @@ export { default as Badge } from './ui/Badge.svelte';
 export type { BadgeProps } from './ui/Badge.svelte';
 export { default as Dialog } from './ui/Dialog.svelte';
 export type { DialogProps, DialogContext } from './ui/Dialog.svelte';
+export { default as ConfirmDialog } from './ui/ConfirmDialog.svelte';
+export type { ConfirmDialogProps } from './ui/ConfirmDialog.svelte';
 export { default as Drawer } from './ui/Drawer.svelte';
 export type { DrawerProps } from './ui/Drawer.svelte';
 export { default as Dropdown } from './ui/Dropdown.svelte';
