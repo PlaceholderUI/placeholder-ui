@@ -45,6 +45,10 @@
 		errorText?: string;
 		/** Position of the tooltip */
 		tooltipLocation?: 'top' | 'bottom' | 'left' | 'right';
+		/** Rich tooltip content using a Svelte snippet */
+		tooltipContent?: Snippet;
+		/** Tooltip text on hover */
+		tooltipText?: string;
 		/** Minimum allowed value */
 		min?: number;
 		/** Maximum allowed value */
@@ -93,6 +97,8 @@
 		showError = false,
 		errorText = '',
 		tooltipLocation = 'top',
+		tooltipContent = undefined,
+		tooltipText = undefined,
 		min = undefined,
 		max = undefined,
 		step = undefined,
@@ -152,7 +158,15 @@
 </script>
 
 <div class="number-container {containerClass}">
-	<FormGroup {label} {required} {id} class={groupClass} {tooltipLocation}>
+	<FormGroup
+		{label}
+		{required}
+		{id}
+		class={groupClass}
+		{tooltipLocation}
+		{tooltipContent}
+		{tooltipText}
+	>
 		<div class="number-input">
 			<!-- svelte-ignore a11y_autofocus -->
 			<input
