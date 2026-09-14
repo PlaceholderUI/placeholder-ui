@@ -33,11 +33,27 @@
 	// Calculate selected index for background positioning using derived state
 	const selectedIndex = $derived(options.findIndex((option) => option.value === value));
 
+	// Pending timers, cleared on destroy so they never read state after the component is gone
+	const pendingTimers = new Set<ReturnType<typeof setTimeout>>();
+
+	function scheduleRecalculate(delay: number) {
+		const id = setTimeout(() => {
+			pendingTimers.delete(id);
+			recalculateBackground();
+		}, delay);
+		pendingTimers.add(id);
+	}
+
 	onMount(() => {
 		// recalculate 10 times on startup to ensure background is positioned correctly
 		for (let i = 0; i < 10; i++) {
-			setTimeout(() => recalculateBackground(), 100 * i);
+			scheduleRecalculate(100 * i);
 		}
+
+		return () => {
+			for (const id of pendingTimers) clearTimeout(id);
+			pendingTimers.clear();
+		};
 	});
 
 	// Update background position and size based on selected element
@@ -60,7 +76,7 @@
 	 */
 	export function recalculateBackground(delay?: number) {
 		if (delay) {
-			setTimeout(() => recalculateBackground(), delay);
+			scheduleRecalculate(delay);
 			return;
 		}
 
