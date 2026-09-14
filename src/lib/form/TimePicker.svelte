@@ -8,7 +8,7 @@
 		required?: boolean;
 		/** CSS classes for the container element */
 		containerClass?: string;
-		/** Selected time value in HH:mm format (bindable) */
+		/** Selected time value in HH:mm:ss format (bindable). Accepts HH:mm or HH:mm:ss on input; always emits HH:mm:ss. */
 		value?: string | undefined;
 		/** Use rounded time increments */
 		rounded?: boolean;
@@ -19,7 +19,7 @@
 		/** Currently selected date (for date-time combinations) */
 		selectedDate?: string | undefined;
 		/** Callback when selected time changes */
-		onchange?: (date: string | undefined) => void;
+		onchange?: (time: string | undefined) => void;
 	}
 </script>
 
@@ -151,7 +151,7 @@
 			value = timeString;
 			return;
 		}
-		value = dayjs().format('HH:mm');
+		value = dayjs().format('HH:mm:ss');
 	};
 
 	if (value === undefined) {
