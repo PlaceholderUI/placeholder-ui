@@ -52,6 +52,8 @@
 		drawerButtonPosition?: 'left' | 'right';
 		/** Custom icon for the drawer toggle button */
 		drawerButtonIcon?: string;
+		/** Accessible label for the drawer toggle button (it has no visible text) */
+		drawerButtonLabel?: string;
 		/** Callback when drawer toggle is clicked */
 		onDrawerButtonClick?: () => void;
 	}
@@ -72,6 +74,7 @@
 		showDrawerButton = false,
 		drawerButtonPosition = 'right',
 		drawerButtonIcon = iconHamburger,
+		drawerButtonLabel = 'Open navigation menu',
 		onDrawerButtonClick = undefined
 	}: NavbarProps = $props();
 
@@ -96,6 +99,7 @@
 				svg={drawerButtonIcon}
 				variant={drawerButtonVariant}
 				size="1.25rem"
+				ariaLabel={drawerButtonLabel}
 				onclick={onDrawerButtonClick}
 				class="drawer-btn drawer-btn-left"
 			/>
@@ -153,6 +157,7 @@
 				svg={drawerButtonIcon}
 				variant={drawerButtonVariant}
 				size="1.25rem"
+				ariaLabel={drawerButtonLabel}
 				onclick={onDrawerButtonClick}
 				class="drawer-btn drawer-btn-right"
 			/>
