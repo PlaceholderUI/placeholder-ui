@@ -2,6 +2,7 @@
 	import Paper from '$lib/display/Paper.svelte';
 	import Button from '$lib/ui/Button.svelte';
 	import { iconTrash } from '$lib/icon/index.js';
+	import { resolve } from '$app/paths';
 </script>
 
 <div class="page-header">
@@ -47,7 +48,7 @@
 
 	<Paper title="Button as Link">
 		<div class="flex gap-2">
-			<Button variant="primary" href="/components/badges">Navigate to Badges</Button>
+			<Button variant="primary" href={resolve('/components/badges')}>Navigate to Badges</Button>
 			<Button variant="accent-outline" href="https://svelte.dev" target="_blank"
 				>External Link</Button
 			>
