@@ -475,7 +475,11 @@
 							}}
 						>
 							{#if expandable}
-								<td class="table-cell expand-cell" onclick={(e) => e.stopPropagation()}>
+								<td
+									class="table-cell expand-cell"
+									onclick={(e) => e.stopPropagation()}
+									onauxclick={(e) => e.stopPropagation()}
+								>
 									{#if rowCanExpand(row, index)}
 										<button
 											type="button"
@@ -491,7 +495,11 @@
 								</td>
 							{/if}
 							{#if selectable && rowKey}
-								<td class="table-cell checkbox-cell" onclick={(e) => e.stopPropagation()}>
+								<td
+									class="table-cell checkbox-cell"
+									onclick={(e) => e.stopPropagation()}
+									onauxclick={(e) => e.stopPropagation()}
+								>
 									<Checkbox
 										controlled
 										checked={isRowSelected(row)}
@@ -515,7 +523,12 @@
 								</td>
 							{/each}
 							{#if buttons}
-								<td class="table-cell center">
+								<!-- Keep action-button clicks from triggering row click / navigation / selection -->
+								<td
+									class="table-cell center actions-cell"
+									onclick={(e) => e.stopPropagation()}
+									onauxclick={(e) => e.stopPropagation()}
+								>
 									{@render buttons(row, index)}
 								</td>
 							{/if}

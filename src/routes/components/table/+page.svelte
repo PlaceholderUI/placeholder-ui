@@ -320,6 +320,7 @@
 	<Paper title="Clickable Rows">
 		<p class="description">
 			Click on any row to see the row data. The cursor changes to pointer when hovering over rows.
+			Action buttons in the last column do not trigger the row click.
 		</p>
 		<Table
 			columns={basicColumns}
@@ -328,7 +329,13 @@
 			onrowclick={(row, index) => {
 				alert(`Clicked on row ${index + 1}: ${row.name} (${row.email})`);
 			}}
-		/>
+		>
+			{#snippet buttons(row)}
+				<div class="action-buttons">
+					<button class="btn-edit" onclick={() => alert(`Edit ${row.name}`)}> Edit </button>
+				</div>
+			{/snippet}
+		</Table>
 	</Paper>
 
 	<Paper title="Linked Rows">
