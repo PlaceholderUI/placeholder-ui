@@ -82,6 +82,14 @@
 		background-color: var(--paper-body-bg);
 	}
 
+	.paper-body :global(p:first-child) {
+		margin-top: 0;
+	}
+
+	.paper-body :global(p:last-child) {
+		margin-bottom: 0;
+	}
+
 	.paper {
 		box-shadow:
 			rgba(0, 0, 0, 0.05) 0px 1px 3px 0px,
