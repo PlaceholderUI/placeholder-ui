@@ -103,13 +103,13 @@
 		padding: 0;
 		margin: 0;
 		font: inherit;
-		color: var(--ui-primary);
+		color: var(--ui-primary-text-color);
 		cursor: pointer;
 		transition: color 200ms;
 	}
 
 	.navbar-parent-trigger:hover {
-		color: var(--ui-accent-dark);
+		color: var(--ui-link-hover-color);
 	}
 
 	:global(.dark) .navbar-parent-trigger {
@@ -159,7 +159,7 @@
 	.navbar-submenu :global(.navbar-item) {
 		width: 100%;
 		padding: 0.4rem 0.6rem;
-		color: var(--ui-primary);
+		color: var(--ui-primary-text-color);
 		text-decoration: none;
 		transition: background-color 0.15s ease;
 	}
@@ -176,7 +176,7 @@
 
 	.navbar-submenu :global(.navbar-item:hover) {
 		background-color: var(--border-color);
-		color: var(--ui-primary);
+		color: var(--ui-primary-text-color);
 	}
 
 	:global(.dark) .navbar-submenu :global(.navbar-item) {

@@ -42,7 +42,7 @@
 
 	.toolbar-button:hover:not(:disabled) {
 		background: rgba(var(--ui-primary-rgbc), 0.1);
-		color: var(--ui-primary);
+		color: var(--ui-primary-text-color);
 	}
 
 	:global(.dark) .toolbar-button:hover:not(:disabled) {
@@ -60,11 +60,11 @@
 
 	.toolbar-button.active {
 		background: var(--ui-primary);
-		color: white;
+		color: var(--ui-primary-contrast-color);
 	}
 
 	.toolbar-button.active:hover {
-		background: var(--ui-tertiary-dark);
+		background: var(--ui-primary-hover-color);
 	}
 
 	.toolbar-button:disabled {

@@ -248,7 +248,7 @@
 
 	.btn-primary {
 		background: var(--ui-primary);
-		color: var(--off-white);
+		color: var(--ui-primary-contrast-color);
 	}
 
 	.btn-primary:hover {
@@ -257,6 +257,6 @@
 
 	:global(.dark) .btn-primary {
 		background: var(--ui-accent);
-		color: var(--ui-primary);
+		color: var(--ui-accent-contrast-color);
 	}
 </style>

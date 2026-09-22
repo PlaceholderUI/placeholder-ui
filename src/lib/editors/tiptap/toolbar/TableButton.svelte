@@ -248,12 +248,12 @@
 
 	.size-cell.highlighted {
 		background: var(--ui-tertiary);
-		border-color: var(--ui-tertiary-dark);
+		border-color: var(--ui-tertiary-text-color);
 	}
 
 	:global(.dark) .size-cell.highlighted {
 		background: var(--ui-accent);
-		border-color: var(--ui-accent-dark);
+		border-color: var(--ui-accent-text-color);
 	}
 
 	.size-label {

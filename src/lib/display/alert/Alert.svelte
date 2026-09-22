@@ -67,7 +67,7 @@
 
 		.alert-title,
 		.icon {
-			color: var(--ui-primary);
+			color: var(--ui-primary-text-color);
 		}
 	}
 

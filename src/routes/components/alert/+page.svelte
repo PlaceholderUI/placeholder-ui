@@ -184,7 +184,7 @@
 	}
 
 	:global(.alert-link) {
-		color: var(--ui-accent-dark);
+		color: var(--ui-accent-text-color);
 		text-decoration: underline;
 	}
 

@@ -609,7 +609,7 @@
 		border-radius: 3px;
 		font-family: 'Monaco', 'Courier New', monospace;
 		font-size: 0.9em;
-		color: var(--ui-accent-dark);
+		color: var(--ui-accent-text-color);
 	}
 
 	:global(.dark) .editor-content :global(.ProseMirror code) {
@@ -617,7 +617,7 @@
 	}
 
 	.editor-content :global(.ProseMirror a) {
-		color: var(--ui-tertiary-dark);
+		color: var(--ui-link-color);
 		text-decoration: underline;
 		cursor: pointer;
 		pointer-events: auto;
@@ -780,7 +780,7 @@
 	}
 
 	.editor-content :global(.ProseMirror .alert-default .alert-title) {
-		color: var(--ui-primary);
+		color: var(--ui-primary-text-color);
 	}
 
 	/* Danger variant */

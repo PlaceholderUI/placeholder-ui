@@ -23,41 +23,55 @@
  */
 import { themeState } from './theme.svelte.js';
 
-/** Brand colours. Accepts `#rgb`, `#rrggbb` or `rgb(r, g, b)` strings. */
+/** Brand colors. Accepts `#rgb`, `#rrggbb` or `rgb(r, g, b)` strings. */
 export interface ThemeColors {
-	/** Dark brand colour. Used for solid buttons, headings and active states. */
+	/** Primary fill color for solid controls and active backgrounds. */
 	primary: string;
-	/** Darker shade of `primary` for pressed states. Derived from `primary` when omitted. */
-	primaryDark?: string;
-	/** Text colour on top of `primary`. Defaults to white. */
-	primaryContrast?: string;
+	/** Hover color for primary controls. Defaults to the accent text color. */
+	primaryHoverColor?: string;
+	/** Pressed color for primary controls. Darkened from `primary` when omitted. */
+	primaryPressedColor?: string;
+	/** Primary-colored text on page/paper surfaces and unfilled controls. Defaults to `primary`. */
+	primaryTextColor?: string;
+	/** Foreground on primary-filled controls, including hover/pressed fills. Defaults to white. */
+	primaryContrastColor?: string;
 
-	/** Light brand colour. Used for highlights, hovers and as the dark-mode accent. */
+	/** Accent fill color for solid controls and highlights. */
 	accent: string;
-	/** Darker shade of `accent`, used for hover text on light surfaces. Derived when omitted. */
-	accentDark?: string;
-	/** Text colour on top of `accent`. Defaults to `primary`. */
-	accentContrast?: string;
+	/** Hover color for accent controls. Defaults to `tertiary`. */
+	accentHoverColor?: string;
+	/** Pressed color for accent controls. Lightened from `tertiary` (or `accent`) when omitted. */
+	accentPressedColor?: string;
+	/** Accent-colored text on page/paper surfaces and unfilled controls. Darkened from `accent` by default. */
+	accentTextColor?: string;
+	/** Foreground on accent-filled controls, including hover/pressed fills. Defaults to `primary`. */
+	accentContrastColor?: string;
 
-	/** Light supporting colour. Defaults to `accent` when omitted. */
+	/** Tertiary fill color for solid controls. Defaults to `accent` when omitted. */
 	tertiary?: string;
-	/** Darker shade of `tertiary`, used for links and subtle text. Derived when omitted. */
-	tertiaryDark?: string;
-	/** Lighter shade of `tertiary`, used for pressed states on light buttons. Derived when omitted. */
-	tertiaryLight?: string;
+	/** Hover color for tertiary controls. Defaults to `accent`. */
+	tertiaryHoverColor?: string;
+	/** Pressed color for tertiary and white controls. Lightened from `tertiary` when omitted. */
+	tertiaryPressedColor?: string;
+	/** Tertiary-colored text on page/paper surfaces and unfilled controls. Darkened from `tertiary` by default. */
+	tertiaryTextColor?: string;
+	/** Foreground on tertiary-filled controls, including hover/pressed fills. Defaults to `primary`. */
+	tertiaryContrastColor?: string;
 
-	/** Link colour. Defaults to `tertiaryDark`. */
+	/** Keyboard focus ring color. Defaults to the accent text color. */
+	focusColor?: string;
+	/** Link color. Defaults to `tertiaryTextColor`. */
 	link?: string;
-	/** Link hover colour. Defaults to `accentDark`. */
+	/** Link hover color. Defaults to `accentTextColor`. */
 	linkHover?: string;
 }
 
 /**
- * Settings that can be given per colour mode. Used as the base (light) config and,
+ * Settings that can be given per color mode. Used as the base (light) config and,
  * with every field optional, as the `dark` override block.
  */
 export interface ThemeModeConfig {
-	/** Brand colours. In the `dark` block any subset may be given; shades are derived per colour. */
+	/** Brand colors. In the `dark` block any subset may be given; shades are derived per color. */
 	colors?: Partial<ThemeColors>;
 	/**
 	 * CSS `font-family` value applied to the whole UI, e.g. `"'Inter', system-ui, sans-serif"`.
@@ -74,7 +88,7 @@ export interface ThemeModeConfig {
 }
 
 export interface ThemeConfig extends ThemeModeConfig {
-	/** Brand colours for light mode (and dark mode unless overridden in `dark`). */
+	/** Brand colors for light mode (and dark mode unless overridden in `dark`). */
 	colors?: ThemeColors;
 	/**
 	 * Overrides applied while dark mode is active (`.dark` on `<html>`). Anything not
@@ -92,7 +106,7 @@ let darkLogo = $state<string | undefined>(undefined);
 
 /** Reactive brand state consumed by components such as `Logo`. */
 export const brandState = {
-	/** Logo for the active colour mode: the dark logo when set and dark mode is on, else the light one. */
+	/** Logo for the active color mode: the dark logo when set and dark mode is on, else the light one. */
 	get logo() {
 		return themeState.isDarkMode ? (darkLogo ?? lightLogo) : lightLogo;
 	}
@@ -108,7 +122,7 @@ export function setLogo(svg: string | undefined, darkSvg?: string) {
 }
 
 // ============================================
-// Colour helpers
+// Color helpers
 // ============================================
 
 type Rgb = [number, number, number];
@@ -142,12 +156,12 @@ function clamp(n: number) {
 	return Math.min(255, Math.max(0, n));
 }
 
-/** Mix a colour towards black (`amount` 0..1). */
+/** Mix a color towards black (`amount` 0..1). */
 function darken(rgb: Rgb, amount: number): Rgb {
 	return rgb.map((c) => c * (1 - amount)) as Rgb;
 }
 
-/** Mix a colour towards white (`amount` 0..1). */
+/** Mix a color towards white (`amount` 0..1). */
 function lighten(rgb: Rgb, amount: number): Rgb {
 	return rgb.map((c) => c + (255 - c) * amount) as Rgb;
 }
@@ -157,9 +171,9 @@ function lighten(rgb: Rgb, amount: number): Rgb {
 // ============================================
 
 /**
- * Build the `--ui-*` custom property map for one colour mode. Only the groups whose
- * base colour is present are emitted, so a partial `dark` block overrides just what
- * it names. Unknown colour formats are passed through unchanged (their `-rgb`
+ * Build the `--ui-*` custom property map for one color mode. Only the groups whose
+ * base color is present are emitted, so a partial `dark` block overrides just what
+ * it names. Unknown color formats are passed through unchanged (their `-rgb`
  * variants are skipped).
  */
 export function themeToVariables(config: ThemeModeConfig): Record<string, string> {
@@ -170,41 +184,52 @@ export function themeToVariables(config: ThemeModeConfig): Record<string, string
 		if (c.primary) {
 			const primary = parseColor(c.primary);
 			setColor(vars, 'primary', c.primary, primary);
-			vars['--ui-primary-dark'] =
-				c.primaryDark ?? (primary ? toHex(darken(primary, 0.35)) : c.primary);
-			vars['--ui-primary-contrast'] = c.primaryContrast ?? '#ffffff';
-		} else {
-			if (c.primaryDark) vars['--ui-primary-dark'] = c.primaryDark;
-			if (c.primaryContrast) vars['--ui-primary-contrast'] = c.primaryContrast;
+			vars['--ui-primary-pressed-color'] = primary ? toHex(darken(primary, 0.35)) : c.primary;
+			vars['--ui-primary-text-color'] = 'var(--ui-primary)';
+			vars['--ui-primary-contrast-color'] = '#ffffff';
 		}
 
 		if (c.accent) {
 			const accent = parseColor(c.accent);
 			setColor(vars, 'accent', c.accent, accent);
-			vars['--ui-accent-dark'] = c.accentDark ?? (accent ? toHex(darken(accent, 0.5)) : c.accent);
-			vars['--ui-accent-contrast'] = c.accentContrast ?? 'var(--ui-primary)';
-		} else {
-			if (c.accentDark) vars['--ui-accent-dark'] = c.accentDark;
-			if (c.accentContrast) vars['--ui-accent-contrast'] = c.accentContrast;
+			vars['--ui-accent-text-color'] = accent ? toHex(darken(accent, 0.5)) : c.accent;
+			vars['--ui-accent-contrast-color'] = 'var(--ui-primary)';
 		}
 
 		const tertiarySource = c.tertiary ?? c.accent;
 		if (tertiarySource) {
 			const tertiary = parseColor(tertiarySource);
 			setColor(vars, 'tertiary', tertiarySource, tertiary);
-			setTertiaryDark(
-				vars,
-				c.tertiaryDark ?? (tertiary ? toHex(darken(tertiary, 0.45)) : tertiarySource)
-			);
-			vars['--ui-tertiary-light'] =
-				c.tertiaryLight ?? (tertiary ? toHex(lighten(tertiary, 0.5)) : tertiarySource);
-		} else {
-			if (c.tertiaryDark) setTertiaryDark(vars, c.tertiaryDark);
-			if (c.tertiaryLight) vars['--ui-tertiary-light'] = c.tertiaryLight;
+			vars['--ui-tertiary-text-color'] = tertiary ? toHex(darken(tertiary, 0.45)) : tertiarySource;
+			vars['--ui-tertiary-contrast-color'] = 'var(--ui-primary)';
+			const pressedColor = tertiary ? toHex(lighten(tertiary, 0.5)) : tertiarySource;
+			vars['--ui-accent-pressed-color'] = pressedColor;
+			vars['--ui-tertiary-pressed-color'] = pressedColor;
 		}
 
-		if (c.link) vars['--ui-link-color'] = c.link;
-		if (c.linkHover) vars['--ui-link-hover-color'] = c.linkHover;
+		// Explicit role overrides work independently, including in partial dark-mode configs.
+		// Hover defaults live in app.css so they follow the current palette without
+		// coupling text, borders, links or focus rings to a custom hover color.
+		const overrides = {
+			primaryHoverColor: '--ui-primary-hover-color',
+			primaryPressedColor: '--ui-primary-pressed-color',
+			primaryTextColor: '--ui-primary-text-color',
+			primaryContrastColor: '--ui-primary-contrast-color',
+			accentHoverColor: '--ui-accent-hover-color',
+			accentPressedColor: '--ui-accent-pressed-color',
+			accentTextColor: '--ui-accent-text-color',
+			accentContrastColor: '--ui-accent-contrast-color',
+			tertiaryHoverColor: '--ui-tertiary-hover-color',
+			tertiaryPressedColor: '--ui-tertiary-pressed-color',
+			tertiaryTextColor: '--ui-tertiary-text-color',
+			tertiaryContrastColor: '--ui-tertiary-contrast-color',
+			focusColor: '--ui-focus-color',
+			link: '--ui-link-color',
+			linkHover: '--ui-link-hover-color'
+		} as const;
+		for (const key of Object.keys(overrides) as (keyof typeof overrides)[]) {
+			if (c[key]) vars[overrides[key]] = c[key];
+		}
 	}
 
 	if (config.fontFamily) vars['--ui-font-family'] = config.fontFamily;
@@ -220,16 +245,6 @@ function setColor(vars: Record<string, string>, name: string, raw: string, rgb: 
 		vars[`--ui-${name}`] = `rgb(var(--ui-${name}-rgb))`;
 	} else {
 		vars[`--ui-${name}`] = raw;
-	}
-}
-
-function setTertiaryDark(vars: Record<string, string>, value: string) {
-	const rgb = parseColor(value);
-	if (rgb) {
-		vars['--ui-tertiary-dark-rgbc'] = rgb.join(', ');
-		vars['--ui-tertiary-dark'] = 'rgb(var(--ui-tertiary-dark-rgbc))';
-	} else {
-		vars['--ui-tertiary-dark'] = value;
 	}
 }
 

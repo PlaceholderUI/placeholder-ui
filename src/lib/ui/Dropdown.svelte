@@ -102,7 +102,7 @@
 		display: block;
 		padding: 8px 12px;
 		text-decoration: none;
-		color: var(--ui-primary);
+		color: var(--ui-primary-text-color);
 		transition: background-color 0.2s ease;
 	}
 

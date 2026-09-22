@@ -6,14 +6,18 @@
  * `applyTheme()` / `themeToCss()` from the package to generate them from a
  * `ThemeConfig` object.
  *
- * Colour roles (keep these relationships when re-branding):
- *   --ui-primary   dark brand colour. Used for solid buttons, headings, active
- *                  states. Text on top of it uses --ui-primary-contrast.
- *   --ui-accent    light brand colour. Used for highlights, hover states and as
+ * Color roles (keep these relationships when re-branding):
+ *   --ui-primary   dark brand color. Used for solid buttons and active
+ *                  states. Text on top of it uses --ui-primary-contrast-color.
+ *   --ui-accent    light brand color. Used for highlights, hover states and as
  *                  the adaptive accent in dark mode. Text on top of it uses
- *                  --ui-accent-contrast.
- *   --ui-tertiary  light supporting colour. Its *-dark shade is used for links
- *                  and subtle text.
+ *                  --ui-accent-contrast-color.
+ *   --ui-tertiary  light supporting color. Its text color is used for links
+ *                  and subtle text. Hover and pressed colors are separate
+ *                  from readable text and keyboard focus colors.
+ *   Each color has the same roles: base fill, hover fill, pressed fill,
+ *   text on page/paper surfaces (-text-color), and foreground on its filled
+ *   controls (-contrast-color). Text and contrast colors are independent.
  */
 
 :root {
@@ -22,29 +26,37 @@
 		ui-sans-serif, system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif, 'Apple Color Emoji',
 		'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
 
-	/* ---- Brand colours (neutral defaults) ---- */
+	/* ---- Brand colors (neutral defaults) ---- */
 	--ui-primary-rgb: 30 58 95;
 	--ui-primary-rgbc: 30, 58, 95;
 	--ui-primary: rgb(var(--ui-primary-rgb));
-	--ui-primary-dark: #12253d;
-	--ui-primary-contrast: #ffffff;
+	--ui-primary-hover-color: var(--ui-accent-text-color);
+	--ui-primary-pressed-color: #12253d;
+	--ui-primary-text-color: var(--ui-primary);
+	--ui-primary-contrast-color: #ffffff;
 
 	--ui-accent-rgb: 147 197 253;
 	--ui-accent-rgbc: 147, 197, 253;
 	--ui-accent: rgb(var(--ui-accent-rgb));
-	--ui-accent-dark: #1d4ed8;
-	--ui-accent-contrast: var(--ui-primary);
+	--ui-accent-hover-color: var(--ui-tertiary);
+	--ui-accent-pressed-color: #cffafe;
+	--ui-accent-text-color: #1d4ed8;
+	--ui-accent-contrast-color: var(--ui-primary);
 
 	--ui-tertiary-rgb: 165 243 252;
 	--ui-tertiary-rgbc: 165, 243, 252;
 	--ui-tertiary: rgb(var(--ui-tertiary-rgb));
-	--ui-tertiary-dark-rgbc: 14, 116, 144;
-	--ui-tertiary-dark: rgb(var(--ui-tertiary-dark-rgbc));
-	--ui-tertiary-light: #cffafe;
+	--ui-tertiary-hover-color: var(--ui-accent);
+	--ui-tertiary-pressed-color: #cffafe;
+	--ui-tertiary-text-color: #0e7490;
+	--ui-tertiary-contrast-color: var(--ui-primary);
 
-	/* ---- Link colours ---- */
-	--ui-link-color: var(--ui-tertiary-dark);
-	--ui-link-hover-color: var(--ui-accent-dark);
+	/* ---- Keyboard focus ---- */
+	--ui-focus-color: var(--ui-accent-text-color);
+
+	/* ---- Link colors ---- */
+	--ui-link-color: var(--ui-tertiary-text-color);
+	--ui-link-hover-color: var(--ui-accent-text-color);
 
 	/* ---- Surfaces and text (light mode) ---- */
 	--off-white: rgb(221, 221, 221);
@@ -125,7 +137,7 @@ textarea {
 
 header a {
 	text-decoration: none;
-	color: var(--ui-primary);
+	color: var(--ui-primary-text-color);
 	transition: color 200ms;
 }
 
@@ -178,11 +190,11 @@ a:hover {
    The classes live here rather than in the editor so the saved HTML looks the
    same wherever it is rendered. The look follows the Button component. */
 .editor-button {
-	--editor-button-fg: var(--ui-primary-contrast);
+	--editor-button-fg: var(--ui-primary-contrast-color);
 	--editor-button-bg: var(--ui-primary);
 	--editor-button-border: transparent;
-	--editor-button-hover-fg: var(--ui-primary-contrast);
-	--editor-button-hover-bg: var(--ui-accent-dark);
+	--editor-button-hover-fg: var(--ui-primary-contrast-color);
+	--editor-button-hover-bg: var(--ui-primary-hover-color);
 	--editor-button-hover-border: transparent;
 	display: inline-block;
 	padding: 0.5rem 1rem;
@@ -209,22 +221,22 @@ a:hover {
 }
 
 .editor-button:focus-visible {
-	outline: solid 0.125rem var(--ui-accent-dark);
+	outline: solid 0.125rem var(--ui-focus-color);
 	outline-offset: 2px;
 }
 
 .editor-button-accent {
-	--editor-button-fg: var(--ui-accent-contrast);
+	--editor-button-fg: var(--ui-accent-contrast-color);
 	--editor-button-bg: var(--ui-accent);
-	--editor-button-hover-fg: var(--ui-primary);
-	--editor-button-hover-bg: var(--ui-tertiary);
+	--editor-button-hover-fg: var(--ui-accent-contrast-color);
+	--editor-button-hover-bg: var(--ui-accent-hover-color);
 }
 
 .editor-button-tertiary {
-	--editor-button-fg: var(--ui-primary);
+	--editor-button-fg: var(--ui-tertiary-contrast-color);
 	--editor-button-bg: var(--ui-tertiary);
-	--editor-button-hover-fg: var(--ui-primary);
-	--editor-button-hover-bg: var(--ui-accent);
+	--editor-button-hover-fg: var(--ui-tertiary-contrast-color);
+	--editor-button-hover-bg: var(--ui-tertiary-hover-color);
 }
 
 .editor-button-primary-outline,
@@ -236,37 +248,37 @@ a:hover {
 }
 
 .editor-button-primary-outline {
-	--editor-button-fg: var(--ui-primary);
-	--editor-button-border: var(--ui-primary);
-	--editor-button-hover-fg: var(--ui-accent-dark);
-	--editor-button-hover-border: var(--ui-accent-dark);
+	--editor-button-fg: var(--ui-primary-text-color);
+	--editor-button-border: var(--ui-primary-text-color);
+	--editor-button-hover-fg: var(--ui-primary-hover-color);
+	--editor-button-hover-border: var(--ui-primary-hover-color);
 }
 
 .editor-button-accent-outline {
-	--editor-button-fg: var(--ui-accent);
-	--editor-button-border: var(--ui-accent);
-	--editor-button-hover-fg: var(--ui-tertiary);
-	--editor-button-hover-border: var(--ui-tertiary);
+	--editor-button-fg: var(--ui-accent-text-color);
+	--editor-button-border: var(--ui-accent-text-color);
+	--editor-button-hover-fg: var(--ui-accent-hover-color);
+	--editor-button-hover-border: var(--ui-accent-hover-color);
 }
 
 .editor-button-tertiary-outline {
-	--editor-button-fg: var(--ui-tertiary-dark);
-	--editor-button-border: var(--ui-tertiary-dark);
-	--editor-button-hover-fg: var(--ui-primary);
-	--editor-button-hover-bg: var(--ui-tertiary);
-	--editor-button-hover-border: var(--ui-tertiary-dark);
+	--editor-button-fg: var(--ui-tertiary-text-color);
+	--editor-button-border: var(--ui-tertiary-text-color);
+	--editor-button-hover-fg: var(--ui-tertiary-contrast-color);
+	--editor-button-hover-bg: var(--ui-tertiary-hover-color);
+	--editor-button-hover-border: var(--ui-tertiary-text-color);
 }
 
 .editor-button-tertiary-subtle {
-	--editor-button-fg: var(--ui-tertiary-dark);
+	--editor-button-fg: var(--ui-tertiary-text-color);
 	--editor-button-bg: transparent;
-	--editor-button-hover-fg: var(--ui-tertiary-dark);
-	--editor-button-hover-bg: color-mix(in srgb, var(--ui-tertiary-dark) 25%, transparent);
+	--editor-button-hover-fg: var(--ui-tertiary-text-color);
+	--editor-button-hover-bg: color-mix(in srgb, var(--ui-tertiary-hover-color) 25%, transparent);
 }
 
 .editor-button-tertiary-outline:focus-visible,
 .editor-button-tertiary-subtle:focus-visible {
-	outline-color: var(--ui-tertiary-dark);
+	outline-color: var(--ui-focus-color);
 }
 
 .editor-button-sm {

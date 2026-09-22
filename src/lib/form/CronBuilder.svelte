@@ -514,7 +514,7 @@
 
 	.weekday-btn.selected {
 		background: var(--ui-primary);
-		color: white;
+		color: var(--ui-primary-contrast-color);
 		border-color: var(--ui-primary);
 	}
 
@@ -582,7 +582,7 @@
 		background: var(--input-bg);
 		border: 1px solid var(--border-color);
 		border-radius: 0.25rem;
-		color: var(--ui-primary);
+		color: var(--ui-primary-text-color);
 		font-weight: 600;
 	}
 
@@ -603,7 +603,7 @@
 
 	:global(.dark) .weekday-btn.selected {
 		background: var(--ui-accent);
-		color: var(--ui-primary);
+		color: var(--ui-accent-contrast-color);
 		border-color: var(--ui-accent);
 	}
 

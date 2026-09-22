@@ -59,7 +59,7 @@
 		justify-content: center;
 		background-color: rgba(255, 255, 255, 0.75);
 		border-radius: 0.25rem;
-		color: var(--ui-primary);
+		color: var(--ui-primary-text-color);
 	}
 
 	:global(.dark) .full-screen {

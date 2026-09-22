@@ -134,17 +134,17 @@
 	/* Variant colors */
 	.primary {
 		background-color: var(--ui-primary);
-		color: #fff;
+		color: var(--ui-primary-contrast-color);
 	}
 
 	.accent {
 		background-color: var(--ui-accent);
-		color: var(--ui-primary);
+		color: var(--ui-accent-contrast-color);
 	}
 
 	.tertiary {
 		background-color: var(--ui-tertiary);
-		color: var(--ui-primary);
+		color: var(--ui-tertiary-contrast-color);
 	}
 
 	.danger {

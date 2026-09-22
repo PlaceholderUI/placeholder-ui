@@ -625,12 +625,12 @@
 		border-radius: 0.25rem;
 		font-family: monospace;
 		font-size: 0.875rem;
-		color: var(--ui-accent-dark);
+		color: var(--ui-accent-text-color);
 	}
 
 	/* Custom navbar styling example */
 	:global(.custom-navbar) {
-		background: linear-gradient(90deg, var(--ui-primary), var(--ui-tertiary-dark));
+		background: linear-gradient(90deg, var(--ui-primary), var(--ui-tertiary-text-color));
 	}
 
 	:global(.custom-navbar a) {

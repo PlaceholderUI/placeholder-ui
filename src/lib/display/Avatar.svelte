@@ -121,7 +121,7 @@
 
 			&:hover {
 				background: var(--ui-primary);
-				color: var(--text-color);
+				color: var(--ui-primary-contrast-color);
 			}
 		}
 
@@ -166,7 +166,7 @@
 			.avatar {
 				&:hover {
 					background: var(--ui-accent);
-					color: black;
+					color: var(--ui-accent-contrast-color);
 				}
 			}
 		}

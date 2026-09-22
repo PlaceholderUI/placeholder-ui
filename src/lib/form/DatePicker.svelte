@@ -478,18 +478,18 @@
 
 	.year-button:hover:not(.disabled) {
 		background-color: rgba(var(--ui-primary-rgbc), 0.1);
-		color: var(--ui-primary);
+		color: var(--ui-primary-text-color);
 	}
 
 	.year-button.current-year {
 		background-color: rgba(var(--ui-primary-rgbc), 0.15);
-		color: var(--ui-primary);
+		color: var(--ui-primary-text-color);
 		font-weight: 600;
 	}
 
 	.year-button.selected {
 		background-color: var(--ui-primary);
-		color: white;
+		color: var(--ui-primary-contrast-color);
 		font-weight: 600;
 	}
 
@@ -540,18 +540,18 @@
 
 	.day-button:hover {
 		background-color: rgba(var(--ui-primary-rgbc), 0.1);
-		color: var(--ui-primary);
+		color: var(--ui-primary-text-color);
 	}
 
 	.today {
 		background-color: rgba(var(--ui-primary-rgbc), 0.15);
-		color: var(--ui-primary);
+		color: var(--ui-primary-text-color);
 		font-weight: 600;
 	}
 
 	.selected {
 		background-color: var(--ui-primary);
-		color: white;
+		color: var(--ui-primary-contrast-color);
 		font-weight: 600;
 	}
 
@@ -596,7 +596,7 @@
 
 		.selected {
 			background-color: var(--ui-accent);
-			color: var(--ui-primary);
+			color: var(--ui-accent-contrast-color);
 		}
 
 		.text-grey {
@@ -631,7 +631,7 @@
 
 		.year-button.selected {
 			background-color: var(--ui-accent);
-			color: var(--ui-primary);
+			color: var(--ui-accent-contrast-color);
 		}
 
 		.year-button.disabled {

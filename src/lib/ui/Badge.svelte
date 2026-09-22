@@ -126,34 +126,35 @@
 
 	.accent {
 		--badge-bg-color: var(--ui-accent);
-		--badge-text-color: var(--ui-primary);
-		--badge-hover-bg-color: var(--ui-tertiary);
-		--badge-border-color: var(--ui-accent-dark);
-		--badge-outline-color: var(--ui-tertiary);
+		--badge-text-color: var(--ui-accent-contrast-color);
+		--badge-hover-bg-color: var(--ui-accent-hover-color);
+		--badge-border-color: var(--ui-accent-text-color);
+		--badge-outline-color: var(--ui-focus-color);
 	}
 
 	.accent :global(.loader) {
-		color: var(--ui-primary);
+		color: var(--ui-accent-contrast-color);
 	}
 
 	.primary {
 		--badge-bg-color: var(--ui-primary);
-		--badge-text-color: #fff;
-		--badge-hover-bg-color: var(--ui-accent-dark);
-		--badge-border-color: var(--ui-tertiary-dark);
-		--badge-outline-color: var(--ui-accent-dark);
+		--badge-text-color: var(--ui-primary-contrast-color);
+		--badge-hover-bg-color: var(--ui-primary-hover-color);
+		--badge-border-color: var(--ui-tertiary-text-color);
+		--badge-outline-color: var(--ui-focus-color);
 	}
 
 	.primary :global(.loader) {
-		color: var(--ui-accent);
+		color: var(--ui-primary-contrast-color);
 	}
 
 	.white {
 		--badge-bg-color: white;
-		--badge-text-color: var(--ui-primary);
-		--badge-hover-bg-color: var(--ui-tertiary);
+		--badge-text-color: var(--ui-primary-text-color);
+		--badge-hover-bg-color: var(--ui-accent-hover-color);
+		--badge-hover-text-color: var(--ui-accent-contrast-color);
 		--badge-border-color: #eee;
-		--badge-outline-color: var(--ui-tertiary);
+		--badge-outline-color: var(--ui-focus-color);
 	}
 
 	.secondary {
@@ -183,7 +184,7 @@
 		--badge-text-color: white;
 		--badge-bg-color: var(--danger-bg);
 		--badge-hover-bg-color: var(--danger-bg-hover);
-		--badge-outline-color: var(--ui-tertiary);
+		--badge-outline-color: var(--ui-focus-color);
 		--badge-border-color: var(--danger-bg-hover);
 	}
 
@@ -192,13 +193,14 @@
 	}
 
 	.auto-outline {
-		--badge-text-color: var(--ui-primary);
+		--badge-text-color: var(--ui-primary-text-color);
 		--badge-bg-color: initial;
-		--badge-border: 1px solid var(--ui-primary);
-		--badge-border-color: var(--ui-primary);
-		--badge-hover-bg-color: var(--ui-accent-dark);
-		--badge-hover-border: 1px solid var(--ui-accent-dark);
-		--badge-outline-color: var(--ui-accent-dark);
+		--badge-border: 1px solid var(--ui-primary-text-color);
+		--badge-border-color: var(--ui-primary-text-color);
+		--badge-hover-bg-color: var(--ui-primary-hover-color);
+		--badge-hover-text-color: var(--ui-primary-contrast-color);
+		--badge-hover-border: 1px solid var(--ui-primary-hover-color);
+		--badge-outline-color: var(--ui-focus-color);
 	}
 
 	:global(.dark) .auto-outline {
@@ -206,54 +208,57 @@
 		--badge-bg-color: initial;
 		--badge-border: 1px solid var(--ui-accent);
 		--badge-border-color: var(--ui-accent);
-		--badge-hover-bg-color: var(--ui-tertiary);
-		--badge-hover-border: 1px solid var(--ui-tertiary);
-		--badge-outline-color: var(--ui-tertiary);
+		--badge-hover-bg-color: var(--ui-accent-hover-color);
+		--badge-hover-text-color: var(--ui-accent-contrast-color);
+		--badge-hover-border: 1px solid var(--ui-accent-hover-color);
+		--badge-outline-color: var(--ui-focus-color);
 	}
 
 	.accent-outline {
-		--badge-text-color: var(--ui-accent);
+		--badge-text-color: var(--ui-accent-text-color);
 		--badge-bg-color: initial;
-		--badge-border: 1px solid var(--ui-accent);
-		--badge-border-color: var(--ui-accent);
-		--badge-hover-bg-color: var(--ui-tertiary);
-		--badge-hover-border: 1px solid var(--ui-tertiary);
-		--badge-outline-color: var(--ui-tertiary);
+		--badge-border: 1px solid var(--ui-accent-text-color);
+		--badge-border-color: var(--ui-accent-text-color);
+		--badge-hover-bg-color: var(--ui-accent-hover-color);
+		--badge-hover-text-color: var(--ui-accent-contrast-color);
+		--badge-hover-border: 1px solid var(--ui-accent-hover-color);
+		--badge-outline-color: var(--ui-focus-color);
 	}
 
 	.primary-outline {
-		--badge-text-color: var(--ui-primary);
+		--badge-text-color: var(--ui-primary-text-color);
 		--badge-bg-color: initial;
-		--badge-border: 1px solid var(--ui-primary);
-		--badge-border-color: var(--ui-primary);
-		--badge-hover-bg-color: var(--ui-accent-dark);
-		--badge-hover-border: 1px solid var(--ui-accent-dark);
-		--badge-outline-color: var(--ui-accent-dark);
+		--badge-border: 1px solid var(--ui-primary-text-color);
+		--badge-border-color: var(--ui-primary-text-color);
+		--badge-hover-bg-color: var(--ui-primary-hover-color);
+		--badge-hover-text-color: var(--ui-primary-contrast-color);
+		--badge-hover-border: 1px solid var(--ui-primary-hover-color);
+		--badge-outline-color: var(--ui-focus-color);
 	}
 
 	.tertiary {
-		--badge-text-color: black;
+		--badge-text-color: var(--ui-tertiary-contrast-color);
 		--badge-bg-color: var(--ui-tertiary);
-		--badge-hover-bg-color: var(--ui-tertiary-dark);
-		--badge-outline-color: var(--ui-tertiary);
-		--badge-border-color: var(--ui-tertiary-dark);
+		--badge-hover-bg-color: var(--ui-tertiary-hover-color);
+		--badge-outline-color: var(--ui-focus-color);
+		--badge-border-color: var(--ui-tertiary-text-color);
 	}
 
 	.tertiary-outline {
-		--badge-text-color: var(--ui-tertiary-dark);
+		--badge-text-color: var(--ui-tertiary-text-color);
 		--badge-bg-color: transparent;
-		--badge-border: 1px solid var(--ui-tertiary-dark);
-		--badge-border-color: var(--ui-tertiary-dark);
-		--badge-hover-bg-color: color-mix(in srgb, var(--ui-tertiary) 25%, transparent);
-		--badge-outline-color: var(--ui-tertiary-dark);
+		--badge-border: 1px solid var(--ui-tertiary-text-color);
+		--badge-border-color: var(--ui-tertiary-text-color);
+		--badge-hover-bg-color: color-mix(in srgb, var(--ui-tertiary-hover-color) 25%, transparent);
+		--badge-outline-color: var(--ui-focus-color);
 	}
 
 	.tertiary-subtle {
-		--badge-text-color: var(--ui-tertiary-dark);
+		--badge-text-color: var(--ui-tertiary-text-color);
 		--badge-bg-color: color-mix(in srgb, var(--ui-tertiary) 15%, transparent);
-		--badge-hover-bg-color: color-mix(in srgb, var(--ui-tertiary) 30%, transparent);
-		--badge-border-color: var(--ui-tertiary-dark);
-		--badge-outline-color: var(--ui-tertiary-dark);
+		--badge-hover-bg-color: color-mix(in srgb, var(--ui-tertiary-hover-color) 30%, transparent);
+		--badge-border-color: var(--ui-tertiary-text-color);
+		--badge-outline-color: var(--ui-focus-color);
 	}
 
 	button,
@@ -273,6 +278,11 @@
 	button:hover:not(:disabled),
 	a:hover:not(:disabled) {
 		background-color: var(--badge-hover-bg-color, var(--badge-bg-color));
+		color: var(--badge-hover-text-color, var(--badge-text-color));
+	}
+
+	a:hover:not(:disabled) {
+		color: var(--badge-hover-text-color, var(--badge-text-color)) !important;
 	}
 
 	.badge-container:has(button, a):hover:not(:has(:disabled)) {
@@ -281,7 +291,7 @@
 
 	button:focus-visible,
 	a:focus-visible {
-		outline: solid 0.125rem var(--badge-outline-color, var(--ui-accent-dark));
+		outline: solid 0.125rem var(--badge-outline-color, var(--ui-focus-color));
 		outline-offset: 0.125rem;
 	}
 
@@ -305,7 +315,8 @@
 		.auto-subtle {
 			--badge-text-color: white;
 			--badge-hover-bg-color: var(--ui-primary);
-			--badge-outline-color: var(--ui-accent);
+			--badge-hover-text-color: var(--ui-primary-contrast-color);
+			--badge-outline-color: var(--ui-focus-color);
 		}
 	}
 

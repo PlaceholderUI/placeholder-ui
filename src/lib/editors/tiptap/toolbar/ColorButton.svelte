@@ -23,9 +23,9 @@
 	export const defaultBrandColors: ColorSwatch[] = [
 		{ value: 'var(--ui-primary)', label: 'Primary' },
 		{ value: 'var(--ui-accent)', label: 'Accent' },
-		{ value: 'var(--ui-accent-dark)', label: 'Accent Dark' },
+		{ value: 'var(--ui-accent-text-color)', label: 'Accent Text' },
 		{ value: 'var(--ui-tertiary)', label: 'Tertiary' },
-		{ value: 'var(--ui-tertiary-dark)', label: 'Tertiary Dark' }
+		{ value: 'var(--ui-tertiary-text-color)', label: 'Tertiary Text' }
 	];
 
 	let { editor, brandColors = defaultBrandColors }: Props = $props();
@@ -291,7 +291,7 @@
 		padding: 6px 12px;
 		border: none;
 		background: var(--ui-tertiary);
-		color: var(--ui-primary);
+		color: var(--ui-tertiary-contrast-color);
 		border-radius: 4px;
 		cursor: pointer;
 		font-size: 13px;
@@ -301,15 +301,15 @@
 	}
 
 	.color-remove-button:hover {
-		background: var(--ui-tertiary-dark);
+		background: var(--ui-tertiary-hover-color);
 	}
 
 	:global(.dark) .color-remove-button {
 		background: var(--ui-accent);
-		color: var(--ui-primary);
+		color: var(--ui-accent-contrast-color);
 	}
 
 	:global(.dark) .color-remove-button:hover {
-		background: var(--ui-accent-dark);
+		background: var(--ui-accent-hover-color);
 	}
 </style>

@@ -202,7 +202,7 @@
 		border: 1px solid var(--border-color);
 		border-radius: 4px;
 		background: var(--paper-body-bg);
-		color: var(--ui-tertiary-dark);
+		color: var(--ui-link-color);
 		cursor: pointer;
 		font: inherit;
 		font-size: 13px;
@@ -263,7 +263,7 @@
 
 	.link-icon-button:hover {
 		background: rgba(var(--ui-primary-rgbc), 0.1);
-		color: var(--ui-primary);
+		color: var(--ui-primary-text-color);
 	}
 
 	:global(.dark) .link-icon-button:hover {
@@ -273,17 +273,22 @@
 
 	.link-icon-button.primary {
 		background: var(--ui-primary);
-		color: white;
+		color: var(--ui-primary-contrast-color);
 	}
 
 	.link-icon-button.primary:hover {
-		background: var(--ui-tertiary-dark);
-		color: white;
+		background: var(--ui-primary-hover-color);
+		color: var(--ui-primary-contrast-color);
 	}
 
 	:global(.dark) .link-icon-button.primary {
 		background: var(--ui-accent);
-		color: var(--ui-primary);
+		color: var(--ui-accent-contrast-color);
+	}
+
+	:global(.dark) .link-icon-button.primary:hover {
+		background: var(--ui-accent-hover-color);
+		color: var(--ui-accent-contrast-color);
 	}
 
 	.link-icon-button.danger:hover {

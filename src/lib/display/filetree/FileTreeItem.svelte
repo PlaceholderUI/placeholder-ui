@@ -350,7 +350,7 @@
 	.ft-icon {
 		display: inline-flex;
 		flex-shrink: 0;
-		color: var(--ui-primary);
+		color: var(--ui-primary-text-color);
 	}
 
 	:global(.dark) .ft-icon {

@@ -59,8 +59,11 @@ If adding a variant to an existing component (e.g., TipTapBubble alongside TipTa
 
 - All brand colours resolve to semantic `--ui-*` custom properties defined in `src/lib/app.css`:
   `--ui-primary` (dark), `--ui-accent` (light), `--ui-tertiary` (light support), each with
-  `-rgb`, `-rgbc`, `-dark` (and `-light`/`-contrast` where relevant), plus `--ui-font-family`,
-  `--ui-link-color`, `--ui-link-hover-color`.
+  `-rgb`, `-rgbc`, `-hover-color`, `-pressed-color`, `-text-color` and `-contrast-color`,
+  plus `--ui-font-family`, `--ui-focus-color`, `--ui-link-color`, `--ui-link-hover-color`.
+  Hover colors are separate from readable text/borders, pressed states and keyboard focus.
+  Each color's `-text-color` styles text and outline borders on page/paper surfaces;
+  its `-contrast-color` styles text and icons on its solid fills.
 - **Never hardcode brand colours or fonts in components.** Use the tokens. Surface tokens
   (`--page-bg`, `--paper-body-bg`, `--text-color`, `--border-color`, `--input-bg`, ...) stay as-is.
 - `src/lib/uiTheme.svelte.ts` — `ThemeConfig`, `applyTheme()`, `themeToCss()`, `setLogo()`,

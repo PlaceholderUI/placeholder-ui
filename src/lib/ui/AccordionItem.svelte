@@ -190,7 +190,7 @@
 	   `auto-subtle` defines nothing and falls through to the theme-aware defaults. */
 	.variant-white {
 		--accordion-open-bg: white;
-		--accordion-open-color: var(--ui-primary);
+		--accordion-open-color: var(--ui-primary-text-color);
 	}
 
 	.variant-secondary,
@@ -221,56 +221,56 @@
 
 	.variant-accent {
 		--accordion-open-bg: var(--ui-accent);
-		--accordion-open-color: var(--ui-primary);
+		--accordion-open-color: var(--ui-accent-contrast-color);
 	}
 
 	.variant-accent-subtle {
 		--accordion-open-bg: rgba(var(--ui-accent-rgbc), 0.15);
-		--accordion-open-color: var(--text-color);
+		--accordion-open-color: var(--ui-accent-text-color);
 	}
 
 	.variant-accent-outline {
 		--accordion-open-bg: transparent;
-		--accordion-open-color: var(--ui-accent);
-		--accordion-open-border-color: var(--ui-accent);
+		--accordion-open-color: var(--ui-accent-text-color);
+		--accordion-open-border-color: var(--ui-accent-text-color);
 	}
 
 	.variant-primary {
 		--accordion-open-bg: var(--ui-primary);
-		--accordion-open-color: white;
+		--accordion-open-color: var(--ui-primary-contrast-color);
 	}
 
 	.variant-primary-subtle {
 		--accordion-open-bg: rgba(var(--ui-primary-rgbc), 0.1);
-		--accordion-open-color: var(--text-color);
+		--accordion-open-color: var(--ui-primary-text-color);
 	}
 
 	.variant-primary-outline {
 		--accordion-open-bg: transparent;
-		--accordion-open-color: var(--ui-primary);
-		--accordion-open-border-color: var(--ui-primary);
+		--accordion-open-color: var(--ui-primary-text-color);
+		--accordion-open-border-color: var(--ui-primary-text-color);
 	}
 
 	.variant-tertiary {
 		--accordion-open-bg: var(--ui-tertiary);
-		--accordion-open-color: var(--ui-primary);
+		--accordion-open-color: var(--ui-tertiary-contrast-color);
 	}
 
 	.variant-tertiary-outline {
 		--accordion-open-bg: transparent;
-		--accordion-open-color: var(--ui-tertiary-dark);
-		--accordion-open-border-color: var(--ui-tertiary-dark);
+		--accordion-open-color: var(--ui-tertiary-text-color);
+		--accordion-open-border-color: var(--ui-tertiary-text-color);
 	}
 
 	.variant-tertiary-subtle {
-		--accordion-open-bg: rgba(var(--ui-tertiary-dark-rgbc), 0.25);
-		--accordion-open-color: var(--ui-tertiary-dark);
+		--accordion-open-bg: color-mix(in srgb, var(--ui-tertiary-text-color) 25%, transparent);
+		--accordion-open-color: var(--ui-tertiary-text-color);
 	}
 
 	.variant-auto-outline {
 		--accordion-open-bg: transparent;
-		--accordion-open-color: var(--ui-primary);
-		--accordion-open-border-color: var(--ui-primary);
+		--accordion-open-color: var(--ui-primary-text-color);
+		--accordion-open-border-color: var(--ui-primary-text-color);
 	}
 
 	:global(.dark) .variant-secondary-selected {

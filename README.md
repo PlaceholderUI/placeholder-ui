@@ -54,16 +54,46 @@ applyTheme({
 	colors: {
 		primary: '#1e3a5f', // dark brand colour: solid buttons, headings
 		accent: '#93c5fd', // light brand colour: highlights, dark-mode accent
-		tertiary: '#a5f3fc' // supporting colour: links use its dark shade
+		tertiary: '#a5f3fc' // supporting color: links use its readable text color
 	},
 	fontFamily: "'Inter', system-ui, sans-serif",
 	logo // raw SVG, rendered by <Logo />
 });
 ```
 
-Darker and lighter shades are derived automatically. Set `primaryDark`,
-`accentDark`, `tertiaryDark`, `tertiaryLight`, `link`, `linkHover` and the
-`*Contrast` text colours explicitly when you want full control.
+Each brand color has independent `*HoverColor` and `*PressedColor` settings:
+`primaryHoverColor`, `accentHoverColor`, `tertiaryHoverColor`,
+`primaryPressedColor`, `accentPressedColor` and `tertiaryPressedColor`.
+They are shared by solid, outline and subtle controls; subtle variants use
+translucent hover fills where appropriate.
+
+All three colors have the same two text roles:
+
+| Setting | Used for |
+| --- | --- |
+| `primaryTextColor`, `accentTextColor`, `tertiaryTextColor` | Colored text and outline borders on page/paper surfaces. |
+| `primaryContrastColor`, `accentContrastColor`, `tertiaryContrastColor` | Text and icons on the matching solid fill, including hover and pressed fills. |
+
+For example, `primaryTextColor` styles a primary outline button at rest, while
+`primaryContrastColor` styles the label on a filled primary button.
+`focusColor`, `link` and `linkHover` control keyboard focus rings and links
+independently. Changing a hover color does not change these other roles.
+
+All role overrides are optional. By default, primary hover uses the accent text
+color, accent hover uses tertiary, and tertiary hover uses accent. Primary pressed
+is darkened from its base color. Primary text defaults to primary; accent and
+tertiary text colors are darkened from their base colors. Accent and tertiary
+pressed colors are lightened from tertiary (or accent when tertiary is omitted).
+Primary contrast defaults to white; accent and tertiary contrast default to primary.
+
+For existing configs, replace `primaryDark` with `primaryPressedColor`,
+`accentDark` with `accentTextColor`, and `tertiaryDark` with `tertiaryTextColor`.
+Replace `tertiaryLight` with both `accentPressedColor` and `tertiaryPressedColor`
+to preserve both sets of pressed states. Set the hover colors separately when
+customizing interactions. Rename `primaryContrast` and `accentContrast` to
+`primaryContrastColor` and `accentContrastColor`. Their CSS tokens also gain the
+`-color` suffix. CSS overrides use the corresponding kebab-case names,
+such as `--ui-primary-hover-color` and `--ui-tertiary-text-color`.
 
 ### Light and dark values
 
@@ -105,13 +135,23 @@ Override the tokens in any stylesheet loaded after the library:
 	--ui-primary-rgb: 30 58 95;
 	--ui-primary-rgbc: 30, 58, 95;
 	--ui-primary: rgb(var(--ui-primary-rgb));
-	--ui-primary-dark: #12253d;
+	--ui-primary-hover-color: #1d4ed8;
+	--ui-primary-pressed-color: #12253d;
+	--ui-primary-text-color: #1e3a5f;
+	--ui-primary-contrast-color: #ffffff;
 	--ui-accent-rgb: 147 197 253;
 	--ui-accent-rgbc: 147, 197, 253;
 	--ui-accent: rgb(var(--ui-accent-rgb));
-	--ui-accent-dark: #1d4ed8;
+	--ui-accent-hover-color: #a5f3fc;
+	--ui-accent-pressed-color: #cffafe;
+	--ui-accent-text-color: #1d4ed8;
+	--ui-accent-contrast-color: #1e3a5f;
 	--ui-tertiary: #a5f3fc;
-	--ui-tertiary-dark: #0e7490;
+	--ui-tertiary-hover-color: #93c5fd;
+	--ui-tertiary-pressed-color: #cffafe;
+	--ui-tertiary-text-color: #0e7490;
+	--ui-tertiary-contrast-color: #1e3a5f;
+	--ui-focus-color: #1d4ed8;
 	--ui-font-family: 'Inter', system-ui, sans-serif;
 }
 ```
@@ -119,15 +159,15 @@ Override the tokens in any stylesheet loaded after the library:
 The full token list, with comments on each role, is at the top of
 [src/lib/app.css](src/lib/app.css).
 
-### Colour roles
+### Color roles
 
 Keep these relationships when choosing colours, because components assume them:
 
 | Token           | Role                                                         |
 | --------------- | ------------------------------------------------------------ |
-| `--ui-primary`  | Dark. Solid buttons, active states, headings. White text.    |
+| `--ui-primary`  | Dark by default. Solid buttons and active backgrounds.    |
 | `--ui-accent`   | Light. Hovers, highlights, the accent in dark mode.          |
-| `--ui-tertiary` | Light. Supporting fills; its `-dark` shade is used for links |
+| `--ui-tertiary` | Light. Supporting fills; its text color is used for links |
 
 ### Fonts
 

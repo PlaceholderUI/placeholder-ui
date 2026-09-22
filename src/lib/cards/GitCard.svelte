@@ -83,7 +83,7 @@
 		font-size: 1.25rem;
 		font-style: normal;
 		font-weight: 600;
-		color: var(--ui-primary);
+		color: var(--ui-primary-text-color);
 	}
 
 	.git-jobtitle {

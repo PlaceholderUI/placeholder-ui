@@ -33,7 +33,7 @@
 		{
 			title: 'Utilities',
 			items: [
-				{ href: '/utilities/theme', label: 'Theme' },
+				{ href: '/', label: 'Theme' },
 				{ href: '/utilities/viewport', label: 'Viewport' }
 			]
 		},

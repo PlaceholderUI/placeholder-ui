@@ -135,7 +135,7 @@
 		align-items: center;
 		gap: 0.5rem;
 		text-decoration: none;
-		color: var(--ui-tertiary-dark);
+		color: var(--ui-link-color);
 		font-weight: normal;
 
 		&:hover {

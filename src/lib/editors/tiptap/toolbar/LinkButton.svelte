@@ -194,7 +194,7 @@
 	}
 
 	.link-checkbox-label:hover {
-		color: var(--ui-primary);
+		color: var(--ui-primary-text-color);
 	}
 
 	:global(.dark) .link-checkbox-label:hover {
@@ -208,7 +208,7 @@
 		padding: 6px 12px;
 		border: none;
 		background: var(--ui-primary);
-		color: white;
+		color: var(--ui-primary-contrast-color);
 		border-radius: 4px;
 		cursor: pointer;
 		font-size: 16px;
@@ -217,16 +217,16 @@
 	}
 
 	.link-submit-button:hover {
-		background: var(--ui-tertiary-dark);
+		background: var(--ui-primary-hover-color);
 	}
 
 	:global(.dark) .link-submit-button {
 		background: var(--ui-accent);
-		color: var(--ui-primary);
+		color: var(--ui-accent-contrast-color);
 	}
 
 	:global(.dark) .link-submit-button:hover {
-		background: var(--ui-accent-dark);
+		background: var(--ui-accent-hover-color);
 	}
 
 	.link-remove-button {
@@ -236,7 +236,7 @@
 		padding: 6px 12px;
 		border: none;
 		background: var(--ui-tertiary);
-		color: var(--ui-primary);
+		color: var(--ui-tertiary-contrast-color);
 		border-radius: 4px;
 		cursor: pointer;
 		font-size: 16px;
@@ -245,15 +245,15 @@
 	}
 
 	.link-remove-button:hover {
-		background: var(--ui-tertiary-dark);
+		background: var(--ui-tertiary-hover-color);
 	}
 
 	:global(.dark) .link-remove-button {
 		background: var(--ui-accent);
-		color: var(--ui-primary);
+		color: var(--ui-accent-contrast-color);
 	}
 
 	:global(.dark) .link-remove-button:hover {
-		background: var(--ui-accent-dark);
+		background: var(--ui-accent-hover-color);
 	}
 </style>

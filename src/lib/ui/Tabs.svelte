@@ -112,7 +112,7 @@
 	}
 
 	.tab-item.selected {
-		color: var(--ui-primary);
+		color: var(--ui-primary-text-color);
 	}
 
 	.tab-underline {

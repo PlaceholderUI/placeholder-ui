@@ -145,12 +145,14 @@
 	}
 
 	.white {
-		--button-text-color: var(--ui-primary);
+		--button-text-color: var(--ui-primary-text-color);
 		--button-bg-color: white;
 		--button-border: 0;
-		--button-hover-bg-color: var(--ui-tertiary);
-		--button-active-bg-color: var(--ui-tertiary-light);
-		--button-outline-color: var(--ui-tertiary);
+		--button-hover-bg-color: var(--ui-accent-hover-color);
+		--button-hover-text-color: var(--ui-accent-contrast-color);
+		--button-active-bg-color: var(--ui-tertiary-pressed-color);
+		--button-active-text-color: var(--ui-tertiary-contrast-color);
+		--button-outline-color: var(--ui-focus-color);
 	}
 
 	.secondary {
@@ -180,13 +182,13 @@
 	}
 
 	.auto-subtle {
-		--button-text-color: var(--ui-primary);
+		--button-text-color: var(--ui-primary-text-color);
 		--button-bg-color: initial;
 		--button-hover-bg-color: var(--ui-accent);
-		--button-hover-text-color: var(--ui-primary);
+		--button-hover-text-color: var(--ui-accent-contrast-color);
 		--button-active-bg-color: var(--ui-primary);
-		--button-active-text-color: var(--ui-accent);
-		--button-outline-color: var(--ui-tertiary);
+		--button-active-text-color: var(--ui-primary-contrast-color);
+		--button-outline-color: var(--ui-focus-color);
 	}
 
 	.danger {
@@ -197,7 +199,7 @@
 
 		--button-active-bg-color: #b02a37;
 
-		--button-outline-color: var(--ui-tertiary);
+		--button-outline-color: var(--ui-focus-color);
 
 		:global(.loader) {
 			color: white;
@@ -218,93 +220,97 @@
 	}
 
 	.accent {
-		--button-text-color: var(--ui-primary);
+		--button-text-color: var(--ui-accent-contrast-color);
 		--button-bg-color: var(--ui-accent);
-		--button-hover-bg-color: var(--ui-tertiary);
-		--button-active-bg-color: var(--ui-tertiary-light);
-		--button-outline-color: var(--ui-tertiary);
+		--button-hover-bg-color: var(--ui-accent-hover-color);
+		--button-active-bg-color: var(--ui-accent-pressed-color);
+		--button-outline-color: var(--ui-focus-color);
 	}
 
 	.accent-outline {
-		--button-text-color: var(--ui-accent);
+		--button-text-color: var(--ui-accent-text-color);
 		--button-bg-color: initial;
-		--button-border: 1px solid var(--ui-accent);
-		--button-hover-text-color: var(--ui-tertiary);
-		--button-hover-border: 1px solid var(--ui-tertiary);
-		--button-active-text-color: var(--ui-tertiary-light);
-		--button-active-border: 1px solid var(--ui-tertiary-light);
-		--button-outline-color: var(--ui-tertiary);
+		--button-border: 1px solid var(--ui-accent-text-color);
+		--button-hover-text-color: var(--ui-accent-hover-color);
+		--button-hover-border: 1px solid var(--ui-accent-hover-color);
+		--button-active-text-color: var(--ui-accent-pressed-color);
+		--button-active-border: 1px solid var(--ui-accent-pressed-color);
+		--button-outline-color: var(--ui-focus-color);
 	}
 
 	.accent-subtle {
-		--button-text-color: var(--ui-accent);
+		--button-text-color: var(--ui-accent-text-color);
 		--button-bg-color: initial;
-		--button-hover-text-color: var(--ui-primary);
-		--button-hover-bg-color: var(--ui-accent);
-		--button-active-text-color: white;
-		--button-active-bg-color: var(--ui-accent-dark);
-		--button-outline-color: var(--ui-tertiary);
+		--button-hover-text-color: var(--ui-accent-contrast-color);
+		--button-hover-bg-color: var(--ui-accent-hover-color);
+		--button-active-text-color: var(--ui-accent-contrast-color);
+		--button-active-bg-color: var(--ui-accent-pressed-color);
+		--button-outline-color: var(--ui-focus-color);
 	}
 
 	.primary {
 		--button-bg-color: var(--ui-primary);
-		--button-text-color: white;
-		--button-hover-bg-color: var(--ui-accent-dark);
-		--button-active-bg-color: var(--ui-primary-dark);
+		--button-text-color: var(--ui-primary-contrast-color);
+		--button-hover-bg-color: var(--ui-primary-hover-color);
+		--button-active-bg-color: var(--ui-primary-pressed-color);
 	}
 
 	.primary-outline {
-		--button-text-color: var(--ui-primary);
+		--button-text-color: var(--ui-primary-text-color);
 		--button-bg-color: initial;
-		--button-border: 1px solid var(--ui-primary);
-		--button-hover-text-color: var(--ui-accent-dark);
-		--button-hover-border: 1px solid var(--ui-accent-dark);
-		--button-active-text-color: var(--ui-primary-dark);
-		--button-active-border: 1px solid var(--ui-primary-dark);
+		--button-border: 1px solid var(--ui-primary-text-color);
+		--button-hover-text-color: var(--ui-primary-hover-color);
+		--button-hover-border: 1px solid var(--ui-primary-hover-color);
+		--button-active-text-color: var(--ui-primary-pressed-color);
+		--button-active-border: 1px solid var(--ui-primary-pressed-color);
 	}
 
 	.primary-subtle {
-		--button-text-color: var(--ui-primary);
+		--button-text-color: var(--ui-primary-text-color);
 		--button-bg-color: initial;
-		--button-hover-text-color: white;
-		--button-hover-bg-color: var(--ui-primary);
-		--button-active-text-color: white;
-		--button-active-bg-color: var(--ui-primary-dark);
+		--button-hover-text-color: var(--ui-primary-contrast-color);
+		--button-hover-bg-color: var(--ui-primary-hover-color);
+		--button-active-text-color: var(--ui-primary-contrast-color);
+		--button-active-bg-color: var(--ui-primary-pressed-color);
 	}
 
 	.tertiary {
-		--button-text-color: var(--ui-primary);
+		--button-text-color: var(--ui-tertiary-contrast-color);
 		--button-bg-color: var(--ui-tertiary);
-		--button-hover-bg-color: var(--ui-accent);
-		--button-active-bg-color: var(--ui-tertiary-light);
-		--button-outline-color: var(--ui-accent);
+		--button-hover-bg-color: var(--ui-tertiary-hover-color);
+		--button-active-bg-color: var(--ui-tertiary-pressed-color);
+		--button-outline-color: var(--ui-focus-color);
 	}
 
 	.tertiary-outline {
-		--button-text-color: var(--ui-tertiary-dark);
+		--button-text-color: var(--ui-tertiary-text-color);
 		--button-bg-color: transparent;
-		--button-border: 1px solid var(--ui-tertiary-dark);
-		--button-hover-text-color: var(--ui-primary);
-		--button-hover-bg-color: var(--ui-tertiary);
-		--button-active-text-color: var(--ui-primary);
-		--button-active-bg-color: var(--ui-tertiary-light);
-		--button-outline-color: var(--ui-tertiary-dark);
+		--button-border: 1px solid var(--ui-tertiary-text-color);
+		--button-hover-text-color: var(--ui-tertiary-contrast-color);
+		--button-hover-bg-color: var(--ui-tertiary-hover-color);
+		--button-active-text-color: var(--ui-tertiary-contrast-color);
+		--button-active-bg-color: var(--ui-tertiary-pressed-color);
+		--button-outline-color: var(--ui-focus-color);
 	}
 
 	.tertiary-subtle {
 		background-color: initial;
-		color: var(--ui-tertiary-dark);
+		color: var(--ui-tertiary-text-color);
 
 		&:hover:not(:disabled) {
-			background-color: rgba(var(--ui-tertiary-dark-rgbc), 0.25);
+			background-color: color-mix(in srgb, var(--ui-tertiary-hover-color) 25%, transparent);
+		}
+
+		&:active:not(:disabled, .effects-disabled) {
+			background-color: color-mix(in srgb, var(--ui-tertiary-pressed-color) 25%, transparent);
 		}
 
 		&:focus-visible {
-			outline-color: var(--ui-tertiary);
+			outline-color: var(--ui-focus-color);
 		}
 
 		:global(.loader) {
-			color: var(--ui-tertiary-dark);
+			color: var(--ui-tertiary-text-color);
 		}
 	}
 
@@ -338,7 +344,7 @@
 		}
 
 		&:focus-visible {
-			outline: solid 0.125rem var(--button-outline-color, var(--ui-accent-dark));
+			outline: solid 0.125rem var(--button-outline-color, var(--ui-focus-color));
 			outline-offset: 0.125rem;
 		}
 
@@ -363,11 +369,11 @@
 
 		.auto-subtle {
 			--button-text-color: white;
-			--button-hover-text-color: white;
+			--button-hover-text-color: var(--ui-primary-contrast-color);
 			--button-hover-bg-color: var(--ui-primary);
-			--button-active-text-color: var(--ui-accent);
+			--button-active-text-color: var(--ui-primary-contrast-color);
 			--button-active-bg-color: var(--ui-primary);
-			--button-outline-color: var(--ui-accent);
+			--button-outline-color: var(--ui-focus-color);
 		}
 	}
 

@@ -287,7 +287,7 @@
 
 		if (bubbleMenuElement && editable) {
 			extensions.push(
-				BubbleMenu.configure({
+				BubbleMenu.extend({ name: 'formatBubbleMenu' }).configure({
 					pluginKey: 'formatBubbleMenu',
 					element: bubbleMenuElement,
 					shouldShow: ({ editor, state }) => {
@@ -300,7 +300,7 @@
 
 		if (linkBubbleMenuElement) {
 			extensions.push(
-				BubbleMenu.configure({
+				BubbleMenu.extend({ name: 'linkActionBubbleMenu' }).configure({
 					pluginKey: 'linkActionBubbleMenu',
 					element: linkBubbleMenuElement,
 					shouldShow: ({ editor }) => Boolean(editor.getAttributes('link').href),
@@ -546,7 +546,7 @@
 		border-radius: 3px;
 		font-family: 'Monaco', 'Courier New', monospace;
 		font-size: 0.9em;
-		color: var(--ui-accent-dark);
+		color: var(--ui-accent-text-color);
 	}
 
 	:global(.dark) .editor-content :global(.ProseMirror code) {
@@ -554,7 +554,7 @@
 	}
 
 	.editor-content :global(.ProseMirror a) {
-		color: var(--ui-tertiary-dark);
+		color: var(--ui-link-color);
 		text-decoration: underline;
 		cursor: pointer;
 		pointer-events: auto;
@@ -702,7 +702,7 @@
 	}
 
 	.editor-content :global(.ProseMirror .alert-default .alert-title) {
-		color: var(--ui-primary);
+		color: var(--ui-primary-text-color);
 	}
 
 	.editor-content :global(.ProseMirror .alert-danger) {

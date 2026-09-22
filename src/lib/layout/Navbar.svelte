@@ -194,10 +194,10 @@
 	}
 
 	header.primary .inner-navbar {
-		color: white;
+		color: var(--ui-primary-contrast-color);
 	}
 
-	/* Top-level links/triggers: white, turning accent on hover (matches dark navbar).
+	/* Top-level links/triggers use primary contrast, turning accent on hover.
 	   Use `>` so these rules don't leak into the fold-out sub-list panels, which keep
 	   their own (paper) colour scheme regardless of the primary variant. */
 	header.primary .inner-navbar .links-container > :global(a),
@@ -207,7 +207,7 @@
 		> :global(.navbar-parent)
 		> :global(.navbar-parent-trigger),
 	header.primary .inner-navbar .header-hero :global(a) {
-		color: white;
+		color: var(--ui-primary-contrast-color);
 		transition: color 200ms;
 	}
 
@@ -247,7 +247,7 @@
 		.links-container
 		> :global(.navbar-parent)
 		> :global(.navbar-parent-trigger:hover) {
-		color: var(--ui-tertiary-dark);
+		color: var(--ui-link-hover-color);
 	}
 
 	:global(.dark) header.site .inner-navbar .links-container > :global(a:hover),
@@ -336,7 +336,7 @@
 		padding: 0 1em;
 		height: 100%;
 		width: 100%;
-		color: var(--ui-primary);
+		color: var(--ui-primary-text-color);
 	}
 
 	.middle {
