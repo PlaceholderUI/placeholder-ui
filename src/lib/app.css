@@ -228,6 +228,7 @@ a:hover {
 }
 
 .editor-button-primary-outline,
+.editor-button-tertiary-outline,
 .editor-button-accent-outline {
 	border: 1px solid var(--editor-button-border);
 	--editor-button-bg: transparent;
@@ -246,6 +247,26 @@ a:hover {
 	--editor-button-border: var(--ui-accent);
 	--editor-button-hover-fg: var(--ui-tertiary);
 	--editor-button-hover-border: var(--ui-tertiary);
+}
+
+.editor-button-tertiary-outline {
+	--editor-button-fg: var(--ui-tertiary-dark);
+	--editor-button-border: var(--ui-tertiary-dark);
+	--editor-button-hover-fg: var(--ui-primary);
+	--editor-button-hover-bg: var(--ui-tertiary);
+	--editor-button-hover-border: var(--ui-tertiary-dark);
+}
+
+.editor-button-tertiary-subtle {
+	--editor-button-fg: var(--ui-tertiary-dark);
+	--editor-button-bg: transparent;
+	--editor-button-hover-fg: var(--ui-tertiary-dark);
+	--editor-button-hover-bg: color-mix(in srgb, var(--ui-tertiary-dark) 25%, transparent);
+}
+
+.editor-button-tertiary-outline:focus-visible,
+.editor-button-tertiary-subtle:focus-visible {
+	outline-color: var(--ui-tertiary-dark);
 }
 
 .editor-button-sm {

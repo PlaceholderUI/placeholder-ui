@@ -20,6 +20,17 @@
 				<Button variant="primary-subtle">Primary (subtle)</Button>
 			</div>
 			<div class="flex gap-2">
+				<Button variant="secondary">Secondary</Button>
+				<Button variant="secondary-subtle">Secondary (subtle)</Button>
+				<Button variant="secondary-selected">Secondary (selected)</Button>
+			</div>
+			<div class="flex gap-2">
+				<Button variant="tertiary">Tertiary</Button>
+				<Button variant="tertiary" loading>Tertiary (Loading)</Button>
+				<Button variant="tertiary-outline">Tertiary (outline)</Button>
+				<Button variant="tertiary-subtle">Tertiary (subtle)</Button>
+			</div>
+			<div class="flex gap-2">
 				<Button variant="accent">Accent</Button>
 				<Button variant="accent-outline">Accent (outline)</Button>
 				<Button variant="accent-subtle">Accent (subtle)</Button>
@@ -27,9 +38,6 @@
 			<div class="flex gap-2">
 				<Button variant="auto-subtle">Auto (subtle)</Button>
 				<Button variant="white">White</Button>
-				<Button variant="secondary">Secondary</Button>
-				<Button variant="secondary-subtle">Secondary (subtle)</Button>
-				<Button variant="secondary-selected">Secondary (selected)</Button>
 			</div>
 			<div class="flex gap-2">
 				<Button variant="danger" svg={iconTrash}>Danger</Button>
@@ -43,6 +51,11 @@
 			<Button variant="primary">Normal</Button>
 			<Button variant="primary" loading>Loading</Button>
 			<Button variant="primary" disabled>Disabled</Button>
+		</div>
+		<div class="flex gap-2">
+			<Button variant="tertiary">Normal</Button>
+			<Button variant="tertiary" loading>Loading</Button>
+			<Button variant="tertiary" disabled>Disabled</Button>
 		</div>
 	</Paper>
 

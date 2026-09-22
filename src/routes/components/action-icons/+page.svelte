@@ -141,6 +141,10 @@
 						<span>tertiary</span>
 					</div>
 					<div class="icon-example">
+						<ActionIcon svg={iconPlus} variant="tertiary-outline" />
+						<span>tertiary-outline</span>
+					</div>
+					<div class="icon-example">
 						<ActionIcon svg={iconPlus} variant="tertiary-subtle" />
 						<span>tertiary-subtle</span>
 					</div>

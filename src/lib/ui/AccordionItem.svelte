@@ -256,6 +256,12 @@
 		--accordion-open-color: var(--ui-primary);
 	}
 
+	.variant-tertiary-outline {
+		--accordion-open-bg: transparent;
+		--accordion-open-color: var(--ui-tertiary-dark);
+		--accordion-open-border-color: var(--ui-tertiary-dark);
+	}
+
 	.variant-tertiary-subtle {
 		--accordion-open-bg: rgba(var(--ui-tertiary-dark-rgbc), 0.25);
 		--accordion-open-color: var(--ui-tertiary-dark);

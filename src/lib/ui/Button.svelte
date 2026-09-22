@@ -280,6 +280,17 @@
 		--button-outline-color: var(--ui-accent);
 	}
 
+	.tertiary-outline {
+		--button-text-color: var(--ui-tertiary-dark);
+		--button-bg-color: transparent;
+		--button-border: 1px solid var(--ui-tertiary-dark);
+		--button-hover-text-color: var(--ui-primary);
+		--button-hover-bg-color: var(--ui-tertiary);
+		--button-active-text-color: var(--ui-primary);
+		--button-active-bg-color: var(--ui-tertiary-light);
+		--button-outline-color: var(--ui-tertiary-dark);
+	}
+
 	.tertiary-subtle {
 		background-color: initial;
 		color: var(--ui-tertiary-dark);

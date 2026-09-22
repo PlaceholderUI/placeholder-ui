@@ -12,7 +12,9 @@ export const editorButtonVariants = [
 	'accent',
 	'tertiary',
 	'primary-outline',
-	'accent-outline'
+	'accent-outline',
+	'tertiary-outline',
+	'tertiary-subtle'
 ] as const;
 
 export type EditorButtonVariant = (typeof editorButtonVariants)[number];

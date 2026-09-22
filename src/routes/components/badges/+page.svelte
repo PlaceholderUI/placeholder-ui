@@ -40,13 +40,21 @@
 			</div>
 
 			<div class="variant-group">
+				<h4>Tertiary</h4>
+				<div class="badge-row">
+					<Badge variant="tertiary">Default</Badge>
+					<Badge variant="tertiary-outline">Outline</Badge>
+					<Badge variant="tertiary-subtle">Subtle</Badge>
+				</div>
+			</div>
+
+			<div class="variant-group">
 				<h4>Other Colors</h4>
 				<div class="badge-row">
 					<Badge variant="white">White</Badge>
 					<Badge variant="secondary">Secondary</Badge>
 					<Badge variant="shaded">Shaded</Badge>
 					<Badge variant="danger">Danger</Badge>
-					<Badge variant="tertiary">Tertiary</Badge>
 				</div>
 			</div>
 		</div>

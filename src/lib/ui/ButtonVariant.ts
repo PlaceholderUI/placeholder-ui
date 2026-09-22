@@ -22,5 +22,6 @@ export type ButtonVariant =
 	| 'accent-outline'
 	| 'accent-subtle'
 	| 'tertiary'
+	| 'tertiary-outline'
 	| 'tertiary-subtle'
 	| 'shaded';

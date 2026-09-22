@@ -179,6 +179,8 @@
 					links={basicActions}
 					bind:show={variantTertiaryOpen}
 				/>
+				<Dropdown label="Tertiary outline" variant="tertiary-outline" links={basicActions} />
+				<Dropdown label="Tertiary subtle" variant="tertiary-subtle" links={basicActions} />
 				<Dropdown
 					label="Secondary"
 					variant="secondary"

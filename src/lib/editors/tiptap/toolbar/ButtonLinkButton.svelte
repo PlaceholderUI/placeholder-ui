@@ -31,7 +31,9 @@
 		{ value: 'accent', label: 'Accent' },
 		{ value: 'tertiary', label: 'Tertiary' },
 		{ value: 'primary-outline', label: 'Primary outline' },
-		{ value: 'accent-outline', label: 'Accent outline' }
+		{ value: 'accent-outline', label: 'Accent outline' },
+		{ value: 'tertiary-outline', label: 'Tertiary outline' },
+		{ value: 'tertiary-subtle', label: 'Tertiary subtle' }
 	];
 
 	const sizes: { value: EditorButtonSize; label: string }[] = [

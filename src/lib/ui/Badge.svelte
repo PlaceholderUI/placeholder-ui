@@ -239,6 +239,23 @@
 		--badge-border-color: var(--ui-tertiary-dark);
 	}
 
+	.tertiary-outline {
+		--badge-text-color: var(--ui-tertiary-dark);
+		--badge-bg-color: transparent;
+		--badge-border: 1px solid var(--ui-tertiary-dark);
+		--badge-border-color: var(--ui-tertiary-dark);
+		--badge-hover-bg-color: color-mix(in srgb, var(--ui-tertiary) 25%, transparent);
+		--badge-outline-color: var(--ui-tertiary-dark);
+	}
+
+	.tertiary-subtle {
+		--badge-text-color: var(--ui-tertiary-dark);
+		--badge-bg-color: color-mix(in srgb, var(--ui-tertiary) 15%, transparent);
+		--badge-hover-bg-color: color-mix(in srgb, var(--ui-tertiary) 30%, transparent);
+		--badge-border-color: var(--ui-tertiary-dark);
+		--badge-outline-color: var(--ui-tertiary-dark);
+	}
+
 	button,
 	a,
 	div {

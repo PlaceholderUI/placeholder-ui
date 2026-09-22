@@ -37,6 +37,7 @@ Or skip `AppShell` and import the token stylesheet yourself:
 ```ts
 import '@placeholderco/placeholder-ui/app.css';
 ```
+
 ## Branding
 
 Everything colour- and font-related resolves to `--ui-*` custom properties, so
@@ -146,6 +147,13 @@ Button, Badge, ActionIcon, Dropdown, Accordion and ProgressBar share colour
 variants named after the tokens: `primary`, `accent`, `tertiary`, plus
 `-outline` and `-subtle` forms, and the neutral `secondary`, `white`, `danger`
 and `auto-*` variants.
+
+The additional coloured buttons use `tertiary`, `tertiary-outline` and
+`tertiary-subtle`, configured through `colors.tertiary` and the existing
+`--ui-tertiary*` tokens. The `secondary`, `secondary-subtle` and
+`secondary-selected` variants retain their original neutral styles; existing
+apps do not need to rename them. Existing tertiary colours and button styles
+are preserved, with outline support added to the family.
 
 ## Theme (light / dark)
 

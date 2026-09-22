@@ -11,6 +11,8 @@
 	const variantExamples: ButtonVariant[] = [
 		'primary',
 		'tertiary',
+		'tertiary-outline',
+		'tertiary-subtle',
 		'danger',
 		'secondary-selected',
 		'primary-outline',
