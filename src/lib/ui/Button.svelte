@@ -207,16 +207,13 @@
 	}
 
 	.danger-subtle {
-		background-color: initial;
-		color: var(--danger-text);
-
-		&:hover:not(:disabled) {
-			background-color: var(--danger-bg-subtle);
-		}
-
-		:global(.loader) {
-			color: var(--danger-text);
-		}
+		--button-text-color: var(--danger-bg);
+		--button-bg-color: initial;
+		--button-hover-text-color: white;
+		--button-hover-bg-color: var(--danger-bg);
+		--button-active-text-color: white;
+		--button-active-bg-color: #b02a37;
+		--button-outline-color: var(--ui-focus-color);
 	}
 
 	.accent {
@@ -228,21 +225,22 @@
 	}
 
 	.accent-outline {
-		--button-text-color: var(--ui-accent-text-color);
+		--button-text-color: var(--ui-accent);
 		--button-bg-color: initial;
-		--button-border: 1px solid var(--ui-accent-text-color);
-		--button-hover-text-color: var(--ui-accent-hover-color);
-		--button-hover-border: 1px solid var(--ui-accent-hover-color);
-		--button-active-text-color: var(--ui-accent-pressed-color);
+		--button-border: 1px solid var(--ui-accent);
+		--button-hover-text-color: var(--ui-accent-contrast-color);
+		--button-hover-bg-color: var(--ui-accent);
+		--button-active-text-color: var(--ui-accent-contrast-color);
+		--button-active-bg-color: var(--ui-accent-pressed-color);
 		--button-active-border: 1px solid var(--ui-accent-pressed-color);
 		--button-outline-color: var(--ui-focus-color);
 	}
 
 	.accent-subtle {
-		--button-text-color: var(--ui-accent-text-color);
+		--button-text-color: var(--ui-accent);
 		--button-bg-color: initial;
 		--button-hover-text-color: var(--ui-accent-contrast-color);
-		--button-hover-bg-color: var(--ui-accent-hover-color);
+		--button-hover-bg-color: var(--ui-accent);
 		--button-active-text-color: var(--ui-accent-contrast-color);
 		--button-active-bg-color: var(--ui-accent-pressed-color);
 		--button-outline-color: var(--ui-focus-color);
@@ -256,22 +254,25 @@
 	}
 
 	.primary-outline {
-		--button-text-color: var(--ui-primary-text-color);
+		--button-text-color: var(--ui-primary);
 		--button-bg-color: initial;
-		--button-border: 1px solid var(--ui-primary-text-color);
-		--button-hover-text-color: var(--ui-primary-hover-color);
-		--button-hover-border: 1px solid var(--ui-primary-hover-color);
-		--button-active-text-color: var(--ui-primary-pressed-color);
+		--button-border: 1px solid var(--ui-primary);
+		--button-hover-text-color: var(--ui-primary-contrast-color);
+		--button-hover-bg-color: var(--ui-primary);
+		--button-active-text-color: var(--ui-primary-contrast-color);
+		--button-active-bg-color: var(--ui-primary-pressed-color);
 		--button-active-border: 1px solid var(--ui-primary-pressed-color);
+		--button-outline-color: var(--ui-focus-color);
 	}
 
 	.primary-subtle {
-		--button-text-color: var(--ui-primary-text-color);
+		--button-text-color: var(--ui-primary);
 		--button-bg-color: initial;
 		--button-hover-text-color: var(--ui-primary-contrast-color);
-		--button-hover-bg-color: var(--ui-primary-hover-color);
+		--button-hover-bg-color: var(--ui-primary);
 		--button-active-text-color: var(--ui-primary-contrast-color);
 		--button-active-bg-color: var(--ui-primary-pressed-color);
+		--button-outline-color: var(--ui-focus-color);
 	}
 
 	.tertiary {
@@ -283,35 +284,25 @@
 	}
 
 	.tertiary-outline {
-		--button-text-color: var(--ui-tertiary-text-color);
-		--button-bg-color: transparent;
-		--button-border: 1px solid var(--ui-tertiary-text-color);
+		--button-text-color: var(--ui-tertiary);
+		--button-bg-color: initial;
+		--button-border: 1px solid var(--ui-tertiary);
 		--button-hover-text-color: var(--ui-tertiary-contrast-color);
-		--button-hover-bg-color: var(--ui-tertiary-hover-color);
+		--button-hover-bg-color: var(--ui-tertiary);
 		--button-active-text-color: var(--ui-tertiary-contrast-color);
 		--button-active-bg-color: var(--ui-tertiary-pressed-color);
+		--button-active-border: 1px solid var(--ui-tertiary-pressed-color);
 		--button-outline-color: var(--ui-focus-color);
 	}
 
 	.tertiary-subtle {
-		background-color: initial;
-		color: var(--ui-tertiary-text-color);
-
-		&:hover:not(:disabled) {
-			background-color: color-mix(in srgb, var(--ui-tertiary-hover-color) 25%, transparent);
-		}
-
-		&:active:not(:disabled, .effects-disabled) {
-			background-color: color-mix(in srgb, var(--ui-tertiary-pressed-color) 25%, transparent);
-		}
-
-		&:focus-visible {
-			outline-color: var(--ui-focus-color);
-		}
-
-		:global(.loader) {
-			color: var(--ui-tertiary-text-color);
-		}
+		--button-text-color: var(--ui-tertiary);
+		--button-bg-color: initial;
+		--button-hover-text-color: var(--ui-tertiary-contrast-color);
+		--button-hover-bg-color: var(--ui-tertiary);
+		--button-active-text-color: var(--ui-tertiary-contrast-color);
+		--button-active-bg-color: var(--ui-tertiary-pressed-color);
+		--button-outline-color: var(--ui-focus-color);
 	}
 
 	button,

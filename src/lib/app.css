@@ -244,36 +244,37 @@ a:hover {
 .editor-button-accent-outline {
 	border: 1px solid var(--editor-button-border);
 	--editor-button-bg: transparent;
-	--editor-button-hover-bg: transparent;
 }
 
 .editor-button-primary-outline {
-	--editor-button-fg: var(--ui-primary-text-color);
-	--editor-button-border: var(--ui-primary-text-color);
-	--editor-button-hover-fg: var(--ui-primary-hover-color);
-	--editor-button-hover-border: var(--ui-primary-hover-color);
+	--editor-button-fg: var(--ui-primary);
+	--editor-button-border: var(--ui-primary);
+	--editor-button-hover-fg: var(--ui-primary-contrast-color);
+	--editor-button-hover-bg: var(--ui-primary);
+	--editor-button-hover-border: var(--ui-primary);
 }
 
 .editor-button-accent-outline {
-	--editor-button-fg: var(--ui-accent-text-color);
-	--editor-button-border: var(--ui-accent-text-color);
-	--editor-button-hover-fg: var(--ui-accent-hover-color);
-	--editor-button-hover-border: var(--ui-accent-hover-color);
+	--editor-button-fg: var(--ui-accent);
+	--editor-button-border: var(--ui-accent);
+	--editor-button-hover-fg: var(--ui-accent-contrast-color);
+	--editor-button-hover-bg: var(--ui-accent);
+	--editor-button-hover-border: var(--ui-accent);
 }
 
 .editor-button-tertiary-outline {
-	--editor-button-fg: var(--ui-tertiary-text-color);
-	--editor-button-border: var(--ui-tertiary-text-color);
+	--editor-button-fg: var(--ui-tertiary);
+	--editor-button-border: var(--ui-tertiary);
 	--editor-button-hover-fg: var(--ui-tertiary-contrast-color);
-	--editor-button-hover-bg: var(--ui-tertiary-hover-color);
-	--editor-button-hover-border: var(--ui-tertiary-text-color);
+	--editor-button-hover-bg: var(--ui-tertiary);
+	--editor-button-hover-border: var(--ui-tertiary);
 }
 
 .editor-button-tertiary-subtle {
-	--editor-button-fg: var(--ui-tertiary-text-color);
+	--editor-button-fg: var(--ui-tertiary);
 	--editor-button-bg: transparent;
-	--editor-button-hover-fg: var(--ui-tertiary-text-color);
-	--editor-button-hover-bg: color-mix(in srgb, var(--ui-tertiary-hover-color) 25%, transparent);
+	--editor-button-hover-fg: var(--ui-tertiary-contrast-color);
+	--editor-button-hover-bg: var(--ui-tertiary);
 }
 
 .editor-button-tertiary-outline:focus-visible,
