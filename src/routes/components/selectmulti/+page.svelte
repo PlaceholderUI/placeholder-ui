@@ -30,6 +30,13 @@
 		{ label: 'Archived', value: 'archived' }
 	];
 
+	const statusOptionsWithDisabled: ComboBoxItem[] = [
+		{ label: 'Active', value: 'active' },
+		{ label: 'Inactive', value: 'inactive', disabled: true },
+		{ label: 'Pending', value: 'pending' },
+		{ label: 'Archived', value: 'archived', disabled: true }
+	];
+
 	// Grouped options
 	const categoryGroups: ComboBoxGroup[] = [
 		{
@@ -89,6 +96,7 @@
 	let preSelectedPriorities = $state<string[]>(['medium', 'high']);
 	let requiredStatuses = $state<string[]>([]);
 	let disabledChoices = $state<string[]>(['active', 'pending']);
+	let disabledOptionChoices = $state<string[]>([]);
 	let errorChoices = $state<string[]>([]);
 	let searchableCountries = $state<string[]>([]);
 	let groupedCategories = $state<string[]>([]);
@@ -386,6 +394,12 @@
 					bind:values={disabledChoices}
 				/>
 				<SelectMulti
+					label="Disabled Options"
+					options={statusOptionsWithDisabled}
+					placeholder="Inactive and Archived are disabled..."
+					bind:values={disabledOptionChoices}
+				/>
+				<SelectMulti
 					label="SelectMulti with Error"
 					options={statusOptions}
 					placeholder="This has an error..."
@@ -398,6 +412,11 @@
 				<strong>State Values:</strong>
 				<p>Required: {requiredStatuses.length ? requiredStatuses.join(', ') : 'None selected'}</p>
 				<p>Disabled: {disabledChoices.join(', ')}</p>
+				<p>
+					Disabled Options: {disabledOptionChoices.length
+						? disabledOptionChoices.join(', ')
+						: 'None selected'}
+				</p>
 				<p>Error: {errorChoices.length ? errorChoices.join(', ') : 'None selected'}</p>
 			</div>
 		</div>
@@ -719,7 +738,9 @@
 				<li><strong>Clear functionality:</strong> Easy way to clear all selections</li>
 				<li><strong>Required field support:</strong> Visual indicator for required selects</li>
 				<li><strong>Error states:</strong> Display error messages and styling</li>
-				<li><strong>Disabled states:</strong> Support for disabled selects</li>
+				<li>
+					<strong>Disabled states:</strong> Support for disabled selects and individual options
+				</li>
 				<li><strong>Event handling:</strong> onchange and onchangeRaw callbacks</li>
 				<li><strong>Raw value access:</strong> Access to full item objects, not just values</li>
 				<li>

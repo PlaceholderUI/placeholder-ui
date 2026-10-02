@@ -38,12 +38,21 @@
 
 	$effect(() => {
 		if (open && flattenedOptions.length > 0) {
-			selectedIndex = 0;
+			selectedIndex = flattenedOptions.findIndex((x) => !x.disabled);
 		}
 	});
 
 	function performSelection(item: ComboBoxItem) {
+		if (item.disabled) return;
 		onSelection(item);
+	}
+
+	/** Next enabled index in the given direction, or the current index if there is none */
+	function nextEnabledIndex(step: 1 | -1) {
+		for (let i = selectedIndex + step; i >= 0 && i < flattenedOptions.length; i += step) {
+			if (!flattenedOptions[i].disabled) return i;
+		}
+		return selectedIndex;
 	}
 
 	export function handleKeyDown(e: KeyboardEvent) {
@@ -51,11 +60,11 @@
 		if (e.key == 'ArrowUp') {
 			e.preventDefault();
 			selecting = true;
-			selectedIndex = Math.max(0, selectedIndex - 1);
+			selectedIndex = nextEnabledIndex(-1);
 		} else if (e.key == 'ArrowDown') {
 			e.preventDefault();
 			selecting = true;
-			selectedIndex = Math.min(flattenedOptions.length - 1, selectedIndex + 1);
+			selectedIndex = nextEnabledIndex(1);
 		} else if (e.key == 'Enter') {
 			e.preventDefault();
 			if (selectedIndex >= 0 && selectedIndex < flattenedOptions.length) {
@@ -112,6 +121,8 @@
 							class="combobox-item {localClasses.join(' ')} {option.class}"
 							role="option"
 							aria-selected={selectedIndex === globalIndex}
+							aria-disabled={option.disabled || undefined}
+							disabled={option.disabled}
 							onclick={() => {
 								performSelection(option);
 								selectedIndex = globalIndex;
@@ -184,9 +195,14 @@
 	}
 
 	.combobox-item.selected,
-	.combobox-item:hover {
+	.combobox-item:hover:not(:disabled) {
 		background-color: var(--border-color);
 		color: rgb(var(--accent-color-rgb));
+	}
+
+	.combobox-item:disabled {
+		opacity: 0.5;
+		cursor: not-allowed;
 	}
 
 	.seperator {

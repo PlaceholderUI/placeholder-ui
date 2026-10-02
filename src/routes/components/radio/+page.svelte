@@ -17,6 +17,13 @@
 		{ label: 'Extra Large', value: 'xl' }
 	];
 
+	const sizeOptionsWithDisabled: ComboBoxItem[] = [
+		{ label: 'Small', value: 'sm' },
+		{ label: 'Medium', value: 'md' },
+		{ label: 'Large', value: 'lg', disabled: true },
+		{ label: 'Extra Large', value: 'xl', disabled: true }
+	];
+
 	const yesNoOptions: ComboBoxItem[] = [
 		{ label: 'Yes', value: 'yes' },
 		{ label: 'No', value: 'no' }
@@ -49,6 +56,7 @@
 	let basicSize = 'md';
 	let requiredChoice = '';
 	let disabledChoice = 'blue';
+	let disabledOptionChoice = 'sm';
 	let errorChoice = '';
 	let booleanChoice: string | undefined = undefined;
 
@@ -102,6 +110,11 @@
 					bind:value={disabledChoice}
 				/>
 				<RadioGroup
+					label="Disabled Options"
+					options={sizeOptionsWithDisabled}
+					bind:value={disabledOptionChoice}
+				/>
+				<RadioGroup
 					label="RadioGroup with Error"
 					options={colorOptions}
 					showError={true}
@@ -113,6 +126,7 @@
 				<strong>State Values:</strong>
 				<p>Required: {requiredChoice || 'None selected'}</p>
 				<p>Disabled: {disabledChoice}</p>
+				<p>Disabled Options: {disabledOptionChoice}</p>
 				<p>Error: {errorChoice || 'None selected'}</p>
 			</div>
 		</div>
@@ -233,7 +247,9 @@
 				<li><strong>Theme support:</strong> Colors adapt to light/dark mode (primary/accent)</li>
 				<li><strong>Required field support:</strong> Visual indicator for required radio groups</li>
 				<li><strong>Error states:</strong> Display error messages and styling</li>
-				<li><strong>Disabled states:</strong> Support for disabled radio groups</li>
+				<li>
+					<strong>Disabled states:</strong> Support for disabled radio groups and individual options
+				</li>
 				<li><strong>Event handling:</strong> onChange callback for custom logic</li>
 				<li>
 					<strong>Flexible values:</strong> Support for string, number, boolean, and object values

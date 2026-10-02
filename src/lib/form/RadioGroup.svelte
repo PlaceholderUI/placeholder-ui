@@ -55,7 +55,7 @@
 	const resolvedName = $derived((name || label || autoName).replace(/[^a-zA-Z0-9_\-:.]/g, '_'));
 
 	function handleChange(option: ComboBoxItem) {
-		if (option.value === value) return;
+		if (option.value === value || option.disabled) return;
 
 		if (!controlled) {
 			value = option.value;
@@ -79,7 +79,7 @@
 					id={resolvedName + i}
 					name={resolvedName}
 					label={option.label}
-					{disabled}
+					disabled={disabled || option.disabled}
 					checked={option.value === value}
 					controlled={true}
 					onchange={() => handleChange(option)}

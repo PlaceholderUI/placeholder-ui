@@ -19,6 +19,8 @@ export interface ComboBoxItem {
 	groupName?: string;
 	imageSrc?: string;
 	description?: string;
+	/** Shows the option but prevents it from being selected */
+	disabled?: boolean;
 	/** Marks a synthetic "add new value" suggestion (see Autocomplete) */
 	isAddNew?: boolean;
 }

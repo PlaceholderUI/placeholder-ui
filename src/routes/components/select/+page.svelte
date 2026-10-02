@@ -29,6 +29,13 @@
 		{ label: 'Archived', value: 'archived' }
 	];
 
+	const statusOptionsWithDisabled: ComboBoxItem[] = [
+		{ label: 'Active', value: 'active' },
+		{ label: 'Inactive', value: 'inactive', disabled: true },
+		{ label: 'Pending', value: 'pending' },
+		{ label: 'Archived', value: 'archived', disabled: true }
+	];
+
 	// Grouped options
 	const categoryGroups: ComboBoxGroup[] = [
 		{
@@ -88,6 +95,7 @@
 	let preSelectedPriority = $state('medium');
 	let requiredStatus = $state('');
 	let disabledChoice = $state('active');
+	let disabledOptionChoice = $state('');
 	let errorChoice = $state('');
 	let searchableCountry = $state('');
 	let groupedCategory = $state('');
@@ -366,6 +374,12 @@
 					bind:value={disabledChoice}
 				/>
 				<Select
+					label="Disabled Options"
+					options={statusOptionsWithDisabled}
+					placeholder="Inactive and Archived are disabled..."
+					bind:value={disabledOptionChoice}
+				/>
+				<Select
 					label="Select with Error"
 					options={statusOptions}
 					placeholder="This has an error..."
@@ -378,6 +392,7 @@
 				<strong>State Values:</strong>
 				<p>Required: {requiredStatus || 'None selected'}</p>
 				<p>Disabled: {disabledChoice}</p>
+				<p>Disabled Options: {disabledOptionChoice || 'None selected'}</p>
 				<p>Error: {errorChoice || 'None selected'}</p>
 			</div>
 		</div>
@@ -653,7 +668,9 @@
 				<li><strong>Clear functionality:</strong> Easy way to clear the selection</li>
 				<li><strong>Required field support:</strong> Visual indicator for required selects</li>
 				<li><strong>Error states:</strong> Display error messages and styling</li>
-				<li><strong>Disabled states:</strong> Support for disabled selects</li>
+				<li>
+					<strong>Disabled states:</strong> Support for disabled selects and individual options
+				</li>
 				<li><strong>Event handling:</strong> onchange and onchangeRaw callbacks</li>
 				<li><strong>Raw value access:</strong> Access to full item object, not just value</li>
 				<li><strong>Keyboard navigation:</strong> Full keyboard support with arrow keys</li>
