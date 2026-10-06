@@ -181,7 +181,14 @@
 
 	function focus() {
 		open = true;
-		tick().then(() => textboxElement?.focus());
+		tick().then(focusTextbox);
+	}
+
+	// Select any leftover filter text on reopen so typing replaces it
+	function focusTextbox() {
+		const input = textboxElement as HTMLInputElement | undefined;
+		input?.focus();
+		input?.select();
 	}
 
 	$effect(() => {
@@ -294,7 +301,7 @@
 			onclick={() => {
 				open = !open;
 				if (open && computedAllowSearch) {
-					tick().then(() => textboxElement?.focus());
+					tick().then(focusTextbox);
 				}
 			}}
 			onkeydown={(e) => onKeyDown(e)}
