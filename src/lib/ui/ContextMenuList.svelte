@@ -3,8 +3,8 @@
 </script>
 
 <script lang="ts">
-	import Icon from '$lib/icon/Icon.svelte';
-	import { iconChevronRight } from '$lib/icon/index.js';
+	import Icon from '#lib/icon/Icon.svelte';
+	import { iconChevronRight } from '#lib/icon/index.js';
 	import Self from './ContextMenuList.svelte';
 
 	interface Props {

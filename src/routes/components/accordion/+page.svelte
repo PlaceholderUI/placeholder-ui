@@ -1,9 +1,9 @@
 <script lang="ts">
-	import Paper from '$lib/display/Paper.svelte';
-	import Accordion from '$lib/ui/Accordion.svelte';
-	import AccordionItem from '$lib/ui/AccordionItem.svelte';
-	import type { ButtonVariant } from '$lib/ui/ButtonVariant.js';
-	import { iconUser, iconSettings, iconBell } from '$lib/icon/index.js';
+	import Paper from '#lib/display/Paper.svelte';
+	import Accordion from '#lib/ui/Accordion.svelte';
+	import AccordionItem from '#lib/ui/AccordionItem.svelte';
+	import type { ButtonVariant } from '#lib/ui/ButtonVariant.js';
+	import { iconUser, iconSettings, iconBell } from '#lib/icon/index.js';
 
 	let single = $state('item-1');
 	let multi = $state<string[]>(['features']);

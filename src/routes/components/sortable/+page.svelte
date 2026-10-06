@@ -1,9 +1,9 @@
 <script lang="ts">
-	import Paper from '$lib/display/Paper.svelte';
-	import Sortable from '$lib/ui/Sortable.svelte';
-	import Icon from '$lib/icon/Icon.svelte';
-	import Button from '$lib/ui/Button.svelte';
-	import { iconGripVertical, iconGripHorizontal, iconTrash } from '$lib/icon/index.js';
+	import Paper from '#lib/display/Paper.svelte';
+	import Sortable from '#lib/ui/Sortable.svelte';
+	import Icon from '#lib/icon/Icon.svelte';
+	import Button from '#lib/ui/Button.svelte';
+	import { iconGripVertical, iconGripHorizontal, iconTrash } from '#lib/icon/index.js';
 
 	interface Task {
 		id: string;

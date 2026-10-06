@@ -1,9 +1,9 @@
 <script lang="ts">
-	import Paper from '$lib/display/Paper.svelte';
-	import ComboBoxItemBuilder from '$lib/form/ComboBoxItemBuilder.svelte';
-	import Select from '$lib/form/Select.svelte';
-	import SelectMulti from '$lib/form/SelectMulti.svelte';
-	import type { ComboBoxItem } from '$lib/models/ComboBoxItem.js';
+	import Paper from '#lib/display/Paper.svelte';
+	import ComboBoxItemBuilder from '#lib/form/ComboBoxItemBuilder.svelte';
+	import Select from '#lib/form/Select.svelte';
+	import SelectMulti from '#lib/form/SelectMulti.svelte';
+	import type { ComboBoxItem } from '#lib/models/ComboBoxItem.js';
 
 	// Demo 1: Basic usage with Select (single)
 	let basicItems: ComboBoxItem[] = $state([]);

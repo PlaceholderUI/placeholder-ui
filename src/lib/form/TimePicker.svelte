@@ -24,10 +24,10 @@
 </script>
 
 <script lang="ts">
-	import dayjs from '$lib/util/dayjs.js';
-	import Button from '$lib/ui/Button.svelte';
+	import dayjs from '#lib/util/dayjs.js';
+	import Button from '#lib/ui/Button.svelte';
 	import Number from './Number.svelte';
-	import { themeState } from '$lib/theme.svelte.js';
+	import { themeState } from '#lib/theme.svelte.js';
 
 	let {
 		label,

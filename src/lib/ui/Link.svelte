@@ -1,6 +1,6 @@
 <script lang="ts">
 	import { resolve } from '$app/paths';
-	import { interceptLinkClick } from '$lib/util/interceptLinkClick.js';
+	import { interceptLinkClick } from '#lib/util/interceptLinkClick.js';
 	import type { Snippet } from 'svelte';
 
 	export interface LinkProps {

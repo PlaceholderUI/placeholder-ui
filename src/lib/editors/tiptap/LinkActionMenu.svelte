@@ -8,7 +8,7 @@
 		iconExternalLink,
 		iconTrash,
 		iconX
-	} from '$lib/icon/index.js';
+	} from '#lib/icon/index.js';
 
 	interface Props {
 		editor: Editor;

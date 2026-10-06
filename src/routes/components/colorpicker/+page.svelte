@@ -1,7 +1,7 @@
 <script lang="ts">
-	import Paper from '$lib/display/Paper.svelte';
-	import ColorPicker from '$lib/form/ColorPicker.svelte';
-	import { formatColor, parseColor } from '$lib/form/ColorPicker.svelte';
+	import Paper from '#lib/display/Paper.svelte';
+	import ColorPicker from '#lib/form/ColorPicker.svelte';
+	import { formatColor, parseColor } from '#lib/form/ColorPicker.svelte';
 
 	let basic = $state('#1e3a5f');
 	let empty = $state('');

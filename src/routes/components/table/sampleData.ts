@@ -1,4 +1,4 @@
-import type { Column } from '$lib/ui/Table.svelte';
+import type { Column } from '#lib/ui/Table.svelte';
 
 // User data types and samples
 export interface User {

@@ -1,9 +1,9 @@
 <!-- <script lang="ts">
-	import GitCard from '$lib/cards/GitCard.svelte';
-	import Select from '$lib/form/Select.svelte';
-	import Icon from '$lib/icon/Icon.svelte';
-	import { iconArrowsMove } from '$lib/icon/index.js';
-	import type { GitEmployee } from '$lib/models/Employee.js';
+	import GitCard from '#lib/cards/GitCard.svelte';
+	import Select from '#lib/form/Select.svelte';
+	import Icon from '#lib/icon/Icon.svelte';
+	import { iconArrowsMove } from '#lib/icon/index.js';
+	import type { GitEmployee } from '#lib/models/Employee.js';
 	import Sortable from 'sortablejs';
 	import { onDestroy, onMount } from 'svelte';
 

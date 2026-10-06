@@ -1,11 +1,11 @@
 <script lang="ts">
 	import type { Editor } from '@tiptap/core';
 	import ToolbarButton from './ToolbarButton.svelte';
-	import Dialog from '$lib/ui/Dialog.svelte';
-	import Button from '$lib/ui/Button.svelte';
-	import CodeMirror from '$lib/editors/CodeMirror.svelte';
-	import { iconCode } from '$lib/icon/index.js';
-	import { themeState } from '$lib/theme.svelte.js';
+	import Dialog from '#lib/ui/Dialog.svelte';
+	import Button from '#lib/ui/Button.svelte';
+	import CodeMirror from '#lib/editors/CodeMirror.svelte';
+	import { iconCode } from '#lib/icon/index.js';
+	import { themeState } from '#lib/theme.svelte.js';
 
 	interface Props {
 		editor: Editor;

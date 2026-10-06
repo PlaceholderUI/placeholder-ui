@@ -1,8 +1,8 @@
 <script lang="ts">
-	import Icon from '$lib/icon/Icon.svelte';
+	import Icon from '#lib/icon/Icon.svelte';
 
-	import warningSvg from '$lib/icon/alert-triangle.svg?raw';
-	import dangerSvg from '$lib/icon/alert-octagon.svg?raw';
+	import warningSvg from '#lib/icon/alert-triangle.svg?raw';
+	import dangerSvg from '#lib/icon/alert-octagon.svg?raw';
 	import type { AlertVariant } from './AlertVariant.js';
 	import type { Snippet } from 'svelte';
 

@@ -1,9 +1,9 @@
 <script lang="ts">
-	import Paper from '$lib/display/Paper.svelte';
-	import Loader from '$lib/ui/Loader.svelte';
-	import Button from '$lib/ui/Button.svelte';
-	import ActionIcon from '$lib/ui/ActionIcon.svelte';
-	import { iconRefresh, iconDownload, iconCloudUpload, iconPlus } from '$lib/icon/index.js';
+	import Paper from '#lib/display/Paper.svelte';
+	import Loader from '#lib/ui/Loader.svelte';
+	import Button from '#lib/ui/Button.svelte';
+	import ActionIcon from '#lib/ui/ActionIcon.svelte';
+	import { iconRefresh, iconDownload, iconCloudUpload, iconPlus } from '#lib/icon/index.js';
 
 	// Loader state variables
 	let showBasicLoader = false;

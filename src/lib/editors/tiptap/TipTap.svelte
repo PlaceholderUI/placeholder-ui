@@ -24,7 +24,7 @@
 		type CodeBlocksOptions
 	} from './extensions/index.js';
 	import type { CollaborationConfig } from './collaboration.js';
-	import FormGroup from '$lib/form/FormGroup.svelte';
+	import FormGroup from '#lib/form/FormGroup.svelte';
 	import LinkActionMenu from './LinkActionMenu.svelte';
 	import UndoButton from './toolbar/UndoButton.svelte';
 	import RedoButton from './toolbar/RedoButton.svelte';

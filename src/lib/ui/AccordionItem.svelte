@@ -2,8 +2,8 @@
 	import { getContext } from 'svelte';
 	import type { Snippet } from 'svelte';
 	import { slide } from 'svelte/transition';
-	import Icon from '$lib/icon/Icon.svelte';
-	import { iconChevronDown } from '$lib/icon/index.js';
+	import Icon from '#lib/icon/Icon.svelte';
+	import { iconChevronDown } from '#lib/icon/index.js';
 	import type { AccordionContext } from './Accordion.svelte';
 	import type { ButtonVariant } from './ButtonVariant.js';
 

@@ -1,5 +1,5 @@
 <script lang="ts">
-	import { CodeMirror, Paper, themeState } from '$lib/index.js';
+	import { CodeMirror, Paper, themeState } from '#lib/index.js';
 
 	let jsCode = $state(`function greet(name) {
   console.log('Hello, ' + name + '!');

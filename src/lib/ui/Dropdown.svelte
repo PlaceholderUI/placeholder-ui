@@ -2,11 +2,11 @@
 <script lang="ts">
 	import Button from './Button.svelte';
 	import type { ButtonVariant } from './ButtonVariant.js';
-	import type { Hyperlink } from '$lib/models/Hyperlink.js';
-	import LinkCollection from '$lib/display/LinkCollection.svelte';
-	import { iconChevronDown } from '$lib/icon/index.js';
-	import { floating } from '$lib/util/Floating.js';
-	import { clickOutside } from '$lib/util/ClickOutside.js';
+	import type { Hyperlink } from '#lib/models/Hyperlink.js';
+	import LinkCollection from '#lib/display/LinkCollection.svelte';
+	import { iconChevronDown } from '#lib/icon/index.js';
+	import { floating } from '#lib/util/Floating.js';
+	import { clickOutside } from '#lib/util/ClickOutside.js';
 
 	export interface DropdownProps {
 		/** Whether the dropdown is expanded (bindable) */

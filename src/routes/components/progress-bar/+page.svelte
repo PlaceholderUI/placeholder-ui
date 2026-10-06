@@ -1,8 +1,8 @@
 <script lang="ts">
-	import Paper from '$lib/display/Paper.svelte';
-	import ProgressBar from '$lib/ui/ProgressBar.svelte';
-	import Slider from '$lib/form/Slider.svelte';
-	import Checkbox from '$lib/form/Checkbox.svelte';
+	import Paper from '#lib/display/Paper.svelte';
+	import ProgressBar from '#lib/ui/ProgressBar.svelte';
+	import Slider from '#lib/form/Slider.svelte';
+	import Checkbox from '#lib/form/Checkbox.svelte';
 
 	let dynamicValue = $state(65);
 	let showRounded = $state(true);

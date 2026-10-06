@@ -1,12 +1,12 @@
 <script lang="ts">
-	import Paper from '$lib/display/Paper.svelte';
-	import Button from '$lib/ui/Button.svelte';
-	import ActionIcon from '$lib/ui/ActionIcon.svelte';
-	import Textbox from '$lib/form/Textbox.svelte';
-	import TextArea from '$lib/form/TextArea.svelte';
-	import Select from '$lib/form/Select.svelte';
-	import Checkbox from '$lib/form/Checkbox.svelte';
-	import Toaster from '$lib/ui/Toaster.svelte';
+	import Paper from '#lib/display/Paper.svelte';
+	import Button from '#lib/ui/Button.svelte';
+	import ActionIcon from '#lib/ui/ActionIcon.svelte';
+	import Textbox from '#lib/form/Textbox.svelte';
+	import TextArea from '#lib/form/TextArea.svelte';
+	import Select from '#lib/form/Select.svelte';
+	import Checkbox from '#lib/form/Checkbox.svelte';
+	import Toaster from '#lib/ui/Toaster.svelte';
 	import {
 		iconUser,
 		iconEdit,
@@ -17,8 +17,8 @@
 		iconPlus,
 		iconCloudUpload,
 		iconRefresh
-	} from '$lib/icon/index.js';
-	import { toast } from '$lib/index.js';
+	} from '#lib/icon/index.js';
+	import { toast } from '#lib/index.js';
 
 	// Demo state variables
 	let customMessage = $state('This is a custom toast message');

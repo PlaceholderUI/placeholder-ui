@@ -1,8 +1,8 @@
 <script lang="ts">
-	import Paper from '$lib/display/Paper.svelte';
-	import Textbox from '$lib/form/Textbox.svelte';
-	import ActionIcon from '$lib/ui/ActionIcon.svelte';
-	import { iconSearch, iconPlus } from '$lib/icon/index.js';
+	import Paper from '#lib/display/Paper.svelte';
+	import Textbox from '#lib/form/Textbox.svelte';
+	import ActionIcon from '#lib/ui/ActionIcon.svelte';
+	import { iconSearch, iconPlus } from '#lib/icon/index.js';
 
 	let basicValue = '';
 	let passwordValue = '';

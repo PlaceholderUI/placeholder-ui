@@ -1,9 +1,9 @@
 <script lang="ts">
-	import Paper from '$lib/display/Paper.svelte';
-	import Button from '$lib/ui/Button.svelte';
-	import Badge from '$lib/ui/Badge.svelte';
-	import Logo from '$lib/ui/Logo.svelte';
-	import { themeState, setTheme, applyTheme, resetTheme, type ThemeConfig } from '$lib/index.js';
+	import Paper from '#lib/display/Paper.svelte';
+	import Button from '#lib/ui/Button.svelte';
+	import Badge from '#lib/ui/Badge.svelte';
+	import Logo from '#lib/ui/Logo.svelte';
+	import { themeState, setTheme, applyTheme, resetTheme, type ThemeConfig } from '#lib/index.js';
 
 	const colorRoles = ['primary', 'accent', 'tertiary'] as const;
 
@@ -121,7 +121,7 @@
 
 		<div class="code-section">
 			<strong>Usage:</strong>
-			<pre class="code-block">{`import { themeState, setTheme, getTheme } from '$lib/index.js';
+			<pre class="code-block">{`import { themeState, setTheme, getTheme } from '#lib/index.js';
 
 // Reactive state (updates automatically)
 themeState.theme      // 'light' | 'dark' | 'system'

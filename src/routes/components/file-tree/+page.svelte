@@ -1,11 +1,11 @@
 <script lang="ts">
-	import Paper from '$lib/display/Paper.svelte';
-	import FileTree from '$lib/display/filetree/FileTree.svelte';
-	import { findNode, type FileTreeNode } from '$lib/display/filetree/FileTreeNode.js';
-	import type { ContextMenuItem } from '$lib/ui/ContextMenu.svelte';
-	import Button from '$lib/ui/Button.svelte';
-	import ActionIcon from '$lib/ui/ActionIcon.svelte';
-	import Tooltip from '$lib/ui/Tooltip.svelte';
+	import Paper from '#lib/display/Paper.svelte';
+	import FileTree from '#lib/display/filetree/FileTree.svelte';
+	import { findNode, type FileTreeNode } from '#lib/display/filetree/FileTreeNode.js';
+	import type { ContextMenuItem } from '#lib/ui/ContextMenu.svelte';
+	import Button from '#lib/ui/Button.svelte';
+	import ActionIcon from '#lib/ui/ActionIcon.svelte';
+	import Tooltip from '#lib/ui/Tooltip.svelte';
 	import {
 		iconEdit,
 		iconCopy,
@@ -14,7 +14,7 @@
 		iconFilePlus,
 		iconFolderPlus,
 		iconEye
-	} from '$lib/icon/index.js';
+	} from '#lib/icon/index.js';
 
 	function makeInitial(): FileTreeNode[] {
 		return [

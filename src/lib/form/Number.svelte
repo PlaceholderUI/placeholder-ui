@@ -1,8 +1,8 @@
 <script lang="ts">
 	import { type Snippet } from 'svelte';
-	import FormGroup from '$lib/form/FormGroup.svelte';
-	import Loader from '$lib/ui/Loader.svelte';
-	import Icon from '$lib/icon/Icon.svelte';
+	import FormGroup from '#lib/form/FormGroup.svelte';
+	import Loader from '#lib/ui/Loader.svelte';
+	import Icon from '#lib/icon/Icon.svelte';
 
 	const autoName = `number-${crypto.randomUUID()}`;
 

@@ -1,6 +1,6 @@
 <script lang="ts">
-	import { MessageTypes, Paper, Select, type NotifyModel } from '$lib/index.js';
-	import type { ComboBoxItem } from '$lib/models/ComboBoxItem.js';
+	import { MessageTypes, Paper, Select, type NotifyModel } from '#lib/index.js';
+	import type { ComboBoxItem } from '#lib/models/ComboBoxItem.js';
 	import TestCustomElement from '../TestCustomElement.svelte';
 
 	let basicSelectValue = $state<string | undefined>('');

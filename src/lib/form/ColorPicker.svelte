@@ -202,11 +202,11 @@
 
 <script lang="ts">
 	import { fade } from 'svelte/transition';
-	import FormGroup from '$lib/form/FormGroup.svelte';
-	import ActionIcon from '$lib/ui/ActionIcon.svelte';
-	import { clickOutside } from '$lib/util/ClickOutside.js';
-	import { floating } from '$lib/util/Floating.js';
-	import { iconX, iconPalette } from '$lib/icon/index.js';
+	import FormGroup from '#lib/form/FormGroup.svelte';
+	import ActionIcon from '#lib/ui/ActionIcon.svelte';
+	import { clickOutside } from '#lib/util/ClickOutside.js';
+	import { floating } from '#lib/util/Floating.js';
+	import { iconX, iconPalette } from '#lib/icon/index.js';
 
 	const autoName = `colorpicker-${crypto.randomUUID()}`;
 

@@ -1,7 +1,7 @@
 <script lang="ts">
-	import Paper from '$lib/display/Paper.svelte';
-	import Badge from '$lib/ui/Badge.svelte';
-	import { viewportState, breakpoints } from '$lib/index.js';
+	import Paper from '#lib/display/Paper.svelte';
+	import Badge from '#lib/ui/Badge.svelte';
+	import { viewportState, breakpoints } from '#lib/index.js';
 </script>
 
 <div class="page-header">
@@ -31,7 +31,7 @@
 
 		<div class="code-section">
 			<strong>Usage:</strong>
-			<pre class="code-block">{`import { viewportState } from '$lib/index.js';
+			<pre class="code-block">{`import { viewportState } from '#lib/index.js';
 
 // Dimensions (reactive)
 viewportState.width   // number
@@ -105,7 +105,7 @@ viewportState.height  // number`}</pre>
 
 		<div class="code-section">
 			<strong>Usage:</strong>
-			<pre class="code-block">{`import { viewportState } from '$lib/index.js';
+			<pre class="code-block">{`import { viewportState } from '#lib/index.js';
 
 // Breakpoint booleans (reactive)
 viewportState.isMobile      // < 768px
@@ -174,7 +174,7 @@ viewportState.isAbove(1200) // width >= 1200`}</pre>
 
 		<div class="code-section">
 			<strong>Usage:</strong>
-			<pre class="code-block">{`import { breakpoints } from '$lib/index.js';
+			<pre class="code-block">{`import { breakpoints } from '#lib/index.js';
 
 breakpoints.sm        // 640
 breakpoints.md        // 768

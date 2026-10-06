@@ -1,8 +1,8 @@
 <script lang="ts">
-	import Paper from '$lib/display/Paper.svelte';
-	import SelectMulti from '$lib/form/SelectMulti.svelte';
-	import type { ComboBoxItem, ComboBoxGroup } from '$lib/models/ComboBoxItem.js';
-	import { MessageTypes, type NotifyModel } from '$lib/models/NotifyModel.js';
+	import Paper from '#lib/display/Paper.svelte';
+	import SelectMulti from '#lib/form/SelectMulti.svelte';
+	import type { ComboBoxItem, ComboBoxGroup } from '#lib/models/ComboBoxItem.js';
+	import { MessageTypes, type NotifyModel } from '#lib/models/NotifyModel.js';
 	import UserDisplay from '../select/UserDisplay.svelte';
 
 	// Basic options

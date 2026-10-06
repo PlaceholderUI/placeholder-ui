@@ -14,9 +14,9 @@
 </script>
 
 <script lang="ts">
-	import ActionIcon from '$lib/ui/ActionIcon.svelte';
-	import Button from '$lib/ui/Button.svelte';
-	import { iconPlus, iconTrash } from '$lib/icon/index.js';
+	import ActionIcon from '#lib/ui/ActionIcon.svelte';
+	import Button from '#lib/ui/Button.svelte';
+	import { iconPlus, iconTrash } from '#lib/icon/index.js';
 	import FormGroup from './FormGroup.svelte';
 
 	let {

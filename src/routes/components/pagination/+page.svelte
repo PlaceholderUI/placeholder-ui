@@ -1,10 +1,10 @@
 <script lang="ts">
-	import Paper from '$lib/display/Paper.svelte';
-	import Pagination from '$lib/ui/Pagination.svelte';
-	import Button from '$lib/ui/Button.svelte';
-	import Textbox from '$lib/form/Textbox.svelte';
-	import Select from '$lib/form/Select.svelte';
-	import { iconRefresh, iconSearch } from '$lib/icon/index.js';
+	import Paper from '#lib/display/Paper.svelte';
+	import Pagination from '#lib/ui/Pagination.svelte';
+	import Button from '#lib/ui/Button.svelte';
+	import Textbox from '#lib/form/Textbox.svelte';
+	import Select from '#lib/form/Select.svelte';
+	import { iconRefresh, iconSearch } from '#lib/icon/index.js';
 
 	// Pagination state variables
 	let basicPage = $state(1);

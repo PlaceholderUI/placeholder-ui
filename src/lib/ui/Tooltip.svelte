@@ -1,7 +1,7 @@
 <script lang="ts">
 	import type { Snippet } from 'svelte';
 	import { fade } from 'svelte/transition';
-	import { findFixedContainingBlock } from '$lib/util/Floating.js';
+	import { findFixedContainingBlock } from '#lib/util/Floating.js';
 
 	export type TooltipLocation =
 		| 'top'

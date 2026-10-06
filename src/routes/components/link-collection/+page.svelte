@@ -1,10 +1,10 @@
 <script lang="ts">
-	import LinkCollection from '$lib/display/LinkCollection.svelte';
-	import Paper from '$lib/display/Paper.svelte';
-	import Button from '$lib/ui/Button.svelte';
-	import Badge from '$lib/ui/Badge.svelte';
-	import type { Hyperlink } from '$lib/models/Hyperlink.js';
-	import type { LinkCollectionItem } from '$lib/models/LinkCollectionItem.js';
+	import LinkCollection from '#lib/display/LinkCollection.svelte';
+	import Paper from '#lib/display/Paper.svelte';
+	import Button from '#lib/ui/Button.svelte';
+	import Badge from '#lib/ui/Badge.svelte';
+	import type { Hyperlink } from '#lib/models/Hyperlink.js';
+	import type { LinkCollectionItem } from '#lib/models/LinkCollectionItem.js';
 	import {
 		iconFolder,
 		iconFile,
@@ -18,8 +18,8 @@
 		iconTrash,
 		iconPlus,
 		iconCopy
-	} from '$lib/icon/index.js';
-	import Number from '$lib/form/Number.svelte';
+	} from '#lib/icon/index.js';
+	import Number from '#lib/form/Number.svelte';
 
 	// Sample data for basic links
 	let basicLinks: Hyperlink[] = $state([

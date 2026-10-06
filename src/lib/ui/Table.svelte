@@ -1,8 +1,8 @@
 <script lang="ts">
 	import { type Snippet } from 'svelte';
-	import Textbox from '$lib/form/Textbox.svelte';
-	import Checkbox from '$lib/form/Checkbox.svelte';
-	import Icon from '$lib/icon/Icon.svelte';
+	import Textbox from '#lib/form/Textbox.svelte';
+	import Checkbox from '#lib/form/Checkbox.svelte';
+	import Icon from '#lib/icon/Icon.svelte';
 	import Pagination from './Pagination.svelte';
 	import {
 		iconArrowsSort,
@@ -10,8 +10,8 @@
 		iconChevronRight,
 		iconChevronUp,
 		iconSearch
-	} from '$lib/icon/index.js';
-	import { navigateTo } from '$lib/util/NavigateTo.js';
+	} from '#lib/icon/index.js';
+	import { navigateTo } from '#lib/util/NavigateTo.js';
 
 	export interface Column<T = any> {
 		key: string;

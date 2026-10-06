@@ -1,6 +1,6 @@
 <script lang="ts">
 	import Icon from '../icon/Icon.svelte';
-	import { iconX } from '$lib/icon/index.js';
+	import { iconX } from '#lib/icon/index.js';
 	import type { Snippet } from 'svelte';
 	import type { ButtonVariant } from './ButtonVariant.js';
 

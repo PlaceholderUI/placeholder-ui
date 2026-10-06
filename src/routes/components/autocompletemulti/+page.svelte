@@ -1,10 +1,10 @@
 <script lang="ts">
-	import Paper from '$lib/display/Paper.svelte';
-	import AutocompleteMulti from '$lib/form/AutocompleteMulti.svelte';
-	import type { ComboBoxGroup, ComboBoxItem } from '$lib/models/ComboBoxItem.js';
-	import type { NotifyModel } from '$lib/models/NotifyModel.js';
-	import { MessageTypes } from '$lib/models/NotifyModel.js';
-	import { iconSearch } from '$lib/icon/index.js';
+	import Paper from '#lib/display/Paper.svelte';
+	import AutocompleteMulti from '#lib/form/AutocompleteMulti.svelte';
+	import type { ComboBoxGroup, ComboBoxItem } from '#lib/models/ComboBoxItem.js';
+	import type { NotifyModel } from '#lib/models/NotifyModel.js';
+	import { MessageTypes } from '#lib/models/NotifyModel.js';
+	import { iconSearch } from '#lib/icon/index.js';
 
 	const technologies: ComboBoxItem[] = [
 		{ label: 'JavaScript', value: 'js' },

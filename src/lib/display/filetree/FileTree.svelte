@@ -1,7 +1,7 @@
 <script lang="ts" module>
 	import type { Snippet } from 'svelte';
 	import type { FileTreeNode } from './FileTreeNode.js';
-	import type { ContextMenuItem } from '$lib/ui/ContextMenu.svelte';
+	import type { ContextMenuItem } from '#lib/ui/ContextMenu.svelte';
 
 	export interface FileTreeDropEvent {
 		/** Id of the node that was dragged */
@@ -80,8 +80,8 @@
 	import { untrack } from 'svelte';
 	import FileTreeItem from './FileTreeItem.svelte';
 	import { expandTo, findNode, isAncestor, moveNode } from './FileTreeNode.js';
-	import { droppable, type DragContext } from '$lib/util/DragDrop.js';
-	import ContextMenu from '$lib/ui/ContextMenu.svelte';
+	import { droppable, type DragContext } from '#lib/util/DragDrop.js';
+	import ContextMenu from '#lib/ui/ContextMenu.svelte';
 
 	let {
 		nodes = $bindable(),

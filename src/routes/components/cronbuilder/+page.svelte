@@ -1,8 +1,8 @@
 <script lang="ts">
-	import Paper from '$lib/display/Paper.svelte';
-	import CronBuilder from '$lib/form/CronBuilder.svelte';
-	import Button from '$lib/ui/Button.svelte';
-	import { CronParser, getNextCronRunDate, getNextCronRunDates } from '$lib/index.js';
+	import Paper from '#lib/display/Paper.svelte';
+	import CronBuilder from '#lib/form/CronBuilder.svelte';
+	import Button from '#lib/ui/Button.svelte';
+	import { CronParser, getNextCronRunDate, getNextCronRunDates } from '#lib/index.js';
 
 	let basicExpression = $state('0 0 * * *');
 	let customExpression = $state('*/15 * * * *');

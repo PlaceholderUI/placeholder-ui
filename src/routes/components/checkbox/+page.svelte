@@ -1,6 +1,6 @@
 <script lang="ts">
-	import Paper from '$lib/display/Paper.svelte';
-	import Checkbox from '$lib/form/Checkbox.svelte';
+	import Paper from '#lib/display/Paper.svelte';
+	import Checkbox from '#lib/form/Checkbox.svelte';
 
 	let basicChecked = false;
 	let requiredChecked = false;

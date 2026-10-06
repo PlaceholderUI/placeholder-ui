@@ -1,6 +1,6 @@
 <script lang="ts">
-	import Paper from '$lib/display/Paper.svelte';
-	import DateRangePicker from '$lib/form/DateRangePicker.svelte';
+	import Paper from '#lib/display/Paper.svelte';
+	import DateRangePicker from '#lib/form/DateRangePicker.svelte';
 	import dayjs from 'dayjs';
 
 	let basicStart = $state<string | undefined>(undefined);

@@ -28,8 +28,8 @@
 </script>
 
 <script lang="ts">
-	import Paper from '$lib/display/Paper.svelte';
-	import { iconX } from '$lib/icon/index.js';
+	import Paper from '#lib/display/Paper.svelte';
+	import { iconX } from '#lib/icon/index.js';
 	import type { Snippet } from 'svelte';
 	import ActionIcon from './ActionIcon.svelte';
 	import { setContext, untrack } from 'svelte';

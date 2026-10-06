@@ -1,6 +1,6 @@
 <script lang="ts">
-	import Textbox from '$lib/form/Textbox.svelte';
-	import { useDialogEvents } from '$lib/ui/DialogEvents.svelte.js';
+	import Textbox from '#lib/form/Textbox.svelte';
+	import { useDialogEvents } from '#lib/ui/DialogEvents.svelte.js';
 
 	interface Props {
 		label: string;

@@ -1,6 +1,6 @@
 <script lang="ts">
-	import Tooltip from '$lib/ui/Tooltip.svelte';
-	import { Icon, iconInfoCircle } from '$lib/icon/index.js';
+	import Tooltip from '#lib/ui/Tooltip.svelte';
+	import { Icon, iconInfoCircle } from '#lib/icon/index.js';
 
 	const autoName = `slider-${crypto.randomUUID()}`;
 

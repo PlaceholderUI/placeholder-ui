@@ -1,6 +1,6 @@
 <script lang="ts">
-	import Paper from '$lib/display/Paper.svelte';
-	import Badge from '$lib/ui/Badge.svelte';
+	import Paper from '#lib/display/Paper.svelte';
+	import Badge from '#lib/ui/Badge.svelte';
 	import { resolve } from '$app/paths';
 </script>
 
@@ -14,7 +14,9 @@
 		<div class="badge-row">
 			<Badge>Text only</Badge>
 			<Badge onclick={() => console.log('Badge clicked')}>Clickable</Badge>
-			<Badge variant="secondary" href={resolve('/components/buttons')}>Link badge</Badge>
+
+			<Badge variant="secondary" href={resolve('components/buttons')}>Link badge</Badge>
+
 			<Badge ondelete={() => console.log('Badge deleted')}>With delete</Badge>
 		</div>
 	</Paper>

@@ -1,5 +1,5 @@
 <script module lang="ts">
-	import type { ComboBoxItem } from '$lib/models/ComboBoxItem.js';
+	import type { ComboBoxItem } from '#lib/models/ComboBoxItem.js';
 
 	export interface ComboBoxItemBuilderProps {
 		/** Label text displayed above the builder */
@@ -31,9 +31,9 @@
 
 <script lang="ts">
 	import { tick } from 'svelte';
-	import ActionIcon from '$lib/ui/ActionIcon.svelte';
+	import ActionIcon from '#lib/ui/ActionIcon.svelte';
 	import Checkbox from './Checkbox.svelte';
-	import { iconTrash } from '$lib/icon/index.js';
+	import { iconTrash } from '#lib/icon/index.js';
 	import FormGroup from './FormGroup.svelte';
 
 	let {

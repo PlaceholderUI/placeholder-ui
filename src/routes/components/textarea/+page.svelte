@@ -1,6 +1,6 @@
 <script lang="ts">
-	import Paper from '$lib/display/Paper.svelte';
-	import TextArea from '$lib/form/TextArea.svelte';
+	import Paper from '#lib/display/Paper.svelte';
+	import TextArea from '#lib/form/TextArea.svelte';
 
 	let basicValue = '';
 	let placeholderValue = '';

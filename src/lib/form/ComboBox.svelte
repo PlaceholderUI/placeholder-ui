@@ -1,6 +1,6 @@
 <script lang="ts">
 	import { fade } from 'svelte/transition';
-	import type { ComboBoxItem } from '$lib/models/ComboBoxItem.js';
+	import type { ComboBoxItem } from '#lib/models/ComboBoxItem.js';
 
 	interface Props {
 		value: string;

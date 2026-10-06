@@ -1,7 +1,7 @@
 <script lang="ts">
 	import type { Editor } from '@tiptap/core';
 	import ToolbarButton from './ToolbarButton.svelte';
-	import { iconH1, iconH2, iconH3, iconH4, iconH5, iconH6 } from '$lib/icon/index.js';
+	import { iconH1, iconH2, iconH3, iconH4, iconH5, iconH6 } from '#lib/icon/index.js';
 
 	interface Props {
 		editor: Editor;

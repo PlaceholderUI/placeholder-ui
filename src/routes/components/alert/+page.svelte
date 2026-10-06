@@ -1,8 +1,8 @@
 <script lang="ts">
-	import Alert from '$lib/display/alert/Alert.svelte';
-	import Paper from '$lib/display/Paper.svelte';
-	import Button from '$lib/ui/Button.svelte';
-	import Badge from '$lib/ui/Badge.svelte';
+	import Alert from '#lib/display/alert/Alert.svelte';
+	import Paper from '#lib/display/Paper.svelte';
+	import Button from '#lib/ui/Button.svelte';
+	import Badge from '#lib/ui/Badge.svelte';
 
 	let showAlert = $state(true);
 	let showDismissibleAlert = $state(true);

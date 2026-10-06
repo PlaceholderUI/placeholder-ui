@@ -1,8 +1,8 @@
 <script lang="ts">
-	import Paper from '$lib/display/Paper.svelte';
-	import TipTap from '$lib/editors/tiptap/TipTap.svelte';
-	import TipTapBubble from '$lib/editors/tiptap/TipTapBubble.svelte';
-	import Button from '$lib/ui/Button.svelte';
+	import Paper from '#lib/display/Paper.svelte';
+	import TipTap from '#lib/editors/tiptap/TipTap.svelte';
+	import TipTapBubble from '#lib/editors/tiptap/TipTapBubble.svelte';
+	import Button from '#lib/ui/Button.svelte';
 	import { Extension } from '@tiptap/core';
 
 	// Example custom extension: inserts the current date/time via Ctrl+Shift+D

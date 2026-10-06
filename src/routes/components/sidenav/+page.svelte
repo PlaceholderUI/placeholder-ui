@@ -1,11 +1,11 @@
 <script lang="ts">
-	import Paper from '$lib/display/Paper.svelte';
-	import Sidenav from '$lib/layout/Sidenav.svelte';
-	import Drawer from '$lib/ui/Drawer.svelte';
-	import type { SidenavSection, SidenavItem } from '$lib/layout/Sidenav.svelte';
-	import Button from '$lib/ui/Button.svelte';
-	import ActionIcon from '$lib/ui/ActionIcon.svelte';
-	import Badge from '$lib/ui/Badge.svelte';
+	import Paper from '#lib/display/Paper.svelte';
+	import Sidenav from '#lib/layout/Sidenav.svelte';
+	import Drawer from '#lib/ui/Drawer.svelte';
+	import type { SidenavSection, SidenavItem } from '#lib/layout/Sidenav.svelte';
+	import Button from '#lib/ui/Button.svelte';
+	import ActionIcon from '#lib/ui/ActionIcon.svelte';
+	import Badge from '#lib/ui/Badge.svelte';
 	import {
 		iconFolder,
 		iconFile,
@@ -18,7 +18,7 @@
 		iconCopy,
 		iconDownload,
 		iconLock
-	} from '$lib/icon/index.js';
+	} from '#lib/icon/index.js';
 
 	// Helper function to set active item in sections (mutates in place to avoid icon re-render issues)
 	function setActiveItem(sections: SidenavSection[], clickedItem: SidenavItem): void {

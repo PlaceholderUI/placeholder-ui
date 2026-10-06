@@ -1,7 +1,7 @@
 <script lang="ts">
-	import Icon from '$lib/icon/Icon.svelte';
-	import { iconChevronRight, iconFolder, iconFile } from '$lib/icon/index.js';
-	import { draggable, droppable, type DragContext } from '$lib/util/DragDrop.js';
+	import Icon from '#lib/icon/Icon.svelte';
+	import { iconChevronRight, iconFolder, iconFile } from '#lib/icon/index.js';
+	import { draggable, droppable, type DragContext } from '#lib/util/DragDrop.js';
 	import type { FileTreeNode } from './FileTreeNode.js';
 	import type { Snippet } from 'svelte';
 	import { fly } from 'svelte/transition';

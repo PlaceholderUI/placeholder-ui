@@ -1,6 +1,6 @@
 <script lang="ts">
-	import Paper from '$lib/display/Paper.svelte';
-	import Switch from '$lib/form/Switch.svelte';
+	import Paper from '#lib/display/Paper.svelte';
+	import Switch from '#lib/form/Switch.svelte';
 
 	// State variables
 	let basicSwitch = false;

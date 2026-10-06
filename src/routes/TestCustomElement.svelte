@@ -1,5 +1,5 @@
 <script lang="ts">
-	import type { ComboBoxItem } from '$lib/index.js';
+	import type { ComboBoxItem } from '#lib/index.js';
 
 	export let option: ComboBoxItem;
 </script>

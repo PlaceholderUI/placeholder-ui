@@ -1,10 +1,10 @@
 <script lang="ts">
 	import type { Snippet } from 'svelte';
 	import type { SidenavItem, SidenavItemAction, SidenavSection } from '../layout/Sidenav.svelte';
-	import Icon from '$lib/icon/Icon.svelte';
+	import Icon from '#lib/icon/Icon.svelte';
 	import Link from './Link.svelte';
 	import ActionIcon from './ActionIcon.svelte';
-	import { iconChevronRight, iconX } from '$lib/icon/index.js';
+	import { iconChevronRight, iconX } from '#lib/icon/index.js';
 	import { fade, fly } from 'svelte/transition';
 	import { slide } from 'svelte/transition';
 

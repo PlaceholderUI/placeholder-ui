@@ -24,11 +24,11 @@
 <script lang="ts">
 	import FormGroup from './FormGroup.svelte';
 	import { fade } from 'svelte/transition';
-	import dayjs from '$lib/util/dayjs.js';
-	import { clickOutside } from '$lib/util/ClickOutside.js';
-	import { floating } from '$lib/util/Floating.js';
-	import ActionIcon from '$lib/ui/ActionIcon.svelte';
-	import { iconChevronLeft, iconChevronRight, iconX } from '$lib/icon/index.js';
+	import dayjs from '#lib/util/dayjs.js';
+	import { clickOutside } from '#lib/util/ClickOutside.js';
+	import { floating } from '#lib/util/Floating.js';
+	import ActionIcon from '#lib/ui/ActionIcon.svelte';
+	import { iconChevronLeft, iconChevronRight, iconX } from '#lib/icon/index.js';
 
 	let {
 		label = '',

@@ -1,6 +1,6 @@
 <script lang="ts">
-	import Paper from '$lib/display/Paper.svelte';
-	import ActionIcon from '$lib/ui/ActionIcon.svelte';
+	import Paper from '#lib/display/Paper.svelte';
+	import ActionIcon from '#lib/ui/ActionIcon.svelte';
 	import {
 		iconPlus,
 		iconTrash,
@@ -22,7 +22,7 @@
 		iconChevronDown,
 		iconInfoCircle,
 		iconAlertTriangle
-	} from '$lib/icon/index.js';
+	} from '#lib/icon/index.js';
 
 	let clickCount = 0;
 	let lastAction = '';

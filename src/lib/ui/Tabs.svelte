@@ -1,5 +1,5 @@
 <script lang="ts">
-	import type { ComboBoxItem } from '$lib/models/ComboBoxItem.js';
+	import type { ComboBoxItem } from '#lib/models/ComboBoxItem.js';
 	import { onMount } from 'svelte';
 
 	export interface TabsProps {

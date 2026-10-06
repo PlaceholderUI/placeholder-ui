@@ -1,9 +1,9 @@
 <script lang="ts">
-	import type { ComboBoxItem } from '$lib/models/ComboBoxItem.js';
-	import type { ButtonVariant } from '$lib/ui/ButtonVariant.js';
-	import FormGroup from '$lib/form/FormGroup.svelte';
-	import { iconCheck } from '$lib/icon/index.js';
-	import Button from '$lib/ui/Button.svelte';
+	import type { ComboBoxItem } from '#lib/models/ComboBoxItem.js';
+	import type { ButtonVariant } from '#lib/ui/ButtonVariant.js';
+	import FormGroup from '#lib/form/FormGroup.svelte';
+	import { iconCheck } from '#lib/icon/index.js';
+	import Button from '#lib/ui/Button.svelte';
 
 	export interface ChipsProps {
 		/** Label text displayed above the chips */

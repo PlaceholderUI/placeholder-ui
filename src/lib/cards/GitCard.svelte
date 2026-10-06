@@ -1,9 +1,9 @@
 <script lang="ts">
-	import mailSvg from '$lib/icon/mail.svg?raw';
-	import messageCircleSvg from '$lib/icon/message-circle.svg?raw';
-	import userSearchSvg from '$lib/icon/user-search.svg?raw';
-	import type { GitEmployee } from '$lib/models/Employee.js';
-	import ActionIcon from '$lib/ui/ActionIcon.svelte';
+	import mailSvg from '#lib/icon/mail.svg?raw';
+	import messageCircleSvg from '#lib/icon/message-circle.svg?raw';
+	import userSearchSvg from '#lib/icon/user-search.svg?raw';
+	import type { GitEmployee } from '#lib/models/Employee.js';
+	import ActionIcon from '#lib/ui/ActionIcon.svelte';
 
 	export interface GitCardProps {
 		/** Employee data object */

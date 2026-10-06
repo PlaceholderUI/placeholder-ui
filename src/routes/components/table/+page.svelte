@@ -1,10 +1,10 @@
 <script lang="ts">
-	import Table from '$lib/ui/Table.svelte';
-	import type { Column } from '$lib/ui/Table.svelte';
-	import Paper from '$lib/display/Paper.svelte';
-	import Badge from '$lib/ui/Badge.svelte';
-	import Loader from '$lib/ui/Loader.svelte';
-	import type { ButtonVariant } from '$lib/ui/ButtonVariant.js';
+	import Table from '#lib/ui/Table.svelte';
+	import type { Column } from '#lib/ui/Table.svelte';
+	import Paper from '#lib/display/Paper.svelte';
+	import Badge from '#lib/ui/Badge.svelte';
+	import Loader from '#lib/ui/Loader.svelte';
+	import type { ButtonVariant } from '#lib/ui/ButtonVariant.js';
 	import {
 		sampleUsers,
 		manyUsers,
@@ -14,7 +14,7 @@
 		productColumns,
 		type User
 	} from './sampleData.js';
-	import Checkbox from '$lib/form/Checkbox.svelte';
+	import Checkbox from '#lib/form/Checkbox.svelte';
 
 	// State for demo
 	let showSearchable = $state(true);

@@ -1,8 +1,8 @@
 <script lang="ts">
 	import Button from './Button.svelte';
-	import chevronRight from '$lib/icon/chevron-right.svg?raw';
+	import chevronRight from '#lib/icon/chevron-right.svg?raw';
 	import ActionIcon from './ActionIcon.svelte';
-	import { iconChevronLeft } from '$lib/icon/index.js';
+	import { iconChevronLeft } from '#lib/icon/index.js';
 
 	export interface PaginationProps {
 		/** Currently selected page number (bindable) */

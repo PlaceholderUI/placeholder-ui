@@ -1,10 +1,10 @@
 <script lang="ts">
 	import { onMount } from 'svelte';
-	import { setTheme, themeState } from '$lib/theme.svelte.js';
+	import { setTheme, themeState } from '#lib/theme.svelte.js';
 
-	import sunSvg from '$lib/icon/sun.svg?raw';
-	import moonSvg from '$lib/icon/moon.svg?raw';
-	import sunMoonSvg from '$lib/icon/sun-moon.svg?raw';
+	import sunSvg from '#lib/icon/sun.svg?raw';
+	import moonSvg from '#lib/icon/moon.svg?raw';
+	import sunMoonSvg from '#lib/icon/sun-moon.svg?raw';
 	import ActionIcon from './ActionIcon.svelte';
 	import type { ButtonVariant } from './ButtonVariant.js';
 

@@ -1,6 +1,6 @@
 <!-- <script lang="ts">
-	import Icon from "$lib/icon/Icon.svelte";
-	import Link from "$lib/ui/Link.svelte";
+	import Icon from "#lib/icon/Icon.svelte";
+	import Link from "#lib/ui/Link.svelte";
 	import type { NavbarItem } from "../models/NavbarItem.js";
 
     export let item: NavbarItem;

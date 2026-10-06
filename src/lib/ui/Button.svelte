@@ -1,11 +1,11 @@
 <script lang="ts">
 	import type { Snippet } from 'svelte';
-	import Icon from '$lib/icon/Icon.svelte';
+	import Icon from '#lib/icon/Icon.svelte';
 	import type { ButtonVariant } from './ButtonVariant.js';
 	import type { ButtonSize } from './ButtonSize.js';
 	import Loader from './Loader.svelte';
 	import { resolve } from '$app/paths';
-	import { interceptLinkClick } from '$lib/util/interceptLinkClick.js';
+	import { interceptLinkClick } from '#lib/util/interceptLinkClick.js';
 
 	export interface ButtonProps {
 		/** Visual style variant of the button */

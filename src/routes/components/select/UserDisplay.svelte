@@ -1,6 +1,6 @@
 <script lang="ts">
-	import Avatar from '$lib/display/Avatar.svelte';
-	import type { ComboBoxItem } from '$lib/models/ComboBoxItem.js';
+	import Avatar from '#lib/display/Avatar.svelte';
+	import type { ComboBoxItem } from '#lib/models/ComboBoxItem.js';
 
 	interface Props {
 		option: ComboBoxItem;

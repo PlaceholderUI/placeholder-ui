@@ -6,12 +6,12 @@
 		iconHamburger,
 		type Hyperlink,
 		viewportState
-	} from '$lib/index.js';
+	} from '#lib/index.js';
 	import NavbarItemView from './NavbarItemView.svelte';
-	import Link from '$lib/ui/Link.svelte';
-	import Logo from '$lib/ui/Logo.svelte';
+	import Link from '#lib/ui/Link.svelte';
+	import Logo from '#lib/ui/Logo.svelte';
 	import type { Snippet } from 'svelte';
-	import { themeState } from '$lib/theme.svelte.js';
+	import { themeState } from '#lib/theme.svelte.js';
 
 	export type NavbarVariant = 'default' | 'primary' | 'site';
 

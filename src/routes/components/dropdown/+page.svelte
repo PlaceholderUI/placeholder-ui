@@ -1,7 +1,7 @@
 <script lang="ts">
-	import Paper from '$lib/display/Paper.svelte';
-	import Dropdown from '$lib/ui/Dropdown.svelte';
-	import type { Hyperlink } from '$lib/models/Hyperlink.js';
+	import Paper from '#lib/display/Paper.svelte';
+	import Dropdown from '#lib/ui/Dropdown.svelte';
+	import type { Hyperlink } from '#lib/models/Hyperlink.js';
 	import {
 		iconUser,
 		iconEdit,
@@ -14,7 +14,7 @@
 		iconPlus,
 		iconHamburger,
 		iconChevronDown
-	} from '$lib/icon/index.js';
+	} from '#lib/icon/index.js';
 
 	// Basic dropdown links
 	const basicActions: Hyperlink[] = [

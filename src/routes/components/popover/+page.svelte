@@ -1,10 +1,10 @@
 <script lang="ts">
-	import Paper from '$lib/display/Paper.svelte';
-	import Popover from '$lib/ui/Popover.svelte';
-	import Button from '$lib/ui/Button.svelte';
-	import ActionIcon from '$lib/ui/ActionIcon.svelte';
-	import Badge from '$lib/ui/Badge.svelte';
-	import Icon from '$lib/icon/Icon.svelte';
+	import Paper from '#lib/display/Paper.svelte';
+	import Popover from '#lib/ui/Popover.svelte';
+	import Button from '#lib/ui/Button.svelte';
+	import ActionIcon from '#lib/ui/ActionIcon.svelte';
+	import Badge from '#lib/ui/Badge.svelte';
+	import Icon from '#lib/icon/Icon.svelte';
 	import {
 		iconUser,
 		iconEdit,
@@ -16,7 +16,7 @@
 		iconHelp,
 		iconHamburger,
 		iconInfoCircle
-	} from '$lib/icon/index.js';
+	} from '#lib/icon/index.js';
 
 	// Demo data
 	let actionLog = $state<string[]>([]);

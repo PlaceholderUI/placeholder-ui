@@ -1,11 +1,11 @@
 <script lang="ts">
-	import Paper from '$lib/display/Paper.svelte';
-	import Button from '$lib/ui/Button.svelte';
-	import ActionIcon from '$lib/ui/ActionIcon.svelte';
-	import Badge from '$lib/ui/Badge.svelte';
-	import Loader from '$lib/ui/Loader.svelte';
-	import Tooltip from '$lib/ui/Tooltip.svelte';
-	import { iconEdit, iconTrash, iconPlus, iconInfoCircle } from '$lib/icon/index.js';
+	import Paper from '#lib/display/Paper.svelte';
+	import Button from '#lib/ui/Button.svelte';
+	import ActionIcon from '#lib/ui/ActionIcon.svelte';
+	import Badge from '#lib/ui/Badge.svelte';
+	import Loader from '#lib/ui/Loader.svelte';
+	import Tooltip from '#lib/ui/Tooltip.svelte';
+	import { iconEdit, iconTrash, iconPlus, iconInfoCircle } from '#lib/icon/index.js';
 
 	let clicks = $state(0);
 	let showLoader = $state(false);

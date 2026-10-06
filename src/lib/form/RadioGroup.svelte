@@ -1,7 +1,7 @@
 <script lang="ts">
-	import type { ComboBoxItem } from '$lib/models/ComboBoxItem.js';
-	import FormGroup from '$lib/form/FormGroup.svelte';
-	import Radio from '$lib/form/Radio.svelte';
+	import type { ComboBoxItem } from '#lib/models/ComboBoxItem.js';
+	import FormGroup from '#lib/form/FormGroup.svelte';
+	import Radio from '#lib/form/Radio.svelte';
 
 	export interface RadioGroupProps {
 		/** HTML name attribute for the radio group (falls back to label, then auto-generated) */

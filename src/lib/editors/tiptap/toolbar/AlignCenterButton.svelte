@@ -1,7 +1,7 @@
 <script lang="ts">
 	import type { Editor } from '@tiptap/core';
 	import ToolbarButton from './ToolbarButton.svelte';
-	import { iconAlignCenter } from '$lib/icon/index.js';
+	import { iconAlignCenter } from '#lib/icon/index.js';
 
 	interface Props {
 		editor: Editor;

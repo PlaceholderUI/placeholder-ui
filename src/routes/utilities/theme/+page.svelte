@@ -5,6 +5,6 @@
 
 	onMount(() => {
 		// Keep existing Theme links working, including deployments under a base path.
-		goto(resolve('/'), { replaceState: true });
+		goto(resolve('/'), { replace: true });
 	});
 </script>

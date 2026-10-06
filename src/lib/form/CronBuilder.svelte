@@ -32,13 +32,13 @@
 </script>
 
 <script lang="ts">
-	import FormGroup from '$lib/form/FormGroup.svelte';
-	import Select from '$lib/form/Select.svelte';
-	import Number from '$lib/form/Number.svelte';
-	import Checkbox from '$lib/form/Checkbox.svelte';
-	import type { ComboBoxItem } from '$lib/models/ComboBoxItem.js';
+	import FormGroup from '#lib/form/FormGroup.svelte';
+	import Select from '#lib/form/Select.svelte';
+	import Number from '#lib/form/Number.svelte';
+	import Checkbox from '#lib/form/Checkbox.svelte';
+	import type { ComboBoxItem } from '#lib/models/ComboBoxItem.js';
 	import { onMount, untrack } from 'svelte';
-	import { CronParser } from '$lib/util/CronParser.js';
+	import { CronParser } from '#lib/util/CronParser.js';
 
 	let {
 		label = 'Schedule',

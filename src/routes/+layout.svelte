@@ -7,8 +7,8 @@
 		type Hyperlink,
 		type SidenavSection,
 		viewportState
-	} from '$lib/index.js';
-	import AppShell from '$lib/layout/AppShell.svelte';
+	} from '#lib/index.js';
+	import AppShell from '#lib/layout/AppShell.svelte';
 
 	interface Props {
 		children?: any;

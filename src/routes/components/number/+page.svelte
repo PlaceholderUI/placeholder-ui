@@ -1,6 +1,6 @@
 <script lang="ts">
-	import Paper from '$lib/display/Paper.svelte';
-	import Number from '$lib/form/Number.svelte';
+	import Paper from '#lib/display/Paper.svelte';
+	import Number from '#lib/form/Number.svelte';
 
 	let basicValue: number | undefined = undefined;
 	let minMaxValue: number | undefined = 50;

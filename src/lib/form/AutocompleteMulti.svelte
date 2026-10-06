@@ -5,7 +5,7 @@
 		FetchFunctionType,
 		RetrieveLabelFunctionType,
 		SearchFunctionType
-	} from '$lib/models/ComboBoxItem.js';
+	} from '#lib/models/ComboBoxItem.js';
 	import type { Snippet } from 'svelte';
 
 	export interface AutocompleteMultiProps {
@@ -83,18 +83,18 @@
 </script>
 
 <script lang="ts">
-	import ComboBoxMulti from '$lib/form/ComboBoxMulti.svelte';
-	import FormGroup from '$lib/form/FormGroup.svelte';
-	import { clickOutside } from '$lib/util/ClickOutside.js';
-	import { floating } from '$lib/util/Floating.js';
+	import ComboBoxMulti from '#lib/form/ComboBoxMulti.svelte';
+	import FormGroup from '#lib/form/FormGroup.svelte';
+	import { clickOutside } from '#lib/util/ClickOutside.js';
+	import { floating } from '#lib/util/Floating.js';
 	import { ComboBoxMultiCore } from './comboBoxCore.svelte.js';
-	import Icon from '$lib/icon/Icon.svelte';
-	import Loader from '$lib/ui/Loader.svelte';
-	import Badge from '$lib/ui/Badge.svelte';
-	import ActionIcon from '$lib/ui/ActionIcon.svelte';
-	import { iconX } from '$lib/icon/index.js';
+	import Icon from '#lib/icon/Icon.svelte';
+	import Loader from '#lib/ui/Loader.svelte';
+	import Badge from '#lib/ui/Badge.svelte';
+	import ActionIcon from '#lib/ui/ActionIcon.svelte';
+	import { iconX } from '#lib/icon/index.js';
 	import { tick } from 'svelte';
-	import { useDialogEvents } from '$lib/ui/DialogEvents.svelte.js';
+	import { useDialogEvents } from '#lib/ui/DialogEvents.svelte.js';
 
 	const autoName = `autocompletemulti-${crypto.randomUUID()}`;
 

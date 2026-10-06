@@ -1,7 +1,7 @@
 <script lang="ts">
 	import type { Editor } from '@tiptap/core';
 	import ToolbarButton from './ToolbarButton.svelte';
-	import { iconPalette } from '$lib/icon/index.js';
+	import { iconPalette } from '#lib/icon/index.js';
 
 	export interface ColorSwatch {
 		/** CSS colour value applied to the text */

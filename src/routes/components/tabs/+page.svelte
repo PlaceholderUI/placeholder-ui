@@ -1,12 +1,12 @@
 <script lang="ts">
-	import Paper from '$lib/display/Paper.svelte';
-	import Tabs from '$lib/ui/Tabs.svelte';
-	import Button from '$lib/ui/Button.svelte';
-	import Textbox from '$lib/form/Textbox.svelte';
-	import TextArea from '$lib/form/TextArea.svelte';
-	import Checkbox from '$lib/form/Checkbox.svelte';
-	import type { ComboBoxItem } from '$lib/models/ComboBoxItem.js';
-	import { iconPlus } from '$lib/icon/index.js';
+	import Paper from '#lib/display/Paper.svelte';
+	import Tabs from '#lib/ui/Tabs.svelte';
+	import Button from '#lib/ui/Button.svelte';
+	import Textbox from '#lib/form/Textbox.svelte';
+	import TextArea from '#lib/form/TextArea.svelte';
+	import Checkbox from '#lib/form/Checkbox.svelte';
+	import type { ComboBoxItem } from '#lib/models/ComboBoxItem.js';
+	import { iconPlus } from '#lib/icon/index.js';
 
 	// Tab state variables
 	let basicTab = $state('overview');

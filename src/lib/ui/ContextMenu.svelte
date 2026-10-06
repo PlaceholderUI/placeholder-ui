@@ -38,7 +38,7 @@
 
 <script lang="ts">
 	import ContextMenuList from './ContextMenuList.svelte';
-	import { topLayer } from '$lib/util/Floating.js';
+	import { topLayer } from '#lib/util/Floating.js';
 
 	let {
 		open = $bindable(false),

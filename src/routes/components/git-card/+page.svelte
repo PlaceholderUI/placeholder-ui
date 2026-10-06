@@ -1,9 +1,9 @@
 <script lang="ts">
-	import GitCard from '$lib/cards/GitCard.svelte';
-	import Paper from '$lib/display/Paper.svelte';
-	import Button from '$lib/ui/Button.svelte';
-	import Badge from '$lib/ui/Badge.svelte';
-	import type { GitEmployee } from '$lib/models/Employee.js';
+	import GitCard from '#lib/cards/GitCard.svelte';
+	import Paper from '#lib/display/Paper.svelte';
+	import Button from '#lib/ui/Button.svelte';
+	import Badge from '#lib/ui/Badge.svelte';
+	import type { GitEmployee } from '#lib/models/Employee.js';
 
 	// Sample employee data
 	let employees: GitEmployee[] = $state([

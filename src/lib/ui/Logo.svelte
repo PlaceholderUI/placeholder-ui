@@ -1,9 +1,9 @@
 <script lang="ts">
-	import { themeState } from '$lib/theme.svelte.js';
-	import { brandState } from '$lib/uiTheme.svelte.js';
-	import Icon from '$lib/icon/Icon.svelte';
+	import { themeState } from '#lib/theme.svelte.js';
+	import { brandState } from '#lib/uiTheme.svelte.js';
+	import Icon from '#lib/icon/Icon.svelte';
 	import Link from './Link.svelte';
-	import placeholderLogo from '$lib/icon/logo-placeholder.svg?raw';
+	import placeholderLogo from '#lib/icon/logo-placeholder.svg?raw';
 
 	export interface LogoProps {
 		/** Additional CSS classes */

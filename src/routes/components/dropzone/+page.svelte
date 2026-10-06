@@ -1,12 +1,12 @@
 <script lang="ts">
-	import Paper from '$lib/display/Paper.svelte';
-	import Dropzone from '$lib/ui/Dropzone.svelte';
-	import Button from '$lib/ui/Button.svelte';
-	import ActionIcon from '$lib/ui/ActionIcon.svelte';
-	import Badge from '$lib/ui/Badge.svelte';
-	import Checkbox from '$lib/form/Checkbox.svelte';
-	import Select from '$lib/form/Select.svelte';
-	import { toast } from '$lib/ui/Toast.svelte';
+	import Paper from '#lib/display/Paper.svelte';
+	import Dropzone from '#lib/ui/Dropzone.svelte';
+	import Button from '#lib/ui/Button.svelte';
+	import ActionIcon from '#lib/ui/ActionIcon.svelte';
+	import Badge from '#lib/ui/Badge.svelte';
+	import Checkbox from '#lib/form/Checkbox.svelte';
+	import Select from '#lib/form/Select.svelte';
+	import { toast } from '#lib/ui/Toast.svelte.js';
 	import {
 		iconCloudUpload,
 		iconTrash,
@@ -14,7 +14,7 @@
 		iconFile,
 		iconPhoto,
 		iconRefresh
-	} from '$lib/icon/index.js';
+	} from '#lib/icon/index.js';
 
 	// State management
 	let uploadedFiles = $state<File[]>([]);

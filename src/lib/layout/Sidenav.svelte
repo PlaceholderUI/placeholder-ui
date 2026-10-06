@@ -1,5 +1,5 @@
 <script lang="ts" module>
-	import type { ButtonVariant } from '$lib/ui/ButtonVariant.js';
+	import type { ButtonVariant } from '#lib/ui/ButtonVariant.js';
 
 	export interface SidenavItemAction {
 		/** SVG icon to display in the action button */
@@ -31,14 +31,14 @@
 
 <script lang="ts">
 	import type { Snippet } from 'svelte';
-	import Icon from '$lib/icon/Icon.svelte';
-	import Textbox from '$lib/form/Textbox.svelte';
-	import ActionIcon from '$lib/ui/ActionIcon.svelte';
-	import Drawer from '$lib/ui/Drawer.svelte';
-	import { iconChevronRight, iconSearch, iconX } from '$lib/icon/index.js';
+	import Icon from '#lib/icon/Icon.svelte';
+	import Textbox from '#lib/form/Textbox.svelte';
+	import ActionIcon from '#lib/ui/ActionIcon.svelte';
+	import Drawer from '#lib/ui/Drawer.svelte';
+	import { iconChevronRight, iconSearch, iconX } from '#lib/icon/index.js';
 	import { slide } from 'svelte/transition';
-	import { viewportState } from '$lib/theme.svelte.js';
-	import Link from '$lib/ui/Link.svelte';
+	import { viewportState } from '#lib/theme.svelte.js';
+	import Link from '#lib/ui/Link.svelte';
 
 	export interface SidenavProps {
 		/** Navigation sections to display */

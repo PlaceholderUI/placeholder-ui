@@ -1,6 +1,6 @@
 <script lang="ts">
-	import Paper from '$lib/display/Paper.svelte';
-	import TimePicker from '$lib/form/TimePicker.svelte';
+	import Paper from '#lib/display/Paper.svelte';
+	import TimePicker from '#lib/form/TimePicker.svelte';
 	import dayjs from 'dayjs';
 
 	let basicTime: string | undefined = $state(undefined);

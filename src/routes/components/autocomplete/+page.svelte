@@ -1,10 +1,10 @@
 <script lang="ts">
-	import Paper from '$lib/display/Paper.svelte';
-	import Autocomplete from '$lib/form/Autocomplete.svelte';
-	import type { ComboBoxGroup, ComboBoxItem } from '$lib/models/ComboBoxItem.js';
-	import type { NotifyModel } from '$lib/models/NotifyModel.js';
-	import { MessageTypes } from '$lib/models/NotifyModel.js';
-	import { iconSearch, iconUser, iconUserGroup } from '$lib/icon/index.js';
+	import Paper from '#lib/display/Paper.svelte';
+	import Autocomplete from '#lib/form/Autocomplete.svelte';
+	import type { ComboBoxGroup, ComboBoxItem } from '#lib/models/ComboBoxItem.js';
+	import type { NotifyModel } from '#lib/models/NotifyModel.js';
+	import { MessageTypes } from '#lib/models/NotifyModel.js';
+	import { iconSearch, iconUser, iconUserGroup } from '#lib/icon/index.js';
 
 	// Sample data for different examples
 	const countries: ComboBoxItem[] = [

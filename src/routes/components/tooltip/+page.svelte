@@ -1,10 +1,10 @@
 <script lang="ts">
-	import Paper from '$lib/display/Paper.svelte';
-	import Tooltip from '$lib/ui/Tooltip.svelte';
-	import Button from '$lib/ui/Button.svelte';
-	import ActionIcon from '$lib/ui/ActionIcon.svelte';
-	import Badge from '$lib/ui/Badge.svelte';
-	import Dialog from '$lib/ui/Dialog.svelte';
+	import Paper from '#lib/display/Paper.svelte';
+	import Tooltip from '#lib/ui/Tooltip.svelte';
+	import Button from '#lib/ui/Button.svelte';
+	import ActionIcon from '#lib/ui/ActionIcon.svelte';
+	import Badge from '#lib/ui/Badge.svelte';
+	import Dialog from '#lib/ui/Dialog.svelte';
 	import {
 		iconUser,
 		iconEdit,
@@ -15,7 +15,7 @@
 		iconPlus,
 		iconHelp,
 		iconInfoCircle
-	} from '$lib/icon/index.js';
+	} from '#lib/icon/index.js';
 
 	// Dialog state
 	let tooltipDialog = $state(false);

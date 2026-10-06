@@ -1,12 +1,12 @@
 <script lang="ts">
-	import Navbar from '$lib/layout/Navbar.svelte';
-	import Paper from '$lib/display/Paper.svelte';
-	import Button from '$lib/ui/Button.svelte';
-	import Badge from '$lib/ui/Badge.svelte';
-	import Drawer from '$lib/ui/Drawer.svelte';
-	import type { SidenavSection } from '$lib/layout/Sidenav.svelte';
-	import type { Hyperlink } from '$lib/models/Hyperlink.js';
-	import type { LinkNavbarItem, NavbarItem } from '$lib/models/NavbarItem.js';
+	import Navbar from '#lib/layout/Navbar.svelte';
+	import Paper from '#lib/display/Paper.svelte';
+	import Button from '#lib/ui/Button.svelte';
+	import Badge from '#lib/ui/Badge.svelte';
+	import Drawer from '#lib/ui/Drawer.svelte';
+	import type { SidenavSection } from '#lib/layout/Sidenav.svelte';
+	import type { Hyperlink } from '#lib/models/Hyperlink.js';
+	import type { LinkNavbarItem, NavbarItem } from '#lib/models/NavbarItem.js';
 	import {
 		iconUser,
 		iconFile,
@@ -15,10 +15,10 @@
 		iconSettings,
 		iconLogout,
 		iconChartBar
-	} from '$lib/icon/index.js';
-	import Select from '$lib/form/Select.svelte';
-	import ActionIcon from '$lib/ui/ActionIcon.svelte';
-	import { themeState } from '$lib/theme.svelte.js';
+	} from '#lib/icon/index.js';
+	import Select from '#lib/form/Select.svelte';
+	import ActionIcon from '#lib/ui/ActionIcon.svelte';
+	import { themeState } from '#lib/theme.svelte.js';
 
 	// Basic navigation items
 	let basicItems: LinkNavbarItem[] = $state([

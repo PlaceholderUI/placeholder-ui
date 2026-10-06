@@ -1,7 +1,7 @@
 <script lang="ts">
 	import Button from './Button.svelte';
 	import Tooltip from './Tooltip.svelte';
-	import Icon from '$lib/icon/Icon.svelte';
+	import Icon from '#lib/icon/Icon.svelte';
 	import type { ButtonVariant } from './ButtonVariant.js';
 
 	export interface ActionIconProps {

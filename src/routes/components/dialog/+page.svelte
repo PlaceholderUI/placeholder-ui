@@ -1,16 +1,16 @@
 <script lang="ts">
-	import Paper from '$lib/display/Paper.svelte';
-	import Dialog from '$lib/ui/Dialog.svelte';
-	import ConfirmDialog from '$lib/ui/ConfirmDialog.svelte';
-	import Button from '$lib/ui/Button.svelte';
-	import Textbox from '$lib/form/Textbox.svelte';
-	import TextArea from '$lib/form/TextArea.svelte';
-	import ActionIcon from '$lib/ui/ActionIcon.svelte';
-	import Select from '$lib/form/Select.svelte';
-	import DatePicker from '$lib/form/DatePicker.svelte';
-	import Tooltip from '$lib/ui/Tooltip.svelte';
-	import Popover from '$lib/ui/Popover.svelte';
-	import Dropdown from '$lib/ui/Dropdown.svelte';
+	import Paper from '#lib/display/Paper.svelte';
+	import Dialog from '#lib/ui/Dialog.svelte';
+	import ConfirmDialog from '#lib/ui/ConfirmDialog.svelte';
+	import Button from '#lib/ui/Button.svelte';
+	import Textbox from '#lib/form/Textbox.svelte';
+	import TextArea from '#lib/form/TextArea.svelte';
+	import ActionIcon from '#lib/ui/ActionIcon.svelte';
+	import Select from '#lib/form/Select.svelte';
+	import DatePicker from '#lib/form/DatePicker.svelte';
+	import Tooltip from '#lib/ui/Tooltip.svelte';
+	import Popover from '#lib/ui/Popover.svelte';
+	import Dropdown from '#lib/ui/Dropdown.svelte';
 	import {
 		iconEdit,
 		iconTrash,
@@ -18,7 +18,7 @@
 		iconInfoCircle,
 		iconAlertTriangle,
 		iconUser
-	} from '$lib/icon/index.js';
+	} from '#lib/icon/index.js';
 
 	// Dialog state variables
 	let basicDialog = false;

@@ -1,7 +1,7 @@
 <script lang="ts">
-	import Paper from '$lib/display/Paper.svelte';
-	import RadioGroup from '$lib/form/RadioGroup.svelte';
-	import type { ComboBoxItem } from '$lib/models/ComboBoxItem.js';
+	import Paper from '#lib/display/Paper.svelte';
+	import RadioGroup from '#lib/form/RadioGroup.svelte';
+	import type { ComboBoxItem } from '#lib/models/ComboBoxItem.js';
 
 	// Basic options
 	const colorOptions: ComboBoxItem[] = [

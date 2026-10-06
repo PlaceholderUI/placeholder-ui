@@ -1,22 +1,22 @@
 <script lang="ts">
-	import { clickOutside } from '$lib/util/ClickOutside.js';
-	import { floating } from '$lib/util/Floating.js';
+	import { clickOutside } from '#lib/util/ClickOutside.js';
+	import { floating } from '#lib/util/Floating.js';
 	import type {
 		ComboBoxGroup,
 		ComboBoxItem,
 		FetchFunctionType,
 		RetrieveLabelFunctionType,
 		SearchFunctionType
-	} from '$lib/models/ComboBoxItem.js';
+	} from '#lib/models/ComboBoxItem.js';
 	import { ComboBoxCore } from './comboBoxCore.svelte.js';
 	import ComboBoxMulti from './ComboBoxMulti.svelte';
-	import FormGroup from '$lib/form/FormGroup.svelte';
-	import Icon from '$lib/icon/Icon.svelte';
-	import Loader from '$lib/ui/Loader.svelte';
-	import { useDialogEvents } from '$lib/ui/DialogEvents.svelte.js';
-	import selectorSvg from '$lib/icon/selector.svg?raw';
-	import { iconX, iconCopy } from '$lib/icon/index.js';
-	import ActionIcon from '$lib/ui/ActionIcon.svelte';
+	import FormGroup from '#lib/form/FormGroup.svelte';
+	import Icon from '#lib/icon/Icon.svelte';
+	import Loader from '#lib/ui/Loader.svelte';
+	import { useDialogEvents } from '#lib/ui/DialogEvents.svelte.js';
+	import selectorSvg from '#lib/icon/selector.svg?raw';
+	import { iconX, iconCopy } from '#lib/icon/index.js';
+	import ActionIcon from '#lib/ui/ActionIcon.svelte';
 	import { onMount, tick, type Snippet } from 'svelte';
 
 	const autoName = `select-${crypto.randomUUID()}`;

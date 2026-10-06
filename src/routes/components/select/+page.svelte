@@ -1,7 +1,7 @@
 <script lang="ts">
-	import Paper from '$lib/display/Paper.svelte';
-	import Select from '$lib/form/Select.svelte';
-	import type { ComboBoxItem, ComboBoxGroup } from '$lib/models/ComboBoxItem.js';
+	import Paper from '#lib/display/Paper.svelte';
+	import Select from '#lib/form/Select.svelte';
+	import type { ComboBoxItem, ComboBoxGroup } from '#lib/models/ComboBoxItem.js';
 	import UserDisplay from './UserDisplay.svelte';
 
 	// Basic options

@@ -1,8 +1,8 @@
 <script lang="ts">
-	import type { Hyperlink } from '$lib/models/Hyperlink.js';
-	import Icon from '$lib/icon/Icon.svelte';
-	import Link from '$lib/ui/Link.svelte';
-	import type { LinkCollectionItem } from '$lib/models/LinkCollectionItem.js';
+	import type { Hyperlink } from '#lib/models/Hyperlink.js';
+	import Icon from '#lib/icon/Icon.svelte';
+	import Link from '#lib/ui/Link.svelte';
+	import type { LinkCollectionItem } from '#lib/models/LinkCollectionItem.js';
 
 	export interface LinkCollectionProps {
 		/** Array of simple hyperlinks */

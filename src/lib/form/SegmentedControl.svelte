@@ -1,6 +1,6 @@
 <script lang="ts">
-	import type { ComboBoxItem } from '$lib/models/ComboBoxItem.js';
-	import FormGroup from '$lib/form/FormGroup.svelte';
+	import type { ComboBoxItem } from '#lib/models/ComboBoxItem.js';
+	import FormGroup from '#lib/form/FormGroup.svelte';
 	import { onMount } from 'svelte';
 
 	export type SegmentedControlSize = 'default' | 'lg';

@@ -1,6 +1,6 @@
 <script lang="ts">
-	import Paper from '$lib/display/Paper.svelte';
-	import Slider from '$lib/form/Slider.svelte';
+	import Paper from '#lib/display/Paper.svelte';
+	import Slider from '#lib/form/Slider.svelte';
 
 	// Basic sliders
 	let basicValue = 50;

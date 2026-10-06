@@ -1,8 +1,8 @@
 <script lang="ts">
 	import { fade } from 'svelte/transition';
-	import type { ComboBoxGroup, ComboBoxItem } from '$lib/models/ComboBoxItem.js';
-	import Icon from '$lib/icon/Icon.svelte';
-	import check from '$lib/icon/check.svg?raw';
+	import type { ComboBoxGroup, ComboBoxItem } from '#lib/models/ComboBoxItem.js';
+	import Icon from '#lib/icon/Icon.svelte';
+	import check from '#lib/icon/check.svg?raw';
 
 	interface Props {
 		filterString: string;

@@ -1,5 +1,5 @@
 <script lang="ts">
-	import { Icon } from '$lib/icon/index.js';
+	import { Icon } from '#lib/icon/index.js';
 
 	interface Props {
 		icon: string;

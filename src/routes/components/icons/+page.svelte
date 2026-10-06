@@ -1,8 +1,8 @@
 <script lang="ts">
-	import Paper from '$lib/display/Paper.svelte';
-	import { Icon } from '$lib/icon/index.js';
-	import * as icons from '$lib/icon/index.js';
-	import Button from '$lib/ui/Button.svelte';
+	import Paper from '#lib/display/Paper.svelte';
+	import { Icon } from '#lib/icon/index.js';
+	import * as icons from '#lib/icon/index.js';
+	import Button from '#lib/ui/Button.svelte';
 
 	// New icons added in latest update
 	const newIcons = new Set([

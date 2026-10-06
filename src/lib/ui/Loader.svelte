@@ -1,6 +1,6 @@
 <script lang="ts">
-	import Icon from '$lib/icon/Icon.svelte';
-	import loaderSvg from '$lib/icon/loader.svg?raw';
+	import Icon from '#lib/icon/Icon.svelte';
+	import loaderSvg from '#lib/icon/loader.svg?raw';
 
 	export interface LoaderProps {
 		/** Display as full-screen overlay */

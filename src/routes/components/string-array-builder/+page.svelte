@@ -1,6 +1,6 @@
 <script lang="ts">
-	import Paper from '$lib/display/Paper.svelte';
-	import StringArrayBuilder from '$lib/form/StringArrayBuilder.svelte';
+	import Paper from '#lib/display/Paper.svelte';
+	import StringArrayBuilder from '#lib/form/StringArrayBuilder.svelte';
 
 	// Demo 1: Empty initial state
 	let basicItems: string[] = $state([]);

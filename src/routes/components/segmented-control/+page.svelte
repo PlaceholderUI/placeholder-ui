@@ -1,9 +1,9 @@
 <script lang="ts">
-	import Paper from '$lib/display/Paper.svelte';
-	import SegmentedControl from '$lib/form/SegmentedControl.svelte';
-	import Textbox from '$lib/form/Textbox.svelte';
-	import Select from '$lib/form/Select.svelte';
-	import type { ComboBoxItem } from '$lib/models/ComboBoxItem.js';
+	import Paper from '#lib/display/Paper.svelte';
+	import SegmentedControl from '#lib/form/SegmentedControl.svelte';
+	import Textbox from '#lib/form/Textbox.svelte';
+	import Select from '#lib/form/Select.svelte';
+	import type { ComboBoxItem } from '#lib/models/ComboBoxItem.js';
 
 	// Basic options
 	const viewModeOptions: ComboBoxItem[] = [

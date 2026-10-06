@@ -29,7 +29,7 @@
 
 <script lang="ts" generics="T">
 	import { flip } from 'svelte/animate';
-	import { draggable, droppable, type DragContext } from '$lib/util/DragDrop.js';
+	import { draggable, droppable, type DragContext } from '#lib/util/DragDrop.js';
 
 	let {
 		items = $bindable(),

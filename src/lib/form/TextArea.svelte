@@ -1,5 +1,5 @@
 <script lang="ts">
-	import FormGroup from '$lib/form/FormGroup.svelte';
+	import FormGroup from '#lib/form/FormGroup.svelte';
 
 	const autoName = `textarea-${crypto.randomUUID()}`;
 

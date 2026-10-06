@@ -1,9 +1,9 @@
 <script lang="ts">
-	import Paper from '$lib/display/Paper.svelte';
-	import Drawer from '$lib/ui/Drawer.svelte';
-	import Button from '$lib/ui/Button.svelte';
-	import ActionIcon from '$lib/ui/ActionIcon.svelte';
-	import type { SidenavSection, SidenavItem } from '$lib/layout/Sidenav.svelte';
+	import Paper from '#lib/display/Paper.svelte';
+	import Drawer from '#lib/ui/Drawer.svelte';
+	import Button from '#lib/ui/Button.svelte';
+	import ActionIcon from '#lib/ui/ActionIcon.svelte';
+	import type { SidenavSection, SidenavItem } from '#lib/layout/Sidenav.svelte';
 	import {
 		iconHamburger,
 		iconUser,
@@ -21,7 +21,7 @@
 		iconDeviceDesktop,
 		iconFileReport,
 		iconMail
-	} from '$lib/icon/index.js';
+	} from '#lib/icon/index.js';
 
 	// Drawer state variables
 	let basicDrawer = $state(false);

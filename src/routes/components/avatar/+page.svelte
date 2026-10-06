@@ -1,9 +1,9 @@
 <script lang="ts">
-	import Avatar from '$lib/display/Avatar.svelte';
-	import Paper from '$lib/display/Paper.svelte';
-	import Button from '$lib/ui/Button.svelte';
-	import Badge from '$lib/ui/Badge.svelte';
-	import { iconUser, iconUserGroup, iconPhoto, iconUserPlus } from '$lib/icon/index.js';
+	import Avatar from '#lib/display/Avatar.svelte';
+	import Paper from '#lib/display/Paper.svelte';
+	import Button from '#lib/ui/Button.svelte';
+	import Badge from '#lib/ui/Badge.svelte';
+	import { iconUser, iconUserGroup, iconPhoto, iconUserPlus } from '#lib/icon/index.js';
 
 	let clickCount = $state(0);
 	let selectedAvatar = $state('');

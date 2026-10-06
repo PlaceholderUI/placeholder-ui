@@ -4,8 +4,8 @@ import type {
 	FetchFunctionType,
 	RetrieveLabelFunctionType,
 	SearchFunctionType
-} from '$lib/models/ComboBoxItem.js';
-import type { NotifyModel } from '$lib/models/NotifyModel.js';
+} from '#lib/models/ComboBoxItem.js';
+import type { NotifyModel } from '#lib/models/NotifyModel.js';
 
 /**
  * Option/search lifecycle shared by every option-driven input regardless of

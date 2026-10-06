@@ -1,5 +1,5 @@
 <script lang="ts">
-	import Icon from '$lib/icon/Icon.svelte';
+	import Icon from '#lib/icon/Icon.svelte';
 
 	export interface AvatarProps {
 		/** Image source URL */

@@ -2,8 +2,8 @@
 <script lang="ts">
 	import type { Snippet } from 'svelte';
 	import Button from './Button.svelte';
-	import { clickOutside } from '$lib/util/ClickOutside.js';
-	import { floating } from '$lib/util/Floating.js';
+	import { clickOutside } from '#lib/util/ClickOutside.js';
+	import { floating } from '#lib/util/Floating.js';
 
 	type PopoverPosition = 'top' | 'bottom' | 'left' | 'right';
 	type PopoverTrigger = 'click' | 'hover';

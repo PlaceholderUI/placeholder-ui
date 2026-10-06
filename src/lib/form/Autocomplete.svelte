@@ -5,7 +5,7 @@
 		FetchFunctionType,
 		RetrieveLabelFunctionType,
 		SearchFunctionType
-	} from '$lib/models/ComboBoxItem.js';
+	} from '#lib/models/ComboBoxItem.js';
 	import type { Snippet } from 'svelte';
 
 	export interface AutocompleteProps {
@@ -79,13 +79,13 @@
 </script>
 
 <script lang="ts">
-	import ComboBoxMulti from '$lib/form/ComboBoxMulti.svelte';
-	import { clickOutside } from '$lib/util/ClickOutside.js';
-	import { floating } from '$lib/util/Floating.js';
+	import ComboBoxMulti from '#lib/form/ComboBoxMulti.svelte';
+	import { clickOutside } from '#lib/util/ClickOutside.js';
+	import { floating } from '#lib/util/Floating.js';
 	import Textbox from './Textbox.svelte';
 	import { ComboBoxCore, findItemByValue } from './comboBoxCore.svelte.js';
 	import { tick } from 'svelte';
-	import { useDialogEvents } from '$lib/ui/DialogEvents.svelte.js';
+	import { useDialogEvents } from '#lib/ui/DialogEvents.svelte.js';
 
 	let {
 		name,
