@@ -97,6 +97,7 @@ export abstract class ComboBoxDataCore<TConfig extends ComboBoxDataConfig> {
 
 	protected config: TConfig;
 	#timeout: ReturnType<typeof setTimeout> | undefined;
+	#searchController: AbortController | undefined;
 	#fetchInitialized = false;
 	#lastOptionsRef: ComboBoxItem[] | undefined;
 	#lastGroupedRef: ComboBoxGroup[] | undefined;
@@ -141,7 +142,7 @@ export abstract class ComboBoxDataCore<TConfig extends ComboBoxDataConfig> {
 			cfg.onOptionsChanged?.();
 		});
 
-		$effect(() => () => clearTimeout(this.#timeout));
+		$effect(() => () => this.#abortPendingSearch());
 	}
 
 	/** Whether an option should render as selected for the current value(s). */
@@ -168,19 +169,46 @@ export abstract class ComboBoxDataCore<TConfig extends ComboBoxDataConfig> {
 		this.filteredGroups = [...this.allGroups];
 	}
 
-	/** Debounced remote search via searchFunction. */
+	/**
+	 * Debounced remote search via searchFunction. Each call supersedes the previous one:
+	 * a pending debounce is dropped and an in-flight request is aborted, so only the
+	 * latest query's results are ever applied.
+	 */
 	search(filterValue: string, onComplete?: () => void) {
-		clearTimeout(this.#timeout);
+		this.#abortPendingSearch();
 		this.searching = true;
 		this.#timeout = setTimeout(() => {
-			this.config.getSearchFunction()!(filterValue).then(
+			const controller = new AbortController();
+			this.#searchController = controller;
+			this.config.getSearchFunction()!(filterValue, controller.signal).then(
 				(response: NotifyModel<ComboBoxItem[]>) => {
+					if (controller.signal.aborted) return;
+					this.#searchController = undefined;
 					this.convertOptions(response.object ?? []);
 					this.searching = false;
 					onComplete?.();
+				},
+				(error: unknown) => {
+					// Aborted requests reject by design (e.g. fetch's AbortError) — swallow those.
+					if (controller.signal.aborted) return;
+					this.#searchController = undefined;
+					this.searching = false;
+					throw error;
 				}
 			);
 		}, 300);
+	}
+
+	/** Drop any pending or in-flight remote search, e.g. when the input switches to local filtering. */
+	cancelSearch() {
+		this.#abortPendingSearch();
+		this.searching = false;
+	}
+
+	#abortPendingSearch() {
+		clearTimeout(this.#timeout);
+		this.#searchController?.abort();
+		this.#searchController = undefined;
 	}
 
 	/** Case-insensitive local filter over already-loaded options. */

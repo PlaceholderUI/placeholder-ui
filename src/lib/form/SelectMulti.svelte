@@ -247,6 +247,7 @@
 				hideCombobox = false;
 			});
 		} else {
+			core.cancelSearch();
 			core.filterLocal(value);
 			hideCombobox = false;
 		}

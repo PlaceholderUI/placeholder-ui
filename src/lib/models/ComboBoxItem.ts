@@ -26,5 +26,13 @@ export interface ComboBoxItem {
 }
 
 export type FetchFunctionType = () => Promise<NotifyModel<ComboBoxItem[]>>;
-export type SearchFunctionType = (query: string) => Promise<NotifyModel<ComboBoxItem[]>>;
+/**
+ * Remote search. `signal` is aborted when a newer search supersedes this one (the user
+ * kept typing, cleared the input, or the component unmounted) — pass it to `fetch` to
+ * cancel the request. Results from superseded searches are discarded either way.
+ */
+export type SearchFunctionType = (
+	query: string,
+	signal?: AbortSignal
+) => Promise<NotifyModel<ComboBoxItem[]>>;
 export type RetrieveLabelFunctionType = (value: any) => Promise<NotifyModel<string | undefined>>;

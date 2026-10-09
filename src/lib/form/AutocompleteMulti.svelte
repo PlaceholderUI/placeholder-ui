@@ -299,6 +299,7 @@
 		if (searchFunction && text) {
 			core.search(text, () => (open = true));
 		} else {
+			core.cancelSearch();
 			core.filterLocal(text);
 			open = true;
 		}

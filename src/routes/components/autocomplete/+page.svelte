@@ -187,9 +187,13 @@
 	}
 
 	// Simulate async search function
-	function simulateAsyncSearch(query: string): Promise<NotifyModel<ComboBoxItem[]>> {
-		return new Promise((resolve) => {
-			setTimeout(() => {
+	// The signal aborts when the user keeps typing — pass it to fetch() in real code.
+	function simulateAsyncSearch(
+		query: string,
+		signal?: AbortSignal
+	): Promise<NotifyModel<ComboBoxItem[]>> {
+		return new Promise((resolve, reject) => {
+			const timer = setTimeout(() => {
 				const filtered = technologies.filter((tech) =>
 					tech.label.toLowerCase().includes(query.toLowerCase())
 				);
@@ -201,6 +205,10 @@
 					object: filtered
 				});
 			}, 500); // Simulate network delay
+			signal?.addEventListener('abort', () => {
+				clearTimeout(timer);
+				reject(signal.reason);
+			});
 		});
 	}
 </script>

@@ -242,6 +242,7 @@
 
 	function onFilterChange(filterValue: string) {
 		if (filterValue.length === 0) {
+			core.cancelSearch();
 			core.filterLocal('');
 			open = true;
 			return;
@@ -250,6 +251,7 @@
 		if (searchFunction && filterValue) {
 			core.search(filterValue, () => (open = true));
 		} else {
+			core.cancelSearch();
 			core.filterLocal(filterValue);
 			open = true;
 		}
