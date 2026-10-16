@@ -10,6 +10,8 @@
 		rel?: string;
 		/** Link target attribute */
 		target?: '_self' | '_blank' | undefined;
+		/** Download the linked URL instead of navigating. `true` keeps the server's filename */
+		download?: boolean | string;
 		/** Additional CSS classes */
 		class?: string;
 		/** Link content */
@@ -24,6 +26,7 @@
 		href,
 		rel = '',
 		target = undefined,
+		download = undefined,
 		class: classes = '',
 		children,
 		onclick,
@@ -36,6 +39,7 @@
 	class={classes}
 	href={href?.startsWith('/') ? resolve(href as any) : href}
 	{rel}
+	download={download === true ? '' : download || undefined}
 	aria-current={ariaCurrent}
 	onclick={(e) => interceptLinkClick(e, { href, target, onclick })}
 	data-sveltekit-preload-data="hover"

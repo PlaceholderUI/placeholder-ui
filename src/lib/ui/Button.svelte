@@ -28,6 +28,10 @@
 		iconSize?: string;
 		/** Link target attribute (when href is provided) */
 		target?: undefined | '_self' | '_blank';
+		/** Relationship attribute (when href is provided). `rel="external"` skips client-side navigation */
+		rel?: string;
+		/** Download the linked URL instead of navigating (when href is provided). `true` keeps the server's filename */
+		download?: boolean | string;
 		/** Button type attribute (when rendered as a button, not a link) */
 		type?: 'button' | 'submit' | 'reset';
 		/** Additional CSS classes */
@@ -51,6 +55,8 @@
 		rightSvg = undefined,
 		iconSize = '18px',
 		target = undefined,
+		rel = undefined,
+		download = undefined,
 		type = 'button',
 		class: buttonClass = '',
 		children,
@@ -89,6 +95,8 @@
 {#if isLink && href && !disabled}
 	<a
 		{target}
+		{rel}
+		download={download === true ? '' : download || undefined}
 		class={elClass}
 		aria-label={ariaLabel}
 		href={href?.startsWith('/') ? resolve(href as any) : href}

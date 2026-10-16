@@ -242,7 +242,7 @@
 		if (href) {
 			event.preventDefault();
 			if (newTabIntent) window.open(href, '_blank', 'noopener');
-			else navigateTo(href);
+			else navigateTo(href).catch(console.error);
 		}
 	}
 
