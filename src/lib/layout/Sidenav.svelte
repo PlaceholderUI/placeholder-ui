@@ -633,19 +633,4 @@
 	.sub-nav-item > .nav-item-row.active button.sub-nav-link {
 		font-weight: 500;
 	}
-
-	/* Scrollbar styling */
-	.sidenav-content::-webkit-scrollbar {
-		width: 6px;
-	}
-
-	.sidenav-content::-webkit-scrollbar-track {
-		background: transparent;
-	}
-
-	.sidenav-content::-webkit-scrollbar-thumb {
-		background-color: #343434;
-		border-radius: 3px;
-		border: none;
-	}
 </style>

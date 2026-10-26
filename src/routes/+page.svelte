@@ -280,11 +280,7 @@ const theme = {
 
     // Layout (use 68px for the site Navbar variant)
     '--header-height': '46px',
-    '--page-content-height': 'calc(100vh - var(--header-height))',
-
-    // Scrollbars
-    '--scrollbar-track': '#ffffff',
-    '--scrollbar-thumb': 'var(--ui-primary)'
+    '--page-content-height': 'calc(100vh - var(--header-height))'
   },
 
   dark: { // optional overrides while html.dark is active
@@ -312,8 +308,7 @@ const theme = {
       '--input-bg': 'rgb(33, 37, 41)',
       '--input-bg-color': 'rgb(33, 37, 41)',
       '--placeholder-color': 'rgb(115 115 115)',
-      '--label-color': 'rgb(141, 144, 149)',
-      '--scrollbar-track': '#111111'
+      '--label-color': 'rgb(141, 144, 149)'
     }
   }
 } satisfies ThemeConfig;

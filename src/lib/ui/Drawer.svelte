@@ -559,19 +559,4 @@
 	.sub-nav-item > .nav-item-row.active button.sub-nav-link {
 		font-weight: 500;
 	}
-
-	/* Scrollbar styling */
-	.drawer-content::-webkit-scrollbar {
-		width: 6px;
-	}
-
-	.drawer-content::-webkit-scrollbar-track {
-		background: transparent;
-	}
-
-	.drawer-content::-webkit-scrollbar-thumb {
-		background-color: #343434;
-		border-radius: 3px;
-		border: none;
-	}
 </style>
