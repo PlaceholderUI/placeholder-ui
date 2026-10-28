@@ -105,9 +105,6 @@
 		{:else}
 			<div class="combobox-multi-panel">
 				{#each groupedOptions as group, groupIndex}
-					{#if group != groupedOptions[0]}
-						<div class="seperator"></div>
-					{/if}
 					{#if group.label?.length && group.showGroupName !== false}
 						<div class="group-label">{group.label}</div>
 					{/if}
@@ -226,7 +223,8 @@
 
 	:global(.dark) {
 		.group-label {
-			background: black;
+			background: var(--ui-primary);
+			color: white;
 		}
 	}
 </style>
