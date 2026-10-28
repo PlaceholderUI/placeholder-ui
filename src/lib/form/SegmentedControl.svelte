@@ -26,7 +26,7 @@
 		onchange
 	}: SegmentedControlProps = $props();
 
-	let containerRef: HTMLDivElement;
+	let containerRef = $state<HTMLDivElement>();
 	let buttonElements = $state<HTMLButtonElement[]>([]);
 	let backgroundStyle = $state('');
 
@@ -45,15 +45,23 @@
 	}
 
 	onMount(() => {
-		// recalculate 10 times on startup to ensure background is positioned correctly
-		for (let i = 0; i < 10; i++) {
-			scheduleRecalculate(100 * i);
-		}
-
 		return () => {
 			for (const id of pendingTimers) clearTimeout(id);
 			pendingTimers.clear();
 		};
+	});
+
+	// Re-measure whenever the control or a segment changes size. This also covers
+	// mounting while hidden (e.g. inside a closed Dialog): the observer fires once
+	// the control is laid out, and again for late font loads or label changes
+	$effect(() => {
+		if (!containerRef) return;
+		const observer = new ResizeObserver(() => recalculateBackground());
+		observer.observe(containerRef);
+		for (const button of buttonElements) {
+			if (button) observer.observe(button);
+		}
+		return () => observer.disconnect();
 	});
 
 	// Update background position and size based on selected element
@@ -85,6 +93,10 @@
 
 		const containerRect = containerRef.getBoundingClientRect();
 		const buttonRect = selectedButton.getBoundingClientRect();
+
+		// Not rendered (display: none, e.g. a closed Dialog). Keep the last good
+		// position so reopening doesn't animate the background in from zero size
+		if (buttonRect.width === 0 && buttonRect.height === 0) return;
 
 		// Absolute positioning is relative to the padding box, but getBoundingClientRect
 		// measures from the border's outer edge — subtract the border (clientLeft/clientTop)

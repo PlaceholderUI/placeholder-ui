@@ -117,7 +117,7 @@ export type { TextboxProps } from './form/Textbox.svelte';
 export { default as Slider } from './form/Slider.svelte';
 export type { SliderProps } from './form/Slider.svelte';
 export { default as Switch } from './form/Switch.svelte';
-export type { SwitchProps } from './form/Switch.svelte';
+export type { SwitchProps, SwitchLabelPosition } from './form/Switch.svelte';
 export { default as Chips } from './form/Chips.svelte';
 export type { ChipsProps } from './form/Chips.svelte';
 export { default as ColorPicker } from './form/ColorPicker.svelte';

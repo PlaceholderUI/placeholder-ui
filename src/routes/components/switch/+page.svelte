@@ -10,6 +10,11 @@
 	let disabledOnSwitch = true;
 	let errorSwitch = false;
 
+	// Label position example state
+	let positionRight = true;
+	let positionLeft = true;
+	let positionTop = true;
+
 	// Settings example state
 	let emailNotifications = true;
 	let pushNotifications = false;
@@ -77,7 +82,12 @@
 				<Switch label="Required Switch" required={true} bind:checked={requiredSwitch} />
 				<Switch label="Disabled (Off)" disabled={true} bind:checked={disabledOffSwitch} />
 				<Switch label="Disabled (On)" disabled={true} bind:checked={disabledOnSwitch} />
-				<Switch label="Switch with Error" showError={true} bind:checked={errorSwitch} />
+				<Switch
+					label="Switch with Error"
+					showError={true}
+					errorText="This setting must be enabled"
+					bind:checked={errorSwitch}
+				/>
 			</div>
 			<div class="switch-info">
 				<strong>State Values:</strong>
@@ -85,6 +95,21 @@
 				<p>Error: {errorSwitch ? 'ON' : 'OFF'}</p>
 				<p>Disabled (Off): {disabledOffSwitch ? 'ON' : 'OFF'}</p>
 				<p>Disabled (On): {disabledOnSwitch ? 'ON' : 'OFF'}</p>
+			</div>
+		</div>
+	</Paper>
+
+	<Paper title="Label Position">
+		<div class="form-grid">
+			<div class="switch-section">
+				<Switch label="Label on the right (default)" bind:checked={positionRight} />
+				<Switch label="Label on the left" labelPosition="left" bind:checked={positionLeft} />
+				<Switch label="Label on top" labelPosition="top" bind:checked={positionTop} />
+			</div>
+			<div class="switch-info">
+				<p><code>right</code> sits inline like a checkbox.</p>
+				<p><code>left</code> pushes the switch to the far end, for settings rows.</p>
+				<p><code>top</code> matches Textbox/Select labels inside forms.</p>
 			</div>
 		</div>
 	</Paper>
@@ -113,11 +138,13 @@
 			<div class="settings-group">
 				<Switch
 					label="Email Notifications"
+					labelPosition="left"
 					bind:checked={emailNotifications}
 					onchange={handleNotificationChange}
 				/>
 				<Switch
 					label="Push Notifications"
+					labelPosition="left"
 					bind:checked={pushNotifications}
 					disabled={!emailNotifications}
 				/>
@@ -125,19 +152,20 @@
 
 			<h3>Account Settings</h3>
 			<div class="settings-group">
-				<Switch label="Public Profile" bind:checked={publicProfile} />
+				<Switch label="Public Profile" labelPosition="left" bind:checked={publicProfile} />
 				<Switch
 					label="Two-Factor Authentication"
+					labelPosition="left"
 					bind:checked={twoFactorAuth}
 					onchange={handleTwoFactorChange}
 				/>
-				<Switch label="Analytics Tracking" bind:checked={analyticsTracking} />
+				<Switch label="Analytics Tracking" labelPosition="left" bind:checked={analyticsTracking} />
 			</div>
 
 			<h3>Application Settings</h3>
 			<div class="settings-group">
-				<Switch label="Auto-save" bind:checked={autoSave} />
-				<Switch label="Dark Mode" bind:checked={darkMode} />
+				<Switch label="Auto-save" labelPosition="left" bind:checked={autoSave} />
+				<Switch label="Dark Mode" labelPosition="left" bind:checked={darkMode} />
 			</div>
 
 			<div class="settings-summary">
@@ -263,7 +291,7 @@
 	.switch-section {
 		display: flex;
 		flex-direction: column;
-		gap: 1.5rem;
+		gap: 0.75rem;
 	}
 
 	.switch-info {
@@ -299,8 +327,16 @@
 	.settings-group {
 		display: flex;
 		flex-direction: column;
-		gap: 1rem;
+		max-width: 32rem;
 		margin-bottom: 1.5rem;
+	}
+
+	.settings-group > :global(.switch-container) {
+		padding: 0.625rem 0;
+	}
+
+	.settings-group > :global(.switch-container + .switch-container) {
+		border-top: 1px solid var(--border-color);
 	}
 
 	.settings-summary {
