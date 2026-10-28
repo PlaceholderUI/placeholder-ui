@@ -71,7 +71,7 @@
 		lineNumbers = true,
 		copyButton = false,
 		class: className = '',
-		height = '500px',
+		height = '31.25rem',
 		onChange,
 		onCopy
 	}: CodeMirrorProps = $props();
@@ -249,7 +249,7 @@
 		<div class="codemirror-copy" class:copied class:dark={isDark}>
 			<ActionIcon
 				svg={copied ? iconCheck : iconCopy}
-				size="16px"
+				size="1rem"
 				tooltip={copied ? 'Copied' : 'Copy to clipboard'}
 				ariaLabel={copied ? 'Copied to clipboard' : 'Copy to clipboard'}
 				onclick={copyToClipboard}
@@ -264,7 +264,7 @@
 		position: relative;
 		width: 100%;
 		border: 1px solid var(--border-color, #ddd);
-		border-radius: 6px;
+		border-radius: 0.375rem;
 		overflow: hidden;
 		background: var(--input-bg-color);
 	}
@@ -273,11 +273,11 @@
      an opaque backing so it stays readable over the code underneath. */
 	.codemirror-copy {
 		position: absolute;
-		top: 6px;
-		right: 6px;
+		top: 0.375rem;
+		right: 0.375rem;
 		z-index: 2;
 		display: inline-flex;
-		border-radius: 6px;
+		border-radius: 0.375rem;
 		opacity: 0.65;
 		transition: opacity 0.15s ease;
 	}

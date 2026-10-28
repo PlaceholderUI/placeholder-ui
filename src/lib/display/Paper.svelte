@@ -75,7 +75,7 @@
 
 	/* Stretch out the paper body so that a loader can show */
 	.paper-body:has(> .loader) {
-		min-height: 60px;
+		min-height: 3.75rem;
 	}
 
 	.paper-body-bg {

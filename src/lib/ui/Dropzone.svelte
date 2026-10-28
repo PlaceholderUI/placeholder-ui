@@ -162,7 +162,7 @@
 		{@render children()}
 	{:else}
 		<span class="dropzone-content">
-			<Icon svg={iconSvg} size="32px" class="dropzone-icon" />
+			<Icon svg={iconSvg} size="2rem" class="dropzone-icon" />
 			<span class="dropzone-label">{labelText}</span>
 			{#if sublabelText}
 				<span class="dropzone-sublabel">{sublabelText}</span>
@@ -179,7 +179,7 @@
 		text-align: center;
 		cursor: pointer;
 		transition: all 0.2s ease-in-out;
-		border-radius: 6px;
+		border-radius: 0.375rem;
 		flex-grow: 1;
 		background: var(--paper-body-bg);
 		color: var(--text-color);

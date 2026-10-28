@@ -194,10 +194,10 @@
 					if (isFolder && collapsible) e.stopPropagation();
 				}}
 			>
-				<Icon svg={iconChevronRight} size="14px" />
+				<Icon svg={iconChevronRight} size="0.875rem" />
 			</span>
 			<span class="ft-icon">
-				<Icon svg={node.icon ?? (isFolder ? iconFolder : iconFile)} size="16px" />
+				<Icon svg={node.icon ?? (isFolder ? iconFolder : iconFile)} size="1rem" />
 			</span>
 			{#if nodeContent}
 				{@render nodeContent(node)}
@@ -251,7 +251,7 @@
 		display: flex;
 		align-items: center;
 		border-left: 3px solid transparent;
-		border-radius: 0 3px 3px 0;
+		border-radius: 0 0.1875rem 0.1875rem 0;
 		transition: background-color 0.15s ease;
 	}
 
@@ -318,7 +318,7 @@
 
 	.ft-indent-line {
 		display: inline-block;
-		width: 14px;
+		width: 0.875rem;
 		height: 100%;
 		border-left: 1px solid var(--border-color);
 		margin-right: 2px;
@@ -328,10 +328,10 @@
 		display: inline-flex;
 		align-items: center;
 		justify-content: center;
-		width: 16px;
+		width: 1rem;
 		flex-shrink: 0;
 		cursor: pointer;
-		border-radius: 3px;
+		border-radius: 0.1875rem;
 		transition: transform 0.12s ease;
 	}
 

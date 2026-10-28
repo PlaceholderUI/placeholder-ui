@@ -50,7 +50,7 @@
 		text,
 		html,
 		location = 'top',
-		maxWidth = '300px',
+		maxWidth = '18.75rem',
 		offsetDistance = 4,
 		showArrow = true,
 		delay = 0,
@@ -486,7 +486,7 @@
 		background: var(--tooltip-bg);
 		color: var(--tooltip-text);
 		padding: 0.5rem 0.75rem;
-		border-radius: 6px;
+		border-radius: 0.375rem;
 		font-size: 0.875rem;
 		line-height: 1.4;
 		overflow-wrap: break-word;
@@ -521,7 +521,7 @@
 	.tooltip-v2-content :global(code) {
 		background: rgba(255, 255, 255, 0.1);
 		padding: 0.125rem 0.25rem;
-		border-radius: 3px;
+		border-radius: 0.1875rem;
 		font-size: 0.85em;
 	}
 

@@ -11,7 +11,11 @@
 		class?: string;
 	}
 
-	let { fullScreen = false, sizeOverride = '50px', class: classes = '' }: LoaderProps = $props();
+	let {
+		fullScreen = false,
+		sizeOverride = '3.125rem',
+		class: classes = ''
+	}: LoaderProps = $props();
 
 	// export let fullScreen: boolean = false;
 	// export let sizeOverride: string = '50px';

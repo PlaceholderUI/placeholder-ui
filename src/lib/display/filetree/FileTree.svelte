@@ -95,7 +95,7 @@
 		collapsible = true,
 		showTitles = false,
 		menuItems,
-		menuMinWidth = '180px',
+		menuMinWidth = '11.25rem',
 		onSelect,
 		onDoubleClick,
 		onContextMenu,
@@ -246,7 +246,7 @@
 	.pui-filetree {
 		display: flex;
 		flex-direction: column;
-		min-height: 80px;
+		min-height: 5rem;
 	}
 
 	.ft-empty {

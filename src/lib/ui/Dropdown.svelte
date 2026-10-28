@@ -81,10 +81,10 @@
 	/* Position and top-layer promotion come from use:floating */
 	.dropdown-content {
 		background-color: var(--paper-body-bg);
-		min-width: 160px;
+		min-width: 10rem;
 		box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
 		z-index: 1000;
-		border-radius: 4px;
+		border-radius: 0.25rem;
 		overflow: hidden;
 		border: 1px solid var(--border-color);
 	}
@@ -100,7 +100,7 @@
 
 	.dropdown-content :global(a) {
 		display: block;
-		padding: 8px 12px;
+		padding: 0.5rem 0.75rem;
 		text-decoration: none;
 		color: var(--ui-primary-text-color);
 		transition: background-color 0.2s ease;

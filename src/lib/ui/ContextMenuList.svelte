@@ -64,14 +64,14 @@
 					onclick={() => handleClick(item)}
 				>
 					<span class="pui-ctxmenu-ico">
-						{#if item.icon}<Icon svg={item.icon} size="16px" />{/if}
+						{#if item.icon}<Icon svg={item.icon} size="1rem" />{/if}
 					</span>
 					<span class="pui-ctxmenu-label">{item.label}</span>
 					{#if item.shortcut}
 						<span class="pui-ctxmenu-shortcut">{item.shortcut}</span>
 					{/if}
 					{#if item.children?.length}
-						<span class="pui-ctxmenu-caret"><Icon svg={iconChevronRight} size="14px" /></span>
+						<span class="pui-ctxmenu-caret"><Icon svg={iconChevronRight} size="0.875rem" /></span>
 					{/if}
 				</button>
 
@@ -92,7 +92,7 @@
 		padding: 0.25rem;
 		background: var(--paper-body-bg, #fff);
 		border: 1px solid var(--border-color);
-		border-radius: 6px;
+		border-radius: 0.375rem;
 		box-shadow: 0 8px 24px rgba(0, 0, 0, 0.18);
 		color: var(--text-color);
 		font-size: 0.875rem;
@@ -111,7 +111,7 @@
 		padding: 0.375rem 0.6rem;
 		background: none;
 		border: 0;
-		border-radius: 4px;
+		border-radius: 0.25rem;
 		color: inherit;
 		font: inherit;
 		text-align: left;
@@ -145,7 +145,7 @@
 
 	.pui-ctxmenu-ico {
 		display: inline-flex;
-		width: 16px;
+		width: 1rem;
 		flex-shrink: 0;
 	}
 

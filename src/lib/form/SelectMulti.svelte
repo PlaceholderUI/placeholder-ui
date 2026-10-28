@@ -480,7 +480,7 @@
 		position: absolute;
 		right: 0.65rem;
 		width: 1rem;
-		top: 6px;
+		top: 0.375rem;
 	}
 
 	.show-error {

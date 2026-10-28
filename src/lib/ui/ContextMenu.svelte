@@ -45,7 +45,7 @@
 		x = 0,
 		y = 0,
 		items = [],
-		minWidth = '180px',
+		minWidth = '11.25rem',
 		class: classes = '',
 		onClose
 	}: ContextMenuProps = $props();

@@ -110,7 +110,7 @@
 							{disabled}
 							onclick={() => handleChange(option)}
 							svg={iconCheck}
-							iconSize={'16px'}
+							iconSize={'1rem'}
 							variant={chipVariant}>{option.label}</Button
 						>
 					{:else}
@@ -134,7 +134,7 @@
 	.radio-options {
 		display: flex;
 		gap: 0.5rem;
-		border-radius: 6px;
+		border-radius: 0.375rem;
 	}
 
 	.radio-required {

@@ -283,7 +283,7 @@
 	}
 
 	header.site .site-logo :global(.pui-icon svg) {
-		height: 40px;
+		height: 2.5rem;
 		width: auto;
 		display: block;
 	}
@@ -306,7 +306,7 @@
 		}
 
 		header.site .site-logo :global(.pui-icon svg) {
-			height: 34px;
+			height: 2.125rem;
 		}
 
 		/* The hidden links containers still count as siblings, so re-apply the auto margin
@@ -333,7 +333,7 @@
 		gap: 1rem;
 
 		margin: 0 auto;
-		padding: 0 1em;
+		padding: 0 1rem;
 		height: 100%;
 		width: 100%;
 		color: var(--ui-primary-text-color);

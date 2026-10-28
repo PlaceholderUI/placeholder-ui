@@ -84,15 +84,15 @@
 	}
 
 	.size-sm {
-		height: 8px;
+		height: 0.5rem;
 	}
 
 	.size-md {
-		height: 20px;
+		height: 1.25rem;
 	}
 
 	.size-lg {
-		height: 28px;
+		height: 1.75rem;
 	}
 
 	.fill,

@@ -57,8 +57,8 @@
 <style>
 	.html-editor-container {
 		width: 100%;
-		height: calc(100vh - 200px);
-		max-height: 600px;
-		min-height: 300px;
+		height: calc(100vh - 12.5rem);
+		max-height: 37.5rem;
+		min-height: 18.75rem;
 	}
 </style>

@@ -7,7 +7,7 @@
 	position: relative;
 	margin: 0 0 1em 0;
 	border: 1px solid var(--border-color, #dddddd);
-	border-radius: 6px;
+	border-radius: 0.375rem;
 	background: var(--page-bg, #f7f7f8);
 }
 
@@ -27,11 +27,11 @@
 	font-family: 'Monaco', 'Courier New', monospace;
 	font-size: 0.875em;
 	line-height: 1.5;
-	border-radius: 6px;
+	border-radius: 0.375rem;
 }
 
 .code-block-editor .cm-editor .cm-content {
-	padding: 12px 14px;
+	padding: 0.75rem 0.875rem;
 	caret-color: var(--text-color, #1a1a1a);
 }
 
@@ -54,14 +54,14 @@
 /* Language picker */
 .code-block-editor .code-block-language {
 	position: absolute;
-	top: 6px;
-	right: 6px;
+	top: 0.375rem;
+	right: 0.375rem;
 	z-index: 2;
 	max-width: 40%;
-	padding: 2px 6px;
-	font-size: 12px;
+	padding: 2px 0.375rem;
+	font-size: 0.75rem;
 	border: 1px solid var(--border-color, #dddddd);
-	border-radius: 4px;
+	border-radius: 0.25rem;
 	background: var(--paper-body-bg, #ffffff);
 	color: var(--text-color, #1a1a1a);
 	opacity: 0.4;
@@ -83,7 +83,7 @@
 	border: 1px solid var(--border-color, #dddddd);
 	background: var(--paper-body-bg, #ffffff);
 	color: var(--text-color, #1a1a1a);
-	border-radius: 4px;
+	border-radius: 0.25rem;
 }
 
 .code-block-editor .cm-tooltip.cm-tooltip-autocomplete > ul > li[aria-selected] {

@@ -129,8 +129,8 @@
 	}
 
 	.pagination-container :global(.paginate-button) {
-		width: 33.6px;
-		height: 29.6px;
+		width: 2.1rem;
+		height: 1.85rem;
 		display: flex;
 		justify-content: center;
 	}

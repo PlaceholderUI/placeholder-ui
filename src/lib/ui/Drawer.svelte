@@ -48,7 +48,7 @@
 	let {
 		open = $bindable(false),
 		position = 'left',
-		width = '320px',
+		width = '20rem',
 		closeOnClickOutside = true,
 		closeOnEscape = true,
 		closeForLargeScreens = false,

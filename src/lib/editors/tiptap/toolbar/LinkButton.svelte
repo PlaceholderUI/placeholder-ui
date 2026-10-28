@@ -124,17 +124,17 @@
 		position: absolute;
 		top: 100%;
 		left: 0;
-		margin-top: 4px;
+		margin-top: 0.25rem;
 		display: flex;
 		flex-direction: column;
-		gap: 8px;
-		padding: 8px;
+		gap: 0.5rem;
+		padding: 0.5rem;
 		background: var(--paper-body-bg);
 		border: 1px solid var(--border-color);
-		border-radius: 4px;
+		border-radius: 0.25rem;
 		box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
 		z-index: 1000;
-		min-width: 320px;
+		min-width: 20rem;
 	}
 
 	:global(.dark) .link-dropdown {
@@ -143,15 +143,15 @@
 
 	.link-input-row {
 		display: flex;
-		gap: 4px;
+		gap: 0.25rem;
 	}
 
 	.link-input {
 		flex: 1;
-		padding: 6px 10px;
+		padding: 0.375rem 0.625rem;
 		border: 1px solid var(--border-color);
-		border-radius: 4px;
-		font-size: 14px;
+		border-radius: 0.25rem;
+		font-size: 0.875rem;
 		outline: none;
 		font-family: inherit;
 		background: var(--paper-body-bg);
@@ -175,16 +175,16 @@
 	.link-checkbox-label {
 		display: flex;
 		align-items: center;
-		gap: 6px;
-		font-size: 14px;
+		gap: 0.375rem;
+		font-size: 0.875rem;
 		color: var(--text-color);
 		cursor: pointer;
 		user-select: none;
 	}
 
 	.link-checkbox {
-		width: 16px;
-		height: 16px;
+		width: 1rem;
+		height: 1rem;
 		cursor: pointer;
 		accent-color: var(--ui-primary);
 	}
@@ -205,13 +205,13 @@
 		display: flex;
 		align-items: center;
 		justify-content: center;
-		padding: 6px 12px;
+		padding: 0.375rem 0.75rem;
 		border: none;
 		background: var(--ui-primary);
 		color: var(--ui-primary-contrast-color);
-		border-radius: 4px;
+		border-radius: 0.25rem;
 		cursor: pointer;
-		font-size: 16px;
+		font-size: 1rem;
 		font-weight: bold;
 		transition: background 0.15s ease;
 	}
@@ -233,13 +233,13 @@
 		display: flex;
 		align-items: center;
 		justify-content: center;
-		padding: 6px 12px;
+		padding: 0.375rem 0.75rem;
 		border: none;
 		background: var(--ui-tertiary);
 		color: var(--ui-tertiary-contrast-color);
-		border-radius: 4px;
+		border-radius: 0.25rem;
 		cursor: pointer;
-		font-size: 16px;
+		font-size: 1rem;
 		font-weight: bold;
 		transition: background 0.15s ease;
 	}

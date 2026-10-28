@@ -473,7 +473,7 @@
 
 	.cron-settings {
 		display: grid;
-		grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+		grid-template-columns: repeat(auto-fit, minmax(12.5rem, 1fr));
 		gap: 1rem;
 	}
 
@@ -524,7 +524,7 @@
 
 	.custom-inputs {
 		display: grid;
-		grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
+		grid-template-columns: repeat(auto-fit, minmax(8.125rem, 1fr));
 		gap: 1rem;
 		grid-column: 1 / -1;
 	}

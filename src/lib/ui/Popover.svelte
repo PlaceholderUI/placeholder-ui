@@ -154,10 +154,10 @@
 		display: block;
 		background-color: var(--paper-body-bg);
 		border: 1px solid var(--border-color);
-		min-width: 160px;
+		min-width: 10rem;
 		box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
 		z-index: 1000;
-		border-radius: 4px;
+		border-radius: 0.25rem;
 	}
 
 	/* Arrow indicators for each resolved placement */

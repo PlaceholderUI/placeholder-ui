@@ -45,7 +45,7 @@
 			onclick={link.onclick}
 		>
 			{#if link.svg}
-				<Icon svg={link.svg} size="18px" />
+				<Icon svg={link.svg} size="1.125rem" />
 			{/if}
 			{link.text}
 		</Link>
@@ -59,14 +59,14 @@
 		>
 			<div class="link-inner left">
 				{#if item.leftSvg}
-					<Icon svg={item.leftSvg} size="18px" />
+					<Icon svg={item.leftSvg} size="1.125rem" />
 				{/if}
 				<div>{@html item.leftContent}</div>
 			</div>
 			<div class="link-inner right">
 				<div>{@html item.rightContent}</div>
 				{#if item.rightSvg}
-					<Icon svg={item.rightSvg} size="18px" />
+					<Icon svg={item.rightSvg} size="1.125rem" />
 				{/if}
 			</div>
 		</Link>
@@ -82,7 +82,7 @@
 						onclick={button.onclick}
 					>
 						{#if button.svg}
-							<Icon svg={button.svg} size="18px" />
+							<Icon svg={button.svg} size="1.125rem" />
 						{/if}
 						{button.text}
 					</Link>
@@ -97,7 +97,7 @@
 		display: flex;
 		flex-direction: column;
 		border: 1px solid var(--border-color);
-		border-radius: 6px;
+		border-radius: 0.375rem;
 	}
 
 	.link-collection.not-rounded {

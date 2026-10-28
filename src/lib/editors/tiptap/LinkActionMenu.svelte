@@ -142,10 +142,10 @@
 				type="text"
 			/>
 			<button class="link-icon-button primary" onclick={applyLink} title="Apply" type="button">
-				<Icon svg={iconCheck} size="16px" />
+				<Icon svg={iconCheck} size="1rem" />
 			</button>
 			<button class="link-icon-button" onclick={cancelEditing} title="Cancel" type="button">
-				<Icon svg={iconX} size="16px" />
+				<Icon svg={iconX} size="1rem" />
 			</button>
 		</div>
 		<label class="link-checkbox-label">
@@ -157,11 +157,11 @@
 			{href}
 		</button>
 		<button class="link-icon-button primary" onclick={openLink} title="Open link" type="button">
-			<Icon svg={iconExternalLink} size="16px" />
+			<Icon svg={iconExternalLink} size="1rem" />
 		</button>
 		{#if editable}
 			<button class="link-icon-button" onclick={startEditing} title="Edit link" type="button">
-				<Icon svg={iconEdit} size="16px" />
+				<Icon svg={iconEdit} size="1rem" />
 			</button>
 			<button
 				class="link-icon-button danger"
@@ -169,7 +169,7 @@
 				title="Remove link"
 				type="button"
 			>
-				<Icon svg={iconTrash} size="16px" />
+				<Icon svg={iconTrash} size="1rem" />
 			</button>
 		{/if}
 	{/if}
@@ -179,11 +179,11 @@
 	.link-action-menu {
 		display: flex;
 		align-items: center;
-		gap: 6px;
-		max-width: min(560px, calc(100vw - 32px));
-		padding: 6px;
+		gap: 0.375rem;
+		max-width: min(35rem, calc(100vw - 2rem));
+		padding: 0.375rem;
 		border: 1px solid var(--border-color);
-		border-radius: 6px;
+		border-radius: 0.375rem;
 		background: var(--paper-title-bg);
 		box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
 		color: var(--text-color);
@@ -196,16 +196,16 @@
 
 	.link-url {
 		min-width: 0;
-		max-width: 320px;
-		padding: 5px 8px;
+		max-width: 20rem;
+		padding: 0.3125rem 0.5rem;
 		overflow: hidden;
 		border: 1px solid var(--border-color);
-		border-radius: 4px;
+		border-radius: 0.25rem;
 		background: var(--paper-body-bg);
 		color: var(--ui-link-color);
 		cursor: pointer;
 		font: inherit;
-		font-size: 13px;
+		font-size: 0.8125rem;
 		text-overflow: ellipsis;
 		white-space: nowrap;
 	}
@@ -217,20 +217,20 @@
 	.link-edit-row {
 		display: flex;
 		align-items: center;
-		gap: 4px;
-		min-width: min(360px, calc(100vw - 80px));
+		gap: 0.25rem;
+		min-width: min(22.5rem, calc(100vw - 5rem));
 	}
 
 	.link-input {
 		flex: 1;
 		min-width: 0;
-		padding: 6px 10px;
+		padding: 0.375rem 0.625rem;
 		border: 1px solid var(--border-color);
-		border-radius: 4px;
+		border-radius: 0.25rem;
 		background: var(--paper-body-bg);
 		color: var(--text-color);
 		font: inherit;
-		font-size: 14px;
+		font-size: 0.875rem;
 		outline: none;
 	}
 
@@ -248,11 +248,11 @@
 		display: inline-flex;
 		align-items: center;
 		justify-content: center;
-		width: 28px;
-		height: 28px;
+		width: 1.75rem;
+		height: 1.75rem;
 		padding: 0;
 		border: none;
-		border-radius: 4px;
+		border-radius: 0.25rem;
 		background: transparent;
 		color: var(--text-color);
 		cursor: pointer;
@@ -299,14 +299,14 @@
 	.link-checkbox-label {
 		display: flex;
 		align-items: center;
-		gap: 6px;
-		font-size: 13px;
+		gap: 0.375rem;
+		font-size: 0.8125rem;
 		white-space: nowrap;
 	}
 
 	.link-checkbox {
-		width: 16px;
-		height: 16px;
+		width: 1rem;
+		height: 1rem;
 		cursor: pointer;
 		accent-color: var(--ui-primary);
 	}

@@ -405,10 +405,10 @@
 			<thead>
 				<tr>
 					{#if expandable}
-						<th class="table-header expand-cell" style="width: 40px"></th>
+						<th class="table-header expand-cell" style="width: 2.5rem"></th>
 					{/if}
 					{#if selectable && rowKey}
-						<th class="table-header checkbox-cell" style="width: 40px">
+						<th class="table-header checkbox-cell" style="width: 2.5rem">
 							<Checkbox
 								controlled
 								checked={isAllSelected}
@@ -428,7 +428,7 @@
 								<span>{column.label}</span>
 								{#if column.sortable}
 									<div class="sort-icon">
-										<Icon svg={getSortIcon(column)} size="14px" />
+										<Icon svg={getSortIcon(column)} size="0.875rem" />
 									</div>
 								{/if}
 							</div>
@@ -489,7 +489,7 @@
 											aria-label={expanded ? 'Collapse row' : 'Expand row'}
 											onclick={() => toggleExpand(row, index)}
 										>
-											<Icon svg={iconChevronRight} size="16px" />
+											<Icon svg={iconChevronRight} size="1rem" />
 										</button>
 									{/if}
 								</td>
@@ -565,7 +565,7 @@
 
 	.table-search {
 		margin-bottom: 1rem;
-		max-width: 400px;
+		max-width: 25rem;
 	}
 
 	.table-wrapper {
@@ -647,7 +647,7 @@
 	}
 
 	.checkbox-cell {
-		width: 40px;
+		width: 2.5rem;
 		text-align: center;
 		padding: 0.25rem;
 	}
@@ -662,7 +662,7 @@
 	}
 
 	.expand-cell {
-		width: 40px;
+		width: 2.5rem;
 		text-align: center;
 		padding: 0.25rem;
 	}
@@ -671,8 +671,8 @@
 		display: inline-flex;
 		align-items: center;
 		justify-content: center;
-		width: 24px;
-		height: 24px;
+		width: 1.5rem;
+		height: 1.5rem;
 		padding: 0;
 		border: none;
 		background: transparent;
@@ -783,8 +783,8 @@
 	}
 
 	:global(.pui-table .sort-icon svg) {
-		width: 14px;
-		height: 14px;
+		width: 0.875rem;
+		height: 0.875rem;
 	}
 
 	@media (max-width: 640px) {

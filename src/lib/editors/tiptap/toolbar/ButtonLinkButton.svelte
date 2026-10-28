@@ -230,16 +230,16 @@
 		position: absolute;
 		top: 100%;
 		left: 0;
-		margin-top: 4px;
+		margin-top: 0.25rem;
 		display: flex;
 		flex-direction: column;
 		background: var(--paper-body-bg);
 		border: 1px solid var(--border-color);
-		border-radius: 6px;
+		border-radius: 0.375rem;
 		box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
 		z-index: 1000;
-		width: 360px;
-		max-width: calc(100vw - 32px);
+		width: 22.5rem;
+		max-width: calc(100vw - 2rem);
 	}
 
 	:global(.dark) .button-dialog {
@@ -247,44 +247,44 @@
 	}
 
 	.dialog-header {
-		padding: 12px 16px;
+		padding: 0.75rem 1rem;
 		border-bottom: 1px solid var(--border-color);
 	}
 
 	.dialog-header h4 {
 		margin: 0;
-		font-size: 14px;
+		font-size: 0.875rem;
 		font-weight: 600;
 		color: var(--text-color);
 	}
 
 	.dialog-body {
-		padding: 16px;
+		padding: 1rem;
 		display: flex;
 		flex-direction: column;
-		gap: 14px;
+		gap: 0.875rem;
 	}
 
 	.form-group {
 		display: flex;
 		flex-direction: column;
-		gap: 8px;
+		gap: 0.5rem;
 	}
 
 	.form-group label,
 	.group-label {
-		font-size: 12px;
+		font-size: 0.75rem;
 		font-weight: 600;
 		color: var(--text-color);
 	}
 
 	.form-input {
-		padding: 8px 12px;
+		padding: 0.5rem 0.75rem;
 		border: 1px solid var(--border-color);
-		border-radius: 4px;
+		border-radius: 0.25rem;
 		background: var(--input-bg);
 		color: var(--text-color);
-		font-size: 13px;
+		font-size: 0.8125rem;
 		font-family: inherit;
 	}
 
@@ -304,7 +304,7 @@
 	.option-row {
 		display: flex;
 		flex-wrap: wrap;
-		gap: 8px;
+		gap: 0.5rem;
 	}
 
 	/* The style choices are drawn with the real button classes from app.css; the
@@ -324,12 +324,12 @@
 	}
 
 	.size-button {
-		padding: 6px 12px;
+		padding: 0.375rem 0.75rem;
 		border: 1px solid var(--border-color);
-		border-radius: 4px;
+		border-radius: 0.25rem;
 		background: var(--paper-body-bg);
 		color: var(--text-color);
-		font-size: 13px;
+		font-size: 0.8125rem;
 		font-family: inherit;
 		cursor: pointer;
 		transition: all 0.15s ease;
@@ -352,16 +352,16 @@
 	.checkbox-label {
 		display: flex;
 		align-items: center;
-		gap: 6px;
-		font-size: 13px;
+		gap: 0.375rem;
+		font-size: 0.8125rem;
 		color: var(--text-color);
 		cursor: pointer;
 		user-select: none;
 	}
 
 	.checkbox {
-		width: 16px;
-		height: 16px;
+		width: 1rem;
+		height: 1rem;
 		cursor: pointer;
 		accent-color: var(--ui-primary);
 	}
@@ -371,10 +371,10 @@
 	}
 
 	.dialog-footer {
-		padding: 12px 16px;
+		padding: 0.75rem 1rem;
 		border-top: 1px solid var(--border-color);
 		display: flex;
-		gap: 8px;
+		gap: 0.5rem;
 		align-items: center;
 	}
 
@@ -383,10 +383,10 @@
 	}
 
 	.btn {
-		padding: 6px 16px;
+		padding: 0.375rem 1rem;
 		border: none;
-		border-radius: 4px;
-		font-size: 13px;
+		border-radius: 0.25rem;
+		font-size: 0.8125rem;
 		font-weight: 500;
 		font-family: inherit;
 		cursor: pointer;

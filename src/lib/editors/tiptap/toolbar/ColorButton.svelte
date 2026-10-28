@@ -204,27 +204,27 @@
 		position: absolute;
 		top: 100%;
 		left: 0;
-		margin-top: 4px;
+		margin-top: 0.25rem;
 		display: flex;
 		flex-direction: column;
-		gap: 8px;
-		padding: 12px;
+		gap: 0.5rem;
+		padding: 0.75rem;
 		background: var(--paper-body-bg);
 		border: 1px solid var(--border-color);
-		border-radius: 4px;
+		border-radius: 0.25rem;
 		box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
 		z-index: 1000;
-		min-width: 240px;
+		min-width: 15rem;
 	}
 
 	.color-section-title {
-		font-size: 11px;
+		font-size: 0.6875rem;
 		font-weight: 600;
 		color: var(--text-muted);
 		text-transform: uppercase;
 		letter-spacing: 0.05em;
-		margin-top: 4px;
-		margin-bottom: 4px;
+		margin-top: 0.25rem;
+		margin-bottom: 0.25rem;
 	}
 
 	.color-section-title:first-child {
@@ -238,14 +238,14 @@
 	.color-preset-grid {
 		display: grid;
 		grid-template-columns: repeat(5, 1fr);
-		gap: 8px;
+		gap: 0.5rem;
 	}
 
 	.color-preset {
-		width: 32px;
-		height: 32px;
+		width: 2rem;
+		height: 2rem;
 		border: 2px solid var(--border-color);
-		border-radius: 4px;
+		border-radius: 0.25rem;
 		cursor: pointer;
 		transition: all 0.15s ease;
 		padding: 0;
@@ -262,17 +262,17 @@
 
 	.color-input-row {
 		display: flex;
-		gap: 8px;
+		gap: 0.5rem;
 		align-items: center;
-		padding-top: 8px;
+		padding-top: 0.5rem;
 		border-top: 1px solid var(--border-color);
 	}
 
 	.color-input {
 		flex: 1;
-		height: 36px;
+		height: 2.25rem;
 		border: 1px solid var(--border-color);
-		border-radius: 4px;
+		border-radius: 0.25rem;
 		cursor: pointer;
 		padding: 2px;
 		background: var(--paper-body-bg);
@@ -288,13 +288,13 @@
 	}
 
 	.color-remove-button {
-		padding: 6px 12px;
+		padding: 0.375rem 0.75rem;
 		border: none;
 		background: var(--ui-tertiary);
 		color: var(--ui-tertiary-contrast-color);
-		border-radius: 4px;
+		border-radius: 0.25rem;
 		cursor: pointer;
-		font-size: 13px;
+		font-size: 0.8125rem;
 		font-weight: 500;
 		transition: background 0.15s ease;
 		white-space: nowrap;

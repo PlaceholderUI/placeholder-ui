@@ -37,7 +37,7 @@
 		loading = false,
 		disabled = false,
 		inputButton = false,
-		size = '20px',
+		size = '1.25rem',
 		svg,
 		target = undefined,
 		class: buttonClass = '',

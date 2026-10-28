@@ -29,13 +29,13 @@
 		display: flex;
 		align-items: center;
 		justify-content: center;
-		width: 32px;
-		height: 28px;
+		width: 2rem;
+		height: 1.75rem;
 		padding: 0;
 		border: none;
 		background: transparent;
 		color: var(--text-color);
-		border-radius: 4px;
+		border-radius: 0.25rem;
 		cursor: pointer;
 		transition: all 0.15s ease;
 	}
@@ -73,6 +73,6 @@
 	}
 
 	.toolbar-button :global(.pui-icon) {
-		height: 19px;
+		height: 1.1875rem;
 	}
 </style>

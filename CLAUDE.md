@@ -60,7 +60,8 @@ If adding a variant to an existing component (e.g., TipTapBubble alongside TipTa
 - All brand colours resolve to semantic `--ui-*` custom properties defined in `src/lib/app.css`:
   `--ui-primary` (dark), `--ui-accent` (light), `--ui-tertiary` (light support), each with
   `-rgb`, `-rgbc`, `-hover-color`, `-pressed-color`, `-text-color` and `-contrast-color`,
-  plus `--ui-font-family`, `--ui-focus-color`, `--ui-link-color`, `--ui-link-hover-color`.
+  plus `--ui-font-family`, `--ui-font-size` (root/`html` font size, i.e. `1rem`; `0.875rem` = 14px default),
+  `--ui-focus-color`, `--ui-link-color`, `--ui-link-hover-color`.
   Hover colors are separate from readable text/borders, pressed states and keyboard focus.
   Each color's `-text-color` styles text and outline borders on page/paper surfaces;
   its `-contrast-color` styles text and icons on its solid fills.
@@ -78,6 +79,12 @@ If adding a variant to an existing component (e.g., TipTapBubble alongside TipTa
 ### Styling
 
 - Component-scoped `<style>` blocks
+- Size everything in `rem` (or `em` where it should follow local text size), not `px`, so the UI
+  scales with `--ui-font-size`. Sizes are designed on a 16px base, so convert as `px / 16`
+  (12px → `0.75rem`). Keep `px` for hairline borders/outlines (≤ 2px), box-shadows, media queries,
+  pill radii (`999px`) and values computed in JS (floating offsets, tooltip/popover arrows)
+- Text fields are raised to 16px on iOS only (`@supports (-webkit-touch-callout: none)` in
+  `app.css`) to stop focus zoom. Don't add `maximum-scale=1` to the viewport instead
 - Dark mode via `:global(.dark)` parent selector pattern
 - Global styles and design tokens in `src/lib/app.css`
 

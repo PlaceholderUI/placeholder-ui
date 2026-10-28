@@ -62,7 +62,7 @@
 	{/if}
 	{#if onDelete}
 		<button type="button" class="badge-button {variant}" disabled={isDisabled} onclick={onDelete}>
-			<Icon size={size === 'sm' ? '12px' : size === 'lg' ? '16px' : '14px'} svg={iconX} />
+			<Icon size={size === 'sm' ? '0.75rem' : size === 'lg' ? '1rem' : '0.875rem'} svg={iconX} />
 		</button>
 	{/if}
 </div>
@@ -70,7 +70,7 @@
 <style>
 	.badge-container {
 		display: flex;
-		border-radius: 6px;
+		border-radius: 0.375rem;
 		border: var(--badge-border, 0);
 	}
 
@@ -83,7 +83,7 @@
 		align-items: center;
 		text-decoration: none;
 		padding: 0.25rem;
-		border-radius: 6px;
+		border-radius: 0.375rem;
 	}
 
 	button.badge,
@@ -92,13 +92,13 @@
 	}
 
 	.badge-with-button .badge {
-		padding-right: 6px;
+		padding-right: 0.375rem;
 		border-top-right-radius: 0;
 		border-bottom-right-radius: 0;
 	}
 
 	.badge-button {
-		border-radius: 6px;
+		border-radius: 0.375rem;
 		border-top-left-radius: 0;
 		border-bottom-left-radius: 0;
 		border-left: 1px solid var(--badge-border-color, black);
@@ -107,7 +107,7 @@
 		justify-content: center;
 		cursor: pointer;
 		border-right: var(--badge-border, 0);
-		padding: 4px;
+		padding: 0.25rem;
 	}
 
 	button {
@@ -355,6 +355,6 @@
 	}
 
 	.size-lg .badge-button {
-		padding: 6px;
+		padding: 0.375rem;
 	}
 </style>

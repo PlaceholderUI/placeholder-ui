@@ -688,12 +688,12 @@
 			linear-gradient(-45deg, #ccc 25%, transparent 25%),
 			linear-gradient(45deg, transparent 75%, #ccc 75%),
 			linear-gradient(-45deg, transparent 75%, #ccc 75%);
-		background-size: 8px 8px;
+		background-size: 0.5rem 0.5rem;
 		background-position:
 			0 0,
-			0 4px,
-			4px -4px,
-			-4px 0;
+			0 0.25rem,
+			0.25rem -0.25rem,
+			-0.25rem 0;
 	}
 
 	.swatch-button .checker {
@@ -854,7 +854,7 @@
 
 	.slider.alpha {
 		overflow: visible;
-		background-size: 8px 8px;
+		background-size: 0.5rem 0.5rem;
 	}
 
 	.alpha-track {

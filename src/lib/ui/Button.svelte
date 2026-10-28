@@ -53,7 +53,7 @@
 		effectsDisabled = false,
 		svg = undefined,
 		rightSvg = undefined,
-		iconSize = '18px',
+		iconSize = '1.125rem',
 		target = undefined,
 		rel = undefined,
 		download = undefined,
@@ -113,7 +113,7 @@
 <style>
 	.pui-button {
 		padding: 0.5rem 1rem;
-		border-radius: 6px;
+		border-radius: 0.375rem;
 		cursor: pointer;
 		transition: all 0.2s ease-in-out;
 	}

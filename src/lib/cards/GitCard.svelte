@@ -59,13 +59,13 @@
 		display: flex;
 		border-top-left-radius: 3rem;
 		overflow: hidden;
-		width: 375px;
+		width: 23.4375rem;
 	}
 
 	.git-image {
-		width: 96px;
-		flex: 0 0 96px;
-		height: 96px;
+		width: 6rem;
+		flex: 0 0 6rem;
+		height: 6rem;
 	}
 
 	.git-info {

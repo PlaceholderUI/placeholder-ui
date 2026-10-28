@@ -525,7 +525,7 @@
 	.editor-container {
 		position: relative;
 		border: 1px solid var(--border-color);
-		border-radius: 6px;
+		border-radius: 0.375rem;
 		background: var(--paper-body-bg);
 		font-family: var(--ui-font-family);
 		transition: border-color 0.2s ease;
@@ -539,11 +539,11 @@
 	.toolbar {
 		display: flex;
 		align-items: center;
-		gap: 4px;
-		padding: 6px;
+		gap: 0.25rem;
+		padding: 0.375rem;
 		border-bottom: 1px solid var(--border-color);
 		background: var(--paper-title-bg);
-		border-radius: 6px 6px 0 0;
+		border-radius: 0.375rem 0.375rem 0 0;
 		flex-wrap: wrap;
 	}
 
@@ -555,9 +555,9 @@
 
 	.toolbar-divider {
 		width: 1px;
-		height: 24px;
+		height: 1.5rem;
 		background: var(--border-color);
-		margin: 0 4px;
+		margin: 0 0.25rem;
 	}
 
 	.link-bubble-menu {
@@ -565,8 +565,8 @@
 	}
 
 	.editor-content {
-		padding: 16px;
-		min-height: 200px;
+		padding: 1rem;
+		min-height: 12.5rem;
 		color: var(--text-color);
 	}
 
@@ -605,8 +605,8 @@
 
 	.editor-content :global(.ProseMirror code) {
 		background: var(--page-bg);
-		padding: 2px 6px;
-		border-radius: 3px;
+		padding: 2px 0.375rem;
+		border-radius: 0.1875rem;
 		font-family: 'Monaco', 'Courier New', monospace;
 		font-size: 0.9em;
 		color: var(--ui-accent-text-color);
@@ -680,7 +680,7 @@
 	.editor-content :global(.ProseMirror td) {
 		position: relative;
 		border: 1px solid var(--border-color);
-		padding: 6px 10px;
+		padding: 0.375rem 0.625rem;
 		vertical-align: top;
 		min-width: 1em;
 		box-sizing: border-box;
@@ -714,7 +714,7 @@
 		top: 0;
 		bottom: -2px;
 		right: -2px;
-		width: 4px;
+		width: 0.25rem;
 		background: var(--ui-tertiary);
 		pointer-events: none;
 		z-index: 20;
@@ -862,11 +862,11 @@
 		position: absolute;
 		top: -1.4em;
 		left: -1px;
-		font-size: 12px;
+		font-size: 0.75rem;
 		font-weight: 600;
 		line-height: normal;
 		padding: 0.1rem 0.3rem;
-		border-radius: 3px 3px 3px 0;
+		border-radius: 0.1875rem 0.1875rem 0.1875rem 0;
 		color: #fff;
 		white-space: nowrap;
 		user-select: none;

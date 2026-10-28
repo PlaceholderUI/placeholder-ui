@@ -118,16 +118,16 @@
 		position: absolute;
 		top: 100%;
 		right: 0;
-		margin-top: 4px;
+		margin-top: 0.25rem;
 		display: flex;
 		flex-direction: column;
 		background: var(--paper-body-bg);
 		border: 1px solid var(--border-color);
-		border-radius: 6px;
+		border-radius: 0.375rem;
 		box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
 		z-index: 1000;
-		min-width: 300px;
-		max-width: 350px;
+		min-width: 18.75rem;
+		max-width: 21.875rem;
 	}
 
 	:global(.dark) .alert-dialog {
@@ -135,43 +135,43 @@
 	}
 
 	.dialog-header {
-		padding: 12px 16px;
+		padding: 0.75rem 1rem;
 		border-bottom: 1px solid var(--border-color);
 	}
 
 	.dialog-header h4 {
 		margin: 0;
-		font-size: 14px;
+		font-size: 0.875rem;
 		font-weight: 600;
 		color: var(--text-color);
 	}
 
 	.dialog-body {
-		padding: 16px;
+		padding: 1rem;
 		display: flex;
 		flex-direction: column;
-		gap: 16px;
+		gap: 1rem;
 	}
 
 	.form-group {
 		display: flex;
 		flex-direction: column;
-		gap: 8px;
+		gap: 0.5rem;
 	}
 
 	.form-group label {
-		font-size: 12px;
+		font-size: 0.75rem;
 		font-weight: 600;
 		color: var(--text-color);
 	}
 
 	.form-input {
-		padding: 8px 12px;
+		padding: 0.5rem 0.75rem;
 		border: 1px solid var(--border-color);
-		border-radius: 4px;
+		border-radius: 0.25rem;
 		background: var(--input-bg);
 		color: var(--text-color);
-		font-size: 13px;
+		font-size: 0.8125rem;
 		font-family: inherit;
 	}
 
@@ -187,17 +187,17 @@
 	.variant-grid {
 		display: flex;
 		flex-direction: column;
-		gap: 8px;
+		gap: 0.5rem;
 	}
 
 	.variant-button {
 		width: 100%;
-		padding: 10px 12px;
+		padding: 0.625rem 0.75rem;
 		border: 1px solid var(--border-color);
-		border-radius: 4px;
+		border-radius: 0.25rem;
 		background: var(--paper-body-bg);
 		color: var(--text-color);
-		font-size: 13px;
+		font-size: 0.8125rem;
 		font-weight: 500;
 		cursor: pointer;
 		transition: all 0.15s ease;
@@ -219,18 +219,18 @@
 	}
 
 	.dialog-footer {
-		padding: 12px 16px;
+		padding: 0.75rem 1rem;
 		border-top: 1px solid var(--border-color);
 		display: flex;
-		gap: 8px;
+		gap: 0.5rem;
 		justify-content: flex-end;
 	}
 
 	.btn {
-		padding: 6px 16px;
+		padding: 0.375rem 1rem;
 		border: none;
-		border-radius: 4px;
-		font-size: 13px;
+		border-radius: 0.25rem;
+		font-size: 0.8125rem;
 		font-weight: 500;
 		cursor: pointer;
 		transition: all 0.15s ease;

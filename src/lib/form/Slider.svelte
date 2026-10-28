@@ -166,15 +166,15 @@
 		display: flex;
 		align-items: center;
 		gap: 0.75rem;
-		padding: 4px 0 4px 0;
+		padding: 0.25rem 0 0.25rem 0;
 	}
 
 	.slider {
 		-webkit-appearance: none;
 		appearance: none;
 		width: 100%;
-		height: 6px;
-		border-radius: 3px;
+		height: 0.375rem;
+		border-radius: 0.1875rem;
 		background: linear-gradient(
 			to right,
 			var(--accent-color) 0%,
@@ -189,8 +189,8 @@
 	.slider::-webkit-slider-thumb {
 		-webkit-appearance: none;
 		appearance: none;
-		width: 16px;
-		height: 16px;
+		width: 1rem;
+		height: 1rem;
 		border-radius: 50%;
 		background: var(--accent-color);
 		cursor: pointer;
@@ -202,8 +202,8 @@
 	}
 
 	.slider::-moz-range-thumb {
-		width: 16px;
-		height: 16px;
+		width: 1rem;
+		height: 1rem;
 		border-radius: 50%;
 		background: var(--accent-color);
 		cursor: pointer;

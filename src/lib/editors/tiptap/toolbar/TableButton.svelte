@@ -161,17 +161,17 @@
 		position: absolute;
 		top: 100%;
 		left: 0;
-		margin-top: 4px;
+		margin-top: 0.25rem;
 		display: flex;
 		flex-direction: column;
 		gap: 2px;
-		padding: 8px;
+		padding: 0.5rem;
 		background: var(--paper-body-bg);
 		border: 1px solid var(--border-color);
-		border-radius: 6px;
+		border-radius: 0.375rem;
 		box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
 		z-index: 1000;
-		min-width: 180px;
+		min-width: 11.25rem;
 	}
 
 	:global(.dark) .table-menu {
@@ -179,22 +179,22 @@
 	}
 
 	.menu-title {
-		font-size: 11px;
+		font-size: 0.6875rem;
 		font-weight: 600;
 		color: var(--text-muted);
 		text-transform: uppercase;
 		letter-spacing: 0.05em;
-		padding: 2px 8px 6px 8px;
+		padding: 2px 0.5rem 0.375rem 0.5rem;
 	}
 
 	.menu-item {
-		padding: 6px 8px;
+		padding: 0.375rem 0.5rem;
 		border: none;
 		background: transparent;
 		color: var(--text-color);
-		font-size: 13px;
+		font-size: 0.8125rem;
 		text-align: left;
-		border-radius: 4px;
+		border-radius: 0.25rem;
 		cursor: pointer;
 		transition: background 0.15s ease;
 		white-space: nowrap;
@@ -224,23 +224,23 @@
 	.menu-divider {
 		height: 1px;
 		background: var(--border-color);
-		margin: 4px 0;
+		margin: 0.25rem 0;
 	}
 
 	.size-grid {
 		display: grid;
-		grid-template-columns: repeat(6, 20px);
-		gap: 3px;
-		padding: 0 8px;
+		grid-template-columns: repeat(6, 1.25rem);
+		gap: 0.1875rem;
+		padding: 0 0.5rem;
 		justify-content: center;
 	}
 
 	.size-cell {
-		width: 20px;
-		height: 20px;
+		width: 1.25rem;
+		height: 1.25rem;
 		padding: 0;
 		border: 1px solid var(--border-color);
-		border-radius: 3px;
+		border-radius: 0.1875rem;
 		background: var(--paper-body-bg);
 		cursor: pointer;
 		transition: all 0.1s ease;
@@ -258,8 +258,8 @@
 
 	.size-label {
 		text-align: center;
-		font-size: 12px;
+		font-size: 0.75rem;
 		color: var(--text-muted);
-		padding: 6px 0 2px 0;
+		padding: 0.375rem 0 2px 0;
 	}
 </style>

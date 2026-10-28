@@ -96,7 +96,7 @@
 	.radio-options {
 		display: flex;
 		gap: 0.5rem;
-		border-radius: 6px;
+		border-radius: 0.375rem;
 	}
 
 	.radio-vertical.radio-options {

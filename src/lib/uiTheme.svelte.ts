@@ -78,6 +78,12 @@ export interface ThemeModeConfig {
 	 * Loading the font itself (`@font-face` or a `<link>`) is up to the consuming app.
 	 */
 	fontFamily?: string;
+	/**
+	 * Root (`html`) font size, e.g. `'0.9375rem'`. Defaults to `0.875rem` (14px). This is the
+	 * value of `1rem`, and every component is sized in `rem`/`em`, so the whole UI scales in
+	 * proportion. Use `rem` so the browser's text-size setting is still respected.
+	 */
+	fontSize?: string;
 	/** Raw SVG markup for the `Logo` component. Use `fill="currentColor"` so it follows the theme. */
 	logo?: string;
 	/**
@@ -233,6 +239,7 @@ export function themeToVariables(config: ThemeModeConfig): Record<string, string
 	}
 
 	if (config.fontFamily) vars['--ui-font-family'] = config.fontFamily;
+	if (config.fontSize) vars['--ui-font-size'] = config.fontSize;
 	if (config.variables) Object.assign(vars, config.variables);
 
 	return vars;

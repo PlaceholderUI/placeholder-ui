@@ -76,7 +76,7 @@
 		-webkit-appearance: none;
 		-moz-appearance: none;
 		appearance: none;
-		margin: 8px;
+		margin: 0.5rem;
 		box-sizing: content-box;
 		overflow: hidden;
 		cursor: pointer;
@@ -86,8 +86,8 @@
 		content: '';
 		display: block;
 		box-sizing: content-box;
-		width: 16px;
-		height: 16px;
+		width: 1rem;
+		height: 1rem;
 		border: 2px solid #ccc;
 		transition: 0.2s border-color ease;
 	}
@@ -121,8 +121,8 @@
 		left: 50%;
 		transform-origin: 50% 50%;
 		background-color: var(--ui-primary);
-		width: 16px;
-		height: 16px;
+		width: 1rem;
+		height: 1rem;
 		border-radius: 100vh;
 		transform: translate(-50%, -50%) scale(0);
 	}
@@ -136,8 +136,8 @@
 		border-radius: 100vh;
 	}
 	input[type='radio']:after {
-		width: 16px;
-		height: 16px;
+		width: 1rem;
+		height: 1rem;
 		border-radius: 100vh;
 		transform: translate(-50%, -50%) scale(0);
 	}
