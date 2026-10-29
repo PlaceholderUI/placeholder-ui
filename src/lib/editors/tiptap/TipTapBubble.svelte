@@ -1,6 +1,7 @@
 <script lang="ts">
 	import { onMount, onDestroy } from 'svelte';
-	import { Editor, Extension, type AnyExtension } from '@tiptap/core';
+	import { useDialogEvents } from '#lib/ui/DialogEvents.svelte.js';
+	import { Editor, Extension, type AnyExtension, type FocusPosition } from '@tiptap/core';
 	import { StarterKit } from '@tiptap/starter-kit';
 	import { BubbleMenu } from '@tiptap/extension-bubble-menu';
 	import Underline from '@tiptap/extension-underline';
@@ -56,6 +57,11 @@
 		editable?: boolean;
 		/** Placeholder text when editor is empty */
 		placeholder?: string;
+		/** Auto-focus the editor on mount. `true` places the cursor at the start; pass
+		 * 'end', 'all' or a document position to choose where. Ignored when not editable. */
+		autofocus?: FocusPosition;
+		/** Auto-focus the editor every time the parent Dialog opens */
+		autofocusDialog?: boolean;
 		/** Additional CSS classes */
 		class?: string;
 		/** Async handler for image uploads, returns URL or null */
@@ -81,6 +87,8 @@
 		tooltipLocation = 'top',
 		editable = true,
 		placeholder = 'Start typing...',
+		autofocus = false,
+		autofocusDialog = false,
 		class: className = '',
 		onImageUpload,
 		onUpdate,
@@ -327,6 +335,7 @@
 			extensions,
 			content: collaboration ? undefined : value,
 			editable: editable,
+			autofocus: editable ? autofocus : false,
 			editorProps: {
 				transformPastedHTML: stripPastedColors
 			},
@@ -345,6 +354,18 @@
 		if (element) {
 			element.addEventListener('click', handleEditorClick, true);
 			element.addEventListener('paste', handlePaste as unknown as EventListener);
+		}
+	});
+
+	// Content inside a Dialog mounts while it is closed, so the mount-time autofocus
+	// can't take; focus again once the dialog is showing
+	useDialogEvents({
+		onFirstOpen: () => {
+			if (!editable) return;
+			if (autofocus !== false && autofocus !== null && !autofocusDialog) focus(autofocus);
+		},
+		onOpen: () => {
+			if (editable && autofocusDialog) focus(autofocus || true);
 		}
 	});
 
@@ -379,10 +400,10 @@
 		editor.commands.clearContent();
 	}
 
-	export function focus() {
+	export function focus(position?: FocusPosition) {
 		const editor = editorState.editor;
 		if (!editor || editor.isDestroyed) return;
-		editor.commands.focus();
+		editor.commands.focus(position);
 	}
 </script>
 

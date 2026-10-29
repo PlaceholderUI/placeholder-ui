@@ -1,11 +1,5 @@
 import { getContext } from 'svelte';
-
-export interface DialogContext {
-	isOpen: boolean;
-	onOpen: () => void;
-	onClose: () => void;
-	onFirstOpen: () => void;
-}
+import type { DialogContext } from '#lib/ui/Dialog.svelte';
 
 export function useDialog() {
 	const context = getContext<DialogContext>('dialog');
@@ -25,15 +19,15 @@ export function useDialogEvents(callbacks: {
 	}
 
 	if (callbacks.onOpen) {
-		context.onOpen = callbacks.onOpen;
+		context.onOpen(callbacks.onOpen);
 	}
 
 	if (callbacks.onClose) {
-		context.onClose = callbacks.onClose;
+		context.onClose(callbacks.onClose);
 	}
 
 	if (callbacks.onFirstOpen) {
-		context.onFirstOpen = callbacks.onFirstOpen;
+		context.onFirstOpen(callbacks.onFirstOpen);
 	}
 
 	return context;

@@ -3,6 +3,7 @@
 	import TipTap from '#lib/editors/tiptap/TipTap.svelte';
 	import TipTapBubble from '#lib/editors/tiptap/TipTapBubble.svelte';
 	import Button from '#lib/ui/Button.svelte';
+	import Dialog from '#lib/ui/Dialog.svelte';
 	import { Extension } from '@tiptap/core';
 
 	// Example custom extension: inserts the current date/time via Ctrl+Shift+D
@@ -18,6 +19,7 @@
 	});
 
 	let basicEditor: TipTap;
+	let showEditorDialog = false;
 	let readOnlyContent = `
 		<h2>Welcome to TipTap</h2>
 		<p>This is a <strong>read-only</strong> editor showing formatted content.</p>
@@ -208,6 +210,22 @@ ORDER BY Documents DESC;</code></pre>
 			to see the formatting options appear.
 		</p>
 		<TipTapBubble placeholder="Select text to see the bubble menu..." />
+	</Paper>
+
+	<Paper title="Autofocus">
+		<p class="description">
+			Set <code>autofocus</code> to focus the editor on mount, like a textarea. Pass
+			<code>'end'</code> to place the cursor after existing content. Inside a Dialog it focuses when
+			the dialog first opens; add <code>autofocusDialog</code> to focus on every open.
+		</p>
+		<Button onclick={() => (showEditorDialog = true)}>Open editor dialog</Button>
+		<Dialog bind:show={showEditorDialog} title="Add a note" allowImplicitClose>
+			<TipTap
+				value="<p>The cursor starts at the end of this text.</p>"
+				autofocus="end"
+				autofocusDialog
+			/>
+		</Dialog>
 	</Paper>
 
 	<Paper title="Read-Only Mode">
@@ -510,6 +528,18 @@ ORDER BY Documents DESC;</code></pre>
 						<td>string</td>
 						<td>'Start typing...'</td>
 						<td>Placeholder text when empty</td>
+					</tr>
+					<tr>
+						<td><code>autofocus</code></td>
+						<td>boolean | 'start' | 'end' | 'all' | number</td>
+						<td>false</td>
+						<td>Focus the editor on mount; the value sets the cursor position</td>
+					</tr>
+					<tr>
+						<td><code>autofocusDialog</code></td>
+						<td>boolean</td>
+						<td>false</td>
+						<td>Focus the editor every time the parent Dialog opens</td>
 					</tr>
 					<tr>
 						<td><code>class</code></td>
