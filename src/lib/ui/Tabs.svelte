@@ -1,22 +1,32 @@
 <script lang="ts">
 	import type { ComboBoxItem } from '#lib/models/ComboBoxItem.js';
+	import Tooltip, { type TooltipLocation } from '#lib/ui/Tooltip.svelte';
 	import { onMount } from 'svelte';
 
 	export interface TabsProps {
 		/**
 		 * Available tab options. `class` is added to the tab button (style it with `:global()`),
-		 * and a divider is drawn between neighbouring tabs whose `groupName` differs
+		 * a divider is drawn between neighbouring tabs whose `groupName` differs, and `tooltip`
+		 * is shown on hover/focus
 		 */
 		tabOptions: ComboBoxItem[];
 		/** Currently active tab value (bindable) */
 		activeTab?: string;
 		/** Use solid background instead of transparent */
 		solidBg?: boolean;
+		/** Preferred position of tab tooltips */
+		tooltipLocation?: TooltipLocation;
 		/** Callback when active tab changes */
 		onchange?: (newValue: string) => void;
 	}
 
-	let { tabOptions, activeTab = $bindable(''), solidBg = false, onchange }: TabsProps = $props();
+	let {
+		tabOptions,
+		activeTab = $bindable(''),
+		solidBg = false,
+		tooltipLocation = 'top',
+		onchange
+	}: TabsProps = $props();
 	let containerRef: HTMLDivElement;
 	let scrollRef: HTMLDivElement;
 	let buttonElements = $state<HTMLButtonElement[]>([]);
@@ -91,15 +101,25 @@
 			{#if index > 0 && (option.groupName ?? '') !== (tabOptions[index - 1].groupName ?? '')}
 				<span class="tab-divider" aria-hidden="true"></span>
 			{/if}
-			<button
-				type="button"
-				bind:this={buttonElements[index]}
-				class="tab-item {isSelected ? 'selected' : ''} {solidBg ? 'solid' : ''} {option.class ??
-					''}"
-				onclick={() => setValue(option.value)}
-			>
-				{option.label}
-			</button>
+			{#snippet tabButton()}
+				<button
+					type="button"
+					bind:this={buttonElements[index]}
+					class="tab-item {isSelected ? 'selected' : ''} {solidBg ? 'solid' : ''} {option.class ??
+						''}"
+					onclick={() => setValue(option.value)}
+				>
+					{option.label}
+				</button>
+			{/snippet}
+
+			{#if option.tooltip}
+				<Tooltip text={option.tooltip} location={tooltipLocation}>
+					{@render tabButton()}
+				</Tooltip>
+			{:else}
+				{@render tabButton()}
+			{/if}
 		{/each}
 		<div class="tab-underline" style={underlineStyle}></div>
 	</div>
@@ -119,6 +139,13 @@
 		display: inline-flex;
 		border-bottom: 1px solid #e5e7eb;
 		user-select: none;
+	}
+
+	/* Tooltip wrappers are inline-block; flex keeps the button flush with the bar */
+	.tabs > :global(.tooltip-v2-container),
+	.tabs > :global(.tooltip-v2-container > .tooltip-v2-trigger) {
+		display: flex;
+		flex-shrink: 0;
 	}
 
 	.tab-item {

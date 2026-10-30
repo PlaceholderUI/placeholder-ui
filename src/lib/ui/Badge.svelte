@@ -318,6 +318,30 @@
 			--badge-hover-text-color: var(--ui-primary-contrast-color);
 			--badge-outline-color: var(--ui-focus-color);
 		}
+
+		.primary-outline {
+			--badge-text-color: var(--text-color);
+			--badge-border: 1px solid var(--text-color);
+			--badge-border-color: var(--text-color);
+		}
+
+		.accent-outline {
+			--badge-text-color: var(--ui-accent);
+			--badge-border: 1px solid var(--ui-accent);
+			--badge-border-color: var(--ui-accent);
+		}
+
+		.tertiary-subtle {
+			--badge-text-color: var(--ui-tertiary);
+			--badge-border-color: var(--ui-tertiary);
+			--badge-bg-color: color-mix(in srgb, var(--ui-tertiary) 20%, transparent);
+		}
+
+		.tertiary-outline {
+			--badge-text-color: var(--ui-tertiary);
+			--badge-border: 1px solid var(--ui-tertiary);
+			--badge-border-color: var(--ui-tertiary);
+		}
 	}
 
 	.disabled {

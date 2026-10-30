@@ -75,16 +75,34 @@
 
 	// Shared views followed by personal views: the groupName change draws a divider
 	const viewTabs: ComboBoxItem[] = [
-		{ value: 'all', label: 'All Matters' },
+		{ value: 'all', label: 'All Matters', tooltip: 'Every matter you have access to' },
 		{ value: 'open', label: 'Open' },
 		{ value: 'closed', label: 'Closed' },
 		{ value: 'on-hold', label: 'On Hold' },
 		{ value: 'billing', label: 'Awaiting Billing' },
 		{ value: 'review', label: 'Under Review' },
 		{ value: 'archived', label: 'Archived' },
-		{ value: 'my-urgent', label: 'My Urgent', groupName: 'personal', class: 'personal-view' },
-		{ value: 'my-clients', label: 'My Key Clients', groupName: 'personal', class: 'personal-view' },
-		{ value: 'my-week', label: 'Due This Week', groupName: 'personal', class: 'personal-view' }
+		{
+			value: 'my-urgent',
+			tooltip: 'Matters flagged urgent that you own',
+			label: 'My Urgent',
+			groupName: 'personal',
+			class: 'personal-view'
+		},
+		{
+			value: 'my-clients',
+			tooltip: "Matters for clients you've starred",
+			label: 'My Key Clients',
+			groupName: 'personal',
+			class: 'personal-view'
+		},
+		{
+			value: 'my-week',
+			tooltip: 'Your matters with deadlines in the next 7 days',
+			label: 'Due This Week',
+			groupName: 'personal',
+			class: 'personal-view'
+		}
 	];
 
 	// Event handlers
@@ -214,8 +232,8 @@
 			<h4>Saved Views</h4>
 			<p class="note">
 				Tabs whose <code>groupName</code> differs from the previous tab get a divider before them.
-				<code>class</code> is added to the tab button (here it italicises personal views). When the tabs
-				don't fit, the bar scrolls horizontally.
+				<code>class</code> is added to the tab button (here it italicises personal views), and
+				<code>tooltip</code> shows on hover or focus. When the tabs don't fit, the bar scrolls horizontally.
 			</p>
 			<div class="tabs-demo views-demo">
 				<Tabs
