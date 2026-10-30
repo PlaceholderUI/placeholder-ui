@@ -3,7 +3,10 @@
 	import { onMount } from 'svelte';
 
 	export interface TabsProps {
-		/** Available tab options */
+		/**
+		 * Available tab options. `class` is added to the tab button (style it with `:global()`),
+		 * and a divider is drawn between neighbouring tabs whose `groupName` differs
+		 */
 		tabOptions: ComboBoxItem[];
 		/** Currently active tab value (bindable) */
 		activeTab?: string;
@@ -15,6 +18,7 @@
 
 	let { tabOptions, activeTab = $bindable(''), solidBg = false, onchange }: TabsProps = $props();
 	let containerRef: HTMLDivElement;
+	let scrollRef: HTMLDivElement;
 	let buttonElements = $state<HTMLButtonElement[]>([]);
 	let underlineStyle = $state('');
 
@@ -45,6 +49,7 @@
 	$effect(() => {
 		if (selectedIndex >= 0 && buttonElements[selectedIndex] && containerRef) {
 			recalculateUnderline();
+			scrollSelectedIntoView();
 		}
 	});
 
@@ -59,29 +64,56 @@
 		underlineStyle = `left: ${offsetLeft}px; width: ${width}px;`;
 	}
 
+	// Scroll the bar (not the page) so the selected tab is fully visible
+	function scrollSelectedIntoView() {
+		const selectedButton = buttonElements[selectedIndex];
+		const scrollRect = scrollRef.getBoundingClientRect();
+		const buttonRect = selectedButton.getBoundingClientRect();
+
+		if (buttonRect.left < scrollRect.left) {
+			scrollRef.scrollLeft -= scrollRect.left - buttonRect.left;
+		} else if (buttonRect.right > scrollRect.right) {
+			scrollRef.scrollLeft += buttonRect.right - scrollRect.right;
+		}
+	}
+
 	function setValue(newValue: any) {
 		activeTab = newValue;
 		onchange?.(newValue);
 	}
 </script>
 
-<div class="tabs" bind:this={containerRef}>
-	{#each tabOptions as option, index}
-		{@const isSelected = option.value === activeTab}
+<div class="tabs-scroll" bind:this={scrollRef}>
+	<div class="tabs" bind:this={containerRef}>
+		{#each tabOptions as option, index}
+			{@const isSelected = option.value === activeTab}
 
-		<button
-			type="button"
-			bind:this={buttonElements[index]}
-			class="tab-item {isSelected ? 'selected' : ''} {solidBg ? 'solid' : ''}"
-			onclick={() => setValue(option.value)}
-		>
-			{option.label}
-		</button>
-	{/each}
-	<div class="tab-underline" style={underlineStyle}></div>
+			{#if index > 0 && (option.groupName ?? '') !== (tabOptions[index - 1].groupName ?? '')}
+				<span class="tab-divider" aria-hidden="true"></span>
+			{/if}
+			<button
+				type="button"
+				bind:this={buttonElements[index]}
+				class="tab-item {isSelected ? 'selected' : ''} {solidBg ? 'solid' : ''} {option.class ??
+					''}"
+				onclick={() => setValue(option.value)}
+			>
+				{option.label}
+			</button>
+		{/each}
+		<div class="tab-underline" style={underlineStyle}></div>
+	</div>
 </div>
 
 <style>
+	.tabs-scroll {
+		display: inline-block;
+		max-width: 100%;
+		vertical-align: bottom;
+		overflow-x: auto;
+		overflow-y: hidden;
+	}
+
 	.tabs {
 		position: relative;
 		display: inline-flex;
@@ -105,6 +137,16 @@
 		transition: color 0.2s ease-in-out;
 		z-index: 1;
 		border-bottom: 2px solid transparent;
+		flex-shrink: 0;
+		white-space: nowrap;
+	}
+
+	.tab-divider {
+		flex-shrink: 0;
+		align-self: center;
+		width: 1px;
+		height: 1.25rem;
+		background-color: var(--border-color);
 	}
 
 	.tab-item:hover {

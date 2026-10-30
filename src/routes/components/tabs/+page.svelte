@@ -15,6 +15,7 @@
 	let dashboardTab = $state('analytics');
 	let profileTab = $state('personal');
 	let contentTab = $state('articles');
+	let viewTab = $state('all');
 
 	// Demo data
 	let actionLog = $state<string[]>([]);
@@ -70,6 +71,20 @@
 		{ value: 'podcasts', label: 'Podcasts' },
 		{ value: 'downloads', label: 'Downloads' },
 		{ value: 'favorites', label: 'Favorites' }
+	];
+
+	// Shared views followed by personal views: the groupName change draws a divider
+	const viewTabs: ComboBoxItem[] = [
+		{ value: 'all', label: 'All Matters' },
+		{ value: 'open', label: 'Open' },
+		{ value: 'closed', label: 'Closed' },
+		{ value: 'on-hold', label: 'On Hold' },
+		{ value: 'billing', label: 'Awaiting Billing' },
+		{ value: 'review', label: 'Under Review' },
+		{ value: 'archived', label: 'Archived' },
+		{ value: 'my-urgent', label: 'My Urgent', groupName: 'personal', class: 'personal-view' },
+		{ value: 'my-clients', label: 'My Key Clients', groupName: 'personal', class: 'personal-view' },
+		{ value: 'my-week', label: 'Due This Week', groupName: 'personal', class: 'personal-view' }
 	];
 
 	// Event handlers
@@ -190,6 +205,28 @@
 					<li>Two-way data binding</li>
 				</ul>
 				<p class="note">Current tab: <strong>{basicTab}</strong></p>
+			</div>
+		</div>
+	</Paper>
+
+	<Paper title="Groups & Scrolling">
+		<div class="tabs-section">
+			<h4>Saved Views</h4>
+			<p class="note">
+				Tabs whose <code>groupName</code> differs from the previous tab get a divider before them.
+				<code>class</code> is added to the tab button (here it italicises personal views). When the tabs
+				don't fit, the bar scrolls horizontally.
+			</p>
+			<div class="tabs-demo views-demo">
+				<Tabs
+					tabOptions={viewTabs}
+					bind:activeTab={viewTab}
+					onchange={(v) => handleTabChange('Views', v)}
+				/>
+				<div class="tab-content">
+					<h5>{viewTabs.find((t) => t.value === viewTab)?.label}</h5>
+					<p>Showing matters for the selected view.</p>
+				</div>
 			</div>
 		</div>
 	</Paper>
@@ -424,6 +461,7 @@
 						<span>Settings: {settingsTab}</span>
 						<span>Dashboard: {dashboardTab}</span>
 						<span>Content: {contentTab}</span>
+						<span>Views: {viewTab}</span>
 					</div>
 				</div>
 			</div>
@@ -577,6 +615,14 @@
 	.tabs-info li {
 		margin-bottom: 0.25rem;
 		font-size: 0.875rem;
+	}
+
+	.views-demo {
+		max-width: 40rem;
+	}
+
+	.views-demo :global(.personal-view) {
+		font-style: italic;
 	}
 
 	.form-fields {
