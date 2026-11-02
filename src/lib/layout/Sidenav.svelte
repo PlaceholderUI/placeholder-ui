@@ -536,8 +536,8 @@
 	}
 
 	.nav-item > .nav-item-row.active {
-		background-color: rgba(var(--ui-accent-rgbc), 0.2);
-		border-left: 3px solid var(--ui-accent);
+		background-color: rgba(var(--ui-tertiary-rgbc), 0.2);
+		border-left: 3px solid var(--ui-tertiary);
 	}
 
 	:global(.dark) .nav-item > .nav-item-row.active {
