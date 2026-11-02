@@ -572,7 +572,7 @@
 		width: 100%;
 		overflow-x: auto;
 		border: 1px solid var(--border-color);
-		background-color: var(--input-bg-color);
+		background-color: var(--paper-body-bg);
 	}
 
 	.table-wrapper.rounded {
