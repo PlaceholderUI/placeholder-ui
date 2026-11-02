@@ -182,7 +182,7 @@
 	}
 
 	:global(.dark) header {
-		background: var(--ui-primary);
+		background: black;
 		border: none;
 	}
 
