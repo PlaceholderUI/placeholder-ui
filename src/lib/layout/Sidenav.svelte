@@ -622,7 +622,7 @@
 	}
 
 	.sub-nav-item > .nav-item-row.active {
-		border-left: 3px solid var(--ui-accent);
+		border-left: 3px solid var(--ui-tertiary);
 	}
 
 	:global(.dark) .sub-nav-item > .nav-item-row.active {
