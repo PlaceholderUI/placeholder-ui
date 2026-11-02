@@ -67,6 +67,17 @@ If adding a variant to an existing component (e.g., TipTapBubble alongside TipTa
   its `-contrast-color` styles text and icons on its solid fills.
 - **Never hardcode brand colours or fonts in components.** Use the tokens. Surface tokens
   (`--page-bg`, `--paper-body-bg`, `--text-color`, `--border-color`, `--input-bg`, ...) stay as-is.
+- Corner radii come from shape tokens, never literal values: `--ui-radius-sm` (small inner items:
+  menu rows, calendar days, toolbar buttons, badges), `--ui-radius` (controls: buttons, inputs,
+  selects, alerts, menus, popovers) and `--ui-radius-lg` (containers: paper, dialogs, accordions,
+  editors, nav items, segmented tracks). Inside a 1px-bordered container use
+  `calc(var(--ui-radius-lg) - 1px)`; inside a Paper, use the inherited `--paper-radius` /
+  `--paper-inner-radius` instead. Neutral row states use `--hover-bg`, `--selected-bg` and
+  `--selected-border`; segmented tracks use `--control-track-bg`.
+- Nested Papers need no prop: a Paper containing another Paper switches its own surfaces to
+  `--paper-outer-title-bg` / `--paper-outer-body-bg` / `--paper-outer-border` (via `:has()` in
+  `Paper.svelte`) so the inner Papers read as raised. Papers inside a `<dialog>` only affect the
+  dialog's own Paper, never a page Paper around the Dialog.
 - `src/lib/uiTheme.svelte.ts` — `ThemeConfig`, `applyTheme()`, `themeToCss()`, `setLogo()`,
   `brandState`. Consumers brand the library with one config object. `ThemeConfig.dark` holds
   optional overrides for dark mode; `applyTheme` injects a `<style>` with `:root` / `:root.dark`

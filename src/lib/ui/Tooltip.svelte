@@ -60,7 +60,8 @@
 
 	/** Half the arrow's base and its full height — the triangle is 2x wide, 1x tall. */
 	const ARROW_SIZE = 6;
-	/** Matches .tooltip-v2-content border-radius so the arrow never sits on a rounded corner. */
+	/** Matches .tooltip-v2-content border-radius (`--ui-radius-sm`, ~6px by default) so the
+	 * arrow never sits on a rounded corner. */
 	const CORNER_RADIUS = 6;
 	/** Minimum gap between the tooltip and the viewport edge. */
 	const VIEWPORT_PADDING = 5;
@@ -486,7 +487,7 @@
 		background: var(--tooltip-bg);
 		color: var(--tooltip-text);
 		padding: 0.5rem 0.75rem;
-		border-radius: 0.375rem;
+		border-radius: var(--ui-radius-sm);
 		font-size: 0.875rem;
 		line-height: 1.4;
 		overflow-wrap: break-word;

@@ -144,7 +144,7 @@
 	}
 
 	.avatar.rounded {
-		border-radius: 0.375rem;
+		border-radius: var(--ui-radius-sm);
 	}
 
 	.initials {

@@ -159,7 +159,7 @@
 	<div class="member-panel">
 		{#if !cache || cache.loading}
 			<div class="member-loading">
-				<Loader sizeOverride="20px" />
+				<Loader inline sizeOverride="20px" />
 				<span>Loading members…</span>
 			</div>
 		{:else if cache.members.length === 0}

@@ -634,7 +634,7 @@
 		border: 1px solid var(--border-color);
 		background-color: var(--input-bg-color);
 		color: var(--text-color);
-		border-radius: 0.25rem;
+		border-radius: var(--ui-radius);
 		box-sizing: border-box;
 		position: relative;
 		transition: border-color 0.15s ease;
@@ -778,7 +778,7 @@
 		user-select: none;
 		background-color: var(--paper-body-bg);
 		border: 1px solid var(--border-color);
-		border-radius: 0.375rem;
+		border-radius: var(--ui-radius);
 		box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15);
 	}
 
@@ -786,7 +786,7 @@
 		position: relative;
 		width: 100%;
 		height: 9rem;
-		border-radius: 0.375rem;
+		border-radius: var(--ui-radius-sm);
 		cursor: crosshair;
 		touch-action: none;
 		background-image:
@@ -830,7 +830,7 @@
 	.slider {
 		position: relative;
 		height: 0.75rem;
-		border-radius: 0.375rem;
+		border-radius: var(--ui-radius-sm);
 		cursor: pointer;
 		touch-action: none;
 	}
@@ -860,7 +860,7 @@
 	.alpha-track {
 		position: absolute;
 		inset: 0;
-		border-radius: 0.375rem;
+		border-radius: var(--ui-radius-sm);
 	}
 
 	.readout {

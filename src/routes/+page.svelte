@@ -255,6 +255,11 @@ const theme = {
     '--text-color': '#000000',
     '--border-color': 'rgb(226, 232, 240)',
 
+    // Shape
+    '--ui-radius-sm': '0.375rem', // menu rows, calendar days, badges
+    '--ui-radius': '0.625rem',    // buttons, inputs, menus
+    '--ui-radius-lg': '0.75rem',  // paper, dialogs, nav items
+
     // Adaptive accent
     '--accent-color-rgb': 'var(--ui-primary-rgbc)',
     '--accent-color': 'rgb(var(--accent-color-rgb))',
@@ -294,7 +299,7 @@ const theme = {
     logo: darkLogo,
     // Include dark values for the light-mode surface overrides above.
     variables: {
-      '--page-bg': 'rgb(36, 37, 40)',
+      '--page-bg': 'rgb(11, 14, 18)',
       '--text-color': 'rgb(221, 221, 221)',
       '--border-color': 'rgb(55, 58, 64)',
       '--accent-color-rgb': 'var(--ui-accent-rgbc)',
@@ -302,7 +307,7 @@ const theme = {
       '--accent-text-color': '#000000',
       '--paper-title-bg': 'rgb(18, 18, 18)',
       '--paper-title-border': 'rgb(46, 46, 46)',
-      '--paper-body-bg': 'rgb(25, 26, 28)',
+      '--paper-body-bg': 'rgb(25, 28, 33)',
       '--danger-text': '#ffa8a8',
       '--danger-bg-subtle': 'rgba(250, 82, 82, 0.2)',
       '--input-bg': 'rgb(33, 37, 41)',

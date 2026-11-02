@@ -157,7 +157,7 @@
 	onclick={() => fileInput.click()}
 >
 	{#if loading}
-		<Loader fullScreen />
+		<Loader />
 	{:else if children}
 		{@render children()}
 	{:else}
@@ -179,7 +179,7 @@
 		text-align: center;
 		cursor: pointer;
 		transition: all 0.2s ease-in-out;
-		border-radius: 0.375rem;
+		border-radius: var(--ui-radius-lg);
 		flex-grow: 1;
 		background: var(--paper-body-bg);
 		color: var(--text-color);

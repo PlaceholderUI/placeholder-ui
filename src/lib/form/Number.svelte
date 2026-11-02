@@ -215,7 +215,7 @@
 				-translate-x-1/2
 				{leftIconSvg ? 'left-4' : 'right-0'}"
 				>
-					<Loader sizeOverride="1.1rem" />
+					<Loader inline sizeOverride="1.1rem" />
 				</div>
 			{:else}
 				<div class="contents">
@@ -244,7 +244,7 @@
 		border: 1px solid var(--border-color);
 		background-color: var(--input-bg-color);
 		color: var(--text-color);
-		border-radius: 0.25rem;
+		border-radius: var(--ui-radius);
 		padding: 0.25rem 0.5rem;
 		box-sizing: border-box;
 	}

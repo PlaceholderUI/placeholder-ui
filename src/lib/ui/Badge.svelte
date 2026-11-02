@@ -70,7 +70,7 @@
 <style>
 	.badge-container {
 		display: flex;
-		border-radius: 0.375rem;
+		border-radius: var(--ui-radius-sm);
 		border: var(--badge-border, 0);
 	}
 
@@ -83,7 +83,7 @@
 		align-items: center;
 		text-decoration: none;
 		padding: 0.25rem;
-		border-radius: 0.375rem;
+		border-radius: var(--ui-radius-sm);
 	}
 
 	button.badge,
@@ -98,7 +98,7 @@
 	}
 
 	.badge-button {
-		border-radius: 0.375rem;
+		border-radius: var(--ui-radius-sm);
 		border-top-left-radius: 0;
 		border-bottom-left-radius: 0;
 		border-left: 1px solid var(--badge-border-color, black);

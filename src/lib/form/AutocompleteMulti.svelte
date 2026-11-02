@@ -400,7 +400,7 @@
 			</div>
 
 			{#if core.preloading || core.searching}
-				<span class="control-action"><Loader sizeOverride="1.125rem" /></span>
+				<span class="control-action"><Loader inline sizeOverride="1.125rem" /></span>
 			{:else if !isEmpty && !disabled}
 				<span class="control-action">
 					<ActionIcon
@@ -452,7 +452,7 @@
 		width: 100%;
 		min-height: 2.25rem;
 		padding: 0.25rem 0.5rem;
-		border-radius: 0.25rem;
+		border-radius: var(--ui-radius);
 		background-color: var(--input-bg-color);
 		color: var(--text-color);
 		border: 1px solid var(--border-color);

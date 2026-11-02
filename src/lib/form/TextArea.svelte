@@ -124,7 +124,7 @@
 		background-color: var(--input-bg-color);
 		background-image: none;
 		border: 1px solid var(--border-color);
-		border-radius: 0.375rem;
+		border-radius: var(--ui-radius);
 		appearance: none;
 		transition:
 			border-color 0.15s ease-in-out,

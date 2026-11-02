@@ -48,7 +48,7 @@
 <style>
 	.alert {
 		display: flex;
-		border-radius: 0.25rem;
+		border-radius: var(--ui-radius);
 		padding: 0.5rem;
 		background: rgba(var(--ui-accent-rgbc), 0.3);
 		border: 1px solid var(--ui-accent);

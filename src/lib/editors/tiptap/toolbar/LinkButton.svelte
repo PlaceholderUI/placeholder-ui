@@ -131,7 +131,7 @@
 		padding: 0.5rem;
 		background: var(--paper-body-bg);
 		border: 1px solid var(--border-color);
-		border-radius: 0.25rem;
+		border-radius: var(--ui-radius);
 		box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
 		z-index: 1000;
 		min-width: 20rem;
@@ -150,7 +150,7 @@
 		flex: 1;
 		padding: 0.375rem 0.625rem;
 		border: 1px solid var(--border-color);
-		border-radius: 0.25rem;
+		border-radius: var(--ui-radius-sm);
 		font-size: 0.875rem;
 		outline: none;
 		font-family: inherit;
@@ -209,7 +209,7 @@
 		border: none;
 		background: var(--ui-primary);
 		color: var(--ui-primary-contrast-color);
-		border-radius: 0.25rem;
+		border-radius: var(--ui-radius-sm);
 		cursor: pointer;
 		font-size: 1rem;
 		font-weight: bold;
@@ -237,7 +237,7 @@
 		border: none;
 		background: var(--ui-tertiary);
 		color: var(--ui-tertiary-contrast-color);
-		border-radius: 0.25rem;
+		border-radius: var(--ui-radius-sm);
 		cursor: pointer;
 		font-size: 1rem;
 		font-weight: bold;

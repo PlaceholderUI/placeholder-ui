@@ -141,7 +141,7 @@
 		min-width: 12rem;
 		background-color: var(--paper-body-bg);
 		border: 1px solid var(--border-color);
-		border-radius: 0.375rem;
+		border-radius: var(--ui-radius);
 		box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
 		z-index: 1000;
 	}
@@ -165,13 +165,13 @@
 	}
 
 	.navbar-submenu :global(.navbar-item:first-child) {
-		border-top-left-radius: 0.25rem;
-		border-top-right-radius: 0.25rem;
+		border-top-left-radius: calc(var(--ui-radius) - 1px);
+		border-top-right-radius: calc(var(--ui-radius) - 1px);
 	}
 
 	.navbar-submenu :global(.navbar-item:last-child) {
-		border-bottom-left-radius: 0.25rem;
-		border-bottom-right-radius: 0.25rem;
+		border-bottom-left-radius: calc(var(--ui-radius) - 1px);
+		border-bottom-right-radius: calc(var(--ui-radius) - 1px);
 	}
 
 	.navbar-submenu :global(.navbar-item:hover) {

@@ -101,7 +101,7 @@
 		display: flex;
 		flex-direction: column;
 		border: 1px solid var(--border-color);
-		border-radius: 0.375rem;
+		border-radius: var(--ui-radius-lg);
 		overflow: hidden;
 		background: var(--paper-body-bg);
 	}

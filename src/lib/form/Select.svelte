@@ -281,7 +281,7 @@
 				/>
 				{#if core.preloading || core.searching}
 					<div class="loader">
-						<Loader sizeOverride="1.125rem" />
+						<Loader inline sizeOverride="1.125rem" />
 					</div>
 				{:else if !isEmpty}
 					<div class="btn-clear-container">
@@ -347,7 +347,7 @@
 				{/if}
 				{#if core.preloading || core.searching}
 					<div class="loader">
-						<Loader sizeOverride="1.125rem" />
+						<Loader inline sizeOverride="1.125rem" />
 					</div>
 				{:else if open && !isEmpty}
 					<div class="btn-clear-container">
@@ -425,7 +425,7 @@
 		display: flex;
 		flex-wrap: wrap;
 		padding: 0.25rem 0.5rem;
-		border-radius: 0.25rem;
+		border-radius: var(--ui-radius);
 		text-align: left;
 		background-color: var(--input-bg-color);
 		color: var(--text-color);
@@ -481,7 +481,7 @@
 	}
 
 	.select-btn-clear {
-		border-radius: 0.25rem;
+		border-radius: var(--ui-radius-sm);
 		padding: 0.25rem;
 		right: 0.4rem;
 	}

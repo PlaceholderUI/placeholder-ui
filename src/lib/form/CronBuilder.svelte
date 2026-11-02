@@ -500,7 +500,7 @@
 		border: 1px solid var(--border-color);
 		background: var(--input-bg);
 		color: var(--text-color);
-		border-radius: 0.375rem;
+		border-radius: var(--ui-radius-sm);
 		cursor: pointer;
 		font-size: 0.875rem;
 		font-weight: 500;
@@ -533,7 +533,7 @@
 		width: 100%;
 		padding: 0.5rem;
 		border: 1px solid var(--border-color);
-		border-radius: 0.375rem;
+		border-radius: var(--ui-radius);
 		background: var(--input-bg);
 		color: var(--text-color);
 		font-size: 0.875rem;
@@ -555,7 +555,7 @@
 		gap: 1rem;
 		padding: 1rem;
 		background: rgba(var(--ui-primary-rgbc), 0.05);
-		border-radius: 0.375rem;
+		border-radius: var(--ui-radius);
 		border: 1px solid var(--border-color);
 	}
 

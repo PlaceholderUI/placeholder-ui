@@ -399,13 +399,23 @@
 		flex-shrink: 0;
 	}
 
+	/* Section titles trail off into a hairline rule (matches Sidenav) */
 	.section-title {
-		padding: 0.75rem 1rem 0.5rem;
+		display: flex;
+		align-items: center;
+		gap: 0.75rem;
+		padding: 1rem 1.5rem 0.375rem;
 		font-size: 0.75rem;
 		font-weight: 600;
 		text-transform: uppercase;
 		letter-spacing: 0.05em;
 		color: var(--text-muted, #6b7280);
+	}
+
+	.section-title::after {
+		content: '';
+		flex: 1;
+		border-top: 1px solid var(--border-color);
 	}
 
 	.nav-list {
@@ -422,9 +432,15 @@
 	   link) carries the hover/active background so it spans the full width, including the
 	   action-button area. */
 	.nav-item-row {
+		position: relative;
 		display: flex;
 		align-items: center;
-		transition: background-color 0.15s ease;
+		margin: 0.0625rem 0.5rem;
+		border: 1px solid transparent;
+		border-radius: var(--ui-radius-lg);
+		transition:
+			background-color 0.15s ease,
+			border-color 0.15s ease;
 	}
 
 	.nav-item-row :global(.nav-link),
@@ -472,22 +488,33 @@
 		text-align: left;
 	}
 
-	.nav-item > .nav-item-row:hover {
-		background-color: rgba(var(--ui-primary-rgbc), 0.08);
+	.nav-item-row:hover {
+		background-color: var(--hover-bg);
 	}
 
-	:global(.dark) .nav-item > .nav-item-row:hover {
-		background-color: rgba(var(--ui-primary-rgbc), 0.2);
+	/* A top-level item is "current" when it is the active page or holds the active sub-item.
+	   It gets a filled pill plus a bar on the drawer's edge (matches Sidenav) */
+	.nav-item > .nav-item-row.active,
+	.nav-item:has(.sub-nav-item > .nav-item-row.active) > .nav-item-row {
+		background-color: var(--selected-bg);
 	}
 
-	.nav-item > .nav-item-row.active {
-		background-color: rgba(var(--ui-accent-rgbc), 0.2);
-		border-left: 3px solid var(--ui-accent);
+	.nav-item > .nav-item-row.active::before,
+	.nav-item:has(.sub-nav-item > .nav-item-row.active) > .nav-item-row::before {
+		content: '';
+		position: absolute;
+		/* Row margin + border puts the drawer edge 0.5rem + 1px to the left */
+		left: calc(-0.5rem - 1px);
+		top: 0.25rem;
+		bottom: 0.25rem;
+		width: 3px;
+		border-radius: 0 3px 3px 0;
+		background-color: var(--ui-accent);
 	}
 
-	:global(.dark) .nav-item > .nav-item-row.active {
-		background-color: rgba(var(--ui-primary-rgbc), 0.3);
-		border-left: 3px solid var(--ui-primary);
+	:global(.dark) .nav-item > .nav-item-row.active::before,
+	:global(.dark) .nav-item:has(.sub-nav-item > .nav-item-row.active) > .nav-item-row::before {
+		background-color: var(--ui-primary);
 	}
 
 	.nav-label {
@@ -506,15 +533,12 @@
 		transform: rotate(90deg);
 	}
 
+	/* Sub-items hang off a guide line that drops from the parent's icon */
 	.sub-nav-list {
 		list-style: none;
-		margin: 0;
+		margin: 0.125rem 0 0.25rem 2.125rem;
 		padding: 0;
-		background-color: rgba(var(--ui-primary-rgbc), 0.03);
-	}
-
-	:global(.dark) .sub-nav-list {
-		background-color: rgba(0, 0, 0, 0.2);
+		border-left: 1px solid var(--border-color);
 	}
 
 	.sub-nav-item {
@@ -527,7 +551,7 @@
 		align-items: center;
 		gap: 0.5rem;
 		width: 100%;
-		padding: 0.5rem 1rem 0.5rem 2.75rem;
+		padding: 0.5rem 0.75rem 0.5rem 0.5rem;
 		font-size: 0.8125rem;
 		font-weight: 400;
 		color: var(--text-color);
@@ -539,20 +563,13 @@
 		text-align: left;
 	}
 
-	.sub-nav-item > .nav-item-row:hover {
-		background-color: rgba(var(--ui-primary-rgbc), 0.08);
-	}
-
-	:global(.dark) .sub-nav-item > .nav-item-row:hover {
-		background-color: rgba(var(--ui-primary-rgbc), 0.2);
+	.sub-nav-item > .nav-item-row {
+		margin-left: 0.625rem;
 	}
 
 	.sub-nav-item > .nav-item-row.active {
-		border-left: 3px solid var(--ui-accent);
-	}
-
-	:global(.dark) .sub-nav-item > .nav-item-row.active {
-		border-left: 3px solid var(--ui-primary);
+		background-color: var(--selected-bg);
+		border-color: var(--selected-border);
 	}
 
 	.sub-nav-item > .nav-item-row.active :global(.sub-nav-link),

@@ -211,7 +211,7 @@
 		padding: 0.75rem;
 		background: var(--paper-body-bg);
 		border: 1px solid var(--border-color);
-		border-radius: 0.25rem;
+		border-radius: var(--ui-radius);
 		box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
 		z-index: 1000;
 		min-width: 15rem;
@@ -245,7 +245,7 @@
 		width: 2rem;
 		height: 2rem;
 		border: 2px solid var(--border-color);
-		border-radius: 0.25rem;
+		border-radius: var(--ui-radius-sm);
 		cursor: pointer;
 		transition: all 0.15s ease;
 		padding: 0;
@@ -272,7 +272,7 @@
 		flex: 1;
 		height: 2.25rem;
 		border: 1px solid var(--border-color);
-		border-radius: 0.25rem;
+		border-radius: var(--ui-radius-sm);
 		cursor: pointer;
 		padding: 2px;
 		background: var(--paper-body-bg);
@@ -292,7 +292,7 @@
 		border: none;
 		background: var(--ui-tertiary);
 		color: var(--ui-tertiary-contrast-color);
-		border-radius: 0.25rem;
+		border-radius: var(--ui-radius-sm);
 		cursor: pointer;
 		font-size: 0.8125rem;
 		font-weight: 500;

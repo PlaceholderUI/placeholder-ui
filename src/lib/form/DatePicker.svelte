@@ -425,7 +425,7 @@
 		user-select: none;
 		background-color: var(--paper-body-bg);
 		border: 1px solid var(--border-color);
-		border-radius: 0.375rem;
+		border-radius: var(--ui-radius);
 		box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15);
 		padding: 0.5rem;
 	}
@@ -449,7 +449,7 @@
 	.month-label.clickable {
 		cursor: pointer;
 		padding: 0.25rem 0.5rem;
-		border-radius: 0.25rem;
+		border-radius: var(--ui-radius-sm);
 		transition: background-color 0.15s ease;
 	}
 
@@ -468,7 +468,7 @@
 	.year-button {
 		color: var(--text-color);
 		padding: 0.75rem 0.5rem;
-		border-radius: 0.375rem;
+		border-radius: var(--ui-radius-sm);
 		border: none;
 		background: transparent;
 		cursor: pointer;
@@ -505,7 +505,7 @@
 		grid-template-columns: repeat(7, 1fr);
 		margin-top: 0.5rem;
 		background-color: #f8f9fa;
-		border-radius: 0.25rem;
+		border-radius: var(--ui-radius-sm);
 		border: 1px solid var(--border-color);
 	}
 
@@ -529,7 +529,7 @@
 		color: var(--text-color);
 		width: 2.25rem;
 		height: 2.25rem;
-		border-radius: 0.375rem;
+		border-radius: var(--ui-radius-sm);
 		border: none;
 		background: transparent;
 		cursor: pointer;

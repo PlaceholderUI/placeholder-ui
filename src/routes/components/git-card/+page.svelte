@@ -570,7 +570,7 @@
 
 	/* Dark mode adjustments */
 	:global(.dark) .form-input {
-		background: rgb(25, 26, 28);
+		background: rgb(25, 28, 33);
 		border-color: #374151;
 		color: var(--text-color);
 	}

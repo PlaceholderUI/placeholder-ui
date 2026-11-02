@@ -401,7 +401,8 @@
 	}
 
 	.dialog-no-paper {
-		border-radius: 0.25rem;
+		border: 1px solid var(--border-color);
+		border-radius: var(--ui-radius-lg);
 		background-color: var(--paper-body-bg);
 	}
 
@@ -436,5 +437,13 @@
 
 	.dialog.full .dialog-body {
 		flex-grow: 1;
+	}
+
+	/* A full-screen dialog fills the viewport edge to edge, so drop the card shape */
+	.dialog.full :global(.paper),
+	.dialog.full :global(.paper-body),
+	.dialog.full .dialog-no-paper {
+		border: none;
+		border-radius: 0;
 	}
 </style>

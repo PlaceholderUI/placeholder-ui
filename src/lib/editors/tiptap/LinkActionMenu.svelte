@@ -183,7 +183,7 @@
 		max-width: min(35rem, calc(100vw - 2rem));
 		padding: 0.375rem;
 		border: 1px solid var(--border-color);
-		border-radius: 0.375rem;
+		border-radius: var(--ui-radius);
 		background: var(--paper-title-bg);
 		box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
 		color: var(--text-color);
@@ -200,7 +200,7 @@
 		padding: 0.3125rem 0.5rem;
 		overflow: hidden;
 		border: 1px solid var(--border-color);
-		border-radius: 0.25rem;
+		border-radius: var(--ui-radius-sm);
 		background: var(--paper-body-bg);
 		color: var(--ui-link-color);
 		cursor: pointer;
@@ -226,7 +226,7 @@
 		min-width: 0;
 		padding: 0.375rem 0.625rem;
 		border: 1px solid var(--border-color);
-		border-radius: 0.25rem;
+		border-radius: var(--ui-radius-sm);
 		background: var(--paper-body-bg);
 		color: var(--text-color);
 		font: inherit;
@@ -252,7 +252,7 @@
 		height: 1.75rem;
 		padding: 0;
 		border: none;
-		border-radius: 0.25rem;
+		border-radius: var(--ui-radius-sm);
 		background: transparent;
 		color: var(--text-color);
 		cursor: pointer;

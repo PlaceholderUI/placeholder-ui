@@ -134,7 +134,7 @@
 	.radio-options {
 		display: flex;
 		gap: 0.5rem;
-		border-radius: 0.375rem;
+		border-radius: var(--ui-radius);
 	}
 
 	.radio-required {

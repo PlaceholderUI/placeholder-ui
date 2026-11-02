@@ -155,7 +155,7 @@
 		position: relative;
 		width: 100%;
 		z-index: 50;
-		border-radius: 0.25rem;
+		border-radius: var(--ui-radius);
 		overflow: hidden;
 		border: 1px solid var(--main-border-color);
 		background-color: var(--input-bg-color);

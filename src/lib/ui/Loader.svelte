@@ -3,28 +3,18 @@
 	import loaderSvg from '#lib/icon/loader.svg?raw';
 
 	export interface LoaderProps {
-		/** Display as full-screen overlay */
-		fullScreen?: boolean;
+		/** Render inline instead of as an overlay covering the nearest positioned ancestor */
+		inline?: boolean;
 		/** Custom size for the loader icon */
 		sizeOverride?: string;
 		/** Additional CSS classes */
 		class?: string;
 	}
 
-	let {
-		fullScreen = false,
-		sizeOverride = '3.125rem',
-		class: classes = ''
-	}: LoaderProps = $props();
-
-	// export let fullScreen: boolean = false;
-	// export let sizeOverride: string = '50px';
-
-	// let classes: string = "";
-	// export { classes as class };
+	let { inline = false, sizeOverride = '3.125rem', class: classes = '' }: LoaderProps = $props();
 </script>
 
-<span class="loader flex {classes} {fullScreen && 'full-screen'}">
+<span class="loader flex {classes} {!inline && 'full-screen'}">
 	<Icon size={sizeOverride} class="spin" svg={loaderSvg} />
 </span>
 

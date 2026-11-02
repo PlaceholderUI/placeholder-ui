@@ -150,7 +150,7 @@
 			mobileTitle="Components"
 			mobileDrawerPosition="right"
 		/>
-		<div id="page-content" class="container px-2 pb-12">
+		<div id="page-content" class="container px-3 pb-12">
 			<div class="mt-3 mb-4">
 				{@render children?.()}
 			</div>

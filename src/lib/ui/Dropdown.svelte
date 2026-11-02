@@ -84,7 +84,7 @@
 		min-width: 10rem;
 		box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
 		z-index: 1000;
-		border-radius: 0.25rem;
+		border-radius: var(--ui-radius);
 		overflow: hidden;
 		border: 1px solid var(--border-color);
 	}

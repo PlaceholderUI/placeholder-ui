@@ -76,7 +76,7 @@
 	<div class="button">
 		{#if loading}
 			<div class="button-loader" style="height: {iconSize}">
-				<Loader sizeOverride={iconSize} />
+				<Loader inline sizeOverride={iconSize} />
 			</div>
 		{:else if svg}
 			<div class="button-icon">
@@ -113,7 +113,7 @@
 <style>
 	.pui-button {
 		padding: 0.5rem 1rem;
-		border-radius: 0.375rem;
+		border-radius: var(--ui-radius);
 		cursor: pointer;
 		transition: all 0.2s ease-in-out;
 	}

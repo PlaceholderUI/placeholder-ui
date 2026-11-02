@@ -35,7 +35,7 @@
 		border: none;
 		background: transparent;
 		color: var(--text-color);
-		border-radius: 0.25rem;
+		border-radius: var(--ui-radius-sm);
 		cursor: pointer;
 		transition: all 0.15s ease;
 	}

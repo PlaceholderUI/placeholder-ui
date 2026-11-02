@@ -101,19 +101,19 @@
 				<h4>Simple Loaders</h4>
 				<div class="loader-examples">
 					<div class="loader-demo">
-						<Loader sizeOverride="24px" class="text-brand-primary" />
+						<Loader inline sizeOverride="24px" class="text-brand-primary" />
 						<span>Small (24px)</span>
 					</div>
 					<div class="loader-demo">
-						<Loader sizeOverride="32px" class="text-brand-tertiary" />
+						<Loader inline sizeOverride="32px" class="text-brand-tertiary" />
 						<span>Medium (32px)</span>
 					</div>
 					<div class="loader-demo">
-						<Loader sizeOverride="48px" class="text-brand-accent" />
+						<Loader inline sizeOverride="48px" class="text-brand-accent" />
 						<span>Large (48px)</span>
 					</div>
 					<div class="loader-demo">
-						<Loader sizeOverride="64px" class="text-danger" />
+						<Loader inline sizeOverride="64px" class="text-danger" />
 						<span>Extra Large (64px)</span>
 					</div>
 				</div>
@@ -138,7 +138,7 @@
 						</Button>
 						{#if showBasicLoader}
 							<div class="inline-loader">
-								<Loader sizeOverride="20px" class="text-brand-primary" />
+								<Loader inline sizeOverride="20px" class="text-brand-primary" />
 								<span>Loading...</span>
 							</div>
 						{/if}
@@ -149,7 +149,7 @@
 					<div class="demo-controls">
 						<Button variant="secondary" onclick={toggleButtonLoader}>
 							{#if showButtonLoader}
-								<Loader sizeOverride="18px" class="text-white" />
+								<Loader inline sizeOverride="18px" class="text-white" />
 								Loading...
 							{:else}
 								Button with Loader
@@ -164,7 +164,7 @@
 					</div>
 					<div class="loader-card" class:loading={showCardLoader}>
 						{#if showCardLoader}
-							<Loader fullScreen={true} sizeOverride="32px" />
+							<Loader sizeOverride="32px" />
 						{/if}
 						<h5>Sample Card</h5>
 						<p>This card shows a full-screen overlay loader when activated.</p>
@@ -189,7 +189,7 @@
 						onclick={() => simulateAsyncOperation('saving')}
 					>
 						{#if loadingStates.saving}
-							<Loader sizeOverride="16px" class="text-white" />
+							<Loader inline sizeOverride="16px" class="text-white" />
 							Saving...
 						{:else}
 							Save Document
@@ -205,7 +205,7 @@
 						onclick={() => simulateAsyncOperation('downloading')}
 					>
 						{#if loadingStates.downloading}
-							<Loader sizeOverride="16px" class="text-white" />
+							<Loader inline sizeOverride="16px" class="text-white" />
 							Downloading...
 						{:else}
 							Download File
@@ -216,7 +216,7 @@
 				<div class="async-demo">
 					{#if loadingStates.uploading}
 						<div class="icon-loader">
-							<Loader sizeOverride="20px" class="text-brand-accent" />
+							<Loader inline sizeOverride="20px" class="text-brand-accent" />
 						</div>
 					{:else}
 						<ActionIcon
@@ -231,7 +231,7 @@
 				<div class="async-demo">
 					{#if loadingStates.refreshing}
 						<div class="icon-loader">
-							<Loader sizeOverride="20px" class="text-brand-primary" />
+							<Loader inline sizeOverride="20px" class="text-brand-primary" />
 						</div>
 					{:else}
 						<ActionIcon
@@ -252,7 +252,7 @@
 			<div class="fullscreen-demo">
 				<div class="demo-area" class:loading={showFullScreenLoader}>
 					{#if showFullScreenLoader}
-						<Loader fullScreen={true} sizeOverride="48px" />
+						<Loader sizeOverride="48px" />
 					{/if}
 					<div class="demo-content">
 						<h5>Content Area</h5>
@@ -281,7 +281,7 @@
 				</div>
 				<div class="data-table" class:loading={showDataLoader}>
 					{#if showDataLoader}
-						<Loader fullScreen={true} sizeOverride="32px" />
+						<Loader sizeOverride="32px" />
 					{/if}
 					<table>
 						<thead>
@@ -317,7 +317,7 @@
 				{#each Object.entries(loadingStates) as [key, isLoading]}
 					<div class="state-item" class:active={isLoading}>
 						{#if isLoading}
-							<Loader sizeOverride="16px" class="text-brand-tertiary" />
+							<Loader inline sizeOverride="16px" class="text-brand-tertiary" />
 						{:else}
 							<span class="state-dot"></span>
 						{/if}
@@ -351,7 +351,10 @@
 				<li>
 					<strong>Customizable sizes:</strong> Any size value supported with sizeOverride prop
 				</li>
-				<li><strong>Full-screen overlay:</strong> Built-in overlay mode with backdrop</li>
+				<li>
+					<strong>Full-screen overlay:</strong> Default mode, with backdrop; pass
+					<code>inline</code> to render in flow
+				</li>
 				<li><strong>Smooth animation:</strong> CSS-based rotation with 2-second cycle</li>
 				<li><strong>Theme integration:</strong> Colors adapt to light/dark mode</li>
 				<li><strong>Custom styling:</strong> Accepts CSS classes for color customization</li>

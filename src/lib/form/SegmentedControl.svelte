@@ -146,8 +146,8 @@
 	.segmented-control {
 		position: relative;
 		display: inline-flex;
-		background-color: #e5e7eb;
-		border-radius: 0.5rem;
+		background-color: var(--control-track-bg);
+		border-radius: var(--ui-radius-lg);
 		border: 1px solid var(--border-color);
 		padding: 0.125rem;
 		user-select: none;
@@ -156,7 +156,7 @@
 	.segmented-control-background {
 		position: absolute;
 		background-color: white;
-		border-radius: 0.375rem;
+		border-radius: var(--ui-radius);
 		transition: all 0.2s ease-in-out;
 		box-shadow:
 			0 1px 3px 0 rgba(0, 0, 0, 0.1),
@@ -171,7 +171,7 @@
 		user-select: none;
 		border: none;
 		background: transparent;
-		border-radius: 0.375rem;
+		border-radius: var(--ui-radius);
 		padding: 0.125rem 0.75rem;
 		font-size: 0.875rem;
 		line-height: 1.5rem;
@@ -191,7 +191,6 @@
 
 	/* Large size */
 	.segmented-control.large {
-		border: none;
 		padding: 0.25rem;
 	}
 
@@ -201,13 +200,10 @@
 	}
 
 	/* Dark mode styles */
-	:global(.dark) .segmented-control {
-		background-color: var(--input-bg-color);
-		border-color: var(--border-color);
-	}
-
+	/* The selected segment is cut out of the track in the page colour */
 	:global(.dark) .segmented-control-background {
-		background-color: var(--ui-primary);
+		background-color: var(--page-bg);
+		box-shadow: none;
 	}
 
 	:global(.dark) .segmented-control-item {

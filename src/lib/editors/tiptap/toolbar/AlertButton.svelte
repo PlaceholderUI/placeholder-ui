@@ -123,7 +123,7 @@
 		flex-direction: column;
 		background: var(--paper-body-bg);
 		border: 1px solid var(--border-color);
-		border-radius: 0.375rem;
+		border-radius: var(--ui-radius);
 		box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
 		z-index: 1000;
 		min-width: 18.75rem;
@@ -168,7 +168,7 @@
 	.form-input {
 		padding: 0.5rem 0.75rem;
 		border: 1px solid var(--border-color);
-		border-radius: 0.25rem;
+		border-radius: var(--ui-radius-sm);
 		background: var(--input-bg);
 		color: var(--text-color);
 		font-size: 0.8125rem;
@@ -194,7 +194,7 @@
 		width: 100%;
 		padding: 0.625rem 0.75rem;
 		border: 1px solid var(--border-color);
-		border-radius: 0.25rem;
+		border-radius: var(--ui-radius-sm);
 		background: var(--paper-body-bg);
 		color: var(--text-color);
 		font-size: 0.8125rem;
@@ -229,7 +229,7 @@
 	.btn {
 		padding: 0.375rem 1rem;
 		border: none;
-		border-radius: 0.25rem;
+		border-radius: var(--ui-radius-sm);
 		font-size: 0.8125rem;
 		font-weight: 500;
 		cursor: pointer;

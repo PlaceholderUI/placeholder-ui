@@ -5,6 +5,7 @@
 	import Badge from '#lib/ui/Badge.svelte';
 	import Loader from '#lib/ui/Loader.svelte';
 	import Tooltip from '#lib/ui/Tooltip.svelte';
+	import SegmentedControl from '#lib/form/SegmentedControl.svelte';
 	import { iconEdit, iconTrash, iconPlus, iconInfoCircle } from '#lib/icon/index.js';
 
 	let clicks = $state(0);
@@ -16,6 +17,16 @@
 	function toggleLoader() {
 		showLoader = !showLoader;
 	}
+
+	let scrollMode = $state('page');
+	let pageSpread = $state('none');
+	let defaultFit = $state('fit-page');
+	const fits = [
+		{ label: 'Fit Page', value: 'fit-page' },
+		{ label: 'Fit Width', value: 'fit-width' },
+		{ label: 'Automatic', value: 'auto' },
+		{ label: 'Custom', value: 'custom' }
+	];
 </script>
 
 <div class="page-header">
@@ -89,6 +100,72 @@
 			<div class="tile">Tile D</div>
 		</div>
 	</Paper>
+
+	<Paper title="Nested Papers">
+		<p>
+			A Paper that contains other Papers becomes the outer shell: its surfaces step down towards the
+			page (<code>--paper-outer-title-bg</code>, <code>--paper-outer-body-bg</code>,
+			<code>--paper-outer-border</code>) so the nested Papers read as raised cards. Nothing to opt
+			into, just nest them.
+		</p>
+
+		<div class="section-label">Layout</div>
+		<Paper noPadding noGap>
+			<div class="setting-row">
+				<div>
+					<div class="setting-title">Scroll mode</div>
+					<div class="setting-desc">
+						Page flips one at a time; continuous scrolls through all pages
+					</div>
+				</div>
+				<SegmentedControl
+					size="lg"
+					bind:value={scrollMode}
+					options={[
+						{ label: 'Page', value: 'page' },
+						{ label: 'Scrolled', value: 'scrolled' },
+						{ label: 'Horizontal', value: 'horizontal' }
+					]}
+				/>
+			</div>
+			<div class="setting-row">
+				<div>
+					<div class="setting-title">Page spread</div>
+					<div class="setting-desc">Which page number starts on the right in two-page view</div>
+				</div>
+				<SegmentedControl
+					size="lg"
+					bind:value={pageSpread}
+					options={[
+						{ label: 'None', value: 'none' },
+						{ label: 'Odd', value: 'odd' },
+						{ label: 'Even', value: 'even' },
+						{ label: 'Auto', value: 'auto' }
+					]}
+				/>
+			</div>
+		</Paper>
+
+		<div class="section-label">Zoom</div>
+		<Paper noPadding>
+			<div class="setting-row setting-stack">
+				<div>
+					<div class="setting-title">Default fit</div>
+					<div class="setting-desc">How pages are scaled when a PDF is opened</div>
+				</div>
+				<div class="button-row">
+					{#each fits as fit (fit.value)}
+						<Button
+							variant={defaultFit === fit.value ? 'secondary-selected' : 'secondary'}
+							onclick={() => (defaultFit = fit.value)}
+						>
+							{fit.label}
+						</Button>
+					{/each}
+				</div>
+			</div>
+		</Paper>
+	</Paper>
 </div>
 
 <style>
@@ -138,6 +215,51 @@
 		padding: 0.75rem;
 		text-align: center;
 		color: var(--text-color);
+	}
+
+	.section-label {
+		margin-top: 0.75rem;
+		font-size: 0.75rem;
+		font-weight: 600;
+		text-transform: uppercase;
+		letter-spacing: 0.08em;
+		color: var(--label-color);
+	}
+
+	.setting-row {
+		display: flex;
+		flex-wrap: wrap;
+		align-items: center;
+		justify-content: space-between;
+		gap: 1rem;
+		padding: 1rem 1.25rem;
+	}
+
+	.setting-stack {
+		flex-direction: column;
+		align-items: stretch;
+		gap: 0.75rem;
+	}
+
+	.setting-row + .setting-row {
+		border-top: 1px solid var(--border-color);
+	}
+
+	.setting-title {
+		font-weight: 500;
+		color: var(--text-color);
+	}
+
+	.setting-desc {
+		margin-top: 0.125rem;
+		font-size: 0.8125rem;
+		color: var(--label-color);
+	}
+
+	.button-row {
+		display: flex;
+		flex-wrap: wrap;
+		gap: 0.5rem;
 	}
 
 	:global(.text-brand-primary) {

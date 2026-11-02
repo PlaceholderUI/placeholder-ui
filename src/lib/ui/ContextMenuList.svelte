@@ -92,7 +92,7 @@
 		padding: 0.25rem;
 		background: var(--paper-body-bg, #fff);
 		border: 1px solid var(--border-color);
-		border-radius: 0.375rem;
+		border-radius: var(--ui-radius);
 		box-shadow: 0 8px 24px rgba(0, 0, 0, 0.18);
 		color: var(--text-color);
 		font-size: 0.875rem;
@@ -111,7 +111,7 @@
 		padding: 0.375rem 0.6rem;
 		background: none;
 		border: 0;
-		border-radius: 0.25rem;
+		border-radius: var(--ui-radius-sm);
 		color: inherit;
 		font: inherit;
 		text-align: left;

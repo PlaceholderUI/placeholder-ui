@@ -62,7 +62,7 @@
 
 <style>
 	.paper-body {
-		border-radius: 0.25rem;
+		border-radius: var(--paper-inner-radius);
 		position: relative;
 		padding: 0.75rem;
 		flex-grow: 1;
@@ -78,6 +78,11 @@
 		min-height: 3.75rem;
 	}
 
+	/* The overlay loader covers the body, so follow its corners (square under a title) */
+	.paper-body > :global(.loader) {
+		border-radius: inherit;
+	}
+
 	.paper-body-bg {
 		background-color: var(--paper-body-bg);
 	}
@@ -91,9 +96,13 @@
 	}
 
 	.paper {
-		box-shadow:
-			rgba(0, 0, 0, 0.05) 0px 1px 3px 0px,
-			rgba(0, 0, 0, 0.1) 0px 1px 2px 0px;
+		/* Inherited by the content, so children can match the corners: --paper-radius for the
+		   outer edge, --paper-inner-radius for anything flush inside the 1px border (keeps the
+		   inner curve parallel to the outer one) */
+		--paper-radius: var(--ui-radius-lg);
+		--paper-inner-radius: calc(var(--paper-radius) - 1px);
+		border: 1px solid var(--border-color);
+		border-radius: var(--paper-radius);
 		display: flex;
 		flex-direction: column;
 	}
@@ -102,8 +111,8 @@
 		border-bottom: 1px solid #ccc;
 		background: var(--paper-title-bg);
 		border-color: var(--paper-title-border);
-		border-top-left-radius: 0.25rem;
-		border-top-right-radius: 0.25rem;
+		border-top-left-radius: var(--paper-inner-radius);
+		border-top-right-radius: var(--paper-inner-radius);
 		display: flex;
 		justify-content: space-between;
 
@@ -111,7 +120,25 @@
 	}
 
 	:global(.dark) .paper-title {
-		border-bottom: none;
+		border-color: var(--border-color);
+	}
+
+	/* A Paper that holds other Papers becomes the outer shell: its own surfaces step down
+	   towards the page so the nested Papers read as raised cards. Dialog renders its content
+	   in a Paper and its <dialog> stays where it is declared, so Papers inside a dialog only
+	   count for the dialog's own Paper, never for a page Paper around it */
+	.paper:not(:global(dialog .paper)):has(:global(.paper-body .paper:not(dialog .paper))),
+	:global(dialog) .paper:has(:global(.paper-body .paper)) {
+		border-color: var(--paper-outer-border);
+
+		> .paper-title {
+			background: var(--paper-outer-title-bg);
+			border-color: var(--paper-outer-border);
+		}
+
+		> .paper-body-bg {
+			background-color: var(--paper-outer-body-bg);
+		}
 	}
 
 	.paper-title-text {

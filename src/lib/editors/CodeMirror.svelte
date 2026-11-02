@@ -264,7 +264,7 @@
 		position: relative;
 		width: 100%;
 		border: 1px solid var(--border-color, #ddd);
-		border-radius: 0.375rem;
+		border-radius: var(--ui-radius-lg);
 		overflow: hidden;
 		background: var(--input-bg-color);
 	}
@@ -277,7 +277,7 @@
 		right: 0.375rem;
 		z-index: 2;
 		display: inline-flex;
-		border-radius: 0.375rem;
+		border-radius: var(--ui-radius-sm);
 		opacity: 0.65;
 		transition: opacity 0.15s ease;
 	}

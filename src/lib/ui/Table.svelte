@@ -576,7 +576,7 @@
 	}
 
 	.table-wrapper.rounded {
-		border-radius: 0.5rem;
+		border-radius: var(--ui-radius-lg);
 	}
 
 	.pui-table {
@@ -678,7 +678,7 @@
 		background: transparent;
 		color: var(--text-color);
 		cursor: pointer;
-		border-radius: 0.25rem;
+		border-radius: var(--ui-radius-sm);
 		transition:
 			transform 0.15s ease,
 			background-color 0.2s;

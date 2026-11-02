@@ -75,10 +75,29 @@
 	--paper-title-bg: rgb(252, 252, 252);
 	--paper-title-border: rgb(229, 231, 235);
 	--paper-body-bg: rgb(255, 255, 255);
+	/* A Paper that holds other Papers recedes towards the page so the nested ones read as raised */
+	--paper-outer-title-bg: #fbfbfc;
+	--paper-outer-body-bg: #f8f9fa;
+	--paper-outer-border: #e9ecef;
 	--danger-bg: #e03131;
 	--danger-bg-hover: #c92a2a;
 	--danger-text: #ff5e5e;
 	--danger-bg-subtle: rgba(250, 82, 82, 0.12);
+
+	/* ---- Shape ---- */
+	/* Small inner items (menu rows, calendar days, toolbar buttons, badges) */
+	--ui-radius-sm: 0.375rem;
+	/* Controls (buttons, inputs, selects, alerts, menus, popovers) */
+	--ui-radius: 0.625rem;
+	/* Containers (paper, dialogs, accordions, editors, nav items, segmented tracks) */
+	--ui-radius-lg: 0.75rem;
+
+	/* Neutral tints for hovered / selected rows on page and paper surfaces */
+	--hover-bg: rgba(0, 0, 0, 0.04);
+	--selected-bg: rgba(0, 0, 0, 0.06);
+	--selected-border: rgba(0, 0, 0, 0.16);
+	/* Track behind segmented controls */
+	--control-track-bg: #e5e7eb;
 
 	/* inputs */
 	--placeholder-color: rgb(161 161 170);
@@ -104,17 +123,25 @@
 
 .dark {
 	--input-bg: rgb(33, 37, 41);
-	--page-bg: rgb(36, 37, 40);
+	--page-bg: rgb(11, 14, 18);
 	--text-color: rgb(221, 221, 221);
 	--accent-color-rgb: var(--ui-accent-rgbc);
-	--border-color: rgb(55, 58, 64);
+	--border-color: rgb(66, 71, 79);
 	--accent-text-color-rgb: 221, 221, 221;
 	--accent-text-color: #000;
 	--paper-title-bg: rgb(18, 18, 18);
 	--paper-title-border: rgb(46, 46, 46);
-	--paper-body-bg: rgb(25, 26, 28);
+	--paper-body-bg: rgb(25, 28, 33);
+	--paper-outer-title-bg: rgb(23, 25, 30);
+	--paper-outer-body-bg: rgb(18, 19, 24);
+	--paper-outer-border: rgb(52, 56, 62);
 	--danger-text: #ffa8a8;
 	--danger-bg-subtle: rgba(250, 82, 82, 0.2);
+
+	--hover-bg: rgba(255, 255, 255, 0.05);
+	--selected-bg: rgba(255, 255, 255, 0.08);
+	--selected-border: rgba(255, 255, 255, 0.35);
+	--control-track-bg: var(--input-bg-color);
 
 	/* inputs */
 	--placeholder-color: rgb(115 115 115);
@@ -209,7 +236,7 @@ a:hover {
 	display: inline-block;
 	padding: 0.5rem 1rem;
 	border: 0;
-	border-radius: 0.375rem;
+	border-radius: var(--ui-radius);
 	background-color: var(--editor-button-bg);
 	color: var(--editor-button-fg);
 	font-size: 0.875rem;

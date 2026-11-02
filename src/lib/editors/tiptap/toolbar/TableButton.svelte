@@ -168,7 +168,7 @@
 		padding: 0.5rem;
 		background: var(--paper-body-bg);
 		border: 1px solid var(--border-color);
-		border-radius: 0.375rem;
+		border-radius: var(--ui-radius);
 		box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
 		z-index: 1000;
 		min-width: 11.25rem;
@@ -194,7 +194,7 @@
 		color: var(--text-color);
 		font-size: 0.8125rem;
 		text-align: left;
-		border-radius: 0.25rem;
+		border-radius: var(--ui-radius-sm);
 		cursor: pointer;
 		transition: background 0.15s ease;
 		white-space: nowrap;

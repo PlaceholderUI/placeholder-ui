@@ -457,7 +457,7 @@
 
 	/* Dark mode adjustments */
 	:global(.dark) .team-member {
-		background: rgb(25, 26, 28);
+		background: rgb(25, 28, 33);
 		border-color: #374151;
 	}
 

@@ -179,7 +179,7 @@
 		width: 100%;
 		padding: 0.375rem 0.5rem;
 		border: 1px solid var(--border-color);
-		border-radius: 0.25rem;
+		border-radius: var(--ui-radius);
 		background-color: var(--input-bg-color);
 		color: var(--text-color);
 		font-size: 0.875rem;

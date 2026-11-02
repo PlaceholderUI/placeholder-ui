@@ -478,7 +478,7 @@
 	.editor-container {
 		position: relative;
 		border: 1px solid var(--border-color);
-		border-radius: 0.375rem;
+		border-radius: var(--ui-radius-lg);
 		background: var(--paper-body-bg);
 		font-family: var(--ui-font-family);
 		transition: border-color 0.2s ease;
@@ -496,7 +496,7 @@
 		padding: 0.375rem;
 		background: var(--paper-title-bg);
 		border: 1px solid var(--border-color);
-		border-radius: 0.375rem;
+		border-radius: var(--ui-radius);
 		box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
 		flex-wrap: nowrap;
 	}
@@ -697,7 +697,7 @@
 	.editor-content :global(.ProseMirror .alert) {
 		display: flex;
 		flex-direction: column;
-		border-radius: 0.25rem;
+		border-radius: var(--ui-radius);
 		padding: 0.5rem;
 		margin: 0.5rem 0;
 	}
