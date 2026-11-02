@@ -181,6 +181,10 @@
 		<Table columns={basicColumns} rows={sampleUsers} class="basic-table" />
 	</Paper>
 
+	<Paper title="Basic Table in no padding Paper" noPadding>
+		<Table columns={basicColumns} rows={sampleUsers} class="basic-table" />
+	</Paper>
+
 	<Paper title="Checkbox Selection">
 		<p class="description">
 			Click on any row to toggle its selection. The header checkbox selects/deselects all visible

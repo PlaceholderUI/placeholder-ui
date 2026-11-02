@@ -797,4 +797,10 @@
 			font-size: 0.75rem;
 		}
 	}
+
+	:global(.paper-body.p-0) .table-wrapper {
+		border-top-left-radius: 0;
+		border-top-right-radius: 0;
+		border: 0;
+	}
 </style>
