@@ -284,7 +284,6 @@
 		background: none;
 		border: 0;
 		color: var(--text-color);
-		font-size: 0.875rem;
 		font-weight: 500;
 		text-align: left;
 		cursor: pointer;
@@ -318,7 +317,6 @@
 
 	.ft-indent-line {
 		display: inline-block;
-		width: 0.875rem;
 		height: 100%;
 		border-left: 1px solid var(--border-color);
 		margin-right: 2px;
