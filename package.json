@@ -1,6 +1,6 @@
 {
 	"name": "@placeholderco/placeholder-ui",
-	"version": "3.2.5",
+	"version": "3.2.6",
 	"description": "A modern, customizable Svelte 5 UI component library with comprehensive theming support. Re-brand it with a single config object.",
 	"license": "MIT",
 	"author": "Placeholderco",
@@ -56,6 +56,22 @@
 			"types": "./dist/index.d.ts",
 			"svelte": "./dist/index.js"
 		},
+		"./codemirror/language": {
+			"types": "./dist/codemirror/language.d.ts",
+			"default": "./dist/codemirror/language.js"
+		},
+		"./codemirror/state": {
+			"types": "./dist/codemirror/state.d.ts",
+			"default": "./dist/codemirror/state.js"
+		},
+		"./codemirror/view": {
+			"types": "./dist/codemirror/view.d.ts",
+			"default": "./dist/codemirror/view.js"
+		},
+		"./codemirror/highlight": {
+			"types": "./dist/codemirror/highlight.d.ts",
+			"default": "./dist/codemirror/highlight.js"
+		},
 		"./app.css": "./dist/app.css",
 		"./styles.css": "./dist/styles.css"
 	},
@@ -69,13 +85,13 @@
 		"@sveltejs/package": "^3.0.2",
 		"@sveltejs/vite-plugin-svelte": "^7.3.1",
 		"@types/node": "^26.6.6",
-		"globals": "^17.13.0",
+		"globals": "^17.14.0",
 		"prettier": "^3.9.10",
 		"prettier-plugin-svelte": "^4.1.1",
 		"publint": "^0.3.25",
 		"rimraf": "^6.1.3",
 		"svelte": "^5.57.3",
-		"svelte-check": "^4.7.7",
+		"svelte-check": "^4.7.8",
 		"typescript": "^6.0.3",
 		"vite": "^8.3.5"
 	},
@@ -114,7 +130,7 @@
 		"@tiptap/pm": "^3.32.2",
 		"@tiptap/starter-kit": "^3.32.2",
 		"dayjs": "^1.11.23",
-		"svelte-sonner": "^1.2.2",
+		"svelte-sonner": "^1.2.3",
 		"yjs": "^13.6.33"
 	},
 	"publishConfig": {
