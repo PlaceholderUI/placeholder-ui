@@ -1,4 +1,6 @@
-/* Styles for the CodeBlockEditor TipTap extension (CodeMirror-powered code blocks).
+/* Styles for CodeMirror-powered code blocks (the CodeBlockEditor TipTap extension and
+   read-only renderers built on resolveCodeBlockLanguage). Loaded via codeBlockLanguages.ts,
+   or import '@placeholderco/placeholder-ui/code-block.css' directly.
    Syntax colors target the stable tok-* classes emitted by @lezer/highlight's
    classHighlighter: light palette follows CodeMirror's default highlight style,
    dark palette follows One Dark. Dark mode uses the library's `.dark` root class. */

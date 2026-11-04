@@ -9,6 +9,10 @@ import { LanguageSupport, StreamLanguage, type StreamParser } from '@codemirror/
 import { completeAnyWord, completeFromList, type Completion } from '@codemirror/autocomplete';
 import { csharp } from '@codemirror/legacy-modes/mode/clike';
 import { powerShell } from '@codemirror/legacy-modes/mode/powershell';
+// Code block styles are imported here rather than in CodeBlockEditor so that read-only
+// renderers using only resolveCodeBlockLanguage still load them. Production builds split
+// CSS per chunk, so an import that lives only in the editor would not reach those routes.
+import './codeBlockEditor.css';
 
 /** Language identifiers supported by the rich code block editor */
 export type CodeBlockLanguageId =

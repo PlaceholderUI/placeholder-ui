@@ -1,6 +1,6 @@
 {
 	"name": "@placeholderco/placeholder-ui",
-	"version": "3.2.7",
+	"version": "3.2.8",
 	"description": "A modern, customizable Svelte 5 UI component library with comprehensive theming support. Re-brand it with a single config object.",
 	"license": "MIT",
 	"author": "Placeholderco",
@@ -73,7 +73,8 @@
 			"default": "./dist/codemirror/highlight.js"
 		},
 		"./app.css": "./dist/app.css",
-		"./styles.css": "./dist/styles.css"
+		"./styles.css": "./dist/styles.css",
+		"./code-block.css": "./dist/editors/tiptap/extensions/codeBlockEditor.css"
 	},
 	"peerDependencies": {
 		"@sveltejs/kit": "^2.26.0 || ^3.0.0",
