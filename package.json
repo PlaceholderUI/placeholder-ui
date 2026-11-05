@@ -1,6 +1,6 @@
 {
 	"name": "@placeholderco/placeholder-ui",
-	"version": "3.2.8",
+	"version": "3.2.9",
 	"description": "A modern, customizable Svelte 5 UI component library with comprehensive theming support. Re-brand it with a single config object.",
 	"license": "MIT",
 	"author": "Placeholderco",
@@ -90,7 +90,7 @@
 		"prettier": "^3.9.10",
 		"prettier-plugin-svelte": "^4.1.1",
 		"publint": "^0.3.25",
-		"rimraf": "^6.1.3",
+		"rimraf": "^6.1.4",
 		"svelte": "^5.57.3",
 		"svelte-check": "^4.7.8",
 		"typescript": "^6.0.3",

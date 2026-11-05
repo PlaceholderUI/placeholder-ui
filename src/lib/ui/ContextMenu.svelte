@@ -14,7 +14,7 @@
 		separator?: boolean;
 		/** Right-aligned shortcut hint (e.g. `⌘C`, `Del`). Purely visual. */
 		shortcut?: string;
-		/** Nested submenu items — opens on hover. */
+		/** Nested submenu items — opens on hover, click, Enter/Space or ArrowRight. */
 		children?: ContextMenuItem[];
 	}
 
@@ -37,6 +37,7 @@
 </script>
 
 <script lang="ts">
+	import { tick } from 'svelte';
 	import ContextMenuList from './ContextMenuList.svelte';
 	import { topLayer } from '#lib/util/Floating.js';
 
@@ -87,6 +88,32 @@
 		placed = true;
 	});
 
+	// Move focus into the menu once it is visible (hidden elements can't take focus), and hand it
+	// back to whatever had it before when the menu closes — however it closes. Keyed on `placed`
+	// rather than x/y so repositioning an open menu doesn't yank focus back to the first item.
+	$effect(() => {
+		if (!open || !placed || !menuEl) return;
+		const node = menuEl;
+		const previous = document.activeElement;
+		let active = true;
+		void tick().then(() => {
+			if (!active) return;
+			node
+				.querySelector<HTMLButtonElement>('button:not(:disabled)')
+				?.focus({ preventScroll: true });
+		});
+		return () => {
+			active = false;
+			// Only restore if focus is still in (or was dropped by) the menu; an outside click
+			// that focused something else keeps that focus.
+			const current = document.activeElement;
+			const lost = !current || current === document.body || node.contains(current);
+			if (lost && previous instanceof HTMLElement && previous.isConnected) {
+				previous.focus({ preventScroll: true });
+			}
+		};
+	});
+
 	// Dismiss the menu on outside interaction while it's open.
 	$effect(() => {
 		if (!open) return;
@@ -94,8 +121,15 @@
 			if (menuEl && !menuEl.contains(e.target as Node)) close();
 		};
 		const onKey = (e: KeyboardEvent) => {
+			const target = e.target instanceof Element ? e.target : null;
+			const inMenu = !!(target && menuEl?.contains(target));
 			if (e.key === 'Escape') {
+				// Inside a submenu, Escape closes just that level (handled by ContextMenuList).
+				if (inMenu && target?.closest('.pui-ctxmenu-submenu')) return;
 				e.preventDefault();
+				close();
+			} else if (e.key === 'Tab' && inMenu) {
+				// Let Tab proceed: focus is restored to the trigger first, so Tab moves on from there.
 				close();
 			}
 		};

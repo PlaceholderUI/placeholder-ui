@@ -3,6 +3,7 @@
 </script>
 
 <script lang="ts">
+	import { tick } from 'svelte';
 	import Icon from '#lib/icon/Icon.svelte';
 	import { iconChevronRight } from '#lib/icon/index.js';
 	import Self from './ContextMenuList.svelte';
@@ -14,22 +15,92 @@
 		/** Nesting level — only the top level applies `minWidth`. */
 		depth?: number;
 		minWidth?: string;
+		/** Set on submenus: closes this level and returns focus to its parent item. */
+		onBack?: () => void;
 	}
 
-	let { items, onSelect, depth = 0, minWidth = '' }: Props = $props();
+	let { items, onSelect, depth = 0, minWidth = '', onBack }: Props = $props();
+	let listEl = $state<HTMLUListElement | null>(null);
 
-	// Only one submenu per list can be open at a time (the hovered item).
+	// Only one submenu per list can be open at a time.
 	let hoverIndex = $state<number | null>(null);
 	let submenuEl = $state<HTMLElement | null>(null);
 	let flipLeft = $state(false);
 
-	function onItemEnter(i: number, item: ContextMenuItem) {
+	const focusOpts = { preventScroll: true };
+
+	function onItemEnter(i: number, item: ContextMenuItem, li: HTMLElement) {
 		hoverIndex = item.children?.length ? i : null;
+		// Keep focus with the pointer so a submenu closing under it never drops focus to <body>.
+		// Disabled rows can't take focus, so park it on the list itself.
+		const button = li.querySelector<HTMLButtonElement>(':scope > button');
+		(button && !button.disabled ? button : listEl)?.focus(focusOpts);
 	}
 
-	function handleClick(item: ContextMenuItem) {
-		if (item.disabled || item.separator || item.children?.length) return;
+	async function openSubmenu(i: number) {
+		hoverIndex = i;
+		await tick();
+		submenuEl?.querySelector<HTMLButtonElement>('button:not(:disabled)')?.focus(focusOpts);
+	}
+
+	function closeSubmenu(i: number) {
+		hoverIndex = null;
+		listEl?.children.item(i)?.querySelector<HTMLButtonElement>(':scope > button')?.focus(focusOpts);
+	}
+
+	function handleClick(item: ContextMenuItem, i: number) {
+		if (item.disabled || item.separator) return;
+		if (item.children?.length) {
+			void openSubmenu(i);
+			return;
+		}
 		onSelect(item);
+	}
+
+	function onKey(event: KeyboardEvent) {
+		const target = event.target;
+		// Only handle keys aimed at this level (the list itself or one of its own items);
+		// nested lists handle their own.
+		if (
+			!listEl ||
+			!(target instanceof HTMLElement) ||
+			(target !== listEl && target.closest('[role="menu"]') !== listEl)
+		)
+			return;
+
+		const handled = () => {
+			event.preventDefault();
+			event.stopPropagation();
+		};
+
+		if (event.key === 'ArrowRight') {
+			const index = Array.from(listEl.children).indexOf(target.parentElement as Element);
+			if (!items[index]?.children?.length) return;
+			handled();
+			void openSubmenu(index);
+			return;
+		}
+		if ((event.key === 'ArrowLeft' || event.key === 'Escape') && onBack) {
+			handled();
+			onBack();
+			return;
+		}
+
+		const buttons = Array.from(
+			listEl.querySelectorAll<HTMLButtonElement>(':scope > li > button:not(:disabled)')
+		);
+		if (!buttons.length) return;
+		const last = buttons.length - 1;
+		const current = buttons.indexOf(target as HTMLButtonElement);
+		let next: number;
+		if (event.key === 'ArrowDown') next = current < 0 || current === last ? 0 : current + 1;
+		else if (event.key === 'ArrowUp') next = current <= 0 ? last : current - 1;
+		else if (event.key === 'Home') next = 0;
+		else if (event.key === 'End') next = last;
+		else return;
+		handled();
+		hoverIndex = null;
+		buttons[next].focus(focusOpts);
 	}
 
 	// Decide whether the open submenu should flip to the left edge of its parent.
@@ -47,6 +118,9 @@
 <ul
 	class="pui-ctxmenu-list"
 	role="menu"
+	tabindex="-1"
+	bind:this={listEl}
+	onkeydown={onKey}
 	style={depth === 0 && minWidth ? `min-width: ${minWidth};` : ''}
 >
 	{#each items as item, i (i)}
@@ -54,14 +128,21 @@
 			<li class="pui-ctxmenu-sep" role="separator"></li>
 		{:else}
 			<!-- svelte-ignore a11y_no_noninteractive_element_interactions -->
-			<li class="pui-ctxmenu-li" role="none" onmouseenter={() => onItemEnter(i, item)}>
+			<li
+				class="pui-ctxmenu-li"
+				role="none"
+				onmouseenter={(e) => onItemEnter(i, item, e.currentTarget)}
+			>
 				<button
 					type="button"
 					role="menuitem"
 					class="pui-ctxmenu-item"
 					class:danger={item.danger}
+					tabindex="-1"
+					aria-haspopup={item.children?.length ? 'menu' : undefined}
+					aria-expanded={item.children?.length ? hoverIndex === i : undefined}
 					disabled={item.disabled}
-					onclick={() => handleClick(item)}
+					onclick={() => handleClick(item, i)}
 				>
 					<span class="pui-ctxmenu-ico">
 						{#if item.icon}<Icon svg={item.icon} size="1rem" />{/if}
@@ -77,7 +158,12 @@
 
 				{#if item.children?.length && hoverIndex === i}
 					<div class="pui-ctxmenu-submenu" class:flip-left={flipLeft} bind:this={submenuEl}>
-						<Self items={item.children} {onSelect} depth={depth + 1} />
+						<Self
+							items={item.children}
+							{onSelect}
+							depth={depth + 1}
+							onBack={() => closeSubmenu(i)}
+						/>
 					</div>
 				{/if}
 			</li>
@@ -97,6 +183,10 @@
 		color: var(--text-color);
 		font-size: 0.875rem;
 		user-select: none;
+	}
+
+	.pui-ctxmenu-list:focus {
+		outline: none;
 	}
 
 	.pui-ctxmenu-li {
