@@ -108,7 +108,8 @@
 			items: [
 				{ href: '/components/navbar', label: 'Navbar' },
 				{ href: '/components/sidenav', label: 'Sidenav' },
-				{ href: '/components/drawer', label: 'Drawer' }
+				{ href: '/components/drawer', label: 'Drawer' },
+				{ href: '/components/resize-handle', label: 'Resize Handle' }
 			]
 		},
 		{
