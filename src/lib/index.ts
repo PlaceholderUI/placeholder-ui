@@ -71,6 +71,12 @@ export type {
 	SidenavSection,
 	SidenavProps
 } from './layout/Sidenav.svelte';
+export { default as ResizeHandle } from './layout/ResizeHandle.svelte';
+export type {
+	ResizeHandleProps,
+	ResizeHandleOrientation,
+	ResizeHandleSide
+} from './layout/ResizeHandle.svelte';
 export { default as Paper } from './display/Paper.svelte';
 export type { PaperProps } from './display/Paper.svelte';
 export { default as Avatar } from './display/Avatar.svelte';
