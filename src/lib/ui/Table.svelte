@@ -1,5 +1,5 @@
 <script lang="ts">
-	import { type Snippet } from 'svelte';
+	import { flushSync, type Snippet } from 'svelte';
 	import Textbox from '#lib/form/Textbox.svelte';
 	import Checkbox from '#lib/form/Checkbox.svelte';
 	import Icon from '#lib/icon/Icon.svelte';
@@ -150,8 +150,10 @@
 	let headerCells: HTMLElement[] = $state([]);
 	/** Widths the columns were drawn at before the first resize, which a reset restores. */
 	let initialWidths = $state<Record<string, number>>({});
+	/** True while the natural layout is drawn to be measured; it is never painted. */
+	let measuring = $state(false);
 
-	const resized = $derived(resizable && Object.keys(columnWidths).length > 0);
+	const resized = $derived(resizable && !measuring && Object.keys(columnWidths).length > 0);
 	// The column that takes the room the others leave; the actions column when there is one.
 	const fillerKey = $derived(buttons ? null : (columns[columns.length - 1]?.key ?? null));
 
@@ -170,8 +172,21 @@
 		return widths;
 	}
 
+	/** The widths the columns take in the table's natural layout, drawn for a moment to measure. */
+	function naturalWidths(): Record<string, number> {
+		measuring = true;
+		flushSync();
+		const widths = drawnWidths();
+		measuring = false;
+		return widths;
+	}
+
 	function resizeColumn(key: string, width: number | null) {
-		// Without a reset width (widths restored from a save), a reset restores the whole layout.
+		if (width === null) {
+			// Widths restored from a save come without the natural ones a reset goes back to.
+			if (resized && initialWidths[key] === undefined) initialWidths = naturalWidths();
+			width = initialWidths[key] ?? null;
+		}
 		if (width === null) {
 			columnWidths = {};
 			initialWidths = {};
@@ -532,7 +547,12 @@
 										ariaLabel={`${column.label} column width`}
 										title="Drag to resize; double-click to reset"
 										onresize={(width) => resizeColumn(column.key, width)}
-										onresizeend={(width) => oncolumnresize?.(column.key, width, columnWidths)}
+										onresizeend={(width) =>
+											oncolumnresize?.(
+												column.key,
+												width ?? columnWidths[column.key] ?? null,
+												columnWidths
+											)}
 									/>
 								</span>
 							{/if}
