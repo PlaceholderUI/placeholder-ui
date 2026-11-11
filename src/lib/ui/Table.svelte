@@ -4,6 +4,7 @@
 	import Checkbox from '#lib/form/Checkbox.svelte';
 	import Icon from '#lib/icon/Icon.svelte';
 	import Pagination from './Pagination.svelte';
+	import ResizeHandle from '#lib/layout/ResizeHandle.svelte';
 	import {
 		iconArrowsSort,
 		iconChevronDown,
@@ -24,6 +25,10 @@
 		/** @deprecated Returns raw HTML injected via {@html} — unsafe for untrusted
 		 * data and cannot render components. Use `cell` instead. */
 		render?: (value: any, row: T) => any;
+		/** With the table's `resizable`, whether this column gets a resize handle (default true) */
+		resizable?: boolean;
+		/** Narrowest a resize can make the column, in px (default 48) */
+		minWidth?: number;
 	}
 
 	export interface TableProps<T = any> {
@@ -94,6 +99,15 @@
 		/** Skip the built-in client-side sort and render `rows` in the order given.
 		 * Use with `onsort` when the server returns pre-sorted rows. */
 		manualSort?: boolean;
+		/** Let the user resize columns by dragging a header cell's end edge (or with the arrow
+		 * keys on its handle). The last column, or the actions column, takes the room left. */
+		resizable?: boolean;
+		/** Column widths in px by column key (bindable). Empty until the first resize, which fixes
+		 * every column at the width it was drawn at, so a drag never moves the columns before it.
+		 * Double-click a handle to restore its column; save and pass it back to keep a layout. */
+		columnWidths?: Record<string, number>;
+		/** Callback once a drag, key press or reset settles a column's width */
+		oncolumnresize?: (key: string, width: number | null, widths: Record<string, number>) => void;
 	}
 
 	let {
@@ -125,8 +139,79 @@
 		sortKey = $bindable(null),
 		sortDirection = $bindable('asc'),
 		onsort = undefined,
-		manualSort = false
+		manualSort = false,
+		resizable = false,
+		columnWidths = $bindable({}),
+		oncolumnresize = undefined
 	}: TableProps = $props();
+
+	const DEFAULT_MIN_WIDTH = 48;
+
+	let headerCells: HTMLElement[] = $state([]);
+	/** Widths the columns were drawn at before the first resize, which a reset restores. */
+	let initialWidths = $state<Record<string, number>>({});
+
+	const resized = $derived(resizable && Object.keys(columnWidths).length > 0);
+	// The column that takes the room the others leave; the actions column when there is one.
+	const fillerKey = $derived(buttons ? null : (columns[columns.length - 1]?.key ?? null));
+
+	function canResize(column: Column): boolean {
+		return resizable && column.resizable !== false && column.key !== fillerKey;
+	}
+
+	function drawnWidths(): Record<string, number> {
+		const widths: Record<string, number> = {};
+		columns.forEach((column, index) => {
+			const cell = headerCells[index];
+			if (column.key !== fillerKey && cell) {
+				widths[column.key] = Math.round(cell.getBoundingClientRect().width);
+			}
+		});
+		return widths;
+	}
+
+	function resizeColumn(key: string, width: number | null) {
+		// Without a reset width (widths restored from a save), a reset restores the whole layout.
+		if (width === null) {
+			columnWidths = {};
+			initialWidths = {};
+			return;
+		}
+
+		// Every other column keeps the width it's drawn at; one left to the layout would give way
+		// to the drag and move the dragged edge away from the pointer.
+		if (columns.some((c) => c.key !== fillerKey && columnWidths[c.key] === undefined)) {
+			const drawn = drawnWidths();
+			if (Object.keys(columnWidths).length === 0) initialWidths = drawn;
+			columnWidths = { ...drawn, ...columnWidths };
+		}
+
+		const next = { ...columnWidths, [key]: width };
+		const restored = Object.entries(next).every(([k, px]) => initialWidths[k] === px);
+		columnWidths = restored ? {} : next;
+		if (restored) initialWidths = {};
+	}
+
+	function headerWidth(column: Column): string {
+		if (resized && column.key === fillerKey) return '';
+		const px = resized ? columnWidths[column.key] : undefined;
+		if (px) return `width: ${px}px`;
+		return column.width ? `width: ${column.width}` : '';
+	}
+
+	const tableMinWidth = $derived.by(() => {
+		if (!resized) return undefined;
+		const px = columns.reduce(
+			(sum, column) =>
+				sum +
+				(column.key === fillerKey
+					? (column.minWidth ?? DEFAULT_MIN_WIDTH)
+					: (columnWidths[column.key] ?? 0)),
+			buttons ? DEFAULT_MIN_WIDTH : 0
+		);
+		const rem = (expandable ? 2.5 : 0) + (selectable && rowKey ? 2.5 : 0);
+		return rem ? `calc(${px}px + ${rem}rem)` : `${px}px`;
+	});
 
 	let searchQuery = $state('');
 
@@ -401,7 +486,7 @@
 	{/if}
 
 	<div class="table-wrapper {notRounded ? '' : 'rounded'}">
-		<table class={tableClasses}>
+		<table class={tableClasses} class:resized style:min-width={tableMinWidth}>
 			<thead>
 				<tr>
 					{#if expandable}
@@ -418,10 +503,12 @@
 							/>
 						</th>
 					{/if}
-					{#each columns as column}
+					{#each columns as column, index}
 						<th
+							bind:this={headerCells[index]}
 							class="table-header {column.sortable ? 'sortable' : ''} {column.align || 'left'}"
-							style={column.width ? `width: ${column.width}` : ''}
+							class:resizable={canResize(column)}
+							style={headerWidth(column)}
 							onclick={() => handleSort(column)}
 						>
 							<div class="header-content">
@@ -432,6 +519,23 @@
 									</div>
 								{/if}
 							</div>
+							{#if canResize(column)}
+								<!-- The click that ends a drag would otherwise sort the column. -->
+								<!-- svelte-ignore a11y_click_events_have_key_events, a11y_no_static_element_interactions -->
+								<span class="column-resize" onclick={(event) => event.stopPropagation()}>
+									<ResizeHandle
+										panel={headerCells[index]}
+										size={columnWidths[column.key] ?? null}
+										min={column.minWidth ?? DEFAULT_MIN_WIDTH}
+										defaultSize={initialWidths[column.key] ?? null}
+										thickness="0.5rem"
+										ariaLabel={`${column.label} column width`}
+										title="Drag to resize; double-click to reset"
+										onresize={(width) => resizeColumn(column.key, width)}
+										onresizeend={(width) => oncolumnresize?.(column.key, width, columnWidths)}
+									/>
+								</span>
+							{/if}
 						</th>
 					{/each}
 					{#if buttons}
@@ -611,6 +715,51 @@
 
 	.table-header.right {
 		text-align: right;
+	}
+
+	/* Resized columns hold their widths, so long content wraps or clips rather than widening them. */
+	.pui-table.resized {
+		table-layout: fixed;
+	}
+
+	.pui-table.resized .table-header {
+		overflow: hidden;
+		text-overflow: ellipsis;
+	}
+
+	.pui-table.resized .table-cell {
+		overflow-wrap: anywhere;
+	}
+
+	.table-header.resizable {
+		position: relative;
+	}
+
+	/* Over the cell's end padding, so it never covers the label or sort icon. */
+	.column-resize {
+		position: absolute;
+		top: 0;
+		right: 0;
+		bottom: 0;
+		display: flex;
+	}
+
+	/* A header row is shorter than the panels ResizeHandle is made for: the grip is a hairline,
+	   hidden until the header is hovered; the handle's own hover, focus and drag colour it. */
+	.column-resize :global(.grip) {
+		position: static;
+		width: 2px;
+		height: 1rem;
+		opacity: 0;
+		transition:
+			opacity 0.15s ease,
+			background-color 0.15s ease;
+	}
+
+	thead:hover .column-resize :global(.grip),
+	.column-resize :global(.pui-resize-handle:focus-visible .grip),
+	.column-resize :global(.pui-resize-handle.dragging .grip) {
+		opacity: 1;
 	}
 
 	.header-content {
