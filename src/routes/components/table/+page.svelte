@@ -24,6 +24,9 @@
 	// State for checkbox selection demo
 	let selectedUsers = $state<User[]>([]);
 
+	// State for resizable columns demo
+	let userWidths = $state<Record<string, number>>({});
+
 	// State for pagination demo
 	let currentPage = $state(1);
 
@@ -179,6 +182,27 @@
 <div class="vstack">
 	<Paper title="Basic Table">
 		<Table columns={basicColumns} rows={sampleUsers} class="basic-table" />
+	</Paper>
+
+	<Paper title="Resizable Columns">
+		<p class="description">
+			Set <code>resizable</code> and drag the end of a header cell, or focus its handle and use the
+			arrow keys. The first resize fixes every column at the width it was drawn at and the last
+			column takes the room left, so a drag never moves the columns before it; a table wider than
+			its container scrolls. Double-click a handle (or press Enter on it) to restore its column.
+			<code>columnWidths</code> is bindable, so a layout can be saved and passed back. A column's
+			<code>resizable: false</code> and <code>minWidth</code> limit it.
+		</p>
+		<p class="selection-count">
+			<strong>
+				{Object.keys(userWidths).length
+					? Object.entries(userWidths)
+							.map(([key, px]) => `${key} ${px}px`)
+							.join(', ')
+					: 'Natural widths'}
+			</strong>
+		</p>
+		<Table columns={basicColumns} rows={sampleUsers} resizable bind:columnWidths={userWidths} />
 	</Paper>
 
 	<Paper title="Basic Table in no padding Paper" noPadding>
