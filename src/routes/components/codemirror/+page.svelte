@@ -69,7 +69,7 @@ done`,
 
 	const logLines = [
 		'[2026-11-10 17:11:30] [INFO] Started sync for 42 matters',
-		'[2026-11-10 17:11:31] [DEBUG] Connecting to sql01',
+		'[2026-11-10 17:11:31] [DEBUG] Connecting to sql01: Server=sql01.example.local;Database=Matters;Encrypt=True;TrustServerCertificate=False;Connect Timeout=30;Application Name=Sync;MultipleActiveResultSets=True',
 		'[2026-11-10 17:11:32] [WARN] Matter 1093 has no owner; skipped',
 		'[2026-11-10 17:11:33] [ERROR] Upload failed for matter 2201',
 		'System.Net.Http.HttpRequestException: Response status code does not indicate success: 503.',
@@ -255,12 +255,14 @@ console.log(message);`);
 		<code>yml</code>, and can change after mount.
 	</p>
 	<div class="demo-controls">
-		<Select
-			label="Language"
-			options={sampleOptions}
-			value={sampleLanguage}
-			onchange={(value) => (sampleLanguage = value ?? 'powershell')}
-		/>
+		<div class="language-select">
+			<Select
+				label="Language"
+				options={sampleOptions}
+				value={sampleLanguage}
+				onchange={(value) => (sampleLanguage = value ?? 'powershell')}
+			/>
+		</div>
 	</div>
 	<CodeMirror
 		value={samples[sampleLanguage]}
@@ -284,7 +286,8 @@ console.log(message);`);
 		entry's colour. With <code>follow</code>, the last line stays in view as the value grows, until
 		you scroll up; a button then jumps back. A value that extends the current one is appended, so
 		polling a log is cheap. <code>markedLines</code> highlights lines and
-		<code>scrollToLine()</code> brings one into view.
+		<code>scrollToLine()</code> brings one into view. <code>wrap</code> (on by default, off here) folds
+		a long line, such as the DEBUG connection string, onto the next row instead of scrolling sideways.
 	</p>
 	<div class="demo-controls">
 		<Button variant="secondary-subtle" onclick={addLogLine}>Add a line</Button>
@@ -377,6 +380,12 @@ console.log(message);`);
 		gap: 0.75rem;
 		align-items: center;
 		margin-bottom: 0.75rem;
+	}
+
+	/* The menu takes the trigger's width, so size it for the longest language name. */
+	.language-select {
+		width: 14rem;
+		max-width: 100%;
 	}
 
 	.code-preview {
