@@ -1,5 +1,8 @@
 # PlaceholderUI
 
+[![npm version](https://img.shields.io/npm/v/@placeholderco/placeholder-ui?style=for-the-badge&logo=npm&color=cb3837)](https://www.npmjs.com/package/@placeholderco/placeholder-ui)
+[![Live preview](https://img.shields.io/badge/preview-live%20demo-ff3e00?style=for-the-badge&logo=svelte&logoColor=white)](https://placeholderui.github.io/placeholder-ui/)
+
 A Svelte 5 component library that you re-brand with a single config object.
 Forms, overlays, layout, data display, a TipTap rich-text editor and a
 CodeMirror code editor, all styled through one set of `--ui-*` CSS tokens.
