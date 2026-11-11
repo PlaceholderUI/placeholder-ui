@@ -108,7 +108,7 @@ If adding a variant to an existing component (e.g., TipTapBubble alongside TipTa
 ### Editor Components
 
 - **TipTap** (`src/lib/editors/tiptap/`) — Rich text editor with fixed toolbar and bubble menu variants. Custom extensions in `extensions/`. Reusable toolbar buttons in `toolbar/`.
-- **CodeMirror** (`src/lib/editors/CodeMirror.svelte`) — Code editor supporting JS, HTML, CSS, JSON, TypeScript, Markdown.
+- **CodeMirror** (`src/lib/editors/CodeMirror.svelte`) — Code editor and read-only viewer. Its languages come from `src/lib/editors/codemirror/languages.ts`, the registry rich code blocks also use; add a language there, not in either editor.
 
 ### Formatting
 

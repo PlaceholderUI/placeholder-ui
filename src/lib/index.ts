@@ -171,6 +171,8 @@ export type {
 } from './editors/tiptap/buttonLink.js';
 export { default as CodeMirror } from './editors/CodeMirror.svelte';
 export type { CodeMirrorProps } from './editors/CodeMirror.svelte';
+export { codeLanguages, resolveCodeLanguage } from './editors/codemirror/languages.js';
+export type { CodeLanguageDef, CodeLanguageId } from './editors/codemirror/languages.js';
 
 export { default as GitCard } from './cards/GitCard.svelte';
 export type { GitCardProps } from './cards/GitCard.svelte';
