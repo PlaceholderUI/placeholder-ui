@@ -30,21 +30,18 @@
 		completionKeymap
 	} from '@codemirror/autocomplete';
 	import { lintKeymap } from '@codemirror/lint';
-	import { javascript } from '@codemirror/lang-javascript';
-	import { html } from '@codemirror/lang-html';
-	import { css } from '@codemirror/lang-css';
-	import { json } from '@codemirror/lang-json';
-	import { markdown } from '@codemirror/lang-markdown';
 	import { oneDark } from '@codemirror/theme-one-dark';
 	import { themeState } from '../theme.svelte.js';
 	import ActionIcon from '../ui/ActionIcon.svelte';
 	import { iconCopy, iconCheck } from '../icon/index.js';
+	import { resolveCodeLanguage, type CodeLanguageId } from './codemirror/languages.js';
 
 	export interface CodeMirrorProps {
 		/** Editor content value (bindable) */
 		value?: string;
-		/** Programming language for syntax highlighting */
-		language?: 'javascript' | 'html' | 'css' | 'json' | 'typescript' | 'markdown';
+		/** Language for syntax highlighting: an id from `codeLanguages` or one of its aliases
+		 * ('ps1', 'py', 'yml', ...). Anything unrecognised shows as plain text. */
+		language?: CodeLanguageId | (string & {});
 		/** Color theme for the editor (defaults to app theme) */
 		theme?: 'light' | 'dark' | 'auto';
 		/** Disable editing */
@@ -80,6 +77,7 @@
 	let view: EditorView | null = $state(null);
 	let themeCompartment = new Compartment();
 	let gutterCompartment = new Compartment();
+	let languageCompartment = new Compartment();
 	let copied = $state(false);
 	let copiedTimeout: ReturnType<typeof setTimeout>;
 
@@ -117,23 +115,7 @@
 	// Derive effective dark mode from prop or app theme
 	let isDark = $derived(theme === 'auto' ? themeState.isDarkMode : theme === 'dark');
 
-	const getLanguageExtension = (lang: string) => {
-		switch (lang) {
-			case 'javascript':
-			case 'typescript':
-				return javascript();
-			case 'html':
-				return html();
-			case 'css':
-				return css();
-			case 'json':
-				return json();
-			case 'markdown':
-				return markdown();
-			default:
-				return javascript();
-		}
-	};
+	const getLanguageExtension = (lang: string) => resolveCodeLanguage(lang)?.load() ?? [];
 
 	onMount(() => {
 		if (!editorContainer) return;
@@ -141,7 +123,7 @@
 		const extensions = [
 			gutterCompartment.of(getGutterExtension(lineNumbers)),
 			baseSetup,
-			getLanguageExtension(language),
+			languageCompartment.of(getLanguageExtension(language)),
 			EditorView.lineWrapping,
 			themeCompartment.of(isDark ? oneDark : [])
 		];
@@ -199,6 +181,15 @@
 
 		view.dispatch({
 			effects: themeCompartment.reconfigure(isDark ? oneDark : [])
+		});
+	});
+
+	// Watch for language changes and swap the language support
+	$effect(() => {
+		if (!view) return;
+
+		view.dispatch({
+			effects: languageCompartment.reconfigure(getLanguageExtension(language))
 		});
 	});
 
