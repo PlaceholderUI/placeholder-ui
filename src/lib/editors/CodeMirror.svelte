@@ -303,7 +303,8 @@
 	$effect(() => {
 		if (!view) return;
 
-		const next = value;
+		// The document stores line breaks as \n, so a value with \r\n compares in that form.
+		const next = value.replace(/\r\n?/g, '\n');
 		const currentValue = view.state.doc.toString();
 		if (next === currentValue) return;
 
@@ -311,9 +312,11 @@
 		view.dispatch({
 			changes: next.startsWith(currentValue)
 				? { from: currentValue.length, insert: next.slice(currentValue.length) }
-				: { from: 0, to: currentValue.length, insert: next },
-			effects: keepAtEnd ? EditorView.scrollIntoView(next.length, { y: 'end' }) : []
+				: { from: 0, to: currentValue.length, insert: next }
 		});
+		// A transaction of its own: CodeMirror clips a scroll target to the document as it was
+		// before the transaction's changes, which would leave the view at the old end.
+		if (keepAtEnd) scrollToEnd();
 	});
 
 	// Public API methods
