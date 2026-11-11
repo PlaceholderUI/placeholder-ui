@@ -1,14 +1,6 @@
 <script lang="ts">
 	import { onDestroy } from 'svelte';
-	import {
-		Button,
-		CodeMirror,
-		Paper,
-		Select,
-		Textbox,
-		codeLanguages,
-		themeState
-	} from '#lib/index.js';
+	import { Button, CodeMirror, Paper, Select, Textbox, codeLanguages } from '#lib/index.js';
 	import Switch from '#lib/form/Switch.svelte';
 
 	const samples: Record<string, string> = {
@@ -195,13 +187,7 @@ console.log(message);`);
 
 <Paper>
 	<h2>JavaScript Editor</h2>
-	<CodeMirror
-		bind:value={jsCode}
-		language="javascript"
-		lineNumbers={false}
-		theme={themeState.isDarkMode ? 'dark' : 'light'}
-		height="200px"
-	/>
+	<CodeMirror bind:value={jsCode} language="javascript" lineNumbers={false} height="200px" />
 
 	<h3 class="mt-4">Current Value:</h3>
 	<pre class="code-preview p-3 rounded"><code>{jsCode}</code></pre>
@@ -209,54 +195,28 @@ console.log(message);`);
 
 <Paper>
 	<h2>HTML Editor</h2>
-	<CodeMirror
-		bind:value={htmlCode}
-		language="html"
-		theme={themeState.isDarkMode ? 'dark' : 'light'}
-		height="250px"
-	/>
+	<CodeMirror bind:value={htmlCode} language="html" height="250px" />
 </Paper>
 
 <Paper>
 	<h2>CSS Editor</h2>
-	<CodeMirror
-		bind:value={cssCode}
-		language="css"
-		theme={themeState.isDarkMode ? 'dark' : 'light'}
-		height="250px"
-	/>
+	<CodeMirror bind:value={cssCode} language="css" height="250px" />
 </Paper>
 
 <Paper>
 	<h2>JSON Editor</h2>
-	<CodeMirror
-		bind:value={jsonCode}
-		language="json"
-		theme={themeState.isDarkMode ? 'dark' : 'light'}
-		height="150px"
-	/>
+	<CodeMirror bind:value={jsonCode} language="json" height="150px" />
 </Paper>
 
 <Paper>
 	<h2>Markdown Editor</h2>
-	<CodeMirror
-		bind:value={markdownCode}
-		language="markdown"
-		theme={themeState.isDarkMode ? 'dark' : 'light'}
-		height="300px"
-	/>
+	<CodeMirror bind:value={markdownCode} language="markdown" height="300px" />
 </Paper>
 
 <Paper>
 	<h2>Read-Only Editor</h2>
 	<p>This editor is read-only and cannot be edited.</p>
-	<CodeMirror
-		value={readOnlyCode}
-		language="javascript"
-		theme={themeState.isDarkMode ? 'dark' : 'light'}
-		readOnly={true}
-		height="100px"
-	/>
+	<CodeMirror value={readOnlyCode} language="javascript" readOnly={true} height="100px" />
 </Paper>
 
 <Paper>
@@ -265,13 +225,7 @@ console.log(message);`);
 		Set <code>copyButton</code> to show a button that copies the editor contents to the clipboard. It
 		swaps to a checkmark for two seconds after a successful copy.
 	</p>
-	<CodeMirror
-		bind:value={copyCode}
-		language="javascript"
-		copyButton
-		theme={themeState.isDarkMode ? 'dark' : 'light'}
-		height="180px"
-	/>
+	<CodeMirror bind:value={copyCode} language="javascript" copyButton height="180px" />
 
 	<h3 class="mt-4">Read-only snippet with copy</h3>
 	<CodeMirror
@@ -280,7 +234,6 @@ console.log(message);`);
 		copyButton
 		lineNumbers={false}
 		readOnly={true}
-		theme={themeState.isDarkMode ? 'dark' : 'light'}
 		height="100px"
 		onCopy={() => (lastCopied = 'Copied at ' + new Date().toLocaleTimeString())}
 	/>

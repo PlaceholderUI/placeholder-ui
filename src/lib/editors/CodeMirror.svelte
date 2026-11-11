@@ -37,6 +37,7 @@
 	import ActionIcon from '../ui/ActionIcon.svelte';
 	import { iconArrowDown, iconCopy, iconCheck } from '../icon/index.js';
 	import { resolveCodeLanguage, type CodeLanguageId } from './codemirror/languages.js';
+	import { libraryTheme } from './codemirror/theme.js';
 
 	export interface CodeMirrorProps {
 		/** Editor content value (bindable). A new value that extends the current one is
@@ -45,7 +46,8 @@
 		/** Language for syntax highlighting: an id from `codeLanguages` or one of its aliases
 		 * ('ps1', 'py', 'yml', ...). Anything unrecognised shows as plain text. */
 		language?: CodeLanguageId | (string & {});
-		/** Color theme for the editor (defaults to app theme) */
+		/** Color theme. 'auto' (the default) follows the app's mode with the library's own
+		 * colours; 'light' and 'dark' force CodeMirror's default style and One Dark. */
 		theme?: 'light' | 'dark' | 'auto';
 		/** Disable editing */
 		readOnly?: boolean;
@@ -154,6 +156,8 @@
 	// Derive effective dark mode from prop or app theme
 	let isDark = $derived(theme === 'auto' ? themeState.isDarkMode : theme === 'dark');
 
+	const getThemeExtension = () => (theme === 'auto' ? libraryTheme(isDark) : isDark ? oneDark : []);
+
 	const getLanguageExtension = (lang: string) => resolveCodeLanguage(lang)?.load() ?? [];
 
 	const markedLine = Decoration.line({ class: 'cm-marked-line' });
@@ -192,7 +196,7 @@
 			baseSetup,
 			languageCompartment.of(getLanguageExtension(language)),
 			wrapCompartment.of(wrap ? EditorView.lineWrapping : []),
-			themeCompartment.of(isDark ? oneDark : []),
+			themeCompartment.of(getThemeExtension()),
 			readOnlyCompartment.of(EditorState.readOnly.of(readOnly)),
 			marksCompartment.of(getMarksExtension(markedLines, firstLineNumber)),
 			attributesCompartment.of(getAttributesExtension(placeholder, ariaLabel)),
@@ -247,7 +251,7 @@
 		if (!view) return;
 
 		view.dispatch({
-			effects: themeCompartment.reconfigure(isDark ? oneDark : [])
+			effects: themeCompartment.reconfigure(getThemeExtension())
 		});
 	});
 
@@ -425,6 +429,35 @@
 
 	.codemirror-wrapper :global(.cm-scroller) {
 		overflow: auto;
+	}
+
+	/* Syntax colours for theme="auto", overridable per app. Not brand colours: each mode's set
+	   is picked to read on that mode's input background. */
+	.codemirror-container {
+		--cm-keyword: #be123c;
+		--cm-string: #15803d;
+		--cm-number: #b45309;
+		--cm-comment: var(--text-muted);
+		--cm-function: #1d4ed8;
+		--cm-type: #7c3aed;
+		--cm-variable: #0e7490;
+		--cm-property: #0e7490;
+		--cm-tag: #be123c;
+		--cm-operator: #495057;
+		--cm-invalid: #c92a2a;
+	}
+
+	:global(.dark) .codemirror-container {
+		--cm-keyword: #ff8fa3;
+		--cm-string: #8ce99a;
+		--cm-number: #ffc078;
+		--cm-function: #74c0fc;
+		--cm-type: #d0bfff;
+		--cm-variable: #66d9e8;
+		--cm-property: #66d9e8;
+		--cm-tag: #ff8fa3;
+		--cm-operator: #ced4da;
+		--cm-invalid: #ff8787;
 	}
 
 	.codemirror-wrapper :global(.cm-marked-line) {
