@@ -1,6 +1,7 @@
 <script lang="ts">
-	import { onMount, onDestroy } from 'svelte';
+	import { onMount, onDestroy, untrack } from 'svelte';
 	import {
+		Decoration,
 		EditorView,
 		lineNumbers as lineNumbersGutter,
 		highlightActiveLineGutter,
@@ -10,9 +11,10 @@
 		rectangularSelection,
 		crosshairCursor,
 		highlightActiveLine,
-		keymap
+		keymap,
+		placeholder as placeholderText
 	} from '@codemirror/view';
-	import { EditorState, Compartment } from '@codemirror/state';
+	import { EditorState, Compartment, RangeSetBuilder, type Extension } from '@codemirror/state';
 	import {
 		foldGutter,
 		foldKeymap,
@@ -33,11 +35,12 @@
 	import { oneDark } from '@codemirror/theme-one-dark';
 	import { themeState } from '../theme.svelte.js';
 	import ActionIcon from '../ui/ActionIcon.svelte';
-	import { iconCopy, iconCheck } from '../icon/index.js';
+	import { iconArrowDown, iconCopy, iconCheck } from '../icon/index.js';
 	import { resolveCodeLanguage, type CodeLanguageId } from './codemirror/languages.js';
 
 	export interface CodeMirrorProps {
-		/** Editor content value (bindable) */
+		/** Editor content value (bindable). A new value that extends the current one is
+		 * appended, so a growing log keeps its selection and scroll position. */
 		value?: string;
 		/** Language for syntax highlighting: an id from `codeLanguages` or one of its aliases
 		 * ('ps1', 'py', 'yml', ...). Anything unrecognised shows as plain text. */
@@ -48,6 +51,22 @@
 		readOnly?: boolean;
 		/** Show line numbers in the gutter */
 		lineNumbers?: boolean;
+		/** Number shown for the first line, when the value is a window into a longer file */
+		firstLineNumber?: number;
+		/** Wrap long lines instead of scrolling sideways */
+		wrap?: boolean;
+		/** Keep the last line in view as the value grows, until the user scrolls up; a button
+		 * then jumps back to the end */
+		follow?: boolean;
+		/** Line numbers (as shown, so counted from `firstLineNumber`) to highlight, such as
+		 * search matches */
+		markedLines?: number[];
+		/** Text shown while the editor is empty */
+		placeholder?: string;
+		/** Accessible name for the editor */
+		ariaLabel?: string;
+		/** Extra CodeMirror extensions, added after the built-in ones; changes apply live */
+		extensions?: Extension[];
 		/** Show a button that copies the editor contents to the clipboard */
 		copyButton?: boolean;
 		/** Additional CSS classes */
@@ -66,6 +85,13 @@
 		theme = 'auto',
 		readOnly = false,
 		lineNumbers = true,
+		firstLineNumber = 1,
+		wrap = true,
+		follow = false,
+		markedLines = [],
+		placeholder = '',
+		ariaLabel = '',
+		extensions = [],
 		copyButton = false,
 		class: className = '',
 		height = '31.25rem',
@@ -78,8 +104,15 @@
 	let themeCompartment = new Compartment();
 	let gutterCompartment = new Compartment();
 	let languageCompartment = new Compartment();
+	let readOnlyCompartment = new Compartment();
+	let wrapCompartment = new Compartment();
+	let marksCompartment = new Compartment();
+	let attributesCompartment = new Compartment();
+	let userCompartment = new Compartment();
 	let copied = $state(false);
 	let copiedTimeout: ReturnType<typeof setTimeout>;
+	/** Whether the view is at the last line, so `follow` keeps it there. */
+	let pinned = $state(true);
 
 	// basicSetup minus the gutters, which we swap in via a compartment so the
 	// `lineNumbers` prop can be toggled after the editor is created.
@@ -109,31 +142,61 @@
 		])
 	];
 
-	const getGutterExtension = (show: boolean) =>
-		show ? [lineNumbersGutter(), highlightActiveLineGutter(), foldGutter()] : [];
+	const getGutterExtension = (show: boolean, first: number) =>
+		show
+			? [
+					lineNumbersGutter(first === 1 ? {} : { formatNumber: (n) => String(n + first - 1) }),
+					highlightActiveLineGutter(),
+					foldGutter()
+				]
+			: [];
 
 	// Derive effective dark mode from prop or app theme
 	let isDark = $derived(theme === 'auto' ? themeState.isDarkMode : theme === 'dark');
 
 	const getLanguageExtension = (lang: string) => resolveCodeLanguage(lang)?.load() ?? [];
 
+	const markedLine = Decoration.line({ class: 'cm-marked-line' });
+
+	function getMarksExtension(lines: number[], first: number): Extension {
+		if (lines.length === 0) return [];
+		const sorted = [...new Set(lines)].sort((a, b) => a - b);
+		// A function, so the marks follow the document as it changes.
+		return EditorView.decorations.of((editor) => {
+			const doc = editor.state.doc;
+			const builder = new RangeSetBuilder<Decoration>();
+			for (const shown of sorted) {
+				const n = shown - first + 1;
+				if (n >= 1 && n <= doc.lines) builder.add(doc.line(n).from, doc.line(n).from, markedLine);
+			}
+			return builder.finish();
+		});
+	}
+
+	const getAttributesExtension = (text: string, label: string): Extension => [
+		text ? placeholderText(text) : [],
+		label ? EditorView.contentAttributes.of({ 'aria-label': label }) : []
+	];
+
+	function onScroll() {
+		if (!view) return;
+		const scroller = view.scrollDOM;
+		pinned = scroller.scrollHeight - scroller.scrollTop - scroller.clientHeight < 4;
+	}
+
 	onMount(() => {
 		if (!editorContainer) return;
 
-		const extensions = [
-			gutterCompartment.of(getGutterExtension(lineNumbers)),
+		const setup = [
+			gutterCompartment.of(getGutterExtension(lineNumbers, firstLineNumber)),
 			baseSetup,
 			languageCompartment.of(getLanguageExtension(language)),
-			EditorView.lineWrapping,
-			themeCompartment.of(isDark ? oneDark : [])
-		];
-
-		if (readOnly) {
-			extensions.push(EditorState.readOnly.of(true));
-		}
-
-		// Always add update listener to sync bindable value
-		extensions.push(
+			wrapCompartment.of(wrap ? EditorView.lineWrapping : []),
+			themeCompartment.of(isDark ? oneDark : []),
+			readOnlyCompartment.of(EditorState.readOnly.of(readOnly)),
+			marksCompartment.of(getMarksExtension(markedLines, firstLineNumber)),
+			attributesCompartment.of(getAttributesExtension(placeholder, ariaLabel)),
+			// Always add update listener to sync bindable value
 			EditorView.updateListener.of((update) => {
 				if (update.docChanged) {
 					const newValue = update.state.doc.toString();
@@ -142,21 +205,25 @@
 						onChange(newValue);
 					}
 				}
-			})
-		);
+			}),
+			userCompartment.of(extensions)
+		];
 
 		const startState = EditorState.create({
 			doc: value,
-			extensions
+			extensions: setup
 		});
 
 		view = new EditorView({
 			state: startState,
 			parent: editorContainer
 		});
+		view.scrollDOM.addEventListener('scroll', onScroll, { passive: true });
+		if (follow) scrollToEnd();
 	});
 
 	onDestroy(() => {
+		view?.scrollDOM.removeEventListener('scroll', onScroll);
 		view?.destroy();
 		clearTimeout(copiedTimeout);
 	});
@@ -198,20 +265,51 @@
 		if (!view) return;
 
 		view.dispatch({
-			effects: gutterCompartment.reconfigure(getGutterExtension(lineNumbers))
+			effects: gutterCompartment.reconfigure(getGutterExtension(lineNumbers, firstLineNumber))
 		});
+	});
+
+	$effect(() => {
+		if (!view) return;
+
+		view.dispatch({
+			effects: [
+				readOnlyCompartment.reconfigure(EditorState.readOnly.of(readOnly)),
+				wrapCompartment.reconfigure(wrap ? EditorView.lineWrapping : []),
+				attributesCompartment.reconfigure(getAttributesExtension(placeholder, ariaLabel))
+			]
+		});
+	});
+
+	$effect(() => {
+		if (!view) return;
+
+		view.dispatch({
+			effects: marksCompartment.reconfigure(getMarksExtension(markedLines, firstLineNumber))
+		});
+	});
+
+	$effect(() => {
+		if (!view) return;
+
+		view.dispatch({ effects: userCompartment.reconfigure(extensions) });
 	});
 
 	// Watch for external value changes and update editor
 	$effect(() => {
 		if (!view) return;
 
+		const next = value;
 		const currentValue = view.state.doc.toString();
-		if (value !== currentValue) {
-			view.dispatch({
-				changes: { from: 0, to: currentValue.length, insert: value }
-			});
-		}
+		if (next === currentValue) return;
+
+		const keepAtEnd = untrack(() => follow && pinned);
+		view.dispatch({
+			changes: next.startsWith(currentValue)
+				? { from: currentValue.length, insert: next.slice(currentValue.length) }
+				: { from: 0, to: currentValue.length, insert: next },
+			effects: keepAtEnd ? EditorView.scrollIntoView(next.length, { y: 'end' }) : []
+		});
 	});
 
 	// Public API methods
@@ -233,11 +331,29 @@
 	export function focus() {
 		view?.focus();
 	}
+
+	/** Scrolls the line with this number (as shown) to the middle of the view. */
+	export function scrollToLine(lineNumber: number) {
+		if (!view) return;
+		const n = Math.min(Math.max(lineNumber - firstLineNumber + 1, 1), view.state.doc.lines);
+		view.dispatch({
+			effects: EditorView.scrollIntoView(view.state.doc.line(n).from, { y: 'center' })
+		});
+	}
+
+	/** Scrolls to the last line, where `follow` keeps the view. */
+	export function scrollToEnd() {
+		if (!view) return;
+		view.dispatch({
+			effects: EditorView.scrollIntoView(view.state.doc.length, { y: 'end' })
+		});
+		pinned = true;
+	}
 </script>
 
 <div class="codemirror-container {className}" style="height: {height}">
 	{#if copyButton}
-		<div class="codemirror-copy" class:copied class:dark={isDark}>
+		<div class="codemirror-action codemirror-copy" class:copied class:dark={isDark}>
 			<ActionIcon
 				svg={copied ? iconCheck : iconCopy}
 				size="1rem"
@@ -248,6 +364,17 @@
 		</div>
 	{/if}
 	<div class="codemirror-wrapper" bind:this={editorContainer}></div>
+	{#if follow && !pinned}
+		<div class="codemirror-action codemirror-end">
+			<ActionIcon
+				svg={iconArrowDown}
+				size="1rem"
+				tooltip="Jump to the last line"
+				ariaLabel="Jump to the last line"
+				onclick={scrollToEnd}
+			/>
+		</div>
+	{/if}
 </div>
 
 <style>
@@ -262,15 +389,22 @@
 
 	/* The ActionIcon supplies the button chrome; this only places it and gives it
      an opaque backing so it stays readable over the code underneath. */
-	.codemirror-copy {
+	.codemirror-action {
 		position: absolute;
-		top: 0.375rem;
 		right: 0.375rem;
 		z-index: 2;
 		display: inline-flex;
 		border-radius: var(--ui-radius-sm);
+	}
+
+	.codemirror-copy {
+		top: 0.375rem;
 		opacity: 0.65;
 		transition: opacity 0.15s ease;
+	}
+
+	.codemirror-end {
+		bottom: 0.375rem;
 	}
 
 	.codemirror-container:hover .codemirror-copy,
@@ -291,5 +425,9 @@
 
 	.codemirror-wrapper :global(.cm-scroller) {
 		overflow: auto;
+	}
+
+	.codemirror-wrapper :global(.cm-marked-line) {
+		background-color: var(--cm-marked-line-bg, rgba(var(--ui-tertiary-rgbc), 0.25));
 	}
 </style>
