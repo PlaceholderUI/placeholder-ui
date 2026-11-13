@@ -1,6 +1,6 @@
 <script lang="ts" module>
 	import type { Snippet } from 'svelte';
-	import type { FileTreeNode } from './FileTreeNode.js';
+	import type { FileTreeIcons, FileTreeNode, FileTreeNodeIcon } from './FileTreeNode.js';
 	import type { ContextMenuItem } from '#lib/ui/ContextMenu.svelte';
 
 	export interface FileTreeDropEvent {
@@ -56,6 +56,16 @@
 		 */
 		showTitles?: boolean;
 		/**
+		 * Tree-wide icon overrides (raw SVG strings) for files, folders, open folders and the
+		 * chevron. Omitted entries keep the built-in icons.
+		 */
+		icons?: FileTreeIcons;
+		/**
+		 * Picks an icon per node, e.g. by file extension. Return `undefined` to fall back to `icons`.
+		 * Precedence: `node.icon` → `nodeIcon(node, expanded)` → `icons` → built-in.
+		 */
+		nodeIcon?: FileTreeNodeIcon;
+		/**
 		 * Returns the context-menu items shown when a node is right-clicked.
 		 * Return `[]` (or omit the prop) to leave the native browser menu in place.
 		 * Called with the right-clicked node, so items can vary per node/type.
@@ -94,6 +104,8 @@
 		nodeActionsPlacement = 'end',
 		collapsible = true,
 		showTitles = false,
+		icons,
+		nodeIcon,
 		menuItems,
 		menuMinWidth = '11.25rem',
 		onSelect,
@@ -231,6 +243,8 @@
 			{nodeActionsPlacement}
 			{collapsible}
 			{showTitles}
+			{icons}
+			{nodeIcon}
 			{dragging}
 			onDragState={(d) => (dragging = d)}
 		/>

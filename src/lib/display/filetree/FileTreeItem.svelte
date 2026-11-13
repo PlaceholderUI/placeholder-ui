@@ -2,7 +2,7 @@
 	import Icon from '#lib/icon/Icon.svelte';
 	import { iconChevronRight, iconFolder, iconFile } from '#lib/icon/index.js';
 	import { draggable, droppable, type DragContext } from '#lib/util/DragDrop.js';
-	import type { FileTreeNode } from './FileTreeNode.js';
+	import type { FileTreeIcons, FileTreeNode, FileTreeNodeIcon } from './FileTreeNode.js';
 	import type { Snippet } from 'svelte';
 	import { fly } from 'svelte/transition';
 	import Self from './FileTreeItem.svelte';
@@ -38,6 +38,10 @@
 		collapsible?: boolean;
 		/** When true, the label gets a title attribute (native tooltip) with the node name */
 		showTitles?: boolean;
+		/** Tree-wide icon overrides */
+		icons?: FileTreeIcons;
+		/** Per-node icon resolver; falls back to `icons` when it returns undefined */
+		nodeIcon?: FileTreeNodeIcon;
 		/** True while any row in the tree is being dragged */
 		dragging?: boolean;
 		/** Notifies the tree when this row starts/ends dragging */
@@ -61,6 +65,8 @@
 		nodeActionsPlacement = 'end',
 		collapsible = true,
 		showTitles = false,
+		icons,
+		nodeIcon,
 		dragging = false,
 		onDragState
 	}: Props = $props();
@@ -82,6 +88,14 @@
 	const expanded = $derived(!collapsible || !!node.expanded);
 	/** Only folders with children get a working chevron; empty folders keep the space for alignment */
 	const canToggle = $derived(hasChildren && collapsible);
+
+	const rowIcon = $derived(
+		node.icon ??
+			nodeIcon?.(node, expanded) ??
+			(isFolder
+				? ((expanded && hasChildren ? icons?.folderOpen : undefined) ?? icons?.folder ?? iconFolder)
+				: (icons?.file ?? iconFile))
+	);
 
 	interface TreePayload {
 		sourceId: string;
@@ -196,10 +210,10 @@
 					if (canToggle) e.stopPropagation();
 				}}
 			>
-				<Icon svg={iconChevronRight} size="0.875rem" />
+				<Icon svg={icons?.chevron ?? iconChevronRight} size="0.875rem" />
 			</span>
 			<span class="ft-icon">
-				<Icon svg={node.icon ?? (isFolder ? iconFolder : iconFile)} size="1rem" />
+				<Icon svg={rowIcon} size="1rem" />
 			</span>
 			{#if nodeContent}
 				{@render nodeContent(node)}
@@ -235,6 +249,8 @@
 					{nodeActionsPlacement}
 					{collapsible}
 					{showTitles}
+					{icons}
+					{nodeIcon}
 					{dragging}
 					{onDragState}
 				/>

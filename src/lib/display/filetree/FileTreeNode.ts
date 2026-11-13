@@ -10,11 +10,29 @@ export interface FileTreeNode {
 	children?: FileTreeNode[];
 	/** Persisted open/closed state for folders */
 	expanded?: boolean;
-	/** Optional custom icon (raw SVG string). Overrides the default file/folder icon. */
+	/** Optional custom icon (raw SVG string). Overrides the tree's `nodeIcon` and `icons`. */
 	icon?: string;
 	/** Arbitrary application data ignored by the component */
 	data?: unknown;
 }
+
+/** Tree-wide icon overrides (raw SVG strings). Any omitted entry falls back to the built-in icon. */
+export interface FileTreeIcons {
+	/** Icon for file rows. Default `iconFile`. */
+	file?: string;
+	/** Icon for folder rows. Default `iconFolder`. */
+	folder?: string;
+	/** Icon for expanded folders. Defaults to `folder`. */
+	folderOpen?: string;
+	/** Expand/collapse chevron. Should point right — it rotates 90° when the folder is open. Default `iconChevronRight`. */
+	chevron?: string;
+}
+
+/**
+ * Picks an icon for a node (e.g. by file extension). Return `undefined` to fall back to `icons`.
+ * A node's own `icon` still takes precedence.
+ */
+export type FileTreeNodeIcon = (node: FileTreeNode, expanded: boolean) => string | undefined;
 
 export interface FileTreeDropTarget {
 	/** Parent id — null for tree root */

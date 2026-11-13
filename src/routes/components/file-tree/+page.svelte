@@ -1,7 +1,12 @@
 <script lang="ts">
 	import Paper from '#lib/display/Paper.svelte';
 	import FileTree from '#lib/display/filetree/FileTree.svelte';
-	import { findNode, type FileTreeNode } from '#lib/display/filetree/FileTreeNode.js';
+	import {
+		findNode,
+		type FileTreeIcons,
+		type FileTreeNode,
+		type FileTreeNodeIcon
+	} from '#lib/display/filetree/FileTreeNode.js';
 	import type { ContextMenuItem } from '#lib/ui/ContextMenu.svelte';
 	import Button from '#lib/ui/Button.svelte';
 	import ActionIcon from '#lib/ui/ActionIcon.svelte';
@@ -13,7 +18,12 @@
 		iconPlus,
 		iconFilePlus,
 		iconFolderPlus,
-		iconEye
+		iconEye,
+		iconArrowRight,
+		iconCode,
+		iconFileTypePng,
+		iconFileTypeTxt,
+		iconSourceCode
 	} from '#lib/icon/index.js';
 
 	function makeInitial(): FileTreeNode[] {
@@ -82,7 +92,27 @@
 	let actionsTrigger = $state<'selected' | 'hover' | 'always'>('selected');
 	let actionsPlacement = $state<'end' | 'beside'>('end');
 	let collapsible = $state(true);
+	let customIcons = $state(false);
 	let idCounter = 0;
+
+	// --- Custom icons -------------------------------------------------------
+
+	const demoIcons: FileTreeIcons = { chevron: iconArrowRight };
+
+	const extensionIcons: Record<string, string> = {
+		ts: iconSourceCode,
+		svelte: iconCode,
+		json: iconCode,
+		md: iconFileTypeTxt,
+		png: iconFileTypePng
+	};
+
+	/** Pick a file icon from its extension; undefined falls back to `icons`. */
+	const demoNodeIcon: FileTreeNodeIcon = (node) => {
+		if (node.type !== 'file') return undefined;
+		const ext = node.name.split('.').pop()?.toLowerCase() ?? '';
+		return extensionIcons[ext];
+	};
 
 	function pushLog(line: string) {
 		log = [`${new Date().toLocaleTimeString()}  ${line}`, ...log].slice(0, 12);
@@ -225,6 +255,8 @@
 						nodeActionsTrigger={actionsTrigger}
 						nodeActionsPlacement={actionsPlacement}
 						{collapsible}
+						icons={customIcons ? demoIcons : undefined}
+						nodeIcon={customIcons ? demoNodeIcon : undefined}
 						onSelect={(n) => pushLog(`Selected: ${n.name} (${n.id})`)}
 						onDoubleClick={(n) => pushLog(`Double-clicked: ${n.name} (${n.id})`)}
 						onDrop={(e) =>
@@ -265,6 +297,10 @@
 					<label class="toggle">
 						<input type="checkbox" bind:checked={collapsible} />
 						<span>Folders collapsible</span>
+					</label>
+					<label class="toggle">
+						<input type="checkbox" bind:checked={customIcons} />
+						<span>Custom icons</span>
 					</label>
 					<Button
 						variant="secondary-subtle"
@@ -350,7 +386,18 @@
 			<li>
 				<code>collapsible</code> — boolean (default <code>true</code>). When <code>false</code>,
 				folders can't be collapsed: they always render expanded, the chevron is hidden, and clicking
-				a folder row selects it without toggling.
+				a folder row selects it without toggling. Empty folders never show a chevron.
+			</li>
+			<li>
+				<code>icons</code> — <code>FileTreeIcons</code> tree-wide overrides (raw SVG):
+				<code>file</code>, <code>folder</code>, <code>folderOpen</code> (expanded folders with
+				children; defaults to <code>folder</code>) and <code>chevron</code> (should point right — it rotates
+				when open). Omitted entries keep the built-in icons.
+			</li>
+			<li>
+				<code>nodeIcon(node, expanded)</code> — pick an icon per node, e.g. by file extension (try
+				"Custom icons" above). Return <code>undefined</code> to fall back to <code>icons</code>.
+				Precedence: <code>node.icon</code> → <code>nodeIcon</code> → <code>icons</code> → built-in.
 			</li>
 			<li>
 				<code>group</code> — distinct group names prevent cross-tree drops.
