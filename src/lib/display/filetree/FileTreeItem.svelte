@@ -80,6 +80,8 @@
 	const isFolder = $derived(node.type === 'folder');
 	const hasChildren = $derived(isFolder && (node.children?.length ?? 0) > 0);
 	const expanded = $derived(!collapsible || !!node.expanded);
+	/** Only folders with children get a working chevron; empty folders keep the space for alignment */
+	const canToggle = $derived(hasChildren && collapsible);
 
 	interface TreePayload {
 		sourceId: string;
@@ -183,15 +185,15 @@
 			<!-- svelte-ignore a11y_no_static_element_interactions -->
 			<span
 				class="ft-chevron"
-				class:invisible={!isFolder || !collapsible}
+				class:invisible={!canToggle}
 				class:open={expanded}
 				onclick={(e) => {
-					if (!isFolder || !collapsible) return;
+					if (!canToggle) return;
 					e.stopPropagation();
 					onToggle?.(node);
 				}}
 				ondblclick={(e) => {
-					if (isFolder && collapsible) e.stopPropagation();
+					if (canToggle) e.stopPropagation();
 				}}
 			>
 				<Icon svg={iconChevronRight} size="0.875rem" />
