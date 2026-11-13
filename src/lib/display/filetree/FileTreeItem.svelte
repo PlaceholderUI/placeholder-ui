@@ -328,16 +328,29 @@
 		padding-left: 0.25rem;
 	}
 
+	/* One indent step per level. The default (chevron width + row gap) puts each
+	   guide line directly under the parent folder's chevron. */
 	.ft-indent {
-		display: inline-flex;
+		--ft-indent-step: var(--filetree-indent, 1.25rem);
+		display: flex;
 		flex-shrink: 0;
+		align-self: stretch;
+		/* Extend through the row's vertical padding so guides join up between rows */
+		margin-block: -0.375rem;
 	}
 
 	.ft-indent-line {
-		display: inline-block;
-		height: 100%;
+		position: relative;
+		width: var(--ft-indent-step);
+	}
+
+	.ft-indent-line::before {
+		content: '';
+		position: absolute;
+		inset-block: 0;
+		/* Centre of the ancestor's chevron: row gap + half the chevron width */
+		left: 0.75rem;
 		border-left: 1px solid var(--border-color);
-		margin-right: 2px;
 	}
 
 	.ft-chevron {
