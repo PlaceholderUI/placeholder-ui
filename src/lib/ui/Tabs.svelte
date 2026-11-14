@@ -1,7 +1,8 @@
 <script lang="ts">
 	import type { ComboBoxItem } from '#lib/models/ComboBoxItem.js';
 	import Tooltip, { type TooltipLocation } from '#lib/ui/Tooltip.svelte';
-	import { onMount } from 'svelte';
+	import { beforeMatch } from '#lib/util/BeforeMatch.js';
+	import { onMount, type Snippet } from 'svelte';
 
 	export interface TabsProps {
 		/**
@@ -18,6 +19,17 @@
 		tooltipLocation?: TooltipLocation;
 		/** Callback when active tab changes */
 		onchange?: (newValue: string) => void;
+		/**
+		 * Content for each tab, rendered below the bar. Receives the tab option and whether it is
+		 * active. Only the active tab's panel is rendered unless `renderHidden` is set
+		 */
+		panel?: Snippet<[option: ComboBoxItem, active: boolean]>;
+		/**
+		 * Render every tab's `panel`, keeping inactive ones hidden with `hidden="until-found"`, so
+		 * all content is in the page (and the SSR HTML), keeps its state across tab switches, and
+		 * can be found with the browser's find-in-page, which switches to the matching tab
+		 */
+		renderHidden?: boolean;
 	}
 
 	let {
@@ -25,7 +37,9 @@
 		activeTab = $bindable(''),
 		solidBg = false,
 		tooltipLocation = 'top',
-		onchange
+		onchange,
+		panel,
+		renderHidden = false
 	}: TabsProps = $props();
 	let containerRef: HTMLDivElement;
 	let scrollRef: HTMLDivElement;
@@ -124,6 +138,24 @@
 		<div class="tab-underline" style={underlineStyle}></div>
 	</div>
 </div>
+
+{#if panel}
+	<!-- One wrapper: hidden="until-found" panels still get an (empty) box, which would add gaps -->
+	<div class="tab-panels">
+		{#each tabOptions as option (option.value)}
+			{@const isSelected = option.value === activeTab}
+			{#if isSelected || renderHidden}
+				<div
+					class="tab-panel"
+					hidden={isSelected ? undefined : 'until-found'}
+					use:beforeMatch={() => setValue(option.value)}
+				>
+					{@render panel(option, isSelected)}
+				</div>
+			{/if}
+		{/each}
+	</div>
+{/if}
 
 <style>
 	.tabs-scroll {

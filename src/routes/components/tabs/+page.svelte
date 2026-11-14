@@ -16,6 +16,20 @@
 	let profileTab = $state('personal');
 	let contentTab = $state('articles');
 	let viewTab = $state('all');
+	let panelTab = $state('overview');
+	let panelNotes = $state<Record<string, string>>({
+		overview: '',
+		details: '',
+		settings: '',
+		help: ''
+	});
+
+	const panelText: Record<string, string> = {
+		overview: 'A short summary of the project and its current status.',
+		details: 'Specifications, version history and the quarterly roadmap.',
+		settings: 'Preferences for notifications, privacy and display.',
+		help: 'Answers to common questions and how to contact support.'
+	};
 
 	// Demo data
 	let actionLog = $state<string[]>([]);
@@ -223,6 +237,28 @@
 					<li>Two-way data binding</li>
 				</ul>
 				<p class="note">Current tab: <strong>{basicTab}</strong></p>
+			</div>
+		</div>
+	</Paper>
+
+	<Paper title="Panels & Hidden Content">
+		<div class="tabs-section">
+			<p class="note">
+				Pass a <code>panel</code> snippet and Tabs renders each tab's content below the bar. With
+				<code>renderHidden</code>, every panel is in the page: inactive ones are hidden with
+				<code>hidden="until-found"</code>, so typed text survives tab switches and the browser's
+				find-in-page finds text on other tabs and switches to them. Try searching for "quarterly".
+			</p>
+			<div class="tabs-demo">
+				<Tabs tabOptions={basicTabs} bind:activeTab={panelTab} renderHidden>
+					{#snippet panel(option)}
+						<div class="tab-content">
+							<h5>{option.label}</h5>
+							<p>{panelText[option.value]}</p>
+							<Textbox label="Notes" bind:value={panelNotes[option.value]} />
+						</div>
+					{/snippet}
+				</Tabs>
 			</div>
 		</div>
 	</Paper>
@@ -523,6 +559,10 @@
 				<li><strong>Hover effects:</strong> Interactive hover states for better UX</li>
 				<li><strong>Keyboard accessible:</strong> Full keyboard navigation support</li>
 				<li><strong>Custom content:</strong> Flexible content areas for each tab</li>
+				<li>
+					<strong>Built-in panels:</strong> A <code>panel</code> snippet renders each tab's content;
+					<code>renderHidden</code> keeps inactive panels in the page, hidden and searchable
+				</li>
 				<li><strong>Event handling:</strong> Easy integration with external event handlers</li>
 				<li><strong>Performance optimized:</strong> Efficient DOM updates and calculations</li>
 				<li><strong>Cross-browser compatible:</strong> Works across all modern browsers</li>

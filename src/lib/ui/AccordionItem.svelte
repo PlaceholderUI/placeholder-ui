@@ -4,6 +4,7 @@
 	import { slide } from 'svelte/transition';
 	import Icon from '#lib/icon/Icon.svelte';
 	import { iconChevronDown } from '#lib/icon/index.js';
+	import { beforeMatch } from '#lib/util/BeforeMatch.js';
 	import type { AccordionContext } from './Accordion.svelte';
 	import type { ButtonVariant } from './ButtonVariant.js';
 
@@ -18,6 +19,8 @@
 		disabled?: boolean;
 		/** Colour variant for this item's expanded header, overriding the accordion-level variant */
 		variant?: ButtonVariant;
+		/** Keep this item's content in the page while collapsed, overriding the accordion-level `renderHidden` */
+		renderHidden?: boolean;
 		/** Custom header content, replaces `title` */
 		header?: Snippet;
 		/** Collapsible body content */
@@ -32,6 +35,7 @@
 		icon,
 		disabled = false,
 		variant,
+		renderHidden,
 		header,
 		children
 	}: AccordionItemProps = $props();
@@ -46,8 +50,51 @@
 	const small = $derived(accordion.size === 'sm');
 	const iconSize = $derived(small ? '16' : '18');
 	const effectiveVariant = $derived(variant ?? accordion.variant);
+	const keepRendered = $derived(renderHidden ?? accordion.renderHidden);
 	const contentId = `${uid}-content`;
 	const headerId = `${uid}-header`;
+
+	// With `renderHidden` the content stays mounted, so the slide transition never runs.
+	// Animate its height on toggle instead.
+	let contentEl = $state<HTMLDivElement>();
+	let shownOpen: boolean | undefined;
+	let animation: Animation | undefined;
+	let revealedByFind = false;
+
+	$effect(() => {
+		const el = contentEl;
+		const isOpen = open;
+		if (!el || shownOpen === undefined || shownOpen === isOpen || revealedByFind) {
+			shownOpen = el ? isOpen : undefined;
+			revealedByFind = false;
+			return;
+		}
+		shownOpen = isOpen;
+
+		// Svelte has already hidden it; keep it visible until it has slid shut
+		if (!isOpen) el.removeAttribute('hidden');
+		const from =
+			animation?.playState === 'running'
+				? el.getBoundingClientRect().height
+				: isOpen
+					? 0
+					: el.scrollHeight;
+		animation?.cancel();
+		animation = el.animate(
+			[{ height: `${from}px` }, { height: `${isOpen ? el.scrollHeight : 0}px` }],
+			{ duration: 200, easing: 'ease-out' }
+		);
+		if (!isOpen) {
+			animation.onfinish = () => el.setAttribute('hidden', 'until-found');
+		}
+	});
+
+	// Find-in-page has already revealed the content; open the item to match, without animating
+	function openFromFind() {
+		if (open) return;
+		revealedByFind = true;
+		accordion.toggle(value);
+	}
 </script>
 
 <div class="accordion-item variant-{effectiveVariant}" class:open class:small>
@@ -79,7 +126,25 @@
 		</button>
 	</h3>
 
-	{#if open}
+	{#snippet body()}
+		<div class="accordion-body">
+			{@render children?.()}
+		</div>
+	{/snippet}
+
+	{#if keepRendered}
+		<div
+			bind:this={contentEl}
+			id={contentId}
+			class="accordion-content"
+			role="region"
+			aria-labelledby={headerId}
+			hidden={open ? undefined : 'until-found'}
+			use:beforeMatch={openFromFind}
+		>
+			{@render body()}
+		</div>
+	{:else if open}
 		<div
 			id={contentId}
 			class="accordion-content"
@@ -87,9 +152,7 @@
 			aria-labelledby={headerId}
 			transition:slide={{ duration: 200 }}
 		>
-			<div class="accordion-body">
-				{@render children?.()}
-			</div>
+			{@render body()}
 		</div>
 	{/if}
 </div>

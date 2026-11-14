@@ -125,6 +125,26 @@
 		</Accordion>
 	</Paper>
 
+	<Paper title="Render Hidden Content">
+		<p class="hint">
+			With <code>renderHidden</code>, collapsed items keep their content in the page, hidden with
+			<code>hidden="until-found"</code>. It's in the server-rendered HTML, keeps its state while
+			collapsed, and the browser's find-in-page opens the matching item. Try searching for
+			"invoice". Items can override it with their own <code>renderHidden</code>.
+		</p>
+		<Accordion renderHidden value="rh-1">
+			<AccordionItem value="rh-1" title="Account">
+				Manage your profile, password and connected sign-in methods.
+			</AccordionItem>
+			<AccordionItem value="rh-2" title="Billing">
+				Download any past invoice, update your payment method or change plans.
+			</AccordionItem>
+			<AccordionItem value="rh-3" title="Not rendered while collapsed" renderHidden={false}>
+				This item opts out, so its content only exists in the page while it's open.
+			</AccordionItem>
+		</Accordion>
+	</Paper>
+
 	<Paper title="Accordion-level Title Snippet">
 		<p class="hint">
 			Provide an <code>itemTitle</code> snippet on the Accordion to template every panel title. It
@@ -179,6 +199,10 @@
 					<code>variant</code>, with per-item overrides
 				</li>
 				<li><strong>Disabled items:</strong> Prevent toggling individual panels</li>
+				<li>
+					<strong>Hidden content:</strong> <code>renderHidden</code> keeps collapsed content in the page,
+					searchable with find-in-page
+				</li>
 				<li><strong>Accessible:</strong> Proper button semantics and ARIA attributes</li>
 				<li><strong>Theme aware:</strong> Adapts to light and dark mode</li>
 			</ul>

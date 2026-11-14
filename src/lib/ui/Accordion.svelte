@@ -26,6 +26,8 @@
 		readonly size: AccordionSize;
 		/** Colour variant applied to expanded item headers. Items can override individually */
 		readonly variant: ButtonVariant;
+		/** Whether collapsed items keep their content in the page, hidden. Items can override individually */
+		readonly renderHidden: boolean;
 	}
 </script>
 
@@ -43,6 +45,12 @@
 		size?: AccordionSize;
 		/** Colour scheme for expanded item headers, using the Button variants. Items can override individually */
 		variant?: ButtonVariant;
+		/**
+		 * Render the content of collapsed items too, hidden with `hidden="until-found"`, so it is in
+		 * the page (and the SSR HTML), keeps its state while collapsed, and can be found with the
+		 * browser's find-in-page, which opens the matching item. Items can override individually
+		 */
+		renderHidden?: boolean;
 		/** Custom snippet rendered as the title of every item. Item-level `header` snippets take precedence */
 		itemTitle?: Snippet<[AccordionTitleContext]>;
 		/** AccordionItem children */
@@ -55,6 +63,7 @@
 		onchange,
 		size = 'md',
 		variant = 'primary',
+		renderHidden = false,
 		itemTitle,
 		children
 	}: AccordionProps = $props();
@@ -88,6 +97,9 @@
 		},
 		get variant() {
 			return variant;
+		},
+		get renderHidden() {
+			return renderHidden;
 		}
 	});
 </script>
