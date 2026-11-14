@@ -293,10 +293,14 @@
 		margin-left: auto;
 	}
 
-	header.site .primary.links-container ~ .secondary,
-	header.site .primary.links-container ~ .right,
-	header.site .primary.links-container ~ :global(.theme-switcher) {
-		margin-left: 0;
+	/* Wide screens only: on phones the links are hidden and the max-width rules below must
+	   push the first visible right-hand element to the edge (this selector would outrank them) */
+	@media (min-width: 768px) {
+		header.site .primary.links-container ~ .secondary,
+		header.site .primary.links-container ~ .right,
+		header.site .primary.links-container ~ :global(.theme-switcher) {
+			margin-left: 0;
+		}
 	}
 
 	@media (max-width: 767px) {
