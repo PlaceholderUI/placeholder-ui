@@ -27,6 +27,7 @@ import {
 	type CodeBlockLanguageDef,
 	type CodeBlockLanguageId
 } from './codeBlockLanguages.js';
+import './codeBlockEditor.css';
 
 /** Configuration accepted by the `codeBlocks` prop on TipTap / TipTapBubble */
 export interface CodeBlocksOptions {

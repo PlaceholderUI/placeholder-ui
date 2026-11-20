@@ -18,6 +18,11 @@ import { toml } from '@codemirror/legacy-modes/mode/toml';
 import { xml } from '@codemirror/legacy-modes/mode/xml';
 import { yaml } from '@codemirror/legacy-modes/mode/yaml';
 import { log } from './log.js';
+// Rich code block styles. Imported here, in a module with real code, so read-only renderers
+// that only call resolveCodeLanguage / resolveCodeBlockLanguage still load them. Don't move this
+// into a re-export-only module: package.json marks .js files side-effect-free, so bundlers skip
+// such modules and drop their CSS imports.
+import '../tiptap/extensions/codeBlockEditor.css';
 
 /** Language identifiers shared by the CodeMirror editor and rich code blocks */
 export type CodeLanguageId =
