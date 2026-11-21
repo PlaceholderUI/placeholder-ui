@@ -269,7 +269,11 @@
 				openOnClick: false,
 				enableClickSelection: true,
 				HTMLAttributes: {
-					class: 'editor-link'
+					class: 'editor-link',
+					// Override the extension's defaults (target="_blank", rel="noopener noreferrer nofollow")
+					// so links open in the same tab unless "open in new tab" is chosen.
+					target: null,
+					rel: null
 				}
 			}),
 			Subscript,

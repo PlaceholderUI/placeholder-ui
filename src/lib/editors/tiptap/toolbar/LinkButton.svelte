@@ -29,16 +29,18 @@
 		}
 	};
 
+	// Pass target/rel explicitly (null when off) so the Link extension's defaults never apply.
+	const getLinkAttrs = () => ({
+		href: linkUrl,
+		target: linkOpenInNewTab ? '_blank' : null,
+		rel: linkOpenInNewTab ? 'noopener noreferrer' : null
+	});
+
 	const setLink = () => {
 		if (linkUrl === '') {
 			editor.chain().focus().extendMarkRange('link').unsetLink().run();
 		} else {
-			const linkAttrs: { href: string; target?: string; rel?: string } = { href: linkUrl };
-			if (linkOpenInNewTab) {
-				linkAttrs.target = '_blank';
-				linkAttrs.rel = 'noopener noreferrer';
-			}
-			editor.chain().focus().extendMarkRange('link').setLink(linkAttrs).run();
+			editor.chain().focus().extendMarkRange('link').setLink(getLinkAttrs()).run();
 		}
 		showLinkInput = false;
 		linkUrl = '';
@@ -48,11 +50,7 @@
 	const updateLinkTarget = () => {
 		if (!linkUrl) return;
 
-		const linkAttrs: { href: string; target?: string; rel?: string } = { href: linkUrl };
-		if (linkOpenInNewTab) {
-			linkAttrs.target = '_blank';
-			linkAttrs.rel = 'noopener noreferrer';
-		}
+		const linkAttrs = getLinkAttrs();
 
 		if (editor.isActive('link')) {
 			editor.chain().focus().extendMarkRange('link').setLink(linkAttrs).run();
