@@ -204,9 +204,9 @@ const theme = getTheme();`}</pre>
 			<strong>Usage:</strong>
 			<p class="description">
 				The complete configuration below shows every brand color and global theme variable. Hover,
-				pressed, text, focus and contrast colors are independent and optional. Use <code
-					>variables</code
-				>
+				pressed, text, focus and contrast colors are independent and optional. Use <code>
+					variables
+				</code>
 				for surfaces, inputs and layout. The <code>dark</code> block accepts the same options, all optional.
 				Load any custom font separately.
 			</p>
@@ -416,10 +416,10 @@ themeToCss(theme);          // ":root { --ui-primary: ... }" for app.html (no fl
 					<tr>
 						<td><code>setLogo(svg, darkSvg?)</code></td>
 						<td><code>(svg?: string, darkSvg?: string) => void</code></td>
-						<td
-							>Register the SVG used by <code>&lt;Logo /&gt;</code>, optionally a different one for
-							dark mode</td
-						>
+						<td>
+							Register the SVG used by <code>&lt;Logo /&gt;</code>, optionally a different one for
+							dark mode
+						</td>
 					</tr>
 				</tbody>
 			</table>

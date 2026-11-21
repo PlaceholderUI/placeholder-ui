@@ -106,8 +106,10 @@
 			<Button
 				variant={page.isSelected ? 'secondary-selected' : 'secondary'}
 				class="paginate-button"
-				onclick={() => setPage(page.page!)}>{page.page}</Button
+				onclick={() => setPage(page.page!)}
 			>
+				{page.page}
+			</Button>
 		{:else}
 			<span class="paginate-button">…</span>
 		{/if}

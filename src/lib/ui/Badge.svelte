@@ -53,8 +53,8 @@
 		<a class={elClass} {href} {target}> {@render children?.()}</a>
 	{:else if type == 'button'}
 		<button type="button" class={elClass} disabled={isDisabled} onclick={onClick}>
-			{@render children?.()}</button
-		>
+			{@render children?.()}
+		</button>
 	{:else}
 		<div class={elClass}>
 			{@render children?.()}

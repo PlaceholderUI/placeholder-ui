@@ -149,12 +149,12 @@
 				</div>
 				<div class="theme-body">
 					<button class="theme-btn" style:background={themePrimary}>Primary</button>
-					<button class="theme-btn" style:background={themeAccent} style:color={themePrimary}
-						>Accent</button
-					>
-					<button class="theme-btn" style:background={themeTertiary} style:color={themePrimary}
-						>Tertiary</button
-					>
+					<button class="theme-btn" style:background={themeAccent} style:color={themePrimary}>
+						Accent
+					</button>
+					<button class="theme-btn" style:background={themeTertiary} style:color={themePrimary}>
+						Tertiary
+					</button>
 				</div>
 			</div>
 		</div>

@@ -72,9 +72,9 @@ translucent hover fills where appropriate.
 
 All three colors have the same two text roles:
 
-| Setting | Used for |
-| --- | --- |
-| `primaryTextColor`, `accentTextColor`, `tertiaryTextColor` | Colored text and outline borders on page/paper surfaces. |
+| Setting                                                                | Used for                                                                      |
+| ---------------------------------------------------------------------- | ----------------------------------------------------------------------------- |
+| `primaryTextColor`, `accentTextColor`, `tertiaryTextColor`             | Colored text and outline borders on page/paper surfaces.                      |
 | `primaryContrastColor`, `accentContrastColor`, `tertiaryContrastColor` | Text and icons on the matching solid fill, including hover and pressed fills. |
 
 For example, `primaryTextColor` styles a primary outline button at rest, while
@@ -166,10 +166,10 @@ The full token list, with comments on each role, is at the top of
 
 Keep these relationships when choosing colours, because components assume them:
 
-| Token           | Role                                                         |
-| --------------- | ------------------------------------------------------------ |
+| Token           | Role                                                      |
+| --------------- | --------------------------------------------------------- |
 | `--ui-primary`  | Dark by default. Solid buttons and active backgrounds.    |
-| `--ui-accent`   | Light. Hovers, highlights, the accent in dark mode.          |
+| `--ui-accent`   | Light. Hovers, highlights, the accent in dark mode.       |
 | `--ui-tertiary` | Light. Supporting fills; its text color is used for links |
 
 ### Fonts

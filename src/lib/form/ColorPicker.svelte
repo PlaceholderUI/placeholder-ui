@@ -584,9 +584,9 @@
 					</div>
 
 					<div class="readout" title={readout}>
-						<span class="checker readout-swatch"
-							><span class="swatch" style:background={hex}></span></span
-						>
+						<span class="checker readout-swatch">
+							<span class="swatch" style:background={hex}></span>
+						</span>
 						<code>{readout}</code>
 					</div>
 

@@ -100,8 +100,8 @@
 			<span class="thumb"></span>
 		</button>
 		{#if hasLabelText}
-			<span class="label-text"
-				>{label}
+			<span class="label-text">
+				{label}
 				{#if required}
 					<span class="required">*</span>
 				{/if}
@@ -109,8 +109,8 @@
 					<Tooltip {tooltipContent} location={tooltipLocation} text={tooltipText}>
 						<Icon svg={iconInfoCircle} size="1em" stroke="var(--accent-color)" />
 					</Tooltip>
-				{/if}</span
-			>
+				{/if}
+			</span>
 		{/if}
 	</label>
 	{#if showError && errorText}

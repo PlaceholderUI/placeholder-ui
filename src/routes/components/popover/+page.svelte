@@ -355,9 +355,9 @@
 						</div>
 						<div class="form-actions">
 							<button class="form-btn secondary">Cancel</button>
-							<button class="form-btn primary" onclick={() => addToLog('Item added')}
-								>Add Item</button
-							>
+							<button class="form-btn primary" onclick={() => addToLog('Item added')}>
+								Add Item
+							</button>
 						</div>
 					</div>
 				</Popover>
@@ -392,29 +392,37 @@
 							onclick={(e) => {
 								e.preventDefault();
 								addToLog('Navigate: All Products');
-							}}>All Products</a
+							}}
 						>
+							All Products
+						</a>
 						<a
 							href="#2"
 							onclick={(e) => {
 								e.preventDefault();
 								addToLog('Navigate: Featured');
-							}}>Featured</a
+							}}
 						>
+							Featured
+						</a>
 						<a
 							href="#3"
 							onclick={(e) => {
 								e.preventDefault();
 								addToLog('Navigate: New Arrivals');
-							}}>New Arrivals</a
+							}}
 						>
+							New Arrivals
+						</a>
 						<a
 							href="#4"
 							onclick={(e) => {
 								e.preventDefault();
 								addToLog('Navigate: Sale');
-							}}>Sale Items</a
+							}}
 						>
+							Sale Items
+						</a>
 					</nav>
 				</Popover>
 
@@ -425,22 +433,28 @@
 							onclick={(e) => {
 								e.preventDefault();
 								addToLog('Navigate: Profile');
-							}}>My Profile</a
+							}}
 						>
+							My Profile
+						</a>
 						<a
 							href="#2"
 							onclick={(e) => {
 								e.preventDefault();
 								addToLog('Navigate: Orders');
-							}}>Orders</a
+							}}
 						>
+							Orders
+						</a>
 						<a
 							href="#3"
 							onclick={(e) => {
 								e.preventDefault();
 								addToLog('Navigate: Wishlist');
-							}}>Wishlist</a
+							}}
 						>
+							Wishlist
+						</a>
 						<div class="menu-divider"></div>
 						<a
 							href="#4"
@@ -448,8 +462,10 @@
 							onclick={(e) => {
 								e.preventDefault();
 								addToLog('Navigate: Logout');
-							}}>Logout</a
+							}}
 						>
+							Logout
+						</a>
 					</nav>
 				</Popover>
 			</div>

@@ -222,9 +222,9 @@
 
 	<Paper title="Size Variants">
 		<p class="section-description">
-			The default size is sized to sit alongside Textbox and Select components in a filter bar. Use <code
-				>lg</code
-			> for a larger control.
+			The default size is sized to sit alongside Textbox and Select components in a filter bar. Use <code>
+				lg
+			</code> for a larger control.
 		</p>
 		<div class="inline-filter-row">
 			<div class="inline-filter-item">

@@ -175,14 +175,14 @@
 						<h4>Notifications</h4>
 						<ul>
 							<li>
-								Email: <span class="status {emailNotifications ? 'on' : 'off'}"
-									>{emailNotifications ? 'Enabled' : 'Disabled'}</span
-								>
+								Email: <span class="status {emailNotifications ? 'on' : 'off'}">
+									{emailNotifications ? 'Enabled' : 'Disabled'}
+								</span>
 							</li>
 							<li>
-								Push: <span class="status {pushNotifications ? 'on' : 'off'}"
-									>{pushNotifications ? 'Enabled' : 'Disabled'}</span
-								>
+								Push: <span class="status {pushNotifications ? 'on' : 'off'}">
+									{pushNotifications ? 'Enabled' : 'Disabled'}
+								</span>
 							</li>
 						</ul>
 					</div>
@@ -190,19 +190,19 @@
 						<h4>Account</h4>
 						<ul>
 							<li>
-								Public Profile: <span class="status {publicProfile ? 'on' : 'off'}"
-									>{publicProfile ? 'Public' : 'Private'}</span
-								>
+								Public Profile: <span class="status {publicProfile ? 'on' : 'off'}">
+									{publicProfile ? 'Public' : 'Private'}
+								</span>
 							</li>
 							<li>
-								2FA: <span class="status {twoFactorAuth ? 'on' : 'off'}"
-									>{twoFactorAuth ? 'Enabled' : 'Disabled'}</span
-								>
+								2FA: <span class="status {twoFactorAuth ? 'on' : 'off'}">
+									{twoFactorAuth ? 'Enabled' : 'Disabled'}
+								</span>
 							</li>
 							<li>
-								Analytics: <span class="status {analyticsTracking ? 'on' : 'off'}"
-									>{analyticsTracking ? 'Enabled' : 'Disabled'}</span
-								>
+								Analytics: <span class="status {analyticsTracking ? 'on' : 'off'}">
+									{analyticsTracking ? 'Enabled' : 'Disabled'}
+								</span>
 							</li>
 						</ul>
 					</div>
@@ -210,14 +210,14 @@
 						<h4>Application</h4>
 						<ul>
 							<li>
-								Auto-save: <span class="status {autoSave ? 'on' : 'off'}"
-									>{autoSave ? 'Enabled' : 'Disabled'}</span
-								>
+								Auto-save: <span class="status {autoSave ? 'on' : 'off'}">
+									{autoSave ? 'Enabled' : 'Disabled'}
+								</span>
 							</li>
 							<li>
-								Dark Mode: <span class="status {darkMode ? 'on' : 'off'}"
-									>{darkMode ? 'Enabled' : 'Disabled'}</span
-								>
+								Dark Mode: <span class="status {darkMode ? 'on' : 'off'}">
+									{darkMode ? 'Enabled' : 'Disabled'}
+								</span>
 							</li>
 						</ul>
 					</div>

@@ -193,9 +193,9 @@
 			<div class="drawer-states">
 				<strong>Current States:</strong>
 				<div class="state-grid">
-					<span class:open={navigationDrawer}
-						>Navigation: {navigationDrawer ? 'Open' : 'Closed'}</span
-					>
+					<span class:open={navigationDrawer}>
+						Navigation: {navigationDrawer ? 'Open' : 'Closed'}
+					</span>
 					<span class:open={settingsDrawer}>Settings: {settingsDrawer ? 'Open' : 'Closed'}</span>
 					<span class:open={rightDrawer}>Right: {rightDrawer ? 'Open' : 'Closed'}</span>
 					<span class:open={customDrawer}>Custom: {customDrawer ? 'Open' : 'Closed'}</span>

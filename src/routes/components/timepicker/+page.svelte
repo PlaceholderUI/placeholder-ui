@@ -84,10 +84,10 @@
 				<p>Max: 5:00 PM</p>
 				<p>Selected: {formatTime(businessHoursTime)}</p>
 				<p>
-					<em
-						>Hours and minutes are restricted to business hours. AM/PM toggle is disabled when
-						switching would be invalid.</em
-					>
+					<em>
+						Hours and minutes are restricted to business hours. AM/PM toggle is disabled when
+						switching would be invalid.
+					</em>
 				</p>
 			</div>
 		</div>

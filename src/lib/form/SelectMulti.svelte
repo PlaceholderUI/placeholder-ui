@@ -322,8 +322,10 @@
 								ondelete={() => {
 									onSelection(value);
 									tick().then(() => (open = false));
-								}}>{value.label}</Badge
+								}}
 							>
+								{value.label}
+							</Badge>
 						{/if}
 					{/each}
 				</div>

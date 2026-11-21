@@ -634,4 +634,3 @@
 		font-weight: 500;
 	}
 </style>
- 

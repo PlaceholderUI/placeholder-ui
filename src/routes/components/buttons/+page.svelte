@@ -63,9 +63,9 @@
 		<div class="flex gap-2">
 			<Button variant="primary" href={resolve('components/badges')}>Navigate to Badges</Button>
 
-			<Button variant="accent-outline" href="https://svelte.dev" target="_blank"
-				>External Link</Button
-			>
+			<Button variant="accent-outline" href="https://svelte.dev" target="_blank">
+				External Link
+			</Button>
 		</div>
 	</Paper>
 

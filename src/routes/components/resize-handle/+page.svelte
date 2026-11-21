@@ -268,10 +268,10 @@ onMount(() => {
 				/>
 				<section class="pane main">
 					<strong>Main</strong>
-					<span class="pane-size"
-						><code>defaultSize={'{'}200{'}'}</code>, <code>step={'{'}40{'}'}</code>,
-						<code>thickness="0.5rem"</code></span
-					>
+					<span class="pane-size">
+						<code>defaultSize={'{'}200{'}'}</code>, <code>step={'{'}40{'}'}</code>,
+						<code>thickness="0.5rem"</code>
+					</span>
 				</section>
 			</div>
 			<div class="handle-info">

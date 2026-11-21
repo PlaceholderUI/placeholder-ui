@@ -111,15 +111,19 @@
 							onclick={() => handleChange(option)}
 							svg={iconCheck}
 							iconSize={'1rem'}
-							variant={chipVariant}>{option.label}</Button
+							variant={chipVariant}
 						>
+							{option.label}
+						</Button>
 					{:else}
 						<Button
 							class="chip"
 							{disabled}
 							onclick={() => handleChange(option)}
-							variant={chipVariant}>{option.label}</Button
+							variant={chipVariant}
 						>
+							{option.label}
+						</Button>
 					{/if}
 				</div>
 			{/each}
