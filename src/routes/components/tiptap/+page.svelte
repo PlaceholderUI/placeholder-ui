@@ -5,6 +5,12 @@
 	import Button from '#lib/ui/Button.svelte';
 	import Dialog from '#lib/ui/Dialog.svelte';
 	import { Extension } from '@tiptap/core';
+	import ImagePickerDialog from '#lib/form/ImagePickerDialog.svelte';
+	import { sampleImages } from '../imagepicker/sampleImages.js';
+
+	// onImagePick: ImagePickerDialog's pick() opens the dialog and resolves with the
+	// chosen ImageAsset (or null), which TipTap inserts directly
+	let imagePicker: ReturnType<typeof ImagePickerDialog>;
 
 	// Example custom extension: inserts the current date/time via Ctrl+Shift+D
 	const InsertDate = Extension.create({
@@ -258,10 +264,10 @@ ORDER BY Documents DESC;</code></pre>
 			The <code>class</code> attribute is kept on paragraphs, headings, lists, tables, images and
 			inline marks, so classes in loaded or pasted HTML survive the round-trip through the editor
 			instead of being stripped.
-			<code
-				>ClassAttribute.configure({'{'} types
-				{'}'})</code
-			>
+			<code>
+				ClassAttribute.configure({'{'} types
+				{'}'})
+			</code>
 			via the <code>extensions</code> prop.
 		</p>
 		<TipTap bind:value={classContent} />
@@ -315,6 +321,22 @@ ORDER BY Documents DESC;</code></pre>
 			<br />
 			<small>This test endpoint converts images to base64 data URLs (max 5MB, dev mode only)</small>
 		</div>
+	</Paper>
+
+	<Paper title="Image Picker">
+		<p class="description">
+			Let users choose an existing image (a media library, asset browser, stock photos) by providing
+			an <code>onImagePick</code> callback. It resolves with an <code>ImageAsset</code> or
+			<code>{'{ src, alt?, title? }'}</code>, or <code>null</code> to cancel, so
+			<a href="/components/imagepicker">ImagePickerDialog</a>'s <code>pick()</code> plugs straight
+			in. With <code>onImageUpload</code> set too, the image button offers both options.
+		</p>
+		<TipTap
+			onImagePick={() => imagePicker.pick()}
+			onImageUpload={handleImageUpload}
+			placeholder="Click the image button and choose 'Choose existing image'..."
+		/>
+		<ImagePickerDialog bind:this={imagePicker} images={sampleImages} okText="Insert" />
 	</Paper>
 
 	<Paper title="Document Uploads">

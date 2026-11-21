@@ -25,6 +25,7 @@
 		type CodeBlocksOptions
 	} from './extensions/index.js';
 	import type { CollaborationConfig } from './collaboration.js';
+	import type { ImageAsset } from '#lib/models/ImageAsset.js';
 	import FormGroup from '#lib/form/FormGroup.svelte';
 	import LinkActionMenu from './LinkActionMenu.svelte';
 	import UndoButton from './toolbar/UndoButton.svelte';
@@ -61,6 +62,16 @@
 		url: string;
 	}
 
+	/** Image chosen from the app's own picker (media library, asset browser, ...) */
+	export interface ImagePickResult {
+		/** Image URL inserted as the `src` */
+		src: string;
+		/** Alternative text for the image */
+		alt?: string;
+		/** Title (tooltip) for the image */
+		title?: string;
+	}
+
 	export interface TipTapProps {
 		/** HTML content value (bindable). Ignored when collaboration is enabled. */
 		value?: string;
@@ -87,6 +98,11 @@
 		class?: string;
 		/** Async handler for image uploads, returns URL or null */
 		onImageUpload?: (file: File) => Promise<string | null>;
+		/** Async handler for choosing an existing image. The app opens its own picker
+		 * (e.g. `ImagePickerDialog`'s `pick()`) and resolves with the chosen image, as an
+		 * `ImageAsset` or `{ src, alt?, title? }`, which is inserted at the cursor. Resolve
+		 * null to cancel. With `onImageUpload` also set, the image button offers both. */
+		onImagePick?: () => Promise<ImagePickResult | ImageAsset | null>;
 		/** Async handler for document uploads. The app uploads the file and returns the
 		 * link label and URL, which are inserted as a hyperlink. Returns null to cancel. */
 		onDocumentUpload?: (file: File) => Promise<DocumentUploadResult | null>;
@@ -115,6 +131,7 @@
 		autofocusDialog = false,
 		class: className = '',
 		onImageUpload,
+		onImagePick,
 		onDocumentUpload,
 		onUpdate,
 		collaboration,
@@ -504,12 +521,12 @@
 					<AlignJustifyButton editor={editorState.editor} />
 				</div>
 
-				{#if onImageUpload || onDocumentUpload}
+				{#if onImageUpload || onImagePick || onDocumentUpload}
 					<div class="toolbar-divider"></div>
 
 					<div class="toolbar-group">
-						{#if onImageUpload}
-							<ImageButton editor={editorState.editor} {onImageUpload} />
+						{#if onImageUpload || onImagePick}
+							<ImageButton editor={editorState.editor} {onImageUpload} {onImagePick} />
 						{/if}
 						{#if onDocumentUpload}
 							<DocumentButton editor={editorState.editor} {onDocumentUpload} />

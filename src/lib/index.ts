@@ -137,9 +137,18 @@ export {
 	hsvToRgb,
 	rgbToHsl
 } from './form/ColorPicker.svelte';
+export { default as ImagePicker } from './form/ImagePicker.svelte';
+export type { ImagePickerProps, ImageSort } from './form/ImagePicker.svelte';
+export { sortImages, imageSortOptions } from './form/ImagePicker.svelte';
+export { default as ImagePickerDialog } from './form/ImagePickerDialog.svelte';
+export type { ImagePickerDialogProps } from './form/ImagePickerDialog.svelte';
 
 export { default as TipTap } from './editors/tiptap/TipTap.svelte';
-export type { TipTapProps, DocumentUploadResult } from './editors/tiptap/TipTap.svelte';
+export type {
+	TipTapProps,
+	DocumentUploadResult,
+	ImagePickResult
+} from './editors/tiptap/TipTap.svelte';
 export { default as TipTapBubble } from './editors/tiptap/TipTapBubble.svelte';
 export type { TipTapBubbleProps } from './editors/tiptap/TipTapBubble.svelte';
 export type { CollaborationConfig, CollaborationUser } from './editors/tiptap/collaboration.js';
@@ -189,6 +198,7 @@ export type { Employee, GitEmployee } from './models/Employee.js';
 export * from './models/ComboBoxItem.js';
 export * from './models/NavbarItem.js';
 export * from './models/NotifyModel.js';
+export * from './models/ImageAsset.js';
 
 export * from './util/ClickOutside.js';
 export * from './util/BeforeMatch.js';

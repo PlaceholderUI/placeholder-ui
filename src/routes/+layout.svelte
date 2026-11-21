@@ -72,7 +72,8 @@
 				{ href: '/components/autocompletemulti', label: 'AutocompleteMulti' },
 				{ href: '/components/segmented-control', label: 'Segmented Control' },
 				{ href: '/components/chips', label: 'Chips' },
-				{ href: '/components/colorpicker', label: 'Colour Picker' }
+				{ href: '/components/colorpicker', label: 'Colour Picker' },
+				{ href: '/components/imagepicker', label: 'Image Picker' }
 			]
 		},
 		{
